@@ -37,6 +37,8 @@ type LookupReservationResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
 	// Status information for Reservation resource.
 	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
@@ -115,6 +117,11 @@ func (o LookupReservationResultOutput) Kind() pulumi.StringOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+func (o LookupReservationResultOutput) ResourcePolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupReservationResult) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
 }
 
 // Status information for Reservation resource.

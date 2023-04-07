@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:gkehub/v1beta:Binding":
+		r = &Binding{}
 	case "google-native:gkehub/v1beta:Feature":
 		r = &Feature{}
 	case "google-native:gkehub/v1beta:FeatureIamBinding":
@@ -35,6 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MembershipIamMember{}
 	case "google-native:gkehub/v1beta:MembershipIamPolicy":
 		r = &MembershipIamPolicy{}
+	case "google-native:gkehub/v1beta:Namespace":
+		r = &Namespace{}
+	case "google-native:gkehub/v1beta:Rbacrolebinding":
+		r = &Rbacrolebinding{}
+	case "google-native:gkehub/v1beta:Scope":
+		r = &Scope{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

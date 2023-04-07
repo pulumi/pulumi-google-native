@@ -2068,6 +2068,8 @@ func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) Request
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig struct {
 	// A list of usable second factors for this project.
 	EnabledProviders []GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem `pulumi:"enabledProviders"`
+	// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+	ProviderConfigs []GoogleCloudIdentitytoolkitAdminV2ProviderConfig `pulumi:"providerConfigs"`
 	// Whether MultiFactor Authentication has been enabled for this project.
 	State *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState `pulumi:"state"`
 }
@@ -2087,6 +2089,8 @@ type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigInput interface {
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs struct {
 	// A list of usable second factors for this project.
 	EnabledProviders GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayInput `pulumi:"enabledProviders"`
+	// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+	ProviderConfigs GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput `pulumi:"providerConfigs"`
 	// Whether MultiFactor Authentication has been enabled for this project.
 	State GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrInput `pulumi:"state"`
 }
@@ -2176,6 +2180,13 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput) EnabledPro
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput)
 }
 
+// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput) ProviderConfigs() GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig) []GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
+		return v.ProviderConfigs
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput)
+}
+
 // Whether MultiFactor Authentication has been enabled for this project.
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput) State() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig) *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState {
@@ -2217,6 +2228,16 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) Enabled
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput)
 }
 
+// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) ProviderConfigs() GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig) []GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConfigs
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput)
+}
+
 // Whether MultiFactor Authentication has been enabled for this project.
 func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) State() GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig) *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState {
@@ -2231,6 +2252,8 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput) State()
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse struct {
 	// A list of usable second factors for this project.
 	EnabledProviders []string `pulumi:"enabledProviders"`
+	// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+	ProviderConfigs []GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse `pulumi:"providerConfigs"`
 	// Whether MultiFactor Authentication has been enabled for this project.
 	State string `pulumi:"state"`
 }
@@ -2255,6 +2278,13 @@ func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput) En
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse) []string {
 		return v.EnabledProviders
 	}).(pulumi.StringArrayOutput)
+}
+
+// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+func (o GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput) ProviderConfigs() GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse) []GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse {
+		return v.ProviderConfigs
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput)
 }
 
 // Whether MultiFactor Authentication has been enabled for this project.
@@ -2478,6 +2508,174 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) IdToke
 // Do not use. The `token` response type is not supported at the moment.
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) Token() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse) bool { return v.Token }).(pulumi.BoolOutput)
+}
+
+// ProviderConfig describes the supported MFA providers along with their configurations.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfig struct {
+	// Describes the state of the MultiFactor Authentication type.
+	State *GoogleCloudIdentitytoolkitAdminV2ProviderConfigState `pulumi:"state"`
+	// TOTP MFA provider config for this project.
+	TotpProviderConfig *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig `pulumi:"totpProviderConfig"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs and GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput
+}
+
+// ProviderConfig describes the supported MFA providers along with their configurations.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs struct {
+	// Describes the state of the MultiFactor Authentication type.
+	State GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrInput `pulumi:"state"`
+	// TOTP MFA provider config for this project.
+	TotpProviderConfig GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput `pulumi:"totpProviderConfig"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray and GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray{ GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs{...} }
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput
+}
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray []GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput)
+}
+
+// ProviderConfig describes the supported MFA providers along with their configurations.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
+	return o
+}
+
+// Describes the state of the MultiFactor Authentication type.
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) State() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ProviderConfig) *GoogleCloudIdentitytoolkitAdminV2ProviderConfigState {
+		return v.State
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
+}
+
+// TOTP MFA provider config for this project.
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput) TotpProviderConfig() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ProviderConfig) *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
+		return v.TotpProviderConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2ProviderConfig)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput)
+}
+
+// ProviderConfig describes the supported MFA providers along with their configurations.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse struct {
+	// Describes the state of the MultiFactor Authentication type.
+	State string `pulumi:"state"`
+	// TOTP MFA provider config for this project.
+	TotpProviderConfig GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse `pulumi:"totpProviderConfig"`
+}
+
+// ProviderConfig describes the supported MFA providers along with their configurations.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput {
+	return o
+}
+
+// Describes the state of the MultiFactor Authentication type.
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// TOTP MFA provider config for this project.
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput) TotpProviderConfig() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse {
+		return v.TotpProviderConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput)
 }
 
 // Configuration for logging requests made to this project to Stackdriver Logging
@@ -3098,6 +3296,172 @@ func (o GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput) SpCertificates(
 // Unique identifier for all SAML entities.
 func (o GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput) SpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2SpConfigResponse) string { return v.SpEntityId }).(pulumi.StringOutput)
+}
+
+// TotpMFAProviderConfig represents the TOTP based MFA provider.
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig struct {
+	// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+	AdjacentIntervals *int `pulumi:"adjacentIntervals"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs and GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput
+}
+
+// TotpMFAProviderConfig represents the TOTP based MFA provider.
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs struct {
+	// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+	AdjacentIntervals pulumi.IntPtrInput `pulumi:"adjacentIntervals"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput).ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs, GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtr and GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs
+
+func GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtr(v *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput)
+}
+
+// TotpMFAProviderConfig represents the TOTP based MFA provider.
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig) *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput)
+}
+
+// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput) AdjacentIntervals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig) *int { return v.AdjacentIntervals }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput)
+}
+
+// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput) AdjacentIntervals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AdjacentIntervals
+	}).(pulumi.IntPtrOutput)
+}
+
+// TotpMFAProviderConfig represents the TOTP based MFA provider.
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse struct {
+	// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+	AdjacentIntervals int `pulumi:"adjacentIntervals"`
+}
+
+// TotpMFAProviderConfig represents the TOTP based MFA provider.
+type GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput {
+	return o
+}
+
+// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+func (o GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput) AdjacentIntervals() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse) int { return v.AdjacentIntervals }).(pulumi.IntOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
@@ -3873,12 +4237,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
@@ -3928,6 +4296,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput{})
@@ -3939,6 +4311,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})

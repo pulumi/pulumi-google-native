@@ -164,6 +164,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
+        /// Fleet information for the cluster.
+        /// </summary>
+        public readonly Outputs.FleetResponse Fleet;
+        /// <summary>
         /// Configuration for Identity Service component.
         /// </summary>
         public readonly Outputs.IdentityServiceConfigResponse IdentityServiceConfig;
@@ -406,6 +410,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string expireTime,
 
+            Outputs.FleetResponse fleet,
+
             Outputs.IdentityServiceConfigResponse identityServiceConfig,
 
             string initialClusterVersion,
@@ -526,6 +532,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             Endpoint = endpoint;
             Etag = etag;
             ExpireTime = expireTime;
+            Fleet = fleet;
             IdentityServiceConfig = identityServiceConfig;
             InitialClusterVersion = initialClusterVersion;
             InitialNodeCount = initialNodeCount;

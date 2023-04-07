@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         /// The accumulated duration the replication cycle was paused.
         /// </summary>
         public readonly string TotalPauseDuration;
+        /// <summary>
+        /// Warnings that occurred during the cycle.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.MigrationWarningResponse> Warnings;
 
         [OutputConstructor]
         private ReplicationCycleResponse(
@@ -71,7 +75,9 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
 
             ImmutableArray<Outputs.CycleStepResponse> steps,
 
-            string totalPauseDuration)
+            string totalPauseDuration,
+
+            ImmutableArray<Outputs.MigrationWarningResponse> warnings)
         {
             CycleNumber = cycleNumber;
             EndTime = endTime;
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
             State = state;
             Steps = steps;
             TotalPauseDuration = totalPauseDuration;
+            Warnings = warnings;
         }
     }
 }

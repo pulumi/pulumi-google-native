@@ -51,6 +51,10 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature(str, Enum):
     """
     Use reCAPTCHA action-tokens to protect user actions.
     """
+    EXPRESS = "EXPRESS"
+    """
+    Use reCAPTCHA WAF express protection to protect any content other than web pages, like APIs and IoT devices.
+    """
 
 
 class GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(str, Enum):
@@ -64,6 +68,10 @@ class GoogleCloudRecaptchaenterpriseV1WafSettingsWafService(str, Enum):
     CA = "CA"
     """
     Cloud Armor
+    """
+    FASTLY = "FASTLY"
+    """
+    Fastly
     """
 
 

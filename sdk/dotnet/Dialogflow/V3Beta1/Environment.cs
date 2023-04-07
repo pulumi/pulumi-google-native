@@ -150,7 +150,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("testCasesConfig")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs>? TestCasesConfig { get; set; }
 
-        [Input("versionConfigs", required: true)]
+        [Input("versionConfigs")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>? _versionConfigs;
 
         /// <summary>

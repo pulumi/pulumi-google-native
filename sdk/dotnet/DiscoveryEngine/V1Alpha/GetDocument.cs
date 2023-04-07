@@ -30,6 +30,9 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         [Input("branchId", required: true)]
         public string BranchId { get; set; } = null!;
 
+        [Input("collectionId", required: true)]
+        public string CollectionId { get; set; } = null!;
+
         [Input("dataStoreId", required: true)]
         public string DataStoreId { get; set; } = null!;
 
@@ -52,6 +55,9 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     {
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
+
+        [Input("collectionId", required: true)]
+        public Input<string> CollectionId { get; set; } = null!;
 
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
@@ -80,7 +86,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         public readonly string JsonData;
         /// <summary>
-        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
         public readonly string Name;
         /// <summary>

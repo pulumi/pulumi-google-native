@@ -36,6 +36,8 @@ type LookupServiceResult struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name string `pulumi:"name"`
+	// A globally unique identifier (in UUID4 format) for this service.
+	Uid string `pulumi:"uid"`
 	// The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -96,6 +98,11 @@ func (o LookupServiceResultOutput) Metadata() pulumi.StringMapOutput {
 // Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this service.
+func (o LookupServiceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.

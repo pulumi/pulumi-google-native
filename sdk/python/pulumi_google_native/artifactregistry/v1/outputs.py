@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'BindingResponse',
+    'DockerRepositoryConfigResponse',
     'DockerRepositoryResponse',
     'ExprResponse',
     'MavenRepositoryConfigResponse',
@@ -66,6 +67,45 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class DockerRepositoryConfigResponse(dict):
+    """
+    DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "immutableTags":
+            suggest = "immutable_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DockerRepositoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DockerRepositoryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DockerRepositoryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 immutable_tags: bool):
+        """
+        DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+        :param bool immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        pulumi.set(__self__, "immutable_tags", immutable_tags)
+
+    @property
+    @pulumi.getter(name="immutableTags")
+    def immutable_tags(self) -> bool:
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        return pulumi.get(self, "immutable_tags")
 
 
 @pulumi.output_type
@@ -431,7 +471,7 @@ class UpstreamPolicyResponse(dict):
         """
         Artifact policy configuration for the repository contents.
         :param int priority: Entries with a greater priority value take precedence in the pull order.
-        :param str repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        :param str repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "repository", repository)
@@ -448,7 +488,7 @@ class UpstreamPolicyResponse(dict):
     @pulumi.getter
     def repository(self) -> str:
         """
-        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         return pulumi.get(self, "repository")
 

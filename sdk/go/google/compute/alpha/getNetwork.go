@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified network. Gets a list of available networks by making a list() request.
+// Returns the specified network.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
 	var rv LookupNetworkResult
 	err := ctx.Invoke("google-native:compute/alpha:getNetwork", args, &rv, opts...)
@@ -36,7 +36,7 @@ type LookupNetworkResult struct {
 	EnableUlaInternalIpv6 bool `pulumi:"enableUlaInternalIpv6"`
 	// URL of the firewall policy the network is associated with.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
-	// The gateway address for default routing out of the network, selected by GCP.
+	// The gateway address for default routing out of the network, selected by Google Cloud.
 	GatewayIPv4 string `pulumi:"gatewayIPv4"`
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
 	InternalIpv6Range string `pulumi:"internalIpv6Range"`
@@ -127,7 +127,7 @@ func (o LookupNetworkResultOutput) FirewallPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.FirewallPolicy }).(pulumi.StringOutput)
 }
 
-// The gateway address for default routing out of the network, selected by GCP.
+// The gateway address for default routing out of the network, selected by Google Cloud.
 func (o LookupNetworkResultOutput) GatewayIPv4() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.GatewayIPv4 }).(pulumi.StringOutput)
 }

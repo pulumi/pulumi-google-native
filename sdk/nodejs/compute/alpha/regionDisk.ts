@@ -62,6 +62,10 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
+     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
     public readonly eraseWindowsVssSignature!: pulumi.Output<boolean>;
@@ -270,6 +274,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
@@ -327,6 +332,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["eraseWindowsVssSignature"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["interface"] = undefined /*out*/;
@@ -403,6 +409,10 @@ export interface RegionDiskArgs {
      * Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
+    /**
+     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */

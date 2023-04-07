@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetTargetHttpProxy
     {
         /// <summary>
-        /// Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+        /// Returns the specified TargetHttpProxy resource.
         /// </summary>
         public static Task<GetTargetHttpProxyResult> InvokeAsync(GetTargetHttpProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpProxyResult>("google-native:compute/beta:getTargetHttpProxy", args ?? new GetTargetHttpProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+        /// Returns the specified TargetHttpProxy resource.
         /// </summary>
         public static Output<GetTargetHttpProxyResult> Invoke(GetTargetHttpProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetHttpProxyResult>("google-native:compute/beta:getTargetHttpProxy", args ?? new GetTargetHttpProxyInvokeArgs(), options.WithDefaults());

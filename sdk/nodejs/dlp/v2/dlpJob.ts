@@ -39,6 +39,10 @@ export class DlpJob extends pulumi.CustomResource {
     }
 
     /**
+     * Events that should occur after the job has completed.
+     */
+    public /*out*/ readonly actionDetails!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2ActionDetailsResponse[]>;
+    /**
      * Time when the job was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -97,6 +101,7 @@ export class DlpJob extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["riskJob"] = args ? args.riskJob : undefined;
+            resourceInputs["actionDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
@@ -108,6 +113,7 @@ export class DlpJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["actionDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetGlobalAddress
     {
         /// <summary>
-        /// Returns the specified address resource. Gets a list of available addresses by making a list() request.
+        /// Returns the specified address resource.
         /// </summary>
         public static Task<GetGlobalAddressResult> InvokeAsync(GetGlobalAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalAddressResult>("google-native:compute/alpha:getGlobalAddress", args ?? new GetGlobalAddressArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified address resource. Gets a list of available addresses by making a list() request.
+        /// Returns the specified address resource.
         /// </summary>
         public static Output<GetGlobalAddressResult> Invoke(GetGlobalAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalAddressResult>("google-native:compute/alpha:getGlobalAddress", args ?? new GetGlobalAddressInvokeArgs(), options.WithDefaults());

@@ -138,7 +138,7 @@ class GetInstanceGroupManagerResizeRequestResult:
     @pulumi.getter
     def zone(self) -> str:
         """
-        The URL of a zone where the resize request is located.
+        The URL of a zone where the resize request is located. Populated only for zonal resize requests.
         """
         return pulumi.get(self, "zone")
 

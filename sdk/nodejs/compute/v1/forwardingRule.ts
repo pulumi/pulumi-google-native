@@ -50,6 +50,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
+     * The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+     */
+    public /*out*/ readonly baseForwardingRule!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -149,6 +153,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
+     * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+     */
+    public readonly sourceIpRanges!: pulumi.Output<string[]>;
+    /**
      * This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
      */
     public readonly subnetwork!: pulumi.Output<string>;
@@ -194,8 +202,10 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
             resourceInputs["serviceLabel"] = args ? args.serviceLabel : undefined;
+            resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -207,6 +217,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["allPorts"] = undefined /*out*/;
             resourceInputs["allowGlobalAccess"] = undefined /*out*/;
             resourceInputs["backendService"] = undefined /*out*/;
+            resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -234,6 +245,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["serviceDirectoryRegistrations"] = undefined /*out*/;
             resourceInputs["serviceLabel"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
+            resourceInputs["sourceIpRanges"] = undefined /*out*/;
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["target"] = undefined /*out*/;
         }
@@ -331,6 +343,10 @@ export interface ForwardingRuleArgs {
      * An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing.
      */
     serviceLabel?: pulumi.Input<string>;
+    /**
+     * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+     */
+    sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
      */

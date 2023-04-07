@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
     public sealed class ContainerResponse
     {
         /// <summary>
-        /// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+        /// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
         /// </summary>
         public readonly bool BlockExternalNetwork;
         /// <summary>

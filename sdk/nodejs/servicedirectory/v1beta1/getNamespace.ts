@@ -37,6 +37,10 @@ export interface GetNamespaceResult {
      */
     readonly name: string;
     /**
+     * A globally unique identifier (in UUID4 format) for this namespace.
+     */
+    readonly uid: string;
+    /**
      * The timestamp when the namespace was last updated.
      */
     readonly updateTime: string;

@@ -121,6 +121,7 @@ __all__ = [
     'InterconnectAttachmentType',
     'InterconnectInterconnectType',
     'InterconnectLinkType',
+    'InterconnectRequestedFeaturesItem',
     'LocationPolicyTargetShape',
     'LogConfigCloudAuditOptionsLogName',
     'LogConfigDataAccessOptionsLogMode',
@@ -138,6 +139,7 @@ __all__ = [
     'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkRoutingConfigRoutingMode',
     'NodeGroupAutoscalingPolicyMode',
+    'NodeGroupMaintenanceInterval',
     'NodeGroupMaintenancePolicy',
     'NodeGroupStatus',
     'NodeTemplateCpuOvercommitType',
@@ -226,6 +228,7 @@ __all__ = [
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
+    'StoragePoolType',
     'SubnetworkAggregationInterval',
     'SubnetworkIpv6AccessType',
     'SubnetworkLogConfigAggregationInterval',
@@ -245,6 +248,7 @@ __all__ = [
     'TargetTcpProxyProxyHeader',
     'TlsCertificateContextCertificateSource',
     'TlsValidationContextValidationSource',
+    'VpnGatewayGatewayIpVersion',
     'VpnGatewayStackType',
 ]
 
@@ -277,7 +281,7 @@ class AccessConfigNetworkTier(str, Enum):
 
 class AccessConfigType(str, Enum):
     """
-    The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+    The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
     """
     DIRECT_IPV6 = "DIRECT_IPV6"
     ONE_TO_ONE_NAT = "ONE_TO_ONE_NAT"
@@ -413,6 +417,7 @@ class AllocationAggregateReservationVmFamily(str, Enum):
     The VM family that all instances scheduled against this reservation must belong to.
     """
     VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P = "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"
+    VM_FAMILY_COMPUTE_OPTIMIZED_C3 = "VM_FAMILY_COMPUTE_OPTIMIZED_C3"
     VM_FAMILY_GENERAL_PURPOSE_T2D = "VM_FAMILY_GENERAL_PURPOSE_T2D"
     VM_FAMILY_MEMORY_OPTIMIZED_M3 = "VM_FAMILY_MEMORY_OPTIMIZED_M3"
 
@@ -429,6 +434,10 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInte
 class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval(str, Enum):
     """
     Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+    """
+    AS_NEEDED = "AS_NEEDED"
+    """
+    VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
     """
     PERIODIC = "PERIODIC"
     """
@@ -1691,7 +1700,7 @@ class GlobalNetworkEndpointGroupType(str, Enum):
 
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
     """
     BARE_METAL_LINUX_COMPATIBLE = "BARE_METAL_LINUX_COMPATIBLE"
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
@@ -2303,6 +2312,13 @@ class InterconnectLinkType(str, Enum):
     """
 
 
+class InterconnectRequestedFeaturesItem(str, Enum):
+    IF_MACSEC = "IF_MACSEC"
+    """
+    Media Access Control security (MACsec)
+    """
+
+
 class LocationPolicyTargetShape(str, Enum):
     """
     Strategy for distributing VMs across zones in a region.
@@ -2474,7 +2490,7 @@ class NetworkInterfaceNicType(str, Enum):
 
 class NetworkInterfaceStackType(str, Enum):
     """
-    The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+    The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
     """
     IPV4_IPV6 = "IPV4_IPV6"
     """
@@ -2543,6 +2559,24 @@ class NodeGroupAutoscalingPolicyMode(str, Enum):
     """
 
 
+class NodeGroupMaintenanceInterval(str, Enum):
+    """
+    Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+    """
+    AS_NEEDED = "AS_NEEDED"
+    """
+    VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+    """
+    PERIODIC = "PERIODIC"
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+    """
+    RECURRENT = "RECURRENT"
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+    """
+
+
 class NodeGroupMaintenancePolicy(str, Enum):
     """
     Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
@@ -2580,7 +2614,7 @@ class NodeTemplateCpuOvercommitType(str, Enum):
 
 class OrganizationSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -2886,6 +2920,7 @@ class RegionCommitmentType(str, Enum):
     ACCELERATOR_OPTIMIZED = "ACCELERATOR_OPTIMIZED"
     COMPUTE_OPTIMIZED = "COMPUTE_OPTIMIZED"
     COMPUTE_OPTIMIZED_C2D = "COMPUTE_OPTIMIZED_C2D"
+    COMPUTE_OPTIMIZED_C3 = "COMPUTE_OPTIMIZED_C3"
     GENERAL_PURPOSE = "GENERAL_PURPOSE"
     GENERAL_PURPOSE_E2 = "GENERAL_PURPOSE_E2"
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
@@ -3060,7 +3095,7 @@ class RegionNetworkFirewallPolicyVpcNetworkScope(str, Enum):
 
 class RegionSecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -3555,6 +3590,10 @@ class SchedulingMaintenanceInterval(str, Enum):
     """
     Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
     """
+    AS_NEEDED = "AS_NEEDED"
+    """
+    VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+    """
     PERIODIC = "PERIODIC"
     """
     VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
@@ -3628,6 +3667,7 @@ class SecurityPolicyAdvancedOptionsConfigLogLevel(str, Enum):
 
 class SecurityPolicyDdosProtectionConfigDdosProtection(str, Enum):
     ADVANCED = "ADVANCED"
+    ADVANCED_PREVIEW = "ADVANCED_PREVIEW"
     STANDARD = "STANDARD"
 
 
@@ -3716,7 +3756,7 @@ class SecurityPolicyRuleRedirectOptionsType(str, Enum):
 
 class SecurityPolicyType(str, Enum):
     """
-    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
@@ -3858,6 +3898,14 @@ class SslPolicyProfile(str, Enum):
     """
     Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
     """
+
+
+class StoragePoolType(str, Enum):
+    """
+    Type of the storage pool
+    """
+    SSD = "SSD"
+    UNSPECIFIED = "UNSPECIFIED"
 
 
 class SubnetworkAggregationInterval(str, Enum):
@@ -4149,6 +4197,20 @@ class TlsValidationContextValidationSource(str, Enum):
     USE_SDS = "USE_SDS"
     """
     USE_SDS specifies that the certificates and private key are obtained from a SDS server.
+    """
+
+
+class VpnGatewayGatewayIpVersion(str, Enum):
+    """
+    The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+    """
+    IPV4 = "IPV4"
+    """
+    Every HA-VPN gateway interface is configured with an IPv4 address.
+    """
+    IPV6 = "IPV6"
+    """
+    Every HA-VPN gateway interface is configured with an IPv6 address.
     """
 
 

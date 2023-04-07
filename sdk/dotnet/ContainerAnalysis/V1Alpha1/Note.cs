@@ -115,6 +115,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<Outputs.DocumentNoteResponse> Sbom { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing a reference to an SBOM.
+        /// </summary>
+        [Output("sbomReference")]
+        public Output<Outputs.SBOMReferenceNoteResponse> SbomReference { get; private set; } = null!;
+
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         [Output("shortDescription")]
@@ -149,6 +155,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Output("upgrade")]
         public Output<Outputs.UpgradeNoteResponse> Upgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Output("vulnerabilityAssessment")]
+        public Output<Outputs.VulnerabilityAssessmentNoteResponse> VulnerabilityAssessment { get; private set; } = null!;
 
         /// <summary>
         /// A package vulnerability type of note.
@@ -299,6 +311,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Input<Inputs.DocumentNoteArgs>? Sbom { get; set; }
 
         /// <summary>
+        /// A note describing a reference to an SBOM.
+        /// </summary>
+        [Input("sbomReference")]
+        public Input<Inputs.SBOMReferenceNoteArgs>? SbomReference { get; set; }
+
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         [Input("shortDescription")]
@@ -327,6 +345,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("upgrade")]
         public Input<Inputs.UpgradeNoteArgs>? Upgrade { get; set; }
+
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Input("vulnerabilityAssessment")]
+        public Input<Inputs.VulnerabilityAssessmentNoteArgs>? VulnerabilityAssessment { get; set; }
 
         /// <summary>
         /// A package vulnerability type of note.

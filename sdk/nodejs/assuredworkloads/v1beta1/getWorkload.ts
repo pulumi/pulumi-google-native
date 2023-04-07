@@ -56,6 +56,10 @@ export interface GetWorkloadResult {
      */
     readonly displayName: string;
     /**
+     * Optional. Represents the Ekm Provisioning State of the given workload.
+     */
+    readonly ekmProvisioningResponse: outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse;
+    /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */
     readonly enableSovereignControls: boolean;

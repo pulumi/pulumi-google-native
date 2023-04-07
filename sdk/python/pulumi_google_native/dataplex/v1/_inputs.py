@@ -413,8 +413,8 @@ class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
                  name: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Represents a subresource of a given resource, and associated bindings with it.
-        :param pulumi.Input[str] name: The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
+        :param pulumi.Input[str] name: The name identifier of the path. Nested columns should be of the form: 'address.city'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
         """
         pulumi.set(__self__, "name", name)
@@ -425,7 +425,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        The name identifier of the path. Nested columns should be of the form: 'address.city'.
         """
         return pulumi.get(self, "name")
 
@@ -991,13 +991,17 @@ class GoogleCloudDataplexV1DataScanExecutionSpecArgs:
 @pulumi.input_type
 class GoogleCloudDataplexV1DataSourceArgs:
     def __init__(__self__, *,
-                 entity: Optional[pulumi.Input[str]] = None):
+                 entity: Optional[pulumi.Input[str]] = None,
+                 resource: Optional[pulumi.Input[str]] = None):
         """
         The data source for DataScan.
         :param pulumi.Input[str] entity: Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+        :param pulumi.Input[str] resource: Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         """
         if entity is not None:
             pulumi.set(__self__, "entity", entity)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter
@@ -1010,6 +1014,18 @@ class GoogleCloudDataplexV1DataSourceArgs:
     @entity.setter
     def entity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
 
 
 @pulumi.input_type
@@ -1184,6 +1200,7 @@ class GoogleCloudDataplexV1EnvironmentSessionSpecArgs:
                  enable_fast_startup: Optional[pulumi.Input[bool]] = None,
                  max_idle_duration: Optional[pulumi.Input[str]] = None):
         """
+        Configuration for sessions created for this environment.
         :param pulumi.Input[bool] enable_fast_startup: Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
         :param pulumi.Input[str] max_idle_duration: Optional. The idle time configuration of the session. The session will be auto-terminated at the end of this period.
         """

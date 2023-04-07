@@ -21,6 +21,7 @@ class TriggerArgs:
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[bool],
                  channel: Optional[pulumi.Input[str]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class TriggerArgs:
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
         :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
@@ -45,6 +47,8 @@ class TriggerArgs:
         pulumi.set(__self__, "validate_only", validate_only)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
+        if event_data_content_type is not None:
+            pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -117,6 +121,18 @@ class TriggerArgs:
     @channel.setter
     def channel(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
+
+    @event_data_content_type.setter
+    def event_data_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_data_content_type", value)
 
     @property
     @pulumi.getter
@@ -192,6 +208,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -209,6 +226,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Destination specifies where the events should be sent to.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]] event_filters: Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
@@ -243,6 +261,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -265,6 +284,7 @@ class Trigger(pulumi.CustomResource):
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
+            __props__.__dict__["event_data_content_type"] = event_data_content_type
             if event_filters is None and not opts.urn:
                 raise TypeError("Missing required property 'event_filters'")
             __props__.__dict__["event_filters"] = event_filters
@@ -314,6 +334,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["destination"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["event_data_content_type"] = None
         __props__.__dict__["event_filters"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -366,6 +387,14 @@ class Trigger(pulumi.CustomResource):
         This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> pulumi.Output[str]:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
 
     @property
     @pulumi.getter(name="eventFilters")

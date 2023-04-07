@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Translate.V3.Inputs
     public sealed class LanguageCodePairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        /// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
         /// </summary>
         [Input("sourceLanguageCode", required: true)]
         public Input<string> SourceLanguageCode { get; set; } = null!;
 
         /// <summary>
-        /// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        /// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         /// </summary>
         [Input("targetLanguageCode", required: true)]
         public Input<string> TargetLanguageCode { get; set; } = null!;

@@ -10,6 +10,11 @@ export type BillingAccountBucket = import("./billingAccountBucket").BillingAccou
 export const BillingAccountBucket: typeof import("./billingAccountBucket").BillingAccountBucket = null as any;
 utilities.lazyLoad(exports, ["BillingAccountBucket"], () => require("./billingAccountBucket"));
 
+export { BillingAccountBucketLinkArgs } from "./billingAccountBucketLink";
+export type BillingAccountBucketLink = import("./billingAccountBucketLink").BillingAccountBucketLink;
+export const BillingAccountBucketLink: typeof import("./billingAccountBucketLink").BillingAccountBucketLink = null as any;
+utilities.lazyLoad(exports, ["BillingAccountBucketLink"], () => require("./billingAccountBucketLink"));
+
 export { BillingAccountBucketViewArgs } from "./billingAccountBucketView";
 export type BillingAccountBucketView = import("./billingAccountBucketView").BillingAccountBucketView;
 export const BillingAccountBucketView: typeof import("./billingAccountBucketView").BillingAccountBucketView = null as any;
@@ -45,6 +50,11 @@ export type FolderBucket = import("./folderBucket").FolderBucket;
 export const FolderBucket: typeof import("./folderBucket").FolderBucket = null as any;
 utilities.lazyLoad(exports, ["FolderBucket"], () => require("./folderBucket"));
 
+export { FolderBucketLinkArgs } from "./folderBucketLink";
+export type FolderBucketLink = import("./folderBucketLink").FolderBucketLink;
+export const FolderBucketLink: typeof import("./folderBucketLink").FolderBucketLink = null as any;
+utilities.lazyLoad(exports, ["FolderBucketLink"], () => require("./folderBucketLink"));
+
 export { FolderBucketViewArgs } from "./folderBucketView";
 export type FolderBucketView = import("./folderBucketView").FolderBucketView;
 export const FolderBucketView: typeof import("./folderBucketView").FolderBucketView = null as any;
@@ -64,6 +74,11 @@ export { GetBillingAccountBucketArgs, GetBillingAccountBucketResult, GetBillingA
 export const getBillingAccountBucket: typeof import("./getBillingAccountBucket").getBillingAccountBucket = null as any;
 export const getBillingAccountBucketOutput: typeof import("./getBillingAccountBucket").getBillingAccountBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getBillingAccountBucket","getBillingAccountBucketOutput"], () => require("./getBillingAccountBucket"));
+
+export { GetBillingAccountBucketLinkArgs, GetBillingAccountBucketLinkResult, GetBillingAccountBucketLinkOutputArgs } from "./getBillingAccountBucketLink";
+export const getBillingAccountBucketLink: typeof import("./getBillingAccountBucketLink").getBillingAccountBucketLink = null as any;
+export const getBillingAccountBucketLinkOutput: typeof import("./getBillingAccountBucketLink").getBillingAccountBucketLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getBillingAccountBucketLink","getBillingAccountBucketLinkOutput"], () => require("./getBillingAccountBucketLink"));
 
 export { GetBillingAccountBucketViewArgs, GetBillingAccountBucketViewResult, GetBillingAccountBucketViewOutputArgs } from "./getBillingAccountBucketView";
 export const getBillingAccountBucketView: typeof import("./getBillingAccountBucketView").getBillingAccountBucketView = null as any;
@@ -100,6 +115,11 @@ export const getFolderBucket: typeof import("./getFolderBucket").getFolderBucket
 export const getFolderBucketOutput: typeof import("./getFolderBucket").getFolderBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderBucket","getFolderBucketOutput"], () => require("./getFolderBucket"));
 
+export { GetFolderBucketLinkArgs, GetFolderBucketLinkResult, GetFolderBucketLinkOutputArgs } from "./getFolderBucketLink";
+export const getFolderBucketLink: typeof import("./getFolderBucketLink").getFolderBucketLink = null as any;
+export const getFolderBucketLinkOutput: typeof import("./getFolderBucketLink").getFolderBucketLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderBucketLink","getFolderBucketLinkOutput"], () => require("./getFolderBucketLink"));
+
 export { GetFolderBucketViewArgs, GetFolderBucketViewResult, GetFolderBucketViewOutputArgs } from "./getFolderBucketView";
 export const getFolderBucketView: typeof import("./getFolderBucketView").getFolderBucketView = null as any;
 export const getFolderBucketViewOutput: typeof import("./getFolderBucketView").getFolderBucketViewOutput = null as any;
@@ -115,6 +135,11 @@ export const getFolderSink: typeof import("./getFolderSink").getFolderSink = nul
 export const getFolderSinkOutput: typeof import("./getFolderSink").getFolderSinkOutput = null as any;
 utilities.lazyLoad(exports, ["getFolderSink","getFolderSinkOutput"], () => require("./getFolderSink"));
 
+export { GetLinkArgs, GetLinkResult, GetLinkOutputArgs } from "./getLink";
+export const getLink: typeof import("./getLink").getLink = null as any;
+export const getLinkOutput: typeof import("./getLink").getLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getLink","getLinkOutput"], () => require("./getLink"));
+
 export { GetMetricArgs, GetMetricResult, GetMetricOutputArgs } from "./getMetric";
 export const getMetric: typeof import("./getMetric").getMetric = null as any;
 export const getMetricOutput: typeof import("./getMetric").getMetricOutput = null as any;
@@ -124,6 +149,11 @@ export { GetOrganizationBucketArgs, GetOrganizationBucketResult, GetOrganization
 export const getOrganizationBucket: typeof import("./getOrganizationBucket").getOrganizationBucket = null as any;
 export const getOrganizationBucketOutput: typeof import("./getOrganizationBucket").getOrganizationBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizationBucket","getOrganizationBucketOutput"], () => require("./getOrganizationBucket"));
+
+export { GetOrganizationBucketLinkArgs, GetOrganizationBucketLinkResult, GetOrganizationBucketLinkOutputArgs } from "./getOrganizationBucketLink";
+export const getOrganizationBucketLink: typeof import("./getOrganizationBucketLink").getOrganizationBucketLink = null as any;
+export const getOrganizationBucketLinkOutput: typeof import("./getOrganizationBucketLink").getOrganizationBucketLinkOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationBucketLink","getOrganizationBucketLinkOutput"], () => require("./getOrganizationBucketLink"));
 
 export { GetOrganizationBucketViewArgs, GetOrganizationBucketViewResult, GetOrganizationBucketViewOutputArgs } from "./getOrganizationBucketView";
 export const getOrganizationBucketView: typeof import("./getOrganizationBucketView").getOrganizationBucketView = null as any;
@@ -145,6 +175,11 @@ export const getSink: typeof import("./getSink").getSink = null as any;
 export const getSinkOutput: typeof import("./getSink").getSinkOutput = null as any;
 utilities.lazyLoad(exports, ["getSink","getSinkOutput"], () => require("./getSink"));
 
+export { LinkArgs } from "./link";
+export type Link = import("./link").Link;
+export const Link: typeof import("./link").Link = null as any;
+utilities.lazyLoad(exports, ["Link"], () => require("./link"));
+
 export { MetricArgs } from "./metric";
 export type Metric = import("./metric").Metric;
 export const Metric: typeof import("./metric").Metric = null as any;
@@ -154,6 +189,11 @@ export { OrganizationBucketArgs } from "./organizationBucket";
 export type OrganizationBucket = import("./organizationBucket").OrganizationBucket;
 export const OrganizationBucket: typeof import("./organizationBucket").OrganizationBucket = null as any;
 utilities.lazyLoad(exports, ["OrganizationBucket"], () => require("./organizationBucket"));
+
+export { OrganizationBucketLinkArgs } from "./organizationBucketLink";
+export type OrganizationBucketLink = import("./organizationBucketLink").OrganizationBucketLink;
+export const OrganizationBucketLink: typeof import("./organizationBucketLink").OrganizationBucketLink = null as any;
+utilities.lazyLoad(exports, ["OrganizationBucketLink"], () => require("./organizationBucketLink"));
 
 export { OrganizationBucketViewArgs } from "./organizationBucketView";
 export type OrganizationBucketView = import("./organizationBucketView").OrganizationBucketView;
@@ -185,6 +225,8 @@ const _module = {
         switch (type) {
             case "google-native:logging/v2:BillingAccountBucket":
                 return new BillingAccountBucket(name, <any>undefined, { urn })
+            case "google-native:logging/v2:BillingAccountBucketLink":
+                return new BillingAccountBucketLink(name, <any>undefined, { urn })
             case "google-native:logging/v2:BillingAccountBucketView":
                 return new BillingAccountBucketView(name, <any>undefined, { urn })
             case "google-native:logging/v2:BillingAccountExclusion":
@@ -199,16 +241,22 @@ const _module = {
                 return new Exclusion(name, <any>undefined, { urn })
             case "google-native:logging/v2:FolderBucket":
                 return new FolderBucket(name, <any>undefined, { urn })
+            case "google-native:logging/v2:FolderBucketLink":
+                return new FolderBucketLink(name, <any>undefined, { urn })
             case "google-native:logging/v2:FolderBucketView":
                 return new FolderBucketView(name, <any>undefined, { urn })
             case "google-native:logging/v2:FolderExclusion":
                 return new FolderExclusion(name, <any>undefined, { urn })
             case "google-native:logging/v2:FolderSink":
                 return new FolderSink(name, <any>undefined, { urn })
+            case "google-native:logging/v2:Link":
+                return new Link(name, <any>undefined, { urn })
             case "google-native:logging/v2:Metric":
                 return new Metric(name, <any>undefined, { urn })
             case "google-native:logging/v2:OrganizationBucket":
                 return new OrganizationBucket(name, <any>undefined, { urn })
+            case "google-native:logging/v2:OrganizationBucketLink":
+                return new OrganizationBucketLink(name, <any>undefined, { urn })
             case "google-native:logging/v2:OrganizationBucketView":
                 return new OrganizationBucketView(name, <any>undefined, { urn })
             case "google-native:logging/v2:OrganizationExclusion":

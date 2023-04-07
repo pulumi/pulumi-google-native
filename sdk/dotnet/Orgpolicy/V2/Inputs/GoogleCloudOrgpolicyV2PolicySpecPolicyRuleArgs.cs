@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
     public sealed class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        /// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         /// </summary>
         [Input("allowAll")]
         public Input<bool>? AllowAll { get; set; }
@@ -28,19 +28,19 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         public Input<Inputs.GoogleTypeExprArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         /// </summary>
         [Input("denyAll")]
         public Input<bool>? DenyAll { get; set; }
 
         /// <summary>
-        /// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }
 
         /// <summary>
-        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// </summary>
         [Input("values")]
         public Input<Inputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs>? Values { get; set; }

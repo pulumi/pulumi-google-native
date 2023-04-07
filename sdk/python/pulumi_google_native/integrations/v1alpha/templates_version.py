@@ -21,6 +21,7 @@ class TemplatesVersionArgs:
                  product_id: pulumi.Input[str],
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parent_integration_version_id: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class TemplatesVersionArgs:
         The set of arguments for constructing a TemplatesVersion resource.
         :param pulumi.Input['TemplatesVersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] parent_integration_version_id: Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]] task_configs: Optional. Task configuration for the IntegrationTemplateVersion. It's optional, but the IntegrationTemplateVersion doesn't do anything without task_configs.
@@ -48,6 +50,8 @@ class TemplatesVersionArgs:
             pulumi.set(__self__, "database_persistence_policy", database_persistence_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if error_catcher_configs is not None:
+            pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
         if last_modifier_email is not None:
             pulumi.set(__self__, "last_modifier_email", last_modifier_email)
         if location is not None:
@@ -108,6 +112,18 @@ class TemplatesVersionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="errorCatcherConfigs")
+    def error_catcher_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]:
+        """
+        Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        """
+        return pulumi.get(self, "error_catcher_configs")
+
+    @error_catcher_configs.setter
+    def error_catcher_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]):
+        pulumi.set(self, "error_catcher_configs", value)
 
     @property
     @pulumi.getter(name="lastModifierEmail")
@@ -219,6 +235,7 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -241,6 +258,7 @@ class TemplatesVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['TemplatesVersionDatabasePersistencePolicy'] database_persistence_policy: Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
         :param pulumi.Input[str] description: Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]] error_catcher_configs: Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
         :param pulumi.Input[str] last_modifier_email: Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         :param pulumi.Input[str] parent_integration_version_id: Optional. ID of the IntegrationVersion that was used to create this IntegrationTemplateVersion
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs']]]] task_configs: Optional. Task configuration for the IntegrationTemplateVersion. It's optional, but the IntegrationTemplateVersion doesn't do anything without task_configs.
@@ -278,6 +296,7 @@ class TemplatesVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_persistence_policy: Optional[pulumi.Input['TemplatesVersionDatabasePersistencePolicy']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 error_catcher_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs']]]]] = None,
                  integrationtemplate_id: Optional[pulumi.Input[str]] = None,
                  last_modifier_email: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -300,6 +319,7 @@ class TemplatesVersion(pulumi.CustomResource):
 
             __props__.__dict__["database_persistence_policy"] = database_persistence_policy
             __props__.__dict__["description"] = description
+            __props__.__dict__["error_catcher_configs"] = error_catcher_configs
             if integrationtemplate_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integrationtemplate_id'")
             __props__.__dict__["integrationtemplate_id"] = integrationtemplate_id
@@ -347,6 +367,7 @@ class TemplatesVersion(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_persistence_policy"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["error_catcher_configs"] = None
         __props__.__dict__["integrationtemplate_id"] = None
         __props__.__dict__["last_modifier_email"] = None
         __props__.__dict__["location"] = None
@@ -387,6 +408,14 @@ class TemplatesVersion(pulumi.CustomResource):
         Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="errorCatcherConfigs")
+    def error_catcher_configs(self) -> pulumi.Output[Sequence['outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse']]:
+        """
+        Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        """
+        return pulumi.get(self, "error_catcher_configs")
 
     @property
     @pulumi.getter(name="integrationtemplateId")

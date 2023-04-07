@@ -26,6 +26,7 @@ __all__ = [
     'Oauth2JwtBearerArgs',
     'SecretArgs',
     'SshPublicKeyArgs',
+    'SslConfigArgs',
     'UserPasswordArgs',
 ]
 
@@ -834,6 +835,174 @@ class SshPublicKeyArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class SslConfigArgs:
+    def __init__(__self__, *,
+                 additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
+                 client_cert_type: Optional[pulumi.Input['SslConfigClientCertType']] = None,
+                 client_certificate: Optional[pulumi.Input['SecretArgs']] = None,
+                 client_private_key: Optional[pulumi.Input['SecretArgs']] = None,
+                 client_private_key_pass: Optional[pulumi.Input['SecretArgs']] = None,
+                 private_server_certificate: Optional[pulumi.Input['SecretArgs']] = None,
+                 server_cert_type: Optional[pulumi.Input['SslConfigServerCertType']] = None,
+                 trust_model: Optional[pulumi.Input['SslConfigTrustModel']] = None,
+                 type: Optional[pulumi.Input['SslConfigType']] = None,
+                 use_ssl: Optional[pulumi.Input[bool]] = None):
+        """
+        SSL Configuration of a connection
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: Additional SSL related field values
+        :param pulumi.Input['SslConfigClientCertType'] client_cert_type: Type of Client Cert (PEM/JKS/.. etc.)
+        :param pulumi.Input['SecretArgs'] client_certificate: Client Certificate
+        :param pulumi.Input['SecretArgs'] client_private_key: Client Private Key
+        :param pulumi.Input['SecretArgs'] client_private_key_pass: Secret containing the passphrase protecting the Client Private Key
+        :param pulumi.Input['SecretArgs'] private_server_certificate: Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+        :param pulumi.Input['SslConfigServerCertType'] server_cert_type: Type of Server Cert (PEM/JKS/.. etc.)
+        :param pulumi.Input['SslConfigTrustModel'] trust_model: Trust Model of the SSL connection
+        :param pulumi.Input['SslConfigType'] type: Controls the ssl type for the given connector version.
+        :param pulumi.Input[bool] use_ssl: Bool for enabling SSL
+        """
+        if additional_variables is not None:
+            pulumi.set(__self__, "additional_variables", additional_variables)
+        if client_cert_type is not None:
+            pulumi.set(__self__, "client_cert_type", client_cert_type)
+        if client_certificate is not None:
+            pulumi.set(__self__, "client_certificate", client_certificate)
+        if client_private_key is not None:
+            pulumi.set(__self__, "client_private_key", client_private_key)
+        if client_private_key_pass is not None:
+            pulumi.set(__self__, "client_private_key_pass", client_private_key_pass)
+        if private_server_certificate is not None:
+            pulumi.set(__self__, "private_server_certificate", private_server_certificate)
+        if server_cert_type is not None:
+            pulumi.set(__self__, "server_cert_type", server_cert_type)
+        if trust_model is not None:
+            pulumi.set(__self__, "trust_model", trust_model)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if use_ssl is not None:
+            pulumi.set(__self__, "use_ssl", use_ssl)
+
+    @property
+    @pulumi.getter(name="additionalVariables")
+    def additional_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]:
+        """
+        Additional SSL related field values
+        """
+        return pulumi.get(self, "additional_variables")
+
+    @additional_variables.setter
+    def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]):
+        pulumi.set(self, "additional_variables", value)
+
+    @property
+    @pulumi.getter(name="clientCertType")
+    def client_cert_type(self) -> Optional[pulumi.Input['SslConfigClientCertType']]:
+        """
+        Type of Client Cert (PEM/JKS/.. etc.)
+        """
+        return pulumi.get(self, "client_cert_type")
+
+    @client_cert_type.setter
+    def client_cert_type(self, value: Optional[pulumi.Input['SslConfigClientCertType']]):
+        pulumi.set(self, "client_cert_type", value)
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Client Certificate
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @client_certificate.setter
+    def client_certificate(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "client_certificate", value)
+
+    @property
+    @pulumi.getter(name="clientPrivateKey")
+    def client_private_key(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Client Private Key
+        """
+        return pulumi.get(self, "client_private_key")
+
+    @client_private_key.setter
+    def client_private_key(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "client_private_key", value)
+
+    @property
+    @pulumi.getter(name="clientPrivateKeyPass")
+    def client_private_key_pass(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Secret containing the passphrase protecting the Client Private Key
+        """
+        return pulumi.get(self, "client_private_key_pass")
+
+    @client_private_key_pass.setter
+    def client_private_key_pass(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "client_private_key_pass", value)
+
+    @property
+    @pulumi.getter(name="privateServerCertificate")
+    def private_server_certificate(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+        """
+        return pulumi.get(self, "private_server_certificate")
+
+    @private_server_certificate.setter
+    def private_server_certificate(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "private_server_certificate", value)
+
+    @property
+    @pulumi.getter(name="serverCertType")
+    def server_cert_type(self) -> Optional[pulumi.Input['SslConfigServerCertType']]:
+        """
+        Type of Server Cert (PEM/JKS/.. etc.)
+        """
+        return pulumi.get(self, "server_cert_type")
+
+    @server_cert_type.setter
+    def server_cert_type(self, value: Optional[pulumi.Input['SslConfigServerCertType']]):
+        pulumi.set(self, "server_cert_type", value)
+
+    @property
+    @pulumi.getter(name="trustModel")
+    def trust_model(self) -> Optional[pulumi.Input['SslConfigTrustModel']]:
+        """
+        Trust Model of the SSL connection
+        """
+        return pulumi.get(self, "trust_model")
+
+    @trust_model.setter
+    def trust_model(self, value: Optional[pulumi.Input['SslConfigTrustModel']]):
+        pulumi.set(self, "trust_model", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['SslConfigType']]:
+        """
+        Controls the ssl type for the given connector version.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['SslConfigType']]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="useSsl")
+    def use_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool for enabling SSL
+        """
+        return pulumi.get(self, "use_ssl")
+
+    @use_ssl.setter
+    def use_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_ssl", value)
 
 
 @pulumi.input_type

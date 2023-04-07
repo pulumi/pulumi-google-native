@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+ * Returns the specified SslCertificate resource.
  */
 export function getSslCertificate(args: GetSslCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetSslCertificateResult> {
 
@@ -79,7 +79,7 @@ export interface GetSslCertificateResult {
     readonly type: string;
 }
 /**
- * Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+ * Returns the specified SslCertificate resource.
  */
 export function getSslCertificateOutput(args: GetSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslCertificateResult> {
     return pulumi.output(args).apply((a: any) => getSslCertificate(a, opts))

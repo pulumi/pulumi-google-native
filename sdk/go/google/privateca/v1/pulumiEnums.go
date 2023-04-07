@@ -534,6 +534,8 @@ const (
 	CertificateExtensionConstraintsKnownExtensionsItemPolicyIds = CertificateExtensionConstraintsKnownExtensionsItem("POLICY_IDS")
 	// Refers to OCSP servers in a certificate's Authority Information Access extension, as described in [RFC 5280 section 4.2.2.1](https://tools.ietf.org/html/rfc5280#section-4.2.2.1), This corresponds to the X509Parameters.aia_ocsp_servers field.
 	CertificateExtensionConstraintsKnownExtensionsItemAiaOcspServers = CertificateExtensionConstraintsKnownExtensionsItem("AIA_OCSP_SERVERS")
+	// Refers to Name Constraints extension as described in [RFC 5280 section 4.2.1.10](https://tools.ietf.org/html/rfc5280#section-4.2.1.10)
+	CertificateExtensionConstraintsKnownExtensionsItemNameConstraints = CertificateExtensionConstraintsKnownExtensionsItem("NAME_CONSTRAINTS")
 )
 
 func (CertificateExtensionConstraintsKnownExtensionsItem) ElementType() reflect.Type {
@@ -746,7 +748,7 @@ const (
 	CertificateSubjectModeSubjectRequestModeUnspecified = CertificateSubjectMode("SUBJECT_REQUEST_MODE_UNSPECIFIED")
 	// The default mode used in most cases. Indicates that the certificate's Subject and/or SubjectAltNames are specified in the certificate request. This mode requires the caller to have the `privateca.certificates.create` permission.
 	CertificateSubjectModeDefault = CertificateSubjectMode("DEFAULT")
-	// A mode reserved for special cases. Indicates that the certificate should have one or more SPIFFE SubjectAltNames set by the service based on the caller's identity. This mode will ignore any explicitly specified Subject and/or SubjectAltNames in the certificate request. This mode requires the caller to have the `privateca.certificates.createForSelf` permission.
+	// A mode reserved for special cases. Indicates that the certificate should have one SPIFFE SubjectAltNames set by the service based on the caller's identity. This mode will ignore any explicitly specified Subject and/or SubjectAltNames in the certificate request. This mode requires the caller to have the `privateca.certificates.createForSelf` permission.
 	CertificateSubjectModeReflectedSpiffe = CertificateSubjectMode("REFLECTED_SPIFFE")
 )
 

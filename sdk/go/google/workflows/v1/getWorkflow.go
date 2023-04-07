@@ -28,8 +28,12 @@ type LookupWorkflowArgs struct {
 }
 
 type LookupWorkflowResult struct {
+	// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+	CallLogLevel string `pulumi:"callLogLevel"`
 	// The timestamp for when the workflow was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+	CryptoKeyName string `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description string `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
@@ -46,6 +50,8 @@ type LookupWorkflowResult struct {
 	SourceContents string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State string `pulumi:"state"`
+	// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+	StateError StateErrorResponse `pulumi:"stateError"`
 	// The timestamp for when the workflow was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -88,9 +94,19 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx 
 	return o
 }
 
+// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+func (o LookupWorkflowResultOutput) CallLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CallLogLevel }).(pulumi.StringOutput)
+}
+
 // The timestamp for when the workflow was created.
 func (o LookupWorkflowResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+func (o LookupWorkflowResultOutput) CryptoKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CryptoKeyName }).(pulumi.StringOutput)
 }
 
 // Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -131,6 +147,11 @@ func (o LookupWorkflowResultOutput) SourceContents() pulumi.StringOutput {
 // State of the workflow deployment.
 func (o LookupWorkflowResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+func (o LookupWorkflowResultOutput) StateError() StateErrorResponseOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) StateErrorResponse { return v.StateError }).(StateErrorResponseOutput)
 }
 
 // The timestamp for when the workflow was last updated.

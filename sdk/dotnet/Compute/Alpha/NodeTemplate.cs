@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        /// Do not use. Instead, use the node_type property.
         /// </summary>
         [Output("nodeTypeFlexibility")]
         public Output<Outputs.NodeTemplateNodeTypeFlexibilityResponse> NodeTypeFlexibility { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        /// Do not use. Instead, use the node_type property.
         /// </summary>
         [Input("nodeTypeFlexibility")]
         public Input<Inputs.NodeTemplateNodeTypeFlexibilityArgs>? NodeTypeFlexibility { get; set; }

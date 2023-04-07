@@ -21,8 +21,10 @@ type Version struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy pulumi.StringOutput `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
-	Description   pulumi.StringOutput `pulumi:"description"`
-	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the integration. It's optional.
+	ErrorCatcherConfigs GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput `pulumi:"errorCatcherConfigs"`
+	IntegrationId       pulumi.StringOutput                                                 `pulumi:"integrationId"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput `pulumi:"integrationParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -42,6 +44,8 @@ type Version struct {
 	ParentTemplateId pulumi.StringOutput `pulumi:"parentTemplateId"`
 	ProductId        pulumi.StringOutput `pulumi:"productId"`
 	Project          pulumi.StringOutput `pulumi:"project"`
+	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+	RunAsServiceAccount pulumi.StringOutput `pulumi:"runAsServiceAccount"`
 	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
 	SnapshotNumber pulumi.StringOutput `pulumi:"snapshotNumber"`
 	// User should not set it as an input.
@@ -119,8 +123,10 @@ type versionArgs struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy *VersionDatabasePersistencePolicy `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
-	Description   *string `pulumi:"description"`
-	IntegrationId string  `pulumi:"integrationId"`
+	Description *string `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the integration. It's optional.
+	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfig `pulumi:"errorCatcherConfigs"`
+	IntegrationId       string                                             `pulumi:"integrationId"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters []GoogleCloudIntegrationsV1alphaIntegrationParameter `pulumi:"integrationParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -138,6 +144,8 @@ type versionArgs struct {
 	ParentTemplateId *string `pulumi:"parentTemplateId"`
 	ProductId        string  `pulumi:"productId"`
 	Project          *string `pulumi:"project"`
+	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+	RunAsServiceAccount *string `pulumi:"runAsServiceAccount"`
 	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
 	SnapshotNumber *string `pulumi:"snapshotNumber"`
 	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
@@ -159,8 +167,10 @@ type VersionArgs struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy VersionDatabasePersistencePolicyPtrInput
 	// Optional. The integration description.
-	Description   pulumi.StringPtrInput
-	IntegrationId pulumi.StringInput
+	Description pulumi.StringPtrInput
+	// Optional. Error Catch Task configuration for the integration. It's optional.
+	ErrorCatcherConfigs GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput
+	IntegrationId       pulumi.StringInput
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters GoogleCloudIntegrationsV1alphaIntegrationParameterArrayInput
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -178,6 +188,8 @@ type VersionArgs struct {
 	ParentTemplateId pulumi.StringPtrInput
 	ProductId        pulumi.StringInput
 	Project          pulumi.StringPtrInput
+	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+	RunAsServiceAccount pulumi.StringPtrInput
 	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
 	SnapshotNumber pulumi.StringPtrInput
 	// Optional. Task configuration for the integration. It's optional, but the integration doesn't do anything without task_configs.
@@ -246,6 +258,13 @@ func (o VersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Error Catch Task configuration for the integration. It's optional.
+func (o VersionOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Version) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+		return v.ErrorCatcherConfigs
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
+}
+
 func (o VersionOutput) IntegrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
 }
@@ -304,6 +323,11 @@ func (o VersionOutput) ProductId() pulumi.StringOutput {
 
 func (o VersionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+func (o VersionOutput) RunAsServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.RunAsServiceAccount }).(pulumi.StringOutput)
 }
 
 // Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.

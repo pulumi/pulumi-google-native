@@ -3033,6 +3033,406 @@ func (o SshPublicKeyResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// SSL Configuration of a connection
+type SslConfig struct {
+	// Additional SSL related field values
+	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
+	// Type of Client Cert (PEM/JKS/.. etc.)
+	ClientCertType *SslConfigClientCertType `pulumi:"clientCertType"`
+	// Client Certificate
+	ClientCertificate *Secret `pulumi:"clientCertificate"`
+	// Client Private Key
+	ClientPrivateKey *Secret `pulumi:"clientPrivateKey"`
+	// Secret containing the passphrase protecting the Client Private Key
+	ClientPrivateKeyPass *Secret `pulumi:"clientPrivateKeyPass"`
+	// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+	PrivateServerCertificate *Secret `pulumi:"privateServerCertificate"`
+	// Type of Server Cert (PEM/JKS/.. etc.)
+	ServerCertType *SslConfigServerCertType `pulumi:"serverCertType"`
+	// Trust Model of the SSL connection
+	TrustModel *SslConfigTrustModel `pulumi:"trustModel"`
+	// Controls the ssl type for the given connector version.
+	Type *SslConfigType `pulumi:"type"`
+	// Bool for enabling SSL
+	UseSsl *bool `pulumi:"useSsl"`
+}
+
+// SslConfigInput is an input type that accepts SslConfigArgs and SslConfigOutput values.
+// You can construct a concrete instance of `SslConfigInput` via:
+//
+//	SslConfigArgs{...}
+type SslConfigInput interface {
+	pulumi.Input
+
+	ToSslConfigOutput() SslConfigOutput
+	ToSslConfigOutputWithContext(context.Context) SslConfigOutput
+}
+
+// SSL Configuration of a connection
+type SslConfigArgs struct {
+	// Additional SSL related field values
+	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
+	// Type of Client Cert (PEM/JKS/.. etc.)
+	ClientCertType SslConfigClientCertTypePtrInput `pulumi:"clientCertType"`
+	// Client Certificate
+	ClientCertificate SecretPtrInput `pulumi:"clientCertificate"`
+	// Client Private Key
+	ClientPrivateKey SecretPtrInput `pulumi:"clientPrivateKey"`
+	// Secret containing the passphrase protecting the Client Private Key
+	ClientPrivateKeyPass SecretPtrInput `pulumi:"clientPrivateKeyPass"`
+	// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+	PrivateServerCertificate SecretPtrInput `pulumi:"privateServerCertificate"`
+	// Type of Server Cert (PEM/JKS/.. etc.)
+	ServerCertType SslConfigServerCertTypePtrInput `pulumi:"serverCertType"`
+	// Trust Model of the SSL connection
+	TrustModel SslConfigTrustModelPtrInput `pulumi:"trustModel"`
+	// Controls the ssl type for the given connector version.
+	Type SslConfigTypePtrInput `pulumi:"type"`
+	// Bool for enabling SSL
+	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
+}
+
+func (SslConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfig)(nil)).Elem()
+}
+
+func (i SslConfigArgs) ToSslConfigOutput() SslConfigOutput {
+	return i.ToSslConfigOutputWithContext(context.Background())
+}
+
+func (i SslConfigArgs) ToSslConfigOutputWithContext(ctx context.Context) SslConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigOutput)
+}
+
+func (i SslConfigArgs) ToSslConfigPtrOutput() SslConfigPtrOutput {
+	return i.ToSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SslConfigArgs) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigOutput).ToSslConfigPtrOutputWithContext(ctx)
+}
+
+// SslConfigPtrInput is an input type that accepts SslConfigArgs, SslConfigPtr and SslConfigPtrOutput values.
+// You can construct a concrete instance of `SslConfigPtrInput` via:
+//
+//	        SslConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SslConfigPtrInput interface {
+	pulumi.Input
+
+	ToSslConfigPtrOutput() SslConfigPtrOutput
+	ToSslConfigPtrOutputWithContext(context.Context) SslConfigPtrOutput
+}
+
+type sslConfigPtrType SslConfigArgs
+
+func SslConfigPtr(v *SslConfigArgs) SslConfigPtrInput {
+	return (*sslConfigPtrType)(v)
+}
+
+func (*sslConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfig)(nil)).Elem()
+}
+
+func (i *sslConfigPtrType) ToSslConfigPtrOutput() SslConfigPtrOutput {
+	return i.ToSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *sslConfigPtrType) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigPtrOutput)
+}
+
+// SSL Configuration of a connection
+type SslConfigOutput struct{ *pulumi.OutputState }
+
+func (SslConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfig)(nil)).Elem()
+}
+
+func (o SslConfigOutput) ToSslConfigOutput() SslConfigOutput {
+	return o
+}
+
+func (o SslConfigOutput) ToSslConfigOutputWithContext(ctx context.Context) SslConfigOutput {
+	return o
+}
+
+func (o SslConfigOutput) ToSslConfigPtrOutput() SslConfigPtrOutput {
+	return o.ToSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfig) *SslConfig {
+		return &v
+	}).(SslConfigPtrOutput)
+}
+
+// Additional SSL related field values
+func (o SslConfigOutput) AdditionalVariables() ConfigVariableArrayOutput {
+	return o.ApplyT(func(v SslConfig) []ConfigVariable { return v.AdditionalVariables }).(ConfigVariableArrayOutput)
+}
+
+// Type of Client Cert (PEM/JKS/.. etc.)
+func (o SslConfigOutput) ClientCertType() SslConfigClientCertTypePtrOutput {
+	return o.ApplyT(func(v SslConfig) *SslConfigClientCertType { return v.ClientCertType }).(SslConfigClientCertTypePtrOutput)
+}
+
+// Client Certificate
+func (o SslConfigOutput) ClientCertificate() SecretPtrOutput {
+	return o.ApplyT(func(v SslConfig) *Secret { return v.ClientCertificate }).(SecretPtrOutput)
+}
+
+// Client Private Key
+func (o SslConfigOutput) ClientPrivateKey() SecretPtrOutput {
+	return o.ApplyT(func(v SslConfig) *Secret { return v.ClientPrivateKey }).(SecretPtrOutput)
+}
+
+// Secret containing the passphrase protecting the Client Private Key
+func (o SslConfigOutput) ClientPrivateKeyPass() SecretPtrOutput {
+	return o.ApplyT(func(v SslConfig) *Secret { return v.ClientPrivateKeyPass }).(SecretPtrOutput)
+}
+
+// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+func (o SslConfigOutput) PrivateServerCertificate() SecretPtrOutput {
+	return o.ApplyT(func(v SslConfig) *Secret { return v.PrivateServerCertificate }).(SecretPtrOutput)
+}
+
+// Type of Server Cert (PEM/JKS/.. etc.)
+func (o SslConfigOutput) ServerCertType() SslConfigServerCertTypePtrOutput {
+	return o.ApplyT(func(v SslConfig) *SslConfigServerCertType { return v.ServerCertType }).(SslConfigServerCertTypePtrOutput)
+}
+
+// Trust Model of the SSL connection
+func (o SslConfigOutput) TrustModel() SslConfigTrustModelPtrOutput {
+	return o.ApplyT(func(v SslConfig) *SslConfigTrustModel { return v.TrustModel }).(SslConfigTrustModelPtrOutput)
+}
+
+// Controls the ssl type for the given connector version.
+func (o SslConfigOutput) Type() SslConfigTypePtrOutput {
+	return o.ApplyT(func(v SslConfig) *SslConfigType { return v.Type }).(SslConfigTypePtrOutput)
+}
+
+// Bool for enabling SSL
+func (o SslConfigOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SslConfig) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+}
+
+type SslConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfig)(nil)).Elem()
+}
+
+func (o SslConfigPtrOutput) ToSslConfigPtrOutput() SslConfigPtrOutput {
+	return o
+}
+
+func (o SslConfigPtrOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) SslConfigPtrOutput {
+	return o
+}
+
+func (o SslConfigPtrOutput) Elem() SslConfigOutput {
+	return o.ApplyT(func(v *SslConfig) SslConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfig
+		return ret
+	}).(SslConfigOutput)
+}
+
+// Additional SSL related field values
+func (o SslConfigPtrOutput) AdditionalVariables() ConfigVariableArrayOutput {
+	return o.ApplyT(func(v *SslConfig) []ConfigVariable {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVariables
+	}).(ConfigVariableArrayOutput)
+}
+
+// Type of Client Cert (PEM/JKS/.. etc.)
+func (o SslConfigPtrOutput) ClientCertType() SslConfigClientCertTypePtrOutput {
+	return o.ApplyT(func(v *SslConfig) *SslConfigClientCertType {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertType
+	}).(SslConfigClientCertTypePtrOutput)
+}
+
+// Client Certificate
+func (o SslConfigPtrOutput) ClientCertificate() SecretPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertificate
+	}).(SecretPtrOutput)
+}
+
+// Client Private Key
+func (o SslConfigPtrOutput) ClientPrivateKey() SecretPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.ClientPrivateKey
+	}).(SecretPtrOutput)
+}
+
+// Secret containing the passphrase protecting the Client Private Key
+func (o SslConfigPtrOutput) ClientPrivateKeyPass() SecretPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.ClientPrivateKeyPass
+	}).(SecretPtrOutput)
+}
+
+// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+func (o SslConfigPtrOutput) PrivateServerCertificate() SecretPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServerCertificate
+	}).(SecretPtrOutput)
+}
+
+// Type of Server Cert (PEM/JKS/.. etc.)
+func (o SslConfigPtrOutput) ServerCertType() SslConfigServerCertTypePtrOutput {
+	return o.ApplyT(func(v *SslConfig) *SslConfigServerCertType {
+		if v == nil {
+			return nil
+		}
+		return v.ServerCertType
+	}).(SslConfigServerCertTypePtrOutput)
+}
+
+// Trust Model of the SSL connection
+func (o SslConfigPtrOutput) TrustModel() SslConfigTrustModelPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *SslConfigTrustModel {
+		if v == nil {
+			return nil
+		}
+		return v.TrustModel
+	}).(SslConfigTrustModelPtrOutput)
+}
+
+// Controls the ssl type for the given connector version.
+func (o SslConfigPtrOutput) Type() SslConfigTypePtrOutput {
+	return o.ApplyT(func(v *SslConfig) *SslConfigType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SslConfigTypePtrOutput)
+}
+
+// Bool for enabling SSL
+func (o SslConfigPtrOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SslConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SSL Configuration of a connection
+type SslConfigResponse struct {
+	// Additional SSL related field values
+	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
+	// Type of Client Cert (PEM/JKS/.. etc.)
+	ClientCertType string `pulumi:"clientCertType"`
+	// Client Certificate
+	ClientCertificate SecretResponse `pulumi:"clientCertificate"`
+	// Client Private Key
+	ClientPrivateKey SecretResponse `pulumi:"clientPrivateKey"`
+	// Secret containing the passphrase protecting the Client Private Key
+	ClientPrivateKeyPass SecretResponse `pulumi:"clientPrivateKeyPass"`
+	// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+	PrivateServerCertificate SecretResponse `pulumi:"privateServerCertificate"`
+	// Type of Server Cert (PEM/JKS/.. etc.)
+	ServerCertType string `pulumi:"serverCertType"`
+	// Trust Model of the SSL connection
+	TrustModel string `pulumi:"trustModel"`
+	// Controls the ssl type for the given connector version.
+	Type string `pulumi:"type"`
+	// Bool for enabling SSL
+	UseSsl bool `pulumi:"useSsl"`
+}
+
+// SSL Configuration of a connection
+type SslConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SslConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigResponse)(nil)).Elem()
+}
+
+func (o SslConfigResponseOutput) ToSslConfigResponseOutput() SslConfigResponseOutput {
+	return o
+}
+
+func (o SslConfigResponseOutput) ToSslConfigResponseOutputWithContext(ctx context.Context) SslConfigResponseOutput {
+	return o
+}
+
+// Additional SSL related field values
+func (o SslConfigResponseOutput) AdditionalVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v SslConfigResponse) []ConfigVariableResponse { return v.AdditionalVariables }).(ConfigVariableResponseArrayOutput)
+}
+
+// Type of Client Cert (PEM/JKS/.. etc.)
+func (o SslConfigResponseOutput) ClientCertType() pulumi.StringOutput {
+	return o.ApplyT(func(v SslConfigResponse) string { return v.ClientCertType }).(pulumi.StringOutput)
+}
+
+// Client Certificate
+func (o SslConfigResponseOutput) ClientCertificate() SecretResponseOutput {
+	return o.ApplyT(func(v SslConfigResponse) SecretResponse { return v.ClientCertificate }).(SecretResponseOutput)
+}
+
+// Client Private Key
+func (o SslConfigResponseOutput) ClientPrivateKey() SecretResponseOutput {
+	return o.ApplyT(func(v SslConfigResponse) SecretResponse { return v.ClientPrivateKey }).(SecretResponseOutput)
+}
+
+// Secret containing the passphrase protecting the Client Private Key
+func (o SslConfigResponseOutput) ClientPrivateKeyPass() SecretResponseOutput {
+	return o.ApplyT(func(v SslConfigResponse) SecretResponse { return v.ClientPrivateKeyPass }).(SecretResponseOutput)
+}
+
+// Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+func (o SslConfigResponseOutput) PrivateServerCertificate() SecretResponseOutput {
+	return o.ApplyT(func(v SslConfigResponse) SecretResponse { return v.PrivateServerCertificate }).(SecretResponseOutput)
+}
+
+// Type of Server Cert (PEM/JKS/.. etc.)
+func (o SslConfigResponseOutput) ServerCertType() pulumi.StringOutput {
+	return o.ApplyT(func(v SslConfigResponse) string { return v.ServerCertType }).(pulumi.StringOutput)
+}
+
+// Trust Model of the SSL connection
+func (o SslConfigResponseOutput) TrustModel() pulumi.StringOutput {
+	return o.ApplyT(func(v SslConfigResponse) string { return v.TrustModel }).(pulumi.StringOutput)
+}
+
+// Controls the ssl type for the given connector version.
+func (o SslConfigResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SslConfigResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Bool for enabling SSL
+func (o SslConfigResponseOutput) UseSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v SslConfigResponse) bool { return v.UseSsl }).(pulumi.BoolOutput)
+}
+
 // Parameters to support Username and Password Authentication.
 type UserPassword struct {
 	// Secret version reference containing the password.
@@ -3256,6 +3656,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyInput)(nil)).Elem(), SshPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyPtrInput)(nil)).Elem(), SshPublicKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigInput)(nil)).Elem(), SslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigPtrInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
@@ -3310,6 +3712,9 @@ func init() {
 	pulumi.RegisterOutputType(SshPublicKeyOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyPtrOutput{})
 	pulumi.RegisterOutputType(SshPublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(SslConfigOutput{})
+	pulumi.RegisterOutputType(SslConfigPtrOutput{})
+	pulumi.RegisterOutputType(SslConfigResponseOutput{})
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordResponseOutput{})

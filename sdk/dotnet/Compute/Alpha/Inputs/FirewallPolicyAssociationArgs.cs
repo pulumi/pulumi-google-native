@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
+
         public FirewallPolicyAssociationArgs()
         {
         }

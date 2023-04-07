@@ -35,13 +35,13 @@ type LookupPrivateConnectionResult struct {
 	Error StatusResponse `pulumi:"error"`
 	// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource's name.
+	// The name of the resource.
 	Name string `pulumi:"name"`
-	// The state of the Private Connection.
+	// The state of the private connection.
 	State string `pulumi:"state"`
 	// The last update time of the resource.
 	UpdateTime string `pulumi:"updateTime"`
-	// VPC Peering Config.
+	// VPC peering configuration.
 	VpcPeeringConfig VpcPeeringConfigResponse `pulumi:"vpcPeeringConfig"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupPrivateConnectionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupPrivateConnectionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource's name.
+// The name of the resource.
 func (o LookupPrivateConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The state of the Private Connection.
+// The state of the private connection.
 func (o LookupPrivateConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -117,7 +117,7 @@ func (o LookupPrivateConnectionResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateConnectionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// VPC Peering Config.
+// VPC peering configuration.
 func (o LookupPrivateConnectionResultOutput) VpcPeeringConfig() VpcPeeringConfigResponseOutput {
 	return o.ApplyT(func(v LookupPrivateConnectionResult) VpcPeeringConfigResponse { return v.VpcPeeringConfig }).(VpcPeeringConfigResponseOutput)
 }

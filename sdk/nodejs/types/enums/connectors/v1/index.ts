@@ -57,3 +57,75 @@ export const AuthConfigAuthType = {
  * The type of authentication configured.
  */
 export type AuthConfigAuthType = (typeof AuthConfigAuthType)[keyof typeof AuthConfigAuthType];
+
+export const SslConfigClientCertType = {
+    /**
+     * Cert type unspecified.
+     */
+    CertTypeUnspecified: "CERT_TYPE_UNSPECIFIED",
+    /**
+     * Privacy Enhanced Mail (PEM) Type
+     */
+    Pem: "PEM",
+} as const;
+
+/**
+ * Type of Client Cert (PEM/JKS/.. etc.)
+ */
+export type SslConfigClientCertType = (typeof SslConfigClientCertType)[keyof typeof SslConfigClientCertType];
+
+export const SslConfigServerCertType = {
+    /**
+     * Cert type unspecified.
+     */
+    CertTypeUnspecified: "CERT_TYPE_UNSPECIFIED",
+    /**
+     * Privacy Enhanced Mail (PEM) Type
+     */
+    Pem: "PEM",
+} as const;
+
+/**
+ * Type of Server Cert (PEM/JKS/.. etc.)
+ */
+export type SslConfigServerCertType = (typeof SslConfigServerCertType)[keyof typeof SslConfigServerCertType];
+
+export const SslConfigTrustModel = {
+    /**
+     * Public Trust Model. Takes the Default Java trust store.
+     */
+    Public: "PUBLIC",
+    /**
+     * Private Trust Model. Takes custom/private trust store.
+     */
+    Private: "PRIVATE",
+    /**
+     * Insecure Trust Model. Accept all certificates.
+     */
+    Insecure: "INSECURE",
+} as const;
+
+/**
+ * Trust Model of the SSL connection
+ */
+export type SslConfigTrustModel = (typeof SslConfigTrustModel)[keyof typeof SslConfigTrustModel];
+
+export const SslConfigType = {
+    /**
+     * No SSL configuration required.
+     */
+    SslTypeUnspecified: "SSL_TYPE_UNSPECIFIED",
+    /**
+     * TLS Handshake
+     */
+    Tls: "TLS",
+    /**
+     * mutual TLS (MTLS) Handshake
+     */
+    Mtls: "MTLS",
+} as const;
+
+/**
+ * Controls the ssl type for the given connector version.
+ */
+export type SslConfigType = (typeof SslConfigType)[keyof typeof SslConfigType];

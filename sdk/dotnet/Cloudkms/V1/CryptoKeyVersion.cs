@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> DestroyTime { get; private set; } = null!;
 
         /// <summary>
+        /// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        /// </summary>
+        [Output("externalDestructionFailureReason")]
+        public Output<string> ExternalDestructionFailureReason { get; private set; } = null!;
+
+        /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
         [Output("externalProtectionLevelOptions")]
@@ -61,6 +67,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Output("generateTime")]
         public Output<string> GenerateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+        /// </summary>
+        [Output("generationFailureReason")]
+        public Output<string> GenerationFailureReason { get; private set; } = null!;
 
         /// <summary>
         /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.

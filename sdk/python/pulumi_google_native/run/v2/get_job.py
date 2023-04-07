@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, etag=None, execution_count=None, expire_time=None, generation=None, labels=None, last_modifier=None, latest_created_execution=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, template=None, terminal_condition=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, etag=None, execution_count=None, expire_time=None, generation=None, labels=None, last_modifier=None, latest_created_execution=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, template=None, terminal_condition=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -77,6 +77,9 @@ class GetJobResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if template and not isinstance(template, dict):
             raise TypeError("Expected argument 'template' to be a dict")
         pulumi.set(__self__, "template", template)
@@ -214,7 +217,7 @@ class GetJobResult:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> str:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         """
         return pulumi.get(self, "launch_stage")
 
@@ -241,6 +244,14 @@ class GetJobResult:
         Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter
@@ -300,6 +311,7 @@ class AwaitableGetJobResult(GetJobResult):
             name=self.name,
             observed_generation=self.observed_generation,
             reconciling=self.reconciling,
+            satisfies_pzs=self.satisfies_pzs,
             template=self.template,
             terminal_condition=self.terminal_condition,
             uid=self.uid,
@@ -340,6 +352,7 @@ def get_job(job_id: Optional[str] = None,
         name=__ret__.name,
         observed_generation=__ret__.observed_generation,
         reconciling=__ret__.reconciling,
+        satisfies_pzs=__ret__.satisfies_pzs,
         template=__ret__.template,
         terminal_condition=__ret__.terminal_condition,
         uid=__ret__.uid,

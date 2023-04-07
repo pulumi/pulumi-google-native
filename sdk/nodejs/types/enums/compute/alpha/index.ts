@@ -36,7 +36,7 @@ export const AccessConfigType = {
 } as const;
 
 /**
- * The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+ * The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
  */
 export type AccessConfigType = (typeof AccessConfigType)[keyof typeof AccessConfigType];
 
@@ -179,6 +179,7 @@ export type AdvancedMachineFeaturesPerformanceMonitoringUnit = (typeof AdvancedM
 
 export const AllocationAggregateReservationVmFamily = {
     VmFamilyCloudTpuPodSliceCt4p: "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P",
+    VmFamilyComputeOptimizedC3: "VM_FAMILY_COMPUTE_OPTIMIZED_C3",
     VmFamilyGeneralPurposeT2d: "VM_FAMILY_GENERAL_PURPOSE_T2D",
     VmFamilyMemoryOptimizedM3: "VM_FAMILY_MEMORY_OPTIMIZED_M3",
 } as const;
@@ -200,6 +201,10 @@ export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedD
 export type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface = (typeof AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface)[keyof typeof AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface];
 
 export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval = {
+    /**
+     * VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+     */
+    AsNeeded: "AS_NEEDED",
     /**
      * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
      */
@@ -1613,7 +1618,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -2288,6 +2293,15 @@ export const InterconnectLinkType = {
  */
 export type InterconnectLinkType = (typeof InterconnectLinkType)[keyof typeof InterconnectLinkType];
 
+export const InterconnectRequestedFeaturesItem = {
+    /**
+     * Media Access Control security (MACsec)
+     */
+    IfMacsec: "IF_MACSEC",
+} as const;
+
+export type InterconnectRequestedFeaturesItem = (typeof InterconnectRequestedFeaturesItem)[keyof typeof InterconnectRequestedFeaturesItem];
+
 export const LocationPolicyTargetShape = {
     /**
      * GCE picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
@@ -2489,7 +2503,7 @@ export const NetworkInterfaceStackType = {
 } as const;
 
 /**
- * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+ * The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
  */
 export type NetworkInterfaceStackType = (typeof NetworkInterfaceStackType)[keyof typeof NetworkInterfaceStackType];
 
@@ -2562,6 +2576,26 @@ export const NodeGroupAutoscalingPolicyMode = {
  */
 export type NodeGroupAutoscalingPolicyMode = (typeof NodeGroupAutoscalingPolicyMode)[keyof typeof NodeGroupAutoscalingPolicyMode];
 
+export const NodeGroupMaintenanceInterval = {
+    /**
+     * VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+     */
+    AsNeeded: "AS_NEEDED",
+    /**
+     * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+     */
+    Periodic: "PERIODIC",
+    /**
+     * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+     */
+    Recurrent: "RECURRENT",
+} as const;
+
+/**
+ * Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+ */
+export type NodeGroupMaintenanceInterval = (typeof NodeGroupMaintenanceInterval)[keyof typeof NodeGroupMaintenanceInterval];
+
 export const NodeGroupMaintenancePolicy = {
     /**
      * Allow the node and corresponding instances to retain default maintenance behavior.
@@ -2612,7 +2646,7 @@ export const OrganizationSecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type OrganizationSecurityPolicyType = (typeof OrganizationSecurityPolicyType)[keyof typeof OrganizationSecurityPolicyType];
 
@@ -2936,6 +2970,7 @@ export const RegionCommitmentType = {
     AcceleratorOptimized: "ACCELERATOR_OPTIMIZED",
     ComputeOptimized: "COMPUTE_OPTIMIZED",
     ComputeOptimizedC2d: "COMPUTE_OPTIMIZED_C2D",
+    ComputeOptimizedC3: "COMPUTE_OPTIMIZED_C3",
     GeneralPurpose: "GENERAL_PURPOSE",
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
@@ -3144,7 +3179,7 @@ export const RegionSecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type RegionSecurityPolicyType = (typeof RegionSecurityPolicyType)[keyof typeof RegionSecurityPolicyType];
 
@@ -3700,6 +3735,10 @@ export type SchedulingInstanceTerminationAction = (typeof SchedulingInstanceTerm
 
 export const SchedulingMaintenanceInterval = {
     /**
+     * VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+     */
+    AsNeeded: "AS_NEEDED",
+    /**
      * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
      */
     Periodic: "PERIODIC",
@@ -3789,6 +3828,7 @@ export type SecurityPolicyAdvancedOptionsConfigLogLevel = (typeof SecurityPolicy
 
 export const SecurityPolicyDdosProtectionConfigDdosProtection = {
     Advanced: "ADVANCED",
+    AdvancedPreview: "ADVANCED_PREVIEW",
     Standard: "STANDARD",
 } as const;
 
@@ -3898,7 +3938,7 @@ export const SecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type SecurityPolicyType = (typeof SecurityPolicyType)[keyof typeof SecurityPolicyType];
 
@@ -4054,6 +4094,16 @@ export const SslPolicyProfile = {
  * Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
  */
 export type SslPolicyProfile = (typeof SslPolicyProfile)[keyof typeof SslPolicyProfile];
+
+export const StoragePoolType = {
+    Ssd: "SSD",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * Type of the storage pool
+ */
+export type StoragePoolType = (typeof StoragePoolType)[keyof typeof StoragePoolType];
 
 export const SubnetworkAggregationInterval = {
     Interval10Min: "INTERVAL_10_MIN",
@@ -4384,6 +4434,22 @@ export const TlsValidationContextValidationSource = {
  * Defines how TLS certificates are obtained.
  */
 export type TlsValidationContextValidationSource = (typeof TlsValidationContextValidationSource)[keyof typeof TlsValidationContextValidationSource];
+
+export const VpnGatewayGatewayIpVersion = {
+    /**
+     * Every HA-VPN gateway interface is configured with an IPv4 address.
+     */
+    Ipv4: "IPV4",
+    /**
+     * Every HA-VPN gateway interface is configured with an IPv6 address.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+ */
+export type VpnGatewayGatewayIpVersion = (typeof VpnGatewayGatewayIpVersion)[keyof typeof VpnGatewayGatewayIpVersion];
 
 export const VpnGatewayStackType = {
     /**

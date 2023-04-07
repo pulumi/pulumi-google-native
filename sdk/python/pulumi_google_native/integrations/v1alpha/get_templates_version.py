@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTemplatesVersionResult:
-    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, last_modifier_email=None, name=None, parent_integration_version_id=None, snapshot_number=None, status=None, task_configs=None, teardown=None, template_parameters=None, trigger_configs=None, update_time=None, user_label=None):
+    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, last_modifier_email=None, name=None, parent_integration_version_id=None, snapshot_number=None, status=None, task_configs=None, teardown=None, template_parameters=None, trigger_configs=None, update_time=None, user_label=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,6 +29,9 @@ class GetTemplatesVersionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if error_catcher_configs and not isinstance(error_catcher_configs, list):
+            raise TypeError("Expected argument 'error_catcher_configs' to be a list")
+        pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
         if last_modifier_email and not isinstance(last_modifier_email, str):
             raise TypeError("Expected argument 'last_modifier_email' to be a str")
         pulumi.set(__self__, "last_modifier_email", last_modifier_email)
@@ -86,6 +89,14 @@ class GetTemplatesVersionResult:
         Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="errorCatcherConfigs")
+    def error_catcher_configs(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse']:
+        """
+        Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        """
+        return pulumi.get(self, "error_catcher_configs")
 
     @property
     @pulumi.getter(name="lastModifierEmail")
@@ -185,6 +196,7 @@ class AwaitableGetTemplatesVersionResult(GetTemplatesVersionResult):
             create_time=self.create_time,
             database_persistence_policy=self.database_persistence_policy,
             description=self.description,
+            error_catcher_configs=self.error_catcher_configs,
             last_modifier_email=self.last_modifier_email,
             name=self.name,
             parent_integration_version_id=self.parent_integration_version_id,
@@ -220,6 +232,7 @@ def get_templates_version(integrationtemplate_id: Optional[str] = None,
         create_time=__ret__.create_time,
         database_persistence_policy=__ret__.database_persistence_policy,
         description=__ret__.description,
+        error_catcher_configs=__ret__.error_catcher_configs,
         last_modifier_email=__ret__.last_modifier_email,
         name=__ret__.name,
         parent_integration_version_id=__ret__.parent_integration_version_id,

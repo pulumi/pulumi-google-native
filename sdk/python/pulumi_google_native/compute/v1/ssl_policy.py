@@ -143,7 +143,7 @@ class SslPolicy(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
+        Returns the specified SSL policy resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,7 +161,7 @@ class SslPolicy(pulumi.CustomResource):
                  args: Optional[SslPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
+        Returns the specified SSL policy resource.
 
         :param str resource_name: The name of the resource.
         :param SslPolicyArgs args: The arguments to use to populate this resource's properties.

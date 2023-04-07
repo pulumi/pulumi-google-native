@@ -23,12 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:batch/v1:Job":
 		r = &Job{}
-	case "google-native:batch/v1:JobIamBinding":
-		r = &JobIamBinding{}
-	case "google-native:batch/v1:JobIamMember":
-		r = &JobIamMember{}
-	case "google-native:batch/v1:JobIamPolicy":
-		r = &JobIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

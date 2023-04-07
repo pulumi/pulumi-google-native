@@ -47,6 +47,8 @@ type Service struct {
 	ReleaseChannel pulumi.StringOutput `pulumi:"releaseChannel"`
 	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Scaling configuration of the metastore service.
+	ScalingConfig ScalingConfigResponseOutput `pulumi:"scalingConfig"`
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
@@ -135,6 +137,8 @@ type serviceArgs struct {
 	ReleaseChannel *ServiceReleaseChannel `pulumi:"releaseChannel"`
 	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId *string `pulumi:"requestId"`
+	// Scaling configuration of the metastore service.
+	ScalingConfig *ScalingConfig `pulumi:"scalingConfig"`
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -169,6 +173,8 @@ type ServiceArgs struct {
 	ReleaseChannel ServiceReleaseChannelPtrInput
 	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId pulumi.StringPtrInput
+	// Scaling configuration of the metastore service.
+	ScalingConfig ScalingConfigPtrInput
 	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
 	ServiceId pulumi.StringInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -295,6 +301,11 @@ func (o ServiceOutput) ReleaseChannel() pulumi.StringOutput {
 // Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 func (o ServiceOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Scaling configuration of the metastore service.
+func (o ServiceOutput) ScalingConfig() ScalingConfigResponseOutput {
+	return o.ApplyT(func(v *Service) ScalingConfigResponseOutput { return v.ScalingConfig }).(ScalingConfigResponseOutput)
 }
 
 // Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.

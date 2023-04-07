@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly Outputs.DatabaseEngineInfoResponse Destination;
         /// <summary>
-        /// The display name for the workspace
+        /// The display name for the workspace.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -80,11 +80,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> GlobalSettings;
         /// <summary>
-        /// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+        /// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
         /// </summary>
         public readonly bool HasUncommittedChanges;
         /// <summary>
-        /// The latest commit id
+        /// The latest commit ID.
         /// </summary>
         public readonly string LatestCommitId;
         /// <summary>

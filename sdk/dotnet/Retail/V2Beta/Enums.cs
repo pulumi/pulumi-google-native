@@ -166,6 +166,133 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
     }
 
     /// <summary>
+    /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelFilteringOption : IEquatable<ModelFilteringOption>
+    {
+        private readonly string _value;
+
+        private ModelFilteringOption(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringOptionUnspecified { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED");
+        /// <summary>
+        /// Recommendation filtering is disabled.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringDisabled { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_DISABLED");
+        /// <summary>
+        /// Recommendation filtering is enabled.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringEnabled { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_ENABLED");
+
+        public static bool operator ==(ModelFilteringOption left, ModelFilteringOption right) => left.Equals(right);
+        public static bool operator !=(ModelFilteringOption left, ModelFilteringOption right) => !left.Equals(right);
+
+        public static explicit operator string(ModelFilteringOption value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelFilteringOption other && Equals(other);
+        public bool Equals(ModelFilteringOption other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelPeriodicTuningState : IEquatable<ModelPeriodicTuningState>
+    {
+        private readonly string _value;
+
+        private ModelPeriodicTuningState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified default value, should never be explicitly set.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningStateUnspecified { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningDisabled { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_DISABLED");
+        /// <summary>
+        /// The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+        /// </summary>
+        public static ModelPeriodicTuningState AllTuningDisabled { get; } = new ModelPeriodicTuningState("ALL_TUNING_DISABLED");
+        /// <summary>
+        /// The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningEnabled { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_ENABLED");
+
+        public static bool operator ==(ModelPeriodicTuningState left, ModelPeriodicTuningState right) => left.Equals(right);
+        public static bool operator !=(ModelPeriodicTuningState left, ModelPeriodicTuningState right) => !left.Equals(right);
+
+        public static explicit operator string(ModelPeriodicTuningState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelPeriodicTuningState other && Equals(other);
+        public bool Equals(ModelPeriodicTuningState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelTrainingState : IEquatable<ModelTrainingState>
+    {
+        private readonly string _value;
+
+        private ModelTrainingState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified training state.
+        /// </summary>
+        public static ModelTrainingState TrainingStateUnspecified { get; } = new ModelTrainingState("TRAINING_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The model training is paused.
+        /// </summary>
+        public static ModelTrainingState Paused { get; } = new ModelTrainingState("PAUSED");
+        /// <summary>
+        /// The model is training.
+        /// </summary>
+        public static ModelTrainingState Training { get; } = new ModelTrainingState("TRAINING");
+
+        public static bool operator ==(ModelTrainingState left, ModelTrainingState right) => left.Equals(right);
+        public static bool operator !=(ModelTrainingState left, ModelTrainingState right) => !left.Equals(right);
+
+        public static explicit operator string(ModelTrainingState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelTrainingState other && Equals(other);
+        public bool Equals(ModelTrainingState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
     /// </summary>
     [EnumType]

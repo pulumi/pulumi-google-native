@@ -533,6 +533,354 @@ func (o ArtifactResponseArrayOutput) Index(i pulumi.IntInput) ArtifactResponseOu
 	}).(ArtifactResponseOutput)
 }
 
+// Assessment provides all information that is related to a single vulnerability for this product.
+type Assessment struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve *string `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts []string `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification *Justification `pulumi:"justification"`
+	// A detailed description of this Vex.
+	LongDescription *string `pulumi:"longDescription"`
+	// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+	RelatedUris []RelatedUrl `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations []Remediation `pulumi:"remediations"`
+	// A one sentence description of this Vex.
+	ShortDescription *string `pulumi:"shortDescription"`
+	// Provides the state of this Vulnerability assessment.
+	State *AssessmentState `pulumi:"state"`
+}
+
+// AssessmentInput is an input type that accepts AssessmentArgs and AssessmentOutput values.
+// You can construct a concrete instance of `AssessmentInput` via:
+//
+//	AssessmentArgs{...}
+type AssessmentInput interface {
+	pulumi.Input
+
+	ToAssessmentOutput() AssessmentOutput
+	ToAssessmentOutputWithContext(context.Context) AssessmentOutput
+}
+
+// Assessment provides all information that is related to a single vulnerability for this product.
+type AssessmentArgs struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve pulumi.StringPtrInput `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts pulumi.StringArrayInput `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification JustificationPtrInput `pulumi:"justification"`
+	// A detailed description of this Vex.
+	LongDescription pulumi.StringPtrInput `pulumi:"longDescription"`
+	// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+	RelatedUris RelatedUrlArrayInput `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations RemediationArrayInput `pulumi:"remediations"`
+	// A one sentence description of this Vex.
+	ShortDescription pulumi.StringPtrInput `pulumi:"shortDescription"`
+	// Provides the state of this Vulnerability assessment.
+	State AssessmentStatePtrInput `pulumi:"state"`
+}
+
+func (AssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Assessment)(nil)).Elem()
+}
+
+func (i AssessmentArgs) ToAssessmentOutput() AssessmentOutput {
+	return i.ToAssessmentOutputWithContext(context.Background())
+}
+
+func (i AssessmentArgs) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentOutput)
+}
+
+func (i AssessmentArgs) ToAssessmentPtrOutput() AssessmentPtrOutput {
+	return i.ToAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i AssessmentArgs) ToAssessmentPtrOutputWithContext(ctx context.Context) AssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentOutput).ToAssessmentPtrOutputWithContext(ctx)
+}
+
+// AssessmentPtrInput is an input type that accepts AssessmentArgs, AssessmentPtr and AssessmentPtrOutput values.
+// You can construct a concrete instance of `AssessmentPtrInput` via:
+//
+//	        AssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssessmentPtrInput interface {
+	pulumi.Input
+
+	ToAssessmentPtrOutput() AssessmentPtrOutput
+	ToAssessmentPtrOutputWithContext(context.Context) AssessmentPtrOutput
+}
+
+type assessmentPtrType AssessmentArgs
+
+func AssessmentPtr(v *AssessmentArgs) AssessmentPtrInput {
+	return (*assessmentPtrType)(v)
+}
+
+func (*assessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Assessment)(nil)).Elem()
+}
+
+func (i *assessmentPtrType) ToAssessmentPtrOutput() AssessmentPtrOutput {
+	return i.ToAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *assessmentPtrType) ToAssessmentPtrOutputWithContext(ctx context.Context) AssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssessmentPtrOutput)
+}
+
+// Assessment provides all information that is related to a single vulnerability for this product.
+type AssessmentOutput struct{ *pulumi.OutputState }
+
+func (AssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Assessment)(nil)).Elem()
+}
+
+func (o AssessmentOutput) ToAssessmentOutput() AssessmentOutput {
+	return o
+}
+
+func (o AssessmentOutput) ToAssessmentOutputWithContext(ctx context.Context) AssessmentOutput {
+	return o
+}
+
+func (o AssessmentOutput) ToAssessmentPtrOutput() AssessmentPtrOutput {
+	return o.ToAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentOutput) ToAssessmentPtrOutputWithContext(ctx context.Context) AssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Assessment) *Assessment {
+		return &v
+	}).(AssessmentPtrOutput)
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o AssessmentOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Assessment) *string { return v.Cve }).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o AssessmentOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Assessment) []string { return v.Impacts }).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o AssessmentOutput) Justification() JustificationPtrOutput {
+	return o.ApplyT(func(v Assessment) *Justification { return v.Justification }).(JustificationPtrOutput)
+}
+
+// A detailed description of this Vex.
+func (o AssessmentOutput) LongDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Assessment) *string { return v.LongDescription }).(pulumi.StringPtrOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+func (o AssessmentOutput) RelatedUris() RelatedUrlArrayOutput {
+	return o.ApplyT(func(v Assessment) []RelatedUrl { return v.RelatedUris }).(RelatedUrlArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o AssessmentOutput) Remediations() RemediationArrayOutput {
+	return o.ApplyT(func(v Assessment) []Remediation { return v.Remediations }).(RemediationArrayOutput)
+}
+
+// A one sentence description of this Vex.
+func (o AssessmentOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Assessment) *string { return v.ShortDescription }).(pulumi.StringPtrOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o AssessmentOutput) State() AssessmentStatePtrOutput {
+	return o.ApplyT(func(v Assessment) *AssessmentState { return v.State }).(AssessmentStatePtrOutput)
+}
+
+type AssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (AssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Assessment)(nil)).Elem()
+}
+
+func (o AssessmentPtrOutput) ToAssessmentPtrOutput() AssessmentPtrOutput {
+	return o
+}
+
+func (o AssessmentPtrOutput) ToAssessmentPtrOutputWithContext(ctx context.Context) AssessmentPtrOutput {
+	return o
+}
+
+func (o AssessmentPtrOutput) Elem() AssessmentOutput {
+	return o.ApplyT(func(v *Assessment) Assessment {
+		if v != nil {
+			return *v
+		}
+		var ret Assessment
+		return ret
+	}).(AssessmentOutput)
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o AssessmentPtrOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Assessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cve
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o AssessmentPtrOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Assessment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Impacts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o AssessmentPtrOutput) Justification() JustificationPtrOutput {
+	return o.ApplyT(func(v *Assessment) *Justification {
+		if v == nil {
+			return nil
+		}
+		return v.Justification
+	}).(JustificationPtrOutput)
+}
+
+// A detailed description of this Vex.
+func (o AssessmentPtrOutput) LongDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Assessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+func (o AssessmentPtrOutput) RelatedUris() RelatedUrlArrayOutput {
+	return o.ApplyT(func(v *Assessment) []RelatedUrl {
+		if v == nil {
+			return nil
+		}
+		return v.RelatedUris
+	}).(RelatedUrlArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o AssessmentPtrOutput) Remediations() RemediationArrayOutput {
+	return o.ApplyT(func(v *Assessment) []Remediation {
+		if v == nil {
+			return nil
+		}
+		return v.Remediations
+	}).(RemediationArrayOutput)
+}
+
+// A one sentence description of this Vex.
+func (o AssessmentPtrOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Assessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o AssessmentPtrOutput) State() AssessmentStatePtrOutput {
+	return o.ApplyT(func(v *Assessment) *AssessmentState {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(AssessmentStatePtrOutput)
+}
+
+// Assessment provides all information that is related to a single vulnerability for this product.
+type AssessmentResponse struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve string `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts []string `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification JustificationResponse `pulumi:"justification"`
+	// A detailed description of this Vex.
+	LongDescription string `pulumi:"longDescription"`
+	// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+	RelatedUris []RelatedUrlResponse `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations []RemediationResponse `pulumi:"remediations"`
+	// A one sentence description of this Vex.
+	ShortDescription string `pulumi:"shortDescription"`
+	// Provides the state of this Vulnerability assessment.
+	State string `pulumi:"state"`
+}
+
+// Assessment provides all information that is related to a single vulnerability for this product.
+type AssessmentResponseOutput struct{ *pulumi.OutputState }
+
+func (AssessmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentResponse)(nil)).Elem()
+}
+
+func (o AssessmentResponseOutput) ToAssessmentResponseOutput() AssessmentResponseOutput {
+	return o
+}
+
+func (o AssessmentResponseOutput) ToAssessmentResponseOutputWithContext(ctx context.Context) AssessmentResponseOutput {
+	return o
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o AssessmentResponseOutput) Cve() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentResponse) string { return v.Cve }).(pulumi.StringOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o AssessmentResponseOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssessmentResponse) []string { return v.Impacts }).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o AssessmentResponseOutput) Justification() JustificationResponseOutput {
+	return o.ApplyT(func(v AssessmentResponse) JustificationResponse { return v.Justification }).(JustificationResponseOutput)
+}
+
+// A detailed description of this Vex.
+func (o AssessmentResponseOutput) LongDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentResponse) string { return v.LongDescription }).(pulumi.StringOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+func (o AssessmentResponseOutput) RelatedUris() RelatedUrlResponseArrayOutput {
+	return o.ApplyT(func(v AssessmentResponse) []RelatedUrlResponse { return v.RelatedUris }).(RelatedUrlResponseArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o AssessmentResponseOutput) Remediations() RemediationResponseArrayOutput {
+	return o.ApplyT(func(v AssessmentResponse) []RemediationResponse { return v.Remediations }).(RemediationResponseArrayOutput)
+}
+
+// A one sentence description of this Vex.
+func (o AssessmentResponseOutput) ShortDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentResponse) string { return v.ShortDescription }).(pulumi.StringOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o AssessmentResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v AssessmentResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
 // Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `Authority` for "QA" and one for "build". This note is intended to act strictly as a grouping mechanism for the attached occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an occurrence to a given note. It also provides a single point of lookup to find all attached attestation occurrences, even if they don't all live in the same project.
 type AttestationNote struct {
 	// Hint hints at the purpose of the attestation authority.
@@ -10569,6 +10917,198 @@ func (o InTotoStatementResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InTotoStatementResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+type Justification struct {
+	// Additional details on why this justification was chosen.
+	Details *string `pulumi:"details"`
+	// The justification type for this vulnerability.
+	JustificationType *JustificationJustificationType `pulumi:"justificationType"`
+}
+
+// JustificationInput is an input type that accepts JustificationArgs and JustificationOutput values.
+// You can construct a concrete instance of `JustificationInput` via:
+//
+//	JustificationArgs{...}
+type JustificationInput interface {
+	pulumi.Input
+
+	ToJustificationOutput() JustificationOutput
+	ToJustificationOutputWithContext(context.Context) JustificationOutput
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+type JustificationArgs struct {
+	// Additional details on why this justification was chosen.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// The justification type for this vulnerability.
+	JustificationType JustificationJustificationTypePtrInput `pulumi:"justificationType"`
+}
+
+func (JustificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Justification)(nil)).Elem()
+}
+
+func (i JustificationArgs) ToJustificationOutput() JustificationOutput {
+	return i.ToJustificationOutputWithContext(context.Background())
+}
+
+func (i JustificationArgs) ToJustificationOutputWithContext(ctx context.Context) JustificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JustificationOutput)
+}
+
+func (i JustificationArgs) ToJustificationPtrOutput() JustificationPtrOutput {
+	return i.ToJustificationPtrOutputWithContext(context.Background())
+}
+
+func (i JustificationArgs) ToJustificationPtrOutputWithContext(ctx context.Context) JustificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JustificationOutput).ToJustificationPtrOutputWithContext(ctx)
+}
+
+// JustificationPtrInput is an input type that accepts JustificationArgs, JustificationPtr and JustificationPtrOutput values.
+// You can construct a concrete instance of `JustificationPtrInput` via:
+//
+//	        JustificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type JustificationPtrInput interface {
+	pulumi.Input
+
+	ToJustificationPtrOutput() JustificationPtrOutput
+	ToJustificationPtrOutputWithContext(context.Context) JustificationPtrOutput
+}
+
+type justificationPtrType JustificationArgs
+
+func JustificationPtr(v *JustificationArgs) JustificationPtrInput {
+	return (*justificationPtrType)(v)
+}
+
+func (*justificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Justification)(nil)).Elem()
+}
+
+func (i *justificationPtrType) ToJustificationPtrOutput() JustificationPtrOutput {
+	return i.ToJustificationPtrOutputWithContext(context.Background())
+}
+
+func (i *justificationPtrType) ToJustificationPtrOutputWithContext(ctx context.Context) JustificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JustificationPtrOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+type JustificationOutput struct{ *pulumi.OutputState }
+
+func (JustificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Justification)(nil)).Elem()
+}
+
+func (o JustificationOutput) ToJustificationOutput() JustificationOutput {
+	return o
+}
+
+func (o JustificationOutput) ToJustificationOutputWithContext(ctx context.Context) JustificationOutput {
+	return o
+}
+
+func (o JustificationOutput) ToJustificationPtrOutput() JustificationPtrOutput {
+	return o.ToJustificationPtrOutputWithContext(context.Background())
+}
+
+func (o JustificationOutput) ToJustificationPtrOutputWithContext(ctx context.Context) JustificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Justification) *Justification {
+		return &v
+	}).(JustificationPtrOutput)
+}
+
+// Additional details on why this justification was chosen.
+func (o JustificationOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Justification) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// The justification type for this vulnerability.
+func (o JustificationOutput) JustificationType() JustificationJustificationTypePtrOutput {
+	return o.ApplyT(func(v Justification) *JustificationJustificationType { return v.JustificationType }).(JustificationJustificationTypePtrOutput)
+}
+
+type JustificationPtrOutput struct{ *pulumi.OutputState }
+
+func (JustificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Justification)(nil)).Elem()
+}
+
+func (o JustificationPtrOutput) ToJustificationPtrOutput() JustificationPtrOutput {
+	return o
+}
+
+func (o JustificationPtrOutput) ToJustificationPtrOutputWithContext(ctx context.Context) JustificationPtrOutput {
+	return o
+}
+
+func (o JustificationPtrOutput) Elem() JustificationOutput {
+	return o.ApplyT(func(v *Justification) Justification {
+		if v != nil {
+			return *v
+		}
+		var ret Justification
+		return ret
+	}).(JustificationOutput)
+}
+
+// Additional details on why this justification was chosen.
+func (o JustificationPtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Justification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+// The justification type for this vulnerability.
+func (o JustificationPtrOutput) JustificationType() JustificationJustificationTypePtrOutput {
+	return o.ApplyT(func(v *Justification) *JustificationJustificationType {
+		if v == nil {
+			return nil
+		}
+		return v.JustificationType
+	}).(JustificationJustificationTypePtrOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+type JustificationResponse struct {
+	// Additional details on why this justification was chosen.
+	Details string `pulumi:"details"`
+	// The justification type for this vulnerability.
+	JustificationType string `pulumi:"justificationType"`
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+type JustificationResponseOutput struct{ *pulumi.OutputState }
+
+func (JustificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JustificationResponse)(nil)).Elem()
+}
+
+func (o JustificationResponseOutput) ToJustificationResponseOutput() JustificationResponseOutput {
+	return o
+}
+
+func (o JustificationResponseOutput) ToJustificationResponseOutputWithContext(ctx context.Context) JustificationResponseOutput {
+	return o
+}
+
+// Additional details on why this justification was chosen.
+func (o JustificationResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v JustificationResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// The justification type for this vulnerability.
+func (o JustificationResponseOutput) JustificationType() pulumi.StringOutput {
+	return o.ApplyT(func(v JustificationResponse) string { return v.JustificationType }).(pulumi.StringOutput)
+}
+
 type Jwt struct {
 	// The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1
 	CompactJwt *string `pulumi:"compactJwt"`
@@ -12951,6 +13491,217 @@ func (o PackageOccurrenceResponseOutput) Version() VersionResponseOutput {
 	return o.ApplyT(func(v PackageOccurrenceResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
 
+// Product contains information about a product and how to uniquely identify it.
+type Product struct {
+	// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+	GenericUri *string `pulumi:"genericUri"`
+	// Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+	Id *string `pulumi:"id"`
+	// Name of the product.
+	Name *string `pulumi:"name"`
+}
+
+// ProductInput is an input type that accepts ProductArgs and ProductOutput values.
+// You can construct a concrete instance of `ProductInput` via:
+//
+//	ProductArgs{...}
+type ProductInput interface {
+	pulumi.Input
+
+	ToProductOutput() ProductOutput
+	ToProductOutputWithContext(context.Context) ProductOutput
+}
+
+// Product contains information about a product and how to uniquely identify it.
+type ProductArgs struct {
+	// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+	GenericUri pulumi.StringPtrInput `pulumi:"genericUri"`
+	// Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the product.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ProductArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Product)(nil)).Elem()
+}
+
+func (i ProductArgs) ToProductOutput() ProductOutput {
+	return i.ToProductOutputWithContext(context.Background())
+}
+
+func (i ProductArgs) ToProductOutputWithContext(ctx context.Context) ProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput)
+}
+
+func (i ProductArgs) ToProductPtrOutput() ProductPtrOutput {
+	return i.ToProductPtrOutputWithContext(context.Background())
+}
+
+func (i ProductArgs) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductOutput).ToProductPtrOutputWithContext(ctx)
+}
+
+// ProductPtrInput is an input type that accepts ProductArgs, ProductPtr and ProductPtrOutput values.
+// You can construct a concrete instance of `ProductPtrInput` via:
+//
+//	        ProductArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProductPtrInput interface {
+	pulumi.Input
+
+	ToProductPtrOutput() ProductPtrOutput
+	ToProductPtrOutputWithContext(context.Context) ProductPtrOutput
+}
+
+type productPtrType ProductArgs
+
+func ProductPtr(v *ProductArgs) ProductPtrInput {
+	return (*productPtrType)(v)
+}
+
+func (*productPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Product)(nil)).Elem()
+}
+
+func (i *productPtrType) ToProductPtrOutput() ProductPtrOutput {
+	return i.ToProductPtrOutputWithContext(context.Background())
+}
+
+func (i *productPtrType) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProductPtrOutput)
+}
+
+// Product contains information about a product and how to uniquely identify it.
+type ProductOutput struct{ *pulumi.OutputState }
+
+func (ProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Product)(nil)).Elem()
+}
+
+func (o ProductOutput) ToProductOutput() ProductOutput {
+	return o
+}
+
+func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOutput {
+	return o
+}
+
+func (o ProductOutput) ToProductPtrOutput() ProductPtrOutput {
+	return o.ToProductPtrOutputWithContext(context.Background())
+}
+
+func (o ProductOutput) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Product) *Product {
+		return &v
+	}).(ProductPtrOutput)
+}
+
+// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+func (o ProductOutput) GenericUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Product) *string { return v.GenericUri }).(pulumi.StringPtrOutput)
+}
+
+// Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+func (o ProductOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Product) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the product.
+func (o ProductOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Product) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ProductPtrOutput struct{ *pulumi.OutputState }
+
+func (ProductPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Product)(nil)).Elem()
+}
+
+func (o ProductPtrOutput) ToProductPtrOutput() ProductPtrOutput {
+	return o
+}
+
+func (o ProductPtrOutput) ToProductPtrOutputWithContext(ctx context.Context) ProductPtrOutput {
+	return o
+}
+
+func (o ProductPtrOutput) Elem() ProductOutput {
+	return o.ApplyT(func(v *Product) Product {
+		if v != nil {
+			return *v
+		}
+		var ret Product
+		return ret
+	}).(ProductOutput)
+}
+
+// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+func (o ProductPtrOutput) GenericUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Product) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GenericUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+func (o ProductPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Product) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the product.
+func (o ProductPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Product) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product contains information about a product and how to uniquely identify it.
+type ProductResponse struct {
+	// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+	GenericUri string `pulumi:"genericUri"`
+	// Name of the product.
+	Name string `pulumi:"name"`
+}
+
+// Product contains information about a product and how to uniquely identify it.
+type ProductResponseOutput struct{ *pulumi.OutputState }
+
+func (ProductResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductResponse)(nil)).Elem()
+}
+
+func (o ProductResponseOutput) ToProductResponseOutput() ProductResponseOutput {
+	return o
+}
+
+func (o ProductResponseOutput) ToProductResponseOutputWithContext(ctx context.Context) ProductResponseOutput {
+	return o
+}
+
+// Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+func (o ProductResponseOutput) GenericUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ProductResponse) string { return v.GenericUri }).(pulumi.StringOutput)
+}
+
+// Name of the product.
+func (o ProductResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProductResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
 type ProjectRepoId struct {
 	// The ID of the project.
@@ -13141,6 +13892,224 @@ func (o ProjectRepoIdResponseOutput) Project() pulumi.StringOutput {
 // The name of the repo. Leave empty for the default repo.
 func (o ProjectRepoIdResponseOutput) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectRepoIdResponse) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Publisher contains information about the publisher of this Note.
+type Publisher struct {
+	// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+	IssuingAuthority *string `pulumi:"issuingAuthority"`
+	// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+	Name *string `pulumi:"name"`
+	// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+	PublisherNamespace *string `pulumi:"publisherNamespace"`
+}
+
+// PublisherInput is an input type that accepts PublisherArgs and PublisherOutput values.
+// You can construct a concrete instance of `PublisherInput` via:
+//
+//	PublisherArgs{...}
+type PublisherInput interface {
+	pulumi.Input
+
+	ToPublisherOutput() PublisherOutput
+	ToPublisherOutputWithContext(context.Context) PublisherOutput
+}
+
+// Publisher contains information about the publisher of this Note.
+type PublisherArgs struct {
+	// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+	IssuingAuthority pulumi.StringPtrInput `pulumi:"issuingAuthority"`
+	// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+	PublisherNamespace pulumi.StringPtrInput `pulumi:"publisherNamespace"`
+}
+
+func (PublisherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Publisher)(nil)).Elem()
+}
+
+func (i PublisherArgs) ToPublisherOutput() PublisherOutput {
+	return i.ToPublisherOutputWithContext(context.Background())
+}
+
+func (i PublisherArgs) ToPublisherOutputWithContext(ctx context.Context) PublisherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublisherOutput)
+}
+
+func (i PublisherArgs) ToPublisherPtrOutput() PublisherPtrOutput {
+	return i.ToPublisherPtrOutputWithContext(context.Background())
+}
+
+func (i PublisherArgs) ToPublisherPtrOutputWithContext(ctx context.Context) PublisherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublisherOutput).ToPublisherPtrOutputWithContext(ctx)
+}
+
+// PublisherPtrInput is an input type that accepts PublisherArgs, PublisherPtr and PublisherPtrOutput values.
+// You can construct a concrete instance of `PublisherPtrInput` via:
+//
+//	        PublisherArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublisherPtrInput interface {
+	pulumi.Input
+
+	ToPublisherPtrOutput() PublisherPtrOutput
+	ToPublisherPtrOutputWithContext(context.Context) PublisherPtrOutput
+}
+
+type publisherPtrType PublisherArgs
+
+func PublisherPtr(v *PublisherArgs) PublisherPtrInput {
+	return (*publisherPtrType)(v)
+}
+
+func (*publisherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Publisher)(nil)).Elem()
+}
+
+func (i *publisherPtrType) ToPublisherPtrOutput() PublisherPtrOutput {
+	return i.ToPublisherPtrOutputWithContext(context.Background())
+}
+
+func (i *publisherPtrType) ToPublisherPtrOutputWithContext(ctx context.Context) PublisherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublisherPtrOutput)
+}
+
+// Publisher contains information about the publisher of this Note.
+type PublisherOutput struct{ *pulumi.OutputState }
+
+func (PublisherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Publisher)(nil)).Elem()
+}
+
+func (o PublisherOutput) ToPublisherOutput() PublisherOutput {
+	return o
+}
+
+func (o PublisherOutput) ToPublisherOutputWithContext(ctx context.Context) PublisherOutput {
+	return o
+}
+
+func (o PublisherOutput) ToPublisherPtrOutput() PublisherPtrOutput {
+	return o.ToPublisherPtrOutputWithContext(context.Background())
+}
+
+func (o PublisherOutput) ToPublisherPtrOutputWithContext(ctx context.Context) PublisherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Publisher) *Publisher {
+		return &v
+	}).(PublisherPtrOutput)
+}
+
+// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+func (o PublisherOutput) IssuingAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publisher) *string { return v.IssuingAuthority }).(pulumi.StringPtrOutput)
+}
+
+// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+func (o PublisherOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publisher) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+func (o PublisherOutput) PublisherNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publisher) *string { return v.PublisherNamespace }).(pulumi.StringPtrOutput)
+}
+
+type PublisherPtrOutput struct{ *pulumi.OutputState }
+
+func (PublisherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Publisher)(nil)).Elem()
+}
+
+func (o PublisherPtrOutput) ToPublisherPtrOutput() PublisherPtrOutput {
+	return o
+}
+
+func (o PublisherPtrOutput) ToPublisherPtrOutputWithContext(ctx context.Context) PublisherPtrOutput {
+	return o
+}
+
+func (o PublisherPtrOutput) Elem() PublisherOutput {
+	return o.ApplyT(func(v *Publisher) Publisher {
+		if v != nil {
+			return *v
+		}
+		var ret Publisher
+		return ret
+	}).(PublisherOutput)
+}
+
+// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+func (o PublisherPtrOutput) IssuingAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publisher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IssuingAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+func (o PublisherPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publisher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+func (o PublisherPtrOutput) PublisherNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publisher) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublisherNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publisher contains information about the publisher of this Note.
+type PublisherResponse struct {
+	// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+	IssuingAuthority string `pulumi:"issuingAuthority"`
+	// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+	Name string `pulumi:"name"`
+	// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+	PublisherNamespace string `pulumi:"publisherNamespace"`
+}
+
+// Publisher contains information about the publisher of this Note.
+type PublisherResponseOutput struct{ *pulumi.OutputState }
+
+func (PublisherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublisherResponse)(nil)).Elem()
+}
+
+func (o PublisherResponseOutput) ToPublisherResponseOutput() PublisherResponseOutput {
+	return o
+}
+
+func (o PublisherResponseOutput) ToPublisherResponseOutputWithContext(ctx context.Context) PublisherResponseOutput {
+	return o
+}
+
+// Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+func (o PublisherResponseOutput) IssuingAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v PublisherResponse) string { return v.IssuingAuthority }).(pulumi.StringOutput)
+}
+
+// Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+func (o PublisherResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublisherResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+func (o PublisherResponseOutput) PublisherNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v PublisherResponse) string { return v.PublisherNamespace }).(pulumi.StringOutput)
 }
 
 // Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
@@ -13452,6 +14421,47 @@ func (i RelatedUrlArgs) ToRelatedUrlOutputWithContext(ctx context.Context) Relat
 	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlOutput)
 }
 
+func (i RelatedUrlArgs) ToRelatedUrlPtrOutput() RelatedUrlPtrOutput {
+	return i.ToRelatedUrlPtrOutputWithContext(context.Background())
+}
+
+func (i RelatedUrlArgs) ToRelatedUrlPtrOutputWithContext(ctx context.Context) RelatedUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlOutput).ToRelatedUrlPtrOutputWithContext(ctx)
+}
+
+// RelatedUrlPtrInput is an input type that accepts RelatedUrlArgs, RelatedUrlPtr and RelatedUrlPtrOutput values.
+// You can construct a concrete instance of `RelatedUrlPtrInput` via:
+//
+//	        RelatedUrlArgs{...}
+//
+//	or:
+//
+//	        nil
+type RelatedUrlPtrInput interface {
+	pulumi.Input
+
+	ToRelatedUrlPtrOutput() RelatedUrlPtrOutput
+	ToRelatedUrlPtrOutputWithContext(context.Context) RelatedUrlPtrOutput
+}
+
+type relatedUrlPtrType RelatedUrlArgs
+
+func RelatedUrlPtr(v *RelatedUrlArgs) RelatedUrlPtrInput {
+	return (*relatedUrlPtrType)(v)
+}
+
+func (*relatedUrlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RelatedUrl)(nil)).Elem()
+}
+
+func (i *relatedUrlPtrType) ToRelatedUrlPtrOutput() RelatedUrlPtrOutput {
+	return i.ToRelatedUrlPtrOutputWithContext(context.Background())
+}
+
+func (i *relatedUrlPtrType) ToRelatedUrlPtrOutputWithContext(ctx context.Context) RelatedUrlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlPtrOutput)
+}
+
 // RelatedUrlArrayInput is an input type that accepts RelatedUrlArray and RelatedUrlArrayOutput values.
 // You can construct a concrete instance of `RelatedUrlArrayInput` via:
 //
@@ -13492,6 +14502,16 @@ func (o RelatedUrlOutput) ToRelatedUrlOutputWithContext(ctx context.Context) Rel
 	return o
 }
 
+func (o RelatedUrlOutput) ToRelatedUrlPtrOutput() RelatedUrlPtrOutput {
+	return o.ToRelatedUrlPtrOutputWithContext(context.Background())
+}
+
+func (o RelatedUrlOutput) ToRelatedUrlPtrOutputWithContext(ctx context.Context) RelatedUrlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelatedUrl) *RelatedUrl {
+		return &v
+	}).(RelatedUrlPtrOutput)
+}
+
 // Label to describe usage of the URL.
 func (o RelatedUrlOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RelatedUrl) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -13500,6 +14520,50 @@ func (o RelatedUrlOutput) Label() pulumi.StringPtrOutput {
 // Specific URL associated with the resource.
 func (o RelatedUrlOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RelatedUrl) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type RelatedUrlPtrOutput struct{ *pulumi.OutputState }
+
+func (RelatedUrlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RelatedUrl)(nil)).Elem()
+}
+
+func (o RelatedUrlPtrOutput) ToRelatedUrlPtrOutput() RelatedUrlPtrOutput {
+	return o
+}
+
+func (o RelatedUrlPtrOutput) ToRelatedUrlPtrOutputWithContext(ctx context.Context) RelatedUrlPtrOutput {
+	return o
+}
+
+func (o RelatedUrlPtrOutput) Elem() RelatedUrlOutput {
+	return o.ApplyT(func(v *RelatedUrl) RelatedUrl {
+		if v != nil {
+			return *v
+		}
+		var ret RelatedUrl
+		return ret
+	}).(RelatedUrlOutput)
+}
+
+// Label to describe usage of the URL.
+func (o RelatedUrlPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelatedUrl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specific URL associated with the resource.
+func (o RelatedUrlPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RelatedUrl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type RelatedUrlArrayOutput struct{ *pulumi.OutputState }
@@ -13573,6 +14637,184 @@ func (o RelatedUrlResponseArrayOutput) Index(i pulumi.IntInput) RelatedUrlRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelatedUrlResponse {
 		return vs[0].([]RelatedUrlResponse)[vs[1].(int)]
 	}).(RelatedUrlResponseOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+type Remediation struct {
+	// Contains a comprehensive human-readable discussion of the remediation.
+	Details *string `pulumi:"details"`
+	// The type of remediation that can be applied.
+	RemediationType *RemediationRemediationType `pulumi:"remediationType"`
+	// Contains the URL where to obtain the remediation.
+	RemediationUri *RelatedUrl `pulumi:"remediationUri"`
+}
+
+// RemediationInput is an input type that accepts RemediationArgs and RemediationOutput values.
+// You can construct a concrete instance of `RemediationInput` via:
+//
+//	RemediationArgs{...}
+type RemediationInput interface {
+	pulumi.Input
+
+	ToRemediationOutput() RemediationOutput
+	ToRemediationOutputWithContext(context.Context) RemediationOutput
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+type RemediationArgs struct {
+	// Contains a comprehensive human-readable discussion of the remediation.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// The type of remediation that can be applied.
+	RemediationType RemediationRemediationTypePtrInput `pulumi:"remediationType"`
+	// Contains the URL where to obtain the remediation.
+	RemediationUri RelatedUrlPtrInput `pulumi:"remediationUri"`
+}
+
+func (RemediationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Remediation)(nil)).Elem()
+}
+
+func (i RemediationArgs) ToRemediationOutput() RemediationOutput {
+	return i.ToRemediationOutputWithContext(context.Background())
+}
+
+func (i RemediationArgs) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationOutput)
+}
+
+// RemediationArrayInput is an input type that accepts RemediationArray and RemediationArrayOutput values.
+// You can construct a concrete instance of `RemediationArrayInput` via:
+//
+//	RemediationArray{ RemediationArgs{...} }
+type RemediationArrayInput interface {
+	pulumi.Input
+
+	ToRemediationArrayOutput() RemediationArrayOutput
+	ToRemediationArrayOutputWithContext(context.Context) RemediationArrayOutput
+}
+
+type RemediationArray []RemediationInput
+
+func (RemediationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Remediation)(nil)).Elem()
+}
+
+func (i RemediationArray) ToRemediationArrayOutput() RemediationArrayOutput {
+	return i.ToRemediationArrayOutputWithContext(context.Background())
+}
+
+func (i RemediationArray) ToRemediationArrayOutputWithContext(ctx context.Context) RemediationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemediationArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+type RemediationOutput struct{ *pulumi.OutputState }
+
+func (RemediationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Remediation)(nil)).Elem()
+}
+
+func (o RemediationOutput) ToRemediationOutput() RemediationOutput {
+	return o
+}
+
+func (o RemediationOutput) ToRemediationOutputWithContext(ctx context.Context) RemediationOutput {
+	return o
+}
+
+// Contains a comprehensive human-readable discussion of the remediation.
+func (o RemediationOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Remediation) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// The type of remediation that can be applied.
+func (o RemediationOutput) RemediationType() RemediationRemediationTypePtrOutput {
+	return o.ApplyT(func(v Remediation) *RemediationRemediationType { return v.RemediationType }).(RemediationRemediationTypePtrOutput)
+}
+
+// Contains the URL where to obtain the remediation.
+func (o RemediationOutput) RemediationUri() RelatedUrlPtrOutput {
+	return o.ApplyT(func(v Remediation) *RelatedUrl { return v.RemediationUri }).(RelatedUrlPtrOutput)
+}
+
+type RemediationArrayOutput struct{ *pulumi.OutputState }
+
+func (RemediationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Remediation)(nil)).Elem()
+}
+
+func (o RemediationArrayOutput) ToRemediationArrayOutput() RemediationArrayOutput {
+	return o
+}
+
+func (o RemediationArrayOutput) ToRemediationArrayOutputWithContext(ctx context.Context) RemediationArrayOutput {
+	return o
+}
+
+func (o RemediationArrayOutput) Index(i pulumi.IntInput) RemediationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Remediation {
+		return vs[0].([]Remediation)[vs[1].(int)]
+	}).(RemediationOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+type RemediationResponse struct {
+	// Contains a comprehensive human-readable discussion of the remediation.
+	Details string `pulumi:"details"`
+	// The type of remediation that can be applied.
+	RemediationType string `pulumi:"remediationType"`
+	// Contains the URL where to obtain the remediation.
+	RemediationUri RelatedUrlResponse `pulumi:"remediationUri"`
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+type RemediationResponseOutput struct{ *pulumi.OutputState }
+
+func (RemediationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationResponse)(nil)).Elem()
+}
+
+func (o RemediationResponseOutput) ToRemediationResponseOutput() RemediationResponseOutput {
+	return o
+}
+
+func (o RemediationResponseOutput) ToRemediationResponseOutputWithContext(ctx context.Context) RemediationResponseOutput {
+	return o
+}
+
+// Contains a comprehensive human-readable discussion of the remediation.
+func (o RemediationResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// The type of remediation that can be applied.
+func (o RemediationResponseOutput) RemediationType() pulumi.StringOutput {
+	return o.ApplyT(func(v RemediationResponse) string { return v.RemediationType }).(pulumi.StringOutput)
+}
+
+// Contains the URL where to obtain the remediation.
+func (o RemediationResponseOutput) RemediationUri() RelatedUrlResponseOutput {
+	return o.ApplyT(func(v RemediationResponse) RelatedUrlResponse { return v.RemediationUri }).(RelatedUrlResponseOutput)
+}
+
+type RemediationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RemediationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RemediationResponse)(nil)).Elem()
+}
+
+func (o RemediationResponseArrayOutput) ToRemediationResponseArrayOutput() RemediationResponseArrayOutput {
+	return o
+}
+
+func (o RemediationResponseArrayOutput) ToRemediationResponseArrayOutputWithContext(ctx context.Context) RemediationResponseArrayOutput {
+	return o
+}
+
+func (o RemediationResponseArrayOutput) Index(i pulumi.IntInput) RemediationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RemediationResponse {
+		return vs[0].([]RemediationResponse)[vs[1].(int)]
+	}).(RemediationResponseOutput)
 }
 
 // A unique identifier for a Cloud Repo.
@@ -17419,10 +18661,656 @@ func (o VersionResponseOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.Revision }).(pulumi.StringOutput)
 }
 
+// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+type VexAssessment struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve *string `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts []string `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification *Justification `pulumi:"justification"`
+	// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+	NoteName *string `pulumi:"noteName"`
+	// Holds a list of references associated with this vulnerability item and assessment.
+	RelatedUris []RelatedUrl `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations []Remediation `pulumi:"remediations"`
+	// Provides the state of this Vulnerability assessment.
+	State *VexAssessmentState `pulumi:"state"`
+}
+
+// VexAssessmentInput is an input type that accepts VexAssessmentArgs and VexAssessmentOutput values.
+// You can construct a concrete instance of `VexAssessmentInput` via:
+//
+//	VexAssessmentArgs{...}
+type VexAssessmentInput interface {
+	pulumi.Input
+
+	ToVexAssessmentOutput() VexAssessmentOutput
+	ToVexAssessmentOutputWithContext(context.Context) VexAssessmentOutput
+}
+
+// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+type VexAssessmentArgs struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve pulumi.StringPtrInput `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts pulumi.StringArrayInput `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification JustificationPtrInput `pulumi:"justification"`
+	// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+	NoteName pulumi.StringPtrInput `pulumi:"noteName"`
+	// Holds a list of references associated with this vulnerability item and assessment.
+	RelatedUris RelatedUrlArrayInput `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations RemediationArrayInput `pulumi:"remediations"`
+	// Provides the state of this Vulnerability assessment.
+	State VexAssessmentStatePtrInput `pulumi:"state"`
+}
+
+func (VexAssessmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VexAssessment)(nil)).Elem()
+}
+
+func (i VexAssessmentArgs) ToVexAssessmentOutput() VexAssessmentOutput {
+	return i.ToVexAssessmentOutputWithContext(context.Background())
+}
+
+func (i VexAssessmentArgs) ToVexAssessmentOutputWithContext(ctx context.Context) VexAssessmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VexAssessmentOutput)
+}
+
+func (i VexAssessmentArgs) ToVexAssessmentPtrOutput() VexAssessmentPtrOutput {
+	return i.ToVexAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i VexAssessmentArgs) ToVexAssessmentPtrOutputWithContext(ctx context.Context) VexAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VexAssessmentOutput).ToVexAssessmentPtrOutputWithContext(ctx)
+}
+
+// VexAssessmentPtrInput is an input type that accepts VexAssessmentArgs, VexAssessmentPtr and VexAssessmentPtrOutput values.
+// You can construct a concrete instance of `VexAssessmentPtrInput` via:
+//
+//	        VexAssessmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type VexAssessmentPtrInput interface {
+	pulumi.Input
+
+	ToVexAssessmentPtrOutput() VexAssessmentPtrOutput
+	ToVexAssessmentPtrOutputWithContext(context.Context) VexAssessmentPtrOutput
+}
+
+type vexAssessmentPtrType VexAssessmentArgs
+
+func VexAssessmentPtr(v *VexAssessmentArgs) VexAssessmentPtrInput {
+	return (*vexAssessmentPtrType)(v)
+}
+
+func (*vexAssessmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VexAssessment)(nil)).Elem()
+}
+
+func (i *vexAssessmentPtrType) ToVexAssessmentPtrOutput() VexAssessmentPtrOutput {
+	return i.ToVexAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (i *vexAssessmentPtrType) ToVexAssessmentPtrOutputWithContext(ctx context.Context) VexAssessmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VexAssessmentPtrOutput)
+}
+
+// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+type VexAssessmentOutput struct{ *pulumi.OutputState }
+
+func (VexAssessmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VexAssessment)(nil)).Elem()
+}
+
+func (o VexAssessmentOutput) ToVexAssessmentOutput() VexAssessmentOutput {
+	return o
+}
+
+func (o VexAssessmentOutput) ToVexAssessmentOutputWithContext(ctx context.Context) VexAssessmentOutput {
+	return o
+}
+
+func (o VexAssessmentOutput) ToVexAssessmentPtrOutput() VexAssessmentPtrOutput {
+	return o.ToVexAssessmentPtrOutputWithContext(context.Background())
+}
+
+func (o VexAssessmentOutput) ToVexAssessmentPtrOutputWithContext(ctx context.Context) VexAssessmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VexAssessment) *VexAssessment {
+		return &v
+	}).(VexAssessmentPtrOutput)
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o VexAssessmentOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VexAssessment) *string { return v.Cve }).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o VexAssessmentOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VexAssessment) []string { return v.Impacts }).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o VexAssessmentOutput) Justification() JustificationPtrOutput {
+	return o.ApplyT(func(v VexAssessment) *Justification { return v.Justification }).(JustificationPtrOutput)
+}
+
+// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+func (o VexAssessmentOutput) NoteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VexAssessment) *string { return v.NoteName }).(pulumi.StringPtrOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment.
+func (o VexAssessmentOutput) RelatedUris() RelatedUrlArrayOutput {
+	return o.ApplyT(func(v VexAssessment) []RelatedUrl { return v.RelatedUris }).(RelatedUrlArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o VexAssessmentOutput) Remediations() RemediationArrayOutput {
+	return o.ApplyT(func(v VexAssessment) []Remediation { return v.Remediations }).(RemediationArrayOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o VexAssessmentOutput) State() VexAssessmentStatePtrOutput {
+	return o.ApplyT(func(v VexAssessment) *VexAssessmentState { return v.State }).(VexAssessmentStatePtrOutput)
+}
+
+type VexAssessmentPtrOutput struct{ *pulumi.OutputState }
+
+func (VexAssessmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VexAssessment)(nil)).Elem()
+}
+
+func (o VexAssessmentPtrOutput) ToVexAssessmentPtrOutput() VexAssessmentPtrOutput {
+	return o
+}
+
+func (o VexAssessmentPtrOutput) ToVexAssessmentPtrOutputWithContext(ctx context.Context) VexAssessmentPtrOutput {
+	return o
+}
+
+func (o VexAssessmentPtrOutput) Elem() VexAssessmentOutput {
+	return o.ApplyT(func(v *VexAssessment) VexAssessment {
+		if v != nil {
+			return *v
+		}
+		var ret VexAssessment
+		return ret
+	}).(VexAssessmentOutput)
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o VexAssessmentPtrOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VexAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cve
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o VexAssessmentPtrOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VexAssessment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Impacts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o VexAssessmentPtrOutput) Justification() JustificationPtrOutput {
+	return o.ApplyT(func(v *VexAssessment) *Justification {
+		if v == nil {
+			return nil
+		}
+		return v.Justification
+	}).(JustificationPtrOutput)
+}
+
+// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+func (o VexAssessmentPtrOutput) NoteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VexAssessment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoteName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment.
+func (o VexAssessmentPtrOutput) RelatedUris() RelatedUrlArrayOutput {
+	return o.ApplyT(func(v *VexAssessment) []RelatedUrl {
+		if v == nil {
+			return nil
+		}
+		return v.RelatedUris
+	}).(RelatedUrlArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o VexAssessmentPtrOutput) Remediations() RemediationArrayOutput {
+	return o.ApplyT(func(v *VexAssessment) []Remediation {
+		if v == nil {
+			return nil
+		}
+		return v.Remediations
+	}).(RemediationArrayOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o VexAssessmentPtrOutput) State() VexAssessmentStatePtrOutput {
+	return o.ApplyT(func(v *VexAssessment) *VexAssessmentState {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(VexAssessmentStatePtrOutput)
+}
+
+// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+type VexAssessmentResponse struct {
+	// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+	Cve string `pulumi:"cve"`
+	// Contains information about the impact of this vulnerability, this will change with time.
+	Impacts []string `pulumi:"impacts"`
+	// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+	Justification JustificationResponse `pulumi:"justification"`
+	// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+	NoteName string `pulumi:"noteName"`
+	// Holds a list of references associated with this vulnerability item and assessment.
+	RelatedUris []RelatedUrlResponse `pulumi:"relatedUris"`
+	// Specifies details on how to handle (and presumably, fix) a vulnerability.
+	Remediations []RemediationResponse `pulumi:"remediations"`
+	// Provides the state of this Vulnerability assessment.
+	State string `pulumi:"state"`
+}
+
+// VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+type VexAssessmentResponseOutput struct{ *pulumi.OutputState }
+
+func (VexAssessmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VexAssessmentResponse)(nil)).Elem()
+}
+
+func (o VexAssessmentResponseOutput) ToVexAssessmentResponseOutput() VexAssessmentResponseOutput {
+	return o
+}
+
+func (o VexAssessmentResponseOutput) ToVexAssessmentResponseOutputWithContext(ctx context.Context) VexAssessmentResponseOutput {
+	return o
+}
+
+// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+func (o VexAssessmentResponseOutput) Cve() pulumi.StringOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) string { return v.Cve }).(pulumi.StringOutput)
+}
+
+// Contains information about the impact of this vulnerability, this will change with time.
+func (o VexAssessmentResponseOutput) Impacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) []string { return v.Impacts }).(pulumi.StringArrayOutput)
+}
+
+// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+func (o VexAssessmentResponseOutput) Justification() JustificationResponseOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) JustificationResponse { return v.Justification }).(JustificationResponseOutput)
+}
+
+// The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+func (o VexAssessmentResponseOutput) NoteName() pulumi.StringOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) string { return v.NoteName }).(pulumi.StringOutput)
+}
+
+// Holds a list of references associated with this vulnerability item and assessment.
+func (o VexAssessmentResponseOutput) RelatedUris() RelatedUrlResponseArrayOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) []RelatedUrlResponse { return v.RelatedUris }).(RelatedUrlResponseArrayOutput)
+}
+
+// Specifies details on how to handle (and presumably, fix) a vulnerability.
+func (o VexAssessmentResponseOutput) Remediations() RemediationResponseArrayOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) []RemediationResponse { return v.Remediations }).(RemediationResponseArrayOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+func (o VexAssessmentResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v VexAssessmentResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+type VulnerabilityAssessmentNote struct {
+	// Represents a vulnerability assessment for the product.
+	Assessment *Assessment `pulumi:"assessment"`
+	// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+	LanguageCode *string `pulumi:"languageCode"`
+	// A detailed description of this Vex.
+	LongDescription *string `pulumi:"longDescription"`
+	// The product affected by this vex.
+	Product *Product `pulumi:"product"`
+	// Publisher details of this Note.
+	Publisher *Publisher `pulumi:"publisher"`
+	// A one sentence description of this Vex.
+	ShortDescription *string `pulumi:"shortDescription"`
+	// The title of the note. E.g. `Vex-Debian-11.4`
+	Title *string `pulumi:"title"`
+}
+
+// VulnerabilityAssessmentNoteInput is an input type that accepts VulnerabilityAssessmentNoteArgs and VulnerabilityAssessmentNoteOutput values.
+// You can construct a concrete instance of `VulnerabilityAssessmentNoteInput` via:
+//
+//	VulnerabilityAssessmentNoteArgs{...}
+type VulnerabilityAssessmentNoteInput interface {
+	pulumi.Input
+
+	ToVulnerabilityAssessmentNoteOutput() VulnerabilityAssessmentNoteOutput
+	ToVulnerabilityAssessmentNoteOutputWithContext(context.Context) VulnerabilityAssessmentNoteOutput
+}
+
+// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+type VulnerabilityAssessmentNoteArgs struct {
+	// Represents a vulnerability assessment for the product.
+	Assessment AssessmentPtrInput `pulumi:"assessment"`
+	// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// A detailed description of this Vex.
+	LongDescription pulumi.StringPtrInput `pulumi:"longDescription"`
+	// The product affected by this vex.
+	Product ProductPtrInput `pulumi:"product"`
+	// Publisher details of this Note.
+	Publisher PublisherPtrInput `pulumi:"publisher"`
+	// A one sentence description of this Vex.
+	ShortDescription pulumi.StringPtrInput `pulumi:"shortDescription"`
+	// The title of the note. E.g. `Vex-Debian-11.4`
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (VulnerabilityAssessmentNoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityAssessmentNote)(nil)).Elem()
+}
+
+func (i VulnerabilityAssessmentNoteArgs) ToVulnerabilityAssessmentNoteOutput() VulnerabilityAssessmentNoteOutput {
+	return i.ToVulnerabilityAssessmentNoteOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityAssessmentNoteArgs) ToVulnerabilityAssessmentNoteOutputWithContext(ctx context.Context) VulnerabilityAssessmentNoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentNoteOutput)
+}
+
+func (i VulnerabilityAssessmentNoteArgs) ToVulnerabilityAssessmentNotePtrOutput() VulnerabilityAssessmentNotePtrOutput {
+	return i.ToVulnerabilityAssessmentNotePtrOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityAssessmentNoteArgs) ToVulnerabilityAssessmentNotePtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentNoteOutput).ToVulnerabilityAssessmentNotePtrOutputWithContext(ctx)
+}
+
+// VulnerabilityAssessmentNotePtrInput is an input type that accepts VulnerabilityAssessmentNoteArgs, VulnerabilityAssessmentNotePtr and VulnerabilityAssessmentNotePtrOutput values.
+// You can construct a concrete instance of `VulnerabilityAssessmentNotePtrInput` via:
+//
+//	        VulnerabilityAssessmentNoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type VulnerabilityAssessmentNotePtrInput interface {
+	pulumi.Input
+
+	ToVulnerabilityAssessmentNotePtrOutput() VulnerabilityAssessmentNotePtrOutput
+	ToVulnerabilityAssessmentNotePtrOutputWithContext(context.Context) VulnerabilityAssessmentNotePtrOutput
+}
+
+type vulnerabilityAssessmentNotePtrType VulnerabilityAssessmentNoteArgs
+
+func VulnerabilityAssessmentNotePtr(v *VulnerabilityAssessmentNoteArgs) VulnerabilityAssessmentNotePtrInput {
+	return (*vulnerabilityAssessmentNotePtrType)(v)
+}
+
+func (*vulnerabilityAssessmentNotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityAssessmentNote)(nil)).Elem()
+}
+
+func (i *vulnerabilityAssessmentNotePtrType) ToVulnerabilityAssessmentNotePtrOutput() VulnerabilityAssessmentNotePtrOutput {
+	return i.ToVulnerabilityAssessmentNotePtrOutputWithContext(context.Background())
+}
+
+func (i *vulnerabilityAssessmentNotePtrType) ToVulnerabilityAssessmentNotePtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityAssessmentNotePtrOutput)
+}
+
+// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+type VulnerabilityAssessmentNoteOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityAssessmentNoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityAssessmentNote)(nil)).Elem()
+}
+
+func (o VulnerabilityAssessmentNoteOutput) ToVulnerabilityAssessmentNoteOutput() VulnerabilityAssessmentNoteOutput {
+	return o
+}
+
+func (o VulnerabilityAssessmentNoteOutput) ToVulnerabilityAssessmentNoteOutputWithContext(ctx context.Context) VulnerabilityAssessmentNoteOutput {
+	return o
+}
+
+func (o VulnerabilityAssessmentNoteOutput) ToVulnerabilityAssessmentNotePtrOutput() VulnerabilityAssessmentNotePtrOutput {
+	return o.ToVulnerabilityAssessmentNotePtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityAssessmentNoteOutput) ToVulnerabilityAssessmentNotePtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentNotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VulnerabilityAssessmentNote) *VulnerabilityAssessmentNote {
+		return &v
+	}).(VulnerabilityAssessmentNotePtrOutput)
+}
+
+// Represents a vulnerability assessment for the product.
+func (o VulnerabilityAssessmentNoteOutput) Assessment() AssessmentPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *Assessment { return v.Assessment }).(AssessmentPtrOutput)
+}
+
+// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+func (o VulnerabilityAssessmentNoteOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// A detailed description of this Vex.
+func (o VulnerabilityAssessmentNoteOutput) LongDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *string { return v.LongDescription }).(pulumi.StringPtrOutput)
+}
+
+// The product affected by this vex.
+func (o VulnerabilityAssessmentNoteOutput) Product() ProductPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *Product { return v.Product }).(ProductPtrOutput)
+}
+
+// Publisher details of this Note.
+func (o VulnerabilityAssessmentNoteOutput) Publisher() PublisherPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *Publisher { return v.Publisher }).(PublisherPtrOutput)
+}
+
+// A one sentence description of this Vex.
+func (o VulnerabilityAssessmentNoteOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *string { return v.ShortDescription }).(pulumi.StringPtrOutput)
+}
+
+// The title of the note. E.g. `Vex-Debian-11.4`
+func (o VulnerabilityAssessmentNoteOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNote) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type VulnerabilityAssessmentNotePtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityAssessmentNotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityAssessmentNote)(nil)).Elem()
+}
+
+func (o VulnerabilityAssessmentNotePtrOutput) ToVulnerabilityAssessmentNotePtrOutput() VulnerabilityAssessmentNotePtrOutput {
+	return o
+}
+
+func (o VulnerabilityAssessmentNotePtrOutput) ToVulnerabilityAssessmentNotePtrOutputWithContext(ctx context.Context) VulnerabilityAssessmentNotePtrOutput {
+	return o
+}
+
+func (o VulnerabilityAssessmentNotePtrOutput) Elem() VulnerabilityAssessmentNoteOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) VulnerabilityAssessmentNote {
+		if v != nil {
+			return *v
+		}
+		var ret VulnerabilityAssessmentNote
+		return ret
+	}).(VulnerabilityAssessmentNoteOutput)
+}
+
+// Represents a vulnerability assessment for the product.
+func (o VulnerabilityAssessmentNotePtrOutput) Assessment() AssessmentPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *Assessment {
+		if v == nil {
+			return nil
+		}
+		return v.Assessment
+	}).(AssessmentPtrOutput)
+}
+
+// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+func (o VulnerabilityAssessmentNotePtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A detailed description of this Vex.
+func (o VulnerabilityAssessmentNotePtrOutput) LongDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The product affected by this vex.
+func (o VulnerabilityAssessmentNotePtrOutput) Product() ProductPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *Product {
+		if v == nil {
+			return nil
+		}
+		return v.Product
+	}).(ProductPtrOutput)
+}
+
+// Publisher details of this Note.
+func (o VulnerabilityAssessmentNotePtrOutput) Publisher() PublisherPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *Publisher {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(PublisherPtrOutput)
+}
+
+// A one sentence description of this Vex.
+func (o VulnerabilityAssessmentNotePtrOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the note. E.g. `Vex-Debian-11.4`
+func (o VulnerabilityAssessmentNotePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityAssessmentNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+type VulnerabilityAssessmentNoteResponse struct {
+	// Represents a vulnerability assessment for the product.
+	Assessment AssessmentResponse `pulumi:"assessment"`
+	// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+	LanguageCode string `pulumi:"languageCode"`
+	// A detailed description of this Vex.
+	LongDescription string `pulumi:"longDescription"`
+	// The product affected by this vex.
+	Product ProductResponse `pulumi:"product"`
+	// Publisher details of this Note.
+	Publisher PublisherResponse `pulumi:"publisher"`
+	// A one sentence description of this Vex.
+	ShortDescription string `pulumi:"shortDescription"`
+	// The title of the note. E.g. `Vex-Debian-11.4`
+	Title string `pulumi:"title"`
+}
+
+// A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+type VulnerabilityAssessmentNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityAssessmentNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityAssessmentNoteResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityAssessmentNoteResponseOutput) ToVulnerabilityAssessmentNoteResponseOutput() VulnerabilityAssessmentNoteResponseOutput {
+	return o
+}
+
+func (o VulnerabilityAssessmentNoteResponseOutput) ToVulnerabilityAssessmentNoteResponseOutputWithContext(ctx context.Context) VulnerabilityAssessmentNoteResponseOutput {
+	return o
+}
+
+// Represents a vulnerability assessment for the product.
+func (o VulnerabilityAssessmentNoteResponseOutput) Assessment() AssessmentResponseOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) AssessmentResponse { return v.Assessment }).(AssessmentResponseOutput)
+}
+
+// Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+func (o VulnerabilityAssessmentNoteResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// A detailed description of this Vex.
+func (o VulnerabilityAssessmentNoteResponseOutput) LongDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) string { return v.LongDescription }).(pulumi.StringOutput)
+}
+
+// The product affected by this vex.
+func (o VulnerabilityAssessmentNoteResponseOutput) Product() ProductResponseOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) ProductResponse { return v.Product }).(ProductResponseOutput)
+}
+
+// Publisher details of this Note.
+func (o VulnerabilityAssessmentNoteResponseOutput) Publisher() PublisherResponseOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) PublisherResponse { return v.Publisher }).(PublisherResponseOutput)
+}
+
+// A one sentence description of this Vex.
+func (o VulnerabilityAssessmentNoteResponseOutput) ShortDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) string { return v.ShortDescription }).(pulumi.StringOutput)
+}
+
+// The title of the note. E.g. `Vex-Debian-11.4`
+func (o VulnerabilityAssessmentNoteResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityAssessmentNoteResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // A security vulnerability that can be found in resources.
 type VulnerabilityNote struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore *float64 `pulumi:"cvssScore"`
+	// The full description of the v2 CVSS for this vulnerability.
+	CvssV2 *CVSS `pulumi:"cvssV2"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 *CVSSv3 `pulumi:"cvssV3"`
 	// CVSS version used to populate cvss_score and severity.
@@ -17452,6 +19340,8 @@ type VulnerabilityNoteInput interface {
 type VulnerabilityNoteArgs struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
+	// The full description of the v2 CVSS for this vulnerability.
+	CvssV2 CVSSPtrInput `pulumi:"cvssV2"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 CVSSv3PtrInput `pulumi:"cvssV3"`
 	// CVSS version used to populate cvss_score and severity.
@@ -17549,6 +19439,11 @@ func (o VulnerabilityNoteOutput) CvssScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VulnerabilityNote) *float64 { return v.CvssScore }).(pulumi.Float64PtrOutput)
 }
 
+// The full description of the v2 CVSS for this vulnerability.
+func (o VulnerabilityNoteOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v VulnerabilityNote) *CVSS { return v.CvssV2 }).(CVSSPtrOutput)
+}
+
 // The full description of the CVSSv3 for this vulnerability.
 func (o VulnerabilityNoteOutput) CvssV3() CVSSv3PtrOutput {
 	return o.ApplyT(func(v VulnerabilityNote) *CVSSv3 { return v.CvssV3 }).(CVSSv3PtrOutput)
@@ -17611,6 +19506,16 @@ func (o VulnerabilityNotePtrOutput) CvssScore() pulumi.Float64PtrOutput {
 		}
 		return v.CvssScore
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The full description of the v2 CVSS for this vulnerability.
+func (o VulnerabilityNotePtrOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityNote) *CVSS {
+		if v == nil {
+			return nil
+		}
+		return v.CvssV2
+	}).(CVSSPtrOutput)
 }
 
 // The full description of the CVSSv3 for this vulnerability.
@@ -17677,6 +19582,8 @@ func (o VulnerabilityNotePtrOutput) WindowsDetails() WindowsDetailArrayOutput {
 type VulnerabilityNoteResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
+	// The full description of the v2 CVSS for this vulnerability.
+	CvssV2 CVSSResponse `pulumi:"cvssV2"`
 	// The full description of the CVSSv3 for this vulnerability.
 	CvssV3 CVSSv3Response `pulumi:"cvssV3"`
 	// CVSS version used to populate cvss_score and severity.
@@ -17711,6 +19618,11 @@ func (o VulnerabilityNoteResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v VulnerabilityNoteResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
 }
 
+// The full description of the v2 CVSS for this vulnerability.
+func (o VulnerabilityNoteResponseOutput) CvssV2() CVSSResponseOutput {
+	return o.ApplyT(func(v VulnerabilityNoteResponse) CVSSResponse { return v.CvssV2 }).(CVSSResponseOutput)
+}
+
 // The full description of the CVSSv3 for this vulnerability.
 func (o VulnerabilityNoteResponseOutput) CvssV3() CVSSv3ResponseOutput {
 	return o.ApplyT(func(v VulnerabilityNoteResponse) CVSSv3Response { return v.CvssV3 }).(CVSSv3ResponseOutput)
@@ -17743,6 +19655,8 @@ func (o VulnerabilityNoteResponseOutput) WindowsDetails() WindowsDetailResponseA
 
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrence struct {
+	// The cvss v2 score for the vulnerability.
+	CvssV2 *CVSS `pulumi:"cvssV2"`
 	// The cvss v3 score for the vulnerability.
 	Cvssv3 *CVSS `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -17750,7 +19664,8 @@ type VulnerabilityOccurrence struct {
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
 	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-	Type *string `pulumi:"type"`
+	Type          *string        `pulumi:"type"`
+	VexAssessment *VexAssessment `pulumi:"vexAssessment"`
 }
 
 // VulnerabilityOccurrenceInput is an input type that accepts VulnerabilityOccurrenceArgs and VulnerabilityOccurrenceOutput values.
@@ -17766,6 +19681,8 @@ type VulnerabilityOccurrenceInput interface {
 
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrenceArgs struct {
+	// The cvss v2 score for the vulnerability.
+	CvssV2 CVSSPtrInput `pulumi:"cvssV2"`
 	// The cvss v3 score for the vulnerability.
 	Cvssv3 CVSSPtrInput `pulumi:"cvssv3"`
 	// The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
@@ -17773,7 +19690,8 @@ type VulnerabilityOccurrenceArgs struct {
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
 	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type          pulumi.StringPtrInput `pulumi:"type"`
+	VexAssessment VexAssessmentPtrInput `pulumi:"vexAssessment"`
 }
 
 func (VulnerabilityOccurrenceArgs) ElementType() reflect.Type {
@@ -17854,6 +19772,11 @@ func (o VulnerabilityOccurrenceOutput) ToVulnerabilityOccurrencePtrOutputWithCon
 	}).(VulnerabilityOccurrencePtrOutput)
 }
 
+// The cvss v2 score for the vulnerability.
+func (o VulnerabilityOccurrenceOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrence) *CVSS { return v.CvssV2 }).(CVSSPtrOutput)
+}
+
 // The cvss v3 score for the vulnerability.
 func (o VulnerabilityOccurrenceOutput) Cvssv3() CVSSPtrOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrence) *CVSS { return v.Cvssv3 }).(CVSSPtrOutput)
@@ -17872,6 +19795,10 @@ func (o VulnerabilityOccurrenceOutput) PackageIssue() PackageIssueArrayOutput {
 // The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
 func (o VulnerabilityOccurrenceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrence) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o VulnerabilityOccurrenceOutput) VexAssessment() VexAssessmentPtrOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrence) *VexAssessment { return v.VexAssessment }).(VexAssessmentPtrOutput)
 }
 
 type VulnerabilityOccurrencePtrOutput struct{ *pulumi.OutputState }
@@ -17896,6 +19823,16 @@ func (o VulnerabilityOccurrencePtrOutput) Elem() VulnerabilityOccurrenceOutput {
 		var ret VulnerabilityOccurrence
 		return ret
 	}).(VulnerabilityOccurrenceOutput)
+}
+
+// The cvss v2 score for the vulnerability.
+func (o VulnerabilityOccurrencePtrOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityOccurrence) *CVSS {
+		if v == nil {
+			return nil
+		}
+		return v.CvssV2
+	}).(CVSSPtrOutput)
 }
 
 // The cvss v3 score for the vulnerability.
@@ -17938,10 +19875,21 @@ func (o VulnerabilityOccurrencePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o VulnerabilityOccurrencePtrOutput) VexAssessment() VexAssessmentPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityOccurrence) *VexAssessment {
+		if v == nil {
+			return nil
+		}
+		return v.VexAssessment
+	}).(VexAssessmentPtrOutput)
+}
+
 // An occurrence of a severity vulnerability on a resource.
 type VulnerabilityOccurrenceResponse struct {
 	// The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore float64 `pulumi:"cvssScore"`
+	// The cvss v2 score for the vulnerability.
+	CvssV2 CVSSResponse `pulumi:"cvssV2"`
 	// CVSS version used to populate cvss_score and severity.
 	CvssVersion string `pulumi:"cvssVersion"`
 	// The cvss v3 score for the vulnerability.
@@ -17961,7 +19909,8 @@ type VulnerabilityOccurrenceResponse struct {
 	// A one sentence description of this vulnerability.
 	ShortDescription string `pulumi:"shortDescription"`
 	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
-	Type string `pulumi:"type"`
+	Type          string                `pulumi:"type"`
+	VexAssessment VexAssessmentResponse `pulumi:"vexAssessment"`
 }
 
 // An occurrence of a severity vulnerability on a resource.
@@ -17982,6 +19931,11 @@ func (o VulnerabilityOccurrenceResponseOutput) ToVulnerabilityOccurrenceResponse
 // The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
 func (o VulnerabilityOccurrenceResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
+}
+
+// The cvss v2 score for the vulnerability.
+func (o VulnerabilityOccurrenceResponseOutput) CvssV2() CVSSResponseOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) CVSSResponse { return v.CvssV2 }).(CVSSResponseOutput)
 }
 
 // CVSS version used to populate cvss_score and severity.
@@ -18032,6 +19986,10 @@ func (o VulnerabilityOccurrenceResponseOutput) ShortDescription() pulumi.StringO
 // The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
 func (o VulnerabilityOccurrenceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o VulnerabilityOccurrenceResponseOutput) VexAssessment() VexAssessmentResponseOutput {
+	return o.ApplyT(func(v VulnerabilityOccurrenceResponse) VexAssessmentResponse { return v.VexAssessment }).(VexAssessmentResponseOutput)
 }
 
 type WindowsDetail struct {
@@ -18552,6 +20510,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisCompletedPtrInput)(nil)).Elem(), AnalysisCompletedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactInput)(nil)).Elem(), ArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactArrayInput)(nil)).Elem(), ArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentInput)(nil)).Elem(), AssessmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentPtrInput)(nil)).Elem(), AssessmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNoteInput)(nil)).Elem(), AttestationNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationNotePtrInput)(nil)).Elem(), AttestationNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationOccurrenceInput)(nil)).Elem(), AttestationOccurrenceArgs{})
@@ -18644,6 +20604,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoProvenancePtrInput)(nil)).Elem(), InTotoProvenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementInput)(nil)).Elem(), InTotoStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoStatementPtrInput)(nil)).Elem(), InTotoStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JustificationInput)(nil)).Elem(), JustificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JustificationPtrInput)(nil)).Elem(), JustificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtInput)(nil)).Elem(), JwtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtArrayInput)(nil)).Elem(), JwtArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseInput)(nil)).Elem(), KnowledgeBaseArgs{})
@@ -18666,12 +20628,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNotePtrInput)(nil)).Elem(), PackageNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrenceInput)(nil)).Elem(), PackageOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageOccurrencePtrInput)(nil)).Elem(), PackageOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductInput)(nil)).Elem(), ProductArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProductPtrInput)(nil)).Elem(), ProductArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdInput)(nil)).Elem(), ProjectRepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectRepoIdPtrInput)(nil)).Elem(), ProjectRepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublisherInput)(nil)).Elem(), PublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublisherPtrInput)(nil)).Elem(), PublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipeInput)(nil)).Elem(), RecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecipePtrInput)(nil)).Elem(), RecipeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlInput)(nil)).Elem(), RelatedUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlPtrInput)(nil)).Elem(), RelatedUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RelatedUrlArrayInput)(nil)).Elem(), RelatedUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemediationInput)(nil)).Elem(), RemediationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemediationArrayInput)(nil)).Elem(), RemediationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdInput)(nil)).Elem(), RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdPtrInput)(nil)).Elem(), RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
@@ -18707,6 +20676,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeOccurrencePtrInput)(nil)).Elem(), UpgradeOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionInput)(nil)).Elem(), VersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionPtrInput)(nil)).Elem(), VersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VexAssessmentInput)(nil)).Elem(), VexAssessmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VexAssessmentPtrInput)(nil)).Elem(), VexAssessmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityAssessmentNoteInput)(nil)).Elem(), VulnerabilityAssessmentNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityAssessmentNotePtrInput)(nil)).Elem(), VulnerabilityAssessmentNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteInput)(nil)).Elem(), VulnerabilityNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNotePtrInput)(nil)).Elem(), VulnerabilityNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrenceInput)(nil)).Elem(), VulnerabilityOccurrenceArgs{})
@@ -18725,6 +20698,9 @@ func init() {
 	pulumi.RegisterOutputType(ArtifactArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactResponseOutput{})
 	pulumi.RegisterOutputType(ArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssessmentOutput{})
+	pulumi.RegisterOutputType(AssessmentPtrOutput{})
+	pulumi.RegisterOutputType(AssessmentResponseOutput{})
 	pulumi.RegisterOutputType(AttestationNoteOutput{})
 	pulumi.RegisterOutputType(AttestationNotePtrOutput{})
 	pulumi.RegisterOutputType(AttestationNoteResponseOutput{})
@@ -18873,6 +20849,9 @@ func init() {
 	pulumi.RegisterOutputType(InTotoStatementOutput{})
 	pulumi.RegisterOutputType(InTotoStatementPtrOutput{})
 	pulumi.RegisterOutputType(InTotoStatementResponseOutput{})
+	pulumi.RegisterOutputType(JustificationOutput{})
+	pulumi.RegisterOutputType(JustificationPtrOutput{})
+	pulumi.RegisterOutputType(JustificationResponseOutput{})
 	pulumi.RegisterOutputType(JwtOutput{})
 	pulumi.RegisterOutputType(JwtArrayOutput{})
 	pulumi.RegisterOutputType(JwtResponseOutput{})
@@ -18913,16 +20892,27 @@ func init() {
 	pulumi.RegisterOutputType(PackageOccurrenceOutput{})
 	pulumi.RegisterOutputType(PackageOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(PackageOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(ProductOutput{})
+	pulumi.RegisterOutputType(ProductPtrOutput{})
+	pulumi.RegisterOutputType(ProductResponseOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdPtrOutput{})
 	pulumi.RegisterOutputType(ProjectRepoIdResponseOutput{})
+	pulumi.RegisterOutputType(PublisherOutput{})
+	pulumi.RegisterOutputType(PublisherPtrOutput{})
+	pulumi.RegisterOutputType(PublisherResponseOutput{})
 	pulumi.RegisterOutputType(RecipeOutput{})
 	pulumi.RegisterOutputType(RecipePtrOutput{})
 	pulumi.RegisterOutputType(RecipeResponseOutput{})
 	pulumi.RegisterOutputType(RelatedUrlOutput{})
+	pulumi.RegisterOutputType(RelatedUrlPtrOutput{})
 	pulumi.RegisterOutputType(RelatedUrlArrayOutput{})
 	pulumi.RegisterOutputType(RelatedUrlResponseOutput{})
 	pulumi.RegisterOutputType(RelatedUrlResponseArrayOutput{})
+	pulumi.RegisterOutputType(RemediationOutput{})
+	pulumi.RegisterOutputType(RemediationArrayOutput{})
+	pulumi.RegisterOutputType(RemediationResponseOutput{})
+	pulumi.RegisterOutputType(RemediationResponseArrayOutput{})
 	pulumi.RegisterOutputType(RepoIdOutput{})
 	pulumi.RegisterOutputType(RepoIdPtrOutput{})
 	pulumi.RegisterOutputType(RepoIdResponseOutput{})
@@ -18979,6 +20969,12 @@ func init() {
 	pulumi.RegisterOutputType(VersionOutput{})
 	pulumi.RegisterOutputType(VersionPtrOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
+	pulumi.RegisterOutputType(VexAssessmentOutput{})
+	pulumi.RegisterOutputType(VexAssessmentPtrOutput{})
+	pulumi.RegisterOutputType(VexAssessmentResponseOutput{})
+	pulumi.RegisterOutputType(VulnerabilityAssessmentNoteOutput{})
+	pulumi.RegisterOutputType(VulnerabilityAssessmentNotePtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityAssessmentNoteResponseOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNotePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteResponseOutput{})

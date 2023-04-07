@@ -35,7 +35,9 @@ type LookupQueuedResourceResult struct {
 	Name string `pulumi:"name"`
 	// The queueing policy of the QueuedRequest.
 	QueueingPolicy QueueingPolicyResponse `pulumi:"queueingPolicy"`
-	// State of the QueuedResource request
+	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+	ReservationName string `pulumi:"reservationName"`
+	// State of the QueuedResource request.
 	State QueuedResourceStateResponse `pulumi:"state"`
 	// Defines a TPU resource.
 	Tpu TpuResponse `pulumi:"tpu"`
@@ -98,7 +100,12 @@ func (o LookupQueuedResourceResultOutput) QueueingPolicy() QueueingPolicyRespons
 	return o.ApplyT(func(v LookupQueuedResourceResult) QueueingPolicyResponse { return v.QueueingPolicy }).(QueueingPolicyResponseOutput)
 }
 
-// State of the QueuedResource request
+// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+func (o LookupQueuedResourceResultOutput) ReservationName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupQueuedResourceResult) string { return v.ReservationName }).(pulumi.StringOutput)
+}
+
+// State of the QueuedResource request.
 func (o LookupQueuedResourceResultOutput) State() QueuedResourceStateResponseOutput {
 	return o.ApplyT(func(v LookupQueuedResourceResult) QueuedResourceStateResponse { return v.State }).(QueuedResourceStateResponseOutput)
 }

@@ -25,3 +25,7 @@ class ExecutionCallLogLevel(str, Enum):
     """
     Log only exceptions that are raised from call steps within workflows.
     """
+    LOG_NONE = "LOG_NONE"
+    """
+    Explicitly log nothing.
+    """

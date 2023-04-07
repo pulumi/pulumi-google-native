@@ -358,11 +358,11 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public static DataSetPlotType Line { get; } = new DataSetPlotType("LINE");
         /// <summary>
-        /// The data is plotted as a set of filled areas (one area per series), with the areas stacked vertically (the base of each area is the top of its predecessor, and the base of the first area is the X axis). Since the areas do not overlap, each is filled with a different opaque color.
+        /// The data is plotted as a set of filled areas (one area per series), with the areas stacked vertically (the base of each area is the top of its predecessor, and the base of the first area is the x-axis). Since the areas do not overlap, each is filled with a different opaque color.
         /// </summary>
         public static DataSetPlotType StackedArea { get; } = new DataSetPlotType("STACKED_AREA");
         /// <summary>
-        /// The data is plotted as a set of rectangular boxes (one box per series), with the boxes stacked vertically (the base of each box is the top of its predecessor, and the base of the first box is the X axis). Since the boxes do not overlap, each is filled with a different opaque color.
+        /// The data is plotted as a set of rectangular boxes (one box per series), with the boxes stacked vertically (the base of each box is the top of its predecessor, and the base of the first box is the x-axis). Since the boxes do not overlap, each is filled with a different opaque color.
         /// </summary>
         public static DataSetPlotType StackedBar { get; } = new DataSetPlotType("STACKED_BAR");
         /// <summary>

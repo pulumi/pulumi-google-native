@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GooglePrivacyDlpV2ActionDetailsResponse',
     'GooglePrivacyDlpV2ActionResponse',
     'GooglePrivacyDlpV2AllInfoTypesResponse',
     'GooglePrivacyDlpV2AllTextResponse',
@@ -42,7 +43,10 @@ __all__ = [
     'GooglePrivacyDlpV2DatastoreOptionsResponse',
     'GooglePrivacyDlpV2DateShiftConfigResponse',
     'GooglePrivacyDlpV2DeidentifyConfigResponse',
+    'GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse',
+    'GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse',
     'GooglePrivacyDlpV2DeidentifyResponse',
+    'GooglePrivacyDlpV2DeidentifyTemplateResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse',
@@ -118,6 +122,7 @@ __all__ = [
     'GooglePrivacyDlpV2ReplaceDictionaryConfigResponse',
     'GooglePrivacyDlpV2ReplaceValueConfigResponse',
     'GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse',
+    'GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse',
     'GooglePrivacyDlpV2RequestedOptionsResponse',
     'GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse',
     'GooglePrivacyDlpV2ResultResponse',
@@ -151,6 +156,45 @@ __all__ = [
     'GoogleTypeDateResponse',
     'GoogleTypeTimeOfDayResponse',
 ]
+
+@pulumi.output_type
+class GooglePrivacyDlpV2ActionDetailsResponse(dict):
+    """
+    The results of an Action.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deidentifyDetails":
+            suggest = "deidentify_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ActionDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ActionDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ActionDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deidentify_details: 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse'):
+        """
+        The results of an Action.
+        :param 'GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse' deidentify_details: Outcome of a de-identification action.
+        """
+        pulumi.set(__self__, "deidentify_details", deidentify_details)
+
+    @property
+    @pulumi.getter(name="deidentifyDetails")
+    def deidentify_details(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse':
+        """
+        Outcome of a de-identification action.
+        """
+        return pulumi.get(self, "deidentify_details")
+
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ActionResponse(dict):
@@ -1982,6 +2026,123 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(dict):
+    """
+    The results of a Deidentify action from an Inspect job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deidentifyStats":
+            suggest = "deidentify_stats"
+        elif key == "requestedOptions":
+            suggest = "requested_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deidentify_stats: 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse',
+                 requested_options: 'outputs.GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse'):
+        """
+        The results of a Deidentify action from an Inspect job.
+        :param 'GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse' deidentify_stats: Stats about de-identification.
+        :param 'GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse' requested_options: De-identification config used for the request.
+        """
+        pulumi.set(__self__, "deidentify_stats", deidentify_stats)
+        pulumi.set(__self__, "requested_options", requested_options)
+
+    @property
+    @pulumi.getter(name="deidentifyStats")
+    def deidentify_stats(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse':
+        """
+        Stats about de-identification.
+        """
+        return pulumi.get(self, "deidentify_stats")
+
+    @property
+    @pulumi.getter(name="requestedOptions")
+    def requested_options(self) -> 'outputs.GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse':
+        """
+        De-identification config used for the request.
+        """
+        return pulumi.get(self, "requested_options")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse(dict):
+    """
+    Summary of what was modified during a transformation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "transformationCount":
+            suggest = "transformation_count"
+        elif key == "transformationErrorCount":
+            suggest = "transformation_error_count"
+        elif key == "transformedBytes":
+            suggest = "transformed_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 transformation_count: str,
+                 transformation_error_count: str,
+                 transformed_bytes: str):
+        """
+        Summary of what was modified during a transformation.
+        :param str transformation_count: Number of successfully applied transformations.
+        :param str transformation_error_count: Number of errors encountered while trying to apply transformations.
+        :param str transformed_bytes: Total size in bytes that were transformed in some way.
+        """
+        pulumi.set(__self__, "transformation_count", transformation_count)
+        pulumi.set(__self__, "transformation_error_count", transformation_error_count)
+        pulumi.set(__self__, "transformed_bytes", transformed_bytes)
+
+    @property
+    @pulumi.getter(name="transformationCount")
+    def transformation_count(self) -> str:
+        """
+        Number of successfully applied transformations.
+        """
+        return pulumi.get(self, "transformation_count")
+
+    @property
+    @pulumi.getter(name="transformationErrorCount")
+    def transformation_error_count(self) -> str:
+        """
+        Number of errors encountered while trying to apply transformations.
+        """
+        return pulumi.get(self, "transformation_error_count")
+
+    @property
+    @pulumi.getter(name="transformedBytes")
+    def transformed_bytes(self) -> str:
+        """
+        Total size in bytes that were transformed in some way.
+        """
+        return pulumi.get(self, "transformed_bytes")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2DeidentifyResponse(dict):
     """
     Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
@@ -2057,6 +2218,106 @@ class GooglePrivacyDlpV2DeidentifyResponse(dict):
         Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
         """
         return pulumi.get(self, "transformation_details_storage_config")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DeidentifyTemplateResponse(dict):
+    """
+    DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "deidentifyConfig":
+            suggest = "deidentify_config"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeidentifyTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeidentifyTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeidentifyTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: str,
+                 deidentify_config: 'outputs.GooglePrivacyDlpV2DeidentifyConfigResponse',
+                 description: str,
+                 display_name: str,
+                 name: str,
+                 update_time: str):
+        """
+        DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+        :param str create_time: The creation timestamp of an inspectTemplate.
+        :param 'GooglePrivacyDlpV2DeidentifyConfigResponse' deidentify_config: The core content of the template.
+        :param str description: Short description (max 256 chars).
+        :param str display_name: Display name (max 256 chars).
+        :param str name: The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        :param str update_time: The last update timestamp of an inspectTemplate.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deidentify_config", deidentify_config)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation timestamp of an inspectTemplate.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deidentifyConfig")
+    def deidentify_config(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyConfigResponse':
+        """
+        The core content of the template.
+        """
+        return pulumi.get(self, "deidentify_config")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Short description (max 256 chars).
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Display name (max 256 chars).
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The last update timestamp of an inspectTemplate.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type
@@ -3511,7 +3772,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         :param bool exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
         :param str min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param Sequence['GooglePrivacyDlpV2InspectionRuleSetResponse'] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
@@ -3568,7 +3829,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter
     def limits(self) -> 'outputs.GooglePrivacyDlpV2FindingLimitsResponse':
         """
-        Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+        Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
         """
         return pulumi.get(self, "limits")
 
@@ -5927,6 +6188,71 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse(dict):
         Replace each matching finding with the name of the info_type.
         """
         pass
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
+    """
+    De-id options.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "snapshotDeidentifyTemplate":
+            suggest = "snapshot_deidentify_template"
+        elif key == "snapshotImageRedactTemplate":
+            suggest = "snapshot_image_redact_template"
+        elif key == "snapshotStructuredDeidentifyTemplate":
+            suggest = "snapshot_structured_deidentify_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 snapshot_deidentify_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse',
+                 snapshot_image_redact_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse',
+                 snapshot_structured_deidentify_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse'):
+        """
+        De-id options.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_deidentify_template: Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_image_redact_template: Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_structured_deidentify_template: Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+        """
+        pulumi.set(__self__, "snapshot_deidentify_template", snapshot_deidentify_template)
+        pulumi.set(__self__, "snapshot_image_redact_template", snapshot_image_redact_template)
+        pulumi.set(__self__, "snapshot_structured_deidentify_template", snapshot_structured_deidentify_template)
+
+    @property
+    @pulumi.getter(name="snapshotDeidentifyTemplate")
+    def snapshot_deidentify_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
+        """
+        Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        """
+        return pulumi.get(self, "snapshot_deidentify_template")
+
+    @property
+    @pulumi.getter(name="snapshotImageRedactTemplate")
+    def snapshot_image_redact_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
+        """
+        Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+        """
+        return pulumi.get(self, "snapshot_image_redact_template")
+
+    @property
+    @pulumi.getter(name="snapshotStructuredDeidentifyTemplate")
+    def snapshot_structured_deidentify_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
+        """
+        Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+        """
+        return pulumi.get(self, "snapshot_structured_deidentify_template")
 
 
 @pulumi.output_type

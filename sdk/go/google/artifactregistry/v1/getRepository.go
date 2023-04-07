@@ -31,6 +31,8 @@ type LookupRepositoryResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description string `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	DockerConfig DockerRepositoryConfigResponse `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository.
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -100,6 +102,11 @@ func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
 // The user-provided description of the repository.
 func (o LookupRepositoryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Docker repository config contains repository level configuration for the repositories of docker type.
+func (o LookupRepositoryResultOutput) DockerConfig() DockerRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) DockerRepositoryConfigResponse { return v.DockerConfig }).(DockerRepositoryConfigResponseOutput)
 }
 
 // The format of packages that are stored in the repository.

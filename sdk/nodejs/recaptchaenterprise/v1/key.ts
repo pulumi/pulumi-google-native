@@ -42,9 +42,9 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly androidSettings!: pulumi.Output<outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse>;
     /**
-     * The timestamp corresponding to the creation of this Key.
+     * The timestamp corresponding to the creation of this key.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
      */
@@ -87,7 +87,6 @@ export class Key extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["androidSettings"] = args ? args.androidSettings : undefined;
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["iosSettings"] = args ? args.iosSettings : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -96,6 +95,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
             resourceInputs["wafSettings"] = args ? args.wafSettings : undefined;
             resourceInputs["webSettings"] = args ? args.webSettings : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         } else {
             resourceInputs["androidSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -123,10 +123,6 @@ export interface KeyArgs {
      * Settings for keys that can be used by Android apps.
      */
     androidSettings?: pulumi.Input<inputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs>;
-    /**
-     * The timestamp corresponding to the creation of this Key.
-     */
-    createTime?: pulumi.Input<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
      */

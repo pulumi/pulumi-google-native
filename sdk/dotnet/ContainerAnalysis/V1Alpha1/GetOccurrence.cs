@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.DocumentOccurrenceResponse Sbom;
         /// <summary>
+        /// This represents an SBOM reference occurrence
+        /// </summary>
+        public readonly Outputs.SBOMReferenceOccurrenceResponse SbomReference;
+        /// <summary>
         /// Describes a specific SPDX File.
         /// </summary>
         public readonly Outputs.FileOccurrenceResponse SpdxFile;
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.DocumentOccurrenceResponse sbom,
 
+            Outputs.SBOMReferenceOccurrenceResponse sbomReference,
+
             Outputs.FileOccurrenceResponse spdxFile,
 
             Outputs.PackageInfoOccurrenceResponse spdxPackage,
@@ -215,6 +221,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             Resource = resource;
             ResourceUrl = resourceUrl;
             Sbom = sbom;
+            SbomReference = sbomReference;
             SpdxFile = spdxFile;
             SpdxPackage = spdxPackage;
             SpdxRelationship = spdxRelationship;

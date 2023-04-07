@@ -10,9 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// [Output Only] Contains output only fields.
+    /// </summary>
     [OutputType]
     public sealed class AllocationResourceStatusResponse
     {
+        /// <summary>
+        /// Allocation Properties of this reservation.
+        /// </summary>
         public readonly Outputs.AllocationResourceStatusSpecificSKUAllocationResponse SpecificSkuAllocation;
 
         [OutputConstructor]

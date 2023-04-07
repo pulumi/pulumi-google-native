@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource in the specified region.
  */
 export function getRegionTargetHttpProxy(args: GetRegionTargetHttpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionTargetHttpProxyResult> {
 
@@ -66,7 +66,7 @@ export interface GetRegionTargetHttpProxyResult {
     readonly urlMap: string;
 }
 /**
- * Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource in the specified region.
  */
 export function getRegionTargetHttpProxyOutput(args: GetRegionTargetHttpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionTargetHttpProxyResult> {
     return pulumi.output(args).apply((a: any) => getRegionTargetHttpProxy(a, opts))

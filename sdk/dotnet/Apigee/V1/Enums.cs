@@ -696,7 +696,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public static TargetServerProtocol Http { get; } = new TargetServerProtocol("HTTP");
         /// <summary>
-        /// The TargetServer uses GRPC.
+        /// GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
         /// </summary>
         public static TargetServerProtocol Grpc { get; } = new TargetServerProtocol("GRPC");
 

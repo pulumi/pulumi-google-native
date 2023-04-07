@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified node template. Gets a list of available node templates by making a list() request.
+ * Returns the specified node template.
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
 
@@ -58,7 +58,7 @@ export interface GetNodeTemplateResult {
      */
     readonly nodeType: string;
     /**
-     * The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+     * Do not use. Instead, use the node_type property.
      */
     readonly nodeTypeFlexibility: outputs.compute.beta.NodeTemplateNodeTypeFlexibilityResponse;
     /**
@@ -83,7 +83,7 @@ export interface GetNodeTemplateResult {
     readonly statusMessage: string;
 }
 /**
- * Returns the specified node template. Gets a list of available node templates by making a list() request.
+ * Returns the specified node template.
  */
 export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
     return pulumi.output(args).apply((a: any) => getNodeTemplate(a, opts))

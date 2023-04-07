@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerImageResponse> Kernels;
         /// <summary>
+        /// Bool indicating whether mixer client should be disabled. Default: False
+        /// </summary>
+        public readonly bool MixerDisabled;
+        /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         /// </summary>
         public readonly string NotebookUpgradeSchedule;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             ImmutableArray<Outputs.ContainerImageResponse> kernels,
 
+            bool mixerDisabled,
+
             string notebookUpgradeSchedule,
 
             string postStartupScript,
@@ -98,6 +104,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             IdleShutdownTimeout = idleShutdownTimeout;
             InstallGpuDriver = installGpuDriver;
             Kernels = kernels;
+            MixerDisabled = mixerDisabled;
             NotebookUpgradeSchedule = notebookUpgradeSchedule;
             PostStartupScript = postStartupScript;
             PostStartupScriptBehavior = postStartupScriptBehavior;

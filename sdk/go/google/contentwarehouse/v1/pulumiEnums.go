@@ -891,6 +891,8 @@ const (
 	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeReplacePropertiesByNames = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_REPLACE_PROPERTIES_BY_NAMES")
 	// Delete the properties by names.
 	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeDeletePropertiesByNames = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES")
+	// For each of the property, replaces the property if the it exists, otherwise inserts a new property. And for the rest of the fields, merge them based on update mask and merge fields options.
+	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeMergeAndReplaceOrInsertPropertiesByNames = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES")
 )
 
 // Optional. The type of the layout element that is being referenced if any.
@@ -1426,7 +1428,7 @@ const (
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeAdd = GoogleCloudDocumentaiV1DocumentProvenanceType("ADD")
 	// Remove an element identified by `parent`.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeRemove = GoogleCloudDocumentaiV1DocumentProvenanceType("REMOVE")
-	// Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.
+	// Updates any fields within the given provenance scope of the message. It overwrites the fields rather than replacing them. Use this when you want to update a field value of an entity without also updating all the child properties.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeUpdate = GoogleCloudDocumentaiV1DocumentProvenanceType("UPDATE")
 	// Currently unused. Replace an element identified by `parent`.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeReplace = GoogleCloudDocumentaiV1DocumentProvenanceType("REPLACE")

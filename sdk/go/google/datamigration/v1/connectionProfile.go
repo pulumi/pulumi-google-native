@@ -41,7 +41,7 @@ type ConnectionProfile struct {
 	Project    pulumi.StringOutput                       `pulumi:"project"`
 	// The database provider.
 	Provider pulumi.StringOutput `pulumi:"provider"`
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
@@ -123,7 +123,7 @@ type connectionProfileArgs struct {
 	Project    *string                      `pulumi:"project"`
 	// The database provider.
 	Provider *ConnectionProfileProvider `pulumi:"provider"`
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation *bool `pulumi:"skipValidation"`
@@ -157,7 +157,7 @@ type ConnectionProfileArgs struct {
 	Project    pulumi.StringPtrInput
 	// The database provider.
 	Provider ConnectionProfileProviderPtrInput
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
 	SkipValidation pulumi.BoolPtrInput
@@ -272,7 +272,7 @@ func (o ConnectionProfileOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
 }
 
-// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o ConnectionProfileOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

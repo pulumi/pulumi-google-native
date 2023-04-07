@@ -16,6 +16,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// Additional group keys associated with the Group.
+	AdditionalGroupKeys EntityKeyResponseArrayOutput `pulumi:"additionalGroupKeys"`
 	// The time when the `Group` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
@@ -155,6 +157,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// Additional group keys associated with the Group.
+func (o GroupOutput) AdditionalGroupKeys() EntityKeyResponseArrayOutput {
+	return o.ApplyT(func(v *Group) EntityKeyResponseArrayOutput { return v.AdditionalGroupKeys }).(EntityKeyResponseArrayOutput)
 }
 
 // The time when the `Group` was created.

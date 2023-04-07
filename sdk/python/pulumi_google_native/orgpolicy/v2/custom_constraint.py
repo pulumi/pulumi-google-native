@@ -30,8 +30,8 @@ class CustomConstraintArgs:
         :param pulumi.Input[str] description: Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         :param pulumi.Input[str] display_name: One line display name for the UI. The max length of the display_name is 200 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CustomConstraintMethodTypesItem']]] method_types: All the operations being applied for this constraint.
-        :param pulumi.Input[str] name: Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        :param pulumi.Input[str] name: Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if action_type is not None:
@@ -122,7 +122,7 @@ class CustomConstraintArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
         """
         return pulumi.get(self, "name")
 
@@ -134,7 +134,7 @@ class CustomConstraintArgs:
     @pulumi.getter(name="resourceTypes")
     def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         """
         return pulumi.get(self, "resource_types")
 
@@ -158,7 +158,7 @@ class CustomConstraint(pulumi.CustomResource):
                  resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.
+        Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -167,8 +167,8 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[str] description: Detailed information about this custom policy constraint. The max length of the description is 2000 characters.
         :param pulumi.Input[str] display_name: One line display name for the UI. The max length of the display_name is 200 characters.
         :param pulumi.Input[Sequence[pulumi.Input['CustomConstraintMethodTypesItem']]] method_types: All the operations being applied for this constraint.
-        :param pulumi.Input[str] name: Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        :param pulumi.Input[str] name: Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types: Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         """
         ...
     @overload
@@ -177,7 +177,7 @@ class CustomConstraint(pulumi.CustomResource):
                  args: CustomConstraintArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.
+        Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization.
 
         :param str resource_name: The name of the resource.
         :param CustomConstraintArgs args: The arguments to use to populate this resource's properties.
@@ -301,7 +301,7 @@ class CustomConstraint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
         """
         return pulumi.get(self, "name")
 
@@ -314,7 +314,7 @@ class CustomConstraint(pulumi.CustomResource):
     @pulumi.getter(name="resourceTypes")
     def resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         """
         return pulumi.get(self, "resource_types")
 

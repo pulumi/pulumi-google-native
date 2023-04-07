@@ -27,6 +27,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReleaseConfig{}
 	case "google-native:dataform/v1beta1:Repository":
 		r = &Repository{}
+	case "google-native:dataform/v1beta1:RepositoryIamBinding":
+		r = &RepositoryIamBinding{}
+	case "google-native:dataform/v1beta1:RepositoryIamMember":
+		r = &RepositoryIamMember{}
+	case "google-native:dataform/v1beta1:RepositoryIamPolicy":
+		r = &RepositoryIamPolicy{}
+	case "google-native:dataform/v1beta1:RepositoryWorkspaceIamBinding":
+		r = &RepositoryWorkspaceIamBinding{}
+	case "google-native:dataform/v1beta1:RepositoryWorkspaceIamMember":
+		r = &RepositoryWorkspaceIamMember{}
+	case "google-native:dataform/v1beta1:RepositoryWorkspaceIamPolicy":
+		r = &RepositoryWorkspaceIamPolicy{}
 	case "google-native:dataform/v1beta1:WorkflowConfig":
 		r = &WorkflowConfig{}
 	case "google-native:dataform/v1beta1:WorkflowInvocation":

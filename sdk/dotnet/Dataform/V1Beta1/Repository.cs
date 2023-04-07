@@ -22,6 +22,24 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         [Output("gitRemoteSettings")]
         public Output<Outputs.GitRemoteSettingsResponse> GitRemoteSettings { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        /// </summary>
+        [Output("initialCommitFileContents")]
+        public Output<ImmutableDictionary<string, string>> InitialCommitFileContents { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        /// </summary>
+        [Output("initialCommitMetadata")]
+        public Output<Outputs.CommitMetadataResponse> InitialCommitMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -108,6 +126,36 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         [Input("gitRemoteSettings")]
         public Input<Inputs.GitRemoteSettingsArgs>? GitRemoteSettings { get; set; }
+
+        [Input("initialCommitFileContents")]
+        private InputMap<string>? _initialCommitFileContents;
+
+        /// <summary>
+        /// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        /// </summary>
+        public InputMap<string> InitialCommitFileContents
+        {
+            get => _initialCommitFileContents ?? (_initialCommitFileContents = new InputMap<string>());
+            set => _initialCommitFileContents = value;
+        }
+
+        /// <summary>
+        /// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        /// </summary>
+        [Input("initialCommitMetadata")]
+        public Input<Inputs.CommitMetadataArgs>? InitialCommitMetadata { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

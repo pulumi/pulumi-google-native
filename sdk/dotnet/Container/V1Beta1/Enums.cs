@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessToGoogle { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE");
         /// <summary>
-        /// Enables priate IPv6 access to and from Google Services
+        /// Enables private IPv6 access to and from Google Services
         /// </summary>
         public static ClusterUpdateDesiredPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessBidirectional { get; } = new ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
 
@@ -958,7 +958,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public static NetworkConfigPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessToGoogle { get; } = new NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE");
         /// <summary>
-        /// Enables priate IPv6 access to and from Google Services
+        /// Enables private IPv6 access to and from Google Services
         /// </summary>
         public static NetworkConfigPrivateIpv6GoogleAccess PrivateIpv6GoogleAccessBidirectional { get; } = new NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
 

@@ -27,6 +27,8 @@ type Job struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
+	// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -36,7 +38,7 @@ type Job struct {
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The current state of the job.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
 	TtlAfterCompletionDays pulumi.IntOutput `pulumi:"ttlAfterCompletionDays"`
@@ -93,12 +95,14 @@ type jobArgs struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+	Mode *JobMode `pulumi:"mode"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	OutputUri *string `pulumi:"outputUri"`
 	Project   *string `pulumi:"project"`
-	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 	TemplateId *string `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
 	TtlAfterCompletionDays *int `pulumi:"ttlAfterCompletionDays"`
@@ -113,12 +117,14 @@ type JobArgs struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+	Mode JobModePtrInput
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	OutputUri pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput
-	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 	TemplateId pulumi.StringPtrInput
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
 	TtlAfterCompletionDays pulumi.IntPtrInput
@@ -195,6 +201,11 @@ func (o JobOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+func (o JobOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -219,7 +230,7 @@ func (o JobOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 func (o JobOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }

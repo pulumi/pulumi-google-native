@@ -33,6 +33,8 @@ type Endpoint struct {
 	Port      pulumi.IntOutput    `pulumi:"port"`
 	Project   pulumi.StringOutput `pulumi:"project"`
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
+	// A globally unique identifier (in UUID4 format) for this endpoint.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp when the endpoint was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -217,6 +219,11 @@ func (o EndpointOutput) Project() pulumi.StringOutput {
 
 func (o EndpointOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this endpoint.
+func (o EndpointOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the endpoint was last updated.

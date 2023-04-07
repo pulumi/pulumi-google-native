@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified target pool. Gets a list of available target pools by making a list() request.
+// Returns the specified target pool.
 func LookupTargetPool(ctx *pulumi.Context, args *LookupTargetPoolArgs, opts ...pulumi.InvokeOption) (*LookupTargetPoolResult, error) {
 	var rv LookupTargetPoolResult
 	err := ctx.Invoke("google-native:compute/v1:getTargetPool", args, &rv, opts...)

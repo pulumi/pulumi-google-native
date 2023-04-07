@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterStatusResponse> StatusHistory;
         /// <summary>
-        /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
+        /// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
         /// </summary>
         public readonly Outputs.VirtualClusterConfigResponse VirtualClusterConfig;
 

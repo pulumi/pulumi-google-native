@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+ * Returns the specified VpnTunnel resource.
  */
 export function getVpnTunnel(args: GetVpnTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnTunnelResult> {
 
@@ -110,7 +110,7 @@ export interface GetVpnTunnelResult {
     readonly vpnGatewayInterface: number;
 }
 /**
- * Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+ * Returns the specified VpnTunnel resource.
  */
 export function getVpnTunnelOutput(args: GetVpnTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnTunnelResult> {
     return pulumi.output(args).apply((a: any) => getVpnTunnel(a, opts))

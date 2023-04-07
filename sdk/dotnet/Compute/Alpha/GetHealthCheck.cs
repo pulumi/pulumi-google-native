@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetHealthCheck
     {
         /// <summary>
-        /// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+        /// Returns the specified HealthCheck resource.
         /// </summary>
         public static Task<GetHealthCheckResult> InvokeAsync(GetHealthCheckArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHealthCheckResult>("google-native:compute/alpha:getHealthCheck", args ?? new GetHealthCheckArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+        /// Returns the specified HealthCheck resource.
         /// </summary>
         public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("google-native:compute/alpha:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());

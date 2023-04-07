@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AnimationFadeFadeType',
+    'JobMode',
     'ManifestType',
 ]
 
@@ -25,6 +26,24 @@ class AnimationFadeFadeType(str, Enum):
     FADE_OUT = "FADE_OUT"
     """
     Fade the overlay object out of view.
+    """
+
+
+class JobMode(str, Enum):
+    """
+    The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+    """
+    PROCESSING_MODE_UNSPECIFIED = "PROCESSING_MODE_UNSPECIFIED"
+    """
+    The job processing mode is not specified.
+    """
+    PROCESSING_MODE_INTERACTIVE = "PROCESSING_MODE_INTERACTIVE"
+    """
+    The job processing mode is interactive mode. Interactive job will either be ran or rejected if quota does not allow for it.
+    """
+    PROCESSING_MODE_BATCH = "PROCESSING_MODE_BATCH"
+    """
+    The job processing mode is batch mode. Batch mode allows queuing of jobs.
     """
 
 

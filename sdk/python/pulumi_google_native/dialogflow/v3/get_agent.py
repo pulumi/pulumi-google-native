@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
+    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, text_to_speech_settings=None, time_zone=None):
         if advanced_settings and not isinstance(advanced_settings, dict):
             raise TypeError("Expected argument 'advanced_settings' to be a dict")
         pulumi.set(__self__, "advanced_settings", advanced_settings)
@@ -59,6 +59,9 @@ class GetAgentResult:
         if supported_language_codes and not isinstance(supported_language_codes, list):
             raise TypeError("Expected argument 'supported_language_codes' to be a list")
         pulumi.set(__self__, "supported_language_codes", supported_language_codes)
+        if text_to_speech_settings and not isinstance(text_to_speech_settings, dict):
+            raise TypeError("Expected argument 'text_to_speech_settings' to be a dict")
+        pulumi.set(__self__, "text_to_speech_settings", text_to_speech_settings)
         if time_zone and not isinstance(time_zone, str):
             raise TypeError("Expected argument 'time_zone' to be a str")
         pulumi.set(__self__, "time_zone", time_zone)
@@ -168,6 +171,14 @@ class GetAgentResult:
         return pulumi.get(self, "supported_language_codes")
 
     @property
+    @pulumi.getter(name="textToSpeechSettings")
+    def text_to_speech_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse':
+        """
+        Settings on instructing the speech synthesizer on how to generate the output audio content.
+        """
+        return pulumi.get(self, "text_to_speech_settings")
+
+    @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
         """
@@ -195,6 +206,7 @@ class AwaitableGetAgentResult(GetAgentResult):
             speech_to_text_settings=self.speech_to_text_settings,
             start_flow=self.start_flow,
             supported_language_codes=self.supported_language_codes,
+            text_to_speech_settings=self.text_to_speech_settings,
             time_zone=self.time_zone)
 
 
@@ -226,6 +238,7 @@ def get_agent(agent_id: Optional[str] = None,
         speech_to_text_settings=__ret__.speech_to_text_settings,
         start_flow=__ret__.start_flow,
         supported_language_codes=__ret__.supported_language_codes,
+        text_to_speech_settings=__ret__.text_to_speech_settings,
         time_zone=__ret__.time_zone)
 
 

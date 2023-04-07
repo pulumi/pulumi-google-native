@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly int RequestedLinkCount;
         /// <summary>
-        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>

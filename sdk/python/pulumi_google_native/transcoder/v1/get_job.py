@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, config=None, create_time=None, end_time=None, error=None, input_uri=None, labels=None, name=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
+    def __init__(__self__, config=None, create_time=None, end_time=None, error=None, input_uri=None, labels=None, mode=None, name=None, output_uri=None, start_time=None, state=None, template_id=None, ttl_after_completion_days=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -38,6 +38,9 @@ class GetJobResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -107,6 +110,14 @@ class GetJobResult:
 
     @property
     @pulumi.getter
+    def mode(self) -> str:
+        """
+        The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -141,7 +152,7 @@ class GetJobResult:
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
         """
-        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         """
         return pulumi.get(self, "template_id")
 
@@ -166,6 +177,7 @@ class AwaitableGetJobResult(GetJobResult):
             error=self.error,
             input_uri=self.input_uri,
             labels=self.labels,
+            mode=self.mode,
             name=self.name,
             output_uri=self.output_uri,
             start_time=self.start_time,
@@ -195,6 +207,7 @@ def get_job(job_id: Optional[str] = None,
         error=__ret__.error,
         input_uri=__ret__.input_uri,
         labels=__ret__.labels,
+        mode=__ret__.mode,
         name=__ret__.name,
         output_uri=__ret__.output_uri,
         start_time=__ret__.start_time,

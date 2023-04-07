@@ -166,7 +166,7 @@ class GetImageResult:
     @pulumi.getter
     def family(self) -> str:
         """
-        The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
+        The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         """
         return pulumi.get(self, "family")
 
@@ -406,7 +406,7 @@ def get_image(image: Optional[str] = None,
               project: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Returns the specified image. Gets a list of available images by making a list() request.
+    Returns the specified image.
     """
     __args__ = dict()
     __args__['image'] = image
@@ -453,6 +453,6 @@ def get_image_output(image: Optional[pulumi.Input[str]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
-    Returns the specified image. Gets a list of available images by making a list() request.
+    Returns the specified image.
     """
     ...

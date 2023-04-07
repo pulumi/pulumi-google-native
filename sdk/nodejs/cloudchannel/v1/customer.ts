@@ -57,6 +57,10 @@ export class Customer extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudIdentityInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse>;
     /**
+     * Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+     */
+    public readonly correlationId!: pulumi.Output<string>;
+    /**
      * Time when the customer was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -119,6 +123,7 @@ export class Customer extends pulumi.CustomResource {
             resourceInputs["alternateEmail"] = args ? args.alternateEmail : undefined;
             resourceInputs["channelPartnerId"] = args ? args.channelPartnerId : undefined;
             resourceInputs["channelPartnerLinkId"] = args ? args.channelPartnerLinkId : undefined;
+            resourceInputs["correlationId"] = args ? args.correlationId : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["orgDisplayName"] = args ? args.orgDisplayName : undefined;
@@ -136,6 +141,7 @@ export class Customer extends pulumi.CustomResource {
             resourceInputs["channelPartnerLinkId"] = undefined /*out*/;
             resourceInputs["cloudIdentityId"] = undefined /*out*/;
             resourceInputs["cloudIdentityInfo"] = undefined /*out*/;
+            resourceInputs["correlationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
@@ -166,6 +172,10 @@ export interface CustomerArgs {
      */
     channelPartnerId?: pulumi.Input<string>;
     channelPartnerLinkId: pulumi.Input<string>;
+    /**
+     * Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+     */
+    correlationId?: pulumi.Input<string>;
     /**
      * The customer's primary domain. Must match the primary contact email's domain.
      */

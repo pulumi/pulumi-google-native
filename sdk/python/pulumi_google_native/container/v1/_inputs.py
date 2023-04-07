@@ -37,6 +37,7 @@ __all__ = [
     'EphemeralStorageLocalSsdConfigArgs',
     'FastSocketArgs',
     'FilterArgs',
+    'FleetArgs',
     'GPUSharingConfigArgs',
     'GatewayAPIConfigArgs',
     'GcePersistentDiskCsiDriverConfigArgs',
@@ -1246,6 +1247,30 @@ class FilterArgs:
     @event_type.setter
     def event_type(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FilterEventTypeItem']]]]):
         pulumi.set(self, "event_type", value)
+
+
+@pulumi.input_type
+class FleetArgs:
+    def __init__(__self__, *,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Fleet is the fleet configuration for the cluster.
+        :param pulumi.Input[str] project: The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+        """
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -3744,7 +3769,7 @@ class NodeTaintArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+        Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
         :param pulumi.Input['NodeTaintEffect'] effect: Effect for taint.
         :param pulumi.Input[str] key: Key for taint.
         :param pulumi.Input[str] value: Value for taint.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, create_time=None, endpoints=None, metadata=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, endpoints=None, metadata=None, name=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +32,9 @@ class GetServiceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -69,6 +72,14 @@ class GetServiceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        A globally unique identifier (in UUID4 format) for this service.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -87,6 +98,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             endpoints=self.endpoints,
             metadata=self.metadata,
             name=self.name,
+            uid=self.uid,
             update_time=self.update_time)
 
 
@@ -111,6 +123,7 @@ def get_service(location: Optional[str] = None,
         endpoints=__ret__.endpoints,
         metadata=__ret__.metadata,
         name=__ret__.name,
+        uid=__ret__.uid,
         update_time=__ret__.update_time)
 
 

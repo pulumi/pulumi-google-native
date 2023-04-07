@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// <summary>
         /// Parameter.
         /// </summary>
-        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Paremeter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PAREMETER");
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Parameter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PARAMETER");
 
         public static bool operator ==(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => !left.Equals(right);

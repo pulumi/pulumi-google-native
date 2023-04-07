@@ -21,17 +21,18 @@ func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulum
 }
 
 type LookupDocumentArgs struct {
-	BranchId    string  `pulumi:"branchId"`
-	DataStoreId string  `pulumi:"dataStoreId"`
-	DocumentId  string  `pulumi:"documentId"`
-	Location    string  `pulumi:"location"`
-	Project     *string `pulumi:"project"`
+	BranchId     string  `pulumi:"branchId"`
+	CollectionId string  `pulumi:"collectionId"`
+	DataStoreId  string  `pulumi:"dataStoreId"`
+	DocumentId   string  `pulumi:"documentId"`
+	Location     string  `pulumi:"location"`
+	Project      *string `pulumi:"project"`
 }
 
 type LookupDocumentResult struct {
 	// The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	JsonData string `pulumi:"jsonData"`
-	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 	Name string `pulumi:"name"`
 	// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	ParentDocumentId string `pulumi:"parentDocumentId"`
@@ -55,11 +56,12 @@ func LookupDocumentOutput(ctx *pulumi.Context, args LookupDocumentOutputArgs, op
 }
 
 type LookupDocumentOutputArgs struct {
-	BranchId    pulumi.StringInput    `pulumi:"branchId"`
-	DataStoreId pulumi.StringInput    `pulumi:"dataStoreId"`
-	DocumentId  pulumi.StringInput    `pulumi:"documentId"`
-	Location    pulumi.StringInput    `pulumi:"location"`
-	Project     pulumi.StringPtrInput `pulumi:"project"`
+	BranchId     pulumi.StringInput    `pulumi:"branchId"`
+	CollectionId pulumi.StringInput    `pulumi:"collectionId"`
+	DataStoreId  pulumi.StringInput    `pulumi:"dataStoreId"`
+	DocumentId   pulumi.StringInput    `pulumi:"documentId"`
+	Location     pulumi.StringInput    `pulumi:"location"`
+	Project      pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupDocumentOutputArgs) ElementType() reflect.Type {
@@ -85,7 +87,7 @@ func (o LookupDocumentResultOutput) JsonData() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.JsonData }).(pulumi.StringOutput)
 }
 
-// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 func (o LookupDocumentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.Name }).(pulumi.StringOutput)
 }

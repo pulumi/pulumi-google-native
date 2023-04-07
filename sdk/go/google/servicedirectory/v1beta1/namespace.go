@@ -25,6 +25,8 @@ type Namespace struct {
 	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	Project     pulumi.StringOutput `pulumi:"project"`
+	// A globally unique identifier (in UUID4 format) for this namespace.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp when the namespace was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -162,6 +164,11 @@ func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
 
 func (o NamespaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this namespace.
+func (o NamespaceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the namespace was last updated.

@@ -97,19 +97,19 @@ func TestMetadata_Operations(t *testing.T) {
 				var referencedOp *operation
 				switch resourceOperationType {
 				case "CREATE":
-					if ddResource.createMethod.Response.Ref != "" {
+					if ddResource.createMethod != nil && ddResource.createMethod.Response.Ref != "" {
 						if createOp, ok := ops[ddResource.createMethod.Response.Ref]; ok {
 							referencedOp = createOp
 						}
 					}
 				case "UPDATE":
-					if ddResource.updateMethod.Response.Ref != "" {
+					if ddResource.updateMethod != nil && ddResource.updateMethod.Response.Ref != "" {
 						if updateOp, ok := ops[ddResource.updateMethod.Response.Ref]; ok {
 							referencedOp = updateOp
 						}
 					}
 				case "DELETE":
-					if ddResource.deleteMethod.Response.Ref != "" {
+					if ddResource.deleteMethod != nil && ddResource.deleteMethod.Response.Ref != "" {
 						if deleteOp, ok := ops[ddResource.deleteMethod.Response.Ref]; ok {
 							referencedOp = deleteOp
 						}

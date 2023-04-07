@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string DefaultCollation;
         /// <summary>
+        /// The default rounding mode of the table.
+        /// </summary>
+        public readonly string DefaultRoundingMode;
+        /// <summary>
         /// [Optional] A user-friendly description of this table.
         /// </summary>
         public readonly string Description;
@@ -242,6 +246,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string defaultCollation,
 
+            string defaultRoundingMode,
+
             string description,
 
             Outputs.EncryptionConfigurationResponse encryptionConfiguration,
@@ -316,6 +322,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Clustering = clustering;
             CreationTime = creationTime;
             DefaultCollation = defaultCollation;
+            DefaultRoundingMode = defaultRoundingMode;
             Description = description;
             EncryptionConfiguration = encryptionConfiguration;
             Etag = etag;

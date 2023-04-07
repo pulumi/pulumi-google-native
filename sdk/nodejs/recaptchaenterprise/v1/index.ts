@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { FirewallpolicyArgs } from "./firewallpolicy";
+export type Firewallpolicy = import("./firewallpolicy").Firewallpolicy;
+export const Firewallpolicy: typeof import("./firewallpolicy").Firewallpolicy = null as any;
+utilities.lazyLoad(exports, ["Firewallpolicy"], () => require("./firewallpolicy"));
+
+export { GetFirewallpolicyArgs, GetFirewallpolicyResult, GetFirewallpolicyOutputArgs } from "./getFirewallpolicy";
+export const getFirewallpolicy: typeof import("./getFirewallpolicy").getFirewallpolicy = null as any;
+export const getFirewallpolicyOutput: typeof import("./getFirewallpolicy").getFirewallpolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallpolicy","getFirewallpolicyOutput"], () => require("./getFirewallpolicy"));
+
 export { GetKeyArgs, GetKeyResult, GetKeyOutputArgs } from "./getKey";
 export const getKey: typeof import("./getKey").getKey = null as any;
 export const getKeyOutput: typeof import("./getKey").getKeyOutput = null as any;
@@ -23,6 +33,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:recaptchaenterprise/v1:Firewallpolicy":
+                return new Firewallpolicy(name, <any>undefined, { urn })
             case "google-native:recaptchaenterprise/v1:Key":
                 return new Key(name, <any>undefined, { urn })
             default:

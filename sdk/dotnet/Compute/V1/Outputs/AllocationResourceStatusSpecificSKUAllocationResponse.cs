@@ -10,9 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
+    /// <summary>
+    /// Contains Properties set for the reservation.
+    /// </summary>
     [OutputType]
     public sealed class AllocationResourceStatusSpecificSKUAllocationResponse
     {
+        /// <summary>
+        /// ID of the instance template used to populate reservation properties.
+        /// </summary>
         public readonly string SourceInstanceTemplateId;
 
         [OutputConstructor]

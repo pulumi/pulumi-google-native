@@ -53,6 +53,51 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
     /// <summary>
+    /// Immutable. The specifications for the key.
+    /// </summary>
+    [EnumType]
+    public readonly struct KeyDataKeySpec : IEquatable<KeyDataKeySpec>
+    {
+        private readonly string _value;
+
+        private KeyDataKeySpec(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No key specification specified.
+        /// </summary>
+        public static KeyDataKeySpec KeySpecUnspecified { get; } = new KeyDataKeySpec("KEY_SPEC_UNSPECIFIED");
+        /// <summary>
+        /// A 2048 bit RSA key.
+        /// </summary>
+        public static KeyDataKeySpec Rsa2048 { get; } = new KeyDataKeySpec("RSA_2048");
+        /// <summary>
+        /// A 3072 bit RSA key.
+        /// </summary>
+        public static KeyDataKeySpec Rsa3072 { get; } = new KeyDataKeySpec("RSA_3072");
+        /// <summary>
+        /// A 4096 bit RSA key.
+        /// </summary>
+        public static KeyDataKeySpec Rsa4096 { get; } = new KeyDataKeySpec("RSA_4096");
+
+        public static bool operator ==(KeyDataKeySpec left, KeyDataKeySpec right) => left.Equals(right);
+        public static bool operator !=(KeyDataKeySpec left, KeyDataKeySpec right) => !left.Equals(right);
+
+        public static explicit operator string(KeyDataKeySpec value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is KeyDataKeySpec other && Equals(other);
+        public bool Equals(KeyDataKeySpec other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
     /// </summary>
     [EnumType]
@@ -233,6 +278,80 @@ namespace Pulumi.GoogleNative.IAM.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RoleStage other && Equals(other);
         public bool Equals(RoleStage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. The purpose of the key.
+    /// </summary>
+    [EnumType]
+    public readonly struct WorkforcePoolKeyUse : IEquatable<WorkforcePoolKeyUse>
+    {
+        private readonly string _value;
+
+        private WorkforcePoolKeyUse(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// KeyUse unspecified.
+        /// </summary>
+        public static WorkforcePoolKeyUse KeyUseUnspecified { get; } = new WorkforcePoolKeyUse("KEY_USE_UNSPECIFIED");
+        /// <summary>
+        /// The key is used for encryption.
+        /// </summary>
+        public static WorkforcePoolKeyUse Encryption { get; } = new WorkforcePoolKeyUse("ENCRYPTION");
+
+        public static bool operator ==(WorkforcePoolKeyUse left, WorkforcePoolKeyUse right) => left.Equals(right);
+        public static bool operator !=(WorkforcePoolKeyUse left, WorkforcePoolKeyUse right) => !left.Equals(right);
+
+        public static explicit operator string(WorkforcePoolKeyUse value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WorkforcePoolKeyUse other && Equals(other);
+        public bool Equals(WorkforcePoolKeyUse other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. The purpose of the key.
+    /// </summary>
+    [EnumType]
+    public readonly struct WorkloadIdentityPoolKeyUse : IEquatable<WorkloadIdentityPoolKeyUse>
+    {
+        private readonly string _value;
+
+        private WorkloadIdentityPoolKeyUse(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The key use is not known.
+        /// </summary>
+        public static WorkloadIdentityPoolKeyUse KeyUseUnspecified { get; } = new WorkloadIdentityPoolKeyUse("KEY_USE_UNSPECIFIED");
+        /// <summary>
+        /// The public key is used for encryption purposes.
+        /// </summary>
+        public static WorkloadIdentityPoolKeyUse Encryption { get; } = new WorkloadIdentityPoolKeyUse("ENCRYPTION");
+
+        public static bool operator ==(WorkloadIdentityPoolKeyUse left, WorkloadIdentityPoolKeyUse right) => left.Equals(right);
+        public static bool operator !=(WorkloadIdentityPoolKeyUse left, WorkloadIdentityPoolKeyUse right) => !left.Equals(right);
+
+        public static explicit operator string(WorkloadIdentityPoolKeyUse value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WorkloadIdentityPoolKeyUse other && Equals(other);
+        public bool Equals(WorkloadIdentityPoolKeyUse other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

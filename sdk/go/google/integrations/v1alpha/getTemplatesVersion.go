@@ -35,6 +35,8 @@ type LookupTemplatesVersionResult struct {
 	DatabasePersistencePolicy string `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 	Description string `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse `pulumi:"errorCatcherConfigs"`
 	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail string `pulumi:"lastModifierEmail"`
 	// Auto-generated primary key. Format: projects/{project}/locations/{location}/products/{product}/integrationtemplates/{integrationtemplate}/versions/{version}
@@ -111,6 +113,13 @@ func (o LookupTemplatesVersionResultOutput) DatabasePersistencePolicy() pulumi.S
 // Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 func (o LookupTemplatesVersionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTemplatesVersionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+func (o LookupTemplatesVersionResultOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupTemplatesVersionResult) []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse {
+		return v.ErrorCatcherConfigs
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
 }
 
 // Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.

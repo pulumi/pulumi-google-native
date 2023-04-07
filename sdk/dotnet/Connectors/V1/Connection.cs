@@ -113,6 +113,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> ServiceDirectory { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Ssl config of a connection
+        /// </summary>
+        [Output("sslConfig")]
+        public Output<Outputs.SslConfigResponse> SslConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Current status of the connection.
         /// </summary>
         [Output("status")]
@@ -264,6 +270,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Ssl config of a connection
+        /// </summary>
+        [Input("sslConfig")]
+        public Input<Inputs.SslConfigArgs>? SslConfig { get; set; }
 
         /// <summary>
         /// Optional. Suspended indicates if a user has suspended a connection or not.

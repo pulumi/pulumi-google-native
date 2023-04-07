@@ -5,56 +5,9 @@
 from enum import Enum
 
 __all__ = [
-    'AcceleratorAcceleratorType',
-    'AcceleratorState',
     'AuditLogConfigLogType',
     'InstanceType',
-    'VersionType',
 ]
-
-
-class AcceleratorAcceleratorType(str, Enum):
-    """
-    The type of an accelator for a CDF instance.
-    """
-    ACCELERATOR_TYPE_UNSPECIFIED = "ACCELERATOR_TYPE_UNSPECIFIED"
-    """
-    Default value, if unspecified.
-    """
-    CDC = "CDC"
-    """
-    Change Data Capture accelerator for CDF.
-    """
-    HEALTHCARE = "HEALTHCARE"
-    """
-    Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
-    """
-    CCAI_INSIGHTS = "CCAI_INSIGHTS"
-    """
-    Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
-    """
-
-
-class AcceleratorState(str, Enum):
-    """
-    The state of the accelerator.
-    """
-    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
-    """
-    Default value, do not use.
-    """
-    ENABLED = "ENABLED"
-    """
-    Indicates that the accelerator is enabled and available to use.
-    """
-    DISABLED = "DISABLED"
-    """
-    Indicates that the accelerator is disabled and not available to use.
-    """
-    UNKNOWN = "UNKNOWN"
-    """
-    Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
-    """
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -98,22 +51,4 @@ class InstanceType(str, Enum):
     DEVELOPER = "DEVELOPER"
     """
     Developer Data Fusion instance. In Developer type, the user will have all features available but with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration pipelines at low cost.
-    """
-
-
-class VersionType(str, Enum):
-    """
-    Type represents the release availability of the version
-    """
-    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
-    """
-    Version does not have availability yet
-    """
-    TYPE_PREVIEW = "TYPE_PREVIEW"
-    """
-    Version is under development and not considered stable
-    """
-    TYPE_GENERAL_AVAILABILITY = "TYPE_GENERAL_AVAILABILITY"
-    """
-    Version is available for public use Version is under development and not considered stable
     """

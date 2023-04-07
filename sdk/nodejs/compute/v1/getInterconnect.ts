@@ -102,7 +102,7 @@ export interface GetInterconnectResult {
      */
     readonly requestedLinkCount: number;
     /**
-     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**

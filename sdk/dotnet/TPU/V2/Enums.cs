@@ -8,6 +8,51 @@ using Pulumi;
 namespace Pulumi.GoogleNative.TPU.V2
 {
     /// <summary>
+    /// Required. Type of TPU.
+    /// </summary>
+    [EnumType]
+    public readonly struct AcceleratorConfigType : IEquatable<AcceleratorConfigType>
+    {
+        private readonly string _value;
+
+        private AcceleratorConfigType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified version.
+        /// </summary>
+        public static AcceleratorConfigType TypeUnspecified { get; } = new AcceleratorConfigType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// TPU v2.
+        /// </summary>
+        public static AcceleratorConfigType V2 { get; } = new AcceleratorConfigType("V2");
+        /// <summary>
+        /// TPU v3.
+        /// </summary>
+        public static AcceleratorConfigType V3 { get; } = new AcceleratorConfigType("V3");
+        /// <summary>
+        /// TPU v4.
+        /// </summary>
+        public static AcceleratorConfigType V4 { get; } = new AcceleratorConfigType("V4");
+
+        public static bool operator ==(AcceleratorConfigType left, AcceleratorConfigType right) => left.Equals(right);
+        public static bool operator !=(AcceleratorConfigType left, AcceleratorConfigType right) => !left.Equals(right);
+
+        public static explicit operator string(AcceleratorConfigType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AcceleratorConfigType other && Equals(other);
+        public bool Equals(AcceleratorConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
     /// </summary>
     [EnumType]

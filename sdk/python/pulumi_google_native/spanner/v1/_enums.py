@@ -22,7 +22,7 @@ class DatabaseDatabaseDialect(str, Enum):
     """
     GOOGLE_STANDARD_SQL = "GOOGLE_STANDARD_SQL"
     """
-    Google standard SQL.
+    GoogleSQL supported SQL.
     """
     POSTGRESQL = "POSTGRESQL"
     """

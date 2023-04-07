@@ -233,6 +233,59 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     }
 
     /// <summary>
+    /// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+    /// </summary>
+    [EnumType]
+    public readonly struct ScalingConfigInstanceSize : IEquatable<ScalingConfigInstanceSize>
+    {
+        private readonly string _value;
+
+        private ScalingConfigInstanceSize(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified instance size
+        /// </summary>
+        public static ScalingConfigInstanceSize InstanceSizeUnspecified { get; } = new ScalingConfigInstanceSize("INSTANCE_SIZE_UNSPECIFIED");
+        /// <summary>
+        /// Extra small instance size, maps to a scaling factor of 0.1.
+        /// </summary>
+        public static ScalingConfigInstanceSize ExtraSmall { get; } = new ScalingConfigInstanceSize("EXTRA_SMALL");
+        /// <summary>
+        /// Small instance size, maps to a scaling factor of 0.5.
+        /// </summary>
+        public static ScalingConfigInstanceSize Small { get; } = new ScalingConfigInstanceSize("SMALL");
+        /// <summary>
+        /// Medium instance size, maps to a scaling factor of 1.0.
+        /// </summary>
+        public static ScalingConfigInstanceSize Medium { get; } = new ScalingConfigInstanceSize("MEDIUM");
+        /// <summary>
+        /// Large instance size, maps to a scaling factor of 3.0.
+        /// </summary>
+        public static ScalingConfigInstanceSize Large { get; } = new ScalingConfigInstanceSize("LARGE");
+        /// <summary>
+        /// Extra large instance size, maps to a scaling factor of 6.0.
+        /// </summary>
+        public static ScalingConfigInstanceSize ExtraLarge { get; } = new ScalingConfigInstanceSize("EXTRA_LARGE");
+
+        public static bool operator ==(ScalingConfigInstanceSize left, ScalingConfigInstanceSize right) => left.Equals(right);
+        public static bool operator !=(ScalingConfigInstanceSize left, ScalingConfigInstanceSize right) => !left.Equals(right);
+
+        public static explicit operator string(ScalingConfigInstanceSize value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ScalingConfigInstanceSize other && Equals(other);
+        public bool Equals(ScalingConfigInstanceSize other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The database type that the Metastore service stores its data.
     /// </summary>
     [EnumType]

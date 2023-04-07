@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Information specifying a multiTarget.
+        /// </summary>
+        public readonly Outputs.MultiTargetResponse MultiTarget;
+        /// <summary>
         /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         public readonly string Name;
@@ -91,6 +95,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.MultiTargetResponse multiTarget,
+
             string name,
 
             bool requireApproval,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
             ExecutionConfigs = executionConfigs;
             Gke = gke;
             Labels = labels;
+            MultiTarget = multiTarget;
             Name = name;
             RequireApproval = requireApproval;
             Run = run;

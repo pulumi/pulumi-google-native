@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+ * Returns the specified UrlMap resource.
  */
 export function getRegionUrlMap(args: GetRegionUrlMapArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionUrlMapResult> {
 
@@ -89,7 +89,7 @@ export interface GetRegionUrlMapResult {
     readonly tests: outputs.compute.alpha.UrlMapTestResponse[];
 }
 /**
- * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+ * Returns the specified UrlMap resource.
  */
 export function getRegionUrlMapOutput(args: GetRegionUrlMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionUrlMapResult> {
     return pulumi.output(args).apply((a: any) => getRegionUrlMap(a, opts))

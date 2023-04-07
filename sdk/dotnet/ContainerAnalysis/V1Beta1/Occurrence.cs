@@ -110,6 +110,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<Outputs.DocumentOccurrenceResponse> Sbom { get; private set; } = null!;
 
         /// <summary>
+        /// Describes a specific SBOM reference occurrences.
+        /// </summary>
+        [Output("sbomReference")]
+        public Output<Outputs.SBOMReferenceOccurrenceResponse> SbomReference { get; private set; } = null!;
+
+        /// <summary>
         /// Describes a specific SPDX File.
         /// </summary>
         [Output("spdxFile")]
@@ -262,6 +268,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("sbom")]
         public Input<Inputs.DocumentOccurrenceArgs>? Sbom { get; set; }
+
+        /// <summary>
+        /// Describes a specific SBOM reference occurrences.
+        /// </summary>
+        [Input("sbomReference")]
+        public Input<Inputs.SBOMReferenceOccurrenceArgs>? SbomReference { get; set; }
 
         /// <summary>
         /// Describes a specific SPDX File.

@@ -126,6 +126,7 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["preferred_member_key"] = preferred_member_key
             __props__.__dict__["roles"] = roles
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["delivery_setting"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["update_time"] = None
@@ -154,6 +155,7 @@ class Membership(pulumi.CustomResource):
         __props__ = MembershipArgs.__new__(MembershipArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["delivery_setting"] = None
         __props__.__dict__["group_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["preferred_member_key"] = None
@@ -169,6 +171,14 @@ class Membership(pulumi.CustomResource):
         The time when the `Membership` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deliverySetting")
+    def delivery_setting(self) -> pulumi.Output[str]:
+        """
+        Delivery setting associated with the membership.
+        """
+        return pulumi.get(self, "delivery_setting")
 
     @property
     @pulumi.getter(name="groupId")

@@ -17,8 +17,8 @@ __all__ = ['RepositoryArgs', 'Repository']
 @pulumi.input_type
 class RepositoryArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input['DockerRepositoryConfigArgs']] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -29,12 +29,11 @@ class RepositoryArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  remote_repository_config: Optional[pulumi.Input['RemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input['VirtualRepositoryConfigArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
-        :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input['DockerRepositoryConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
         :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
@@ -43,13 +42,12 @@ class RepositoryArgs:
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         :param pulumi.Input['RemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: The repository id to use for this repository.
-        :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input['VirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_config is not None:
+            pulumi.set(__self__, "docker_config", docker_config)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if kms_key_name is not None:
@@ -70,22 +68,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if repository_id is not None:
             pulumi.set(__self__, "repository_id", repository_id)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
         if virtual_repository_config is not None:
             pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time when the repository was created.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -98,6 +82,18 @@ class RepositoryArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerConfig")
+    def docker_config(self) -> Optional[pulumi.Input['DockerRepositoryConfigArgs']]:
+        """
+        Docker repository config contains repository level configuration for the repositories of docker type.
+        """
+        return pulumi.get(self, "docker_config")
+
+    @docker_config.setter
+    def docker_config(self, value: Optional[pulumi.Input['DockerRepositoryConfigArgs']]):
+        pulumi.set(self, "docker_config", value)
 
     @property
     @pulumi.getter
@@ -214,18 +210,6 @@ class RepositoryArgs:
         pulumi.set(self, "repository_id", value)
 
     @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time when the repository was last updated.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
-    @property
     @pulumi.getter(name="virtualRepositoryConfig")
     def virtual_repository_config(self) -> Optional[pulumi.Input['VirtualRepositoryConfigArgs']]:
         """
@@ -243,8 +227,8 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -255,7 +239,6 @@ class Repository(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']]] = None,
                  __props__=None):
         """
@@ -263,8 +246,8 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
         :param pulumi.Input['RepositoryFormat'] format: The format of packages that are stored in the repository.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
@@ -273,7 +256,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         :param pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
         :param pulumi.Input[str] repository_id: The repository id to use for this repository.
-        :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
         """
         ...
@@ -300,8 +282,8 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input[pulumi.InputType['DockerRepositoryConfigArgs']]] = None,
                  format: Optional[pulumi.Input['RepositoryFormat']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -312,7 +294,6 @@ class Repository(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remote_repository_config: Optional[pulumi.Input[pulumi.InputType['RemoteRepositoryConfigArgs']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input[pulumi.InputType['VirtualRepositoryConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,8 +304,8 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
-            __props__.__dict__["create_time"] = create_time
             __props__.__dict__["description"] = description
+            __props__.__dict__["docker_config"] = docker_config
             __props__.__dict__["format"] = format
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
@@ -335,10 +316,11 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["remote_repository_config"] = remote_repository_config
             __props__.__dict__["repository_id"] = repository_id
-            __props__.__dict__["update_time"] = update_time
             __props__.__dict__["virtual_repository_config"] = virtual_repository_config
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["size_bytes"] = None
+            __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Repository, __self__).__init__(
@@ -365,6 +347,7 @@ class Repository(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["docker_config"] = None
         __props__.__dict__["format"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
@@ -396,6 +379,14 @@ class Repository(pulumi.CustomResource):
         The user-provided description of the repository.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerConfig")
+    def docker_config(self) -> pulumi.Output['outputs.DockerRepositoryConfigResponse']:
+        """
+        Docker repository config contains repository level configuration for the repositories of docker type.
+        """
+        return pulumi.get(self, "docker_config")
 
     @property
     @pulumi.getter

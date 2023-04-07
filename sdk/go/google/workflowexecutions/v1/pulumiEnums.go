@@ -20,6 +20,8 @@ const (
 	ExecutionCallLogLevelLogAllCalls = ExecutionCallLogLevel("LOG_ALL_CALLS")
 	// Log only exceptions that are raised from call steps within workflows.
 	ExecutionCallLogLevelLogErrorsOnly = ExecutionCallLogLevel("LOG_ERRORS_ONLY")
+	// Explicitly log nothing.
+	ExecutionCallLogLevelLogNone = ExecutionCallLogLevel("LOG_NONE")
 )
 
 func (ExecutionCallLogLevel) ElementType() reflect.Type {

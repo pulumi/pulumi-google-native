@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
 func LookupCustomConstraint(ctx *pulumi.Context, args *LookupCustomConstraintArgs, opts ...pulumi.InvokeOption) (*LookupCustomConstraintResult, error) {
 	var rv LookupCustomConstraintResult
 	err := ctx.Invoke("google-native:orgpolicy/v2:getCustomConstraint", args, &rv, opts...)
@@ -36,9 +36,9 @@ type LookupCustomConstraintResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// All the operations being applied for this constraint.
 	MethodTypes []string `pulumi:"methodTypes"`
-	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+	// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
 	Name string `pulumi:"name"`
-	// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+	// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
 	ResourceTypes []string `pulumi:"resourceTypes"`
 	// The last time this custom constraint was updated. This represents the last time that the `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
 	UpdateTime string `pulumi:"updateTime"`
@@ -105,12 +105,12 @@ func (o LookupCustomConstraintResultOutput) MethodTypes() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupCustomConstraintResult) []string { return v.MethodTypes }).(pulumi.StringArrayOutput)
 }
 
-// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
 func (o LookupCustomConstraintResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomConstraintResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
 func (o LookupCustomConstraintResultOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCustomConstraintResult) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }

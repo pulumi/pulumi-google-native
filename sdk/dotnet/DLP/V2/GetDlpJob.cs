@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.DLP.V2
     public sealed class GetDlpJobResult
     {
         /// <summary>
+        /// Events that should occur after the job has completed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2ActionDetailsResponse> ActionDetails;
+        /// <summary>
         /// Time when the job was created.
         /// </summary>
         public readonly string CreateTime;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.DLP.V2
 
         [OutputConstructor]
         private GetDlpJobResult(
+            ImmutableArray<Outputs.GooglePrivacyDlpV2ActionDetailsResponse> actionDetails,
+
             string createTime,
 
             string endTime,
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.DLP.V2
 
             string type)
         {
+            ActionDetails = actionDetails;
             CreateTime = createTime;
             EndTime = endTime;
             Errors = errors;

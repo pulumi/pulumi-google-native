@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
     public sealed class GetContactCenterResult
     {
         /// <summary>
+        /// Optional. Info about the first admin user, such as given name and family name.
+        /// </summary>
+        public readonly Outputs.AdminUserResponse AdminUser;
+        /// <summary>
         /// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         /// </summary>
         public readonly bool CcaipManagedUsers;
@@ -108,12 +112,14 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         /// </summary>
         public readonly Outputs.URIsResponse Uris;
         /// <summary>
-        /// Optional. Email address of the first admin users.
+        /// Optional. Email address of the first admin user.
         /// </summary>
         public readonly string UserEmail;
 
         [OutputConstructor]
         private GetContactCenterResult(
+            Outputs.AdminUserResponse adminUser,
+
             bool ccaipManagedUsers,
 
             string createTime,
@@ -138,6 +144,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
 
             string userEmail)
         {
+            AdminUser = adminUser;
             CcaipManagedUsers = ccaipManagedUsers;
             CreateTime = createTime;
             CustomerDomainPrefix = customerDomainPrefix;

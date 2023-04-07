@@ -26,10 +26,12 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse',
+    'GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse',
     'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigResponse',
+    'GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse',
     'GoogleIamV1AuditConfigResponse',
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
@@ -632,6 +634,8 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(dict):
         suggest = None
         if key == "enabledProviders":
             suggest = "enabled_providers"
+        elif key == "providerConfigs":
+            suggest = "provider_configs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -646,13 +650,16 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(dict):
 
     def __init__(__self__, *,
                  enabled_providers: Sequence[str],
+                 provider_configs: Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse'],
                  state: str):
         """
         Options related to MultiFactor Authentication for the project.
         :param Sequence[str] enabled_providers: A list of usable second factors for this project.
+        :param Sequence['GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse'] provider_configs: A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
         :param str state: Whether MultiFactor Authentication has been enabled for this project.
         """
         pulumi.set(__self__, "enabled_providers", enabled_providers)
+        pulumi.set(__self__, "provider_configs", provider_configs)
         pulumi.set(__self__, "state", state)
 
     @property
@@ -662,6 +669,14 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(dict):
         A list of usable second factors for this project.
         """
         return pulumi.get(self, "enabled_providers")
+
+    @property
+    @pulumi.getter(name="providerConfigs")
+    def provider_configs(self) -> Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse']:
+        """
+        A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+        """
+        return pulumi.get(self, "provider_configs")
 
     @property
     @pulumi.getter
@@ -731,6 +746,56 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse(dict):
         Do not use. The `token` response type is not supported at the moment.
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse(dict):
+    """
+    ProviderConfig describes the supported MFA providers along with their configurations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totpProviderConfig":
+            suggest = "totp_provider_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 state: str,
+                 totp_provider_config: 'outputs.GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse'):
+        """
+        ProviderConfig describes the supported MFA providers along with their configurations.
+        :param str state: Describes the state of the MultiFactor Authentication type.
+        :param 'GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse' totp_provider_config: TOTP MFA provider config for this project.
+        """
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "totp_provider_config", totp_provider_config)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Describes the state of the MultiFactor Authentication type.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="totpProviderConfig")
+    def totp_provider_config(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse':
+        """
+        TOTP MFA provider config for this project.
+        """
+        return pulumi.get(self, "totp_provider_config")
 
 
 @pulumi.output_type
@@ -922,6 +987,45 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfigResponse(dict):
         Unique identifier for all SAML entities.
         """
         return pulumi.get(self, "sp_entity_id")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse(dict):
+    """
+    TotpMFAProviderConfig represents the TOTP based MFA provider.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adjacentIntervals":
+            suggest = "adjacent_intervals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adjacent_intervals: int):
+        """
+        TotpMFAProviderConfig represents the TOTP based MFA provider.
+        :param int adjacent_intervals: The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        pulumi.set(__self__, "adjacent_intervals", adjacent_intervals)
+
+    @property
+    @pulumi.getter(name="adjacentIntervals")
+    def adjacent_intervals(self) -> int:
+        """
+        The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        return pulumi.get(self, "adjacent_intervals")
 
 
 @pulumi.output_type

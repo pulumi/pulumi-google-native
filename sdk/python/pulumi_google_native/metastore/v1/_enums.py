@@ -9,6 +9,7 @@ __all__ = [
     'DatabaseDumpDatabaseType',
     'DatabaseDumpType',
     'MaintenanceWindowDayOfWeek',
+    'ScalingConfigInstanceSize',
     'ServiceDatabaseType',
     'ServiceReleaseChannel',
     'ServiceTier',
@@ -105,6 +106,36 @@ class MaintenanceWindowDayOfWeek(str, Enum):
     SUNDAY = "SUNDAY"
     """
     Sunday
+    """
+
+
+class ScalingConfigInstanceSize(str, Enum):
+    """
+    An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+    """
+    INSTANCE_SIZE_UNSPECIFIED = "INSTANCE_SIZE_UNSPECIFIED"
+    """
+    Unspecified instance size
+    """
+    EXTRA_SMALL = "EXTRA_SMALL"
+    """
+    Extra small instance size, maps to a scaling factor of 0.1.
+    """
+    SMALL = "SMALL"
+    """
+    Small instance size, maps to a scaling factor of 0.5.
+    """
+    MEDIUM = "MEDIUM"
+    """
+    Medium instance size, maps to a scaling factor of 1.0.
+    """
+    LARGE = "LARGE"
+    """
+    Large instance size, maps to a scaling factor of 3.0.
+    """
+    EXTRA_LARGE = "EXTRA_LARGE"
+    """
+    Extra large instance size, maps to a scaling factor of 6.0.
     """
 
 

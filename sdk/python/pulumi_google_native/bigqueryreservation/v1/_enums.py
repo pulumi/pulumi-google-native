@@ -18,11 +18,19 @@ class CapacityCommitmentEdition(str, Enum):
     """
     EDITION_UNSPECIFIED = "EDITION_UNSPECIFIED"
     """
-    Default value, only for legacy reservations and capacity commitments.
+    Default value, which will be treated as ENTERPRISE.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard edition.
     """
     ENTERPRISE = "ENTERPRISE"
     """
     Enterprise edition.
+    """
+    ENTERPRISE_PLUS = "ENTERPRISE_PLUS"
+    """
+    Enterprise plus edition.
     """
 
 
@@ -38,6 +46,10 @@ class CapacityCommitmentPlan(str, Enum):
     """
     Flex commitments have committed period of 1 minute after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
     """
+    FLEX_FLAT_RATE = "FLEX_FLAT_RATE"
+    """
+    Same as FLEX, should only be used if flat-rate commitments are still available.
+    """
     TRIAL = "TRIAL"
     """
     Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
@@ -46,9 +58,21 @@ class CapacityCommitmentPlan(str, Enum):
     """
     Monthly commitments have a committed period of 30 days after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
     """
+    MONTHLY_FLAT_RATE = "MONTHLY_FLAT_RATE"
+    """
+    Same as MONTHLY, should only be used if flat-rate commitments are still available.
+    """
     ANNUAL = "ANNUAL"
     """
     Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+    """
+    ANNUAL_FLAT_RATE = "ANNUAL_FLAT_RATE"
+    """
+    Same as ANNUAL, should only be used if flat-rate commitments are still available.
+    """
+    THREE_YEAR = "THREE_YEAR"
+    """
+    3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
     """
     NONE = "NONE"
     """
@@ -68,6 +92,10 @@ class CapacityCommitmentRenewalPlan(str, Enum):
     """
     Flex commitments have committed period of 1 minute after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
     """
+    FLEX_FLAT_RATE = "FLEX_FLAT_RATE"
+    """
+    Same as FLEX, should only be used if flat-rate commitments are still available.
+    """
     TRIAL = "TRIAL"
     """
     Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
@@ -76,9 +104,21 @@ class CapacityCommitmentRenewalPlan(str, Enum):
     """
     Monthly commitments have a committed period of 30 days after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
     """
+    MONTHLY_FLAT_RATE = "MONTHLY_FLAT_RATE"
+    """
+    Same as MONTHLY, should only be used if flat-rate commitments are still available.
+    """
     ANNUAL = "ANNUAL"
     """
     Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+    """
+    ANNUAL_FLAT_RATE = "ANNUAL_FLAT_RATE"
+    """
+    Same as ANNUAL, should only be used if flat-rate commitments are still available.
+    """
+    THREE_YEAR = "THREE_YEAR"
+    """
+    3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
     """
     NONE = "NONE"
     """
@@ -92,9 +132,17 @@ class ReservationEdition(str, Enum):
     """
     EDITION_UNSPECIFIED = "EDITION_UNSPECIFIED"
     """
-    Default value, only for legacy reservations and capacity commitments.
+    Default value, which will be treated as ENTERPRISE.
+    """
+    STANDARD = "STANDARD"
+    """
+    Standard edition.
     """
     ENTERPRISE = "ENTERPRISE"
     """
     Enterprise edition.
+    """
+    ENTERPRISE_PLUS = "ENTERPRISE_PLUS"
+    """
+    Enterprise plus edition.
     """

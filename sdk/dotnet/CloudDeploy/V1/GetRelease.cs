@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.BuildArtifactResponse> BuildArtifacts;
         /// <summary>
+        /// Information around the state of the Release.
+        /// </summary>
+        public readonly Outputs.ReleaseConditionResponse Condition;
+        /// <summary>
         /// Time at which the `Release` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -154,6 +158,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             ImmutableArray<Outputs.BuildArtifactResponse> buildArtifacts,
 
+            Outputs.ReleaseConditionResponse condition,
+
             string createTime,
 
             Outputs.DeliveryPipelineResponse deliveryPipelineSnapshot,
@@ -189,6 +195,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Abandoned = abandoned;
             Annotations = annotations;
             BuildArtifacts = buildArtifacts;
+            Condition = condition;
             CreateTime = createTime;
             DeliveryPipelineSnapshot = deliveryPipelineSnapshot;
             Description = description;

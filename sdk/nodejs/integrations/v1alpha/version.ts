@@ -50,6 +50,10 @@ export class Version extends pulumi.CustomResource {
      * Optional. The integration description.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Error Catch Task configuration for the integration. It's optional.
+     */
+    public readonly errorCatcherConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[]>;
     public readonly integrationId!: pulumi.Output<string>;
     /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -86,6 +90,10 @@ export class Version extends pulumi.CustomResource {
     public readonly parentTemplateId!: pulumi.Output<string>;
     public readonly productId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+     */
+    public readonly runAsServiceAccount!: pulumi.Output<string>;
     /**
      * Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
      */
@@ -146,6 +154,7 @@ export class Version extends pulumi.CustomResource {
             }
             resourceInputs["databasePersistencePolicy"] = args ? args.databasePersistencePolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["errorCatcherConfigs"] = args ? args.errorCatcherConfigs : undefined;
             resourceInputs["integrationId"] = args ? args.integrationId : undefined;
             resourceInputs["integrationParameters"] = args ? args.integrationParameters : undefined;
             resourceInputs["integrationParametersInternal"] = args ? args.integrationParametersInternal : undefined;
@@ -157,6 +166,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["parentTemplateId"] = args ? args.parentTemplateId : undefined;
             resourceInputs["productId"] = args ? args.productId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runAsServiceAccount"] = args ? args.runAsServiceAccount : undefined;
             resourceInputs["snapshotNumber"] = args ? args.snapshotNumber : undefined;
             resourceInputs["taskConfigs"] = args ? args.taskConfigs : undefined;
             resourceInputs["taskConfigsInternal"] = args ? args.taskConfigsInternal : undefined;
@@ -173,6 +183,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["errorCatcherConfigs"] = undefined /*out*/;
             resourceInputs["integrationId"] = undefined /*out*/;
             resourceInputs["integrationParameters"] = undefined /*out*/;
             resourceInputs["integrationParametersInternal"] = undefined /*out*/;
@@ -185,6 +196,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["parentTemplateId"] = undefined /*out*/;
             resourceInputs["productId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["runAsServiceAccount"] = undefined /*out*/;
             resourceInputs["snapshotNumber"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -215,6 +227,10 @@ export interface VersionArgs {
      * Optional. The integration description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Error Catch Task configuration for the integration. It's optional.
+     */
+    errorCatcherConfigs?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>[]>;
     integrationId: pulumi.Input<string>;
     /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -247,6 +263,10 @@ export interface VersionArgs {
     parentTemplateId?: pulumi.Input<string>;
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+     */
+    runAsServiceAccount?: pulumi.Input<string>;
     /**
      * Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
      */

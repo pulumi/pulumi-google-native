@@ -24,9 +24,11 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs',
+    'GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs',
     'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigArgs',
+    'GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
@@ -409,14 +411,18 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs:
 class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs:
     def __init__(__self__, *,
                  enabled_providers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem']]]] = None,
+                 provider_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs']]]] = None,
                  state: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState']] = None):
         """
         Options related to MultiFactor Authentication for the project.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem']]] enabled_providers: A list of usable second factors for this project.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs']]] provider_configs: A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState'] state: Whether MultiFactor Authentication has been enabled for this project.
         """
         if enabled_providers is not None:
             pulumi.set(__self__, "enabled_providers", enabled_providers)
+        if provider_configs is not None:
+            pulumi.set(__self__, "provider_configs", provider_configs)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
@@ -431,6 +437,18 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs:
     @enabled_providers.setter
     def enabled_providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem']]]]):
         pulumi.set(self, "enabled_providers", value)
+
+    @property
+    @pulumi.getter(name="providerConfigs")
+    def provider_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs']]]]:
+        """
+        A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+        """
+        return pulumi.get(self, "provider_configs")
+
+    @provider_configs.setter
+    def provider_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs']]]]):
+        pulumi.set(self, "provider_configs", value)
 
     @property
     @pulumi.getter
@@ -499,6 +517,46 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigState']] = None,
+                 totp_provider_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs']] = None):
+        """
+        ProviderConfig describes the supported MFA providers along with their configurations.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigState'] state: Describes the state of the MultiFactor Authentication type.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs'] totp_provider_config: TOTP MFA provider config for this project.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if totp_provider_config is not None:
+            pulumi.set(__self__, "totp_provider_config", totp_provider_config)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigState']]:
+        """
+        Describes the state of the MultiFactor Authentication type.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ProviderConfigState']]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="totpProviderConfig")
+    def totp_provider_config(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs']]:
+        """
+        TOTP MFA provider config for this project.
+        """
+        return pulumi.get(self, "totp_provider_config")
+
+    @totp_provider_config.setter
+    def totp_provider_config(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs']]):
+        pulumi.set(self, "totp_provider_config", value)
 
 
 @pulumi.input_type
@@ -603,6 +661,30 @@ class GoogleCloudIdentitytoolkitAdminV2SpConfigArgs:
     @sp_entity_id.setter
     def sp_entity_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sp_entity_id", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs:
+    def __init__(__self__, *,
+                 adjacent_intervals: Optional[pulumi.Input[int]] = None):
+        """
+        TotpMFAProviderConfig represents the TOTP based MFA provider.
+        :param pulumi.Input[int] adjacent_intervals: The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        if adjacent_intervals is not None:
+            pulumi.set(__self__, "adjacent_intervals", adjacent_intervals)
+
+    @property
+    @pulumi.getter(name="adjacentIntervals")
+    def adjacent_intervals(self) -> Optional[pulumi.Input[int]]:
+        """
+        The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        return pulumi.get(self, "adjacent_intervals")
+
+    @adjacent_intervals.setter
+    def adjacent_intervals(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "adjacent_intervals", value)
 
 
 @pulumi.input_type

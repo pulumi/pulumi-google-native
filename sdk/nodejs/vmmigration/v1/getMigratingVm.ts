@@ -48,6 +48,10 @@ export interface GetMigratingVmResult {
      */
     readonly currentSyncInfo: outputs.vmmigration.v1.ReplicationCycleResponse;
     /**
+     * Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+     */
+    readonly cutoverForecast: outputs.vmmigration.v1.CutoverForecastResponse;
+    /**
      * The description attached to the migrating VM by the user.
      */
     readonly description: string;
@@ -67,6 +71,10 @@ export interface GetMigratingVmResult {
      * The labels of the migrating VM.
      */
     readonly labels: {[key: string]: string};
+    /**
+     * Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+     */
+    readonly lastReplicationCycle: outputs.vmmigration.v1.ReplicationCycleResponse;
     /**
      * The most updated snapshot created time in the source that finished replication.
      */

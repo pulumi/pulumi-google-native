@@ -123,6 +123,8 @@ type instanceArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// The max number of shares allowed.
+	MaxShareCount *string `pulumi:"maxShareCount"`
 	// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
 	MultiShareEnabled *bool `pulumi:"multiShareEnabled"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
@@ -151,6 +153,8 @@ type InstanceArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// The max number of shares allowed.
+	MaxShareCount pulumi.StringPtrInput
 	// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
 	MultiShareEnabled pulumi.BoolPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.

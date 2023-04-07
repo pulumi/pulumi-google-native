@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+// Returns the specified network endpoint group.
 func LookupNetworkEndpointGroup(ctx *pulumi.Context, args *LookupNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkEndpointGroupResult, error) {
 	var rv LookupNetworkEndpointGroupResult
 	err := ctx.Invoke("google-native:compute/alpha:getNetworkEndpointGroup", args, &rv, opts...)

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
     /// <summary>
-    /// Upcoming Maintenance notification information. TODO(b/242069500) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
+    /// Upcoming Maintenance notification information.
     /// </summary>
     [OutputType]
     public sealed class UpcomingMaintenanceResponse
@@ -21,21 +21,34 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool CanReschedule;
         /// <summary>
-        /// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        /// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
         /// </summary>
         public readonly string Date;
         /// <summary>
-        /// The start time window of the maintenance disruption.
+        /// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        public readonly string LatestWindowStartTime;
+        public readonly string MaintenanceStatus;
+        /// <summary>
+        /// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
         /// <summary>
-        /// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        /// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
         /// </summary>
         public readonly string Time;
         /// <summary>
         /// Defines the type of maintenance.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        public readonly string WindowEndTime;
+        /// <summary>
+        /// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+        /// </summary>
+        public readonly string WindowStartTime;
 
         [OutputConstructor]
         private UpcomingMaintenanceResponse(
@@ -43,17 +56,29 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string date,
 
+            string latestWindowStartTime,
+
+            string maintenanceStatus,
+
             Outputs.UpcomingMaintenanceTimeWindowResponse startTimeWindow,
 
             string time,
 
-            string type)
+            string type,
+
+            string windowEndTime,
+
+            string windowStartTime)
         {
             CanReschedule = canReschedule;
             Date = date;
+            LatestWindowStartTime = latestWindowStartTime;
+            MaintenanceStatus = maintenanceStatus;
             StartTimeWindow = startTimeWindow;
             Time = time;
             Type = type;
+            WindowEndTime = windowEndTime;
+            WindowStartTime = windowStartTime;
         }
     }
 }

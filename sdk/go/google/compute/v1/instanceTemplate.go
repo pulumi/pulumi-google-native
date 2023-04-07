@@ -25,6 +25,8 @@ type InstanceTemplate struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The instance properties for this instance template.
 	Properties InstancePropertiesResponseOutput `pulumi:"properties"`
+	// URL of the region where the instance template resides. Only applicable for regional resources.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The URL for this instance template. The server defines this URL.
@@ -174,6 +176,11 @@ func (o InstanceTemplateOutput) Project() pulumi.StringOutput {
 // The instance properties for this instance template.
 func (o InstanceTemplateOutput) Properties() InstancePropertiesResponseOutput {
 	return o.ApplyT(func(v *InstanceTemplate) InstancePropertiesResponseOutput { return v.Properties }).(InstancePropertiesResponseOutput)
+}
+
+// URL of the region where the instance template resides. Only applicable for regional resources.
+func (o InstanceTemplateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

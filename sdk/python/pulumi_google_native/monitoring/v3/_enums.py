@@ -242,6 +242,10 @@ class HttpCheckContentType(str, Enum):
     """
     body is in URL-encoded form. Equivalent to setting the Content-Type to application/x-www-form-urlencoded in the HTTP request.
     """
+    USER_PROVIDED = "USER_PROVIDED"
+    """
+    body is in custom_content_type form. Equivalent to setting the Content-Type to the contents of custom_content_type in the HTTP request.
+    """
 
 
 class HttpCheckRequestMethod(str, Enum):

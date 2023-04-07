@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// </summary>
     public sealed class SourceHierarchyDatasetsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dataset template to use for dynamic dataset creation.
+        /// </summary>
         [Input("datasetTemplate")]
         public Input<Inputs.DatasetTemplateArgs>? DatasetTemplate { get; set; }
 

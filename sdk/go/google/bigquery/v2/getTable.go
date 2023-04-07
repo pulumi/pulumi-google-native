@@ -37,6 +37,8 @@ type LookupTableResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// The default collation of the table.
 	DefaultCollation string `pulumi:"defaultCollation"`
+	// The default rounding mode of the table.
+	DefaultRoundingMode string `pulumi:"defaultRoundingMode"`
 	// [Optional] A user-friendly description of this table.
 	Description string `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -166,6 +168,11 @@ func (o LookupTableResultOutput) CreationTime() pulumi.StringOutput {
 // The default collation of the table.
 func (o LookupTableResultOutput) DefaultCollation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.DefaultCollation }).(pulumi.StringOutput)
+}
+
+// The default rounding mode of the table.
+func (o LookupTableResultOutput) DefaultRoundingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
 // [Optional] A user-friendly description of this table.

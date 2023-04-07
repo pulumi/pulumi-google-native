@@ -11,9 +11,50 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AdminUserArgs',
     'InstanceConfigArgs',
     'SAMLParamsArgs',
 ]
+
+@pulumi.input_type
+class AdminUserArgs:
+    def __init__(__self__, *,
+                 family_name: Optional[pulumi.Input[str]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None):
+        """
+        Message storing info about the first admin user. Next ID: 3
+        :param pulumi.Input[str] family_name: Optional. Last/family name of the first admin user.
+        :param pulumi.Input[str] given_name: Optional. First/given name of the first admin user.
+        """
+        if family_name is not None:
+            pulumi.set(__self__, "family_name", family_name)
+        if given_name is not None:
+            pulumi.set(__self__, "given_name", given_name)
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Last/family name of the first admin user.
+        """
+        return pulumi.get(self, "family_name")
+
+    @family_name.setter
+    def family_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family_name", value)
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. First/given name of the first admin user.
+        """
+        return pulumi.get(self, "given_name")
+
+    @given_name.setter
+    def given_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "given_name", value)
+
 
 @pulumi.input_type
 class InstanceConfigArgs:

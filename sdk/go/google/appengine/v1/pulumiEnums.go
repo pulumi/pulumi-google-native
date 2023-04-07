@@ -865,6 +865,348 @@ func (in *appServingStatusPtr) ToAppServingStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AppServingStatusPtrOutput)
 }
 
+// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+type ApplicationDatabaseType string
+
+const (
+	// Database type is unspecified.
+	ApplicationDatabaseTypeDatabaseTypeUnspecified = ApplicationDatabaseType("DATABASE_TYPE_UNSPECIFIED")
+	// Cloud Datastore
+	ApplicationDatabaseTypeCloudDatastore = ApplicationDatabaseType("CLOUD_DATASTORE")
+	// Cloud Firestore Native
+	ApplicationDatabaseTypeCloudFirestore = ApplicationDatabaseType("CLOUD_FIRESTORE")
+	// Cloud Firestore in Datastore Mode
+	ApplicationDatabaseTypeCloudDatastoreCompatibility = ApplicationDatabaseType("CLOUD_DATASTORE_COMPATIBILITY")
+)
+
+func (ApplicationDatabaseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationDatabaseType)(nil)).Elem()
+}
+
+func (e ApplicationDatabaseType) ToApplicationDatabaseTypeOutput() ApplicationDatabaseTypeOutput {
+	return pulumi.ToOutput(e).(ApplicationDatabaseTypeOutput)
+}
+
+func (e ApplicationDatabaseType) ToApplicationDatabaseTypeOutputWithContext(ctx context.Context) ApplicationDatabaseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApplicationDatabaseTypeOutput)
+}
+
+func (e ApplicationDatabaseType) ToApplicationDatabaseTypePtrOutput() ApplicationDatabaseTypePtrOutput {
+	return e.ToApplicationDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (e ApplicationDatabaseType) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
+	return ApplicationDatabaseType(e).ToApplicationDatabaseTypeOutputWithContext(ctx).ToApplicationDatabaseTypePtrOutputWithContext(ctx)
+}
+
+func (e ApplicationDatabaseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplicationDatabaseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplicationDatabaseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApplicationDatabaseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApplicationDatabaseTypeOutput struct{ *pulumi.OutputState }
+
+func (ApplicationDatabaseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationDatabaseType)(nil)).Elem()
+}
+
+func (o ApplicationDatabaseTypeOutput) ToApplicationDatabaseTypeOutput() ApplicationDatabaseTypeOutput {
+	return o
+}
+
+func (o ApplicationDatabaseTypeOutput) ToApplicationDatabaseTypeOutputWithContext(ctx context.Context) ApplicationDatabaseTypeOutput {
+	return o
+}
+
+func (o ApplicationDatabaseTypeOutput) ToApplicationDatabaseTypePtrOutput() ApplicationDatabaseTypePtrOutput {
+	return o.ToApplicationDatabaseTypePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationDatabaseTypeOutput) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationDatabaseType) *ApplicationDatabaseType {
+		return &v
+	}).(ApplicationDatabaseTypePtrOutput)
+}
+
+func (o ApplicationDatabaseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApplicationDatabaseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplicationDatabaseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApplicationDatabaseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationDatabaseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplicationDatabaseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationDatabaseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationDatabaseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationDatabaseType)(nil)).Elem()
+}
+
+func (o ApplicationDatabaseTypePtrOutput) ToApplicationDatabaseTypePtrOutput() ApplicationDatabaseTypePtrOutput {
+	return o
+}
+
+func (o ApplicationDatabaseTypePtrOutput) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
+	return o
+}
+
+func (o ApplicationDatabaseTypePtrOutput) Elem() ApplicationDatabaseTypeOutput {
+	return o.ApplyT(func(v *ApplicationDatabaseType) ApplicationDatabaseType {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationDatabaseType
+		return ret
+	}).(ApplicationDatabaseTypeOutput)
+}
+
+func (o ApplicationDatabaseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApplicationDatabaseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApplicationDatabaseTypeInput is an input type that accepts ApplicationDatabaseTypeArgs and ApplicationDatabaseTypeOutput values.
+// You can construct a concrete instance of `ApplicationDatabaseTypeInput` via:
+//
+//	ApplicationDatabaseTypeArgs{...}
+type ApplicationDatabaseTypeInput interface {
+	pulumi.Input
+
+	ToApplicationDatabaseTypeOutput() ApplicationDatabaseTypeOutput
+	ToApplicationDatabaseTypeOutputWithContext(context.Context) ApplicationDatabaseTypeOutput
+}
+
+var applicationDatabaseTypePtrType = reflect.TypeOf((**ApplicationDatabaseType)(nil)).Elem()
+
+type ApplicationDatabaseTypePtrInput interface {
+	pulumi.Input
+
+	ToApplicationDatabaseTypePtrOutput() ApplicationDatabaseTypePtrOutput
+	ToApplicationDatabaseTypePtrOutputWithContext(context.Context) ApplicationDatabaseTypePtrOutput
+}
+
+type applicationDatabaseTypePtr string
+
+func ApplicationDatabaseTypePtr(v string) ApplicationDatabaseTypePtrInput {
+	return (*applicationDatabaseTypePtr)(&v)
+}
+
+func (*applicationDatabaseTypePtr) ElementType() reflect.Type {
+	return applicationDatabaseTypePtrType
+}
+
+func (in *applicationDatabaseTypePtr) ToApplicationDatabaseTypePtrOutput() ApplicationDatabaseTypePtrOutput {
+	return pulumi.ToOutput(in).(ApplicationDatabaseTypePtrOutput)
+}
+
+func (in *applicationDatabaseTypePtr) ToApplicationDatabaseTypePtrOutputWithContext(ctx context.Context) ApplicationDatabaseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApplicationDatabaseTypePtrOutput)
+}
+
+// Serving status of this application.
+type ApplicationServingStatus string
+
+const (
+	// Serving status is unspecified.
+	ApplicationServingStatusUnspecified = ApplicationServingStatus("UNSPECIFIED")
+	// Application is serving.
+	ApplicationServingStatusServing = ApplicationServingStatus("SERVING")
+	// Application has been disabled by the user.
+	ApplicationServingStatusUserDisabled = ApplicationServingStatus("USER_DISABLED")
+	// Application has been disabled by the system.
+	ApplicationServingStatusSystemDisabled = ApplicationServingStatus("SYSTEM_DISABLED")
+)
+
+func (ApplicationServingStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServingStatus)(nil)).Elem()
+}
+
+func (e ApplicationServingStatus) ToApplicationServingStatusOutput() ApplicationServingStatusOutput {
+	return pulumi.ToOutput(e).(ApplicationServingStatusOutput)
+}
+
+func (e ApplicationServingStatus) ToApplicationServingStatusOutputWithContext(ctx context.Context) ApplicationServingStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApplicationServingStatusOutput)
+}
+
+func (e ApplicationServingStatus) ToApplicationServingStatusPtrOutput() ApplicationServingStatusPtrOutput {
+	return e.ToApplicationServingStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ApplicationServingStatus) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
+	return ApplicationServingStatus(e).ToApplicationServingStatusOutputWithContext(ctx).ToApplicationServingStatusPtrOutputWithContext(ctx)
+}
+
+func (e ApplicationServingStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplicationServingStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApplicationServingStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApplicationServingStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApplicationServingStatusOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServingStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServingStatus)(nil)).Elem()
+}
+
+func (o ApplicationServingStatusOutput) ToApplicationServingStatusOutput() ApplicationServingStatusOutput {
+	return o
+}
+
+func (o ApplicationServingStatusOutput) ToApplicationServingStatusOutputWithContext(ctx context.Context) ApplicationServingStatusOutput {
+	return o
+}
+
+func (o ApplicationServingStatusOutput) ToApplicationServingStatusPtrOutput() ApplicationServingStatusPtrOutput {
+	return o.ToApplicationServingStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationServingStatusOutput) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationServingStatus) *ApplicationServingStatus {
+		return &v
+	}).(ApplicationServingStatusPtrOutput)
+}
+
+func (o ApplicationServingStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApplicationServingStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplicationServingStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApplicationServingStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationServingStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApplicationServingStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationServingStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServingStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServingStatus)(nil)).Elem()
+}
+
+func (o ApplicationServingStatusPtrOutput) ToApplicationServingStatusPtrOutput() ApplicationServingStatusPtrOutput {
+	return o
+}
+
+func (o ApplicationServingStatusPtrOutput) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
+	return o
+}
+
+func (o ApplicationServingStatusPtrOutput) Elem() ApplicationServingStatusOutput {
+	return o.ApplyT(func(v *ApplicationServingStatus) ApplicationServingStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationServingStatus
+		return ret
+	}).(ApplicationServingStatusOutput)
+}
+
+func (o ApplicationServingStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationServingStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApplicationServingStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApplicationServingStatusInput is an input type that accepts ApplicationServingStatusArgs and ApplicationServingStatusOutput values.
+// You can construct a concrete instance of `ApplicationServingStatusInput` via:
+//
+//	ApplicationServingStatusArgs{...}
+type ApplicationServingStatusInput interface {
+	pulumi.Input
+
+	ToApplicationServingStatusOutput() ApplicationServingStatusOutput
+	ToApplicationServingStatusOutputWithContext(context.Context) ApplicationServingStatusOutput
+}
+
+var applicationServingStatusPtrType = reflect.TypeOf((**ApplicationServingStatus)(nil)).Elem()
+
+type ApplicationServingStatusPtrInput interface {
+	pulumi.Input
+
+	ToApplicationServingStatusPtrOutput() ApplicationServingStatusPtrOutput
+	ToApplicationServingStatusPtrOutputWithContext(context.Context) ApplicationServingStatusPtrOutput
+}
+
+type applicationServingStatusPtr string
+
+func ApplicationServingStatusPtr(v string) ApplicationServingStatusPtrInput {
+	return (*applicationServingStatusPtr)(&v)
+}
+
+func (*applicationServingStatusPtr) ElementType() reflect.Type {
+	return applicationServingStatusPtrType
+}
+
+func (in *applicationServingStatusPtr) ToApplicationServingStatusPtrOutput() ApplicationServingStatusPtrOutput {
+	return pulumi.ToOutput(in).(ApplicationServingStatusPtrOutput)
+}
+
+func (in *applicationServingStatusPtr) ToApplicationServingStatusPtrOutputWithContext(ctx context.Context) ApplicationServingStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApplicationServingStatusPtrOutput)
+}
+
 // Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
 type EndpointsApiServiceRolloutStrategy string
 
@@ -2972,6 +3314,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDatabaseTypePtrInput)(nil)).Elem(), AppDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppServingStatusInput)(nil)).Elem(), AppServingStatus("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppServingStatusPtrInput)(nil)).Elem(), AppServingStatus("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDatabaseTypeInput)(nil)).Elem(), ApplicationDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationDatabaseTypePtrInput)(nil)).Elem(), ApplicationDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServingStatusInput)(nil)).Elem(), ApplicationServingStatus("UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationServingStatusPtrInput)(nil)).Elem(), ApplicationServingStatus("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsApiServiceRolloutStrategyInput)(nil)).Elem(), EndpointsApiServiceRolloutStrategy("UNSPECIFIED_ROLLOUT_STRATEGY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointsApiServiceRolloutStrategyPtrInput)(nil)).Elem(), EndpointsApiServiceRolloutStrategy("UNSPECIFIED_ROLLOUT_STRATEGY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ErrorHandlerErrorCodeInput)(nil)).Elem(), ErrorHandlerErrorCode("ERROR_CODE_UNSPECIFIED"))
@@ -3007,6 +3353,10 @@ func init() {
 	pulumi.RegisterOutputType(AppDatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(AppServingStatusOutput{})
 	pulumi.RegisterOutputType(AppServingStatusPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationDatabaseTypeOutput{})
+	pulumi.RegisterOutputType(ApplicationDatabaseTypePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationServingStatusOutput{})
+	pulumi.RegisterOutputType(ApplicationServingStatusPtrOutput{})
 	pulumi.RegisterOutputType(EndpointsApiServiceRolloutStrategyOutput{})
 	pulumi.RegisterOutputType(EndpointsApiServiceRolloutStrategyPtrOutput{})
 	pulumi.RegisterOutputType(ErrorHandlerErrorCodeOutput{})

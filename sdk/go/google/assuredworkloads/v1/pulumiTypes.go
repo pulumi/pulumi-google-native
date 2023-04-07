@@ -47,6 +47,236 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput) Act
 	}).(pulumi.IntOutput)
 }
 
+// External key management systems(EKM) Provisioning response
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse struct {
+	// Indicates Ekm provisioning error if any.
+	EkmProvisioningErrorDomain *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain `pulumi:"ekmProvisioningErrorDomain"`
+	// Detailed error message if Ekm provisioning fails
+	EkmProvisioningErrorMessage *string `pulumi:"ekmProvisioningErrorMessage"`
+	// Indicates Ekm enrollment Provisioning of a given workload.
+	EkmProvisioningState *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState `pulumi:"ekmProvisioningState"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs and GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseInput` via:
+//
+//	GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput
+}
+
+// External key management systems(EKM) Provisioning response
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs struct {
+	// Indicates Ekm provisioning error if any.
+	EkmProvisioningErrorDomain GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrInput `pulumi:"ekmProvisioningErrorDomain"`
+	// Detailed error message if Ekm provisioning fails
+	EkmProvisioningErrorMessage pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorMessage"`
+	// Indicates Ekm enrollment Provisioning of a given workload.
+	EkmProvisioningState GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrInput `pulumi:"ekmProvisioningState"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput).ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs, GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtr and GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput` via:
+//
+//	        GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput
+}
+
+type googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrType GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs
+
+func GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtr(v *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput {
+	return (*googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrType)(v)
+}
+
+func (*googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrType) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrType) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput)
+}
+
+// External key management systems(EKM) Provisioning response
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput)
+}
+
+// Indicates Ekm provisioning error if any.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorDomain() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain {
+		return v.EkmProvisioningErrorDomain
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput)
+}
+
+// Detailed error message if Ekm provisioning fails
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *string {
+		return v.EkmProvisioningErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Ekm enrollment Provisioning of a given workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput) EkmProvisioningState() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState {
+		return v.EkmProvisioningState
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput)
+}
+
+// Indicates Ekm provisioning error if any.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) EkmProvisioningErrorDomain() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain {
+		if v == nil {
+			return nil
+		}
+		return v.EkmProvisioningErrorDomain
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrOutput)
+}
+
+// Detailed error message if Ekm provisioning fails
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) EkmProvisioningErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EkmProvisioningErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates Ekm enrollment Provisioning of a given workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput) EkmProvisioningState() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState {
+		if v == nil {
+			return nil
+		}
+		return v.EkmProvisioningState
+	}).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput)
+}
+
+// External key management systems(EKM) Provisioning response
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse struct {
+	// Indicates Ekm provisioning error if any.
+	EkmProvisioningErrorDomain string `pulumi:"ekmProvisioningErrorDomain"`
+	// Detailed error message if Ekm provisioning fails
+	EkmProvisioningErrorMessage string `pulumi:"ekmProvisioningErrorMessage"`
+	// Indicates Ekm enrollment Provisioning of a given workload.
+	EkmProvisioningState string `pulumi:"ekmProvisioningState"`
+}
+
+// External key management systems(EKM) Provisioning response
+type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput {
+	return o
+}
+
+// Indicates Ekm provisioning error if any.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningErrorDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse) string {
+		return v.EkmProvisioningErrorDomain
+	}).(pulumi.StringOutput)
+}
+
+// Detailed error message if Ekm provisioning fails
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse) string {
+		return v.EkmProvisioningErrorMessage
+	}).(pulumi.StringOutput)
+}
+
+// Indicates Ekm enrollment Provisioning of a given workload.
+func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse) string {
+		return v.EkmProvisioningState
+	}).(pulumi.StringOutput)
+}
+
 // Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -510,11 +740,16 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput{})

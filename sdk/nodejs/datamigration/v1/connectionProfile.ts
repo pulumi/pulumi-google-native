@@ -88,7 +88,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly provider!: pulumi.Output<string>;
     /**
-     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -216,7 +216,7 @@ export interface ConnectionProfileArgs {
      */
     provider?: pulumi.Input<enums.datamigration.v1.ConnectionProfileProvider>;
     /**
-     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
     /**

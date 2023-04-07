@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+// Returns the specified subnetwork.
 func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...pulumi.InvokeOption) (*LookupSubnetworkResult, error) {
 	var rv LookupSubnetworkResult
 	err := ctx.Invoke("google-native:compute/v1:getSubnetwork", args, &rv, opts...)

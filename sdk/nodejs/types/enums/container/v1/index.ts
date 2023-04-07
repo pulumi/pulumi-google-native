@@ -96,7 +96,7 @@ export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
      */
     PrivateIpv6GoogleAccessToGoogle: "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE",
     /**
-     * Enables priate IPv6 access to and from Google Services
+     * Enables private IPv6 access to and from Google Services
      */
     PrivateIpv6GoogleAccessBidirectional: "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL",
 } as const;
@@ -435,7 +435,7 @@ export const NetworkConfigPrivateIpv6GoogleAccess = {
      */
     PrivateIpv6GoogleAccessToGoogle: "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE",
     /**
-     * Enables priate IPv6 access to and from Google Services
+     * Enables private IPv6 access to and from Google Services
      */
     PrivateIpv6GoogleAccessBidirectional: "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL",
 } as const;

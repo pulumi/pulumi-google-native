@@ -86,6 +86,10 @@ export interface GetOccurrenceResult {
      */
     readonly sbom: outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse;
     /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    readonly sbomReference: outputs.containeranalysis.v1beta1.SBOMReferenceOccurrenceResponse;
+    /**
      * Describes a specific SPDX File.
      */
     readonly spdxFile: outputs.containeranalysis.v1beta1.FileOccurrenceResponse;

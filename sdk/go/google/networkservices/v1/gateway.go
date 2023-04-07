@@ -15,26 +15,36 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
+	// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
+	// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls pulumi.StringArrayOutput `pulumi:"certificateUrls"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
+	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy pulumi.StringOutput `pulumi:"gatewaySecurityPolicy"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network pulumi.StringOutput `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   pulumi.IntArrayOutput `pulumi:"ports"`
 	Project pulumi.StringOutput   `pulumi:"project"`
-	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+	// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Server-defined URL of this resource
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringOutput `pulumi:"serverTlsPolicy"`
+	// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The timestamp when the resource was updated.
@@ -53,9 +63,6 @@ func NewGateway(ctx *pulumi.Context,
 	}
 	if args.Ports == nil {
 		return nil, errors.New("invalid value for required argument 'Ports'")
-	}
-	if args.Scope == nil {
-		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"gatewayId",
@@ -95,44 +102,64 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
+	// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses []string `pulumi:"addresses"`
+	// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls []string `pulumi:"certificateUrls"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId string `pulumi:"gatewayId"`
+	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name *string `pulumi:"name"`
+	// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network *string `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   []int   `pulumi:"ports"`
 	Project *string `pulumi:"project"`
-	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-	Scope string `pulumi:"scope"`
+	// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+	Scope *string `pulumi:"scope"`
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
+	// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+	Subnetwork *string `pulumi:"subnetwork"`
 	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type *GatewayType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
+	// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses pulumi.StringArrayInput
+	// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls pulumi.StringArrayInput
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Required. Short name of the Gateway resource to be created.
 	GatewayId pulumi.StringInput
+	// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy pulumi.StringPtrInput
 	// Optional. Set of label tags associated with the Gateway resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringPtrInput
+	// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   pulumi.IntArrayInput
 	Project pulumi.StringPtrInput
-	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-	Scope pulumi.StringInput
+	// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+	Scope pulumi.StringPtrInput
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
+	// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+	Subnetwork pulumi.StringPtrInput
 	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type GatewayTypePtrInput
 }
@@ -174,6 +201,16 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+func (o GatewayOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) CertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.CertificateUrls }).(pulumi.StringArrayOutput)
+}
+
 // The timestamp when the resource was created.
 func (o GatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -187,6 +224,11 @@ func (o GatewayOutput) Description() pulumi.StringOutput {
 // Required. Short name of the Gateway resource to be created.
 func (o GatewayOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) GatewaySecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewaySecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Set of label tags associated with the Gateway resource.
@@ -203,6 +245,11 @@ func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
 // One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 func (o GatewayOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntArrayOutput { return v.Ports }).(pulumi.IntArrayOutput)
@@ -212,7 +259,7 @@ func (o GatewayOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 func (o GatewayOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
@@ -225,6 +272,11 @@ func (o GatewayOutput) SelfLink() pulumi.StringOutput {
 // Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 func (o GatewayOutput) ServerTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ServerTlsPolicy }).(pulumi.StringOutput)
+}
+
+// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+func (o GatewayOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
 // Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.

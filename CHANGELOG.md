@@ -2,6 +2,240 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+### Does the PR have any schema changes?
+
+Upstream breaking changes:
+- Resource "google-native:artifactregistry/v1beta2:Repository" missing input "createTime"
+- Resource "google-native:artifactregistry/v1beta2:Repository" missing input "updateTime"
+- Resource "google-native:privateca/v1beta1:Certificate" missing
+- Resource "google-native:artifactregistry/v1:Repository" missing input "createTime"
+- Resource "google-native:artifactregistry/v1:Repository" missing input "updateTime"
+- Resource "google-native:privateca/v1beta1:CertificateAuthority" missing
+- Resource "google-native:datafusion/v1:Instance" missing input "accelerators"
+- Resource "google-native:datafusion/v1:Instance" missing input "availableVersion"
+- Resource "google-native:batch/v1:JobIamPolicy" missing
+- Resource "google-native:datafusion/v1beta1:Instance" missing input "accelerators"
+- Resource "google-native:datafusion/v1beta1:Instance" missing input "availableVersion"
+- Resource "google-native:recaptchaenterprise/v1:Key" missing input "createTime"
+- Resource "google-native:appengine/v1:App" missing input "gcrDomain"
+- Resource "google-native:batch/v1:JobIamBinding" missing
+- Resource "google-native:artifactregistry/v1beta1:Repository" missing input "createTime"
+- Resource "google-native:artifactregistry/v1beta1:Repository" missing input "updateTime"
+- Resource "google-native:batch/v1:JobIamMember" missing
+- Function "google-native:batch/v1:getJobIamPolicy" missing
+- Function "google-native:privateca/v1beta1:getCertificateAuthority" missing
+- Function "google-native:privateca/v1beta1:getCertificate" missing
+- Type "google-native:privateca/v1beta1:ReusableConfigValues" missing
+- Type "google-native:privateca/v1beta1:PublicKeyType" missing
+- Type "google-native:privateca/v1beta1:KeyUsageResponse" missing
+- Type "google-native:batch/v1:AuditLogConfig" missing
+- Type "google-native:privateca/v1beta1:SubjectAltNames" missing
+- Type "google-native:privateca/v1beta1:SubordinateConfigChain" missing
+- Type "google-native:privateca/v1beta1:CertificateAuthorityPolicyResponse" missing
+- Type "google-native:analyticshub/v1:RestrictedExportConfig" missing property "restrictDirectTableAccess"
+- Type "google-native:datafusion/v1:AcceleratorState" missing
+- Type "google-native:privateca/v1beta1:X509Extension" missing
+- Type "google-native:privateca/v1beta1:KeyVersionSpecAlgorithm" missing
+- Type "google-native:privateca/v1beta1:SubjectConfig" missing
+- Type "google-native:privateca/v1beta1:CertificateConfig" missing
+- Type "google-native:privateca/v1beta1:CaOptions" missing
+- Type "google-native:batch/v1:AuditConfigResponse" missing
+- Type "google-native:batch/v1:AuditLogConfigResponse" missing
+- Type "google-native:privateca/v1beta1:IssuanceModesResponse" missing
+- Type "google-native:analyticshub/v1beta1:RestrictedExportConfigResponse" missing property "restrictDirectTableAccess"
+- Type "google-native:datafusion/v1:Version" missing
+- Type "google-native:privateca/v1beta1:KeyVersionSpec" missing
+- Type "google-native:privateca/v1beta1:KeyUsageOptions" missing
+- Type "google-native:privateca/v1beta1:CaOptionsResponse" missing
+- Type "google-native:privateca/v1beta1:AccessUrlsResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateConfigResponse" missing
+- Type "google-native:privateca/v1beta1:KeyUsage" missing
+- Type "google-native:privateca/v1beta1:ExtendedKeyUsageOptionsResponse" missing
+- Type "google-native:privateca/v1beta1:AllowedConfigListResponse" missing
+- Type "google-native:privateca/v1beta1:SubjectResponse" missing
+- Type "google-native:privateca/v1beta1:SubjectDescriptionResponse" missing
+- Type "google-native:datafusion/v1:AcceleratorAcceleratorType" missing
+- Type "google-native:privateca/v1beta1:ReusableConfigWrapperResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateAuthorityPolicy" missing
+- Type "google-native:datafusion/v1:VersionType" missing
+- Type "google-native:privateca/v1beta1:ObjectIdResponse" missing
+- Type "google-native:privateca/v1beta1:KeyUsageOptionsResponse" missing
+- Type "google-native:batch/v1:BindingResponse" missing
+- Type "google-native:privateca/v1beta1:PublicKey" missing
+- Type "google-native:batch/v1:AuditConfig" missing
+- Type "google-native:privateca/v1beta1:ObjectId" missing
+- Type "google-native:privateca/v1beta1:Subject" missing
+- Type "google-native:privateca/v1beta1:ReusableConfigValuesResponse" missing
+- Type "google-native:privateca/v1beta1:X509ExtensionResponse" missing
+- Type "google-native:privateca/v1beta1:SubordinateConfig" missing
+- Type "google-native:privateca/v1beta1:SubjectConfigResponse" missing
+- Type "google-native:privateca/v1beta1:KeyVersionSpecResponse" missing
+- Type "google-native:privateca/v1beta1:KeyIdResponse" missing
+- Type "google-native:privateca/v1beta1:AllowedConfigList" missing
+- Type "google-native:privateca/v1beta1:IssuanceModes" missing
+- Type "google-native:privateca/v1beta1:ReusableConfigWrapper" missing
+- Type "google-native:datafusion/v1beta1:AcceleratorAcceleratorType" missing
+- Type "google-native:datafusion/v1:Accelerator" missing
+- Type "google-native:privateca/v1beta1:SubjectAltNamesResponse" missing
+- Type "google-native:privateca/v1beta1:IssuingOptions" missing
+- Type "google-native:privateca/v1beta1:SubordinateConfigChainResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateDescriptionResponse" missing
+- Type "google-native:privateca/v1beta1:IssuingOptionsResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateFingerprintResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateAuthorityTier" missing
+- Type "google-native:privateca/v1beta1:RevocationDetailsResponse" missing
+- Type "google-native:privateca/v1beta1:CertificateAuthorityType" missing
+- Type "google-native:analyticshub/v1beta1:RestrictedExportConfig" missing property "restrictDirectTableAccess"
+- Type "google-native:datafusion/v1beta1:Accelerator" missing
+- Type "google-native:batch/v1:AuditLogConfigLogType" missing
+- Type "google-native:datafusion/v1beta1:AcceleratorState" missing
+- Type "google-native:privateca/v1beta1:PublicKeyResponse" missing
+- Type "google-native:batch/v1:Binding" missing
+- Type "google-native:datafusion/v1beta1:Version" missing
+- Type "google-native:privateca/v1beta1:AllowedSubjectAltNamesResponse" missing
+- Type "google-native:privateca/v1beta1:AllowedSubjectAltNames" missing
+- Type "google-native:privateca/v1beta1:SubordinateConfigResponse" missing
+- Type "google-native:batch/v1:ExprResponse" missing
+- Type "google-native:batch/v1:Expr" missing
+- Type "google-native:privateca/v1beta1:ExtendedKeyUsageOptions" missing
+- Type "google-native:datafusion/v1beta1:VersionType" missing
+- Type "google-native:analyticshub/v1:RestrictedExportConfigResponse" missing property "restrictDirectTableAccess"
+
+#### New resources:
+
+- `appengine/v1.Application`
+- `compute/alpha.StoragePool`
+- `compute/alpha.StoragePoolIamBinding`
+- `compute/alpha.StoragePoolIamMember`
+- `compute/alpha.StoragePoolIamPolicy`
+- `compute/beta.RegionInstanceTemplate`
+- `dataform/v1beta1.RepositoryIamBinding`
+- `dataform/v1beta1.RepositoryIamMember`
+- `dataform/v1beta1.RepositoryIamPolicy`
+- `dataform/v1beta1.RepositoryWorkspaceIamBinding`
+- `dataform/v1beta1.RepositoryWorkspaceIamMember`
+- `dataform/v1beta1.RepositoryWorkspaceIamPolicy`
+- `datalineage/v1.LineageEvent`
+- `datalineage/v1.Process`
+- `datalineage/v1.Run`
+- `firebaseappdistribution/v1.Group`
+- `gkehub/v1.Binding`
+- `gkehub/v1.Scope`
+- `gkehub/v1alpha.Binding`
+- `gkehub/v1alpha.Namespace`
+- `gkehub/v1alpha.Rbacrolebinding`
+- `gkehub/v1alpha.Scope`
+- `gkehub/v1beta.Binding`
+- `gkehub/v1beta.Namespace`
+- `gkehub/v1beta.Rbacrolebinding`
+- `gkehub/v1beta.Scope`
+- `iam/v1.WorkforcePool`
+- `iam/v1.WorkforcePoolIamBinding`
+- `iam/v1.WorkforcePoolIamMember`
+- `iam/v1.WorkforcePoolIamPolicy`
+- `iam/v1.WorkforcePoolKey`
+- `iam/v1.WorkforcePoolProvider`
+- `iam/v1.WorkloadIdentityPoolKey`
+- `logging/v2.BillingAccountBucketLink`
+- `logging/v2.FolderBucketLink`
+- `logging/v2.Link`
+- `logging/v2.OrganizationBucketLink`
+- `migrationcenter/v1alpha1.Group`
+- `migrationcenter/v1alpha1.ImportDataFile`
+- `migrationcenter/v1alpha1.ImportJob`
+- `migrationcenter/v1alpha1.PreferenceSet`
+- `migrationcenter/v1alpha1.Report`
+- `migrationcenter/v1alpha1.ReportConfig`
+- `migrationcenter/v1alpha1.Source`
+- `networksecurity/v1beta1.AddressGroup`
+- `networksecurity/v1beta1.GatewaySecurityPolicy`
+- `networksecurity/v1beta1.OrganizationAddressGroup`
+- `networksecurity/v1beta1.Rule`
+- `networksecurity/v1beta1.TlsInspectionPolicy`
+- `networksecurity/v1beta1.UrlList`
+- `networkservices/v1.MulticastConsumerAssociationIamBinding`
+- `networkservices/v1.MulticastConsumerAssociationIamMember`
+- `networkservices/v1.MulticastConsumerAssociationIamPolicy`
+- `networkservices/v1.MulticastDomainActivationIamBinding`
+- `networkservices/v1.MulticastDomainActivationIamMember`
+- `networkservices/v1.MulticastDomainActivationIamPolicy`
+- `networkservices/v1.MulticastDomainIamBinding`
+- `networkservices/v1.MulticastDomainIamMember`
+- `networkservices/v1.MulticastDomainIamPolicy`
+- `networkservices/v1.MulticastGroupDefinitionIamBinding`
+- `networkservices/v1.MulticastGroupDefinitionIamMember`
+- `networkservices/v1.MulticastGroupDefinitionIamPolicy`
+- `networkservices/v1.MulticastGroupIamBinding`
+- `networkservices/v1.MulticastGroupIamMember`
+- `networkservices/v1.MulticastGroupIamPolicy`
+- `notebooks/v2.InstanceIamBinding`
+- `notebooks/v2.InstanceIamMember`
+- `notebooks/v2.InstanceIamPolicy`
+- `recaptchaenterprise/v1.Firewallpolicy`
+- `retail/v2.Model`
+- `retail/v2alpha.Model`
+- `retail/v2beta.Model`
+- `servicedirectory/v1beta1.NamespaceWorkloadIamBinding`
+- `servicedirectory/v1beta1.NamespaceWorkloadIamMember`
+- `servicedirectory/v1beta1.NamespaceWorkloadIamPolicy`
+- `vpcaccess/v1beta1.Connector`
+
+#### New functions:
+
+- `appengine/v1.getApplication`
+- `compute/alpha.getStoragePool`
+- `compute/alpha.getStoragePoolIamPolicy`
+- `compute/beta.getRegionInstanceTemplate`
+- `dataform/v1beta1.getRepositoryIamPolicy`
+- `dataform/v1beta1.getRepositoryWorkspaceIamPolicy`
+- `datalineage/v1.getLineageEvent`
+- `datalineage/v1.getProcess`
+- `datalineage/v1.getRun`
+- `firebaseappdistribution/v1.getGroup`
+- `gkehub/v1.getBinding`
+- `gkehub/v1.getScope`
+- `gkehub/v1alpha.getBinding`
+- `gkehub/v1alpha.getNamespace`
+- `gkehub/v1alpha.getRbacrolebinding`
+- `gkehub/v1alpha.getScope`
+- `gkehub/v1beta.getBinding`
+- `gkehub/v1beta.getNamespace`
+- `gkehub/v1beta.getRbacrolebinding`
+- `gkehub/v1beta.getScope`
+- `iam/v1.getWorkforcePool`
+- `iam/v1.getWorkforcePoolIamPolicy`
+- `iam/v1.getWorkforcePoolKey`
+- `iam/v1.getWorkforcePoolProvider`
+- `iam/v1.getWorkloadIdentityPoolKey`
+- `logging/v2.getBillingAccountBucketLink`
+- `logging/v2.getFolderBucketLink`
+- `logging/v2.getLink`
+- `logging/v2.getOrganizationBucketLink`
+- `migrationcenter/v1alpha1.getGroup`
+- `migrationcenter/v1alpha1.getImportDataFile`
+- `migrationcenter/v1alpha1.getImportJob`
+- `migrationcenter/v1alpha1.getPreferenceSet`
+- `migrationcenter/v1alpha1.getReport`
+- `migrationcenter/v1alpha1.getReportConfig`
+- `migrationcenter/v1alpha1.getSource`
+- `networksecurity/v1beta1.getAddressGroup`
+- `networksecurity/v1beta1.getGatewaySecurityPolicy`
+- `networksecurity/v1beta1.getOrganizationAddressGroup`
+- `networksecurity/v1beta1.getRule`
+- `networksecurity/v1beta1.getTlsInspectionPolicy`
+- `networksecurity/v1beta1.getUrlList`
+- `networkservices/v1.getMulticastConsumerAssociationIamPolicy`
+- `networkservices/v1.getMulticastDomainActivationIamPolicy`
+- `networkservices/v1.getMulticastDomainIamPolicy`
+- `networkservices/v1.getMulticastGroupDefinitionIamPolicy`
+- `networkservices/v1.getMulticastGroupIamPolicy`
+- `notebooks/v2.getInstanceIamPolicy`
+- `recaptchaenterprise/v1.getFirewallpolicy`
+- `retail/v2.getModel`
+- `retail/v2alpha.getModel`
+- `retail/v2beta.getModel`
+- `servicedirectory/v1beta1.getNamespaceWorkloadIamPolicy`
+- `vpcaccess/v1beta1.getConnector`
 
 ## 0.28.0 (2023-02-01)
 

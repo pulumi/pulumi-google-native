@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// Port number to access on the container. Number must be in the range 1 to 65535.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        /// <summary>
         /// Not supported by Cloud Run.
         /// </summary>
         [Input("scheme")]

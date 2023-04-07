@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Error Catch Task configuration for the integration. It's optional.
+        /// </summary>
+        [Output("errorCatcherConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>> ErrorCatcherConfigs { get; private set; } = null!;
+
         [Output("integrationId")]
         public Output<string> IntegrationId { get; private set; } = null!;
 
@@ -93,6 +99,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+        /// </summary>
+        [Output("runAsServiceAccount")]
+        public Output<string> RunAsServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
@@ -218,6 +230,18 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("errorCatcherConfigs")]
+        private InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>? _errorCatcherConfigs;
+
+        /// <summary>
+        /// Optional. Error Catch Task configuration for the integration. It's optional.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs> ErrorCatcherConfigs
+        {
+            get => _errorCatcherConfigs ?? (_errorCatcherConfigs = new InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>());
+            set => _errorCatcherConfigs = value;
+        }
+
         [Input("integrationId", required: true)]
         public Input<string> IntegrationId { get; set; } = null!;
 
@@ -277,6 +301,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+        /// </summary>
+        [Input("runAsServiceAccount")]
+        public Input<string>? RunAsServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.

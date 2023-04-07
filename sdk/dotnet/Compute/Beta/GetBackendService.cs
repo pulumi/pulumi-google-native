@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetBackendService
     {
         /// <summary>
-        /// Returns the specified BackendService resource. Gets a list of available backend services.
+        /// Returns the specified BackendService resource.
         /// </summary>
         public static Task<GetBackendServiceResult> InvokeAsync(GetBackendServiceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackendServiceResult>("google-native:compute/beta:getBackendService", args ?? new GetBackendServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified BackendService resource. Gets a list of available backend services.
+        /// Returns the specified BackendService resource.
         /// </summary>
         public static Output<GetBackendServiceResult> Invoke(GetBackendServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendServiceResult>("google-native:compute/beta:getBackendService", args ?? new GetBackendServiceInvokeArgs(), options.WithDefaults());

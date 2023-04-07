@@ -49,7 +49,7 @@ type WorkstationCluster struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// If set, validate the request and preview the review, but do not actually apply it.
 	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	// Required. ID to use for the cluster.
+	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 }
 
@@ -121,7 +121,7 @@ type workstationClusterArgs struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// If set, validate the request and preview the review, but do not actually apply it.
 	ValidateOnly *bool `pulumi:"validateOnly"`
-	// Required. ID to use for the cluster.
+	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 }
 
@@ -147,7 +147,7 @@ type WorkstationClusterArgs struct {
 	Subnetwork pulumi.StringPtrInput
 	// If set, validate the request and preview the review, but do not actually apply it.
 	ValidateOnly pulumi.BoolPtrInput
-	// Required. ID to use for the cluster.
+	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringInput
 }
 
@@ -276,7 +276,7 @@ func (o WorkstationClusterOutput) ValidateOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Required. ID to use for the cluster.
+// Required. ID to use for the workstation cluster.
 func (o WorkstationClusterOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }

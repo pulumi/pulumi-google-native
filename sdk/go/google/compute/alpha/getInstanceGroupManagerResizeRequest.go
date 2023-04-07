@@ -48,7 +48,7 @@ type LookupInstanceGroupManagerResizeRequestResult struct {
 	State string `pulumi:"state"`
 	// [Output only] Status of the request. The Status message is aligned with QueuedResource.status. ResizeRequest.queuing_policy contains the queuing policy as provided by the user; it could have either valid_until_time or valid_until_duration. ResizeRequest.status.queuing_policy always contains absolute time as calculated by the server when the request is queued.
 	Status InstanceGroupManagerResizeRequestStatusResponse `pulumi:"status"`
-	// The URL of a zone where the resize request is located.
+	// The URL of a zone where the resize request is located. Populated only for zonal resize requests.
 	Zone string `pulumi:"zone"`
 }
 
@@ -142,7 +142,7 @@ func (o LookupInstanceGroupManagerResizeRequestResultOutput) Status() InstanceGr
 	}).(InstanceGroupManagerResizeRequestStatusResponseOutput)
 }
 
-// The URL of a zone where the resize request is located.
+// The URL of a zone where the resize request is located. Populated only for zonal resize requests.
 func (o LookupInstanceGroupManagerResizeRequestResultOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResizeRequestResult) string { return v.Zone }).(pulumi.StringOutput)
 }

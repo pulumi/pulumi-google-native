@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, macsec=None, macsec_enabled=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, remote_location=None, requested_link_count=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, state=None):
+    def __init__(__self__, admin_enabled=None, available_features=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, macsec=None, macsec_enabled=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, remote_location=None, requested_features=None, requested_link_count=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if available_features and not isinstance(available_features, list):
+            raise TypeError("Expected argument 'available_features' to be a list")
+        pulumi.set(__self__, "available_features", available_features)
         if circuit_infos and not isinstance(circuit_infos, list):
             raise TypeError("Expected argument 'circuit_infos' to be a list")
         pulumi.set(__self__, "circuit_infos", circuit_infos)
@@ -89,6 +92,9 @@ class GetInterconnectResult:
         if remote_location and not isinstance(remote_location, str):
             raise TypeError("Expected argument 'remote_location' to be a str")
         pulumi.set(__self__, "remote_location", remote_location)
+        if requested_features and not isinstance(requested_features, list):
+            raise TypeError("Expected argument 'requested_features' to be a list")
+        pulumi.set(__self__, "requested_features", requested_features)
         if requested_link_count and not isinstance(requested_link_count, int):
             raise TypeError("Expected argument 'requested_link_count' to be a int")
         pulumi.set(__self__, "requested_link_count", requested_link_count)
@@ -112,6 +118,14 @@ class GetInterconnectResult:
         Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         """
         return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="availableFeatures")
+    def available_features(self) -> Sequence[str]:
+        """
+        [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        """
+        return pulumi.get(self, "available_features")
 
     @property
     @pulumi.getter(name="circuitInfos")
@@ -290,6 +304,14 @@ class GetInterconnectResult:
         return pulumi.get(self, "remote_location")
 
     @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> Sequence[str]:
+        """
+        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        """
+        return pulumi.get(self, "requested_features")
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> int:
         """
@@ -301,7 +323,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
-        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
@@ -337,6 +359,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             yield self
         return GetInterconnectResult(
             admin_enabled=self.admin_enabled,
+            available_features=self.available_features,
             circuit_infos=self.circuit_infos,
             creation_timestamp=self.creation_timestamp,
             customer_name=self.customer_name,
@@ -359,6 +382,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             peer_ip_address=self.peer_ip_address,
             provisioned_link_count=self.provisioned_link_count,
             remote_location=self.remote_location,
+            requested_features=self.requested_features,
             requested_link_count=self.requested_link_count,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
@@ -380,6 +404,7 @@ def get_interconnect(interconnect: Optional[str] = None,
 
     return AwaitableGetInterconnectResult(
         admin_enabled=__ret__.admin_enabled,
+        available_features=__ret__.available_features,
         circuit_infos=__ret__.circuit_infos,
         creation_timestamp=__ret__.creation_timestamp,
         customer_name=__ret__.customer_name,
@@ -402,6 +427,7 @@ def get_interconnect(interconnect: Optional[str] = None,
         peer_ip_address=__ret__.peer_ip_address,
         provisioned_link_count=__ret__.provisioned_link_count,
         remote_location=__ret__.remote_location,
+        requested_features=__ret__.requested_features,
         requested_link_count=__ret__.requested_link_count,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,

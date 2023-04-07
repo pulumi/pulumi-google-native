@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 {
 
     /// <summary>
-    /// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+    /// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
     /// </summary>
     [OutputType]
     public sealed class VpcPeeringConfigResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly string Subnet;
         /// <summary>
-        /// Fully qualified name of the VPC DMS will peer to.
+        /// Fully qualified name of the VPC that Database Migration Service will peer to.
         /// </summary>
         public readonly string VpcName;
 

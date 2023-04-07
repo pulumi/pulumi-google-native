@@ -24,6 +24,8 @@ type Function struct {
 	EventTrigger EventTriggerResponseOutput `pulumi:"eventTrigger"`
 	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	FunctionId pulumi.StringPtrOutput `pulumi:"functionId"`
+	// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Labels associated with this Cloud Function.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -94,6 +96,8 @@ type functionArgs struct {
 	EventTrigger *EventTrigger `pulumi:"eventTrigger"`
 	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	FunctionId *string `pulumi:"functionId"`
+	// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Labels associated with this Cloud Function.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -116,6 +120,8 @@ type FunctionArgs struct {
 	EventTrigger EventTriggerPtrInput
 	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	FunctionId pulumi.StringPtrInput
+	// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringPtrInput
 	// Labels associated with this Cloud Function.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -186,6 +192,11 @@ func (o FunctionOutput) EventTrigger() EventTriggerResponseOutput {
 // The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 func (o FunctionOutput) FunctionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.FunctionId }).(pulumi.StringPtrOutput)
+}
+
+// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o FunctionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // Labels associated with this Cloud Function.

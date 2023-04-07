@@ -67,6 +67,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MeshIamMember{}
 	case "google-native:networkservices/v1:MeshIamPolicy":
 		r = &MeshIamPolicy{}
+	case "google-native:networkservices/v1:MulticastConsumerAssociationIamBinding":
+		r = &MulticastConsumerAssociationIamBinding{}
+	case "google-native:networkservices/v1:MulticastConsumerAssociationIamMember":
+		r = &MulticastConsumerAssociationIamMember{}
+	case "google-native:networkservices/v1:MulticastConsumerAssociationIamPolicy":
+		r = &MulticastConsumerAssociationIamPolicy{}
+	case "google-native:networkservices/v1:MulticastDomainActivationIamBinding":
+		r = &MulticastDomainActivationIamBinding{}
+	case "google-native:networkservices/v1:MulticastDomainActivationIamMember":
+		r = &MulticastDomainActivationIamMember{}
+	case "google-native:networkservices/v1:MulticastDomainActivationIamPolicy":
+		r = &MulticastDomainActivationIamPolicy{}
+	case "google-native:networkservices/v1:MulticastDomainIamBinding":
+		r = &MulticastDomainIamBinding{}
+	case "google-native:networkservices/v1:MulticastDomainIamMember":
+		r = &MulticastDomainIamMember{}
+	case "google-native:networkservices/v1:MulticastDomainIamPolicy":
+		r = &MulticastDomainIamPolicy{}
+	case "google-native:networkservices/v1:MulticastGroupDefinitionIamBinding":
+		r = &MulticastGroupDefinitionIamBinding{}
+	case "google-native:networkservices/v1:MulticastGroupDefinitionIamMember":
+		r = &MulticastGroupDefinitionIamMember{}
+	case "google-native:networkservices/v1:MulticastGroupDefinitionIamPolicy":
+		r = &MulticastGroupDefinitionIamPolicy{}
+	case "google-native:networkservices/v1:MulticastGroupIamBinding":
+		r = &MulticastGroupIamBinding{}
+	case "google-native:networkservices/v1:MulticastGroupIamMember":
+		r = &MulticastGroupIamMember{}
+	case "google-native:networkservices/v1:MulticastGroupIamPolicy":
+		r = &MulticastGroupIamPolicy{}
 	case "google-native:networkservices/v1:ServiceBinding":
 		r = &ServiceBinding{}
 	case "google-native:networkservices/v1:ServiceBindingIamBinding":

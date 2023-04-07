@@ -39,7 +39,7 @@ type LookupExecutionResult struct {
 	EndTime string `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
 	Error ErrorResponse `pulumi:"error"`
-	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 	Name string `pulumi:"name"`
@@ -119,7 +119,7 @@ func (o LookupExecutionResultOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v LookupExecutionResult) ErrorResponse { return v.Error }).(ErrorResponseOutput)
 }
 
-// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 func (o LookupExecutionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExecutionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

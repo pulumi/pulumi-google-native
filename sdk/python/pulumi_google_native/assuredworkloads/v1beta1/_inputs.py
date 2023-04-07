@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs',
@@ -41,6 +42,62 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsArgs:
     @kms_settings.setter
     def kms_settings(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs']]):
         pulumi.set(self, "kms_settings", value)
+
+
+@pulumi.input_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs:
+    def __init__(__self__, *,
+                 ekm_provisioning_error_domain: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']] = None,
+                 ekm_provisioning_error_message: Optional[pulumi.Input[str]] = None,
+                 ekm_provisioning_state: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']] = None):
+        """
+        External key management systems(EKM) Provisioning response
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain'] ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
+        :param pulumi.Input[str] ekm_provisioning_error_message: Detailed error message if Ekm provisioning fails
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState'] ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        if ekm_provisioning_error_domain is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
+        if ekm_provisioning_error_message is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_message", ekm_provisioning_error_message)
+        if ekm_provisioning_state is not None:
+            pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorDomain")
+    def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]:
+        """
+        Indicates Ekm provisioning error if any.
+        """
+        return pulumi.get(self, "ekm_provisioning_error_domain")
+
+    @ekm_provisioning_error_domain.setter
+    def ekm_provisioning_error_domain(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]):
+        pulumi.set(self, "ekm_provisioning_error_domain", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorMessage")
+    def ekm_provisioning_error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Detailed error message if Ekm provisioning fails
+        """
+        return pulumi.get(self, "ekm_provisioning_error_message")
+
+    @ekm_provisioning_error_message.setter
+    def ekm_provisioning_error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_provisioning_error_message", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningState")
+    def ekm_provisioning_state(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']]:
+        """
+        Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        return pulumi.get(self, "ekm_provisioning_state")
+
+    @ekm_provisioning_state.setter
+    def ekm_provisioning_state(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState']]):
+        pulumi.set(self, "ekm_provisioning_state", value)
 
 
 @pulumi.input_type

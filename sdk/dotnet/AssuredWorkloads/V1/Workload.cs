@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Represents the Ekm Provisioning State of the given workload.
+        /// </summary>
+        [Output("ekmProvisioningResponse")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse> EkmProvisioningResponse { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         /// </summary>
         [Output("enableSovereignControls")]
@@ -196,6 +202,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Represents the Ekm Provisioning State of the given workload.
+        /// </summary>
+        [Input("ekmProvisioningResponse")]
+        public Input<Inputs.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs>? EkmProvisioningResponse { get; set; }
 
         /// <summary>
         /// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.

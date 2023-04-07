@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        /// </summary>
+        public readonly string EventDataContentType;
+        /// <summary>
         /// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         /// </summary>
         public readonly ImmutableArray<Outputs.EventFilterResponse> EventFilters;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
             string etag,
 
+            string eventDataContentType,
+
             ImmutableArray<Outputs.EventFilterResponse> eventFilters,
 
             ImmutableDictionary<string, string> labels,
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
             CreateTime = createTime;
             Destination = destination;
             Etag = etag;
+            EventDataContentType = eventDataContentType;
             EventFilters = eventFilters;
             Labels = labels;
             Name = name;

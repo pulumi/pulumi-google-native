@@ -53,6 +53,8 @@ type LookupAgentResult struct {
 	StartFlow string `pulumi:"startFlow"`
 	// The list of all languages supported by the agent (except for the `default_language_code`).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
+	// Settings on instructing the speech synthesizer on how to generate the output audio content.
+	TextToSpeechSettings GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse `pulumi:"textToSpeechSettings"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone string `pulumi:"timeZone"`
 }
@@ -161,6 +163,13 @@ func (o LookupAgentResultOutput) StartFlow() pulumi.StringOutput {
 // The list of all languages supported by the agent (except for the `default_language_code`).
 func (o LookupAgentResultOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAgentResult) []string { return v.SupportedLanguageCodes }).(pulumi.StringArrayOutput)
+}
+
+// Settings on instructing the speech synthesizer on how to generate the output audio content.
+func (o LookupAgentResultOutput) TextToSpeechSettings() GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponseOutput {
+	return o.ApplyT(func(v LookupAgentResult) GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse {
+		return v.TextToSpeechSettings
+	}).(GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponseOutput)
 }
 
 // The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.

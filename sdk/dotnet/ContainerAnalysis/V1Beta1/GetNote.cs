@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         public readonly Outputs.DocumentNoteResponse Sbom;
         /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        public readonly Outputs.SBOMReferenceNoteResponse SbomReference;
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         public readonly string ShortDescription;
@@ -141,6 +145,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// A note describing a package vulnerability.
         /// </summary>
         public readonly Outputs.VulnerabilityResponse Vulnerability;
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        public readonly Outputs.VulnerabilityAssessmentNoteResponse VulnerabilityAssessment;
 
         [OutputConstructor]
         private GetNoteResult(
@@ -174,6 +182,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             Outputs.DocumentNoteResponse sbom,
 
+            Outputs.SBOMReferenceNoteResponse sbomReference,
+
             string shortDescription,
 
             Outputs.FileNoteResponse spdxFile,
@@ -184,7 +194,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
 
             string updateTime,
 
-            Outputs.VulnerabilityResponse vulnerability)
+            Outputs.VulnerabilityResponse vulnerability,
+
+            Outputs.VulnerabilityAssessmentNoteResponse vulnerabilityAssessment)
         {
             AttestationAuthority = attestationAuthority;
             BaseImage = baseImage;
@@ -201,12 +213,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
             RelatedNoteNames = relatedNoteNames;
             RelatedUrl = relatedUrl;
             Sbom = sbom;
+            SbomReference = sbomReference;
             ShortDescription = shortDescription;
             SpdxFile = spdxFile;
             SpdxPackage = spdxPackage;
             SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Vulnerability = vulnerability;
+            VulnerabilityAssessment = vulnerabilityAssessment;
         }
     }
 }

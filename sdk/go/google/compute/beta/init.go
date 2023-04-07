@@ -197,6 +197,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionHealthCheckService{}
 	case "google-native:compute/beta:RegionInstanceGroupManager":
 		r = &RegionInstanceGroupManager{}
+	case "google-native:compute/beta:RegionInstanceTemplate":
+		r = &RegionInstanceTemplate{}
 	case "google-native:compute/beta:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "google-native:compute/beta:RegionNetworkFirewallPolicy":

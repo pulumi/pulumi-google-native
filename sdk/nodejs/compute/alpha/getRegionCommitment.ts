@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+ * Returns the specified commitment resource.
  */
 export function getRegionCommitment(args: GetRegionCommitmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionCommitmentResult> {
 
@@ -109,7 +109,7 @@ export interface GetRegionCommitmentResult {
     readonly type: string;
 }
 /**
- * Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+ * Returns the specified commitment resource.
  */
 export function getRegionCommitmentOutput(args: GetRegionCommitmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionCommitmentResult> {
     return pulumi.output(args).apply((a: any) => getRegionCommitment(a, opts))

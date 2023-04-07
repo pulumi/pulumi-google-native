@@ -2,54 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const AcceleratorAcceleratorType = {
-    /**
-     * Default value, if unspecified.
-     */
-    AcceleratorTypeUnspecified: "ACCELERATOR_TYPE_UNSPECIFIED",
-    /**
-     * Change Data Capture accelerator for CDF.
-     */
-    Cdc: "CDC",
-    /**
-     * Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
-     */
-    Healthcare: "HEALTHCARE",
-    /**
-     * Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
-     */
-    CcaiInsights: "CCAI_INSIGHTS",
-} as const;
-
-/**
- * The type of an accelator for a CDF instance.
- */
-export type AcceleratorAcceleratorType = (typeof AcceleratorAcceleratorType)[keyof typeof AcceleratorAcceleratorType];
-
-export const AcceleratorState = {
-    /**
-     * Default value, do not use.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * Indicates that the accelerator is enabled and available to use.
-     */
-    Enabled: "ENABLED",
-    /**
-     * Indicates that the accelerator is disabled and not available to use.
-     */
-    Disabled: "DISABLED",
-    /**
-     * Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
-     */
-    Unknown: "UNKNOWN",
-} as const;
-
-/**
- * The state of the accelerator.
- */
-export type AcceleratorState = (typeof AcceleratorState)[keyof typeof AcceleratorState];
-
 export const AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.
@@ -97,23 +49,3 @@ export const InstanceType = {
  * Required. Instance type.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];
-
-export const VersionType = {
-    /**
-     * Version does not have availability yet
-     */
-    TypeUnspecified: "TYPE_UNSPECIFIED",
-    /**
-     * Version is under development and not considered stable
-     */
-    TypePreview: "TYPE_PREVIEW",
-    /**
-     * Version is available for public use
-     */
-    TypeGeneralAvailability: "TYPE_GENERAL_AVAILABILITY",
-} as const;
-
-/**
- * Type represents the release availability of the version
- */
-export type VersionType = (typeof VersionType)[keyof typeof VersionType];

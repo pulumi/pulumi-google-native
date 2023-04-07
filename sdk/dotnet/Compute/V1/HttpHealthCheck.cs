@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+        /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
         /// </summary>
         [Output("requestPath")]
         public Output<string> RequestPath { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+        /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
         /// </summary>
         [Input("requestPath")]
         public Input<string>? RequestPath { get; set; }

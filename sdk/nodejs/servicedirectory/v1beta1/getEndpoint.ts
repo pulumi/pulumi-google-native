@@ -53,6 +53,10 @@ export interface GetEndpointResult {
      */
     readonly port: number;
     /**
+     * A globally unique identifier (in UUID4 format) for this endpoint.
+     */
+    readonly uid: string;
+    /**
      * The timestamp when the endpoint was last updated.
      */
     readonly updateTime: string;

@@ -68,7 +68,7 @@ type LookupInterconnectResult struct {
 	ProvisionedLinkCount int `pulumi:"provisionedLinkCount"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
-	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -217,7 +217,7 @@ func (o LookupInterconnectResultOutput) RequestedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) int { return v.RequestedLinkCount }).(pulumi.IntOutput)
 }
 
-// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+// Reserved for future use.
 func (o LookupInterconnectResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }

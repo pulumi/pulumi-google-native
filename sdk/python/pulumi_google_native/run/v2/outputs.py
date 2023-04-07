@@ -639,7 +639,7 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
         :param Mapping[str, str] annotations: KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
         :param Mapping[str, str] labels: KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         :param int parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
-        :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         :param 'GoogleCloudRunV2TaskTemplateResponse' template: Describes the task(s) that will be created when executing an execution.
         """
         pulumi.set(__self__, "annotations", annotations)
@@ -676,7 +676,7 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
     @pulumi.getter(name="taskCount")
     def task_count(self) -> int:
         """
-        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         """
         return pulumi.get(self, "task_count")
 
@@ -699,7 +699,7 @@ class GoogleCloudRunV2GRPCActionResponse(dict):
                  service: str):
         """
         GRPCAction describes an action involving a GRPC port.
-        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
         """
         pulumi.set(__self__, "port", port)
@@ -709,7 +709,7 @@ class GoogleCloudRunV2GRPCActionResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -746,14 +746,17 @@ class GoogleCloudRunV2HTTPGetActionResponse(dict):
 
     def __init__(__self__, *,
                  http_headers: Sequence['outputs.GoogleCloudRunV2HTTPHeaderResponse'],
-                 path: str):
+                 path: str,
+                 port: int):
         """
         HTTPGetAction describes an action based on HTTP Get requests.
         :param Sequence['GoogleCloudRunV2HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -770,6 +773,14 @@ class GoogleCloudRunV2HTTPGetActionResponse(dict):
         Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -1293,7 +1304,7 @@ class GoogleCloudRunV2TCPSocketActionResponse(dict):
                  port: int):
         """
         TCPSocketAction describes an action based on opening a socket
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         pulumi.set(__self__, "port", port)
 
@@ -1301,7 +1312,7 @@ class GoogleCloudRunV2TCPSocketActionResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -1350,9 +1361,9 @@ class GoogleCloudRunV2TaskTemplateResponse(dict):
         :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this task.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The execution environment being used to host this Task.
-        :param int max_retries: Number of retries allowed per Task, before marking this Task failed.
+        :param int max_retries: Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
         :param str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
-        :param str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        :param str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         :param Sequence['GoogleCloudRunV2VolumeResponse'] volumes: A list of Volumes to make available to containers.
         :param 'GoogleCloudRunV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
@@ -1393,7 +1404,7 @@ class GoogleCloudRunV2TaskTemplateResponse(dict):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> int:
         """
-        Number of retries allowed per Task, before marking this Task failed.
+        Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
         """
         return pulumi.get(self, "max_retries")
 
@@ -1409,7 +1420,7 @@ class GoogleCloudRunV2TaskTemplateResponse(dict):
     @pulumi.getter
     def timeout(self) -> str:
         """
-        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         """
         return pulumi.get(self, "timeout")
 

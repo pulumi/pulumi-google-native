@@ -62,6 +62,8 @@ type Cluster struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// Fleet information for the cluster.
+	Fleet FleetResponseOutput `pulumi:"fleet"`
 	// Configuration for Identity Service component.
 	IdentityServiceConfig IdentityServiceConfigResponseOutput `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
@@ -254,6 +256,8 @@ type clusterArgs struct {
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
+	// Fleet information for the cluster.
+	Fleet *Fleet `pulumi:"fleet"`
 	// Configuration for Identity Service component.
 	IdentityServiceConfig *IdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
@@ -393,6 +397,8 @@ type ClusterArgs struct {
 	EnableTpu pulumi.BoolPtrInput
 	// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
+	// Fleet information for the cluster.
+	Fleet FleetPtrInput
 	// Configuration for Identity Service component.
 	IdentityServiceConfig IdentityServiceConfigPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
@@ -674,6 +680,11 @@ func (o ClusterOutput) Etag() pulumi.StringOutput {
 // [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 func (o ClusterOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Fleet information for the cluster.
+func (o ClusterOutput) Fleet() FleetResponseOutput {
+	return o.ApplyT(func(v *Cluster) FleetResponseOutput { return v.Fleet }).(FleetResponseOutput)
 }
 
 // Configuration for Identity Service component.

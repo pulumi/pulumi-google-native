@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         [Input("gcePdKmsKeyName")]
         public Input<string>? GcePdKmsKeyName { get; set; }
 
+        /// <summary>
+        /// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         public EncryptionConfigArgs()
         {
         }

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:networksecurity/v1beta1:AddressGroup":
+		r = &AddressGroup{}
 	case "google-native:networksecurity/v1beta1:AddressGroupIamBinding":
 		r = &AddressGroupIamBinding{}
 	case "google-native:networksecurity/v1beta1:AddressGroupIamMember":
@@ -43,6 +45,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1beta1:ClientTlsPolicyIamPolicy":
 		r = &ClientTlsPolicyIamPolicy{}
+	case "google-native:networksecurity/v1beta1:GatewaySecurityPolicy":
+		r = &GatewaySecurityPolicy{}
+	case "google-native:networksecurity/v1beta1:OrganizationAddressGroup":
+		r = &OrganizationAddressGroup{}
+	case "google-native:networksecurity/v1beta1:Rule":
+		r = &Rule{}
 	case "google-native:networksecurity/v1beta1:ServerTlsPolicy":
 		r = &ServerTlsPolicy{}
 	case "google-native:networksecurity/v1beta1:ServerTlsPolicyIamBinding":
@@ -51,6 +59,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy":
 		r = &ServerTlsPolicyIamPolicy{}
+	case "google-native:networksecurity/v1beta1:TlsInspectionPolicy":
+		r = &TlsInspectionPolicy{}
+	case "google-native:networksecurity/v1beta1:UrlList":
+		r = &UrlList{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

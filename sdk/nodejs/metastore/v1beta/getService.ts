@@ -88,6 +88,10 @@ export interface GetServiceResult {
      */
     readonly releaseChannel: string;
     /**
+     * Scaling configuration of the metastore service.
+     */
+    readonly scalingConfig: outputs.metastore.v1beta.ScalingConfigResponse;
+    /**
      * The current state of the metastore service.
      */
     readonly state: string;

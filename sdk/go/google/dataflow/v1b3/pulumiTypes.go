@@ -3078,6 +3078,8 @@ type JobMetadata struct {
 	SdkVersion *SdkVersion `pulumi:"sdkVersion"`
 	// Identification of a Spanner source used in the Dataflow job.
 	SpannerDetails []SpannerIODetails `pulumi:"spannerDetails"`
+	// List of display properties to help UI filter jobs.
+	UserDisplayProperties map[string]string `pulumi:"userDisplayProperties"`
 }
 
 // JobMetadataInput is an input type that accepts JobMetadataArgs and JobMetadataOutput values.
@@ -3107,6 +3109,8 @@ type JobMetadataArgs struct {
 	SdkVersion SdkVersionPtrInput `pulumi:"sdkVersion"`
 	// Identification of a Spanner source used in the Dataflow job.
 	SpannerDetails SpannerIODetailsArrayInput `pulumi:"spannerDetails"`
+	// List of display properties to help UI filter jobs.
+	UserDisplayProperties pulumi.StringMapInput `pulumi:"userDisplayProperties"`
 }
 
 func (JobMetadataArgs) ElementType() reflect.Type {
@@ -3222,6 +3226,11 @@ func (o JobMetadataOutput) SpannerDetails() SpannerIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []SpannerIODetails { return v.SpannerDetails }).(SpannerIODetailsArrayOutput)
 }
 
+// List of display properties to help UI filter jobs.
+func (o JobMetadataOutput) UserDisplayProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobMetadata) map[string]string { return v.UserDisplayProperties }).(pulumi.StringMapOutput)
+}
+
 type JobMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (JobMetadataPtrOutput) ElementType() reflect.Type {
@@ -3316,6 +3325,16 @@ func (o JobMetadataPtrOutput) SpannerDetails() SpannerIODetailsArrayOutput {
 	}).(SpannerIODetailsArrayOutput)
 }
 
+// List of display properties to help UI filter jobs.
+func (o JobMetadataPtrOutput) UserDisplayProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDisplayProperties
+	}).(pulumi.StringMapOutput)
+}
+
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponse struct {
 	// Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -3332,6 +3351,8 @@ type JobMetadataResponse struct {
 	SdkVersion SdkVersionResponse `pulumi:"sdkVersion"`
 	// Identification of a Spanner source used in the Dataflow job.
 	SpannerDetails []SpannerIODetailsResponse `pulumi:"spannerDetails"`
+	// List of display properties to help UI filter jobs.
+	UserDisplayProperties map[string]string `pulumi:"userDisplayProperties"`
 }
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
@@ -3382,6 +3403,11 @@ func (o JobMetadataResponseOutput) SdkVersion() SdkVersionResponseOutput {
 // Identification of a Spanner source used in the Dataflow job.
 func (o JobMetadataResponseOutput) SpannerDetails() SpannerIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []SpannerIODetailsResponse { return v.SpannerDetails }).(SpannerIODetailsResponseArrayOutput)
+}
+
+// List of display properties to help UI filter jobs.
+func (o JobMetadataResponseOutput) UserDisplayProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobMetadataResponse) map[string]string { return v.UserDisplayProperties }).(pulumi.StringMapOutput)
 }
 
 // The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run.
@@ -3550,6 +3576,8 @@ func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutp
 type ParameterMetadataResponse struct {
 	// Optional. Additional metadata for describing this parameter.
 	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
+	GroupName string `pulumi:"groupName"`
 	// The help text to display for the parameter.
 	HelpText string `pulumi:"helpText"`
 	// Optional. Whether the parameter is optional. Defaults to false.
@@ -3560,6 +3588,10 @@ type ParameterMetadataResponse struct {
 	Name string `pulumi:"name"`
 	// Optional. The type of the parameter. Used for selecting input picker.
 	ParamType string `pulumi:"paramType"`
+	// Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+	ParentName string `pulumi:"parentName"`
+	// Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
+	ParentTriggerValues []string `pulumi:"parentTriggerValues"`
 	// Optional. Regexes that the parameter must match.
 	Regexes []string `pulumi:"regexes"`
 }
@@ -3582,6 +3614,11 @@ func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutputWithCo
 // Optional. Additional metadata for describing this parameter.
 func (o ParameterMetadataResponseOutput) CustomMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
+func (o ParameterMetadataResponseOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
 // The help text to display for the parameter.
@@ -3607,6 +3644,16 @@ func (o ParameterMetadataResponseOutput) Name() pulumi.StringOutput {
 // Optional. The type of the parameter. Used for selecting input picker.
 func (o ParameterMetadataResponseOutput) ParamType() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.ParamType }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+func (o ParameterMetadataResponseOutput) ParentName() pulumi.StringOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.ParentName }).(pulumi.StringOutput)
+}
+
+// Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
+func (o ParameterMetadataResponseOutput) ParentTriggerValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ParameterMetadataResponse) []string { return v.ParentTriggerValues }).(pulumi.StringArrayOutput)
 }
 
 // Optional. Regexes that the parameter must match.

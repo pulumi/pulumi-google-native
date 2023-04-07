@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNoteResult:
-    def __init__(__self__, attestation_authority=None, base_image=None, build_type=None, compliance=None, create_time=None, deployable=None, discovery=None, dsse_attestation=None, expiration_time=None, kind=None, long_description=None, name=None, package=None, related_url=None, sbom=None, short_description=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, upgrade=None, vulnerability_type=None):
+    def __init__(__self__, attestation_authority=None, base_image=None, build_type=None, compliance=None, create_time=None, deployable=None, discovery=None, dsse_attestation=None, expiration_time=None, kind=None, long_description=None, name=None, package=None, related_url=None, sbom=None, sbom_reference=None, short_description=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, upgrade=None, vulnerability_assessment=None, vulnerability_type=None):
         if attestation_authority and not isinstance(attestation_authority, dict):
             raise TypeError("Expected argument 'attestation_authority' to be a dict")
         pulumi.set(__self__, "attestation_authority", attestation_authority)
@@ -65,6 +65,9 @@ class GetNoteResult:
         if sbom and not isinstance(sbom, dict):
             raise TypeError("Expected argument 'sbom' to be a dict")
         pulumi.set(__self__, "sbom", sbom)
+        if sbom_reference and not isinstance(sbom_reference, dict):
+            raise TypeError("Expected argument 'sbom_reference' to be a dict")
+        pulumi.set(__self__, "sbom_reference", sbom_reference)
         if short_description and not isinstance(short_description, str):
             raise TypeError("Expected argument 'short_description' to be a str")
         pulumi.set(__self__, "short_description", short_description)
@@ -83,6 +86,9 @@ class GetNoteResult:
         if upgrade and not isinstance(upgrade, dict):
             raise TypeError("Expected argument 'upgrade' to be a dict")
         pulumi.set(__self__, "upgrade", upgrade)
+        if vulnerability_assessment and not isinstance(vulnerability_assessment, dict):
+            raise TypeError("Expected argument 'vulnerability_assessment' to be a dict")
+        pulumi.set(__self__, "vulnerability_assessment", vulnerability_assessment)
         if vulnerability_type and not isinstance(vulnerability_type, dict):
             raise TypeError("Expected argument 'vulnerability_type' to be a dict")
         pulumi.set(__self__, "vulnerability_type", vulnerability_type)
@@ -208,6 +214,14 @@ class GetNoteResult:
         return pulumi.get(self, "sbom")
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> 'outputs.SBOMReferenceNoteResponse':
+        """
+        A note describing a reference to an SBOM.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> str:
         """
@@ -256,6 +270,14 @@ class GetNoteResult:
         return pulumi.get(self, "upgrade")
 
     @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> 'outputs.VulnerabilityAssessmentNoteResponse':
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
+
+    @property
     @pulumi.getter(name="vulnerabilityType")
     def vulnerability_type(self) -> 'outputs.VulnerabilityTypeResponse':
         """
@@ -285,12 +307,14 @@ class AwaitableGetNoteResult(GetNoteResult):
             package=self.package,
             related_url=self.related_url,
             sbom=self.sbom,
+            sbom_reference=self.sbom_reference,
             short_description=self.short_description,
             spdx_file=self.spdx_file,
             spdx_package=self.spdx_package,
             spdx_relationship=self.spdx_relationship,
             update_time=self.update_time,
             upgrade=self.upgrade,
+            vulnerability_assessment=self.vulnerability_assessment,
             vulnerability_type=self.vulnerability_type)
 
 
@@ -322,12 +346,14 @@ def get_note(note_id: Optional[str] = None,
         package=__ret__.package,
         related_url=__ret__.related_url,
         sbom=__ret__.sbom,
+        sbom_reference=__ret__.sbom_reference,
         short_description=__ret__.short_description,
         spdx_file=__ret__.spdx_file,
         spdx_package=__ret__.spdx_package,
         spdx_relationship=__ret__.spdx_relationship,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,
+        vulnerability_assessment=__ret__.vulnerability_assessment,
         vulnerability_type=__ret__.vulnerability_type)
 
 

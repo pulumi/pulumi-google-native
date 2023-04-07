@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, node_config=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -62,6 +62,9 @@ class GetConnectionResult:
         if service_directory and not isinstance(service_directory, str):
             raise TypeError("Expected argument 'service_directory' to be a str")
         pulumi.set(__self__, "service_directory", service_directory)
+        if ssl_config and not isinstance(ssl_config, dict):
+            raise TypeError("Expected argument 'ssl_config' to be a dict")
+        pulumi.set(__self__, "ssl_config", ssl_config)
         if status and not isinstance(status, dict):
             raise TypeError("Expected argument 'status' to be a dict")
         pulumi.set(__self__, "status", status)
@@ -185,6 +188,14 @@ class GetConnectionResult:
         return pulumi.get(self, "service_directory")
 
     @property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> 'outputs.SslConfigResponse':
+        """
+        Optional. Ssl config of a connection
+        """
+        return pulumi.get(self, "ssl_config")
+
+    @property
     @pulumi.getter
     def status(self) -> 'outputs.ConnectionStatusResponse':
         """
@@ -229,6 +240,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             node_config=self.node_config,
             service_account=self.service_account,
             service_directory=self.service_directory,
+            ssl_config=self.ssl_config,
             status=self.status,
             suspended=self.suspended,
             update_time=self.update_time)
@@ -265,6 +277,7 @@ def get_connection(connection_id: Optional[str] = None,
         node_config=__ret__.node_config,
         service_account=__ret__.service_account,
         service_directory=__ret__.service_directory,
+        ssl_config=__ret__.ssl_config,
         status=__ret__.status,
         suspended=__ret__.suspended,
         update_time=__ret__.update_time)

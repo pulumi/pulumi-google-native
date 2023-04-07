@@ -384,6 +384,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["as_paths"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["next_hop_hub"] = None
             __props__.__dict__["next_hop_interconnect_attachment"] = None
             __props__.__dict__["next_hop_peering"] = None
             __props__.__dict__["route_status"] = None
@@ -425,6 +426,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["next_hop_gateway"] = None
+        __props__.__dict__["next_hop_hub"] = None
         __props__.__dict__["next_hop_ilb"] = None
         __props__.__dict__["next_hop_instance"] = None
         __props__.__dict__["next_hop_interconnect_attachment"] = None
@@ -522,6 +524,14 @@ class Route(pulumi.CustomResource):
         The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> pulumi.Output[str]:
+        """
+        The full resource name of the network connectivity center hub that should handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")

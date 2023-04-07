@@ -15,6 +15,8 @@ import (
 type DlpJob struct {
 	pulumi.CustomResourceState
 
+	// Events that should occur after the job has completed.
+	ActionDetails GooglePrivacyDlpV2ActionDetailsResponseArrayOutput `pulumi:"actionDetails"`
 	// Time when the job was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time when the job finished.
@@ -146,6 +148,11 @@ func (o DlpJobOutput) ToDlpJobOutput() DlpJobOutput {
 
 func (o DlpJobOutput) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutput {
 	return o
+}
+
+// Events that should occur after the job has completed.
+func (o DlpJobOutput) ActionDetails() GooglePrivacyDlpV2ActionDetailsResponseArrayOutput {
+	return o.ApplyT(func(v *DlpJob) GooglePrivacyDlpV2ActionDetailsResponseArrayOutput { return v.ActionDetails }).(GooglePrivacyDlpV2ActionDetailsResponseArrayOutput)
 }
 
 // Time when the job was created.

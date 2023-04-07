@@ -141,7 +141,7 @@ def get_target_tcp_proxy(project: Optional[str] = None,
                          target_tcp_proxy: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetTcpProxyResult:
     """
-    Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+    Returns the specified TargetTcpProxy resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -166,6 +166,6 @@ def get_target_tcp_proxy_output(project: Optional[pulumi.Input[Optional[str]]] =
                                 target_tcp_proxy: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetTcpProxyResult]:
     """
-    Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+    Returns the specified TargetTcpProxy resource.
     """
     ...

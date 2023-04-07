@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     }
 
     /// <summary>
+    /// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+    /// </summary>
+    [EnumType]
+    public readonly struct JobMode : IEquatable<JobMode>
+    {
+        private readonly string _value;
+
+        private JobMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The job processing mode is not specified.
+        /// </summary>
+        public static JobMode ProcessingModeUnspecified { get; } = new JobMode("PROCESSING_MODE_UNSPECIFIED");
+        /// <summary>
+        /// The job processing mode is interactive mode. Interactive job will either be ran or rejected if quota does not allow for it.
+        /// </summary>
+        public static JobMode ProcessingModeInteractive { get; } = new JobMode("PROCESSING_MODE_INTERACTIVE");
+        /// <summary>
+        /// The job processing mode is batch mode. Batch mode allows queuing of jobs.
+        /// </summary>
+        public static JobMode ProcessingModeBatch { get; } = new JobMode("PROCESSING_MODE_BATCH");
+
+        public static bool operator ==(JobMode left, JobMode right) => left.Equals(right);
+        public static bool operator !=(JobMode left, JobMode right) => !left.Equals(right);
+
+        public static explicit operator string(JobMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobMode other && Equals(other);
+        public bool Equals(JobMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. Type of the manifest, can be `HLS` or `DASH`.
     /// </summary>
     [EnumType]

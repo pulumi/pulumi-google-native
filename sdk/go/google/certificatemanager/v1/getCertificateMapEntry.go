@@ -28,7 +28,7 @@ type LookupCertificateMapEntryArgs struct {
 }
 
 type LookupCertificateMapEntryResult struct {
-	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+	// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 	Certificates []string `pulumi:"certificates"`
 	// The creation timestamp of a Certificate Map Entry.
 	CreateTime string `pulumi:"createTime"`
@@ -86,7 +86,7 @@ func (o LookupCertificateMapEntryResultOutput) ToLookupCertificateMapEntryResult
 	return o
 }
 
-// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 func (o LookupCertificateMapEntryResultOutput) Certificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCertificateMapEntryResult) []string { return v.Certificates }).(pulumi.StringArrayOutput)
 }

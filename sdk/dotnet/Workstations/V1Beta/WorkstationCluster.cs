@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<bool?> ValidateOnly { get; private set; } = null!;
 
         /// <summary>
-        /// Required. ID to use for the cluster.
+        /// Required. ID to use for the workstation cluster.
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
-        /// Required. ID to use for the cluster.
+        /// Required. ID to use for the workstation cluster.
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;

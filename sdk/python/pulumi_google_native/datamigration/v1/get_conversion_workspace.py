@@ -71,7 +71,7 @@ class GetConversionWorkspaceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The display name for the workspace
+        The display name for the workspace.
         """
         return pulumi.get(self, "display_name")
 
@@ -87,7 +87,7 @@ class GetConversionWorkspaceResult:
     @pulumi.getter(name="hasUncommittedChanges")
     def has_uncommitted_changes(self) -> bool:
         """
-        Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+        Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
         """
         return pulumi.get(self, "has_uncommitted_changes")
 
@@ -95,7 +95,7 @@ class GetConversionWorkspaceResult:
     @pulumi.getter(name="latestCommitId")
     def latest_commit_id(self) -> str:
         """
-        The latest commit id
+        The latest commit ID.
         """
         return pulumi.get(self, "latest_commit_id")
 

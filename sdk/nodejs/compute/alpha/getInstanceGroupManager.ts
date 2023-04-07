@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+ * Returns all of the details about the specified managed instance group.
  */
 export function getInstanceGroupManager(args: GetInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResult> {
 
@@ -149,7 +149,7 @@ export interface GetInstanceGroupManagerResult {
     readonly zone: string;
 }
 /**
- * Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+ * Returns all of the details about the specified managed instance group.
  */
 export function getInstanceGroupManagerOutput(args: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
     return pulumi.output(args).apply((a: any) => getInstanceGroupManager(a, opts))

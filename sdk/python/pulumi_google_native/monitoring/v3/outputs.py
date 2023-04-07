@@ -48,6 +48,7 @@ __all__ = [
     'MonitoredResourceResponse',
     'MonitoringQueryLanguageConditionResponse',
     'MutationRecordResponse',
+    'NotificationChannelStrategyResponse',
     'NotificationRateLimitResponse',
     'PerformanceThresholdResponse',
     'PingConfigResponse',
@@ -152,6 +153,8 @@ class AlertStrategyResponse(dict):
         suggest = None
         if key == "autoClose":
             suggest = "auto_close"
+        elif key == "notificationChannelStrategy":
+            suggest = "notification_channel_strategy"
         elif key == "notificationRateLimit":
             suggest = "notification_rate_limit"
 
@@ -168,13 +171,16 @@ class AlertStrategyResponse(dict):
 
     def __init__(__self__, *,
                  auto_close: str,
+                 notification_channel_strategy: Sequence['outputs.NotificationChannelStrategyResponse'],
                  notification_rate_limit: 'outputs.NotificationRateLimitResponse'):
         """
         Control over how the notification channels in notification_channels are notified when this alert fires.
         :param str auto_close: If an alert policy that was active has no data for this long, any open incidents will close
+        :param Sequence['NotificationChannelStrategyResponse'] notification_channel_strategy: Control how notifications will be sent out, on a per-channel basis.
         :param 'NotificationRateLimitResponse' notification_rate_limit: Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         """
         pulumi.set(__self__, "auto_close", auto_close)
+        pulumi.set(__self__, "notification_channel_strategy", notification_channel_strategy)
         pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
 
     @property
@@ -184,6 +190,14 @@ class AlertStrategyResponse(dict):
         If an alert policy that was active has no data for this long, any open incidents will close
         """
         return pulumi.get(self, "auto_close")
+
+    @property
+    @pulumi.getter(name="notificationChannelStrategy")
+    def notification_channel_strategy(self) -> Sequence['outputs.NotificationChannelStrategyResponse']:
+        """
+        Control how notifications will be sent out, on a per-channel basis.
+        """
+        return pulumi.get(self, "notification_channel_strategy")
 
     @property
     @pulumi.getter(name="notificationRateLimit")
@@ -1188,6 +1202,8 @@ class HttpCheckResponse(dict):
             suggest = "auth_info"
         elif key == "contentType":
             suggest = "content_type"
+        elif key == "customContentType":
+            suggest = "custom_content_type"
         elif key == "maskHeaders":
             suggest = "mask_headers"
         elif key == "pingConfig":
@@ -1215,6 +1231,7 @@ class HttpCheckResponse(dict):
                  auth_info: 'outputs.BasicAuthenticationResponse',
                  body: str,
                  content_type: str,
+                 custom_content_type: str,
                  headers: Mapping[str, str],
                  mask_headers: bool,
                  path: str,
@@ -1229,6 +1246,7 @@ class HttpCheckResponse(dict):
         :param 'BasicAuthenticationResponse' auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
         :param str body: The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
         :param str content_type: The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+        :param str custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
         :param Mapping[str, str] headers: The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
         :param str path: Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
@@ -1242,6 +1260,7 @@ class HttpCheckResponse(dict):
         pulumi.set(__self__, "auth_info", auth_info)
         pulumi.set(__self__, "body", body)
         pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "custom_content_type", custom_content_type)
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "mask_headers", mask_headers)
         pulumi.set(__self__, "path", path)
@@ -1282,6 +1301,14 @@ class HttpCheckResponse(dict):
         The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
         """
         return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="customContentType")
+    def custom_content_type(self) -> str:
+        """
+        A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+        """
+        return pulumi.get(self, "custom_content_type")
 
     @property
     @pulumi.getter
@@ -2232,6 +2259,58 @@ class MutationRecordResponse(dict):
         The email address of the user making the change.
         """
         return pulumi.get(self, "mutated_by")
+
+
+@pulumi.output_type
+class NotificationChannelStrategyResponse(dict):
+    """
+    Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notificationChannelNames":
+            suggest = "notification_channel_names"
+        elif key == "renotifyInterval":
+            suggest = "renotify_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationChannelStrategyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationChannelStrategyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationChannelStrategyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notification_channel_names: Sequence[str],
+                 renotify_interval: str):
+        """
+        Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+        :param Sequence[str] notification_channel_names: The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
+        :param str renotify_interval: The frequency at which to send reminder notifications for open incidents.
+        """
+        pulumi.set(__self__, "notification_channel_names", notification_channel_names)
+        pulumi.set(__self__, "renotify_interval", renotify_interval)
+
+    @property
+    @pulumi.getter(name="notificationChannelNames")
+    def notification_channel_names(self) -> Sequence[str]:
+        """
+        The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
+        """
+        return pulumi.get(self, "notification_channel_names")
+
+    @property
+    @pulumi.getter(name="renotifyInterval")
+    def renotify_interval(self) -> str:
+        """
+        The frequency at which to send reminder notifications for open incidents.
+        """
+        return pulumi.get(self, "renotify_interval")
 
 
 @pulumi.output_type

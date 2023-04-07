@@ -18,7 +18,7 @@ type CertificateMapEntry struct {
 	// Required. A user-provided name of the certificate map entry.
 	CertificateMapEntryId pulumi.StringOutput `pulumi:"certificateMapEntryId"`
 	CertificateMapId      pulumi.StringOutput `pulumi:"certificateMapId"`
-	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+	// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 	Certificates pulumi.StringArrayOutput `pulumi:"certificates"`
 	// The creation timestamp of a Certificate Map Entry.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -95,7 +95,7 @@ type certificateMapEntryArgs struct {
 	// Required. A user-provided name of the certificate map entry.
 	CertificateMapEntryId string `pulumi:"certificateMapEntryId"`
 	CertificateMapId      string `pulumi:"certificateMapId"`
-	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+	// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 	Certificates []string `pulumi:"certificates"`
 	// One or more paragraphs of text description of a certificate map entry.
 	Description *string `pulumi:"description"`
@@ -116,7 +116,7 @@ type CertificateMapEntryArgs struct {
 	// Required. A user-provided name of the certificate map entry.
 	CertificateMapEntryId pulumi.StringInput
 	CertificateMapId      pulumi.StringInput
-	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+	// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 	Certificates pulumi.StringArrayInput
 	// One or more paragraphs of text description of a certificate map entry.
 	Description pulumi.StringPtrInput
@@ -178,7 +178,7 @@ func (o CertificateMapEntryOutput) CertificateMapId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CertificateMapId }).(pulumi.StringOutput)
 }
 
-// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
 func (o CertificateMapEntryOutput) Certificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringArrayOutput { return v.Certificates }).(pulumi.StringArrayOutput)
 }

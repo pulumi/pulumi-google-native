@@ -32,7 +32,12 @@ __all__ = [
     'IdentityServiceGoogleConfigResponse',
     'IdentityServiceMembershipSpecResponse',
     'IdentityServiceOidcConfigResponse',
+    'MembershipBindingLifecycleStateResponse',
     'MultiClusterIngressFeatureSpecResponse',
+    'NamespaceLifecycleStateResponse',
+    'RBACRoleBindingLifecycleStateResponse',
+    'RoleResponse',
+    'ScopeLifecycleStateResponse',
     'StatusResponse',
 ]
 
@@ -1062,6 +1067,28 @@ class IdentityServiceOidcConfigResponse(dict):
 
 
 @pulumi.output_type
+class MembershipBindingLifecycleStateResponse(dict):
+    """
+    MembershipBindingLifecycleState describes the state of a Binding resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        MembershipBindingLifecycleState describes the state of a Binding resource.
+        :param str code: The current state of the MembershipBinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the MembershipBinding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
 class MultiClusterIngressFeatureSpecResponse(dict):
     """
     **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
@@ -1109,6 +1136,111 @@ class MultiClusterIngressFeatureSpecResponse(dict):
         Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
         return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class NamespaceLifecycleStateResponse(dict):
+    """
+    NamespaceLifecycleState describes the state of a Namespace resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        NamespaceLifecycleState describes the state of a Namespace resource.
+        :param str code: The current state of the Namespace resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the Namespace resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class RBACRoleBindingLifecycleStateResponse(dict):
+    """
+    RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
+        :param str code: The current state of the rbacrolebinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the rbacrolebinding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class RoleResponse(dict):
+    """
+    Role is the type for Kubernetes roles
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedRole":
+            suggest = "predefined_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_role: str):
+        """
+        Role is the type for Kubernetes roles
+        :param str predefined_role: predefined_role is the Kubernetes default role to use
+        """
+        pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> str:
+        """
+        predefined_role is the Kubernetes default role to use
+        """
+        return pulumi.get(self, "predefined_role")
+
+
+@pulumi.output_type
+class ScopeLifecycleStateResponse(dict):
+    """
+    ScopeLifecycleState describes the state of a Scope resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        ScopeLifecycleState describes the state of a Scope resource.
+        :param str code: The current state of the scope resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the scope resource.
+        """
+        return pulumi.get(self, "code")
 
 
 @pulumi.output_type

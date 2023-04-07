@@ -155,7 +155,7 @@ def get_region_instance_template(instance_template: Optional[str] = None,
                                  region: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionInstanceTemplateResult:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     __args__ = dict()
     __args__['instanceTemplate'] = instance_template
@@ -183,6 +183,6 @@ def get_region_instance_template_output(instance_template: Optional[pulumi.Input
                                         region: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     ...

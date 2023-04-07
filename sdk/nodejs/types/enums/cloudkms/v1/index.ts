@@ -87,6 +87,18 @@ export const CryptoKeyVersionState = {
      * This version was not imported successfully. It may not be used, enabled, disabled, or destroyed. The submitted key material has been discarded. Additional details can be found in CryptoKeyVersion.import_failure_reason.
      */
     ImportFailed: "IMPORT_FAILED",
+    /**
+     * This version was not generated successfully. It may not be used, enabled, disabled, or destroyed. Additional details can be found in CryptoKeyVersion.generation_failure_reason.
+     */
+    GenerationFailed: "GENERATION_FAILED",
+    /**
+     * This version was destroyed, and it may not be used or enabled again. Cloud KMS is waiting for the corresponding key material residing in an external key manager to be destroyed.
+     */
+    PendingExternalDestruction: "PENDING_EXTERNAL_DESTRUCTION",
+    /**
+     * This version was destroyed, and it may not be used or enabled again. However, Cloud KMS could not confirm that the corresponding key material residing in an external key manager was destroyed. Additional details can be found in CryptoKeyVersion.external_destruction_failure_reason.
+     */
+    ExternalDestructionFailed: "EXTERNAL_DESTRUCTION_FAILED",
 } as const;
 
 /**
@@ -245,6 +257,26 @@ export const CryptoKeyVersionTemplateProtectionLevel = {
  * ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
  */
 export type CryptoKeyVersionTemplateProtectionLevel = (typeof CryptoKeyVersionTemplateProtectionLevel)[keyof typeof CryptoKeyVersionTemplateProtectionLevel];
+
+export const EkmConnectionKeyManagementMode = {
+    /**
+     * Not specified.
+     */
+    KeyManagementModeUnspecified: "KEY_MANAGEMENT_MODE_UNSPECIFIED",
+    /**
+     * EKM-side key management operations on CryptoKeys created with this EkmConnection must be initiated from the EKM directly and cannot be performed from Cloud KMS. This means that: * When creating a CryptoKeyVersion associated with this EkmConnection, the caller must supply the key path of pre-existing external key material that will be linked to the CryptoKeyVersion. * Destruction of external key material cannot be requested via the Cloud KMS API and must be performed directly in the EKM. * Automatic rotation of key material is not supported.
+     */
+    Manual: "MANUAL",
+    /**
+     * All CryptoKeys created with this EkmConnection use EKM-side key management operations initiated from Cloud KMS. This means that: * When a CryptoKeyVersion associated with this EkmConnection is created, the EKM automatically generates new key material and a new key path. The caller cannot supply the key path of pre-existing external key material. * Destruction of external key material associated with this EkmConnection can be requested by calling DestroyCryptoKeyVersion. * Automatic rotation of key material is supported.
+     */
+    CloudKms: "CLOUD_KMS",
+} as const;
+
+/**
+ * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+ */
+export type EkmConnectionKeyManagementMode = (typeof EkmConnectionKeyManagementMode)[keyof typeof EkmConnectionKeyManagementMode];
 
 export const ImportJobImportMethod = {
     /**

@@ -18,11 +18,15 @@ type EkmConnection struct {
 
 	// The time at which the EkmConnection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+	CryptoSpacePath pulumi.StringOutput `pulumi:"cryptoSpacePath"`
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId pulumi.StringOutput `pulumi:"ekmConnectionId"`
 	// Optional. Etag of the currently stored EkmConnection.
-	Etag     pulumi.StringOutput `pulumi:"etag"`
-	Location pulumi.StringOutput `pulumi:"location"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+	KeyManagementMode pulumi.StringOutput `pulumi:"keyManagementMode"`
+	Location          pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -75,24 +79,32 @@ func (EkmConnectionState) ElementType() reflect.Type {
 }
 
 type ekmConnectionArgs struct {
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+	CryptoSpacePath *string `pulumi:"cryptoSpacePath"`
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId *string `pulumi:"ekmConnectionId"`
 	// Optional. Etag of the currently stored EkmConnection.
-	Etag     *string `pulumi:"etag"`
-	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	Etag *string `pulumi:"etag"`
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+	KeyManagementMode *EkmConnectionKeyManagementMode `pulumi:"keyManagementMode"`
+	Location          *string                         `pulumi:"location"`
+	Project           *string                         `pulumi:"project"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
 	ServiceResolvers []ServiceResolver `pulumi:"serviceResolvers"`
 }
 
 // The set of arguments for constructing a EkmConnection resource.
 type EkmConnectionArgs struct {
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+	CryptoSpacePath pulumi.StringPtrInput
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId pulumi.StringPtrInput
 	// Optional. Etag of the currently stored EkmConnection.
-	Etag     pulumi.StringPtrInput
-	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+	KeyManagementMode EkmConnectionKeyManagementModePtrInput
+	Location          pulumi.StringPtrInput
+	Project           pulumi.StringPtrInput
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
 	ServiceResolvers ServiceResolverArrayInput
 }
@@ -139,6 +151,11 @@ func (o EkmConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+func (o EkmConnectionOutput) CryptoSpacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.CryptoSpacePath }).(pulumi.StringOutput)
+}
+
 // Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 func (o EkmConnectionOutput) EkmConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.EkmConnectionId }).(pulumi.StringOutput)
@@ -147,6 +164,11 @@ func (o EkmConnectionOutput) EkmConnectionId() pulumi.StringOutput {
 // Optional. Etag of the currently stored EkmConnection.
 func (o EkmConnectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+func (o EkmConnectionOutput) KeyManagementMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.KeyManagementMode }).(pulumi.StringOutput)
 }
 
 func (o EkmConnectionOutput) Location() pulumi.StringOutput {

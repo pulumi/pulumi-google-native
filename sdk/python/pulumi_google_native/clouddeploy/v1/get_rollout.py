@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRolloutResult:
-    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, metadata=None, name=None, phases=None, state=None, target_id=None, uid=None):
+    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, controller_rollout=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, metadata=None, name=None, phases=None, state=None, target_id=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -29,6 +29,9 @@ class GetRolloutResult:
         if approve_time and not isinstance(approve_time, str):
             raise TypeError("Expected argument 'approve_time' to be a str")
         pulumi.set(__self__, "approve_time", approve_time)
+        if controller_rollout and not isinstance(controller_rollout, str):
+            raise TypeError("Expected argument 'controller_rollout' to be a str")
+        pulumi.set(__self__, "controller_rollout", controller_rollout)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -101,6 +104,14 @@ class GetRolloutResult:
         Time at which the `Rollout` was approved.
         """
         return pulumi.get(self, "approve_time")
+
+    @property
+    @pulumi.getter(name="controllerRollout")
+    def controller_rollout(self) -> str:
+        """
+        Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        """
+        return pulumi.get(self, "controller_rollout")
 
     @property
     @pulumi.getter(name="createTime")
@@ -240,6 +251,7 @@ class AwaitableGetRolloutResult(GetRolloutResult):
             annotations=self.annotations,
             approval_state=self.approval_state,
             approve_time=self.approve_time,
+            controller_rollout=self.controller_rollout,
             create_time=self.create_time,
             deploy_end_time=self.deploy_end_time,
             deploy_failure_cause=self.deploy_failure_cause,
@@ -280,6 +292,7 @@ def get_rollout(delivery_pipeline_id: Optional[str] = None,
         annotations=__ret__.annotations,
         approval_state=__ret__.approval_state,
         approve_time=__ret__.approve_time,
+        controller_rollout=__ret__.controller_rollout,
         create_time=__ret__.create_time,
         deploy_end_time=__ret__.deploy_end_time,
         deploy_failure_cause=__ret__.deploy_failure_cause,

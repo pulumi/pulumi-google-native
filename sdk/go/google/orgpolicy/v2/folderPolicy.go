@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
+// Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
 // Auto-naming is currently not supported for this resource.
 type FolderPolicy struct {
 	pulumi.CustomResourceState
@@ -20,10 +20,10 @@ type FolderPolicy struct {
 	//
 	// Deprecated: Deprecated.
 	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput `pulumi:"alternate"`
-	// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecResponseOutput `pulumi:"dryRunSpec"`
 	FolderId   pulumi.StringOutput                            `pulumi:"folderId"`
-	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Basic information about the Organization Policy.
 	Spec GoogleCloudOrgpolicyV2PolicySpecResponseOutput `pulumi:"spec"`
@@ -79,10 +79,10 @@ type folderPolicyArgs struct {
 	//
 	// Deprecated: Deprecated.
 	Alternate *GoogleCloudOrgpolicyV2AlternatePolicySpec `pulumi:"alternate"`
-	// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"dryRunSpec"`
 	FolderId   string                            `pulumi:"folderId"`
-	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// Basic information about the Organization Policy.
 	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
@@ -94,10 +94,10 @@ type FolderPolicyArgs struct {
 	//
 	// Deprecated: Deprecated.
 	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput
-	// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec GoogleCloudOrgpolicyV2PolicySpecPtrInput
 	FolderId   pulumi.StringInput
-	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+	// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// Basic information about the Organization Policy.
 	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput
@@ -147,7 +147,7 @@ func (o FolderPolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpe
 	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
 }
 
-// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 func (o FolderPolicyOutput) DryRunSpec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
 	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2PolicySpecResponseOutput { return v.DryRunSpec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
 }
@@ -156,7 +156,7 @@ func (o FolderPolicyOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderPolicy) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 func (o FolderPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

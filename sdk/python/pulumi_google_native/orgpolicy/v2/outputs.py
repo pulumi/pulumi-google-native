@@ -30,7 +30,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpecResponse(dict):
         """
         Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
         :param str launch: Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
-        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' spec: Specify `Constraint` for configurations of Cloud Platform resources.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' spec: Specify constraint for configurations of Google Cloud resources.
         """
         pulumi.set(__self__, "launch", launch)
         pulumi.set(__self__, "spec", spec)
@@ -47,7 +47,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpecResponse(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
         """
-        Specify `Constraint` for configurations of Cloud Platform resources.
+        Specify constraint for configurations of Google Cloud resources.
         """
         return pulumi.get(self, "spec")
 
@@ -84,11 +84,11 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
                  values: 'outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse'):
         """
         A rule used to express this policy.
-        :param bool allow_all: Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        :param bool allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param 'GoogleTypeExprResponse' condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
-        :param bool deny_all: Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
-        :param bool enforce: If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
-        :param 'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse' values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        :param bool deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+        :param bool enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse' values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         """
         pulumi.set(__self__, "allow_all", allow_all)
         pulumi.set(__self__, "condition", condition)
@@ -100,7 +100,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
     @pulumi.getter(name="allowAll")
     def allow_all(self) -> bool:
         """
-        Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
@@ -116,7 +116,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
     @pulumi.getter(name="denyAll")
     def deny_all(self) -> bool:
         """
-        Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
@@ -124,7 +124,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
     @pulumi.getter
     def enforce(self) -> bool:
         """
-        If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
         """
         return pulumi.get(self, "enforce")
 
@@ -132,7 +132,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
     @pulumi.getter
     def values(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse':
         """
-        List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "values")
 
@@ -140,7 +140,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
 @pulumi.output_type
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
     """
-    A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+    A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -165,7 +165,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
                  allowed_values: Sequence[str],
                  denied_values: Sequence[str]):
         """
-        A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+        A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
         :param Sequence[str] allowed_values: List of values allowed at this resource.
         :param Sequence[str] denied_values: List of values denied at this resource.
         """
@@ -192,7 +192,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
 @pulumi.output_type
 class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     """
-    Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
+    Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -220,12 +220,12 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
                  rules: Sequence['outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse'],
                  update_time: str):
         """
-        Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
-        :param str etag: An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
-        :param bool inherit_from_parent: Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
-        :param bool reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
-        :param Sequence['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse'] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
-        :param str update_time: The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+        Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google Cloud resources.
+        :param str etag: An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        :param bool inherit_from_parent: Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+        :param bool reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        :param Sequence['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse'] rules: Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        :param str update_time: The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         """
         pulumi.set(__self__, "etag", etag)
         pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
@@ -237,7 +237,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     @pulumi.getter
     def etag(self) -> str:
         """
-        An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
         return pulumi.get(self, "etag")
 
@@ -245,7 +245,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     @pulumi.getter(name="inheritFromParent")
     def inherit_from_parent(self) -> bool:
         """
-        Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+        Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
         """
         return pulumi.get(self, "inherit_from_parent")
 
@@ -253,7 +253,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     @pulumi.getter
     def reset(self) -> bool:
         """
-        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
         """
         return pulumi.get(self, "reset")
 
@@ -261,7 +261,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse']:
         """
-        Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
         """
         return pulumi.get(self, "rules")
 
@@ -269,7 +269,7 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+        The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
         """
         return pulumi.get(self, "update_time")
 

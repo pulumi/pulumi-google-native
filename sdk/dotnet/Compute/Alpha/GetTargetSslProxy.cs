@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetTargetSslProxy
     {
         /// <summary>
-        /// Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+        /// Returns the specified TargetSslProxy resource.
         /// </summary>
         public static Task<GetTargetSslProxyResult> InvokeAsync(GetTargetSslProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetSslProxyResult>("google-native:compute/alpha:getTargetSslProxy", args ?? new GetTargetSslProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+        /// Returns the specified TargetSslProxy resource.
         /// </summary>
         public static Output<GetTargetSslProxyResult> Invoke(GetTargetSslProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetSslProxyResult>("google-native:compute/alpha:getTargetSslProxy", args ?? new GetTargetSslProxyInvokeArgs(), options.WithDefaults());

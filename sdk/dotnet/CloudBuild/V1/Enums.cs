@@ -8,6 +8,43 @@ using Pulumi;
 namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
+    /// Optional. Option to specify how default logs buckets are setup.
+    /// </summary>
+    [EnumType]
+    public readonly struct BuildOptionsDefaultLogsBucketBehavior : IEquatable<BuildOptionsDefaultLogsBucketBehavior>
+    {
+        private readonly string _value;
+
+        private BuildOptionsDefaultLogsBucketBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static BuildOptionsDefaultLogsBucketBehavior DefaultLogsBucketBehaviorUnspecified { get; } = new BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+        /// </summary>
+        public static BuildOptionsDefaultLogsBucketBehavior RegionalUserOwnedBucket { get; } = new BuildOptionsDefaultLogsBucketBehavior("REGIONAL_USER_OWNED_BUCKET");
+
+        public static bool operator ==(BuildOptionsDefaultLogsBucketBehavior left, BuildOptionsDefaultLogsBucketBehavior right) => left.Equals(right);
+        public static bool operator !=(BuildOptionsDefaultLogsBucketBehavior left, BuildOptionsDefaultLogsBucketBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(BuildOptionsDefaultLogsBucketBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BuildOptionsDefaultLogsBucketBehavior other && Equals(other);
+        public bool Equals(BuildOptionsDefaultLogsBucketBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Option to define build log streaming behavior to Google Cloud Storage.
     /// </summary>
     [EnumType]
@@ -276,7 +313,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
 
         /// <summary>
-        /// The default, unknown repo type.
+        /// The default, unknown repo type. Don't use it, instead use one of the other repo types.
         /// </summary>
         public static GitFileSourceRepoType Unknown { get; } = new GitFileSourceRepoType("UNKNOWN");
         /// <summary>
@@ -325,7 +362,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
 
         /// <summary>
-        /// The default, unknown repo type.
+        /// The default, unknown repo type. Don't use it, instead use one of the other repo types.
         /// </summary>
         public static GitRepoSourceRepoType Unknown { get; } = new GitRepoSourceRepoType("UNKNOWN");
         /// <summary>

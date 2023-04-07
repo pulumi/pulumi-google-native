@@ -19,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetEkmConnectionResult:
-    def __init__(__self__, create_time=None, etag=None, name=None, service_resolvers=None):
+    def __init__(__self__, create_time=None, crypto_space_path=None, etag=None, key_management_mode=None, name=None, service_resolvers=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if crypto_space_path and not isinstance(crypto_space_path, str):
+            raise TypeError("Expected argument 'crypto_space_path' to be a str")
+        pulumi.set(__self__, "crypto_space_path", crypto_space_path)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if key_management_mode and not isinstance(key_management_mode, str):
+            raise TypeError("Expected argument 'key_management_mode' to be a str")
+        pulumi.set(__self__, "key_management_mode", key_management_mode)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -42,12 +48,28 @@ class GetEkmConnectionResult:
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="cryptoSpacePath")
+    def crypto_space_path(self) -> str:
+        """
+        Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        """
+        return pulumi.get(self, "crypto_space_path")
+
+    @property
     @pulumi.getter
     def etag(self) -> str:
         """
         Optional. Etag of the currently stored EkmConnection.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="keyManagementMode")
+    def key_management_mode(self) -> str:
+        """
+        Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+        """
+        return pulumi.get(self, "key_management_mode")
 
     @property
     @pulumi.getter
@@ -73,7 +95,9 @@ class AwaitableGetEkmConnectionResult(GetEkmConnectionResult):
             yield self
         return GetEkmConnectionResult(
             create_time=self.create_time,
+            crypto_space_path=self.crypto_space_path,
             etag=self.etag,
+            key_management_mode=self.key_management_mode,
             name=self.name,
             service_resolvers=self.service_resolvers)
 
@@ -94,7 +118,9 @@ def get_ekm_connection(ekm_connection_id: Optional[str] = None,
 
     return AwaitableGetEkmConnectionResult(
         create_time=__ret__.create_time,
+        crypto_space_path=__ret__.crypto_space_path,
         etag=__ret__.etag,
+        key_management_mode=__ret__.key_management_mode,
         name=__ret__.name,
         service_resolvers=__ret__.service_resolvers)
 

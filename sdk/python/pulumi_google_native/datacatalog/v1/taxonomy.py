@@ -252,7 +252,7 @@ class Taxonomy(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1TaxonomyServiceResponse']:
         """
-        Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
         """
         return pulumi.get(self, "service")
 

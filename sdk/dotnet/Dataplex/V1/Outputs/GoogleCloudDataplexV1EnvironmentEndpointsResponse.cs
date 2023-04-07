@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 {
 
+    /// <summary>
+    /// URI Endpoints to access sessions associated with the Environment.
+    /// </summary>
     [OutputType]
     public sealed class GoogleCloudDataplexV1EnvironmentEndpointsResponse
     {

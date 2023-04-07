@@ -336,29 +336,29 @@ class PublisherArgs:
 @pulumi.input_type
 class RestrictedExportConfigArgs:
     def __init__(__self__, *,
-                 restrict_direct_table_access: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  restrict_query_result: Optional[pulumi.Input[bool]] = None):
         """
         Restricted export config, used to configure restricted export on linked dataset.
-        :param pulumi.Input[bool] restrict_direct_table_access: If true, restrict direct table access(read api/tabledata.list) on linked table.
+        :param pulumi.Input[bool] enabled: If true, enable restricted export.
         :param pulumi.Input[bool] restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
         """
-        if restrict_direct_table_access is not None:
-            pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if restrict_query_result is not None:
             pulumi.set(__self__, "restrict_query_result", restrict_query_result)
 
     @property
-    @pulumi.getter(name="restrictDirectTableAccess")
-    def restrict_direct_table_access(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        If true, enable restricted export.
         """
-        return pulumi.get(self, "restrict_direct_table_access")
+        return pulumi.get(self, "enabled")
 
-    @restrict_direct_table_access.setter
-    def restrict_direct_table_access(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "restrict_direct_table_access", value)
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="restrictQueryResult")

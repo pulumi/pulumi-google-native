@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+// Returns the specified commitment resource.
 func LookupRegionCommitment(ctx *pulumi.Context, args *LookupRegionCommitmentArgs, opts ...pulumi.InvokeOption) (*LookupRegionCommitmentResult, error) {
 	var rv LookupRegionCommitmentResult
 	err := ctx.Invoke("google-native:compute/v1:getRegionCommitment", args, &rv, opts...)

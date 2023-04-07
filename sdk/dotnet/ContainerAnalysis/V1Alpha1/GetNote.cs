@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.DocumentNoteResponse Sbom;
         /// <summary>
+        /// A note describing a reference to an SBOM.
+        /// </summary>
+        public readonly Outputs.SBOMReferenceNoteResponse SbomReference;
+        /// <summary>
         /// A one sentence description of this `Note`.
         /// </summary>
         public readonly string ShortDescription;
@@ -141,6 +145,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// A note describing an upgrade.
         /// </summary>
         public readonly Outputs.UpgradeNoteResponse Upgrade;
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        public readonly Outputs.VulnerabilityAssessmentNoteResponse VulnerabilityAssessment;
         /// <summary>
         /// A package vulnerability type of note.
         /// </summary>
@@ -178,6 +186,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.DocumentNoteResponse sbom,
 
+            Outputs.SBOMReferenceNoteResponse sbomReference,
+
             string shortDescription,
 
             Outputs.FileNoteResponse spdxFile,
@@ -189,6 +199,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             string updateTime,
 
             Outputs.UpgradeNoteResponse upgrade,
+
+            Outputs.VulnerabilityAssessmentNoteResponse vulnerabilityAssessment,
 
             Outputs.VulnerabilityTypeResponse vulnerabilityType)
         {
@@ -207,12 +219,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
             Package = package;
             RelatedUrl = relatedUrl;
             Sbom = sbom;
+            SbomReference = sbomReference;
             ShortDescription = shortDescription;
             SpdxFile = spdxFile;
             SpdxPackage = spdxPackage;
             SpdxRelationship = spdxRelationship;
             UpdateTime = updateTime;
             Upgrade = upgrade;
+            VulnerabilityAssessment = vulnerabilityAssessment;
             VulnerabilityType = vulnerabilityType;
         }
     }

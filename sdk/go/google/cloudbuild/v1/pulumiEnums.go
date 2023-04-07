@@ -10,6 +10,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Optional. Option to specify how default logs buckets are setup.
+type BuildOptionsDefaultLogsBucketBehavior string
+
+const (
+	// Unspecified.
+	BuildOptionsDefaultLogsBucketBehaviorDefaultLogsBucketBehaviorUnspecified = BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED")
+	// Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+	BuildOptionsDefaultLogsBucketBehaviorRegionalUserOwnedBucket = BuildOptionsDefaultLogsBucketBehavior("REGIONAL_USER_OWNED_BUCKET")
+)
+
+func (BuildOptionsDefaultLogsBucketBehavior) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsDefaultLogsBucketBehavior)(nil)).Elem()
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToBuildOptionsDefaultLogsBucketBehaviorOutput() BuildOptionsDefaultLogsBucketBehaviorOutput {
+	return pulumi.ToOutput(e).(BuildOptionsDefaultLogsBucketBehaviorOutput)
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToBuildOptionsDefaultLogsBucketBehaviorOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsDefaultLogsBucketBehaviorOutput)
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutput() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return e.ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return BuildOptionsDefaultLogsBucketBehavior(e).ToBuildOptionsDefaultLogsBucketBehaviorOutputWithContext(ctx).ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx)
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsDefaultLogsBucketBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BuildOptionsDefaultLogsBucketBehaviorOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsDefaultLogsBucketBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsDefaultLogsBucketBehavior)(nil)).Elem()
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToBuildOptionsDefaultLogsBucketBehaviorOutput() BuildOptionsDefaultLogsBucketBehaviorOutput {
+	return o
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToBuildOptionsDefaultLogsBucketBehaviorOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorOutput {
+	return o
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutput() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o.ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsDefaultLogsBucketBehavior) *BuildOptionsDefaultLogsBucketBehavior {
+		return &v
+	}).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsDefaultLogsBucketBehavior) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsDefaultLogsBucketBehavior) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsDefaultLogsBucketBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildOptionsDefaultLogsBucketBehavior)(nil)).Elem()
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutput() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) Elem() BuildOptionsDefaultLogsBucketBehaviorOutput {
+	return o.ApplyT(func(v *BuildOptionsDefaultLogsBucketBehavior) BuildOptionsDefaultLogsBucketBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret BuildOptionsDefaultLogsBucketBehavior
+		return ret
+	}).(BuildOptionsDefaultLogsBucketBehaviorOutput)
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsDefaultLogsBucketBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsDefaultLogsBucketBehavior) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BuildOptionsDefaultLogsBucketBehaviorInput is an input type that accepts BuildOptionsDefaultLogsBucketBehaviorArgs and BuildOptionsDefaultLogsBucketBehaviorOutput values.
+// You can construct a concrete instance of `BuildOptionsDefaultLogsBucketBehaviorInput` via:
+//
+//	BuildOptionsDefaultLogsBucketBehaviorArgs{...}
+type BuildOptionsDefaultLogsBucketBehaviorInput interface {
+	pulumi.Input
+
+	ToBuildOptionsDefaultLogsBucketBehaviorOutput() BuildOptionsDefaultLogsBucketBehaviorOutput
+	ToBuildOptionsDefaultLogsBucketBehaviorOutputWithContext(context.Context) BuildOptionsDefaultLogsBucketBehaviorOutput
+}
+
+var buildOptionsDefaultLogsBucketBehaviorPtrType = reflect.TypeOf((**BuildOptionsDefaultLogsBucketBehavior)(nil)).Elem()
+
+type BuildOptionsDefaultLogsBucketBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsDefaultLogsBucketBehaviorPtrOutput() BuildOptionsDefaultLogsBucketBehaviorPtrOutput
+	ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput
+}
+
+type buildOptionsDefaultLogsBucketBehaviorPtr string
+
+func BuildOptionsDefaultLogsBucketBehaviorPtr(v string) BuildOptionsDefaultLogsBucketBehaviorPtrInput {
+	return (*buildOptionsDefaultLogsBucketBehaviorPtr)(&v)
+}
+
+func (*buildOptionsDefaultLogsBucketBehaviorPtr) ElementType() reflect.Type {
+	return buildOptionsDefaultLogsBucketBehaviorPtrType
+}
+
+func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutput() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
+}
+
+func (in *buildOptionsDefaultLogsBucketBehaviorPtr) ToBuildOptionsDefaultLogsBucketBehaviorPtrOutputWithContext(ctx context.Context) BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
+}
+
 // Option to define build log streaming behavior to Google Cloud Storage.
 type BuildOptionsLogStreamingOption string
 
@@ -1078,7 +1245,7 @@ func (in *buildOptionsSubstitutionOptionPtr) ToBuildOptionsSubstitutionOptionPtr
 type GitFileSourceRepoType string
 
 const (
-	// The default, unknown repo type.
+	// The default, unknown repo type. Don't use it, instead use one of the other repo types.
 	GitFileSourceRepoTypeUnknown = GitFileSourceRepoType("UNKNOWN")
 	// A Google Cloud Source Repositories-hosted repo.
 	GitFileSourceRepoTypeCloudSourceRepositories = GitFileSourceRepoType("CLOUD_SOURCE_REPOSITORIES")
@@ -1251,7 +1418,7 @@ func (in *gitFileSourceRepoTypePtr) ToGitFileSourceRepoTypePtrOutputWithContext(
 type GitRepoSourceRepoType string
 
 const (
-	// The default, unknown repo type.
+	// The default, unknown repo type. Don't use it, instead use one of the other repo types.
 	GitRepoSourceRepoTypeUnknown = GitRepoSourceRepoType("UNKNOWN")
 	// A Google Cloud Source Repositories-hosted repo.
 	GitRepoSourceRepoTypeCloudSourceRepositories = GitRepoSourceRepoType("CLOUD_SOURCE_REPOSITORIES")
@@ -2441,6 +2608,8 @@ func (in *webhookConfigStatePtr) ToWebhookConfigStatePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsDefaultLogsBucketBehaviorInput)(nil)).Elem(), BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsDefaultLogsBucketBehaviorPtrInput)(nil)).Elem(), BuildOptionsDefaultLogsBucketBehavior("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsLogStreamingOptionInput)(nil)).Elem(), BuildOptionsLogStreamingOption("STREAM_DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsLogStreamingOptionPtrInput)(nil)).Elem(), BuildOptionsLogStreamingOption("STREAM_DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildOptionsLoggingInput)(nil)).Elem(), BuildOptionsLogging("LOGGING_UNSPECIFIED"))
@@ -2470,6 +2639,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerIncludeBuildLogsPtrInput)(nil)).Elem(), TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStateInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookConfigStatePtrInput)(nil)).Elem(), WebhookConfigState("STATE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(BuildOptionsDefaultLogsBucketBehaviorOutput{})
+	pulumi.RegisterOutputType(BuildOptionsDefaultLogsBucketBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionOutput{})
 	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionPtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsLoggingOutput{})

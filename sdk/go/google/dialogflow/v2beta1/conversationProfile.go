@@ -43,6 +43,8 @@ type ConversationProfile struct {
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigResponseOutput `pulumi:"sttConfig"`
 	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
+	// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+	TtsConfig GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput `pulumi:"ttsConfig"`
 	// Update time of the conversation profile.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -120,6 +122,8 @@ type conversationProfileArgs struct {
 	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfig `pulumi:"sttConfig"`
 	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 	TimeZone *string `pulumi:"timeZone"`
+	// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+	TtsConfig *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig `pulumi:"ttsConfig"`
 }
 
 // The set of arguments for constructing a ConversationProfile resource.
@@ -150,6 +154,8 @@ type ConversationProfileArgs struct {
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput
 	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 	TimeZone pulumi.StringPtrInput
+	// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+	TtsConfig GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput
 }
 
 func (ConversationProfileArgs) ElementType() reflect.Type {
@@ -274,6 +280,13 @@ func (o ConversationProfileOutput) SttConfig() GoogleCloudDialogflowV2beta1Speec
 // The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 func (o ConversationProfileOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+func (o ConversationProfileOutput) TtsConfig() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+		return v.TtsConfig
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput)
 }
 
 // Update time of the conversation profile.

@@ -23,8 +23,10 @@ type TemplatesVersion struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy pulumi.StringOutput `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
-	Description           pulumi.StringOutput `pulumi:"description"`
-	IntegrationtemplateId pulumi.StringOutput `pulumi:"integrationtemplateId"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+	ErrorCatcherConfigs   GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput `pulumi:"errorCatcherConfigs"`
+	IntegrationtemplateId pulumi.StringOutput                                                 `pulumi:"integrationtemplateId"`
 	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail pulumi.StringOutput `pulumi:"lastModifierEmail"`
 	Location          pulumi.StringOutput `pulumi:"location"`
@@ -107,8 +109,10 @@ type templatesVersionArgs struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy *TemplatesVersionDatabasePersistencePolicy `pulumi:"databasePersistencePolicy"`
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
-	Description           *string `pulumi:"description"`
-	IntegrationtemplateId string  `pulumi:"integrationtemplateId"`
+	Description *string `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+	ErrorCatcherConfigs   []GoogleCloudIntegrationsV1alphaErrorCatcherConfig `pulumi:"errorCatcherConfigs"`
+	IntegrationtemplateId string                                             `pulumi:"integrationtemplateId"`
 	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail *string `pulumi:"lastModifierEmail"`
 	Location          *string `pulumi:"location"`
@@ -133,7 +137,9 @@ type TemplatesVersionArgs struct {
 	// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 	DatabasePersistencePolicy TemplatesVersionDatabasePersistencePolicyPtrInput
 	// Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
-	Description           pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+	ErrorCatcherConfigs   GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput
 	IntegrationtemplateId pulumi.StringInput
 	// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
 	LastModifierEmail pulumi.StringPtrInput
@@ -204,6 +210,13 @@ func (o TemplatesVersionOutput) DatabasePersistencePolicy() pulumi.StringOutput 
 // Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
 func (o TemplatesVersionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TemplatesVersion) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+func (o TemplatesVersionOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o.ApplyT(func(v *TemplatesVersion) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+		return v.ErrorCatcherConfigs
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
 }
 
 func (o TemplatesVersionOutput) IntegrationtemplateId() pulumi.StringOutput {

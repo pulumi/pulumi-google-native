@@ -33,10 +33,10 @@ type DataAttributeBinding struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+	// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
 	Paths   GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput `pulumi:"paths"`
 	Project pulumi.StringOutput                                              `pulumi:"project"`
-	// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+	// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 	Resource pulumi.StringOutput `pulumi:"resource"`
 	// System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -107,10 +107,10 @@ type dataAttributeBindingArgs struct {
 	// Optional. User-defined labels for the DataAttributeBinding.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+	// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
 	Paths   []GoogleCloudDataplexV1DataAttributeBindingPath `pulumi:"paths"`
 	Project *string                                         `pulumi:"project"`
-	// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+	// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 	Resource *string `pulumi:"resource"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly *bool `pulumi:"validateOnly"`
@@ -131,10 +131,10 @@ type DataAttributeBindingArgs struct {
 	// Optional. User-defined labels for the DataAttributeBinding.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+	// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
 	Paths   GoogleCloudDataplexV1DataAttributeBindingPathArrayInput
 	Project pulumi.StringPtrInput
-	// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+	// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 	Resource pulumi.StringPtrInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.BoolPtrInput
@@ -221,7 +221,7 @@ func (o DataAttributeBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAttributeBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
 func (o DataAttributeBindingOutput) Paths() GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput {
 	return o.ApplyT(func(v *DataAttributeBinding) GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput {
 		return v.Paths
@@ -232,7 +232,7 @@ func (o DataAttributeBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAttributeBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 func (o DataAttributeBindingOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAttributeBinding) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }

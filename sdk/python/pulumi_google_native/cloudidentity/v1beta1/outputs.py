@@ -747,8 +747,8 @@ class SamlIdpConfigResponse(dict):
         SAML IDP (identity provider) configuration.
         :param str change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
         :param str entity_id: The SAML **Entity ID** of the identity provider.
-        :param str logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
-        :param str single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        :param str logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
+        :param str single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
         """
         pulumi.set(__self__, "change_password_uri", change_password_uri)
         pulumi.set(__self__, "entity_id", entity_id)
@@ -775,7 +775,7 @@ class SamlIdpConfigResponse(dict):
     @pulumi.getter(name="logoutRedirectUri")
     def logout_redirect_uri(self) -> str:
         """
-        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
         """
         return pulumi.get(self, "logout_redirect_uri")
 
@@ -783,7 +783,7 @@ class SamlIdpConfigResponse(dict):
     @pulumi.getter(name="singleSignOnServiceUri")
     def single_sign_on_service_uri(self) -> str:
         """
-        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
         """
         return pulumi.get(self, "single_sign_on_service_uri")
 
@@ -817,7 +817,7 @@ class SamlSpConfigResponse(dict):
                  entity_id: str):
         """
         SAML SP (service provider) configuration.
-        :param str assertion_consumer_service_uri: The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+        :param str assertion_consumer_service_uri: The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
         :param str entity_id: The SAML **Entity ID** for this service provider.
         """
         pulumi.set(__self__, "assertion_consumer_service_uri", assertion_consumer_service_uri)
@@ -827,7 +827,7 @@ class SamlSpConfigResponse(dict):
     @pulumi.getter(name="assertionConsumerServiceUri")
     def assertion_consumer_service_uri(self) -> str:
         """
-        The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+        The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
         """
         return pulumi.get(self, "assertion_consumer_service_uri")
 

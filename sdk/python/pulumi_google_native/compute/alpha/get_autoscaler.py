@@ -203,7 +203,7 @@ def get_autoscaler(autoscaler: Optional[str] = None,
                    zone: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAutoscalerResult:
     """
-    Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+    Returns the specified autoscaler resource.
     """
     __args__ = dict()
     __args__['autoscaler'] = autoscaler
@@ -235,6 +235,6 @@ def get_autoscaler_output(autoscaler: Optional[pulumi.Input[str]] = None,
                           zone: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalerResult]:
     """
-    Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+    Returns the specified autoscaler resource.
     """
     ...

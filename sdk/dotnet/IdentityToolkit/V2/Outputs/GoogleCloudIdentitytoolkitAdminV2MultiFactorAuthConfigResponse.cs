@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> EnabledProviders;
         /// <summary>
+        /// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse> ProviderConfigs;
+        /// <summary>
         /// Whether MultiFactor Authentication has been enabled for this project.
         /// </summary>
         public readonly string State;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2.Outputs
         private GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(
             ImmutableArray<string> enabledProviders,
 
+            ImmutableArray<Outputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse> providerConfigs,
+
             string state)
         {
             EnabledProviders = enabledProviders;
+            ProviderConfigs = providerConfigs;
             State = state;
         }
     }

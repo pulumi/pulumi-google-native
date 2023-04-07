@@ -347,7 +347,7 @@ def get_instance_group_manager(instance_group_manager: Optional[str] = None,
                                zone: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceGroupManagerResult:
     """
-    Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+    Returns all of the details about the specified managed instance group.
     """
     __args__ = dict()
     __args__['instanceGroupManager'] = instance_group_manager
@@ -391,6 +391,6 @@ def get_instance_group_manager_output(instance_group_manager: Optional[pulumi.In
                                       zone: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGroupManagerResult]:
     """
-    Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+    Returns all of the details about the specified managed instance group.
     """
     ...

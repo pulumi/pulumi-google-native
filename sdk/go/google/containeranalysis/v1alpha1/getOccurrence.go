@@ -60,6 +60,8 @@ type LookupOccurrenceResult struct {
 	ResourceUrl string `pulumi:"resourceUrl"`
 	// Describes a specific software bill of materials document.
 	Sbom DocumentOccurrenceResponse `pulumi:"sbom"`
+	// This represents an SBOM reference occurrence
+	SbomReference SBOMReferenceOccurrenceResponse `pulumi:"sbomReference"`
 	// Describes a specific SPDX File.
 	SpdxFile FileOccurrenceResponse `pulumi:"spdxFile"`
 	// Describes a specific SPDX Package.
@@ -193,6 +195,11 @@ func (o LookupOccurrenceResultOutput) ResourceUrl() pulumi.StringOutput {
 // Describes a specific software bill of materials document.
 func (o LookupOccurrenceResultOutput) Sbom() DocumentOccurrenceResponseOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) DocumentOccurrenceResponse { return v.Sbom }).(DocumentOccurrenceResponseOutput)
+}
+
+// This represents an SBOM reference occurrence
+func (o LookupOccurrenceResultOutput) SbomReference() SBOMReferenceOccurrenceResponseOutput {
+	return o.ApplyT(func(v LookupOccurrenceResult) SBOMReferenceOccurrenceResponse { return v.SbomReference }).(SBOMReferenceOccurrenceResponseOutput)
 }
 
 // Describes a specific SPDX File.

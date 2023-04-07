@@ -115,6 +115,14 @@ export const RoutineLanguage = {
      * Python language.
      */
     Python: "PYTHON",
+    /**
+     * Java language.
+     */
+    Java: "JAVA",
+    /**
+     * Scala language.
+     */
+    Scala: "SCALA",
 } as const;
 
 /**
@@ -215,6 +223,6 @@ export const StandardSqlDataTypeTypeKind = {
 } as const;
 
 /**
- * Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+ * Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
  */
 export type StandardSqlDataTypeTypeKind = (typeof StandardSqlDataTypeTypeKind)[keyof typeof StandardSqlDataTypeTypeKind];

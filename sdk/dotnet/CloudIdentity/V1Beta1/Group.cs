@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Additional group keys associated with the Group.
+        /// </summary>
+        [Output("additionalGroupKeys")]
+        public Output<ImmutableArray<Outputs.EntityKeyResponse>> AdditionalGroupKeys { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the `Group` was created.
         /// </summary>
         [Output("createTime")]

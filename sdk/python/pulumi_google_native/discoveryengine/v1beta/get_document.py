@@ -47,7 +47,7 @@ class GetDocumentResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         """
         return pulumi.get(self, "name")
 
@@ -90,6 +90,7 @@ class AwaitableGetDocumentResult(GetDocumentResult):
 
 
 def get_document(branch_id: Optional[str] = None,
+                 collection_id: Optional[str] = None,
                  data_store_id: Optional[str] = None,
                  document_id: Optional[str] = None,
                  location: Optional[str] = None,
@@ -100,6 +101,7 @@ def get_document(branch_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['branchId'] = branch_id
+    __args__['collectionId'] = collection_id
     __args__['dataStoreId'] = data_store_id
     __args__['documentId'] = document_id
     __args__['location'] = location
@@ -117,6 +119,7 @@ def get_document(branch_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_document)
 def get_document_output(branch_id: Optional[pulumi.Input[str]] = None,
+                        collection_id: Optional[pulumi.Input[str]] = None,
                         data_store_id: Optional[pulumi.Input[str]] = None,
                         document_id: Optional[pulumi.Input[str]] = None,
                         location: Optional[pulumi.Input[str]] = None,

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+ * Returns the specified TargetTcpProxy resource.
  */
 export function getTargetTcpProxy(args: GetTargetTcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetTcpProxyResult> {
 
@@ -60,7 +60,7 @@ export interface GetTargetTcpProxyResult {
     readonly service: string;
 }
 /**
- * Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+ * Returns the specified TargetTcpProxy resource.
  */
 export function getTargetTcpProxyOutput(args: GetTargetTcpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetTcpProxyResult> {
     return pulumi.output(args).apply((a: any) => getTargetTcpProxy(a, opts))

@@ -64,7 +64,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
     public /*out*/ readonly failureStatus!: pulumi.Output<outputs.bigqueryreservation.v1.StatusResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
      */
     public readonly multiRegionAuxiliary!: pulumi.Output<boolean>;
     /**
@@ -155,7 +155,7 @@ export interface CapacityCommitmentArgs {
     enforceSingleAdminProjectPerOrg?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
-     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+     * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
      */
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**

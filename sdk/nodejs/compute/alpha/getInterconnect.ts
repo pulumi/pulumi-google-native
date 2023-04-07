@@ -30,6 +30,10 @@ export interface GetInterconnectResult {
      */
     readonly adminEnabled: boolean;
     /**
+     * [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+     */
+    readonly availableFeatures: string[];
+    /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
     readonly circuitInfos: outputs.compute.alpha.InterconnectCircuitInfoResponse[];
@@ -118,11 +122,15 @@ export interface GetInterconnectResult {
      */
     readonly remoteLocation: string;
     /**
+     * Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+     */
+    readonly requestedFeatures: string[];
+    /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
     readonly requestedLinkCount: number;
     /**
-     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
     /**

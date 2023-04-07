@@ -2579,7 +2579,7 @@ const (
 	TargetServerProtocolProtocolUnspecified = TargetServerProtocol("PROTOCOL_UNSPECIFIED")
 	// The TargetServer uses HTTP.
 	TargetServerProtocolHttp = TargetServerProtocol("HTTP")
-	// The TargetServer uses GRPC.
+	// GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
 	TargetServerProtocolGrpc = TargetServerProtocol("GRPC")
 )
 

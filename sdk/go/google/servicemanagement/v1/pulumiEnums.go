@@ -18,6 +18,8 @@ const (
 	ApiSyntaxSyntaxProto2 = ApiSyntax("SYNTAX_PROTO2")
 	// Syntax `proto3`.
 	ApiSyntaxSyntaxProto3 = ApiSyntax("SYNTAX_PROTO3")
+	// Syntax `editions`.
+	ApiSyntaxSyntaxEditions = ApiSyntax("SYNTAX_EDITIONS")
 )
 
 func (ApiSyntax) ElementType() reflect.Type {
@@ -915,6 +917,8 @@ const (
 	EnumSyntaxSyntaxProto2 = EnumSyntax("SYNTAX_PROTO2")
 	// Syntax `proto3`.
 	EnumSyntaxSyntaxProto3 = EnumSyntax("SYNTAX_PROTO3")
+	// Syntax `editions`.
+	EnumSyntaxSyntaxEditions = EnumSyntax("SYNTAX_EDITIONS")
 )
 
 func (EnumSyntax) ElementType() reflect.Type {
@@ -1623,6 +1627,8 @@ const (
 	MethodSyntaxSyntaxProto2 = MethodSyntax("SYNTAX_PROTO2")
 	// Syntax `proto3`.
 	MethodSyntaxSyntaxProto3 = MethodSyntax("SYNTAX_PROTO3")
+	// Syntax `editions`.
+	MethodSyntaxSyntaxEditions = MethodSyntax("SYNTAX_EDITIONS")
 )
 
 func (MethodSyntax) ElementType() reflect.Type {
@@ -2868,6 +2874,8 @@ const (
 	TypeSyntaxSyntaxProto2 = TypeSyntax("SYNTAX_PROTO2")
 	// Syntax `proto3`.
 	TypeSyntaxSyntaxProto3 = TypeSyntax("SYNTAX_PROTO3")
+	// Syntax `editions`.
+	TypeSyntaxSyntaxEditions = TypeSyntax("SYNTAX_EDITIONS")
 )
 
 func (TypeSyntax) ElementType() reflect.Type {

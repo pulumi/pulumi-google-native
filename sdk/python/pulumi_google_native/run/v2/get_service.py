@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorization=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, description=None, etag=None, expire_time=None, generation=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, name=None, observed_generation=None, reconciling=None, satisfies_pzs=None, template=None, terminal_condition=None, traffic=None, traffic_statuses=None, uid=None, update_time=None, uri=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -83,6 +83,9 @@ class GetServiceResult:
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if template and not isinstance(template, dict):
             raise TypeError("Expected argument 'template' to be a dict")
         pulumi.set(__self__, "template", template)
@@ -245,7 +248,7 @@ class GetServiceResult:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> str:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         """
         return pulumi.get(self, "launch_stage")
 
@@ -272,6 +275,14 @@ class GetServiceResult:
         Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter
@@ -357,6 +368,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             name=self.name,
             observed_generation=self.observed_generation,
             reconciling=self.reconciling,
+            satisfies_pzs=self.satisfies_pzs,
             template=self.template,
             terminal_condition=self.terminal_condition,
             traffic=self.traffic,
@@ -402,6 +414,7 @@ def get_service(location: Optional[str] = None,
         name=__ret__.name,
         observed_generation=__ret__.observed_generation,
         reconciling=__ret__.reconciling,
+        satisfies_pzs=__ret__.satisfies_pzs,
         template=__ret__.template,
         terminal_condition=__ret__.terminal_condition,
         traffic=__ret__.traffic,

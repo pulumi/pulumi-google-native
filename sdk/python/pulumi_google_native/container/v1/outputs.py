@@ -39,6 +39,7 @@ __all__ = [
     'EphemeralStorageLocalSsdConfigResponse',
     'FastSocketResponse',
     'FilterResponse',
+    'FleetResponse',
     'GPUSharingConfigResponse',
     'GatewayAPIConfigResponse',
     'GcePersistentDiskCsiDriverConfigResponse',
@@ -1515,6 +1516,67 @@ class FilterResponse(dict):
         Event types to allowlist.
         """
         return pulumi.get(self, "event_type")
+
+
+@pulumi.output_type
+class FleetResponse(dict):
+    """
+    Fleet is the fleet configuration for the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preRegistered":
+            suggest = "pre_registered"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 membership: str,
+                 pre_registered: bool,
+                 project: str):
+        """
+        Fleet is the fleet configuration for the cluster.
+        :param str membership: [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
+        :param bool pre_registered: [Output only] Whether the cluster has been registered through the fleet API.
+        :param str project: The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+        """
+        pulumi.set(__self__, "membership", membership)
+        pulumi.set(__self__, "pre_registered", pre_registered)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> str:
+        """
+        [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
+        """
+        return pulumi.get(self, "membership")
+
+    @property
+    @pulumi.getter(name="preRegistered")
+    def pre_registered(self) -> bool:
+        """
+        [Output only] Whether the cluster has been registered through the fleet API.
+        """
+        return pulumi.get(self, "pre_registered")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+        """
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -4197,14 +4259,14 @@ class NodePoolResponse(dict):
 @pulumi.output_type
 class NodeTaintResponse(dict):
     """
-    Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+    Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
     """
     def __init__(__self__, *,
                  effect: str,
                  key: str,
                  value: str):
         """
-        Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+        Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
         :param str effect: Effect for taint.
         :param str key: Key for taint.
         :param str value: Value for taint.

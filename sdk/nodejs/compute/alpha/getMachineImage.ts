@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified machine image. Gets a list of available machine images by making a list() request.
+ * Returns the specified machine image.
  */
 export function getMachineImage(args: GetMachineImageArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineImageResult> {
 
@@ -95,7 +95,7 @@ export interface GetMachineImageResult {
     readonly totalStorageBytes: string;
 }
 /**
- * Returns the specified machine image. Gets a list of available machine images by making a list() request.
+ * Returns the specified machine image.
  */
 export function getMachineImageOutput(args: GetMachineImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineImageResult> {
     return pulumi.output(args).apply((a: any) => getMachineImage(a, opts))

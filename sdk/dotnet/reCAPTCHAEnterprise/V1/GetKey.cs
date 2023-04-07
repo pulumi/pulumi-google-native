@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse AndroidSettings;
         /// <summary>
-        /// The timestamp corresponding to the creation of this Key.
+        /// The timestamp corresponding to the creation of this key.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>

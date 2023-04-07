@@ -356,13 +356,701 @@ func (in *authConfigAuthTypePtr) ToAuthConfigAuthTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthConfigAuthTypePtrOutput)
 }
 
+// Type of Client Cert (PEM/JKS/.. etc.)
+type SslConfigClientCertType string
+
+const (
+	// Cert type unspecified.
+	SslConfigClientCertTypeCertTypeUnspecified = SslConfigClientCertType("CERT_TYPE_UNSPECIFIED")
+	// Privacy Enhanced Mail (PEM) Type
+	SslConfigClientCertTypePem = SslConfigClientCertType("PEM")
+)
+
+func (SslConfigClientCertType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigClientCertType)(nil)).Elem()
+}
+
+func (e SslConfigClientCertType) ToSslConfigClientCertTypeOutput() SslConfigClientCertTypeOutput {
+	return pulumi.ToOutput(e).(SslConfigClientCertTypeOutput)
+}
+
+func (e SslConfigClientCertType) ToSslConfigClientCertTypeOutputWithContext(ctx context.Context) SslConfigClientCertTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SslConfigClientCertTypeOutput)
+}
+
+func (e SslConfigClientCertType) ToSslConfigClientCertTypePtrOutput() SslConfigClientCertTypePtrOutput {
+	return e.ToSslConfigClientCertTypePtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigClientCertType) ToSslConfigClientCertTypePtrOutputWithContext(ctx context.Context) SslConfigClientCertTypePtrOutput {
+	return SslConfigClientCertType(e).ToSslConfigClientCertTypeOutputWithContext(ctx).ToSslConfigClientCertTypePtrOutputWithContext(ctx)
+}
+
+func (e SslConfigClientCertType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigClientCertType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigClientCertType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigClientCertType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SslConfigClientCertTypeOutput struct{ *pulumi.OutputState }
+
+func (SslConfigClientCertTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigClientCertType)(nil)).Elem()
+}
+
+func (o SslConfigClientCertTypeOutput) ToSslConfigClientCertTypeOutput() SslConfigClientCertTypeOutput {
+	return o
+}
+
+func (o SslConfigClientCertTypeOutput) ToSslConfigClientCertTypeOutputWithContext(ctx context.Context) SslConfigClientCertTypeOutput {
+	return o
+}
+
+func (o SslConfigClientCertTypeOutput) ToSslConfigClientCertTypePtrOutput() SslConfigClientCertTypePtrOutput {
+	return o.ToSslConfigClientCertTypePtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigClientCertTypeOutput) ToSslConfigClientCertTypePtrOutputWithContext(ctx context.Context) SslConfigClientCertTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigClientCertType) *SslConfigClientCertType {
+		return &v
+	}).(SslConfigClientCertTypePtrOutput)
+}
+
+func (o SslConfigClientCertTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SslConfigClientCertTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigClientCertType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SslConfigClientCertTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigClientCertTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigClientCertType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SslConfigClientCertTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigClientCertTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfigClientCertType)(nil)).Elem()
+}
+
+func (o SslConfigClientCertTypePtrOutput) ToSslConfigClientCertTypePtrOutput() SslConfigClientCertTypePtrOutput {
+	return o
+}
+
+func (o SslConfigClientCertTypePtrOutput) ToSslConfigClientCertTypePtrOutputWithContext(ctx context.Context) SslConfigClientCertTypePtrOutput {
+	return o
+}
+
+func (o SslConfigClientCertTypePtrOutput) Elem() SslConfigClientCertTypeOutput {
+	return o.ApplyT(func(v *SslConfigClientCertType) SslConfigClientCertType {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigClientCertType
+		return ret
+	}).(SslConfigClientCertTypeOutput)
+}
+
+func (o SslConfigClientCertTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigClientCertTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SslConfigClientCertType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SslConfigClientCertTypeInput is an input type that accepts SslConfigClientCertTypeArgs and SslConfigClientCertTypeOutput values.
+// You can construct a concrete instance of `SslConfigClientCertTypeInput` via:
+//
+//	SslConfigClientCertTypeArgs{...}
+type SslConfigClientCertTypeInput interface {
+	pulumi.Input
+
+	ToSslConfigClientCertTypeOutput() SslConfigClientCertTypeOutput
+	ToSslConfigClientCertTypeOutputWithContext(context.Context) SslConfigClientCertTypeOutput
+}
+
+var sslConfigClientCertTypePtrType = reflect.TypeOf((**SslConfigClientCertType)(nil)).Elem()
+
+type SslConfigClientCertTypePtrInput interface {
+	pulumi.Input
+
+	ToSslConfigClientCertTypePtrOutput() SslConfigClientCertTypePtrOutput
+	ToSslConfigClientCertTypePtrOutputWithContext(context.Context) SslConfigClientCertTypePtrOutput
+}
+
+type sslConfigClientCertTypePtr string
+
+func SslConfigClientCertTypePtr(v string) SslConfigClientCertTypePtrInput {
+	return (*sslConfigClientCertTypePtr)(&v)
+}
+
+func (*sslConfigClientCertTypePtr) ElementType() reflect.Type {
+	return sslConfigClientCertTypePtrType
+}
+
+func (in *sslConfigClientCertTypePtr) ToSslConfigClientCertTypePtrOutput() SslConfigClientCertTypePtrOutput {
+	return pulumi.ToOutput(in).(SslConfigClientCertTypePtrOutput)
+}
+
+func (in *sslConfigClientCertTypePtr) ToSslConfigClientCertTypePtrOutputWithContext(ctx context.Context) SslConfigClientCertTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SslConfigClientCertTypePtrOutput)
+}
+
+// Type of Server Cert (PEM/JKS/.. etc.)
+type SslConfigServerCertType string
+
+const (
+	// Cert type unspecified.
+	SslConfigServerCertTypeCertTypeUnspecified = SslConfigServerCertType("CERT_TYPE_UNSPECIFIED")
+	// Privacy Enhanced Mail (PEM) Type
+	SslConfigServerCertTypePem = SslConfigServerCertType("PEM")
+)
+
+func (SslConfigServerCertType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigServerCertType)(nil)).Elem()
+}
+
+func (e SslConfigServerCertType) ToSslConfigServerCertTypeOutput() SslConfigServerCertTypeOutput {
+	return pulumi.ToOutput(e).(SslConfigServerCertTypeOutput)
+}
+
+func (e SslConfigServerCertType) ToSslConfigServerCertTypeOutputWithContext(ctx context.Context) SslConfigServerCertTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SslConfigServerCertTypeOutput)
+}
+
+func (e SslConfigServerCertType) ToSslConfigServerCertTypePtrOutput() SslConfigServerCertTypePtrOutput {
+	return e.ToSslConfigServerCertTypePtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigServerCertType) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
+	return SslConfigServerCertType(e).ToSslConfigServerCertTypeOutputWithContext(ctx).ToSslConfigServerCertTypePtrOutputWithContext(ctx)
+}
+
+func (e SslConfigServerCertType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigServerCertType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigServerCertType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigServerCertType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SslConfigServerCertTypeOutput struct{ *pulumi.OutputState }
+
+func (SslConfigServerCertTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigServerCertType)(nil)).Elem()
+}
+
+func (o SslConfigServerCertTypeOutput) ToSslConfigServerCertTypeOutput() SslConfigServerCertTypeOutput {
+	return o
+}
+
+func (o SslConfigServerCertTypeOutput) ToSslConfigServerCertTypeOutputWithContext(ctx context.Context) SslConfigServerCertTypeOutput {
+	return o
+}
+
+func (o SslConfigServerCertTypeOutput) ToSslConfigServerCertTypePtrOutput() SslConfigServerCertTypePtrOutput {
+	return o.ToSslConfigServerCertTypePtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigServerCertTypeOutput) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigServerCertType) *SslConfigServerCertType {
+		return &v
+	}).(SslConfigServerCertTypePtrOutput)
+}
+
+func (o SslConfigServerCertTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SslConfigServerCertTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigServerCertType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SslConfigServerCertTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigServerCertTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigServerCertType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SslConfigServerCertTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigServerCertTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfigServerCertType)(nil)).Elem()
+}
+
+func (o SslConfigServerCertTypePtrOutput) ToSslConfigServerCertTypePtrOutput() SslConfigServerCertTypePtrOutput {
+	return o
+}
+
+func (o SslConfigServerCertTypePtrOutput) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
+	return o
+}
+
+func (o SslConfigServerCertTypePtrOutput) Elem() SslConfigServerCertTypeOutput {
+	return o.ApplyT(func(v *SslConfigServerCertType) SslConfigServerCertType {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigServerCertType
+		return ret
+	}).(SslConfigServerCertTypeOutput)
+}
+
+func (o SslConfigServerCertTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigServerCertTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SslConfigServerCertType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SslConfigServerCertTypeInput is an input type that accepts SslConfigServerCertTypeArgs and SslConfigServerCertTypeOutput values.
+// You can construct a concrete instance of `SslConfigServerCertTypeInput` via:
+//
+//	SslConfigServerCertTypeArgs{...}
+type SslConfigServerCertTypeInput interface {
+	pulumi.Input
+
+	ToSslConfigServerCertTypeOutput() SslConfigServerCertTypeOutput
+	ToSslConfigServerCertTypeOutputWithContext(context.Context) SslConfigServerCertTypeOutput
+}
+
+var sslConfigServerCertTypePtrType = reflect.TypeOf((**SslConfigServerCertType)(nil)).Elem()
+
+type SslConfigServerCertTypePtrInput interface {
+	pulumi.Input
+
+	ToSslConfigServerCertTypePtrOutput() SslConfigServerCertTypePtrOutput
+	ToSslConfigServerCertTypePtrOutputWithContext(context.Context) SslConfigServerCertTypePtrOutput
+}
+
+type sslConfigServerCertTypePtr string
+
+func SslConfigServerCertTypePtr(v string) SslConfigServerCertTypePtrInput {
+	return (*sslConfigServerCertTypePtr)(&v)
+}
+
+func (*sslConfigServerCertTypePtr) ElementType() reflect.Type {
+	return sslConfigServerCertTypePtrType
+}
+
+func (in *sslConfigServerCertTypePtr) ToSslConfigServerCertTypePtrOutput() SslConfigServerCertTypePtrOutput {
+	return pulumi.ToOutput(in).(SslConfigServerCertTypePtrOutput)
+}
+
+func (in *sslConfigServerCertTypePtr) ToSslConfigServerCertTypePtrOutputWithContext(ctx context.Context) SslConfigServerCertTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SslConfigServerCertTypePtrOutput)
+}
+
+// Trust Model of the SSL connection
+type SslConfigTrustModel string
+
+const (
+	// Public Trust Model. Takes the Default Java trust store.
+	SslConfigTrustModelPublic = SslConfigTrustModel("PUBLIC")
+	// Private Trust Model. Takes custom/private trust store.
+	SslConfigTrustModelPrivate = SslConfigTrustModel("PRIVATE")
+	// Insecure Trust Model. Accept all certificates.
+	SslConfigTrustModelInsecure = SslConfigTrustModel("INSECURE")
+)
+
+func (SslConfigTrustModel) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigTrustModel)(nil)).Elem()
+}
+
+func (e SslConfigTrustModel) ToSslConfigTrustModelOutput() SslConfigTrustModelOutput {
+	return pulumi.ToOutput(e).(SslConfigTrustModelOutput)
+}
+
+func (e SslConfigTrustModel) ToSslConfigTrustModelOutputWithContext(ctx context.Context) SslConfigTrustModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SslConfigTrustModelOutput)
+}
+
+func (e SslConfigTrustModel) ToSslConfigTrustModelPtrOutput() SslConfigTrustModelPtrOutput {
+	return e.ToSslConfigTrustModelPtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigTrustModel) ToSslConfigTrustModelPtrOutputWithContext(ctx context.Context) SslConfigTrustModelPtrOutput {
+	return SslConfigTrustModel(e).ToSslConfigTrustModelOutputWithContext(ctx).ToSslConfigTrustModelPtrOutputWithContext(ctx)
+}
+
+func (e SslConfigTrustModel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigTrustModel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigTrustModel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigTrustModel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SslConfigTrustModelOutput struct{ *pulumi.OutputState }
+
+func (SslConfigTrustModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigTrustModel)(nil)).Elem()
+}
+
+func (o SslConfigTrustModelOutput) ToSslConfigTrustModelOutput() SslConfigTrustModelOutput {
+	return o
+}
+
+func (o SslConfigTrustModelOutput) ToSslConfigTrustModelOutputWithContext(ctx context.Context) SslConfigTrustModelOutput {
+	return o
+}
+
+func (o SslConfigTrustModelOutput) ToSslConfigTrustModelPtrOutput() SslConfigTrustModelPtrOutput {
+	return o.ToSslConfigTrustModelPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTrustModelOutput) ToSslConfigTrustModelPtrOutputWithContext(ctx context.Context) SslConfigTrustModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigTrustModel) *SslConfigTrustModel {
+		return &v
+	}).(SslConfigTrustModelPtrOutput)
+}
+
+func (o SslConfigTrustModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SslConfigTrustModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigTrustModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SslConfigTrustModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTrustModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigTrustModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SslConfigTrustModelPtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigTrustModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfigTrustModel)(nil)).Elem()
+}
+
+func (o SslConfigTrustModelPtrOutput) ToSslConfigTrustModelPtrOutput() SslConfigTrustModelPtrOutput {
+	return o
+}
+
+func (o SslConfigTrustModelPtrOutput) ToSslConfigTrustModelPtrOutputWithContext(ctx context.Context) SslConfigTrustModelPtrOutput {
+	return o
+}
+
+func (o SslConfigTrustModelPtrOutput) Elem() SslConfigTrustModelOutput {
+	return o.ApplyT(func(v *SslConfigTrustModel) SslConfigTrustModel {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigTrustModel
+		return ret
+	}).(SslConfigTrustModelOutput)
+}
+
+func (o SslConfigTrustModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTrustModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SslConfigTrustModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SslConfigTrustModelInput is an input type that accepts SslConfigTrustModelArgs and SslConfigTrustModelOutput values.
+// You can construct a concrete instance of `SslConfigTrustModelInput` via:
+//
+//	SslConfigTrustModelArgs{...}
+type SslConfigTrustModelInput interface {
+	pulumi.Input
+
+	ToSslConfigTrustModelOutput() SslConfigTrustModelOutput
+	ToSslConfigTrustModelOutputWithContext(context.Context) SslConfigTrustModelOutput
+}
+
+var sslConfigTrustModelPtrType = reflect.TypeOf((**SslConfigTrustModel)(nil)).Elem()
+
+type SslConfigTrustModelPtrInput interface {
+	pulumi.Input
+
+	ToSslConfigTrustModelPtrOutput() SslConfigTrustModelPtrOutput
+	ToSslConfigTrustModelPtrOutputWithContext(context.Context) SslConfigTrustModelPtrOutput
+}
+
+type sslConfigTrustModelPtr string
+
+func SslConfigTrustModelPtr(v string) SslConfigTrustModelPtrInput {
+	return (*sslConfigTrustModelPtr)(&v)
+}
+
+func (*sslConfigTrustModelPtr) ElementType() reflect.Type {
+	return sslConfigTrustModelPtrType
+}
+
+func (in *sslConfigTrustModelPtr) ToSslConfigTrustModelPtrOutput() SslConfigTrustModelPtrOutput {
+	return pulumi.ToOutput(in).(SslConfigTrustModelPtrOutput)
+}
+
+func (in *sslConfigTrustModelPtr) ToSslConfigTrustModelPtrOutputWithContext(ctx context.Context) SslConfigTrustModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SslConfigTrustModelPtrOutput)
+}
+
+// Controls the ssl type for the given connector version.
+type SslConfigType string
+
+const (
+	// No SSL configuration required.
+	SslConfigTypeSslTypeUnspecified = SslConfigType("SSL_TYPE_UNSPECIFIED")
+	// TLS Handshake
+	SslConfigTypeTls = SslConfigType("TLS")
+	// mutual TLS (MTLS) Handshake
+	SslConfigTypeMtls = SslConfigType("MTLS")
+)
+
+func (SslConfigType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigType)(nil)).Elem()
+}
+
+func (e SslConfigType) ToSslConfigTypeOutput() SslConfigTypeOutput {
+	return pulumi.ToOutput(e).(SslConfigTypeOutput)
+}
+
+func (e SslConfigType) ToSslConfigTypeOutputWithContext(ctx context.Context) SslConfigTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SslConfigTypeOutput)
+}
+
+func (e SslConfigType) ToSslConfigTypePtrOutput() SslConfigTypePtrOutput {
+	return e.ToSslConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigType) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
+	return SslConfigType(e).ToSslConfigTypeOutputWithContext(ctx).ToSslConfigTypePtrOutputWithContext(ctx)
+}
+
+func (e SslConfigType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SslConfigType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SslConfigType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SslConfigTypeOutput struct{ *pulumi.OutputState }
+
+func (SslConfigTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigType)(nil)).Elem()
+}
+
+func (o SslConfigTypeOutput) ToSslConfigTypeOutput() SslConfigTypeOutput {
+	return o
+}
+
+func (o SslConfigTypeOutput) ToSslConfigTypeOutputWithContext(ctx context.Context) SslConfigTypeOutput {
+	return o
+}
+
+func (o SslConfigTypeOutput) ToSslConfigTypePtrOutput() SslConfigTypePtrOutput {
+	return o.ToSslConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTypeOutput) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfigType) *SslConfigType {
+		return &v
+	}).(SslConfigTypePtrOutput)
+}
+
+func (o SslConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SslConfigTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SslConfigTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SslConfigType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SslConfigTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfigType)(nil)).Elem()
+}
+
+func (o SslConfigTypePtrOutput) ToSslConfigTypePtrOutput() SslConfigTypePtrOutput {
+	return o
+}
+
+func (o SslConfigTypePtrOutput) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
+	return o
+}
+
+func (o SslConfigTypePtrOutput) Elem() SslConfigTypeOutput {
+	return o.ApplyT(func(v *SslConfigType) SslConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigType
+		return ret
+	}).(SslConfigTypeOutput)
+}
+
+func (o SslConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SslConfigType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SslConfigTypeInput is an input type that accepts SslConfigTypeArgs and SslConfigTypeOutput values.
+// You can construct a concrete instance of `SslConfigTypeInput` via:
+//
+//	SslConfigTypeArgs{...}
+type SslConfigTypeInput interface {
+	pulumi.Input
+
+	ToSslConfigTypeOutput() SslConfigTypeOutput
+	ToSslConfigTypeOutputWithContext(context.Context) SslConfigTypeOutput
+}
+
+var sslConfigTypePtrType = reflect.TypeOf((**SslConfigType)(nil)).Elem()
+
+type SslConfigTypePtrInput interface {
+	pulumi.Input
+
+	ToSslConfigTypePtrOutput() SslConfigTypePtrOutput
+	ToSslConfigTypePtrOutputWithContext(context.Context) SslConfigTypePtrOutput
+}
+
+type sslConfigTypePtr string
+
+func SslConfigTypePtr(v string) SslConfigTypePtrInput {
+	return (*sslConfigTypePtr)(&v)
+}
+
+func (*sslConfigTypePtr) ElementType() reflect.Type {
+	return sslConfigTypePtrType
+}
+
+func (in *sslConfigTypePtr) ToSslConfigTypePtrOutput() SslConfigTypePtrOutput {
+	return pulumi.ToOutput(in).(SslConfigTypePtrOutput)
+}
+
+func (in *sslConfigTypePtr) ToSslConfigTypePtrOutputWithContext(ctx context.Context) SslConfigTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SslConfigTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAuthTypeInput)(nil)).Elem(), AuthConfigAuthType("AUTH_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthConfigAuthTypePtrInput)(nil)).Elem(), AuthConfigAuthType("AUTH_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigClientCertTypeInput)(nil)).Elem(), SslConfigClientCertType("CERT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigClientCertTypePtrInput)(nil)).Elem(), SslConfigClientCertType("CERT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigServerCertTypeInput)(nil)).Elem(), SslConfigServerCertType("CERT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigServerCertTypePtrInput)(nil)).Elem(), SslConfigServerCertType("CERT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigTrustModelInput)(nil)).Elem(), SslConfigTrustModel("PUBLIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigTrustModelPtrInput)(nil)).Elem(), SslConfigTrustModel("PUBLIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigTypeInput)(nil)).Elem(), SslConfigType("SSL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigTypePtrInput)(nil)).Elem(), SslConfigType("SSL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigAuthTypeOutput{})
 	pulumi.RegisterOutputType(AuthConfigAuthTypePtrOutput{})
+	pulumi.RegisterOutputType(SslConfigClientCertTypeOutput{})
+	pulumi.RegisterOutputType(SslConfigClientCertTypePtrOutput{})
+	pulumi.RegisterOutputType(SslConfigServerCertTypeOutput{})
+	pulumi.RegisterOutputType(SslConfigServerCertTypePtrOutput{})
+	pulumi.RegisterOutputType(SslConfigTrustModelOutput{})
+	pulumi.RegisterOutputType(SslConfigTrustModelPtrOutput{})
+	pulumi.RegisterOutputType(SslConfigTypeOutput{})
+	pulumi.RegisterOutputType(SslConfigTypePtrOutput{})
 }

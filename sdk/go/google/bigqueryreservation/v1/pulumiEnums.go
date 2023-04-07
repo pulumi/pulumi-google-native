@@ -14,10 +14,14 @@ import (
 type CapacityCommitmentEdition string
 
 const (
-	// Default value, only for legacy reservations and capacity commitments.
+	// Default value, which will be treated as ENTERPRISE.
 	CapacityCommitmentEditionEditionUnspecified = CapacityCommitmentEdition("EDITION_UNSPECIFIED")
+	// Standard edition.
+	CapacityCommitmentEditionStandard = CapacityCommitmentEdition("STANDARD")
 	// Enterprise edition.
 	CapacityCommitmentEditionEnterprise = CapacityCommitmentEdition("ENTERPRISE")
+	// Enterprise plus edition.
+	CapacityCommitmentEditionEnterprisePlus = CapacityCommitmentEdition("ENTERPRISE_PLUS")
 )
 
 func (CapacityCommitmentEdition) ElementType() reflect.Type {
@@ -185,12 +189,20 @@ const (
 	CapacityCommitmentPlanCommitmentPlanUnspecified = CapacityCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED")
 	// Flex commitments have committed period of 1 minute after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
 	CapacityCommitmentPlanFlex = CapacityCommitmentPlan("FLEX")
+	// Same as FLEX, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentPlanFlexFlatRate = CapacityCommitmentPlan("FLEX_FLAT_RATE")
 	// Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
 	CapacityCommitmentPlanTrial = CapacityCommitmentPlan("TRIAL")
 	// Monthly commitments have a committed period of 30 days after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
 	CapacityCommitmentPlanMonthly = CapacityCommitmentPlan("MONTHLY")
+	// Same as MONTHLY, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentPlanMonthlyFlatRate = CapacityCommitmentPlan("MONTHLY_FLAT_RATE")
 	// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
 	CapacityCommitmentPlanAnnual = CapacityCommitmentPlan("ANNUAL")
+	// Same as ANNUAL, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentPlanAnnualFlatRate = CapacityCommitmentPlan("ANNUAL_FLAT_RATE")
+	// 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+	CapacityCommitmentPlanThreeYear = CapacityCommitmentPlan("THREE_YEAR")
 	// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
 	CapacityCommitmentPlanNone = CapacityCommitmentPlan("NONE")
 )
@@ -360,12 +372,20 @@ const (
 	CapacityCommitmentRenewalPlanCommitmentPlanUnspecified = CapacityCommitmentRenewalPlan("COMMITMENT_PLAN_UNSPECIFIED")
 	// Flex commitments have committed period of 1 minute after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
 	CapacityCommitmentRenewalPlanFlex = CapacityCommitmentRenewalPlan("FLEX")
+	// Same as FLEX, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentRenewalPlanFlexFlatRate = CapacityCommitmentRenewalPlan("FLEX_FLAT_RATE")
 	// Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
 	CapacityCommitmentRenewalPlanTrial = CapacityCommitmentRenewalPlan("TRIAL")
 	// Monthly commitments have a committed period of 30 days after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.
 	CapacityCommitmentRenewalPlanMonthly = CapacityCommitmentRenewalPlan("MONTHLY")
+	// Same as MONTHLY, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentRenewalPlanMonthlyFlatRate = CapacityCommitmentRenewalPlan("MONTHLY_FLAT_RATE")
 	// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
 	CapacityCommitmentRenewalPlanAnnual = CapacityCommitmentRenewalPlan("ANNUAL")
+	// Same as ANNUAL, should only be used if flat-rate commitments are still available.
+	CapacityCommitmentRenewalPlanAnnualFlatRate = CapacityCommitmentRenewalPlan("ANNUAL_FLAT_RATE")
+	// 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+	CapacityCommitmentRenewalPlanThreeYear = CapacityCommitmentRenewalPlan("THREE_YEAR")
 	// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
 	CapacityCommitmentRenewalPlanNone = CapacityCommitmentRenewalPlan("NONE")
 )
@@ -531,10 +551,14 @@ func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOu
 type ReservationEdition string
 
 const (
-	// Default value, only for legacy reservations and capacity commitments.
+	// Default value, which will be treated as ENTERPRISE.
 	ReservationEditionEditionUnspecified = ReservationEdition("EDITION_UNSPECIFIED")
+	// Standard edition.
+	ReservationEditionStandard = ReservationEdition("STANDARD")
 	// Enterprise edition.
 	ReservationEditionEnterprise = ReservationEdition("ENTERPRISE")
+	// Enterprise plus edition.
+	ReservationEditionEnterprisePlus = ReservationEdition("ENTERPRISE_PLUS")
 )
 
 func (ReservationEdition) ElementType() reflect.Type {

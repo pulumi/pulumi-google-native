@@ -310,6 +310,34 @@ export const SchemaPackageUnexpectedSegmentHandling = {
  */
 export type SchemaPackageUnexpectedSegmentHandling = (typeof SchemaPackageUnexpectedSegmentHandling)[keyof typeof SchemaPackageUnexpectedSegmentHandling];
 
+export const TimePartitioningType = {
+    /**
+     * Default unknown time.
+     */
+    PartitionTypeUnspecified: "PARTITION_TYPE_UNSPECIFIED",
+    /**
+     * Data partitioned by hour.
+     */
+    Hour: "HOUR",
+    /**
+     * Data partitioned by day.
+     */
+    Day: "DAY",
+    /**
+     * Data partitioned by month.
+     */
+    Month: "MONTH",
+    /**
+     * Data partitioned by year.
+     */
+    Year: "YEAR",
+} as const;
+
+/**
+ * Type of partitioning.
+ */
+export type TimePartitioningType = (typeof TimePartitioningType)[keyof typeof TimePartitioningType];
+
 export const TypePrimitive = {
     /**
      * Not a primitive.

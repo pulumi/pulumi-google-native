@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Inputs
         public Input<string>? CloudSqlInstance { get; set; }
 
         /// <summary>
+        /// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        /// </summary>
+        [Input("forwardingRule")]
+        public Input<string>? ForwardingRule { get; set; }
+
+        /// <summary>
         /// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         /// </summary>
         [Input("gkeMasterCluster")]

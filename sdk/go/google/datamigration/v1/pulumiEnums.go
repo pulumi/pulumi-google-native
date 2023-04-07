@@ -1223,7 +1223,7 @@ func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
 }
 
-// Required. Engine Type.
+// Required. Engine type.
 type DatabaseEngineInfoEngine string
 
 const (
@@ -1233,7 +1233,7 @@ const (
 	DatabaseEngineInfoEngineMysql = DatabaseEngineInfoEngine("MYSQL")
 	// The source engine is PostgreSQL.
 	DatabaseEngineInfoEnginePostgresql = DatabaseEngineInfoEngine("POSTGRESQL")
-	// The source engine is Oracle
+	// The source engine is Oracle.
 	DatabaseEngineInfoEngineOracle = DatabaseEngineInfoEngine("ORACLE")
 )
 
@@ -1404,7 +1404,7 @@ const (
 	DatabaseTypeEngineMysql = DatabaseTypeEngine("MYSQL")
 	// The source engine is PostgreSQL.
 	DatabaseTypeEnginePostgresql = DatabaseTypeEngine("POSTGRESQL")
-	// The source engine is Oracle
+	// The source engine is Oracle.
 	DatabaseTypeEngineOracle = DatabaseTypeEngine("ORACLE")
 )
 

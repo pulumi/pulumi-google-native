@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, channel=None, conditions=None, create_time=None, destination=None, etag=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
+    def __init__(__self__, channel=None, conditions=None, create_time=None, destination=None, etag=None, event_data_content_type=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
         if channel and not isinstance(channel, str):
             raise TypeError("Expected argument 'channel' to be a str")
         pulumi.set(__self__, "channel", channel)
@@ -35,6 +35,9 @@ class GetTriggerResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if event_data_content_type and not isinstance(event_data_content_type, str):
+            raise TypeError("Expected argument 'event_data_content_type' to be a str")
+        pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if event_filters and not isinstance(event_filters, list):
             raise TypeError("Expected argument 'event_filters' to be a list")
         pulumi.set(__self__, "event_filters", event_filters)
@@ -96,6 +99,14 @@ class GetTriggerResult:
         This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> str:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
 
     @property
     @pulumi.getter(name="eventFilters")
@@ -165,6 +176,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             create_time=self.create_time,
             destination=self.destination,
             etag=self.etag,
+            event_data_content_type=self.event_data_content_type,
             event_filters=self.event_filters,
             labels=self.labels,
             name=self.name,
@@ -194,6 +206,7 @@ def get_trigger(location: Optional[str] = None,
         create_time=__ret__.create_time,
         destination=__ret__.destination,
         etag=__ret__.etag,
+        event_data_content_type=__ret__.event_data_content_type,
         event_filters=__ret__.event_filters,
         labels=__ret__.labels,
         name=__ret__.name,

@@ -20,6 +20,7 @@ class CaseArgs:
                  v2beta_id1: pulumi.Input[str],
                  v2betum_id: pulumi.Input[str],
                  classification: Optional[pulumi.Input['CaseClassificationArgs']] = None,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input['ActorArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class CaseArgs:
         """
         The set of arguments for constructing a Case resource.
         :param pulumi.Input['CaseClassificationArgs'] classification: The issue classification applicable to this case.
+        :param pulumi.Input[str] contact_email: A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
         :param pulumi.Input['ActorArgs'] creator: The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
         :param pulumi.Input[str] description: A broad description of the issue.
         :param pulumi.Input[str] display_name: The short summary of the issue reported in this case.
@@ -50,6 +52,8 @@ class CaseArgs:
         pulumi.set(__self__, "v2betum_id", v2betum_id)
         if classification is not None:
             pulumi.set(__self__, "classification", classification)
+        if contact_email is not None:
+            pulumi.set(__self__, "contact_email", contact_email)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
         if description is not None:
@@ -105,6 +109,18 @@ class CaseArgs:
     @classification.setter
     def classification(self, value: Optional[pulumi.Input['CaseClassificationArgs']]):
         pulumi.set(self, "classification", value)
+
+    @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        """
+        return pulumi.get(self, "contact_email")
+
+    @contact_email.setter
+    def contact_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_email", value)
 
     @property
     @pulumi.getter
@@ -245,6 +261,7 @@ class Case(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  classification: Optional[pulumi.Input[pulumi.InputType['CaseClassificationArgs']]] = None,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[pulumi.InputType['ActorArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -267,6 +284,7 @@ class Case(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CaseClassificationArgs']] classification: The issue classification applicable to this case.
+        :param pulumi.Input[str] contact_email: A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
         :param pulumi.Input[pulumi.InputType['ActorArgs']] creator: The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
         :param pulumi.Input[str] description: A broad description of the issue.
         :param pulumi.Input[str] display_name: The short summary of the issue reported in this case.
@@ -306,6 +324,7 @@ class Case(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  classification: Optional[pulumi.Input[pulumi.InputType['CaseClassificationArgs']]] = None,
+                 contact_email: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[pulumi.InputType['ActorArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -329,6 +348,7 @@ class Case(pulumi.CustomResource):
             __props__ = CaseArgs.__new__(CaseArgs)
 
             __props__.__dict__["classification"] = classification
+            __props__.__dict__["contact_email"] = contact_email
             __props__.__dict__["creator"] = creator
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -377,6 +397,7 @@ class Case(pulumi.CustomResource):
         __props__ = CaseArgs.__new__(CaseArgs)
 
         __props__.__dict__["classification"] = None
+        __props__.__dict__["contact_email"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator"] = None
         __props__.__dict__["description"] = None
@@ -402,6 +423,14 @@ class Case(pulumi.CustomResource):
         The issue classification applicable to this case.
         """
         return pulumi.get(self, "classification")
+
+    @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> pulumi.Output[str]:
+        """
+        A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        """
+        return pulumi.get(self, "contact_email")
 
     @property
     @pulumi.getter(name="createTime")

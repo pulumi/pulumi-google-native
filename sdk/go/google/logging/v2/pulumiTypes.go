@@ -10,6 +10,153 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Describes a BigQuery dataset that was created by a link.
+type BigQueryDataset struct {
+}
+
+// BigQueryDatasetInput is an input type that accepts BigQueryDatasetArgs and BigQueryDatasetOutput values.
+// You can construct a concrete instance of `BigQueryDatasetInput` via:
+//
+//	BigQueryDatasetArgs{...}
+type BigQueryDatasetInput interface {
+	pulumi.Input
+
+	ToBigQueryDatasetOutput() BigQueryDatasetOutput
+	ToBigQueryDatasetOutputWithContext(context.Context) BigQueryDatasetOutput
+}
+
+// Describes a BigQuery dataset that was created by a link.
+type BigQueryDatasetArgs struct {
+}
+
+func (BigQueryDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDataset)(nil)).Elem()
+}
+
+func (i BigQueryDatasetArgs) ToBigQueryDatasetOutput() BigQueryDatasetOutput {
+	return i.ToBigQueryDatasetOutputWithContext(context.Background())
+}
+
+func (i BigQueryDatasetArgs) ToBigQueryDatasetOutputWithContext(ctx context.Context) BigQueryDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetOutput)
+}
+
+func (i BigQueryDatasetArgs) ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput {
+	return i.ToBigQueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryDatasetArgs) ToBigQueryDatasetPtrOutputWithContext(ctx context.Context) BigQueryDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetOutput).ToBigQueryDatasetPtrOutputWithContext(ctx)
+}
+
+// BigQueryDatasetPtrInput is an input type that accepts BigQueryDatasetArgs, BigQueryDatasetPtr and BigQueryDatasetPtrOutput values.
+// You can construct a concrete instance of `BigQueryDatasetPtrInput` via:
+//
+//	        BigQueryDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryDatasetPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput
+	ToBigQueryDatasetPtrOutputWithContext(context.Context) BigQueryDatasetPtrOutput
+}
+
+type bigQueryDatasetPtrType BigQueryDatasetArgs
+
+func BigQueryDatasetPtr(v *BigQueryDatasetArgs) BigQueryDatasetPtrInput {
+	return (*bigQueryDatasetPtrType)(v)
+}
+
+func (*bigQueryDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDataset)(nil)).Elem()
+}
+
+func (i *bigQueryDatasetPtrType) ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput {
+	return i.ToBigQueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryDatasetPtrType) ToBigQueryDatasetPtrOutputWithContext(ctx context.Context) BigQueryDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDatasetPtrOutput)
+}
+
+// Describes a BigQuery dataset that was created by a link.
+type BigQueryDatasetOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDataset)(nil)).Elem()
+}
+
+func (o BigQueryDatasetOutput) ToBigQueryDatasetOutput() BigQueryDatasetOutput {
+	return o
+}
+
+func (o BigQueryDatasetOutput) ToBigQueryDatasetOutputWithContext(ctx context.Context) BigQueryDatasetOutput {
+	return o
+}
+
+func (o BigQueryDatasetOutput) ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput {
+	return o.ToBigQueryDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryDatasetOutput) ToBigQueryDatasetPtrOutputWithContext(ctx context.Context) BigQueryDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDataset) *BigQueryDataset {
+		return &v
+	}).(BigQueryDatasetPtrOutput)
+}
+
+type BigQueryDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDataset)(nil)).Elem()
+}
+
+func (o BigQueryDatasetPtrOutput) ToBigQueryDatasetPtrOutput() BigQueryDatasetPtrOutput {
+	return o
+}
+
+func (o BigQueryDatasetPtrOutput) ToBigQueryDatasetPtrOutputWithContext(ctx context.Context) BigQueryDatasetPtrOutput {
+	return o
+}
+
+func (o BigQueryDatasetPtrOutput) Elem() BigQueryDatasetOutput {
+	return o.ApplyT(func(v *BigQueryDataset) BigQueryDataset {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryDataset
+		return ret
+	}).(BigQueryDatasetOutput)
+}
+
+// Describes a BigQuery dataset that was created by a link.
+type BigQueryDatasetResponse struct {
+	// The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
+	DatasetId string `pulumi:"datasetId"`
+}
+
+// Describes a BigQuery dataset that was created by a link.
+type BigQueryDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDatasetResponse)(nil)).Elem()
+}
+
+func (o BigQueryDatasetResponseOutput) ToBigQueryDatasetResponseOutput() BigQueryDatasetResponseOutput {
+	return o
+}
+
+func (o BigQueryDatasetResponseOutput) ToBigQueryDatasetResponseOutputWithContext(ctx context.Context) BigQueryDatasetResponseOutput {
+	return o
+}
+
+// The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
+func (o BigQueryDatasetResponseOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryDatasetResponse) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // Options that change functionality of a sink exporting data to BigQuery.
 type BigQueryOptions struct {
 	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Cloud Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
@@ -2421,6 +2568,8 @@ func (o MetricDescriptorResponseOutput) ValueType() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDatasetInput)(nil)).Elem(), BigQueryDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDatasetPtrInput)(nil)).Elem(), BigQueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsInput)(nil)).Elem(), BigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryOptionsPtrInput)(nil)).Elem(), BigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOptionsInput)(nil)).Elem(), BucketOptionsArgs{})
@@ -2443,6 +2592,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorPtrInput)(nil)).Elem(), MetricDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataPtrInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
+	pulumi.RegisterOutputType(BigQueryDatasetOutput{})
+	pulumi.RegisterOutputType(BigQueryDatasetPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryDatasetResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsResponseOutput{})

@@ -7,9 +7,11 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .app import *
+from .application import *
 from .authorized_certificate import *
 from .domain_mapping import *
 from .get_app import *
+from .get_application import *
 from .get_authorized_certificate import *
 from .get_domain_mapping import *
 from .get_ingress_rule import *

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetTargetInstance
     {
         /// <summary>
-        /// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+        /// Returns the specified TargetInstance resource.
         /// </summary>
         public static Task<GetTargetInstanceResult> InvokeAsync(GetTargetInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetInstanceResult>("google-native:compute/alpha:getTargetInstance", args ?? new GetTargetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+        /// Returns the specified TargetInstance resource.
         /// </summary>
         public static Output<GetTargetInstanceResult> Invoke(GetTargetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetInstanceResult>("google-native:compute/alpha:getTargetInstance", args ?? new GetTargetInstanceInvokeArgs(), options.WithDefaults());

@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// </summary>
+        [Output("dockerConfig")]
+        public Output<Outputs.DockerRepositoryConfigResponse> DockerConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The format of packages that are stored in the repository.
         /// </summary>
         [Output("format")]
@@ -156,16 +162,16 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when the repository was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The user-provided description of the repository.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// </summary>
+        [Input("dockerConfig")]
+        public Input<Inputs.DockerRepositoryConfigArgs>? DockerConfig { get; set; }
 
         /// <summary>
         /// The format of packages that are stored in the repository.
@@ -226,12 +232,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }
-
-        /// <summary>
-        /// The time when the repository was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// Configuration specific for a Virtual Repository.

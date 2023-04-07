@@ -179,6 +179,10 @@ class SoftwareConfigOptionalComponentsItem(str, Enum):
     """
     The Hive Web HCatalog (the REST service for accessing HCatalog).
     """
+    HUDI = "HUDI"
+    """
+    Hudi.
+    """
     JUPYTER = "JUPYTER"
     """
     The Jupyter Notebook.

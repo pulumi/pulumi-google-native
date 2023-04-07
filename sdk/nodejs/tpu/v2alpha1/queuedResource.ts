@@ -53,7 +53,7 @@ export class QueuedResource extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+     * The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
      */
     public readonly queuedResourceId!: pulumi.Output<string | undefined>;
     /**
@@ -65,7 +65,11 @@ export class QueuedResource extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * State of the QueuedResource request
+     * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+     */
+    public readonly reservationName!: pulumi.Output<string>;
+    /**
+     * State of the QueuedResource request.
      */
     public /*out*/ readonly state!: pulumi.Output<outputs.tpu.v2alpha1.QueuedResourceStateResponse>;
     /**
@@ -91,6 +95,7 @@ export class QueuedResource extends pulumi.CustomResource {
             resourceInputs["queuedResourceId"] = args ? args.queuedResourceId : undefined;
             resourceInputs["queueingPolicy"] = args ? args.queueingPolicy : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["reservationName"] = args ? args.reservationName : undefined;
             resourceInputs["tpu"] = args ? args.tpu : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -103,6 +108,7 @@ export class QueuedResource extends pulumi.CustomResource {
             resourceInputs["queuedResourceId"] = undefined /*out*/;
             resourceInputs["queueingPolicy"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["reservationName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["tpu"] = undefined /*out*/;
         }
@@ -128,7 +134,7 @@ export interface QueuedResourceArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+     * The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
      */
     queuedResourceId?: pulumi.Input<string>;
     /**
@@ -139,6 +145,10 @@ export interface QueuedResourceArgs {
      * Idempotent request UUID.
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+     */
+    reservationName?: pulumi.Input<string>;
     /**
      * Defines a TPU resource.
      */

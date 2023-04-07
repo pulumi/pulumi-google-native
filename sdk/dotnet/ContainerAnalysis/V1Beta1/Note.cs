@@ -116,6 +116,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Output<Outputs.DocumentNoteResponse> Sbom { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        [Output("sbomReference")]
+        public Output<Outputs.SBOMReferenceNoteResponse> SbomReference { get; private set; } = null!;
+
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         [Output("shortDescription")]
@@ -150,6 +156,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Output("vulnerability")]
         public Output<Outputs.VulnerabilityResponse> Vulnerability { get; private set; } = null!;
+
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Output("vulnerabilityAssessment")]
+        public Output<Outputs.VulnerabilityAssessmentNoteResponse> VulnerabilityAssessment { get; private set; } = null!;
 
 
         /// <summary>
@@ -295,6 +307,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public Input<Inputs.DocumentNoteArgs>? Sbom { get; set; }
 
         /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        [Input("sbomReference")]
+        public Input<Inputs.SBOMReferenceNoteArgs>? SbomReference { get; set; }
+
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         [Input("shortDescription")]
@@ -323,6 +341,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// </summary>
         [Input("vulnerability")]
         public Input<Inputs.VulnerabilityArgs>? Vulnerability { get; set; }
+
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Input("vulnerabilityAssessment")]
+        public Input<Inputs.VulnerabilityAssessmentNoteArgs>? VulnerabilityAssessment { get; set; }
 
         public NoteArgs()
         {

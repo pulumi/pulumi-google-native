@@ -16,10 +16,22 @@ namespace Pulumi.GoogleNative.Workflows.V1
     public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        /// </summary>
+        [Output("callLogLevel")]
+        public Output<string> CallLogLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp for when the workflow was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+        /// </summary>
+        [Output("cryptoKeyName")]
+        public Output<string> CryptoKeyName { get; private set; } = null!;
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -74,6 +86,12 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+        /// </summary>
+        [Output("stateError")]
+        public Output<Outputs.StateErrorResponse> StateError { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp for when the workflow was last updated.
@@ -138,6 +156,18 @@ namespace Pulumi.GoogleNative.Workflows.V1
 
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        /// </summary>
+        [Input("callLogLevel")]
+        public Input<Pulumi.GoogleNative.Workflows.V1.WorkflowCallLogLevel>? CallLogLevel { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+        /// </summary>
+        [Input("cryptoKeyName")]
+        public Input<string>? CryptoKeyName { get; set; }
+
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>

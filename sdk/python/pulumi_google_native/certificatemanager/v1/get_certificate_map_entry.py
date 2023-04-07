@@ -51,7 +51,7 @@ class GetCertificateMapEntryResult:
     @pulumi.getter
     def certificates(self) -> Sequence[str]:
         """
-        A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+        A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         """
         return pulumi.get(self, "certificates")
 

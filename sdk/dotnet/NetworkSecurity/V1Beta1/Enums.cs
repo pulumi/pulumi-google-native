@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
 {
     /// <summary>
+    /// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    /// </summary>
+    [EnumType]
+    public readonly struct AddressGroupType : IEquatable<AddressGroupType>
+    {
+        private readonly string _value;
+
+        private AddressGroupType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static AddressGroupType TypeUnspecified { get; } = new AddressGroupType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// IP v4 ranges.
+        /// </summary>
+        public static AddressGroupType Ipv4 { get; } = new AddressGroupType("IPV4");
+        /// <summary>
+        /// IP v6 ranges.
+        /// </summary>
+        public static AddressGroupType Ipv6 { get; } = new AddressGroupType("IPV6");
+
+        public static bool operator ==(AddressGroupType left, AddressGroupType right) => left.Equals(right);
+        public static bool operator !=(AddressGroupType left, AddressGroupType right) => !left.Equals(right);
+
+        public static explicit operator string(AddressGroupType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AddressGroupType other && Equals(other);
+        public bool Equals(AddressGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
     /// </summary>
     [EnumType]
@@ -86,6 +127,88 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleIamV1AuditLogConfigLogType other && Equals(other);
         public bool Equals(GoogleIamV1AuditLogConfigLogType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    /// </summary>
+    [EnumType]
+    public readonly struct OrganizationAddressGroupType : IEquatable<OrganizationAddressGroupType>
+    {
+        private readonly string _value;
+
+        private OrganizationAddressGroupType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static OrganizationAddressGroupType TypeUnspecified { get; } = new OrganizationAddressGroupType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// IP v4 ranges.
+        /// </summary>
+        public static OrganizationAddressGroupType Ipv4 { get; } = new OrganizationAddressGroupType("IPV4");
+        /// <summary>
+        /// IP v6 ranges.
+        /// </summary>
+        public static OrganizationAddressGroupType Ipv6 { get; } = new OrganizationAddressGroupType("IPV6");
+
+        public static bool operator ==(OrganizationAddressGroupType left, OrganizationAddressGroupType right) => left.Equals(right);
+        public static bool operator !=(OrganizationAddressGroupType left, OrganizationAddressGroupType right) => !left.Equals(right);
+
+        public static explicit operator string(OrganizationAddressGroupType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is OrganizationAddressGroupType other && Equals(other);
+        public bool Equals(OrganizationAddressGroupType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Profile which tells what the primitive action should be.
+    /// </summary>
+    [EnumType]
+    public readonly struct RuleBasicProfile : IEquatable<RuleBasicProfile>
+    {
+        private readonly string _value;
+
+        private RuleBasicProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If there is not a mentioned action for the target.
+        /// </summary>
+        public static RuleBasicProfile BasicProfileUnspecified { get; } = new RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Allow the matched traffic.
+        /// </summary>
+        public static RuleBasicProfile Allow { get; } = new RuleBasicProfile("ALLOW");
+        /// <summary>
+        /// Deny the matched traffic.
+        /// </summary>
+        public static RuleBasicProfile Deny { get; } = new RuleBasicProfile("DENY");
+
+        public static bool operator ==(RuleBasicProfile left, RuleBasicProfile right) => left.Equals(right);
+        public static bool operator !=(RuleBasicProfile left, RuleBasicProfile right) => !left.Equals(right);
+
+        public static explicit operator string(RuleBasicProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RuleBasicProfile other && Equals(other);
+        public bool Equals(RuleBasicProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

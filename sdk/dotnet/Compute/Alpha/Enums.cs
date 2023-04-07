@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+    /// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
     /// </summary>
     [EnumType]
     public readonly struct AccessConfigType : IEquatable<AccessConfigType>
@@ -364,6 +364,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         public static AllocationAggregateReservationVmFamily VmFamilyCloudTpuPodSliceCt4p { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P");
+        public static AllocationAggregateReservationVmFamily VmFamilyComputeOptimizedC3 { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_COMPUTE_OPTIMIZED_C3");
         public static AllocationAggregateReservationVmFamily VmFamilyGeneralPurposeT2d { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_GENERAL_PURPOSE_T2D");
         public static AllocationAggregateReservationVmFamily VmFamilyMemoryOptimizedM3 { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_MEMORY_OPTIMIZED_M3");
 
@@ -427,6 +428,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+        /// </summary>
+        public static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval AsNeeded { get; } = new AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("AS_NEEDED");
         /// <summary>
         /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
         /// </summary>
@@ -3242,7 +3247,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -4729,6 +4734,36 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct InterconnectRequestedFeaturesItem : IEquatable<InterconnectRequestedFeaturesItem>
+    {
+        private readonly string _value;
+
+        private InterconnectRequestedFeaturesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Media Access Control security (MACsec)
+        /// </summary>
+        public static InterconnectRequestedFeaturesItem IfMacsec { get; } = new InterconnectRequestedFeaturesItem("IF_MACSEC");
+
+        public static bool operator ==(InterconnectRequestedFeaturesItem left, InterconnectRequestedFeaturesItem right) => left.Equals(right);
+        public static bool operator !=(InterconnectRequestedFeaturesItem left, InterconnectRequestedFeaturesItem right) => !left.Equals(right);
+
+        public static explicit operator string(InterconnectRequestedFeaturesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InterconnectRequestedFeaturesItem other && Equals(other);
+        public bool Equals(InterconnectRequestedFeaturesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Strategy for distributing VMs across zones in a region.
     /// </summary>
@@ -5129,7 +5164,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+    /// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
     /// </summary>
     [EnumType]
     public readonly struct NetworkInterfaceStackType : IEquatable<NetworkInterfaceStackType>
@@ -5361,6 +5396,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+    /// </summary>
+    [EnumType]
+    public readonly struct NodeGroupMaintenanceInterval : IEquatable<NodeGroupMaintenanceInterval>
+    {
+        private readonly string _value;
+
+        private NodeGroupMaintenanceInterval(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+        /// </summary>
+        public static NodeGroupMaintenanceInterval AsNeeded { get; } = new NodeGroupMaintenanceInterval("AS_NEEDED");
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+        /// </summary>
+        public static NodeGroupMaintenanceInterval Periodic { get; } = new NodeGroupMaintenanceInterval("PERIODIC");
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+        /// </summary>
+        public static NodeGroupMaintenanceInterval Recurrent { get; } = new NodeGroupMaintenanceInterval("RECURRENT");
+
+        public static bool operator ==(NodeGroupMaintenanceInterval left, NodeGroupMaintenanceInterval right) => left.Equals(right);
+        public static bool operator !=(NodeGroupMaintenanceInterval left, NodeGroupMaintenanceInterval right) => !left.Equals(right);
+
+        public static explicit operator string(NodeGroupMaintenanceInterval value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NodeGroupMaintenanceInterval other && Equals(other);
+        public bool Equals(NodeGroupMaintenanceInterval other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
     /// </summary>
     [EnumType]
@@ -5465,7 +5541,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct OrganizationSecurityPolicyType : IEquatable<OrganizationSecurityPolicyType>
@@ -6103,6 +6179,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static RegionCommitmentType AcceleratorOptimized { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimized { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimizedC2d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C2D");
+        public static RegionCommitmentType ComputeOptimizedC3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3");
         public static RegionCommitmentType GeneralPurpose { get; } = new RegionCommitmentType("GENERAL_PURPOSE");
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
@@ -6543,7 +6620,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct RegionSecurityPolicyType : IEquatable<RegionSecurityPolicyType>
@@ -7854,6 +7931,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
+        /// VMs are eligible to receive infrastructure and hypervisor updates as they become available. This may result in more maintenance operations (live migrations or terminations) for the VM than the PERIODIC and RECURRENT options.
+        /// </summary>
+        public static SchedulingMaintenanceInterval AsNeeded { get; } = new SchedulingMaintenanceInterval("AS_NEEDED");
+        /// <summary>
         /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
         /// </summary>
         public static SchedulingMaintenanceInterval Periodic { get; } = new SchedulingMaintenanceInterval("PERIODIC");
@@ -8087,6 +8168,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         public static SecurityPolicyDdosProtectionConfigDdosProtection Advanced { get; } = new SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED");
+        public static SecurityPolicyDdosProtectionConfigDdosProtection AdvancedPreview { get; } = new SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED_PREVIEW");
         public static SecurityPolicyDdosProtectionConfigDdosProtection Standard { get; } = new SecurityPolicyDdosProtectionConfigDdosProtection("STANDARD");
 
         public static bool operator ==(SecurityPolicyDdosProtectionConfigDdosProtection left, SecurityPolicyDdosProtectionConfigDdosProtection right) => left.Equals(right);
@@ -8326,7 +8408,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyType : IEquatable<SecurityPolicyType>
@@ -8694,6 +8776,37 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SslPolicyProfile other && Equals(other);
         public bool Equals(SslPolicyProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of the storage pool
+    /// </summary>
+    [EnumType]
+    public readonly struct StoragePoolType : IEquatable<StoragePoolType>
+    {
+        private readonly string _value;
+
+        private StoragePoolType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static StoragePoolType Ssd { get; } = new StoragePoolType("SSD");
+        public static StoragePoolType Unspecified { get; } = new StoragePoolType("UNSPECIFIED");
+
+        public static bool operator ==(StoragePoolType left, StoragePoolType right) => left.Equals(right);
+        public static bool operator !=(StoragePoolType left, StoragePoolType right) => !left.Equals(right);
+
+        public static explicit operator string(StoragePoolType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StoragePoolType other && Equals(other);
+        public bool Equals(StoragePoolType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -9423,6 +9536,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TlsValidationContextValidationSource other && Equals(other);
         public bool Equals(TlsValidationContextValidationSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpnGatewayGatewayIpVersion : IEquatable<VpnGatewayGatewayIpVersion>
+    {
+        private readonly string _value;
+
+        private VpnGatewayGatewayIpVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Every HA-VPN gateway interface is configured with an IPv4 address.
+        /// </summary>
+        public static VpnGatewayGatewayIpVersion Ipv4 { get; } = new VpnGatewayGatewayIpVersion("IPV4");
+        /// <summary>
+        /// Every HA-VPN gateway interface is configured with an IPv6 address.
+        /// </summary>
+        public static VpnGatewayGatewayIpVersion Ipv6 { get; } = new VpnGatewayGatewayIpVersion("IPV6");
+
+        public static bool operator ==(VpnGatewayGatewayIpVersion left, VpnGatewayGatewayIpVersion right) => left.Equals(right);
+        public static bool operator !=(VpnGatewayGatewayIpVersion left, VpnGatewayGatewayIpVersion right) => !left.Equals(right);
+
+        public static explicit operator string(VpnGatewayGatewayIpVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpnGatewayGatewayIpVersion other && Equals(other);
+        public bool Equals(VpnGatewayGatewayIpVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

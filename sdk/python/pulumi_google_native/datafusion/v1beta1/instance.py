@@ -19,8 +19,6 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  type: pulumi.Input['InstanceType'],
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
-                 available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
                  crypto_key_config: Optional[pulumi.Input['CryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -42,8 +40,6 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_id: Required. The name of the instance to create.
         :param pulumi.Input['InstanceType'] type: Instance type.
-        :param pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance.
-        :param pulumi.Input[Sequence[pulumi.Input['VersionArgs']]] available_version: Available versions that the instance can be upgraded to using UpdateInstanceRequest.
         :param pulumi.Input['CryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
@@ -62,10 +58,6 @@ class InstanceArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "type", type)
-        if accelerators is not None:
-            pulumi.set(__self__, "accelerators", accelerators)
-        if available_version is not None:
-            pulumi.set(__self__, "available_version", available_version)
         if crypto_key_config is not None:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
@@ -124,30 +116,6 @@ class InstanceArgs:
     @type.setter
     def type(self, value: pulumi.Input['InstanceType']):
         pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]]:
-        """
-        List of accelerators enabled for this CDF instance.
-        """
-        return pulumi.get(self, "accelerators")
-
-    @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]]):
-        pulumi.set(self, "accelerators", value)
-
-    @property
-    @pulumi.getter(name="availableVersion")
-    def available_version(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]]:
-        """
-        Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-        """
-        return pulumi.get(self, "available_version")
-
-    @available_version.setter
-    def available_version(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]]):
-        pulumi.set(self, "available_version", value)
 
     @property
     @pulumi.getter(name="cryptoKeyConfig")
@@ -353,8 +321,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]]] = None,
-                 available_version: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]]] = None,
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -381,8 +347,6 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]] available_version: Available versions that the instance can be upgraded to using UpdateInstanceRequest.
         :param pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
@@ -426,8 +390,6 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]]] = None,
-                 available_version: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]]] = None,
                  crypto_key_config: Optional[pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -456,8 +418,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["accelerators"] = accelerators
-            __props__.__dict__["available_version"] = available_version
             __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
@@ -481,7 +441,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["accelerators"] = None
             __props__.__dict__["api_endpoint"] = None
+            __props__.__dict__["available_version"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["disabled_reason"] = None
             __props__.__dict__["gcs_bucket"] = None

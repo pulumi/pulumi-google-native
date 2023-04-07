@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<string>? Precision { get; set; }
 
         /// <summary>
+        /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        /// </summary>
+        [Input("roundingMode")]
+        public Input<string>? RoundingMode { get; set; }
+
+        /// <summary>
         /// [Optional] See documentation for precision.
         /// </summary>
         [Input("scale")]

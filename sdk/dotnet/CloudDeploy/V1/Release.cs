@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<ImmutableArray<Outputs.BuildArtifactResponse>> BuildArtifacts { get; private set; } = null!;
 
         /// <summary>
+        /// Information around the state of the Release.
+        /// </summary>
+        [Output("condition")]
+        public Output<Outputs.ReleaseConditionResponse> Condition { get; private set; } = null!;
+
+        /// <summary>
         /// Time at which the `Release` was created.
         /// </summary>
         [Output("createTime")]

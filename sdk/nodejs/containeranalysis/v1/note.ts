@@ -119,6 +119,10 @@ export class Note extends pulumi.CustomResource {
      * A note describing a package vulnerability.
      */
     public readonly vulnerability!: pulumi.Output<outputs.containeranalysis.v1.VulnerabilityNoteResponse>;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    public readonly vulnerabilityAssessment!: pulumi.Output<outputs.containeranalysis.v1.VulnerabilityAssessmentNoteResponse>;
 
     /**
      * Create a Note resource with the given unique name, arguments, and options.
@@ -151,6 +155,7 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
             resourceInputs["upgrade"] = args ? args.upgrade : undefined;
             resourceInputs["vulnerability"] = args ? args.vulnerability : undefined;
+            resourceInputs["vulnerabilityAssessment"] = args ? args.vulnerabilityAssessment : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -177,6 +182,7 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgrade"] = undefined /*out*/;
             resourceInputs["vulnerability"] = undefined /*out*/;
+            resourceInputs["vulnerabilityAssessment"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["noteId", "project"] };
@@ -254,4 +260,8 @@ export interface NoteArgs {
      * A note describing a package vulnerability.
      */
     vulnerability?: pulumi.Input<inputs.containeranalysis.v1.VulnerabilityNoteArgs>;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    vulnerabilityAssessment?: pulumi.Input<inputs.containeranalysis.v1.VulnerabilityAssessmentNoteArgs>;
 }

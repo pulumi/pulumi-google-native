@@ -67,6 +67,10 @@ export class Endpoint extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     public readonly serviceId!: pulumi.Output<string>;
     /**
+     * A globally unique identifier (in UUID4 format) for this endpoint.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
      * The timestamp when the endpoint was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["address"] = undefined /*out*/;
@@ -115,6 +120,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

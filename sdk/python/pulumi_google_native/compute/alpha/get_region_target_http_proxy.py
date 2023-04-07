@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionTargetHttpProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, region=None, self_link=None, self_link_with_id=None, url_map=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, http_keep_alive_timeout_sec=None, kind=None, name=None, proxy_bind=None, region=None, self_link=None, self_link_with_id=None, url_map=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -31,6 +31,9 @@ class GetRegionTargetHttpProxyResult:
         if http_filters and not isinstance(http_filters, list):
             raise TypeError("Expected argument 'http_filters' to be a list")
         pulumi.set(__self__, "http_filters", http_filters)
+        if http_keep_alive_timeout_sec and not isinstance(http_keep_alive_timeout_sec, int):
+            raise TypeError("Expected argument 'http_keep_alive_timeout_sec' to be a int")
+        pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -84,6 +87,14 @@ class GetRegionTargetHttpProxyResult:
         URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/v1alpha1/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         """
         return pulumi.get(self, "http_filters")
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> int:
+        """
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @property
     @pulumi.getter
@@ -152,6 +163,7 @@ class AwaitableGetRegionTargetHttpProxyResult(GetRegionTargetHttpProxyResult):
             description=self.description,
             fingerprint=self.fingerprint,
             http_filters=self.http_filters,
+            http_keep_alive_timeout_sec=self.http_keep_alive_timeout_sec,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -166,7 +178,7 @@ def get_region_target_http_proxy(project: Optional[str] = None,
                                  target_http_proxy: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionTargetHttpProxyResult:
     """
-    Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpProxy resource in the specified region.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -180,6 +192,7 @@ def get_region_target_http_proxy(project: Optional[str] = None,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
         http_filters=__ret__.http_filters,
+        http_keep_alive_timeout_sec=__ret__.http_keep_alive_timeout_sec,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,
@@ -195,6 +208,6 @@ def get_region_target_http_proxy_output(project: Optional[pulumi.Input[Optional[
                                         target_http_proxy: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionTargetHttpProxyResult]:
     """
-    Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpProxy resource in the specified region.
     """
     ...

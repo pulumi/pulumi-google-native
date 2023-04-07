@@ -41,6 +41,8 @@ type LookupEndpointResult struct {
 	Network string `pulumi:"network"`
 	// Optional. Service Directory rejects values outside of `[0, 65535]`.
 	Port int `pulumi:"port"`
+	// A globally unique identifier (in UUID4 format) for this endpoint.
+	Uid string `pulumi:"uid"`
 	// The timestamp when the endpoint was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -112,6 +114,11 @@ func (o LookupEndpointResultOutput) Network() pulumi.StringOutput {
 // Optional. Service Directory rejects values outside of `[0, 65535]`.
 func (o LookupEndpointResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupEndpointResult) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this endpoint.
+func (o LookupEndpointResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the endpoint was last updated.

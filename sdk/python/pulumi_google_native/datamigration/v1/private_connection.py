@@ -30,10 +30,10 @@ class PrivateConnectionArgs:
         :param pulumi.Input[str] private_connection_id: Required. The private connection identifier.
         :param pulumi.Input[str] display_name: The private connection display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[str] name: The resource's name.
-        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] name: The name of the resource.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. If set to true, will skip validations.
-        :param pulumi.Input['VpcPeeringConfigArgs'] vpc_peering_config: VPC Peering Config.
+        :param pulumi.Input['VpcPeeringConfigArgs'] vpc_peering_config: VPC peering configuration.
         """
         pulumi.set(__self__, "private_connection_id", private_connection_id)
         if display_name is not None:
@@ -102,7 +102,7 @@ class PrivateConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource's name.
+        The name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -123,7 +123,7 @@ class PrivateConnectionArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 
@@ -147,7 +147,7 @@ class PrivateConnectionArgs:
     @pulumi.getter(name="vpcPeeringConfig")
     def vpc_peering_config(self) -> Optional[pulumi.Input['VpcPeeringConfigArgs']]:
         """
-        VPC Peering Config.
+        VPC peering configuration.
         """
         return pulumi.get(self, "vpc_peering_config")
 
@@ -178,11 +178,11 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The private connection display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-        :param pulumi.Input[str] name: The resource's name.
+        :param pulumi.Input[str] name: The name of the resource.
         :param pulumi.Input[str] private_connection_id: Required. The private connection identifier.
-        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. If set to true, will skip validations.
-        :param pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']] vpc_peering_config: VPC Peering Config.
+        :param pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']] vpc_peering_config: VPC peering configuration.
         """
         ...
     @overload
@@ -321,7 +321,7 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource's name.
+        The name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -342,7 +342,7 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 
@@ -358,7 +358,7 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The state of the Private Connection.
+        The state of the private connection.
         """
         return pulumi.get(self, "state")
 
@@ -374,7 +374,7 @@ class PrivateConnection(pulumi.CustomResource):
     @pulumi.getter(name="vpcPeeringConfig")
     def vpc_peering_config(self) -> pulumi.Output['outputs.VpcPeeringConfigResponse']:
         """
-        VPC Peering Config.
+        VPC peering configuration.
         """
         return pulumi.get(self, "vpc_peering_config")
 

@@ -38,6 +38,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArgs',
     'GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArgs',
     'GoogleCloudDialogflowCxV3beta1FulfillmentArgs',
+    'GoogleCloudDialogflowCxV3beta1GcsDestinationArgs',
     'GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs',
     'GoogleCloudDialogflowCxV3beta1IntentInputArgs',
     'GoogleCloudDialogflowCxV3beta1IntentParameterArgs',
@@ -63,6 +64,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1TestCaseResultArgs',
     'GoogleCloudDialogflowCxV3beta1TestConfigArgs',
     'GoogleCloudDialogflowCxV3beta1TextInputArgs',
+    'GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1TransitionRouteArgs',
     'GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs',
     'GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs',
@@ -116,13 +118,29 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1AdvancedSettingsArgs:
     def __init__(__self__, *,
+                 audio_export_gcs_destination: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs']] = None,
                  logging_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs']] = None):
         """
         Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs'] audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs'] logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         """
+        if audio_export_gcs_destination is not None:
+            pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
         if logging_settings is not None:
             pulumi.set(__self__, "logging_settings", logging_settings)
+
+    @property
+    @pulumi.getter(name="audioExportGcsDestination")
+    def audio_export_gcs_destination(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs']]:
+        """
+        If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+        """
+        return pulumi.get(self, "audio_export_gcs_destination")
+
+    @audio_export_gcs_destination.setter
+    def audio_export_gcs_destination(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1GcsDestinationArgs']]):
+        pulumi.set(self, "audio_export_gcs_destination", value)
 
     @property
     @pulumi.getter(name="loggingSettings")
@@ -145,7 +163,7 @@ class GoogleCloudDialogflowCxV3beta1AudioInputArgs:
         """
         Represents the natural speech audio to be processed.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs'] config: Instructs the speech recognizer how to process the speech audio.
-        :param pulumi.Input[str] audio: The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+        :param pulumi.Input[str] audio: The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
         """
         pulumi.set(__self__, "config", config)
         if audio is not None:
@@ -167,7 +185,7 @@ class GoogleCloudDialogflowCxV3beta1AudioInputArgs:
     @pulumi.getter
     def audio(self) -> Optional[pulumi.Input[str]]:
         """
-        The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+        The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
         """
         return pulumi.get(self, "audio")
 
@@ -1415,6 +1433,29 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1GcsDestinationArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str]):
+        """
+        Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+        :param pulumi.Input[str] uri: The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     def __init__(__self__, *,
                  audio_encoding: pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'],
@@ -1428,7 +1469,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
         Instructs the speech recognizer on how to process the audio content.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding'] audio_encoding: Audio encoding of the audio content to process.
         :param pulumi.Input[bool] enable_word_info: Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
-        :param pulumi.Input[str] model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        :param pulumi.Input[str] model: Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant'] model_variant: Optional. Which variant of the Speech model to use.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] phrase_hints: Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
         :param pulumi.Input[int] sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
@@ -1476,7 +1517,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+        Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
         """
         return pulumi.get(self, "model")
 
@@ -1671,7 +1712,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs:
                  parts: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]],
                  repeat_count: Optional[pulumi.Input[int]] = None):
         """
-        Represents an example that the agent is trained on to identify the intent.
+        Represents an example that the agent is trained on to identify the intent. Next ID: 15
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param pulumi.Input[int] repeat_count: Indicates how many times this example was added to the intent.
         """
@@ -2864,6 +2905,30 @@ class GoogleCloudDialogflowCxV3beta1TextInputArgs:
     @text.setter
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsArgs:
+    def __init__(__self__, *,
+                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Settings related to speech generating.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        if synthesize_speech_configs is not None:
+            pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
+
+    @property
+    @pulumi.getter(name="synthesizeSpeechConfigs")
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        return pulumi.get(self, "synthesize_speech_configs")
+
+    @synthesize_speech_configs.setter
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "synthesize_speech_configs", value)
 
 
 @pulumi.input_type

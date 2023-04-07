@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         /// </summary>
         public readonly string Parallelism;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly bool RequireHostsFile;
         /// <summary>
-        /// Number of Tasks in the TaskGroup. default is 1
+        /// Number of Tasks in the TaskGroup. Default is 1.
         /// </summary>
         public readonly string TaskCount;
         /// <summary>

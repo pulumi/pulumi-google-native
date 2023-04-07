@@ -29,6 +29,7 @@ class ConnectionArgs:
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 ssl_config: Optional[pulumi.Input['SslConfigArgs']] = None,
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
@@ -42,6 +43,7 @@ class ConnectionArgs:
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input['SslConfigArgs'] ssl_config: Optional. Ssl config of a connection
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
         pulumi.set(__self__, "connection_id", connection_id)
@@ -66,6 +68,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if ssl_config is not None:
+            pulumi.set(__self__, "ssl_config", ssl_config)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
 
@@ -208,6 +212,18 @@ class ConnectionArgs:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> Optional[pulumi.Input['SslConfigArgs']]:
+        """
+        Optional. Ssl config of a connection
+        """
+        return pulumi.get(self, "ssl_config")
+
+    @ssl_config.setter
+    def ssl_config(self, value: Optional[pulumi.Input['SslConfigArgs']]):
+        pulumi.set(self, "ssl_config", value)
+
+    @property
     @pulumi.getter
     def suspended(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -237,6 +253,7 @@ class Connection(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 ssl_config: Optional[pulumi.Input[pulumi.InputType['SslConfigArgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -255,6 +272,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
+        :param pulumi.Input[pulumi.InputType['SslConfigArgs']] ssl_config: Optional. Ssl config of a connection
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
         ...
@@ -294,6 +312,7 @@ class Connection(pulumi.CustomResource):
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 ssl_config: Optional[pulumi.Input[pulumi.InputType['SslConfigArgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -320,6 +339,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["ssl_config"] = ssl_config
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["create_time"] = None
             __props__.__dict__["envoy_image_location"] = None
@@ -369,6 +389,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_directory"] = None
+        __props__.__dict__["ssl_config"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["suspended"] = None
         __props__.__dict__["update_time"] = None
@@ -503,6 +524,14 @@ class Connection(pulumi.CustomResource):
         The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
         """
         return pulumi.get(self, "service_directory")
+
+    @property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> pulumi.Output['outputs.SslConfigResponse']:
+        """
+        Optional. Ssl config of a connection
+        """
+        return pulumi.get(self, "ssl_config")
 
     @property
     @pulumi.getter

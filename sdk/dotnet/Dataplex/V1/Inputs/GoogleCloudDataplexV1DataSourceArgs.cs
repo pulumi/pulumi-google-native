@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         [Input("entity")]
         public Input<string>? Entity { get; set; }
 
+        /// <summary>
+        /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        [Input("resource")]
+        public Input<string>? Resource { get; set; }
+
         public GoogleCloudDataplexV1DataSourceArgs()
         {
         }

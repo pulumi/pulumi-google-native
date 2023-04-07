@@ -16,6 +16,8 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettings struct {
 	AllowAllPackageNames *bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
+	// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+	SupportNonGoogleAppStoreDistribution *bool `pulumi:"supportNonGoogleAppStoreDistribution"`
 }
 
 // GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput values.
@@ -35,6 +37,8 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs struct {
 	AllowAllPackageNames pulumi.BoolPtrInput `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames pulumi.StringArrayInput `pulumi:"allowedPackageNames"`
+	// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+	SupportNonGoogleAppStoreDistribution pulumi.BoolPtrInput `pulumi:"supportNonGoogleAppStoreDistribution"`
 }
 
 func (GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs) ElementType() reflect.Type {
@@ -125,6 +129,13 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) AllowedPackage
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) []string { return v.AllowedPackageNames }).(pulumi.StringArrayOutput)
 }
 
+// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput) SupportNonGoogleAppStoreDistribution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool {
+		return v.SupportNonGoogleAppStoreDistribution
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) ElementType() reflect.Type {
@@ -169,12 +180,24 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) AllowedPack
 	}).(pulumi.StringArrayOutput)
 }
 
+// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput) SupportNonGoogleAppStoreDistribution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportNonGoogleAppStoreDistribution
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Settings specific to keys that can be used by Android apps.
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse struct {
 	// If set to true, allowed_package_names are not enforced.
 	AllowAllPackageNames bool `pulumi:"allowAllPackageNames"`
 	// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
 	AllowedPackageNames []string `pulumi:"allowedPackageNames"`
+	// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+	SupportNonGoogleAppStoreDistribution bool `pulumi:"supportNonGoogleAppStoreDistribution"`
 }
 
 // Settings specific to keys that can be used by Android apps.
@@ -202,6 +225,1021 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) Allowe
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) []string {
 		return v.AllowedPackageNames
 	}).(pulumi.StringArrayOutput)
+}
+
+// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) SupportNonGoogleAppStoreDistribution() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse) bool {
+		return v.SupportNonGoogleAppStoreDistribution
+	}).(pulumi.BoolOutput)
+}
+
+// An individual action. Each action represents what to do if a policy matches.
+type GoogleCloudRecaptchaenterpriseV1FirewallAction struct {
+	// The user request did not match any policy and should be allowed access to the requested resource.
+	Allow *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction `pulumi:"allow"`
+	// This action will deny access to a given page. The user will get an HTTP error code.
+	Block *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction `pulumi:"block"`
+	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
+	Redirect *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction `pulumi:"redirect"`
+	// This action will set a custom header but allow the request to continue to the customer backend.
+	SetHeader *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction `pulumi:"setHeader"`
+	// This action will transparently serve a different page to an offending user.
+	Substitute *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction `pulumi:"substitute"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput
+}
+
+// An individual action. Each action represents what to do if a policy matches.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionArgs struct {
+	// The user request did not match any policy and should be allowed access to the requested resource.
+	Allow GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput `pulumi:"allow"`
+	// This action will deny access to a given page. The user will get an HTTP error code.
+	Block GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput `pulumi:"block"`
+	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
+	Redirect GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput `pulumi:"redirect"`
+	// This action will set a custom header but allow the request to continue to the customer backend.
+	SetHeader GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput `pulumi:"setHeader"`
+	// This action will transparently serve a different page to an offending user.
+	Substitute GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput `pulumi:"substitute"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionOutput)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionArray and GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionArray{ GoogleCloudRecaptchaenterpriseV1FirewallActionArgs{...} }
+type GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionArray []GoogleCloudRecaptchaenterpriseV1FirewallActionInput
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecaptchaenterpriseV1FirewallAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArray) ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionArray) ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput)
+}
+
+// An individual action. Each action represents what to do if a policy matches.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
+	return o
+}
+
+// The user request did not match any policy and should be allowed access to the requested resource.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) Allow() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction {
+		return v.Allow
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput)
+}
+
+// This action will deny access to a given page. The user will get an HTTP error code.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) Block() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {
+		return v.Block
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
+}
+
+// This action will redirect the request to a ReCaptcha interstitial to attach a token.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) Redirect() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction {
+		return v.Redirect
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput)
+}
+
+// This action will set a custom header but allow the request to continue to the customer backend.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) SetHeader() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
+		return v.SetHeader
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput)
+}
+
+// This action will transparently serve a different page to an offending user.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionOutput) Substitute() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
+		return v.Substitute
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecaptchaenterpriseV1FirewallAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecaptchaenterpriseV1FirewallActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecaptchaenterpriseV1FirewallAction {
+		return vs[0].([]GoogleCloudRecaptchaenterpriseV1FirewallAction)[vs[1].(int)]
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionOutput)
+}
+
+// An allow action continues processing a request unimpeded.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction struct {
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput
+}
+
+// An allow action continues processing a request unimpeded.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs struct {
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput)
+}
+
+// An allow action continues processing a request unimpeded.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput)
+}
+
+// An allow action continues processing a request unimpeded.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse struct {
+}
+
+// An allow action continues processing a request unimpeded.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput {
+	return o
+}
+
+// A block action serves an HTTP error code a prevents the request from hitting the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction struct {
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput
+}
+
+// A block action serves an HTTP error code a prevents the request from hitting the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs struct {
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
+}
+
+// A block action serves an HTTP error code a prevents the request from hitting the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput)
+}
+
+// A block action serves an HTTP error code a prevents the request from hitting the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse struct {
+}
+
+// A block action serves an HTTP error code a prevents the request from hitting the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput {
+	return o
+}
+
+// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction struct {
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput
+}
+
+// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs struct {
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput)
+}
+
+// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput)
+}
+
+// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse struct {
+}
+
+// A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput {
+	return o
+}
+
+// An individual action. Each action represents what to do if a policy matches.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionResponse struct {
+	// The user request did not match any policy and should be allowed access to the requested resource.
+	Allow GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse `pulumi:"allow"`
+	// This action will deny access to a given page. The user will get an HTTP error code.
+	Block GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse `pulumi:"block"`
+	// This action will redirect the request to a ReCaptcha interstitial to attach a token.
+	Redirect GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse `pulumi:"redirect"`
+	// This action will set a custom header but allow the request to continue to the customer backend.
+	SetHeader GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse `pulumi:"setHeader"`
+	// This action will transparently serve a different page to an offending user.
+	Substitute GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse `pulumi:"substitute"`
+}
+
+// An individual action. Each action represents what to do if a policy matches.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput {
+	return o
+}
+
+// The user request did not match any policy and should be allowed access to the requested resource.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) Allow() GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse {
+		return v.Allow
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput)
+}
+
+// This action will deny access to a given page. The user will get an HTTP error code.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) Block() GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse {
+		return v.Block
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput)
+}
+
+// This action will redirect the request to a ReCaptcha interstitial to attach a token.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) Redirect() GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse {
+		return v.Redirect
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput)
+}
+
+// This action will set a custom header but allow the request to continue to the customer backend.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) SetHeader() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse {
+		return v.SetHeader
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput)
+}
+
+// This action will transparently serve a different page to an offending user.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput) Substitute() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionResponse) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse {
+		return v.Substitute
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRecaptchaenterpriseV1FirewallActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRecaptchaenterpriseV1FirewallActionResponse {
+		return vs[0].([]GoogleCloudRecaptchaenterpriseV1FirewallActionResponse)[vs[1].(int)]
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput)
+}
+
+// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction struct {
+	// The header key to set in the request to the backend server.
+	Key *string `pulumi:"key"`
+	// The header value to set in the request to the backend server.
+	Value *string `pulumi:"value"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput
+}
+
+// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs struct {
+	// The header key to set in the request to the backend server.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The header value to set in the request to the backend server.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput)
+}
+
+// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput)
+}
+
+// The header key to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The header value to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput)
+}
+
+// The header key to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The header value to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse struct {
+	// The header key to set in the request to the backend server.
+	Key string `pulumi:"key"`
+	// The header value to set in the request to the backend server.
+	Value string `pulumi:"value"`
+}
+
+// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput {
+	return o
+}
+
+// The header key to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The header value to set in the request to the backend server.
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// A substitute action transparently serves a different page than the one requested.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction struct {
+	// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+	Path *string `pulumi:"path"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs and GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs{...}
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput
+}
+
+// A substitute action transparently serves a different page than the one requested.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs struct {
+	// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput).ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs, GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtr and GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs
+
+func GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtr(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrType) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
+}
+
+// A substitute action transparently serves a different page than the one requested.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction) *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput)
+}
+
+// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput)
+}
+
+// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// A substitute action transparently serves a different page than the one requested.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse struct {
+	// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+	Path string `pulumi:"path"`
+}
+
+// A substitute action transparently serves a different page than the one requested.
+type GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput() GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) ToGoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput {
+	return o
+}
+
+// The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+func (o GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
 // Settings specific to keys that can be used by iOS apps.
@@ -1065,6 +2103,18 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) Integratio
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1TestingOptionsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{})
@@ -1076,6 +2126,25 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput{})

@@ -385,7 +385,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> pulumi.Output[str]:
         """
-        The gateway address for default routing out of the network, selected by GCP.
+        The gateway address for default routing out of the network, selected by Google Cloud.
         """
         return pulumi.get(self, "gateway_i_pv4")
 

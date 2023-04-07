@@ -2414,7 +2414,7 @@ type SchemaConfigSchemaType string
 const (
 	// No schema type specified. This type is unsupported.
 	SchemaConfigSchemaTypeSchemaTypeUnspecified = SchemaConfigSchemaType("SCHEMA_TYPE_UNSPECIFIED")
-	// A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+	// A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification. This type cannot be used for streaming to BigQuery.
 	SchemaConfigSchemaTypeLossless = SchemaConfigSchemaType("LOSSLESS")
 	// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`.
 	SchemaConfigSchemaTypeAnalytics = SchemaConfigSchemaType("ANALYTICS")

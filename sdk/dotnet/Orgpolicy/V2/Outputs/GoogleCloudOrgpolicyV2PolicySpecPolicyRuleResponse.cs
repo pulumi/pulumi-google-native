@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
     public sealed class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse
     {
         /// <summary>
-        /// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        /// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         /// </summary>
         public readonly bool AllowAll;
         /// <summary>
@@ -25,15 +25,15 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleTypeExprResponse Condition;
         /// <summary>
-        /// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         /// </summary>
         public readonly bool DenyAll;
         /// <summary>
-        /// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
         /// </summary>
         public readonly bool Enforce;
         /// <summary>
-        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// </summary>
         public readonly Outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse Values;
 

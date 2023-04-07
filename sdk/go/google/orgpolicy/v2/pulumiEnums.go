@@ -14,7 +14,7 @@ import (
 type CustomConstraintActionType string
 
 const (
-	// Unspecified. Will results in user error.
+	// Unspecified. Results in an error.
 	CustomConstraintActionTypeActionTypeUnspecified = CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED")
 	// Allowed action type.
 	CustomConstraintActionTypeAllow = CustomConstraintActionType("ALLOW")
@@ -182,7 +182,7 @@ func (in *customConstraintActionTypePtr) ToCustomConstraintActionTypePtrOutputWi
 type CustomConstraintMethodTypesItem string
 
 const (
-	// Unspecified. Will results in user error.
+	// Unspecified. Results in an error.
 	CustomConstraintMethodTypesItemMethodTypeUnspecified = CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED")
 	// Constraint applied when creating the resource.
 	CustomConstraintMethodTypesItemCreate = CustomConstraintMethodTypesItem("CREATE")

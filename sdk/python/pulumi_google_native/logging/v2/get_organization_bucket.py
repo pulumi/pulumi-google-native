@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationBucketResult:
-    def __init__(__self__, cmek_settings=None, create_time=None, description=None, index_configs=None, lifecycle_state=None, locked=None, name=None, restricted_fields=None, retention_days=None, update_time=None):
+    def __init__(__self__, analytics_enabled=None, cmek_settings=None, create_time=None, description=None, index_configs=None, lifecycle_state=None, locked=None, name=None, restricted_fields=None, retention_days=None, update_time=None):
+        if analytics_enabled and not isinstance(analytics_enabled, bool):
+            raise TypeError("Expected argument 'analytics_enabled' to be a bool")
+        pulumi.set(__self__, "analytics_enabled", analytics_enabled)
         if cmek_settings and not isinstance(cmek_settings, dict):
             raise TypeError("Expected argument 'cmek_settings' to be a dict")
         pulumi.set(__self__, "cmek_settings", cmek_settings)
@@ -50,6 +53,14 @@ class GetOrganizationBucketResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="analyticsEnabled")
+    def analytics_enabled(self) -> bool:
+        """
+        Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        """
+        return pulumi.get(self, "analytics_enabled")
 
     @property
     @pulumi.getter(name="cmekSettings")
@@ -138,6 +149,7 @@ class AwaitableGetOrganizationBucketResult(GetOrganizationBucketResult):
         if False:
             yield self
         return GetOrganizationBucketResult(
+            analytics_enabled=self.analytics_enabled,
             cmek_settings=self.cmek_settings,
             create_time=self.create_time,
             description=self.description,
@@ -165,6 +177,7 @@ def get_organization_bucket(bucket_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getOrganizationBucket', __args__, opts=opts, typ=GetOrganizationBucketResult).value
 
     return AwaitableGetOrganizationBucketResult(
+        analytics_enabled=__ret__.analytics_enabled,
         cmek_settings=__ret__.cmek_settings,
         create_time=__ret__.create_time,
         description=__ret__.description,

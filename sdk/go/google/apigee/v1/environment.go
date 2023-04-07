@@ -29,7 +29,7 @@ type Environment struct {
 	ForwardProxyUri pulumi.StringOutput `pulumi:"forwardProxyUri"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
-	// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+	// Optional. Name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. NodeConfig of the environment.
 	NodeConfig     GoogleCloudApigeeV1NodeConfigResponseOutput `pulumi:"nodeConfig"`
@@ -198,7 +198,7 @@ func (o EnvironmentOutput) LastModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
 }
 
-// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+// Optional. Name of the environment.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

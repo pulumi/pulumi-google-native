@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        [Output("resourcePolicies")]
+        public Output<ImmutableDictionary<string, string>> ResourcePolicies { get; private set; } = null!;
+
+        /// <summary>
         /// Status information for Reservation resource.
         /// </summary>
         [Output("resourceStatus")]
@@ -169,6 +175,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("resourcePolicies")]
+        private InputMap<string>? _resourcePolicies;
+
+        /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        public InputMap<string> ResourcePolicies
+        {
+            get => _resourcePolicies ?? (_resourcePolicies = new InputMap<string>());
+            set => _resourcePolicies = value;
+        }
 
         /// <summary>
         /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.

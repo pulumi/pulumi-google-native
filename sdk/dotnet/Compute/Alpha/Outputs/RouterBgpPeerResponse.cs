@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string AdvertiseMode;
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
         public readonly ImmutableArray<string> AdvertisedGroups;
         /// <summary>
@@ -33,6 +33,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// BFD configuration for the BGP peering.
         /// </summary>
         public readonly Outputs.RouterBgpPeerBfdResponse Bfd;
+        /// <summary>
+        /// A list of user-defined custom learned route IP address ranges for a BGP session.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RouterBgpPeerCustomLearnedIpRangeResponse> CustomLearnedIpRanges;
+        /// <summary>
+        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+        /// </summary>
+        public readonly int CustomLearnedRoutePriority;
         /// <summary>
         /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         /// </summary>
@@ -94,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.RouterBgpPeerBfdResponse bfd,
 
+            ImmutableArray<Outputs.RouterBgpPeerCustomLearnedIpRangeResponse> customLearnedIpRanges,
+
+            int customLearnedRoutePriority,
+
             string enable,
 
             bool enableIpv6,
@@ -123,6 +135,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             AdvertisedIpRanges = advertisedIpRanges;
             AdvertisedRoutePriority = advertisedRoutePriority;
             Bfd = bfd;
+            CustomLearnedIpRanges = customLearnedIpRanges;
+            CustomLearnedRoutePriority = customLearnedRoutePriority;
             Enable = enable;
             EnableIpv6 = enableIpv6;
             InterfaceName = interfaceName;

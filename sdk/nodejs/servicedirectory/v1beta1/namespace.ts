@@ -53,6 +53,10 @@ export class Namespace extends pulumi.CustomResource {
     public readonly namespaceId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * A globally unique identifier (in UUID4 format) for this namespace.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
      * The timestamp when the namespace was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -77,6 +81,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -85,6 +90,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

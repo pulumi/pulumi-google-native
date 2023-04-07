@@ -44,6 +44,10 @@ export interface GetFunctionResult {
      */
     readonly eventTrigger: outputs.cloudfunctions.v2beta.EventTriggerResponse;
     /**
+     * [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    readonly kmsKeyName: string;
+    /**
      * Labels associated with this Cloud Function.
      */
     readonly labels: {[key: string]: string};

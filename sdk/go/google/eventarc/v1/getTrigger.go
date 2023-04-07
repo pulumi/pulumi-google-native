@@ -37,6 +37,8 @@ type LookupTriggerResult struct {
 	Destination DestinationResponse `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+	EventDataContentType string `pulumi:"eventDataContentType"`
 	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters []EventFilterResponse `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
@@ -113,6 +115,11 @@ func (o LookupTriggerResultOutput) Destination() DestinationResponseOutput {
 // This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
 func (o LookupTriggerResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+func (o LookupTriggerResultOutput) EventDataContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.EventDataContentType }).(pulumi.StringOutput)
 }
 
 // Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.

@@ -17,9 +17,17 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class PhaseResponse
     {
         /// <summary>
+        /// ChildRollout job composition.
+        /// </summary>
+        public readonly Outputs.ChildRolloutJobsResponse ChildRolloutJobs;
+        /// <summary>
         /// Deployment job composition.
         /// </summary>
         public readonly Outputs.DeploymentJobsResponse DeploymentJobs;
+        /// <summary>
+        /// Additional information on why the Phase was skipped, if available.
+        /// </summary>
+        public readonly string SkipMessage;
         /// <summary>
         /// Current state of the Phase.
         /// </summary>
@@ -27,11 +35,17 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
         [OutputConstructor]
         private PhaseResponse(
+            Outputs.ChildRolloutJobsResponse childRolloutJobs,
+
             Outputs.DeploymentJobsResponse deploymentJobs,
+
+            string skipMessage,
 
             string state)
         {
+            ChildRolloutJobs = childRolloutJobs;
             DeploymentJobs = deploymentJobs;
+            SkipMessage = skipMessage;
             State = state;
         }
     }

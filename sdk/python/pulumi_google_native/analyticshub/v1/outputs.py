@@ -353,9 +353,7 @@ class RestrictedExportConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "restrictDirectTableAccess":
-            suggest = "restrict_direct_table_access"
-        elif key == "restrictQueryResult":
+        if key == "restrictQueryResult":
             suggest = "restrict_query_result"
 
         if suggest:
@@ -370,23 +368,23 @@ class RestrictedExportConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 restrict_direct_table_access: bool,
+                 enabled: bool,
                  restrict_query_result: bool):
         """
         Restricted export config, used to configure restricted export on linked dataset.
-        :param bool restrict_direct_table_access: If true, restrict direct table access(read api/tabledata.list) on linked table.
+        :param bool enabled: If true, enable restricted export.
         :param bool restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
         """
-        pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
+        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "restrict_query_result", restrict_query_result)
 
     @property
-    @pulumi.getter(name="restrictDirectTableAccess")
-    def restrict_direct_table_access(self) -> bool:
+    @pulumi.getter
+    def enabled(self) -> bool:
         """
-        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        If true, enable restricted export.
         """
-        return pulumi.get(self, "restrict_direct_table_access")
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="restrictQueryResult")

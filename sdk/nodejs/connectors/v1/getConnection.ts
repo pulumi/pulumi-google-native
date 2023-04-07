@@ -86,6 +86,10 @@ export interface GetConnectionResult {
      */
     readonly serviceDirectory: string;
     /**
+     * Optional. Ssl config of a connection
+     */
+    readonly sslConfig: outputs.connectors.v1.SslConfigResponse;
+    /**
      * Current status of the connection.
      */
     readonly status: outputs.connectors.v1.ConnectionStatusResponse;

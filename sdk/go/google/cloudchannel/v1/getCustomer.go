@@ -35,6 +35,8 @@ type LookupCustomerResult struct {
 	CloudIdentityId string `pulumi:"cloudIdentityId"`
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"cloudIdentityInfo"`
+	// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+	CorrelationId string `pulumi:"correlationId"`
 	// Time when the customer was created.
 	CreateTime string `pulumi:"createTime"`
 	// The customer's primary domain. Must match the primary contact email's domain.
@@ -108,6 +110,11 @@ func (o LookupCustomerResultOutput) CloudIdentityId() pulumi.StringOutput {
 // Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 func (o LookupCustomerResultOutput) CloudIdentityInfo() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
 	return o.ApplyT(func(v LookupCustomerResult) GoogleCloudChannelV1CloudIdentityInfoResponse { return v.CloudIdentityInfo }).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
+}
+
+// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+func (o LookupCustomerResultOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomerResult) string { return v.CorrelationId }).(pulumi.StringOutput)
 }
 
 // Time when the customer was created.

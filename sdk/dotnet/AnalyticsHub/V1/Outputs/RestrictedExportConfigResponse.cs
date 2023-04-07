@@ -17,9 +17,9 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1.Outputs
     public sealed class RestrictedExportConfigResponse
     {
         /// <summary>
-        /// If true, restrict direct table access(read api/tabledata.list) on linked table.
+        /// If true, enable restricted export.
         /// </summary>
-        public readonly bool RestrictDirectTableAccess;
+        public readonly bool Enabled;
         /// <summary>
         /// If true, restrict export of query result derived from restricted linked dataset table.
         /// </summary>
@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1.Outputs
 
         [OutputConstructor]
         private RestrictedExportConfigResponse(
-            bool restrictDirectTableAccess,
+            bool enabled,
 
             bool restrictQueryResult)
         {
-            RestrictDirectTableAccess = restrictDirectTableAccess;
+            Enabled = enabled;
             RestrictQueryResult = restrictQueryResult;
         }
     }

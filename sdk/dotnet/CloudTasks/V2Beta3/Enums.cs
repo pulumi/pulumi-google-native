@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
     }
 
     /// <summary>
-    /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+    /// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
     /// </summary>
     [EnumType]
     public readonly struct HttpTargetHttpMethod : IEquatable<HttpTargetHttpMethod>

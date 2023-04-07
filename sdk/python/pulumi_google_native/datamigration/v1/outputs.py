@@ -24,6 +24,7 @@ __all__ = [
     'DatabaseTypeResponse',
     'DumpFlagResponse',
     'DumpFlagsResponse',
+    'EncryptionConfigResponse',
     'ExprResponse',
     'ForwardSshTunnelConnectivityResponse',
     'MachineConfigResponse',
@@ -103,7 +104,9 @@ class AlloyDbSettingsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "initialUser":
+        if key == "encryptionConfig":
+            suggest = "encryption_config"
+        elif key == "initialUser":
             suggest = "initial_user"
         elif key == "primaryInstanceSettings":
             suggest = "primary_instance_settings"
@@ -122,20 +125,31 @@ class AlloyDbSettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 encryption_config: 'outputs.EncryptionConfigResponse',
                  initial_user: 'outputs.UserPasswordResponse',
                  labels: Mapping[str, str],
                  primary_instance_settings: 'outputs.PrimaryInstanceSettingsResponse',
                  vpc_network: str):
         """
         Settings for creating an AlloyDB cluster.
+        :param 'EncryptionConfigResponse' encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param 'UserPasswordResponse' initial_user: Input only. Initial user to setup during cluster creation. Required.
         :param Mapping[str, str] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
         :param str vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
         """
+        pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "initial_user", initial_user)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "primary_instance_settings", primary_instance_settings)
         pulumi.set(__self__, "vpc_network", vpc_network)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
+        """
+        Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="initialUser")
@@ -709,15 +723,15 @@ class ConversionWorkspaceInfoResponse(dict):
 @pulumi.output_type
 class DatabaseEngineInfoResponse(dict):
     """
-    The type and version of a source or destination DB.
+    The type and version of a source or destination database.
     """
     def __init__(__self__, *,
                  engine: str,
                  version: str):
         """
-        The type and version of a source or destination DB.
-        :param str engine: Engine Type.
-        :param str version: Engine named version, for e.g. 12.c.1
+        The type and version of a source or destination database.
+        :param str engine: Engine type.
+        :param str version: Engine named version, for example 12.c.1.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "version", version)
@@ -726,7 +740,7 @@ class DatabaseEngineInfoResponse(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Engine Type.
+        Engine type.
         """
         return pulumi.get(self, "engine")
 
@@ -734,7 +748,7 @@ class DatabaseEngineInfoResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Engine named version, for e.g. 12.c.1
+        Engine named version, for example 12.c.1.
         """
         return pulumi.get(self, "version")
 
@@ -842,6 +856,45 @@ class DumpFlagsResponse(dict):
         The flags for the initial dump.
         """
         return pulumi.get(self, "dump_flags")
+
+
+@pulumi.output_type
+class EncryptionConfigResponse(dict):
+    """
+    EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type
@@ -1866,11 +1919,11 @@ class SslConfigResponse(dict):
 @pulumi.output_type
 class StaticIpConnectivityResponse(dict):
     """
-    The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+    The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
     """
     def __init__(__self__):
         """
-        The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+        The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
         """
         pass
 
@@ -1995,7 +2048,7 @@ class UserPasswordResponse(dict):
 @pulumi.output_type
 class VpcPeeringConfigResponse(dict):
     """
-    The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+    The VPC peering configuration is used to create VPC peering with the consumer's VPC.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2018,9 +2071,9 @@ class VpcPeeringConfigResponse(dict):
                  subnet: str,
                  vpc_name: str):
         """
-        The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+        The VPC peering configuration is used to create VPC peering with the consumer's VPC.
         :param str subnet: A free subnet for peering. (CIDR of /29)
-        :param str vpc_name: Fully qualified name of the VPC DMS will peer to.
+        :param str vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
         """
         pulumi.set(__self__, "subnet", subnet)
         pulumi.set(__self__, "vpc_name", vpc_name)
@@ -2037,7 +2090,7 @@ class VpcPeeringConfigResponse(dict):
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> str:
         """
-        Fully qualified name of the VPC DMS will peer to.
+        Fully qualified name of the VPC that Database Migration Service will peer to.
         """
         return pulumi.get(self, "vpc_name")
 

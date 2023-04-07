@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public Input<string>? NewValue { get; set; }
 
         /// <summary>
-        /// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for for this field will only match empty fields.
+        /// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the target_json_path expression (and must also have passed the previous filters). Substitution will not be performed against fields whose value does not match this expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only match empty fields.
         /// </summary>
         [Input("originalValuePattern")]
         public Input<string>? OriginalValuePattern { get; set; }

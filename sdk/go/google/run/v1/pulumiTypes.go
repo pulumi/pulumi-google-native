@@ -1493,7 +1493,7 @@ func (o ContainerArrayOutput) Index(i pulumi.IntInput) ContainerOutput {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPort struct {
-	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 	ContainerPort *int `pulumi:"containerPort"`
 	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
@@ -1514,7 +1514,7 @@ type ContainerPortInput interface {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPortArgs struct {
-	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
 	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1574,7 +1574,7 @@ func (o ContainerPortOutput) ToContainerPortOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 func (o ContainerPortOutput) ContainerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
@@ -1611,7 +1611,7 @@ func (o ContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerPortOutput {
 
 // ContainerPort represents a network port in a single container.
 type ContainerPortResponse struct {
-	// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 	ContainerPort int `pulumi:"containerPort"`
 	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name string `pulumi:"name"`
@@ -1634,7 +1634,7 @@ func (o ContainerPortResponseOutput) ToContainerPortResponseOutputWithContext(ct
 	return o
 }
 
-// Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+// Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
 func (o ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
 }
@@ -2871,7 +2871,7 @@ func (o ExecutionReferenceResponseOutput) Name() pulumi.StringOutput {
 type ExecutionSpec struct {
 	// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
-	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
+	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 	TaskCount *int `pulumi:"taskCount"`
 	// Optional. The template used to create tasks for this execution.
 	Template *TaskTemplateSpec `pulumi:"template"`
@@ -2881,7 +2881,7 @@ type ExecutionSpec struct {
 type ExecutionSpecResponse struct {
 	// Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
 	Parallelism int `pulumi:"parallelism"`
-	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
+	// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 	TaskCount int `pulumi:"taskCount"`
 	// Optional. The template used to create tasks for this execution.
 	Template TaskTemplateSpecResponse `pulumi:"template"`
@@ -2907,7 +2907,7 @@ func (o ExecutionSpecResponseOutput) Parallelism() pulumi.IntOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.Parallelism }).(pulumi.IntOutput)
 }
 
-// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
+// Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 func (o ExecutionSpecResponseOutput) TaskCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) int { return v.TaskCount }).(pulumi.IntOutput)
 }
@@ -3499,6 +3499,8 @@ type HTTPGetAction struct {
 	HttpHeaders []HTTPHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
 	// Not supported by Cloud Run.
 	Scheme *string `pulumi:"scheme"`
 }
@@ -3522,6 +3524,8 @@ type HTTPGetActionArgs struct {
 	HttpHeaders HTTPHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Not supported by Cloud Run.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
@@ -3619,6 +3623,11 @@ func (o HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+func (o HTTPGetActionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HTTPGetAction) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 // Not supported by Cloud Run.
 func (o HTTPGetActionOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HTTPGetAction) *string { return v.Scheme }).(pulumi.StringPtrOutput)
@@ -3678,6 +3687,16 @@ func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+func (o HTTPGetActionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HTTPGetAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 // Not supported by Cloud Run.
 func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HTTPGetAction) *string {
@@ -3696,6 +3715,8 @@ type HTTPGetActionResponse struct {
 	HttpHeaders []HTTPHeaderResponse `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server.
 	Path string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	Port int `pulumi:"port"`
 	// Not supported by Cloud Run.
 	Scheme string `pulumi:"scheme"`
 }
@@ -3728,6 +3749,11 @@ func (o HTTPGetActionResponseOutput) HttpHeaders() HTTPHeaderResponseArrayOutput
 // Path to access on the HTTP server.
 func (o HTTPGetActionResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+func (o HTTPGetActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Not supported by Cloud Run.
@@ -7631,11 +7657,11 @@ func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 type TaskSpec struct {
 	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
 	Containers []Container `pulumi:"containers"`
-	// Optional. Number of retries allowed per task, before marking this job failed.
+	// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
-	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	TimeoutSeconds *string `pulumi:"timeoutSeconds"`
 	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
 	Volumes []Volume `pulumi:"volumes"`
@@ -7645,11 +7671,11 @@ type TaskSpec struct {
 type TaskSpecResponse struct {
 	// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
 	Containers []ContainerResponse `pulumi:"containers"`
-	// Optional. Number of retries allowed per task, before marking this job failed.
+	// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
 	MaxRetries int `pulumi:"maxRetries"`
 	// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccountName string `pulumi:"serviceAccountName"`
-	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	TimeoutSeconds string `pulumi:"timeoutSeconds"`
 	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
 	Volumes []VolumeResponse `pulumi:"volumes"`
@@ -7675,7 +7701,7 @@ func (o TaskSpecResponseOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v TaskSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
 }
 
-// Optional. Number of retries allowed per task, before marking this job failed.
+// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
 func (o TaskSpecResponseOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v TaskSpecResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
@@ -7685,7 +7711,7 @@ func (o TaskSpecResponseOutput) ServiceAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskSpecResponse) string { return v.ServiceAccountName }).(pulumi.StringOutput)
 }
 
-// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 func (o TaskSpecResponseOutput) TimeoutSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskSpecResponse) string { return v.TimeoutSeconds }).(pulumi.StringOutput)
 }

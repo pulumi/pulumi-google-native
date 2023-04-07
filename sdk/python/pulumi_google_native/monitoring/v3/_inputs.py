@@ -47,6 +47,7 @@ __all__ = [
     'MonitoredResourceArgs',
     'MonitoringQueryLanguageConditionArgs',
     'MutationRecordArgs',
+    'NotificationChannelStrategyArgs',
     'NotificationRateLimitArgs',
     'PerformanceThresholdArgs',
     'PingConfigArgs',
@@ -139,14 +140,18 @@ class AggregationArgs:
 class AlertStrategyArgs:
     def __init__(__self__, *,
                  auto_close: Optional[pulumi.Input[str]] = None,
+                 notification_channel_strategy: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationChannelStrategyArgs']]]] = None,
                  notification_rate_limit: Optional[pulumi.Input['NotificationRateLimitArgs']] = None):
         """
         Control over how the notification channels in notification_channels are notified when this alert fires.
         :param pulumi.Input[str] auto_close: If an alert policy that was active has no data for this long, any open incidents will close
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationChannelStrategyArgs']]] notification_channel_strategy: Control how notifications will be sent out, on a per-channel basis.
         :param pulumi.Input['NotificationRateLimitArgs'] notification_rate_limit: Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         """
         if auto_close is not None:
             pulumi.set(__self__, "auto_close", auto_close)
+        if notification_channel_strategy is not None:
+            pulumi.set(__self__, "notification_channel_strategy", notification_channel_strategy)
         if notification_rate_limit is not None:
             pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
 
@@ -161,6 +166,18 @@ class AlertStrategyArgs:
     @auto_close.setter
     def auto_close(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_close", value)
+
+    @property
+    @pulumi.getter(name="notificationChannelStrategy")
+    def notification_channel_strategy(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationChannelStrategyArgs']]]]:
+        """
+        Control how notifications will be sent out, on a per-channel basis.
+        """
+        return pulumi.get(self, "notification_channel_strategy")
+
+    @notification_channel_strategy.setter
+    def notification_channel_strategy(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationChannelStrategyArgs']]]]):
+        pulumi.set(self, "notification_channel_strategy", value)
 
     @property
     @pulumi.getter(name="notificationRateLimit")
@@ -1071,6 +1088,7 @@ class HttpCheckArgs:
                  auth_info: Optional[pulumi.Input['BasicAuthenticationArgs']] = None,
                  body: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input['HttpCheckContentType']] = None,
+                 custom_content_type: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mask_headers: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -1085,6 +1103,7 @@ class HttpCheckArgs:
         :param pulumi.Input['BasicAuthenticationArgs'] auth_info: The authentication information. Optional when creating an HTTP check; defaults to empty.
         :param pulumi.Input[str] body: The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte.Note: If client libraries aren't used (which performs the conversion automatically) base64 encode your body data since the field is of bytes type.
         :param pulumi.Input['HttpCheckContentType'] content_type: The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+        :param pulumi.Input[str] custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
         :param pulumi.Input[str] path: Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
@@ -1102,6 +1121,8 @@ class HttpCheckArgs:
             pulumi.set(__self__, "body", body)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if custom_content_type is not None:
+            pulumi.set(__self__, "custom_content_type", custom_content_type)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if mask_headers is not None:
@@ -1166,6 +1187,18 @@ class HttpCheckArgs:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input['HttpCheckContentType']]):
         pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter(name="customContentType")
+    def custom_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+        """
+        return pulumi.get(self, "custom_content_type")
+
+    @custom_content_type.setter
+    def custom_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_content_type", value)
 
     @property
     @pulumi.getter
@@ -2124,6 +2157,46 @@ class MutationRecordArgs:
     @mutated_by.setter
     def mutated_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mutated_by", value)
+
+
+@pulumi.input_type
+class NotificationChannelStrategyArgs:
+    def __init__(__self__, *,
+                 notification_channel_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renotify_interval: Optional[pulumi.Input[str]] = None):
+        """
+        Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channel_names: The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
+        :param pulumi.Input[str] renotify_interval: The frequency at which to send reminder notifications for open incidents.
+        """
+        if notification_channel_names is not None:
+            pulumi.set(__self__, "notification_channel_names", notification_channel_names)
+        if renotify_interval is not None:
+            pulumi.set(__self__, "renotify_interval", renotify_interval)
+
+    @property
+    @pulumi.getter(name="notificationChannelNames")
+    def notification_channel_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
+        """
+        return pulumi.get(self, "notification_channel_names")
+
+    @notification_channel_names.setter
+    def notification_channel_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_channel_names", value)
+
+    @property
+    @pulumi.getter(name="renotifyInterval")
+    def renotify_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The frequency at which to send reminder notifications for open incidents.
+        """
+        return pulumi.get(self, "renotify_interval")
+
+    @renotify_interval.setter
+    def renotify_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renotify_interval", value)
 
 
 @pulumi.input_type

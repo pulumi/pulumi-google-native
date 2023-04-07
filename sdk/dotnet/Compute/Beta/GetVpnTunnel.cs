@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetVpnTunnel
     {
         /// <summary>
-        /// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+        /// Returns the specified VpnTunnel resource.
         /// </summary>
         public static Task<GetVpnTunnelResult> InvokeAsync(GetVpnTunnelArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpnTunnelResult>("google-native:compute/beta:getVpnTunnel", args ?? new GetVpnTunnelArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+        /// Returns the specified VpnTunnel resource.
         /// </summary>
         public static Output<GetVpnTunnelResult> Invoke(GetVpnTunnelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpnTunnelResult>("google-native:compute/beta:getVpnTunnel", args ?? new GetVpnTunnelInvokeArgs(), options.WithDefaults());

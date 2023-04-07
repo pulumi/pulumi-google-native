@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse DiskEncryptionKey;
         /// <summary>
+        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         /// </summary>
         public readonly bool EraseWindowsVssSignature;
@@ -286,6 +290,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.CustomerEncryptionKeyResponse diskEncryptionKey,
 
+            bool enableConfidentialCompute,
+
             bool eraseWindowsVssSignature,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
@@ -384,6 +390,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKey = diskEncryptionKey;
+            EnableConfidentialCompute = enableConfidentialCompute;
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
             Interface = @interface;

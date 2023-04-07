@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:logging/v2:BillingAccountBucket":
 		r = &BillingAccountBucket{}
+	case "google-native:logging/v2:BillingAccountBucketLink":
+		r = &BillingAccountBucketLink{}
 	case "google-native:logging/v2:BillingAccountBucketView":
 		r = &BillingAccountBucketView{}
 	case "google-native:logging/v2:BillingAccountExclusion":
@@ -37,16 +39,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Exclusion{}
 	case "google-native:logging/v2:FolderBucket":
 		r = &FolderBucket{}
+	case "google-native:logging/v2:FolderBucketLink":
+		r = &FolderBucketLink{}
 	case "google-native:logging/v2:FolderBucketView":
 		r = &FolderBucketView{}
 	case "google-native:logging/v2:FolderExclusion":
 		r = &FolderExclusion{}
 	case "google-native:logging/v2:FolderSink":
 		r = &FolderSink{}
+	case "google-native:logging/v2:Link":
+		r = &Link{}
 	case "google-native:logging/v2:Metric":
 		r = &Metric{}
 	case "google-native:logging/v2:OrganizationBucket":
 		r = &OrganizationBucket{}
+	case "google-native:logging/v2:OrganizationBucketLink":
+		r = &OrganizationBucketLink{}
 	case "google-native:logging/v2:OrganizationBucketView":
 		r = &OrganizationBucketView{}
 	case "google-native:logging/v2:OrganizationExclusion":

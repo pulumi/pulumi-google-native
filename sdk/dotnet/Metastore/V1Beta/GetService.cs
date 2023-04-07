@@ -124,6 +124,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         public readonly string ReleaseChannel;
         /// <summary>
+        /// Scaling configuration of the metastore service.
+        /// </summary>
+        public readonly Outputs.ScalingConfigResponse ScalingConfig;
+        /// <summary>
         /// The current state of the metastore service.
         /// </summary>
         public readonly string State;
@@ -180,6 +184,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 
             string releaseChannel,
 
+            Outputs.ScalingConfigResponse scalingConfig,
+
             string state,
 
             string stateMessage,
@@ -207,6 +213,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
             NetworkConfig = networkConfig;
             Port = port;
             ReleaseChannel = releaseChannel;
+            ScalingConfig = scalingConfig;
             State = state;
             StateMessage = stateMessage;
             TelemetryConfig = telemetryConfig;

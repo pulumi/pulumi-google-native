@@ -168,6 +168,10 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// Refers to OCSP servers in a certificate's Authority Information Access extension, as described in [RFC 5280 section 4.2.2.1](https://tools.ietf.org/html/rfc5280#section-4.2.2.1), This corresponds to the X509Parameters.aia_ocsp_servers field.
         /// </summary>
         public static CertificateExtensionConstraintsKnownExtensionsItem AiaOcspServers { get; } = new CertificateExtensionConstraintsKnownExtensionsItem("AIA_OCSP_SERVERS");
+        /// <summary>
+        /// Refers to Name Constraints extension as described in [RFC 5280 section 4.2.1.10](https://tools.ietf.org/html/rfc5280#section-4.2.1.10)
+        /// </summary>
+        public static CertificateExtensionConstraintsKnownExtensionsItem NameConstraints { get; } = new CertificateExtensionConstraintsKnownExtensionsItem("NAME_CONSTRAINTS");
 
         public static bool operator ==(CertificateExtensionConstraintsKnownExtensionsItem left, CertificateExtensionConstraintsKnownExtensionsItem right) => left.Equals(right);
         public static bool operator !=(CertificateExtensionConstraintsKnownExtensionsItem left, CertificateExtensionConstraintsKnownExtensionsItem right) => !left.Equals(right);
@@ -206,7 +210,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         public static CertificateSubjectMode Default { get; } = new CertificateSubjectMode("DEFAULT");
         /// <summary>
-        /// A mode reserved for special cases. Indicates that the certificate should have one or more SPIFFE SubjectAltNames set by the service based on the caller's identity. This mode will ignore any explicitly specified Subject and/or SubjectAltNames in the certificate request. This mode requires the caller to have the `privateca.certificates.createForSelf` permission.
+        /// A mode reserved for special cases. Indicates that the certificate should have one SPIFFE SubjectAltNames set by the service based on the caller's identity. This mode will ignore any explicitly specified Subject and/or SubjectAltNames in the certificate request. This mode requires the caller to have the `privateca.certificates.createForSelf` permission.
         /// </summary>
         public static CertificateSubjectMode ReflectedSpiffe { get; } = new CertificateSubjectMode("REFLECTED_SPIFFE");
 

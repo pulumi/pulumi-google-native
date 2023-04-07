@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+ * Returns the specified TargetInstance resource.
  */
 export function getTargetInstance(args: GetTargetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetInstanceResult> {
 
@@ -70,7 +70,7 @@ export interface GetTargetInstanceResult {
     readonly zone: string;
 }
 /**
- * Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+ * Returns the specified TargetInstance resource.
  */
 export function getTargetInstanceOutput(args: GetTargetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetInstanceResult> {
     return pulumi.output(args).apply((a: any) => getTargetInstance(a, opts))

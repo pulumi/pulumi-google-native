@@ -2362,6 +2362,198 @@ func (o GridLayoutResponseOutput) Widgets() WidgetResponseArrayOutput {
 	return o.ApplyT(func(v GridLayoutResponse) []WidgetResponse { return v.Widgets }).(WidgetResponseArrayOutput)
 }
 
+// A widget that displays a list of incidents
+type IncidentList struct {
+	// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+	MonitoredResources []MonitoredResource `pulumi:"monitoredResources"`
+	// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+	PolicyNames []string `pulumi:"policyNames"`
+}
+
+// IncidentListInput is an input type that accepts IncidentListArgs and IncidentListOutput values.
+// You can construct a concrete instance of `IncidentListInput` via:
+//
+//	IncidentListArgs{...}
+type IncidentListInput interface {
+	pulumi.Input
+
+	ToIncidentListOutput() IncidentListOutput
+	ToIncidentListOutputWithContext(context.Context) IncidentListOutput
+}
+
+// A widget that displays a list of incidents
+type IncidentListArgs struct {
+	// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+	MonitoredResources MonitoredResourceArrayInput `pulumi:"monitoredResources"`
+	// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+	PolicyNames pulumi.StringArrayInput `pulumi:"policyNames"`
+}
+
+func (IncidentListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentList)(nil)).Elem()
+}
+
+func (i IncidentListArgs) ToIncidentListOutput() IncidentListOutput {
+	return i.ToIncidentListOutputWithContext(context.Background())
+}
+
+func (i IncidentListArgs) ToIncidentListOutputWithContext(ctx context.Context) IncidentListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentListOutput)
+}
+
+func (i IncidentListArgs) ToIncidentListPtrOutput() IncidentListPtrOutput {
+	return i.ToIncidentListPtrOutputWithContext(context.Background())
+}
+
+func (i IncidentListArgs) ToIncidentListPtrOutputWithContext(ctx context.Context) IncidentListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentListOutput).ToIncidentListPtrOutputWithContext(ctx)
+}
+
+// IncidentListPtrInput is an input type that accepts IncidentListArgs, IncidentListPtr and IncidentListPtrOutput values.
+// You can construct a concrete instance of `IncidentListPtrInput` via:
+//
+//	        IncidentListArgs{...}
+//
+//	or:
+//
+//	        nil
+type IncidentListPtrInput interface {
+	pulumi.Input
+
+	ToIncidentListPtrOutput() IncidentListPtrOutput
+	ToIncidentListPtrOutputWithContext(context.Context) IncidentListPtrOutput
+}
+
+type incidentListPtrType IncidentListArgs
+
+func IncidentListPtr(v *IncidentListArgs) IncidentListPtrInput {
+	return (*incidentListPtrType)(v)
+}
+
+func (*incidentListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentList)(nil)).Elem()
+}
+
+func (i *incidentListPtrType) ToIncidentListPtrOutput() IncidentListPtrOutput {
+	return i.ToIncidentListPtrOutputWithContext(context.Background())
+}
+
+func (i *incidentListPtrType) ToIncidentListPtrOutputWithContext(ctx context.Context) IncidentListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentListPtrOutput)
+}
+
+// A widget that displays a list of incidents
+type IncidentListOutput struct{ *pulumi.OutputState }
+
+func (IncidentListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentList)(nil)).Elem()
+}
+
+func (o IncidentListOutput) ToIncidentListOutput() IncidentListOutput {
+	return o
+}
+
+func (o IncidentListOutput) ToIncidentListOutputWithContext(ctx context.Context) IncidentListOutput {
+	return o
+}
+
+func (o IncidentListOutput) ToIncidentListPtrOutput() IncidentListPtrOutput {
+	return o.ToIncidentListPtrOutputWithContext(context.Background())
+}
+
+func (o IncidentListOutput) ToIncidentListPtrOutputWithContext(ctx context.Context) IncidentListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IncidentList) *IncidentList {
+		return &v
+	}).(IncidentListPtrOutput)
+}
+
+// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+func (o IncidentListOutput) MonitoredResources() MonitoredResourceArrayOutput {
+	return o.ApplyT(func(v IncidentList) []MonitoredResource { return v.MonitoredResources }).(MonitoredResourceArrayOutput)
+}
+
+// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+func (o IncidentListOutput) PolicyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IncidentList) []string { return v.PolicyNames }).(pulumi.StringArrayOutput)
+}
+
+type IncidentListPtrOutput struct{ *pulumi.OutputState }
+
+func (IncidentListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentList)(nil)).Elem()
+}
+
+func (o IncidentListPtrOutput) ToIncidentListPtrOutput() IncidentListPtrOutput {
+	return o
+}
+
+func (o IncidentListPtrOutput) ToIncidentListPtrOutputWithContext(ctx context.Context) IncidentListPtrOutput {
+	return o
+}
+
+func (o IncidentListPtrOutput) Elem() IncidentListOutput {
+	return o.ApplyT(func(v *IncidentList) IncidentList {
+		if v != nil {
+			return *v
+		}
+		var ret IncidentList
+		return ret
+	}).(IncidentListOutput)
+}
+
+// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+func (o IncidentListPtrOutput) MonitoredResources() MonitoredResourceArrayOutput {
+	return o.ApplyT(func(v *IncidentList) []MonitoredResource {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredResources
+	}).(MonitoredResourceArrayOutput)
+}
+
+// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+func (o IncidentListPtrOutput) PolicyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IncidentList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// A widget that displays a list of incidents
+type IncidentListResponse struct {
+	// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+	MonitoredResources []MonitoredResourceResponse `pulumi:"monitoredResources"`
+	// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+	PolicyNames []string `pulumi:"policyNames"`
+}
+
+// A widget that displays a list of incidents
+type IncidentListResponseOutput struct{ *pulumi.OutputState }
+
+func (IncidentListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentListResponse)(nil)).Elem()
+}
+
+func (o IncidentListResponseOutput) ToIncidentListResponseOutput() IncidentListResponseOutput {
+	return o
+}
+
+func (o IncidentListResponseOutput) ToIncidentListResponseOutputWithContext(ctx context.Context) IncidentListResponseOutput {
+	return o
+}
+
+// Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+func (o IncidentListResponseOutput) MonitoredResources() MonitoredResourceResponseArrayOutput {
+	return o.ApplyT(func(v IncidentListResponse) []MonitoredResourceResponse { return v.MonitoredResources }).(MonitoredResourceResponseArrayOutput)
+}
+
+// Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+func (o IncidentListResponseOutput) PolicyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IncidentListResponse) []string { return v.PolicyNames }).(pulumi.StringArrayOutput)
+}
+
 // A widget that displays a stream of log.
 type LogsPanel struct {
 	// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
@@ -2552,6 +2744,168 @@ func (o LogsPanelResponseOutput) Filter() pulumi.StringOutput {
 // The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
 func (o LogsPanelResponseOutput) ResourceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogsPanelResponse) []string { return v.ResourceNames }).(pulumi.StringArrayOutput)
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResource struct {
+	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+	Labels map[string]string `pulumi:"labels"`
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+	Type string `pulumi:"type"`
+}
+
+// MonitoredResourceInput is an input type that accepts MonitoredResourceArgs and MonitoredResourceOutput values.
+// You can construct a concrete instance of `MonitoredResourceInput` via:
+//
+//	MonitoredResourceArgs{...}
+type MonitoredResourceInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceOutput() MonitoredResourceOutput
+	ToMonitoredResourceOutputWithContext(context.Context) MonitoredResourceOutput
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceArgs struct {
+	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MonitoredResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResource)(nil)).Elem()
+}
+
+func (i MonitoredResourceArgs) ToMonitoredResourceOutput() MonitoredResourceOutput {
+	return i.ToMonitoredResourceOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceArgs) ToMonitoredResourceOutputWithContext(ctx context.Context) MonitoredResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceOutput)
+}
+
+// MonitoredResourceArrayInput is an input type that accepts MonitoredResourceArray and MonitoredResourceArrayOutput values.
+// You can construct a concrete instance of `MonitoredResourceArrayInput` via:
+//
+//	MonitoredResourceArray{ MonitoredResourceArgs{...} }
+type MonitoredResourceArrayInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceArrayOutput() MonitoredResourceArrayOutput
+	ToMonitoredResourceArrayOutputWithContext(context.Context) MonitoredResourceArrayOutput
+}
+
+type MonitoredResourceArray []MonitoredResourceInput
+
+func (MonitoredResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredResource)(nil)).Elem()
+}
+
+func (i MonitoredResourceArray) ToMonitoredResourceArrayOutput() MonitoredResourceArrayOutput {
+	return i.ToMonitoredResourceArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceArray) ToMonitoredResourceArrayOutputWithContext(ctx context.Context) MonitoredResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceArrayOutput)
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResource)(nil)).Elem()
+}
+
+func (o MonitoredResourceOutput) ToMonitoredResourceOutput() MonitoredResourceOutput {
+	return o
+}
+
+func (o MonitoredResourceOutput) ToMonitoredResourceOutputWithContext(ctx context.Context) MonitoredResourceOutput {
+	return o
+}
+
+// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+func (o MonitoredResourceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+func (o MonitoredResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MonitoredResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredResource)(nil)).Elem()
+}
+
+func (o MonitoredResourceArrayOutput) ToMonitoredResourceArrayOutput() MonitoredResourceArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceArrayOutput) ToMonitoredResourceArrayOutputWithContext(ctx context.Context) MonitoredResourceArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceArrayOutput) Index(i pulumi.IntInput) MonitoredResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredResource {
+		return vs[0].([]MonitoredResource)[vs[1].(int)]
+	}).(MonitoredResourceOutput)
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceResponse struct {
+	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+	Labels map[string]string `pulumi:"labels"`
+	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+	Type string `pulumi:"type"`
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutput() MonitoredResourceResponseOutput {
+	return o
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithContext(ctx context.Context) MonitoredResourceResponseOutput {
+	return o
+}
+
+// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+func (o MonitoredResourceResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MonitoredResourceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+func (o MonitoredResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MonitoredResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOutput() MonitoredResourceResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredResourceResponse {
+		return vs[0].([]MonitoredResourceResponse)[vs[1].(int)]
+	}).(MonitoredResourceResponseOutput)
 }
 
 // A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
@@ -6148,6 +6502,8 @@ type Widget struct {
 	Blank *Empty `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup *CollapsibleGroup `pulumi:"collapsibleGroup"`
+	// A widget that shows list of incidents.
+	IncidentList *IncidentList `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel *LogsPanel `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -6181,6 +6537,8 @@ type WidgetArgs struct {
 	Blank EmptyPtrInput `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup CollapsibleGroupPtrInput `pulumi:"collapsibleGroup"`
+	// A widget that shows list of incidents.
+	IncidentList IncidentListPtrInput `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelPtrInput `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -6313,6 +6671,11 @@ func (o WidgetOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
 	return o.ApplyT(func(v Widget) *CollapsibleGroup { return v.CollapsibleGroup }).(CollapsibleGroupPtrOutput)
 }
 
+// A widget that shows list of incidents.
+func (o WidgetOutput) IncidentList() IncidentListPtrOutput {
+	return o.ApplyT(func(v Widget) *IncidentList { return v.IncidentList }).(IncidentListPtrOutput)
+}
+
 // A widget that shows a stream of logs.
 func (o WidgetOutput) LogsPanel() LogsPanelPtrOutput {
 	return o.ApplyT(func(v Widget) *LogsPanel { return v.LogsPanel }).(LogsPanelPtrOutput)
@@ -6395,6 +6758,16 @@ func (o WidgetPtrOutput) CollapsibleGroup() CollapsibleGroupPtrOutput {
 		}
 		return v.CollapsibleGroup
 	}).(CollapsibleGroupPtrOutput)
+}
+
+// A widget that shows list of incidents.
+func (o WidgetPtrOutput) IncidentList() IncidentListPtrOutput {
+	return o.ApplyT(func(v *Widget) *IncidentList {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentList
+	}).(IncidentListPtrOutput)
 }
 
 // A widget that shows a stream of logs.
@@ -6485,6 +6858,8 @@ type WidgetResponse struct {
 	Blank EmptyResponse `pulumi:"blank"`
 	// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 	CollapsibleGroup CollapsibleGroupResponse `pulumi:"collapsibleGroup"`
+	// A widget that shows list of incidents.
+	IncidentList IncidentListResponse `pulumi:"incidentList"`
 	// A widget that shows a stream of logs.
 	LogsPanel LogsPanelResponse `pulumi:"logsPanel"`
 	// A scorecard summarizing time series data.
@@ -6527,6 +6902,11 @@ func (o WidgetResponseOutput) Blank() EmptyResponseOutput {
 // A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 func (o WidgetResponseOutput) CollapsibleGroup() CollapsibleGroupResponseOutput {
 	return o.ApplyT(func(v WidgetResponse) CollapsibleGroupResponse { return v.CollapsibleGroup }).(CollapsibleGroupResponseOutput)
+}
+
+// A widget that shows list of incidents.
+func (o WidgetResponseOutput) IncidentList() IncidentListResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) IncidentListResponse { return v.IncidentList }).(IncidentListResponseOutput)
 }
 
 // A widget that shows a stream of logs.
@@ -6589,11 +6969,11 @@ type XyChart struct {
 	Thresholds []Threshold `pulumi:"thresholds"`
 	// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
 	TimeshiftDuration *string `pulumi:"timeshiftDuration"`
-	// The properties applied to the X axis.
+	// The properties applied to the x-axis.
 	XAxis *Axis `pulumi:"xAxis"`
-	// The properties applied to the Y2 axis.
+	// The properties applied to the y2-axis.
 	Y2Axis *Axis `pulumi:"y2Axis"`
-	// The properties applied to the Y axis.
+	// The properties applied to the y-axis.
 	YAxis *Axis `pulumi:"yAxis"`
 }
 
@@ -6618,11 +6998,11 @@ type XyChartArgs struct {
 	Thresholds ThresholdArrayInput `pulumi:"thresholds"`
 	// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
 	TimeshiftDuration pulumi.StringPtrInput `pulumi:"timeshiftDuration"`
-	// The properties applied to the X axis.
+	// The properties applied to the x-axis.
 	XAxis AxisPtrInput `pulumi:"xAxis"`
-	// The properties applied to the Y2 axis.
+	// The properties applied to the y2-axis.
 	Y2Axis AxisPtrInput `pulumi:"y2Axis"`
-	// The properties applied to the Y axis.
+	// The properties applied to the y-axis.
 	YAxis AxisPtrInput `pulumi:"yAxis"`
 }
 
@@ -6724,17 +7104,17 @@ func (o XyChartOutput) TimeshiftDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v XyChart) *string { return v.TimeshiftDuration }).(pulumi.StringPtrOutput)
 }
 
-// The properties applied to the X axis.
+// The properties applied to the x-axis.
 func (o XyChartOutput) XAxis() AxisPtrOutput {
 	return o.ApplyT(func(v XyChart) *Axis { return v.XAxis }).(AxisPtrOutput)
 }
 
-// The properties applied to the Y2 axis.
+// The properties applied to the y2-axis.
 func (o XyChartOutput) Y2Axis() AxisPtrOutput {
 	return o.ApplyT(func(v XyChart) *Axis { return v.Y2Axis }).(AxisPtrOutput)
 }
 
-// The properties applied to the Y axis.
+// The properties applied to the y-axis.
 func (o XyChartOutput) YAxis() AxisPtrOutput {
 	return o.ApplyT(func(v XyChart) *Axis { return v.YAxis }).(AxisPtrOutput)
 }
@@ -6803,7 +7183,7 @@ func (o XyChartPtrOutput) TimeshiftDuration() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The properties applied to the X axis.
+// The properties applied to the x-axis.
 func (o XyChartPtrOutput) XAxis() AxisPtrOutput {
 	return o.ApplyT(func(v *XyChart) *Axis {
 		if v == nil {
@@ -6813,7 +7193,7 @@ func (o XyChartPtrOutput) XAxis() AxisPtrOutput {
 	}).(AxisPtrOutput)
 }
 
-// The properties applied to the Y2 axis.
+// The properties applied to the y2-axis.
 func (o XyChartPtrOutput) Y2Axis() AxisPtrOutput {
 	return o.ApplyT(func(v *XyChart) *Axis {
 		if v == nil {
@@ -6823,7 +7203,7 @@ func (o XyChartPtrOutput) Y2Axis() AxisPtrOutput {
 	}).(AxisPtrOutput)
 }
 
-// The properties applied to the Y axis.
+// The properties applied to the y-axis.
 func (o XyChartPtrOutput) YAxis() AxisPtrOutput {
 	return o.ApplyT(func(v *XyChart) *Axis {
 		if v == nil {
@@ -6843,11 +7223,11 @@ type XyChartResponse struct {
 	Thresholds []ThresholdResponse `pulumi:"thresholds"`
 	// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
 	TimeshiftDuration string `pulumi:"timeshiftDuration"`
-	// The properties applied to the X axis.
+	// The properties applied to the x-axis.
 	XAxis AxisResponse `pulumi:"xAxis"`
-	// The properties applied to the Y2 axis.
+	// The properties applied to the y2-axis.
 	Y2Axis AxisResponse `pulumi:"y2Axis"`
-	// The properties applied to the Y axis.
+	// The properties applied to the y-axis.
 	YAxis AxisResponse `pulumi:"yAxis"`
 }
 
@@ -6886,17 +7266,17 @@ func (o XyChartResponseOutput) TimeshiftDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v XyChartResponse) string { return v.TimeshiftDuration }).(pulumi.StringOutput)
 }
 
-// The properties applied to the X axis.
+// The properties applied to the x-axis.
 func (o XyChartResponseOutput) XAxis() AxisResponseOutput {
 	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.XAxis }).(AxisResponseOutput)
 }
 
-// The properties applied to the Y2 axis.
+// The properties applied to the y2-axis.
 func (o XyChartResponseOutput) Y2Axis() AxisResponseOutput {
 	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.Y2Axis }).(AxisResponseOutput)
 }
 
-// The properties applied to the Y axis.
+// The properties applied to the y-axis.
 func (o XyChartResponseOutput) YAxis() AxisResponseOutput {
 	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.YAxis }).(AxisResponseOutput)
 }
@@ -6928,8 +7308,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GaugeViewPtrInput)(nil)).Elem(), GaugeViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutInput)(nil)).Elem(), GridLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GridLayoutPtrInput)(nil)).Elem(), GridLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IncidentListInput)(nil)).Elem(), IncidentListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IncidentListPtrInput)(nil)).Elem(), IncidentListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelInput)(nil)).Elem(), LogsPanelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogsPanelPtrInput)(nil)).Elem(), LogsPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceInput)(nil)).Elem(), MonitoredResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceArrayInput)(nil)).Elem(), MonitoredResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutInput)(nil)).Elem(), MosaicLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MosaicLayoutPtrInput)(nil)).Elem(), MosaicLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterInput)(nil)).Elem(), PickTimeSeriesFilterArgs{})
@@ -7012,9 +7396,16 @@ func init() {
 	pulumi.RegisterOutputType(GridLayoutOutput{})
 	pulumi.RegisterOutputType(GridLayoutPtrOutput{})
 	pulumi.RegisterOutputType(GridLayoutResponseOutput{})
+	pulumi.RegisterOutputType(IncidentListOutput{})
+	pulumi.RegisterOutputType(IncidentListPtrOutput{})
+	pulumi.RegisterOutputType(IncidentListResponseOutput{})
 	pulumi.RegisterOutputType(LogsPanelOutput{})
 	pulumi.RegisterOutputType(LogsPanelPtrOutput{})
 	pulumi.RegisterOutputType(LogsPanelResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutPtrOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutResponseOutput{})

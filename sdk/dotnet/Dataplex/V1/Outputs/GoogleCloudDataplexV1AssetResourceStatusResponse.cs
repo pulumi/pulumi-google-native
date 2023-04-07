@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1AssetResourceStatusResponse
     {
         /// <summary>
+        /// Service account associated with the BigQuery Connection.
+        /// </summary>
+        public readonly string ManagedAccessIdentity;
+        /// <summary>
         /// Additional information about the current state.
         /// </summary>
         public readonly string Message;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1AssetResourceStatusResponse(
+            string managedAccessIdentity,
+
             string message,
 
             string state,
 
             string updateTime)
         {
+            ManagedAccessIdentity = managedAccessIdentity;
             Message = message;
             State = state;
             UpdateTime = updateTime;

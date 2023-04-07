@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3AdvancedSettingsResponse
     {
         /// <summary>
+        /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3GcsDestinationResponse AudioExportGcsDestination;
+        /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse LoggingSettings;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowCxV3AdvancedSettingsResponse(Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse loggingSettings)
+        private GoogleCloudDialogflowCxV3AdvancedSettingsResponse(
+            Outputs.GoogleCloudDialogflowCxV3GcsDestinationResponse audioExportGcsDestination,
+
+            Outputs.GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse loggingSettings)
         {
+            AudioExportGcsDestination = audioExportGcsDestination;
             LoggingSettings = loggingSettings;
         }
     }

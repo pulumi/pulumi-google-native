@@ -16,6 +16,9 @@ export const Workflow: typeof import("./workflow").Workflow = null as any;
 utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
 
 
+// Export enums:
+export * from "../../types/enums/workflows/v1";
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

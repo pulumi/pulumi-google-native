@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Error Catch Task configuration for the integration. It's optional.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> ErrorCatcherConfigs;
+        /// <summary>
         /// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse> IntegrationParameters;
@@ -115,6 +119,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// Optional. The id of the template which was used to create this integration_version.
         /// </summary>
         public readonly string ParentTemplateId;
+        /// <summary>
+        /// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+        /// </summary>
+        public readonly string RunAsServiceAccount;
         /// <summary>
         /// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
         /// </summary>
@@ -164,6 +172,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
             string description,
 
+            ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> errorCatcherConfigs,
+
             ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse> integrationParameters,
 
             Outputs.EnterpriseCrmFrontendsEventbusProtoWorkflowParametersResponse integrationParametersInternal,
@@ -177,6 +187,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             string origin,
 
             string parentTemplateId,
+
+            string runAsServiceAccount,
 
             string snapshotNumber,
 
@@ -201,6 +213,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             CreateTime = createTime;
             DatabasePersistencePolicy = databasePersistencePolicy;
             Description = description;
+            ErrorCatcherConfigs = errorCatcherConfigs;
             IntegrationParameters = integrationParameters;
             IntegrationParametersInternal = integrationParametersInternal;
             LastModifierEmail = lastModifierEmail;
@@ -208,6 +221,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             Name = name;
             Origin = origin;
             ParentTemplateId = parentTemplateId;
+            RunAsServiceAccount = runAsServiceAccount;
             SnapshotNumber = snapshotNumber;
             State = state;
             Status = status;

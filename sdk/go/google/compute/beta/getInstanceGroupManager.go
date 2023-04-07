@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.
+// Returns all of the details about the specified managed instance group.
 func LookupInstanceGroupManager(ctx *pulumi.Context, args *LookupInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResult, error) {
 	var rv LookupInstanceGroupManagerResult
 	err := ctx.Invoke("google-native:compute/beta:getInstanceGroupManager", args, &rv, opts...)

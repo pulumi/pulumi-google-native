@@ -38,6 +38,10 @@ export class BillingAccountBucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccountBucket.__pulumiType;
     }
 
+    /**
+     * Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+     */
+    public readonly analyticsEnabled!: pulumi.Output<boolean>;
     public readonly billingAccountId!: pulumi.Output<string>;
     /**
      * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
@@ -102,6 +106,7 @@ export class BillingAccountBucket extends pulumi.CustomResource {
             if ((!args || args.bucketId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
+            resourceInputs["analyticsEnabled"] = args ? args.analyticsEnabled : undefined;
             resourceInputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
@@ -116,6 +121,7 @@ export class BillingAccountBucket extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["analyticsEnabled"] = undefined /*out*/;
             resourceInputs["billingAccountId"] = undefined /*out*/;
             resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["cmekSettings"] = undefined /*out*/;
@@ -141,6 +147,10 @@ export class BillingAccountBucket extends pulumi.CustomResource {
  * The set of arguments for constructing a BillingAccountBucket resource.
  */
 export interface BillingAccountBucketArgs {
+    /**
+     * Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+     */
+    analyticsEnabled?: pulumi.Input<boolean>;
     billingAccountId: pulumi.Input<string>;
     /**
      * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.

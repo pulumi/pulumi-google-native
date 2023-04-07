@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// A globally unique identifier (in UUID4 format) for this endpoint.
+        /// </summary>
+        public readonly string Uid;
+        /// <summary>
         /// The timestamp when the endpoint was last updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1.Outputs
 
             int port,
 
+            string uid,
+
             string updateTime)
         {
             Address = address;
@@ -67,6 +73,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1.Outputs
             Name = name;
             Network = network;
             Port = port;
+            Uid = uid;
             UpdateTime = updateTime;
         }
     }

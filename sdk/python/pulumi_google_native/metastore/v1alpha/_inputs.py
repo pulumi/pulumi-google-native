@@ -25,6 +25,7 @@ __all__ = [
     'MaintenanceWindowArgs',
     'MetadataIntegrationArgs',
     'NetworkConfigArgs',
+    'ScalingConfigArgs',
     'SecretArgs',
     'TelemetryConfigArgs',
 ]
@@ -632,13 +633,17 @@ class MetadataIntegrationArgs:
 @pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
-                 consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]] = None):
+                 consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]] = None,
+                 custom_routes_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Network configuration for the Dataproc Metastore service.
         :param pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]] consumers: Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
+        :param pulumi.Input[bool] custom_routes_enabled: Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
         """
         if consumers is not None:
             pulumi.set(__self__, "consumers", consumers)
+        if custom_routes_enabled is not None:
+            pulumi.set(__self__, "custom_routes_enabled", custom_routes_enabled)
 
     @property
     @pulumi.getter
@@ -651,6 +656,58 @@ class NetworkConfigArgs:
     @consumers.setter
     def consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]]):
         pulumi.set(self, "consumers", value)
+
+    @property
+    @pulumi.getter(name="customRoutesEnabled")
+    def custom_routes_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        """
+        return pulumi.get(self, "custom_routes_enabled")
+
+    @custom_routes_enabled.setter
+    def custom_routes_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "custom_routes_enabled", value)
+
+
+@pulumi.input_type
+class ScalingConfigArgs:
+    def __init__(__self__, *,
+                 instance_size: Optional[pulumi.Input['ScalingConfigInstanceSize']] = None,
+                 scaling_factor: Optional[pulumi.Input[float]] = None):
+        """
+        Represents the scaling configuration of a metastore service.
+        :param pulumi.Input['ScalingConfigInstanceSize'] instance_size: An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        :param pulumi.Input[float] scaling_factor: Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        if instance_size is not None:
+            pulumi.set(__self__, "instance_size", instance_size)
+        if scaling_factor is not None:
+            pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> Optional[pulumi.Input['ScalingConfigInstanceSize']]:
+        """
+        An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        """
+        return pulumi.get(self, "instance_size")
+
+    @instance_size.setter
+    def instance_size(self, value: Optional[pulumi.Input['ScalingConfigInstanceSize']]):
+        pulumi.set(self, "instance_size", value)
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
+
+    @scaling_factor.setter
+    def scaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "scaling_factor", value)
 
 
 @pulumi.input_type

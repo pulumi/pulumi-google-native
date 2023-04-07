@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+// Returns the specified TargetHttpsProxy resource in the specified region.
 func LookupRegionTargetHttpsProxy(ctx *pulumi.Context, args *LookupRegionTargetHttpsProxyArgs, opts ...pulumi.InvokeOption) (*LookupRegionTargetHttpsProxyResult, error) {
 	var rv LookupRegionTargetHttpsProxyResult
 	err := ctx.Invoke("google-native:compute/v1:getRegionTargetHttpsProxy", args, &rv, opts...)
@@ -49,7 +49,7 @@ type LookupRegionTargetHttpsProxyResult struct {
 	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
 	ServerTlsPolicy string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
@@ -151,7 +151,7 @@ func (o LookupRegionTargetHttpsProxyResultOutput) SelfLink() pulumi.StringOutput
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
 func (o LookupRegionTargetHttpsProxyResultOutput) ServerTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.ServerTlsPolicy }).(pulumi.StringOutput)
 }

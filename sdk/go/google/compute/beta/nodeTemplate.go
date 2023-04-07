@@ -31,7 +31,7 @@ type NodeTemplate struct {
 	NodeAffinityLabels pulumi.StringMapOutput `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// Do not use. Instead, use the node_type property.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityResponseOutput `pulumi:"nodeTypeFlexibility"`
 	Project             pulumi.StringOutput                           `pulumi:"project"`
 	Region              pulumi.StringOutput                           `pulumi:"region"`
@@ -106,7 +106,7 @@ type nodeTemplateArgs struct {
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType *string `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// Do not use. Instead, use the node_type property.
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	Project             *string                          `pulumi:"project"`
 	Region              string                           `pulumi:"region"`
@@ -130,7 +130,7 @@ type NodeTemplateArgs struct {
 	NodeAffinityLabels pulumi.StringMapInput
 	// The node type to use for nodes group that are created from this template.
 	NodeType pulumi.StringPtrInput
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// Do not use. Instead, use the node_type property.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
 	Project             pulumi.StringPtrInput
 	Region              pulumi.StringInput
@@ -220,7 +220,7 @@ func (o NodeTemplateOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+// Do not use. Instead, use the node_type property.
 func (o NodeTemplateOutput) NodeTypeFlexibility() NodeTemplateNodeTypeFlexibilityResponseOutput {
 	return o.ApplyT(func(v *NodeTemplate) NodeTemplateNodeTypeFlexibilityResponseOutput { return v.NodeTypeFlexibility }).(NodeTemplateNodeTypeFlexibilityResponseOutput)
 }

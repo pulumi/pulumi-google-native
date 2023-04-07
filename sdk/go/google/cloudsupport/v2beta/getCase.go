@@ -29,6 +29,8 @@ type LookupCaseArgs struct {
 type LookupCaseResult struct {
 	// The issue classification applicable to this case.
 	Classification CaseClassificationResponse `pulumi:"classification"`
+	// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+	ContactEmail string `pulumi:"contactEmail"`
 	// The time this case was created.
 	CreateTime string `pulumi:"createTime"`
 	// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
@@ -101,6 +103,11 @@ func (o LookupCaseResultOutput) ToLookupCaseResultOutputWithContext(ctx context.
 // The issue classification applicable to this case.
 func (o LookupCaseResultOutput) Classification() CaseClassificationResponseOutput {
 	return o.ApplyT(func(v LookupCaseResult) CaseClassificationResponse { return v.Classification }).(CaseClassificationResponseOutput)
+}
+
+// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+func (o LookupCaseResultOutput) ContactEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaseResult) string { return v.ContactEmail }).(pulumi.StringOutput)
 }
 
 // The time this case was created.

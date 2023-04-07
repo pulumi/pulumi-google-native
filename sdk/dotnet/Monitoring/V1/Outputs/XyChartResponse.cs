@@ -33,15 +33,15 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly string TimeshiftDuration;
         /// <summary>
-        /// The properties applied to the X axis.
+        /// The properties applied to the x-axis.
         /// </summary>
         public readonly Outputs.AxisResponse XAxis;
         /// <summary>
-        /// The properties applied to the Y2 axis.
+        /// The properties applied to the y2-axis.
         /// </summary>
         public readonly Outputs.AxisResponse Y2Axis;
         /// <summary>
-        /// The properties applied to the Y axis.
+        /// The properties applied to the y-axis.
         /// </summary>
         public readonly Outputs.AxisResponse YAxis;
 

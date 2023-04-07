@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        [Output("availableMaintenanceVersions")]
+        public Output<ImmutableArray<string>> AvailableMaintenanceVersions { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         [Output("connectMode")]
@@ -95,6 +101,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Output("maintenanceSchedule")]
         public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Output("maintenanceVersion")]
+        public Output<string> MaintenanceVersion { get; private set; } = null!;
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -288,6 +300,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         [Input("authorizedNetwork")]
         public Input<string>? AuthorizedNetwork { get; set; }
 
+        [Input("availableMaintenanceVersions")]
+        private InputList<string>? _availableMaintenanceVersions;
+
+        /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        public InputList<string> AvailableMaintenanceVersions
+        {
+            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
+            set => _availableMaintenanceVersions = value;
+        }
+
         /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
@@ -335,6 +359,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        [Input("maintenanceVersion")]
+        public Input<string>? MaintenanceVersion { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

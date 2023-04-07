@@ -26,6 +26,7 @@ class TargetArgs:
                  gke: Optional[pulumi.Input['GkeClusterArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_target: Optional[pulumi.Input['MultiTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,7 @@ class TargetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['GkeClusterArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param pulumi.Input['MultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -65,6 +67,8 @@ class TargetArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if multi_target is not None:
+            pulumi.set(__self__, "multi_target", multi_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -184,6 +188,18 @@ class TargetArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="multiTarget")
+    def multi_target(self) -> Optional[pulumi.Input['MultiTargetArgs']]:
+        """
+        Information specifying a multiTarget.
+        """
+        return pulumi.get(self, "multi_target")
+
+    @multi_target.setter
+    def multi_target(self, value: Optional[pulumi.Input['MultiTargetArgs']]):
+        pulumi.set(self, "multi_target", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -266,6 +282,7 @@ class Target(pulumi.CustomResource):
                  gke: Optional[pulumi.Input[pulumi.InputType['GkeClusterArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_target: Optional[pulumi.Input[pulumi.InputType['MultiTargetArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -286,6 +303,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['GkeClusterArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param pulumi.Input[pulumi.InputType['MultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -325,6 +343,7 @@ class Target(pulumi.CustomResource):
                  gke: Optional[pulumi.Input[pulumi.InputType['GkeClusterArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multi_target: Optional[pulumi.Input[pulumi.InputType['MultiTargetArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -349,6 +368,7 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["gke"] = gke
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["multi_target"] = multi_target
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -394,6 +414,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["gke"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["multi_target"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -473,6 +494,14 @@ class Target(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="multiTarget")
+    def multi_target(self) -> pulumi.Output['outputs.MultiTargetResponse']:
+        """
+        Information specifying a multiTarget.
+        """
+        return pulumi.get(self, "multi_target")
 
     @property
     @pulumi.getter

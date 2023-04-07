@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public Output<Outputs.ScheduleOptionsResponse> ScheduleOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+        /// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
         /// </summary>
         [Output("serviceAccountName")]
         public Output<string?> ServiceAccountName { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public Input<Inputs.ScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
         /// <summary>
-        /// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+        /// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
         /// </summary>
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }

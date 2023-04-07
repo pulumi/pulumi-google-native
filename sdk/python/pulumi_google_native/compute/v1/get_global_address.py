@@ -237,7 +237,7 @@ def get_global_address(address: Optional[str] = None,
                        project: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalAddressResult:
     """
-    Returns the specified address resource. Gets a list of available addresses by making a list() request.
+    Returns the specified address resource.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -270,6 +270,6 @@ def get_global_address_output(address: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalAddressResult]:
     """
-    Returns the specified address resource. Gets a list of available addresses by making a list() request.
+    Returns the specified address resource.
     """
     ...

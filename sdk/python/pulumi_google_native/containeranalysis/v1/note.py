@@ -33,7 +33,8 @@ class NoteArgs:
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input['UpgradeNoteArgs']] = None,
-                 vulnerability: Optional[pulumi.Input['VulnerabilityNoteArgs']] = None):
+                 vulnerability: Optional[pulumi.Input['VulnerabilityNoteArgs']] = None,
+                 vulnerability_assessment: Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']] = None):
         """
         The set of arguments for constructing a Note resource.
         :param pulumi.Input[str] note_id: Required. The ID to use for this note.
@@ -52,6 +53,7 @@ class NoteArgs:
         :param pulumi.Input[str] short_description: A one sentence description of this note.
         :param pulumi.Input['UpgradeNoteArgs'] upgrade: A note describing available package upgrades.
         :param pulumi.Input['VulnerabilityNoteArgs'] vulnerability: A note describing a package vulnerability.
+        :param pulumi.Input['VulnerabilityAssessmentNoteArgs'] vulnerability_assessment: A note describing a vulnerability assessment.
         """
         pulumi.set(__self__, "note_id", note_id)
         if attestation is not None:
@@ -86,6 +88,8 @@ class NoteArgs:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability is not None:
             pulumi.set(__self__, "vulnerability", vulnerability)
+        if vulnerability_assessment is not None:
+            pulumi.set(__self__, "vulnerability_assessment", vulnerability_assessment)
 
     @property
     @pulumi.getter(name="noteId")
@@ -288,6 +292,18 @@ class NoteArgs:
     def vulnerability(self, value: Optional[pulumi.Input['VulnerabilityNoteArgs']]):
         pulumi.set(self, "vulnerability", value)
 
+    @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']]:
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
+
+    @vulnerability_assessment.setter
+    def vulnerability_assessment(self, value: Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']]):
+        pulumi.set(self, "vulnerability_assessment", value)
+
 
 class Note(pulumi.CustomResource):
     @overload
@@ -311,6 +327,7 @@ class Note(pulumi.CustomResource):
                  short_description: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
                  __props__=None):
         """
         Creates a new note.
@@ -334,6 +351,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] short_description: A one sentence description of this note.
         :param pulumi.Input[pulumi.InputType['UpgradeNoteArgs']] upgrade: A note describing available package upgrades.
         :param pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']] vulnerability: A note describing a package vulnerability.
+        :param pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']] vulnerability_assessment: A note describing a vulnerability assessment.
         """
         ...
     @overload
@@ -377,6 +395,7 @@ class Note(pulumi.CustomResource):
                  short_description: Optional[pulumi.Input[str]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityNoteArgs']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,6 +424,7 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["short_description"] = short_description
             __props__.__dict__["upgrade"] = upgrade
             __props__.__dict__["vulnerability"] = vulnerability
+            __props__.__dict__["vulnerability_assessment"] = vulnerability_assessment
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["name"] = None
@@ -454,6 +474,7 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade"] = None
         __props__.__dict__["vulnerability"] = None
+        __props__.__dict__["vulnerability_assessment"] = None
         return Note(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -620,4 +641,12 @@ class Note(pulumi.CustomResource):
         A note describing a package vulnerability.
         """
         return pulumi.get(self, "vulnerability")
+
+    @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> pulumi.Output['outputs.VulnerabilityAssessmentNoteResponse']:
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
 

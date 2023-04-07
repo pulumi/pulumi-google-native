@@ -93,6 +93,18 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
             set => _spannerDetails = value;
         }
 
+        [Input("userDisplayProperties")]
+        private InputMap<string>? _userDisplayProperties;
+
+        /// <summary>
+        /// List of display properties to help UI filter jobs.
+        /// </summary>
+        public InputMap<string> UserDisplayProperties
+        {
+            get => _userDisplayProperties ?? (_userDisplayProperties = new InputMap<string>());
+            set => _userDisplayProperties = value;
+        }
+
         public JobMetadataArgs()
         {
         }

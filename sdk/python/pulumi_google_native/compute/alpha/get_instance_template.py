@@ -154,7 +154,7 @@ def get_instance_template(instance_template: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTemplateResult:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     __args__ = dict()
     __args__['instanceTemplate'] = instance_template
@@ -180,6 +180,6 @@ def get_instance_template_output(instance_template: Optional[pulumi.Input[str]] 
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     ...

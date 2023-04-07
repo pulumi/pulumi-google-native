@@ -26,8 +26,10 @@ type LookupGcpUserAccessBindingArgs struct {
 }
 
 type LookupGcpUserAccessBindingResult struct {
-	// Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
 	AccessLevels []string `pulumi:"accessLevels"`
+	// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+	DryRunAccessLevels []string `pulumi:"dryRunAccessLevels"`
 	// Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
 	GroupKey string `pulumi:"groupKey"`
 	// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
@@ -70,9 +72,14 @@ func (o LookupGcpUserAccessBindingResultOutput) ToLookupGcpUserAccessBindingResu
 	return o
 }
 
-// Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
 func (o LookupGcpUserAccessBindingResultOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGcpUserAccessBindingResult) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+func (o LookupGcpUserAccessBindingResultOutput) DryRunAccessLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGcpUserAccessBindingResult) []string { return v.DryRunAccessLevels }).(pulumi.StringArrayOutput)
 }
 
 // Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"

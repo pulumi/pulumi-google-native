@@ -2931,6 +2931,8 @@ const (
 	EnterpriseCrmEventbusProtoTaskMetadataCategoryCloudSystems = EnterpriseCrmEventbusProtoTaskMetadataCategory("CLOUD_SYSTEMS")
 	// include connecting to Vector salesforce, CRM Hub Spanner etc. Task entities that derive from a custom task template.
 	EnterpriseCrmEventbusProtoTaskMetadataCategoryCustomTaskTemplate = EnterpriseCrmEventbusProtoTaskMetadataCategory("CUSTOM_TASK_TEMPLATE")
+	// Category to show task recommendations
+	EnterpriseCrmEventbusProtoTaskMetadataCategoryTaskRecommendations = EnterpriseCrmEventbusProtoTaskMetadataCategory("TASK_RECOMMENDATIONS")
 )
 
 func (EnterpriseCrmEventbusProtoTaskMetadataCategory) ElementType() reflect.Type {
@@ -5020,6 +5022,174 @@ func (in *enterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtr) ToEnterp
 
 func (in *enterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtr) ToEnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutput)
+}
+
+type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType string
+
+const (
+	// Default value. External task type is not specified
+	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeExternalTaskTypeUnspecified = EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED")
+	// Tasks belongs to the normal task flows
+	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeNormalTask = EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("NORMAL_TASK")
+	// Task belongs to the error catch task flows
+	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeErrorTask = EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("ERROR_TASK")
+)
+
+func (EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput {
+	return pulumi.ToOutput(e).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput)
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput)
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return e.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(context.Background())
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType(e).ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutputWithContext(ctx).ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx)
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return o.ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) *EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType {
+		return &v
+	}).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return o
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) Elem() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput {
+	return o.ApplyT(func(v *EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType
+		return ret
+	}).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput is an input type that accepts EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeArgs and EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput values.
+// You can construct a concrete instance of `EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput` via:
+//
+//	EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeArgs{...}
+type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput interface {
+	pulumi.Input
+
+	ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput
+	ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput
+}
+
+var enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrType = reflect.TypeOf((**EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType)(nil)).Elem()
+
+type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput
+	ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput
+}
+
+type enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr string
+
+func EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr(v string) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrInput {
+	return (*enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr)(&v)
+}
+
+func (*enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ElementType() reflect.Type {
+	return enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrType
+}
+
+func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return pulumi.ToOutput(in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput)
+}
+
+func (in *enterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtr) ToEnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput)
 }
 
 // If set, overrides the option configured in the Task implementation class.
@@ -9815,6 +9985,175 @@ func (in *googleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtr) ToGoogleClou
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput)
 }
 
+// Optional. External task type of the task
+type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType string
+
+const (
+	// Default value. External task type is not specified
+	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeExternalTaskTypeUnspecified = GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED")
+	// Tasks belongs to the normal task flows
+	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeNormalTask = GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("NORMAL_TASK")
+	// Task belongs to the error catch task flows
+	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeErrorTask = GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("ERROR_TASK")
+)
+
+func (GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return e.ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(e).ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutputWithContext(ctx).ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return o.ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
+		return &v
+	}).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) Elem() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType
+		return ret
+	}).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput)
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput is an input type that accepts GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeArgs and GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeArgs{...}
+type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput
+	ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput
+}
+
+var googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrType = reflect.TypeOf((**GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType)(nil)).Elem()
+
+type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput
+	ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput
+}
+
+type googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr string
+
+func GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr(v string) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrInput {
+	return (*googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr)(&v)
+}
+
+func (*googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ElementType() reflect.Type {
+	return googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrType
+}
+
+func (in *googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
+}
+
+func (in *googleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtr) ToGoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
+}
+
 // Optional. If set, overrides the option configured in the Task implementation class.
 type GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption string
 
@@ -11250,6 +11589,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType("DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType("DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType("DATA_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption("UNSPECIFIED_JSON_VALIDATION_OPTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtrInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption("UNSPECIFIED_JSON_VALIDATION_OPTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyInput)(nil)).Elem(), EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy("UNSPECIFIED"))
@@ -11306,6 +11647,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaParameterMapValueTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaParameterMapValueType("INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState("FINAL_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState("FINAL_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption("JSON_VALIDATION_OPTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption("JSON_VALIDATION_OPTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy("NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"))
@@ -11380,6 +11723,8 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypePtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypePtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeOutput{})
+	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyOutput{})
@@ -11436,6 +11781,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaParameterMapValueTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyOutput{})

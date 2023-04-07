@@ -5,10 +5,64 @@
 from enum import Enum
 
 __all__ = [
+    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain',
+    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType',
     'WorkloadComplianceRegime',
     'WorkloadPartner',
 ]
+
+
+class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain(str, Enum):
+    """
+    Indicates Ekm provisioning error if any.
+    """
+    EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED = "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED"
+    """
+    No error domain
+    """
+    UNSPECIFIED_ERROR = "UNSPECIFIED_ERROR"
+    """
+    Error but domain is unspecified.
+    """
+    GOOGLE_SERVER_ERROR = "GOOGLE_SERVER_ERROR"
+    """
+    Internal logic breaks within provisioning code.
+    """
+    EXTERNAL_USER_ERROR = "EXTERNAL_USER_ERROR"
+    """
+    Error occurred with the customer not granting permission/creating resource.
+    """
+    EXTERNAL_PARTNER_ERROR = "EXTERNAL_PARTNER_ERROR"
+    """
+    Error occurred within the partner’s provisioning cluster.
+    """
+    TIMEOUT_ERROR = "TIMEOUT_ERROR"
+    """
+    Resource wasn't provisioned in the required 7 day time period
+    """
+
+
+class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState(str, Enum):
+    """
+    Indicates Ekm enrollment Provisioning of a given workload.
+    """
+    EKM_PROVISIONING_STATE_UNSPECIFIED = "EKM_PROVISIONING_STATE_UNSPECIFIED"
+    """
+    Default State for Ekm Provisioning
+    """
+    EKM_PROVISIONING_STATE_PENDING = "EKM_PROVISIONING_STATE_PENDING"
+    """
+    Pending State for Ekm Provisioning
+    """
+    EKM_PROVISIONING_STATE_FAILED = "EKM_PROVISIONING_STATE_FAILED"
+    """
+    Failed State for Ekm Provisioning
+    """
+    EKM_PROVISIONING_STATE_COMPLETED = "EKM_PROVISIONING_STATE_COMPLETED"
+    """
+    Completed State for Ekm Provisioning
+    """
 
 
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enum):
@@ -94,6 +148,10 @@ class WorkloadComplianceRegime(str, Enum):
     Assured Workloads for Partners
     """
     ISR_REGIONS = "ISR_REGIONS"
+    """
+    Assured Workloads for Israel Regions
+    """
+    ISR_REGIONS_AND_SUPPORT = "ISR_REGIONS_AND_SUPPORT"
     """
     Assured Workloads for Israel Regions
     """

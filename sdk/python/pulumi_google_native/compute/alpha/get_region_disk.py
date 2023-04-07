@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, enable_confidential_compute=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -38,6 +38,9 @@ class GetRegionDiskResult:
         if disk_encryption_key and not isinstance(disk_encryption_key, dict):
             raise TypeError("Expected argument 'disk_encryption_key' to be a dict")
         pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
+            raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if erase_windows_vss_signature and not isinstance(erase_windows_vss_signature, bool):
             raise TypeError("Expected argument 'erase_windows_vss_signature' to be a bool")
         pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
@@ -232,6 +235,14 @@ class GetRegionDiskResult:
         Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="eraseWindowsVssSignature")
@@ -614,6 +625,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_key=self.disk_encryption_key,
+            enable_confidential_compute=self.enable_confidential_compute,
             erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
             interface=self.interface,
@@ -683,6 +695,7 @@ def get_region_disk(disk: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_encryption_key=__ret__.disk_encryption_key,
+        enable_confidential_compute=__ret__.enable_confidential_compute,
         erase_windows_vss_signature=__ret__.erase_windows_vss_signature,
         guest_os_features=__ret__.guest_os_features,
         interface=__ret__.interface,

@@ -132,7 +132,7 @@ class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     """
     PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
     """
-    Enables priate IPv6 access to and from Google Services
+    Enables private IPv6 access to and from Google Services
     """
 
 
@@ -439,7 +439,7 @@ class NetworkConfigPrivateIpv6GoogleAccess(str, Enum):
     """
     PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
     """
-    Enables priate IPv6 access to and from Google Services
+    Enables private IPv6 access to and from Google Services
     """
 
 

@@ -44,6 +44,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The firmware version for the instance.
+     */
+    public /*out*/ readonly firmwareVersion!: pulumi.Output<string>;
+    /**
      * True if you enable hyperthreading for the server, otherwise false. The default value is false.
      */
     public readonly hyperthreadingEnabled!: pulumi.Output<boolean>;
@@ -135,6 +139,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["workloadProfile"] = args ? args.workloadProfile : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["firmwareVersion"] = undefined /*out*/;
             resourceInputs["interactiveSerialConsoleEnabled"] = undefined /*out*/;
             resourceInputs["loginInfo"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["firmwareVersion"] = undefined /*out*/;
             resourceInputs["hyperthreadingEnabled"] = undefined /*out*/;
             resourceInputs["interactiveSerialConsoleEnabled"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;

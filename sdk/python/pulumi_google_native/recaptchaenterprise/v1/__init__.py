@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .firewallpolicy import *
+from .get_firewallpolicy import *
 from .get_key import *
 from .key import *
 from ._inputs import *

@@ -30,7 +30,7 @@ export interface GetKeyResult {
      */
     readonly androidSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse;
     /**
-     * The timestamp corresponding to the creation of this Key.
+     * The timestamp corresponding to the creation of this key.
      */
     readonly createTime: string;
     /**

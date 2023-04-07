@@ -170,6 +170,7 @@ class DlpJob(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job
+            __props__.__dict__["action_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["errors"] = None
@@ -204,6 +205,7 @@ class DlpJob(pulumi.CustomResource):
 
         __props__ = DlpJobArgs.__new__(DlpJobArgs)
 
+        __props__.__dict__["action_details"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["errors"] = None
@@ -217,6 +219,14 @@ class DlpJob(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         return DlpJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="actionDetails")
+    def action_details(self) -> pulumi.Output[Sequence['outputs.GooglePrivacyDlpV2ActionDetailsResponse']]:
+        """
+        Events that should occur after the job has completed.
+        """
+        return pulumi.get(self, "action_details")
 
     @property
     @pulumi.getter(name="createTime")

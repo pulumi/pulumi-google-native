@@ -1521,6 +1521,612 @@ func (o GoogleCloudRetailV2alphaLocalInventoryResponseArrayOutput) Index(i pulum
 	}).(GoogleCloudRetailV2alphaLocalInventoryResponseOutput)
 }
 
+// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfig struct {
+	// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+	PageOptimizationEventType string `pulumi:"pageOptimizationEventType"`
+	// A list of panel configurations. Limit = 5.
+	Panels []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel `pulumi:"panels"`
+	// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+	Restriction *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction `pulumi:"restriction"`
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs and GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{...}
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput
+}
+
+// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs struct {
+	// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+	PageOptimizationEventType pulumi.StringInput `pulumi:"pageOptimizationEventType"`
+	// A list of panel configurations. Limit = 5.
+	Panels GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayInput `pulumi:"panels"`
+	// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+	Restriction GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrInput `pulumi:"restriction"`
+}
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput)
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput).ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs, GoogleCloudRetailV2alphaModelPageOptimizationConfigPtr and GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput` via:
+//
+//	        GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput
+}
+
+type googleCloudRetailV2alphaModelPageOptimizationConfigPtrType GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs
+
+func GoogleCloudRetailV2alphaModelPageOptimizationConfigPtr(v *GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput {
+	return (*googleCloudRetailV2alphaModelPageOptimizationConfigPtrType)(v)
+}
+
+func (*googleCloudRetailV2alphaModelPageOptimizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelPageOptimizationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2alphaModelPageOptimizationConfigPtrType) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2alphaModelPageOptimizationConfigPtrType) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput)
+}
+
+// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return o.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2alphaModelPageOptimizationConfig) *GoogleCloudRetailV2alphaModelPageOptimizationConfig {
+		return &v
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput)
+}
+
+// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) PageOptimizationEventType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfig) string { return v.PageOptimizationEventType }).(pulumi.StringOutput)
+}
+
+// A list of panel configurations. Limit = 5.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) Panels() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfig) []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
+		return v.Panels
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput)
+}
+
+// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput) Restriction() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfig) *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
+		return v.Restriction
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelPageOptimizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) Elem() GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelPageOptimizationConfig) GoogleCloudRetailV2alphaModelPageOptimizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2alphaModelPageOptimizationConfig
+		return ret
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput)
+}
+
+// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) PageOptimizationEventType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelPageOptimizationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PageOptimizationEventType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of panel configurations. Limit = 5.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) Panels() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelPageOptimizationConfig) []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
+		if v == nil {
+			return nil
+		}
+		return v.Panels
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput)
+}
+
+// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput) Restriction() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelPageOptimizationConfig) *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
+		if v == nil {
+			return nil
+		}
+		return v.Restriction
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput)
+}
+
+// A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate struct {
+	// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+	ServingConfigId *string `pulumi:"servingConfigId"`
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs and GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs{...}
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput
+}
+
+// A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs struct {
+	// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+	ServingConfigId pulumi.StringPtrInput `pulumi:"servingConfigId"`
+}
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput)
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray and GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray{ GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs{...} }
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray []GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput)
+}
+
+// A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return o
+}
+
+// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput) ServingConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate) *string { return v.ServingConfigId }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
+		return vs[0].([]GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate)[vs[1].(int)]
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput)
+}
+
+// A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse struct {
+	// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+	ServingConfigId string `pulumi:"servingConfigId"`
+}
+
+// A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput {
+	return o
+}
+
+// This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput) ServingConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse) string {
+		return v.ServingConfigId
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse {
+		return vs[0].([]GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput)
+}
+
+// An individual panel with a list of ServingConfigs to consider for it.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel struct {
+	// The candidates to consider on the panel.
+	Candidates []GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate `pulumi:"candidates"`
+	// The default candidate. If the model fails at serving time, we fall back to the default.
+	DefaultCandidate GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate `pulumi:"defaultCandidate"`
+	// Optional. The name to display for the panel.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs and GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs{...}
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput
+}
+
+// An individual panel with a list of ServingConfigs to consider for it.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs struct {
+	// The candidates to consider on the panel.
+	Candidates GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayInput `pulumi:"candidates"`
+	// The default candidate. If the model fails at serving time, we fall back to the default.
+	DefaultCandidate GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput `pulumi:"defaultCandidate"`
+	// Optional. The name to display for the panel.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput)
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray and GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray{ GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs{...} }
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelInput
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return i.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput)
+}
+
+// An individual panel with a list of ServingConfigs to consider for it.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput {
+	return o
+}
+
+// The candidates to consider on the panel.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) Candidates() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel) []GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
+		return v.Candidates
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput)
+}
+
+// The default candidate. If the model fails at serving time, we fall back to the default.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) DefaultCandidate() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
+		return v.DefaultCandidate
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput)
+}
+
+// Optional. The name to display for the panel.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
+		return vs[0].([]GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel)[vs[1].(int)]
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput)
+}
+
+// An individual panel with a list of ServingConfigs to consider for it.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse struct {
+	// The candidates to consider on the panel.
+	Candidates []GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse `pulumi:"candidates"`
+	// The default candidate. If the model fails at serving time, we fall back to the default.
+	DefaultCandidate GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse `pulumi:"defaultCandidate"`
+	// Optional. The name to display for the panel.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// An individual panel with a list of ServingConfigs to consider for it.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput {
+	return o
+}
+
+// The candidates to consider on the panel.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) Candidates() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse) []GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse {
+		return v.Candidates
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput)
+}
+
+// The default candidate. If the model fails at serving time, we fall back to the default.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) DefaultCandidate() GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse) GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse {
+		return v.DefaultCandidate
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput)
+}
+
+// Optional. The name to display for the panel.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse {
+		return vs[0].([]GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput)
+}
+
+// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse struct {
+	// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+	PageOptimizationEventType string `pulumi:"pageOptimizationEventType"`
+	// A list of panel configurations. Limit = 5.
+	Panels []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse `pulumi:"panels"`
+	// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+	Restriction string `pulumi:"restriction"`
+}
+
+// The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput {
+	return o
+}
+
+// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) PageOptimizationEventType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse) string {
+		return v.PageOptimizationEventType
+	}).(pulumi.StringOutput)
+}
+
+// A list of panel configurations. Limit = 5.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) Panels() GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse) []GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse {
+		return v.Panels
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput)
+}
+
+// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput) Restriction() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse) string { return v.Restriction }).(pulumi.StringOutput)
+}
+
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2alphaModelServingConfigListResponse struct {
+	// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+	ServingConfigIds []string `pulumi:"servingConfigIds"`
+}
+
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2alphaModelServingConfigListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelServingConfigListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseOutput) ToGoogleCloudRetailV2alphaModelServingConfigListResponseOutput() GoogleCloudRetailV2alphaModelServingConfigListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseOutput) ToGoogleCloudRetailV2alphaModelServingConfigListResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelServingConfigListResponseOutput {
+	return o
+}
+
+// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseOutput) ServingConfigIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelServingConfigListResponse) []string { return v.ServingConfigIds }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2alphaModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput() GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2alphaModelServingConfigListResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2alphaModelServingConfigListResponse {
+		return vs[0].([]GoogleCloudRetailV2alphaModelServingConfigListResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2alphaModelServingConfigListResponseOutput)
+}
+
 // The price information of a Product.
 type GoogleCloudRetailV2alphaPriceInfo struct {
 	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1897,7 +2503,7 @@ type GoogleCloudRetailV2alphaProductResponse struct {
 	Images []GoogleCloudRetailV2alphaImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
-	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+	// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 	LocalInventories []GoogleCloudRetailV2alphaLocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
@@ -2038,7 +2644,7 @@ func (o GoogleCloudRetailV2alphaProductResponseOutput) LanguageCode() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaProductResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 func (o GoogleCloudRetailV2alphaProductResponseOutput) LocalInventories() GoogleCloudRetailV2alphaLocalInventoryResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaProductResponse) []GoogleCloudRetailV2alphaLocalInventoryResponse {
 		return v.LocalInventories
@@ -4806,7 +5412,7 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey struct {
 	CaseInsensitive *bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals []GoogleCloudRetailV2alphaInterval `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
@@ -4839,7 +5445,7 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs struct {
 	CaseInsensitive pulumi.BoolPtrInput `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains pulumi.StringArrayInput `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals GoogleCloudRetailV2alphaIntervalArrayInput `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key pulumi.StringInput `pulumi:"key"`
@@ -4943,7 +5549,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Contains()
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Intervals() GoogleCloudRetailV2alphaIntervalArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2alphaInterval {
 		return v.Intervals
@@ -5024,7 +5630,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Contain
 	}).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Intervals() GoogleCloudRetailV2alphaIntervalArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2alphaInterval {
 		if v == nil {
@@ -5100,7 +5706,7 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse struct {
 	CaseInsensitive bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals []GoogleCloudRetailV2alphaIntervalResponse `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
@@ -5141,7 +5747,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Co
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Intervals() GoogleCloudRetailV2alphaIntervalResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []GoogleCloudRetailV2alphaIntervalResponse {
 		return v.Intervals
@@ -5414,6 +6020,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaIntervalInput)(nil)).Elem(), GoogleCloudRetailV2alphaIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaIntervalArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaPriceInfoInput)(nil)).Elem(), GoogleCloudRetailV2alphaPriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaPriceInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaPriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaPromotionInput)(nil)).Elem(), GoogleCloudRetailV2alphaPromotionArgs{})
@@ -5477,6 +6089,19 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaIntervalResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaLocalInventoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaLocalInventoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelServingConfigListResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelServingConfigListResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaPriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaPriceInfoPriceRangeResponseOutput{})

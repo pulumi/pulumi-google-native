@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class JobResponse
     {
         /// <summary>
+        /// An advanceChildRollout Job.
+        /// </summary>
+        public readonly Outputs.AdvanceChildRolloutJobResponse AdvanceChildRolloutJob;
+        /// <summary>
+        /// A createChildRollout Job.
+        /// </summary>
+        public readonly Outputs.CreateChildRolloutJobResponse CreateChildRolloutJob;
+        /// <summary>
         /// A deploy Job.
         /// </summary>
         public readonly Outputs.DeployJobResponse DeployJob;
@@ -24,6 +32,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// The name of the `JobRun` responsible for the most recent invocation of this Job.
         /// </summary>
         public readonly string JobRun;
+        /// <summary>
+        /// Additional information on why the Job was skipped, if available.
+        /// </summary>
+        public readonly string SkipMessage;
         /// <summary>
         /// The current state of the Job.
         /// </summary>
@@ -35,16 +47,25 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
 
         [OutputConstructor]
         private JobResponse(
+            Outputs.AdvanceChildRolloutJobResponse advanceChildRolloutJob,
+
+            Outputs.CreateChildRolloutJobResponse createChildRolloutJob,
+
             Outputs.DeployJobResponse deployJob,
 
             string jobRun,
+
+            string skipMessage,
 
             string state,
 
             Outputs.VerifyJobResponse verifyJob)
         {
+            AdvanceChildRolloutJob = advanceChildRolloutJob;
+            CreateChildRolloutJob = createChildRolloutJob;
             DeployJob = deployJob;
             JobRun = jobRun;
+            SkipMessage = skipMessage;
             State = state;
             VerifyJob = verifyJob;
         }

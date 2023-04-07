@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AddressGroupType = {
+    /**
+     * Default value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * IP v4 ranges.
+     */
+    Ipv4: "IPV4",
+    /**
+     * IP v6 ranges.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+ */
+export type AddressGroupType = (typeof AddressGroupType)[keyof typeof AddressGroupType];
+
 export const AuthorizationPolicyAction = {
     /**
      * Default value.
@@ -45,3 +65,43 @@ export const GoogleIamV1AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type GoogleIamV1AuditLogConfigLogType = (typeof GoogleIamV1AuditLogConfigLogType)[keyof typeof GoogleIamV1AuditLogConfigLogType];
+
+export const OrganizationAddressGroupType = {
+    /**
+     * Default value.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * IP v4 ranges.
+     */
+    Ipv4: "IPV4",
+    /**
+     * IP v6 ranges.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+ */
+export type OrganizationAddressGroupType = (typeof OrganizationAddressGroupType)[keyof typeof OrganizationAddressGroupType];
+
+export const RuleBasicProfile = {
+    /**
+     * If there is not a mentioned action for the target.
+     */
+    BasicProfileUnspecified: "BASIC_PROFILE_UNSPECIFIED",
+    /**
+     * Allow the matched traffic.
+     */
+    Allow: "ALLOW",
+    /**
+     * Deny the matched traffic.
+     */
+    Deny: "DENY",
+} as const;
+
+/**
+ * Required. Profile which tells what the primitive action should be.
+ */
+export type RuleBasicProfile = (typeof RuleBasicProfile)[keyof typeof RuleBasicProfile];

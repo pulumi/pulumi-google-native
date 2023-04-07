@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+ * Returns the specified TargetSslProxy resource.
  */
 export function getTargetSslProxy(args: GetTargetSslProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetSslProxyResult> {
 
@@ -64,7 +64,7 @@ export interface GetTargetSslProxyResult {
     readonly sslPolicy: string;
 }
 /**
- * Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+ * Returns the specified TargetSslProxy resource.
  */
 export function getTargetSslProxyOutput(args: GetTargetSslProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetSslProxyResult> {
     return pulumi.output(args).apply((a: any) => getTargetSslProxy(a, opts))

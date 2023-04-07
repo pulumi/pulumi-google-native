@@ -237,6 +237,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// Python language.
         /// </summary>
         public static RoutineLanguage Python { get; } = new RoutineLanguage("PYTHON");
+        /// <summary>
+        /// Java language.
+        /// </summary>
+        public static RoutineLanguage Java { get; } = new RoutineLanguage("JAVA");
+        /// <summary>
+        /// Scala language.
+        /// </summary>
+        public static RoutineLanguage Scala { get; } = new RoutineLanguage("SCALA");
 
         public static bool operator ==(RoutineLanguage left, RoutineLanguage right) => left.Equals(right);
         public static bool operator !=(RoutineLanguage left, RoutineLanguage right) => !left.Equals(right);
@@ -296,7 +304,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
     /// <summary>
-    /// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+    /// Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
     /// </summary>
     [EnumType]
     public readonly struct StandardSqlDataTypeTypeKind : IEquatable<StandardSqlDataTypeTypeKind>

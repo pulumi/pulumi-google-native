@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpsProxy resource in the specified region.
  */
 export function getRegionTargetHttpsProxy(args: GetRegionTargetHttpsProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionTargetHttpsProxyResult> {
 
@@ -61,6 +61,10 @@ export interface GetRegionTargetHttpsProxyResult {
      */
     readonly httpFilters: string[];
     /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+     */
+    readonly httpKeepAliveTimeoutSec: number;
+    /**
      * Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
      */
     readonly kind: string;
@@ -89,7 +93,7 @@ export interface GetRegionTargetHttpsProxyResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+     * Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
      */
     readonly serverTlsPolicy: string;
     /**
@@ -106,7 +110,7 @@ export interface GetRegionTargetHttpsProxyResult {
     readonly urlMap: string;
 }
 /**
- * Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpsProxy resource in the specified region.
  */
 export function getRegionTargetHttpsProxyOutput(args: GetRegionTargetHttpsProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionTargetHttpsProxyResult> {
     return pulumi.output(args).apply((a: any) => getRegionTargetHttpsProxy(a, opts))

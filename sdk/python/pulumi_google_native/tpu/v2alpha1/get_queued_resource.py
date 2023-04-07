@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetQueuedResourceResult:
-    def __init__(__self__, best_effort=None, guaranteed=None, name=None, queueing_policy=None, state=None, tpu=None):
+    def __init__(__self__, best_effort=None, guaranteed=None, name=None, queueing_policy=None, reservation_name=None, state=None, tpu=None):
         if best_effort and not isinstance(best_effort, dict):
             raise TypeError("Expected argument 'best_effort' to be a dict")
         pulumi.set(__self__, "best_effort", best_effort)
@@ -32,6 +32,9 @@ class GetQueuedResourceResult:
         if queueing_policy and not isinstance(queueing_policy, dict):
             raise TypeError("Expected argument 'queueing_policy' to be a dict")
         pulumi.set(__self__, "queueing_policy", queueing_policy)
+        if reservation_name and not isinstance(reservation_name, str):
+            raise TypeError("Expected argument 'reservation_name' to be a str")
+        pulumi.set(__self__, "reservation_name", reservation_name)
         if state and not isinstance(state, dict):
             raise TypeError("Expected argument 'state' to be a dict")
         pulumi.set(__self__, "state", state)
@@ -72,10 +75,18 @@ class GetQueuedResourceResult:
         return pulumi.get(self, "queueing_policy")
 
     @property
+    @pulumi.getter(name="reservationName")
+    def reservation_name(self) -> str:
+        """
+        Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        """
+        return pulumi.get(self, "reservation_name")
+
+    @property
     @pulumi.getter
     def state(self) -> 'outputs.QueuedResourceStateResponse':
         """
-        State of the QueuedResource request
+        State of the QueuedResource request.
         """
         return pulumi.get(self, "state")
 
@@ -98,6 +109,7 @@ class AwaitableGetQueuedResourceResult(GetQueuedResourceResult):
             guaranteed=self.guaranteed,
             name=self.name,
             queueing_policy=self.queueing_policy,
+            reservation_name=self.reservation_name,
             state=self.state,
             tpu=self.tpu)
 
@@ -121,6 +133,7 @@ def get_queued_resource(location: Optional[str] = None,
         guaranteed=__ret__.guaranteed,
         name=__ret__.name,
         queueing_policy=__ret__.queueing_policy,
+        reservation_name=__ret__.reservation_name,
         state=__ret__.state,
         tpu=__ret__.tpu)
 

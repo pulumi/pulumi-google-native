@@ -55,7 +55,7 @@ export class PrivateConnection extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource's name.
+     * The name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class PrivateConnection extends pulumi.CustomResource {
     public readonly privateConnectionId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -72,7 +72,7 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * The state of the Private Connection.
+     * The state of the private connection.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -80,7 +80,7 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * VPC Peering Config.
+     * VPC peering configuration.
      */
     public readonly vpcPeeringConfig!: pulumi.Output<outputs.datamigration.v1.VpcPeeringConfigResponse>;
 
@@ -147,7 +147,7 @@ export interface PrivateConnectionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource's name.
+     * The name of the resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -156,7 +156,7 @@ export interface PrivateConnectionArgs {
     privateConnectionId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
     /**
@@ -164,7 +164,7 @@ export interface PrivateConnectionArgs {
      */
     skipValidation?: pulumi.Input<boolean>;
     /**
-     * VPC Peering Config.
+     * VPC peering configuration.
      */
     vpcPeeringConfig?: pulumi.Input<inputs.datamigration.v1.VpcPeeringConfigArgs>;
 }

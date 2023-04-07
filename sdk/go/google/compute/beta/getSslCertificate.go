@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+// Returns the specified SslCertificate resource.
 func LookupSslCertificate(ctx *pulumi.Context, args *LookupSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupSslCertificateResult, error) {
 	var rv LookupSslCertificateResult
 	err := ctx.Invoke("google-native:compute/beta:getSslCertificate", args, &rv, opts...)

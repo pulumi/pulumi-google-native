@@ -21,6 +21,7 @@ class JobArgs:
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,9 +32,10 @@ class JobArgs:
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+        :param pulumi.Input['JobMode'] mode: The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
-        :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
         if config is not None:
@@ -44,6 +46,8 @@ class JobArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if output_uri is not None:
@@ -102,6 +106,18 @@ class JobArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['JobMode']]:
+        """
+        The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['JobMode']]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -137,7 +153,7 @@ class JobArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         """
         return pulumi.get(self, "template_id")
 
@@ -167,6 +183,7 @@ class Job(pulumi.CustomResource):
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -181,9 +198,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this job.
         :param pulumi.Input[str] input_uri: Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
+        :param pulumi.Input['JobMode'] mode: The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
         :param pulumi.Input[str] name: The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         :param pulumi.Input[str] output_uri: Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
-        :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        :param pulumi.Input[str] template_id: Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         :param pulumi.Input[int] ttl_after_completion_days: Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
         """
         ...
@@ -214,6 +232,7 @@ class Job(pulumi.CustomResource):
                  input_uri: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input['JobMode']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  output_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -232,6 +251,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["input_uri"] = input_uri
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
             __props__.__dict__["output_uri"] = output_uri
             __props__.__dict__["project"] = project
@@ -273,6 +293,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["input_uri"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["mode"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["output_uri"] = None
         __props__.__dict__["project"] = None
@@ -337,6 +358,14 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def mode(self) -> pulumi.Output[str]:
+        """
+        The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
@@ -376,7 +405,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         """
         return pulumi.get(self, "template_id")
 

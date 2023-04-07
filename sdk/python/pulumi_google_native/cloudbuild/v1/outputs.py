@@ -742,7 +742,9 @@ class BuildOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskSizeGb":
+        if key == "defaultLogsBucketBehavior":
+            suggest = "default_logs_bucket_behavior"
+        elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "dynamicSubstitutions":
             suggest = "dynamic_substitutions"
@@ -773,6 +775,7 @@ class BuildOptionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 default_logs_bucket_behavior: str,
                  disk_size_gb: str,
                  dynamic_substitutions: bool,
                  env: Sequence[str],
@@ -788,6 +791,7 @@ class BuildOptionsResponse(dict):
                  worker_pool: str):
         """
         Optional arguments to enable specific features of builds.
+        :param str default_logs_bucket_behavior: Optional. Option to specify how default logs buckets are setup.
         :param str disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         :param bool dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
         :param Sequence[str] env: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -802,6 +806,7 @@ class BuildOptionsResponse(dict):
         :param Sequence['VolumeResponse'] volumes: Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param str worker_pool: This field deprecated; please use `pool.name` instead.
         """
+        pulumi.set(__self__, "default_logs_bucket_behavior", default_logs_bucket_behavior)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "dynamic_substitutions", dynamic_substitutions)
         pulumi.set(__self__, "env", env)
@@ -815,6 +820,14 @@ class BuildOptionsResponse(dict):
         pulumi.set(__self__, "substitution_option", substitution_option)
         pulumi.set(__self__, "volumes", volumes)
         pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="defaultLogsBucketBehavior")
+    def default_logs_bucket_behavior(self) -> str:
+        """
+        Optional. Option to specify how default logs buckets are setup.
+        """
+        return pulumi.get(self, "default_logs_bucket_behavior")
 
     @property
     @pulumi.getter(name="diskSizeGb")

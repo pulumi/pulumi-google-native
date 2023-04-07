@@ -319,6 +319,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public static SoftwareConfigOptionalComponentsItem HiveWebhcat { get; } = new SoftwareConfigOptionalComponentsItem("HIVE_WEBHCAT");
         /// <summary>
+        /// Hudi.
+        /// </summary>
+        public static SoftwareConfigOptionalComponentsItem Hudi { get; } = new SoftwareConfigOptionalComponentsItem("HUDI");
+        /// <summary>
         /// The Jupyter Notebook.
         /// </summary>
         public static SoftwareConfigOptionalComponentsItem Jupyter { get; } = new SoftwareConfigOptionalComponentsItem("JUPYTER");

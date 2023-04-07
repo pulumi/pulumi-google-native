@@ -28,7 +28,7 @@ type CapacityCommitment struct {
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
 	Location      pulumi.StringOutput  `pulumi:"location"`
-	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 	MultiRegionAuxiliary pulumi.BoolOutput `pulumi:"multiRegionAuxiliary"`
 	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -94,7 +94,7 @@ type capacityCommitmentArgs struct {
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg *bool   `pulumi:"enforceSingleAdminProjectPerOrg"`
 	Location                        *string `pulumi:"location"`
-	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// Capacity commitment commitment plan.
 	Plan    *CapacityCommitmentPlan `pulumi:"plan"`
@@ -114,7 +114,7 @@ type CapacityCommitmentArgs struct {
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrInput
 	Location                        pulumi.StringPtrInput
-	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// Capacity commitment commitment plan.
 	Plan    CapacityCommitmentPlanPtrInput
@@ -196,7 +196,7 @@ func (o CapacityCommitmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 func (o CapacityCommitmentOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.BoolOutput { return v.MultiRegionAuxiliary }).(pulumi.BoolOutput)
 }

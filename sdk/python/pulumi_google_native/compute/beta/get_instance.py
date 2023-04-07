@@ -599,7 +599,7 @@ def get_instance(instance: Optional[str] = None,
                  zone: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
-    Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+    Returns the specified Instance resource.
     """
     __args__ = dict()
     __args__['instance'] = instance
@@ -665,6 +665,6 @@ def get_instance_output(instance: Optional[pulumi.Input[str]] = None,
                         zone: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
     """
-    Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+    Returns the specified Instance resource.
     """
     ...

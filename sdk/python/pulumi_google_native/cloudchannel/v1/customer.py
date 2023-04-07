@@ -23,6 +23,7 @@ class CustomerArgs:
                  org_postal_address: pulumi.Input['GoogleTypePostalAddressArgs'],
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
+                 correlation_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  primary_contact_info: Optional[pulumi.Input['GoogleCloudChannelV1ContactInfoArgs']] = None):
         """
@@ -32,6 +33,7 @@ class CustomerArgs:
         :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         :param pulumi.Input[str] alternate_email: Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+        :param pulumi.Input[str] correlation_id: Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input['GoogleCloudChannelV1ContactInfoArgs'] primary_contact_info: Primary contact info.
         """
@@ -44,6 +46,8 @@ class CustomerArgs:
             pulumi.set(__self__, "alternate_email", alternate_email)
         if channel_partner_id is not None:
             pulumi.set(__self__, "channel_partner_id", channel_partner_id)
+        if correlation_id is not None:
+            pulumi.set(__self__, "correlation_id", correlation_id)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if primary_contact_info is not None:
@@ -128,6 +132,18 @@ class CustomerArgs:
         pulumi.set(self, "channel_partner_id", value)
 
     @property
+    @pulumi.getter(name="correlationId")
+    def correlation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+        """
+        return pulumi.get(self, "correlation_id")
+
+    @correlation_id.setter
+    def correlation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "correlation_id", value)
+
+    @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
@@ -161,6 +177,7 @@ class Customer(pulumi.CustomResource):
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                 correlation_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -175,6 +192,7 @@ class Customer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alternate_email: Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+        :param pulumi.Input[str] correlation_id: Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
         :param pulumi.Input[str] domain: The customer's primary domain. Must match the primary contact email's domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
@@ -210,6 +228,7 @@ class Customer(pulumi.CustomResource):
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                 correlation_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -232,6 +251,7 @@ class Customer(pulumi.CustomResource):
             if channel_partner_link_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_partner_link_id'")
             __props__.__dict__["channel_partner_link_id"] = channel_partner_link_id
+            __props__.__dict__["correlation_id"] = correlation_id
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
@@ -278,6 +298,7 @@ class Customer(pulumi.CustomResource):
         __props__.__dict__["channel_partner_link_id"] = None
         __props__.__dict__["cloud_identity_id"] = None
         __props__.__dict__["cloud_identity_info"] = None
+        __props__.__dict__["correlation_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["domain"] = None
         __props__.__dict__["language_code"] = None
@@ -329,6 +350,14 @@ class Customer(pulumi.CustomResource):
         Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
         """
         return pulumi.get(self, "cloud_identity_info")
+
+    @property
+    @pulumi.getter(name="correlationId")
+    def correlation_id(self) -> pulumi.Output[str]:
+        """
+        Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+        """
+        return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter(name="createTime")

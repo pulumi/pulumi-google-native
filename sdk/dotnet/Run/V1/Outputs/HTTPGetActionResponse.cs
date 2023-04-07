@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
+        /// Port number to access on the container. Number must be in the range 1 to 65535.
+        /// </summary>
+        public readonly int Port;
+        /// <summary>
         /// Not supported by Cloud Run.
         /// </summary>
         public readonly string Scheme;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 
             string path,
 
+            int port,
+
             string scheme)
         {
             Host = host;
             HttpHeaders = httpHeaders;
             Path = path;
+            Port = port;
             Scheme = scheme;
         }
     }

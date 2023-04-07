@@ -18,19 +18,31 @@ __all__ = [
 
 @pulumi.output_type
 class GetGatewayResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, ports=None, scope=None, self_link=None, server_tls_policy=None, type=None, update_time=None):
+    def __init__(__self__, addresses=None, certificate_urls=None, create_time=None, description=None, gateway_security_policy=None, labels=None, name=None, network=None, ports=None, scope=None, self_link=None, server_tls_policy=None, subnetwork=None, type=None, update_time=None):
+        if addresses and not isinstance(addresses, list):
+            raise TypeError("Expected argument 'addresses' to be a list")
+        pulumi.set(__self__, "addresses", addresses)
+        if certificate_urls and not isinstance(certificate_urls, list):
+            raise TypeError("Expected argument 'certificate_urls' to be a list")
+        pulumi.set(__self__, "certificate_urls", certificate_urls)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if gateway_security_policy and not isinstance(gateway_security_policy, str):
+            raise TypeError("Expected argument 'gateway_security_policy' to be a str")
+        pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
         if ports and not isinstance(ports, list):
             raise TypeError("Expected argument 'ports' to be a list")
         pulumi.set(__self__, "ports", ports)
@@ -43,12 +55,31 @@ class GetGatewayResult:
         if server_tls_policy and not isinstance(server_tls_policy, str):
             raise TypeError("Expected argument 'server_tls_policy' to be a str")
         pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+        if subnetwork and not isinstance(subnetwork, str):
+            raise TypeError("Expected argument 'subnetwork' to be a str")
+        pulumi.set(__self__, "subnetwork", subnetwork)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Sequence[str]:
+        """
+        Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        """
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter(name="certificateUrls")
+    def certificate_urls(self) -> Sequence[str]:
+        """
+        Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "certificate_urls")
 
     @property
     @pulumi.getter(name="createTime")
@@ -65,6 +96,14 @@ class GetGatewayResult:
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewaySecurityPolicy")
+    def gateway_security_policy(self) -> str:
+        """
+        Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "gateway_security_policy")
 
     @property
     @pulumi.getter
@@ -84,6 +123,14 @@ class GetGatewayResult:
 
     @property
     @pulumi.getter
+    def network(self) -> str:
+        """
+        Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
     def ports(self) -> Sequence[int]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -94,7 +141,7 @@ class GetGatewayResult:
     @pulumi.getter
     def scope(self) -> str:
         """
-        Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+        Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         """
         return pulumi.get(self, "scope")
 
@@ -113,6 +160,14 @@ class GetGatewayResult:
         Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+        """
+        return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter
@@ -137,14 +192,19 @@ class AwaitableGetGatewayResult(GetGatewayResult):
         if False:
             yield self
         return GetGatewayResult(
+            addresses=self.addresses,
+            certificate_urls=self.certificate_urls,
             create_time=self.create_time,
             description=self.description,
+            gateway_security_policy=self.gateway_security_policy,
             labels=self.labels,
             name=self.name,
+            network=self.network,
             ports=self.ports,
             scope=self.scope,
             self_link=self.self_link,
             server_tls_policy=self.server_tls_policy,
+            subnetwork=self.subnetwork,
             type=self.type,
             update_time=self.update_time)
 
@@ -164,14 +224,19 @@ def get_gateway(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
 
     return AwaitableGetGatewayResult(
+        addresses=__ret__.addresses,
+        certificate_urls=__ret__.certificate_urls,
         create_time=__ret__.create_time,
         description=__ret__.description,
+        gateway_security_policy=__ret__.gateway_security_policy,
         labels=__ret__.labels,
         name=__ret__.name,
+        network=__ret__.network,
         ports=__ret__.ports,
         scope=__ret__.scope,
         self_link=__ret__.self_link,
         server_tls_policy=__ret__.server_tls_policy,
+        subnetwork=__ret__.subnetwork,
         type=__ret__.type,
         update_time=__ret__.update_time)
 

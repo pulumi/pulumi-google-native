@@ -56,6 +56,8 @@ type LookupNoteResult struct {
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
 	// A note describing a software bill of materials.
 	Sbom DocumentNoteResponse `pulumi:"sbom"`
+	// A note describing a reference to an SBOM.
+	SbomReference SBOMReferenceNoteResponse `pulumi:"sbomReference"`
 	// A one sentence description of this `Note`.
 	ShortDescription string `pulumi:"shortDescription"`
 	// A note describing an SPDX File.
@@ -68,6 +70,8 @@ type LookupNoteResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// A note describing an upgrade.
 	Upgrade UpgradeNoteResponse `pulumi:"upgrade"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNoteResponse `pulumi:"vulnerabilityAssessment"`
 	// A package vulnerability type of note.
 	VulnerabilityType VulnerabilityTypeResponse `pulumi:"vulnerabilityType"`
 }
@@ -183,6 +187,11 @@ func (o LookupNoteResultOutput) Sbom() DocumentNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) DocumentNoteResponse { return v.Sbom }).(DocumentNoteResponseOutput)
 }
 
+// A note describing a reference to an SBOM.
+func (o LookupNoteResultOutput) SbomReference() SBOMReferenceNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) SBOMReferenceNoteResponse { return v.SbomReference }).(SBOMReferenceNoteResponseOutput)
+}
+
 // A one sentence description of this `Note`.
 func (o LookupNoteResultOutput) ShortDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNoteResult) string { return v.ShortDescription }).(pulumi.StringOutput)
@@ -211,6 +220,11 @@ func (o LookupNoteResultOutput) UpdateTime() pulumi.StringOutput {
 // A note describing an upgrade.
 func (o LookupNoteResultOutput) Upgrade() UpgradeNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) UpgradeNoteResponse { return v.Upgrade }).(UpgradeNoteResponseOutput)
+}
+
+// A note describing a vulnerability assessment.
+func (o LookupNoteResultOutput) VulnerabilityAssessment() VulnerabilityAssessmentNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) VulnerabilityAssessmentNoteResponse { return v.VulnerabilityAssessment }).(VulnerabilityAssessmentNoteResponseOutput)
 }
 
 // A package vulnerability type of note.

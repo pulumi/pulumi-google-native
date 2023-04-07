@@ -80,7 +80,11 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly Outputs.QueueingPolicyResponse QueueingPolicy;
         /// <summary>
-        /// State of the QueuedResource request
+        /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        /// </summary>
+        public readonly string ReservationName;
+        /// <summary>
+        /// State of the QueuedResource request.
         /// </summary>
         public readonly Outputs.QueuedResourceStateResponse State;
         /// <summary>
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             Outputs.QueueingPolicyResponse queueingPolicy,
 
+            string reservationName,
+
             Outputs.QueuedResourceStateResponse state,
 
             Outputs.TpuResponse tpu)
@@ -106,6 +112,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
             Guaranteed = guaranteed;
             Name = name;
             QueueingPolicy = queueingPolicy;
+            ReservationName = reservationName;
             State = state;
             Tpu = tpu;
         }

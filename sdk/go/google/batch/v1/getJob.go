@@ -39,7 +39,7 @@ type LookupJobResult struct {
 	Name string `pulumi:"name"`
 	// Notification configurations.
 	Notifications []JobNotificationResponse `pulumi:"notifications"`
-	// Priority of the Job. The valid value range is [0, 100). A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
+	// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
 	Priority string `pulumi:"priority"`
 	// Job status. It is read only for users.
 	Status JobStatusResponse `pulumi:"status"`
@@ -118,7 +118,7 @@ func (o LookupJobResultOutput) Notifications() JobNotificationResponseArrayOutpu
 	return o.ApplyT(func(v LookupJobResult) []JobNotificationResponse { return v.Notifications }).(JobNotificationResponseArrayOutput)
 }
 
-// Priority of the Job. The valid value range is [0, 100). A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
+// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
 func (o LookupJobResultOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Priority }).(pulumi.StringOutput)
 }

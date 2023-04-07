@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
     public sealed class TypeResponse
     {
         /// <summary>
+        /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        /// </summary>
+        public readonly string Edition;
+        /// <summary>
         /// The list of fields.
         /// </summary>
         public readonly ImmutableArray<Outputs.FieldResponse> Fields;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
         [OutputConstructor]
         private TypeResponse(
+            string edition,
+
             ImmutableArray<Outputs.FieldResponse> fields,
 
             string name,
@@ -55,6 +61,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
             string syntax)
         {
+            Edition = edition;
             Fields = fields;
             Name = name;
             Oneofs = oneofs;

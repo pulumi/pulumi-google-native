@@ -47,9 +47,6 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.VersionConfigs == nil {
-		return nil, errors.New("invalid value for required argument 'VersionConfigs'")
-	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"agentId",
 		"location",

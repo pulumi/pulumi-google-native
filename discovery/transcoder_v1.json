@@ -385,7 +385,7 @@
       }
     }
   },
-  "revision": "20230125",
+  "revision": "20230322",
   "rootUrl": "https://transcoder.googleapis.com/",
   "schemas": {
     "AdBreak": {
@@ -560,6 +560,14 @@
         },
         "codec": {
           "description": "The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.",
+          "type": "string"
+        },
+        "languageCode": {
+          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.",
           "type": "string"
         },
         "mapping": {
@@ -1016,6 +1024,20 @@
           "description": "The labels associated with this job. You can use these to organize and group your jobs.",
           "type": "object"
         },
+        "mode": {
+          "description": "The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.",
+          "enum": [
+            "PROCESSING_MODE_UNSPECIFIED",
+            "PROCESSING_MODE_INTERACTIVE",
+            "PROCESSING_MODE_BATCH"
+          ],
+          "enumDescriptions": [
+            "The job processing mode is not specified.",
+            "The job processing mode is interactive mode. Interactive job will either be ran or rejected if quota does not allow for it.",
+            "The job processing mode is batch mode. Batch mode allows queuing of jobs."
+          ],
+          "type": "string"
+        },
         "name": {
           "description": "The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`",
           "type": "string"
@@ -1050,7 +1072,7 @@
           "type": "string"
         },
         "templateId": {
-          "description": "Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`",
+          "description": "Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`",
           "type": "string"
         },
         "ttlAfterCompletionDays": {
@@ -1514,6 +1536,14 @@
       "properties": {
         "codec": {
           "description": "The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.",
+          "type": "string"
+        },
+        "languageCode": {
+          "description": "The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.",
           "type": "string"
         },
         "mapping": {

@@ -61,6 +61,10 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly destroyTime!: pulumi.Output<string>;
     /**
+     * The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+     */
+    public /*out*/ readonly externalDestructionFailureReason!: pulumi.Output<string>;
+    /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */
     public readonly externalProtectionLevelOptions!: pulumi.Output<outputs.cloudkms.v1.ExternalProtectionLevelOptionsResponse>;
@@ -68,6 +72,10 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      * The time this CryptoKeyVersion's key material was generated.
      */
     public /*out*/ readonly generateTime!: pulumi.Output<string>;
+    /**
+     * The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+     */
+    public /*out*/ readonly generationFailureReason!: pulumi.Output<string>;
     /**
      * The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
      */
@@ -125,7 +133,9 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destroyEventTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
+            resourceInputs["externalDestructionFailureReason"] = undefined /*out*/;
             resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["generationFailureReason"] = undefined /*out*/;
             resourceInputs["importFailureReason"] = undefined /*out*/;
             resourceInputs["importJob"] = undefined /*out*/;
             resourceInputs["importTime"] = undefined /*out*/;
@@ -139,8 +149,10 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
             resourceInputs["cryptoKeyId"] = undefined /*out*/;
             resourceInputs["destroyEventTime"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
+            resourceInputs["externalDestructionFailureReason"] = undefined /*out*/;
             resourceInputs["externalProtectionLevelOptions"] = undefined /*out*/;
             resourceInputs["generateTime"] = undefined /*out*/;
+            resourceInputs["generationFailureReason"] = undefined /*out*/;
             resourceInputs["importFailureReason"] = undefined /*out*/;
             resourceInputs["importJob"] = undefined /*out*/;
             resourceInputs["importTime"] = undefined /*out*/;

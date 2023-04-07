@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'BuildOptionsDefaultLogsBucketBehavior',
     'BuildOptionsLogStreamingOption',
     'BuildOptionsLogging',
     'BuildOptionsMachineType',
@@ -20,6 +21,20 @@ __all__ = [
     'TriggerIncludeBuildLogs',
     'WebhookConfigState',
 ]
+
+
+class BuildOptionsDefaultLogsBucketBehavior(str, Enum):
+    """
+    Optional. Option to specify how default logs buckets are setup.
+    """
+    DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED = "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    REGIONAL_USER_OWNED_BUCKET = "REGIONAL_USER_OWNED_BUCKET"
+    """
+    Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+    """
 
 
 class BuildOptionsLogStreamingOption(str, Enum):
@@ -145,7 +160,7 @@ class GitFileSourceRepoType(str, Enum):
     """
     UNKNOWN = "UNKNOWN"
     """
-    The default, unknown repo type.
+    The default, unknown repo type. Don't use it, instead use one of the other repo types.
     """
     CLOUD_SOURCE_REPOSITORIES = "CLOUD_SOURCE_REPOSITORIES"
     """
@@ -171,7 +186,7 @@ class GitRepoSourceRepoType(str, Enum):
     """
     UNKNOWN = "UNKNOWN"
     """
-    The default, unknown repo type.
+    The default, unknown repo type. Don't use it, instead use one of the other repo types.
     """
     CLOUD_SOURCE_REPOSITORIES = "CLOUD_SOURCE_REPOSITORIES"
     """

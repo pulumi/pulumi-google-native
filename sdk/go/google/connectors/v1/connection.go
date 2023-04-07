@@ -48,6 +48,8 @@ type Connection struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 	ServiceDirectory pulumi.StringOutput `pulumi:"serviceDirectory"`
+	// Optional. Ssl config of a connection
+	SslConfig SslConfigResponseOutput `pulumi:"sslConfig"`
 	// Current status of the connection.
 	Status ConnectionStatusResponseOutput `pulumi:"status"`
 	// Optional. Suspended indicates if a user has suspended a connection or not.
@@ -129,6 +131,8 @@ type connectionArgs struct {
 	Project    *string     `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. Ssl config of a connection
+	SslConfig *SslConfig `pulumi:"sslConfig"`
 	// Optional. Suspended indicates if a user has suspended a connection or not.
 	Suspended *bool `pulumi:"suspended"`
 }
@@ -157,6 +161,8 @@ type ConnectionArgs struct {
 	Project    pulumi.StringPtrInput
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount pulumi.StringPtrInput
+	// Optional. Ssl config of a connection
+	SslConfig SslConfigPtrInput
 	// Optional. Suspended indicates if a user has suspended a connection or not.
 	Suspended pulumi.BoolPtrInput
 }
@@ -279,6 +285,11 @@ func (o ConnectionOutput) ServiceAccount() pulumi.StringOutput {
 // The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 func (o ConnectionOutput) ServiceDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ServiceDirectory }).(pulumi.StringOutput)
+}
+
+// Optional. Ssl config of a connection
+func (o ConnectionOutput) SslConfig() SslConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) SslConfigResponseOutput { return v.SslConfig }).(SslConfigResponseOutput)
 }
 
 // Current status of the connection.

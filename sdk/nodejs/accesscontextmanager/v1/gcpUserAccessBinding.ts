@@ -35,9 +35,13 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
     public readonly accessLevels!: pulumi.Output<string[]>;
+    /**
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     */
+    public readonly dryRunAccessLevels!: pulumi.Output<string[]>;
     /**
      * Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
@@ -59,9 +63,6 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accessLevels === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessLevels'");
-            }
             if ((!args || args.groupKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupKey'");
             }
@@ -69,11 +70,13 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["accessLevels"] = args ? args.accessLevels : undefined;
+            resourceInputs["dryRunAccessLevels"] = args ? args.dryRunAccessLevels : undefined;
             resourceInputs["groupKey"] = args ? args.groupKey : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
         } else {
             resourceInputs["accessLevels"] = undefined /*out*/;
+            resourceInputs["dryRunAccessLevels"] = undefined /*out*/;
             resourceInputs["groupKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
@@ -90,9 +93,13 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
  */
 export interface GcpUserAccessBindingArgs {
     /**
-     * Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    accessLevels: pulumi.Input<pulumi.Input<string>[]>;
+    accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+     */
+    dryRunAccessLevels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */

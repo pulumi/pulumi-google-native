@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly Outputs.PostgresqlRdbmsResponse IncludeObjects;
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        public readonly int MaxConcurrentBackfillTasks;
+        /// <summary>
         /// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
         /// </summary>
         public readonly string Publication;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.PostgresqlRdbmsResponse includeObjects,
 
+            int maxConcurrentBackfillTasks,
+
             string publication,
 
             string replicationSlot)
         {
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             Publication = publication;
             ReplicationSlot = replicationSlot;
         }

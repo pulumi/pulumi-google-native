@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly Outputs.MysqlRdbmsResponse IncludeObjects;
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        public readonly int MaxConcurrentBackfillTasks;
+        /// <summary>
         /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         /// </summary>
         public readonly int MaxConcurrentCdcTasks;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.MysqlRdbmsResponse includeObjects,
 
+            int maxConcurrentBackfillTasks,
+
             int maxConcurrentCdcTasks)
         {
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
         }
     }

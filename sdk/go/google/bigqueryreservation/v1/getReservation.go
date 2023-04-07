@@ -37,7 +37,7 @@ type LookupReservationResult struct {
 	Edition string `pulumi:"edition"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots bool `pulumi:"ignoreIdleSlots"`
-	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 	MultiRegionAuxiliary bool `pulumi:"multiRegionAuxiliary"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	Name string `pulumi:"name"`
@@ -109,7 +109,7 @@ func (o LookupReservationResultOutput) IgnoreIdleSlots() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReservationResult) bool { return v.IgnoreIdleSlots }).(pulumi.BoolOutput)
 }
 
-// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
 func (o LookupReservationResultOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReservationResult) bool { return v.MultiRegionAuxiliary }).(pulumi.BoolOutput)
 }

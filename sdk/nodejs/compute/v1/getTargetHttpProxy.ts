@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource.
  */
 export function getTargetHttpProxy(args: GetTargetHttpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetHttpProxyResult> {
 
@@ -60,7 +60,7 @@ export interface GetTargetHttpProxyResult {
     readonly urlMap: string;
 }
 /**
- * Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource.
  */
 export function getTargetHttpProxyOutput(args: GetTargetHttpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetHttpProxyResult> {
     return pulumi.output(args).apply((a: any) => getTargetHttpProxy(a, opts))

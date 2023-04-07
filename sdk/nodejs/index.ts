@@ -62,6 +62,7 @@ import * as dataflow from "./dataflow";
 import * as dataform from "./dataform";
 import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
+import * as datalineage from "./datalineage";
 import * as datamigration from "./datamigration";
 import * as datapipelines from "./datapipelines";
 import * as dataplex from "./dataplex";
@@ -80,6 +81,7 @@ import * as eventarc from "./eventarc";
 import * as file from "./file";
 import * as firebase from "./firebase";
 import * as firebaseappcheck from "./firebaseappcheck";
+import * as firebaseappdistribution from "./firebaseappdistribution";
 import * as firebasedatabase from "./firebasedatabase";
 import * as firebasehosting from "./firebasehosting";
 import * as firebaseml from "./firebaseml";
@@ -100,6 +102,7 @@ import * as logging from "./logging";
 import * as managedidentities from "./managedidentities";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
+import * as migrationcenter from "./migrationcenter";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
 import * as networkconnectivity from "./networkconnectivity";
@@ -197,6 +200,7 @@ export {
     dataform,
     datafusion,
     datalabeling,
+    datalineage,
     datamigration,
     datapipelines,
     dataplex,
@@ -215,6 +219,7 @@ export {
     file,
     firebase,
     firebaseappcheck,
+    firebaseappdistribution,
     firebasedatabase,
     firebasehosting,
     firebaseml,
@@ -235,6 +240,7 @@ export {
     managedidentities,
     memcache,
     metastore,
+    migrationcenter,
     ml,
     monitoring,
     networkconnectivity,

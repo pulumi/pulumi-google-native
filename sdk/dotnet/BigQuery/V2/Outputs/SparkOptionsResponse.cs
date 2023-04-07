@@ -37,11 +37,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> JarUris;
         /// <summary>
-        /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+        /// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+        /// </summary>
+        public readonly string MainClass;
+        /// <summary>
+        /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
         /// </summary>
         public readonly string MainFileUri;
         /// <summary>
-        /// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        /// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<string> jarUris,
 
+            string mainClass,
+
             string mainFileUri,
 
             ImmutableDictionary<string, string> properties,
@@ -78,6 +84,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ContainerImage = containerImage;
             FileUris = fileUris;
             JarUris = jarUris;
+            MainClass = mainClass;
             MainFileUri = mainFileUri;
             Properties = properties;
             PyFileUris = pyFileUris;

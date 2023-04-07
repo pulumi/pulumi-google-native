@@ -26,6 +26,7 @@ __all__ = [
     'MetadataManagementActivityResponse',
     'NetworkConfigResponse',
     'RestoreResponse',
+    'ScalingConfigResponse',
     'SecretResponse',
     'ServiceResponse',
     'TelemetryConfigResponse',
@@ -405,7 +406,9 @@ class HiveMetastoreConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configOverrides":
+        if key == "auxiliaryVersions":
+            suggest = "auxiliary_versions"
+        elif key == "configOverrides":
             suggest = "config_overrides"
         elif key == "kerberosConfig":
             suggest = "kerberos_config"
@@ -422,18 +425,29 @@ class HiveMetastoreConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auxiliary_versions: Mapping[str, str],
                  config_overrides: Mapping[str, str],
                  kerberos_config: 'outputs.KerberosConfigResponse',
                  version: str):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
+        :param Mapping[str, str] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param 'KerberosConfigResponse' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param str version: Immutable. The Hive metastore schema version.
         """
+        pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         pulumi.set(__self__, "config_overrides", config_overrides)
         pulumi.set(__self__, "kerberos_config", kerberos_config)
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="auxiliaryVersions")
+    def auxiliary_versions(self) -> Mapping[str, str]:
+        """
+        A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "auxiliary_versions")
 
     @property
     @pulumi.getter(name="configOverrides")
@@ -831,6 +845,58 @@ class RestoreResponse(dict):
 
 
 @pulumi.output_type
+class ScalingConfigResponse(dict):
+    """
+    Represents the scaling configuration of a metastore service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSize":
+            suggest = "instance_size"
+        elif key == "scalingFactor":
+            suggest = "scaling_factor"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_size: str,
+                 scaling_factor: float):
+        """
+        Represents the scaling configuration of a metastore service.
+        :param str instance_size: An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        :param float scaling_factor: Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        pulumi.set(__self__, "instance_size", instance_size)
+        pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> str:
+        """
+        An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        """
+        return pulumi.get(self, "instance_size")
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> float:
+        """
+        Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
 class SecretResponse(dict):
     """
     A securely stored value.
@@ -897,6 +963,8 @@ class ServiceResponse(dict):
             suggest = "network_config"
         elif key == "releaseChannel":
             suggest = "release_channel"
+        elif key == "scalingConfig":
+            suggest = "scaling_config"
         elif key == "stateMessage":
             suggest = "state_message"
         elif key == "telemetryConfig":
@@ -930,6 +998,7 @@ class ServiceResponse(dict):
                  network_config: 'outputs.NetworkConfigResponse',
                  port: int,
                  release_channel: str,
+                 scaling_config: 'outputs.ScalingConfigResponse',
                  state: str,
                  state_message: str,
                  telemetry_config: 'outputs.TelemetryConfigResponse',
@@ -952,6 +1021,7 @@ class ServiceResponse(dict):
         :param 'NetworkConfigResponse' network_config: The configuration specifying the network settings for the Dataproc Metastore service.
         :param int port: The TCP port at which the metastore service is reached. Default: 9083.
         :param str release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        :param 'ScalingConfigResponse' scaling_config: Scaling configuration of the metastore service.
         :param str state: The current state of the metastore service.
         :param str state_message: Additional information about the current state of the metastore service, if available.
         :param 'TelemetryConfigResponse' telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -973,6 +1043,7 @@ class ServiceResponse(dict):
         pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "release_channel", release_channel)
+        pulumi.set(__self__, "scaling_config", scaling_config)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_message", state_message)
         pulumi.set(__self__, "telemetry_config", telemetry_config)
@@ -1091,6 +1162,14 @@ class ServiceResponse(dict):
         Immutable. The release channel of the service. If unspecified, defaults to STABLE.
         """
         return pulumi.get(self, "release_channel")
+
+    @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> 'outputs.ScalingConfigResponse':
+        """
+        Scaling configuration of the metastore service.
+        """
+        return pulumi.get(self, "scaling_config")
 
     @property
     @pulumi.getter

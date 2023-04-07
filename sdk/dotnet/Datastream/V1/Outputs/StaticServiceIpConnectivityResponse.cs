@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 {
 
     /// <summary>
-    /// Static IP address connectivity.
+    /// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
     /// </summary>
     [OutputType]
     public sealed class StaticServiceIpConnectivityResponse

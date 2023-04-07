@@ -191,7 +191,7 @@ def get_router(project: Optional[str] = None,
                router: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterResult:
     """
-    Returns the specified Router resource. Gets a list of available routers by making a list() request.
+    Returns the specified Router resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -222,6 +222,6 @@ def get_router_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                       router: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
     """
-    Returns the specified Router resource. Gets a list of available routers by making a list() request.
+    Returns the specified Router resource.
     """
     ...

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<Inputs.SecurityPolicyRuleMatcherArgs>? Match { get; set; }
 
         /// <summary>
+        /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        /// </summary>
+        [Input("preconfiguredWafConfig")]
+        public Input<Inputs.SecurityPolicyRulePreconfiguredWafConfigArgs>? PreconfiguredWafConfig { get; set; }
+
+        /// <summary>
         /// If set to true, the specified action is not enforced.
         /// </summary>
         [Input("preview")]

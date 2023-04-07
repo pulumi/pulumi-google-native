@@ -18,6 +18,9 @@ __all__ = [
     'BindingResponse',
     'Condition',
     'ExprResponse',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcResponse',
+    'GoogleIamAdminV1WorkforcePoolProviderSamlResponse',
+    'KeyDataResponse',
     'OidcResponse',
     'SamlResponse',
 ]
@@ -305,6 +308,184 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
+    """
+    Represents an OpenId Connect 1.0 identity provider.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "issuerUri":
+            suggest = "issuer_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamAdminV1WorkforcePoolProviderOidcResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 issuer_uri: str):
+        """
+        Represents an OpenId Connect 1.0 identity provider.
+        :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> str:
+        """
+        The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+
+@pulumi.output_type
+class GoogleIamAdminV1WorkforcePoolProviderSamlResponse(dict):
+    """
+    Represents a SAML identity provider.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpMetadataXml":
+            suggest = "idp_metadata_xml"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamAdminV1WorkforcePoolProviderSamlResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderSamlResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderSamlResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_metadata_xml: str):
+        """
+        Represents a SAML identity provider.
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+        """
+        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+
+    @property
+    @pulumi.getter(name="idpMetadataXml")
+    def idp_metadata_xml(self) -> str:
+        """
+        SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+        """
+        return pulumi.get(self, "idp_metadata_xml")
+
+
+@pulumi.output_type
+class KeyDataResponse(dict):
+    """
+    Represents a public key data along with its format.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keySpec":
+            suggest = "key_spec"
+        elif key == "notAfterTime":
+            suggest = "not_after_time"
+        elif key == "notBeforeTime":
+            suggest = "not_before_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 format: str,
+                 key: str,
+                 key_spec: str,
+                 not_after_time: str,
+                 not_before_time: str):
+        """
+        Represents a public key data along with its format.
+        :param str format: The format of the key.
+        :param str key: The key data. The format of the key is represented by the format field.
+        :param str key_spec: Immutable. The specifications for the key.
+        :param str not_after_time: Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
+        :param str not_before_time: Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key_spec", key_spec)
+        pulumi.set(__self__, "not_after_time", not_after_time)
+        pulumi.set(__self__, "not_before_time", not_before_time)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format of the key.
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key data. The format of the key is represented by the format field.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> str:
+        """
+        Immutable. The specifications for the key.
+        """
+        return pulumi.get(self, "key_spec")
+
+    @property
+    @pulumi.getter(name="notAfterTime")
+    def not_after_time(self) -> str:
+        """
+        Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
+        """
+        return pulumi.get(self, "not_after_time")
+
+    @property
+    @pulumi.getter(name="notBeforeTime")
+    def not_before_time(self) -> str:
+        """
+        Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
+        """
+        return pulumi.get(self, "not_before_time")
 
 
 @pulumi.output_type

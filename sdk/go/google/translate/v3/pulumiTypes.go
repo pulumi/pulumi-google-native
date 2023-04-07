@@ -789,9 +789,9 @@ func (o GlossaryTermsSetResponseOutput) Terms() GlossaryTermResponseArrayOutput 
 
 // Used with unidirectional glossaries.
 type LanguageCodePair struct {
-	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 	SourceLanguageCode string `pulumi:"sourceLanguageCode"`
-	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 	TargetLanguageCode string `pulumi:"targetLanguageCode"`
 }
 
@@ -808,9 +808,9 @@ type LanguageCodePairInput interface {
 
 // Used with unidirectional glossaries.
 type LanguageCodePairArgs struct {
-	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 	SourceLanguageCode pulumi.StringInput `pulumi:"sourceLanguageCode"`
-	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 	TargetLanguageCode pulumi.StringInput `pulumi:"targetLanguageCode"`
 }
 
@@ -892,12 +892,12 @@ func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutputWithContext(ctx conte
 	}).(LanguageCodePairPtrOutput)
 }
 
-// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePair) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
 }
 
-// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairOutput) TargetLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePair) string { return v.TargetLanguageCode }).(pulumi.StringOutput)
 }
@@ -926,7 +926,7 @@ func (o LanguageCodePairPtrOutput) Elem() LanguageCodePairOutput {
 	}).(LanguageCodePairOutput)
 }
 
-// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairPtrOutput) SourceLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePair) *string {
 		if v == nil {
@@ -936,7 +936,7 @@ func (o LanguageCodePairPtrOutput) SourceLanguageCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairPtrOutput) TargetLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePair) *string {
 		if v == nil {
@@ -948,9 +948,9 @@ func (o LanguageCodePairPtrOutput) TargetLanguageCode() pulumi.StringPtrOutput {
 
 // Used with unidirectional glossaries.
 type LanguageCodePairResponse struct {
-	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 	SourceLanguageCode string `pulumi:"sourceLanguageCode"`
-	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 	TargetLanguageCode string `pulumi:"targetLanguageCode"`
 }
 
@@ -969,19 +969,19 @@ func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponseOutputWithCont
 	return o
 }
 
-// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
 }
 
-// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) TargetLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.TargetLanguageCode }).(pulumi.StringOutput)
 }
 
 // Used with equivalent term set glossaries.
 type LanguageCodesSet struct {
-	// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 	LanguageCodes []string `pulumi:"languageCodes"`
 }
 
@@ -998,7 +998,7 @@ type LanguageCodesSetInput interface {
 
 // Used with equivalent term set glossaries.
 type LanguageCodesSetArgs struct {
-	// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 	LanguageCodes pulumi.StringArrayInput `pulumi:"languageCodes"`
 }
 
@@ -1080,7 +1080,7 @@ func (o LanguageCodesSetOutput) ToLanguageCodesSetPtrOutputWithContext(ctx conte
 	}).(LanguageCodesSetPtrOutput)
 }
 
-// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodesSetOutput) LanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LanguageCodesSet) []string { return v.LanguageCodes }).(pulumi.StringArrayOutput)
 }
@@ -1109,7 +1109,7 @@ func (o LanguageCodesSetPtrOutput) Elem() LanguageCodesSetOutput {
 	}).(LanguageCodesSetOutput)
 }
 
-// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodesSetPtrOutput) LanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LanguageCodesSet) []string {
 		if v == nil {
@@ -1121,7 +1121,7 @@ func (o LanguageCodesSetPtrOutput) LanguageCodes() pulumi.StringArrayOutput {
 
 // Used with equivalent term set glossaries.
 type LanguageCodesSetResponse struct {
-	// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+	// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 	LanguageCodes []string `pulumi:"languageCodes"`
 }
 
@@ -1140,7 +1140,7 @@ func (o LanguageCodesSetResponseOutput) ToLanguageCodesSetResponseOutputWithCont
 	return o
 }
 
-// The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+// The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodesSetResponseOutput) LanguageCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LanguageCodesSetResponse) []string { return v.LanguageCodes }).(pulumi.StringArrayOutput)
 }

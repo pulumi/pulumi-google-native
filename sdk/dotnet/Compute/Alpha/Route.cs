@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NextHopGateway { get; private set; } = null!;
 
         /// <summary>
+        /// The full resource name of the network connectivity center hub that should handle matching packets.
+        /// </summary>
+        [Output("nextHopHub")]
+        public Output<string> NextHopHub { get; private set; } = null!;
+
+        /// <summary>
         /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         [Output("nextHopIlb")]

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+// Returns the specified UrlMap resource.
 func LookupRegionUrlMap(ctx *pulumi.Context, args *LookupRegionUrlMapArgs, opts ...pulumi.InvokeOption) (*LookupRegionUrlMapResult, error) {
 	var rv LookupRegionUrlMapResult
 	err := ctx.Invoke("google-native:compute/v1:getRegionUrlMap", args, &rv, opts...)

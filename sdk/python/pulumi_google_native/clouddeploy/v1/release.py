@@ -360,6 +360,7 @@ class Release(pulumi.CustomResource):
             __props__.__dict__["skaffold_version"] = skaffold_version
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["abandoned"] = None
+            __props__.__dict__["condition"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delivery_pipeline_snapshot"] = None
             __props__.__dict__["render_end_time"] = None
@@ -396,6 +397,7 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["abandoned"] = None
         __props__.__dict__["annotations"] = None
         __props__.__dict__["build_artifacts"] = None
+        __props__.__dict__["condition"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delivery_pipeline_id"] = None
         __props__.__dict__["delivery_pipeline_snapshot"] = None
@@ -443,6 +445,14 @@ class Release(pulumi.CustomResource):
         List of artifacts to pass through to Skaffold command.
         """
         return pulumi.get(self, "build_artifacts")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Output['outputs.ReleaseConditionResponse']:
+        """
+        Information around the state of the Release.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="createTime")

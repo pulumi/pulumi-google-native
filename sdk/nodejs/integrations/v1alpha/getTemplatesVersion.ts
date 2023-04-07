@@ -44,6 +44,10 @@ export interface GetTemplatesVersionResult {
      */
     readonly description: string;
     /**
+     * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+     */
+    readonly errorCatcherConfigs: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[];
+    /**
      * Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
      */
     readonly lastModifierEmail: string;

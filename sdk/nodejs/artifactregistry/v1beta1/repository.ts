@@ -40,7 +40,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The time when the repository was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The user-provided description of the repository.
      */
@@ -78,7 +78,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The time when the repository was last updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -91,7 +91,6 @@ export class Repository extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -100,9 +99,10 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -129,10 +129,6 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryArgs {
     /**
-     * The time when the repository was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string>;
@@ -158,8 +154,4 @@ export interface RepositoryArgs {
      * The repository id to use for this repository.
      */
     repositoryId?: pulumi.Input<string>;
-    /**
-     * The time when the repository was last updated.
-     */
-    updateTime?: pulumi.Input<string>;
 }

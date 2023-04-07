@@ -181,6 +181,177 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// Immutable. The specifications for the key.
+type KeyDataKeySpec string
+
+const (
+	// No key specification specified.
+	KeyDataKeySpecKeySpecUnspecified = KeyDataKeySpec("KEY_SPEC_UNSPECIFIED")
+	// A 2048 bit RSA key.
+	KeyDataKeySpecRsa2048 = KeyDataKeySpec("RSA_2048")
+	// A 3072 bit RSA key.
+	KeyDataKeySpecRsa3072 = KeyDataKeySpec("RSA_3072")
+	// A 4096 bit RSA key.
+	KeyDataKeySpecRsa4096 = KeyDataKeySpec("RSA_4096")
+)
+
+func (KeyDataKeySpec) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyDataKeySpec)(nil)).Elem()
+}
+
+func (e KeyDataKeySpec) ToKeyDataKeySpecOutput() KeyDataKeySpecOutput {
+	return pulumi.ToOutput(e).(KeyDataKeySpecOutput)
+}
+
+func (e KeyDataKeySpec) ToKeyDataKeySpecOutputWithContext(ctx context.Context) KeyDataKeySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyDataKeySpecOutput)
+}
+
+func (e KeyDataKeySpec) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput {
+	return e.ToKeyDataKeySpecPtrOutputWithContext(context.Background())
+}
+
+func (e KeyDataKeySpec) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
+	return KeyDataKeySpec(e).ToKeyDataKeySpecOutputWithContext(ctx).ToKeyDataKeySpecPtrOutputWithContext(ctx)
+}
+
+func (e KeyDataKeySpec) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyDataKeySpec) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e KeyDataKeySpec) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e KeyDataKeySpec) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type KeyDataKeySpecOutput struct{ *pulumi.OutputState }
+
+func (KeyDataKeySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyDataKeySpec)(nil)).Elem()
+}
+
+func (o KeyDataKeySpecOutput) ToKeyDataKeySpecOutput() KeyDataKeySpecOutput {
+	return o
+}
+
+func (o KeyDataKeySpecOutput) ToKeyDataKeySpecOutputWithContext(ctx context.Context) KeyDataKeySpecOutput {
+	return o
+}
+
+func (o KeyDataKeySpecOutput) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput {
+	return o.ToKeyDataKeySpecPtrOutputWithContext(context.Background())
+}
+
+func (o KeyDataKeySpecOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyDataKeySpec) *KeyDataKeySpec {
+		return &v
+	}).(KeyDataKeySpecPtrOutput)
+}
+
+func (o KeyDataKeySpecOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyDataKeySpecOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyDataKeySpec) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyDataKeySpecOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyDataKeySpecOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyDataKeySpec) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyDataKeySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyDataKeySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyDataKeySpec)(nil)).Elem()
+}
+
+func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput {
+	return o
+}
+
+func (o KeyDataKeySpecPtrOutput) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
+	return o
+}
+
+func (o KeyDataKeySpecPtrOutput) Elem() KeyDataKeySpecOutput {
+	return o.ApplyT(func(v *KeyDataKeySpec) KeyDataKeySpec {
+		if v != nil {
+			return *v
+		}
+		var ret KeyDataKeySpec
+		return ret
+	}).(KeyDataKeySpecOutput)
+}
+
+func (o KeyDataKeySpecPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyDataKeySpecPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyDataKeySpec) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// KeyDataKeySpecInput is an input type that accepts KeyDataKeySpecArgs and KeyDataKeySpecOutput values.
+// You can construct a concrete instance of `KeyDataKeySpecInput` via:
+//
+//	KeyDataKeySpecArgs{...}
+type KeyDataKeySpecInput interface {
+	pulumi.Input
+
+	ToKeyDataKeySpecOutput() KeyDataKeySpecOutput
+	ToKeyDataKeySpecOutputWithContext(context.Context) KeyDataKeySpecOutput
+}
+
+var keyDataKeySpecPtrType = reflect.TypeOf((**KeyDataKeySpec)(nil)).Elem()
+
+type KeyDataKeySpecPtrInput interface {
+	pulumi.Input
+
+	ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput
+	ToKeyDataKeySpecPtrOutputWithContext(context.Context) KeyDataKeySpecPtrOutput
+}
+
+type keyDataKeySpecPtr string
+
+func KeyDataKeySpecPtr(v string) KeyDataKeySpecPtrInput {
+	return (*keyDataKeySpecPtr)(&v)
+}
+
+func (*keyDataKeySpecPtr) ElementType() reflect.Type {
+	return keyDataKeySpecPtrType
+}
+
+func (in *keyDataKeySpecPtr) ToKeyDataKeySpecPtrOutput() KeyDataKeySpecPtrOutput {
+	return pulumi.ToOutput(in).(KeyDataKeySpecPtrOutput)
+}
+
+func (in *keyDataKeySpecPtr) ToKeyDataKeySpecPtrOutputWithContext(ctx context.Context) KeyDataKeySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyDataKeySpecPtrOutput)
+}
+
 // Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
 type KeyKeyAlgorithm string
 
@@ -869,9 +1040,345 @@ func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) Rol
 	return pulumi.ToOutputWithContext(ctx, in).(RoleStagePtrOutput)
 }
 
+// Immutable. The purpose of the key.
+type WorkforcePoolKeyUse string
+
+const (
+	// KeyUse unspecified.
+	WorkforcePoolKeyUseKeyUseUnspecified = WorkforcePoolKeyUse("KEY_USE_UNSPECIFIED")
+	// The key is used for encryption.
+	WorkforcePoolKeyUseEncryption = WorkforcePoolKeyUse("ENCRYPTION")
+)
+
+func (WorkforcePoolKeyUse) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolKeyUse)(nil)).Elem()
+}
+
+func (e WorkforcePoolKeyUse) ToWorkforcePoolKeyUseOutput() WorkforcePoolKeyUseOutput {
+	return pulumi.ToOutput(e).(WorkforcePoolKeyUseOutput)
+}
+
+func (e WorkforcePoolKeyUse) ToWorkforcePoolKeyUseOutputWithContext(ctx context.Context) WorkforcePoolKeyUseOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkforcePoolKeyUseOutput)
+}
+
+func (e WorkforcePoolKeyUse) ToWorkforcePoolKeyUsePtrOutput() WorkforcePoolKeyUsePtrOutput {
+	return e.ToWorkforcePoolKeyUsePtrOutputWithContext(context.Background())
+}
+
+func (e WorkforcePoolKeyUse) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
+	return WorkforcePoolKeyUse(e).ToWorkforcePoolKeyUseOutputWithContext(ctx).ToWorkforcePoolKeyUsePtrOutputWithContext(ctx)
+}
+
+func (e WorkforcePoolKeyUse) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkforcePoolKeyUse) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkforcePoolKeyUse) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WorkforcePoolKeyUse) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkforcePoolKeyUseOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolKeyUseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolKeyUse)(nil)).Elem()
+}
+
+func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUseOutput() WorkforcePoolKeyUseOutput {
+	return o
+}
+
+func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUseOutputWithContext(ctx context.Context) WorkforcePoolKeyUseOutput {
+	return o
+}
+
+func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUsePtrOutput() WorkforcePoolKeyUsePtrOutput {
+	return o.ToWorkforcePoolKeyUsePtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolKeyUseOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolKeyUse) *WorkforcePoolKeyUse {
+		return &v
+	}).(WorkforcePoolKeyUsePtrOutput)
+}
+
+func (o WorkforcePoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolKeyUseOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkforcePoolKeyUse) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkforcePoolKeyUseOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolKeyUseOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkforcePoolKeyUse) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolKeyUsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolKeyUsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolKeyUse)(nil)).Elem()
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutput() WorkforcePoolKeyUsePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) Elem() WorkforcePoolKeyUseOutput {
+	return o.ApplyT(func(v *WorkforcePoolKeyUse) WorkforcePoolKeyUse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolKeyUse
+		return ret
+	}).(WorkforcePoolKeyUseOutput)
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolKeyUsePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkforcePoolKeyUse) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WorkforcePoolKeyUseInput is an input type that accepts WorkforcePoolKeyUseArgs and WorkforcePoolKeyUseOutput values.
+// You can construct a concrete instance of `WorkforcePoolKeyUseInput` via:
+//
+//	WorkforcePoolKeyUseArgs{...}
+type WorkforcePoolKeyUseInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolKeyUseOutput() WorkforcePoolKeyUseOutput
+	ToWorkforcePoolKeyUseOutputWithContext(context.Context) WorkforcePoolKeyUseOutput
+}
+
+var workforcePoolKeyUsePtrType = reflect.TypeOf((**WorkforcePoolKeyUse)(nil)).Elem()
+
+type WorkforcePoolKeyUsePtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolKeyUsePtrOutput() WorkforcePoolKeyUsePtrOutput
+	ToWorkforcePoolKeyUsePtrOutputWithContext(context.Context) WorkforcePoolKeyUsePtrOutput
+}
+
+type workforcePoolKeyUsePtr string
+
+func WorkforcePoolKeyUsePtr(v string) WorkforcePoolKeyUsePtrInput {
+	return (*workforcePoolKeyUsePtr)(&v)
+}
+
+func (*workforcePoolKeyUsePtr) ElementType() reflect.Type {
+	return workforcePoolKeyUsePtrType
+}
+
+func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutput() WorkforcePoolKeyUsePtrOutput {
+	return pulumi.ToOutput(in).(WorkforcePoolKeyUsePtrOutput)
+}
+
+func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx context.Context) WorkforcePoolKeyUsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkforcePoolKeyUsePtrOutput)
+}
+
+// Immutable. The purpose of the key.
+type WorkloadIdentityPoolKeyUse string
+
+const (
+	// The key use is not known.
+	WorkloadIdentityPoolKeyUseKeyUseUnspecified = WorkloadIdentityPoolKeyUse("KEY_USE_UNSPECIFIED")
+	// The public key is used for encryption purposes.
+	WorkloadIdentityPoolKeyUseEncryption = WorkloadIdentityPoolKeyUse("ENCRYPTION")
+)
+
+func (WorkloadIdentityPoolKeyUse) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolKeyUse)(nil)).Elem()
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToWorkloadIdentityPoolKeyUseOutput() WorkloadIdentityPoolKeyUseOutput {
+	return pulumi.ToOutput(e).(WorkloadIdentityPoolKeyUseOutput)
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToWorkloadIdentityPoolKeyUseOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUseOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkloadIdentityPoolKeyUseOutput)
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToWorkloadIdentityPoolKeyUsePtrOutput() WorkloadIdentityPoolKeyUsePtrOutput {
+	return e.ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
+	return WorkloadIdentityPoolKeyUse(e).ToWorkloadIdentityPoolKeyUseOutputWithContext(ctx).ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx)
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadIdentityPoolKeyUse) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkloadIdentityPoolKeyUseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolKeyUseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolKeyUse)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUseOutput() WorkloadIdentityPoolKeyUseOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUseOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUseOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUsePtrOutput() WorkloadIdentityPoolKeyUsePtrOutput {
+	return o.ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPoolKeyUse) *WorkloadIdentityPoolKeyUse {
+		return &v
+	}).(WorkloadIdentityPoolKeyUsePtrOutput)
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadIdentityPoolKeyUse) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolKeyUseOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadIdentityPoolKeyUse) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolKeyUsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolKeyUsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolKeyUse)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutput() WorkloadIdentityPoolKeyUsePtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) Elem() WorkloadIdentityPoolKeyUseOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolKeyUse) WorkloadIdentityPoolKeyUse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityPoolKeyUse
+		return ret
+	}).(WorkloadIdentityPoolKeyUseOutput)
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolKeyUsePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkloadIdentityPoolKeyUse) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WorkloadIdentityPoolKeyUseInput is an input type that accepts WorkloadIdentityPoolKeyUseArgs and WorkloadIdentityPoolKeyUseOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolKeyUseInput` via:
+//
+//	WorkloadIdentityPoolKeyUseArgs{...}
+type WorkloadIdentityPoolKeyUseInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolKeyUseOutput() WorkloadIdentityPoolKeyUseOutput
+	ToWorkloadIdentityPoolKeyUseOutputWithContext(context.Context) WorkloadIdentityPoolKeyUseOutput
+}
+
+var workloadIdentityPoolKeyUsePtrType = reflect.TypeOf((**WorkloadIdentityPoolKeyUse)(nil)).Elem()
+
+type WorkloadIdentityPoolKeyUsePtrInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolKeyUsePtrOutput() WorkloadIdentityPoolKeyUsePtrOutput
+	ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(context.Context) WorkloadIdentityPoolKeyUsePtrOutput
+}
+
+type workloadIdentityPoolKeyUsePtr string
+
+func WorkloadIdentityPoolKeyUsePtr(v string) WorkloadIdentityPoolKeyUsePtrInput {
+	return (*workloadIdentityPoolKeyUsePtr)(&v)
+}
+
+func (*workloadIdentityPoolKeyUsePtr) ElementType() reflect.Type {
+	return workloadIdentityPoolKeyUsePtrType
+}
+
+func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutput() WorkloadIdentityPoolKeyUsePtrOutput {
+	return pulumi.ToOutput(in).(WorkloadIdentityPoolKeyUsePtrOutput)
+}
+
+func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolKeyUsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkloadIdentityPoolKeyUsePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataKeySpecInput)(nil)).Elem(), KeyDataKeySpec("KEY_SPEC_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataKeySpecPtrInput)(nil)).Elem(), KeyDataKeySpec("KEY_SPEC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyKeyAlgorithmInput)(nil)).Elem(), KeyKeyAlgorithm("KEY_ALG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyKeyAlgorithmPtrInput)(nil)).Elem(), KeyKeyAlgorithm("KEY_ALG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyPrivateKeyTypeInput)(nil)).Elem(), KeyPrivateKeyType("TYPE_UNSPECIFIED"))
@@ -880,8 +1387,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationRoleStagePtrInput)(nil)).Elem(), OrganizationRoleStage("ALPHA"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleStageInput)(nil)).Elem(), RoleStage("ALPHA"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleStagePtrInput)(nil)).Elem(), RoleStage("ALPHA"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolKeyUseInput)(nil)).Elem(), WorkforcePoolKeyUse("KEY_USE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolKeyUsePtrInput)(nil)).Elem(), WorkforcePoolKeyUse("KEY_USE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolKeyUseInput)(nil)).Elem(), WorkloadIdentityPoolKeyUse("KEY_USE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolKeyUsePtrInput)(nil)).Elem(), WorkloadIdentityPoolKeyUse("KEY_USE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(KeyDataKeySpecOutput{})
+	pulumi.RegisterOutputType(KeyDataKeySpecPtrOutput{})
 	pulumi.RegisterOutputType(KeyKeyAlgorithmOutput{})
 	pulumi.RegisterOutputType(KeyKeyAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(KeyPrivateKeyTypeOutput{})
@@ -890,4 +1403,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationRoleStagePtrOutput{})
 	pulumi.RegisterOutputType(RoleStageOutput{})
 	pulumi.RegisterOutputType(RoleStagePtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolKeyUseOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolKeyUsePtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolKeyUseOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolKeyUsePtrOutput{})
 }

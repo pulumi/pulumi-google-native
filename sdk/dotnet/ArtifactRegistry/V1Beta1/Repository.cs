@@ -132,12 +132,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when the repository was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The user-provided description of the repository.
         /// </summary>
         [Input("description")]
@@ -184,12 +178,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }
-
-        /// <summary>
-        /// The time when the repository was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public RepositoryArgs()
         {

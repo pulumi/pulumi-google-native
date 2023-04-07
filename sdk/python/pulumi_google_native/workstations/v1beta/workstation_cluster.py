@@ -30,7 +30,7 @@ class WorkstationClusterArgs:
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
-        :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the cluster.
+        :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
@@ -69,7 +69,7 @@ class WorkstationClusterArgs:
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Input[str]:
         """
-        Required. ID to use for the cluster.
+        Required. ID to use for the workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -236,7 +236,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
-        :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the cluster.
+        :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         """
         ...
     @overload
@@ -491,7 +491,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Output[str]:
         """
-        Required. ID to use for the cluster.
+        Required. ID to use for the workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
 

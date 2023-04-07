@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// Input only. AWS secret access key.
         /// </summary>
         public readonly string SecretAccessKey;
+        /// <summary>
+        /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+        /// </summary>
+        public readonly string SessionToken;
 
         [OutputConstructor]
         private AccessKeyCredentialsResponse(
             string accessKeyId,
 
-            string secretAccessKey)
+            string secretAccessKey,
+
+            string sessionToken)
         {
             AccessKeyId = accessKeyId;
             SecretAccessKey = secretAccessKey;
+            SessionToken = sessionToken;
         }
     }
 }

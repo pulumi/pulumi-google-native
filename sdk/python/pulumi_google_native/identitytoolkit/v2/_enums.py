@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState',
+    'GoogleCloudIdentitytoolkitAdminV2ProviderConfigState',
     'GoogleIamV1AuditLogConfigLogType',
 ]
 
@@ -37,6 +38,28 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState(str, Enum):
     ENABLED = "ENABLED"
     """
     Multi-factor authentication can be used for this project
+    """
+    MANDATORY = "MANDATORY"
+    """
+    Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+    """
+
+
+class GoogleCloudIdentitytoolkitAdminV2ProviderConfigState(str, Enum):
+    """
+    Describes the state of the MultiFactor Authentication type.
+    """
+    MFA_STATE_UNSPECIFIED = "MFA_STATE_UNSPECIFIED"
+    """
+    Illegal State, should not be used.
+    """
+    DISABLED = "DISABLED"
+    """
+    Multi-factor authentication cannot be used for this project.
+    """
+    ENABLED = "ENABLED"
+    """
+    Multi-factor authentication can be used for this project.
     """
     MANDATORY = "MANDATORY"
     """

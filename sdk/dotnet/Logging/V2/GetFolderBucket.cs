@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Logging.V2
     public sealed class GetFolderBucketResult
     {
         /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        public readonly bool AnalyticsEnabled;
+        /// <summary>
         /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         public readonly Outputs.CmekSettingsResponse CmekSettings;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.Logging.V2
 
         [OutputConstructor]
         private GetFolderBucketResult(
+            bool analyticsEnabled,
+
             Outputs.CmekSettingsResponse cmekSettings,
 
             string createTime,
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.Logging.V2
 
             string updateTime)
         {
+            AnalyticsEnabled = analyticsEnabled;
             CmekSettings = cmekSettings;
             CreateTime = createTime;
             Description = description;

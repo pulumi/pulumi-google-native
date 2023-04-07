@@ -142,7 +142,7 @@ def get_target_instance(project: Optional[str] = None,
                         zone: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetInstanceResult:
     """
-    Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+    Returns the specified TargetInstance resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -169,6 +169,6 @@ def get_target_instance_output(project: Optional[pulumi.Input[Optional[str]]] = 
                                zone: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetInstanceResult]:
     """
-    Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+    Returns the specified TargetInstance resource.
     """
     ...

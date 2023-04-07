@@ -73,7 +73,9 @@ __all__ = [
     'GoogleCloudDialogflowV2SmartReplyModelMetadataArgs',
     'GoogleCloudDialogflowV2SpeechToTextConfigArgs',
     'GoogleCloudDialogflowV2SuggestionFeatureArgs',
+    'GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs',
     'GoogleCloudDialogflowV2TextToSpeechSettingsArgs',
+    'GoogleCloudDialogflowV2VoiceSelectionParamsArgs',
 ]
 
 @pulumi.input_type
@@ -3214,6 +3216,94 @@ class GoogleCloudDialogflowV2SuggestionFeatureArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs:
+    def __init__(__self__, *,
+                 effects_profile_id: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pitch: Optional[pulumi.Input[float]] = None,
+                 speaking_rate: Optional[pulumi.Input[float]] = None,
+                 voice: Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsArgs']] = None,
+                 volume_gain_db: Optional[pulumi.Input[float]] = None):
+        """
+        Configuration of how speech should be synthesized.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] effects_profile_id: Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        :param pulumi.Input[float] pitch: Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        :param pulumi.Input[float] speaking_rate: Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        :param pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsArgs'] voice: Optional. The desired voice of the synthesized audio.
+        :param pulumi.Input[float] volume_gain_db: Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        if effects_profile_id is not None:
+            pulumi.set(__self__, "effects_profile_id", effects_profile_id)
+        if pitch is not None:
+            pulumi.set(__self__, "pitch", pitch)
+        if speaking_rate is not None:
+            pulumi.set(__self__, "speaking_rate", speaking_rate)
+        if voice is not None:
+            pulumi.set(__self__, "voice", voice)
+        if volume_gain_db is not None:
+            pulumi.set(__self__, "volume_gain_db", volume_gain_db)
+
+    @property
+    @pulumi.getter(name="effectsProfileId")
+    def effects_profile_id(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+        """
+        return pulumi.get(self, "effects_profile_id")
+
+    @effects_profile_id.setter
+    def effects_profile_id(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "effects_profile_id", value)
+
+    @property
+    @pulumi.getter
+    def pitch(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+        """
+        return pulumi.get(self, "pitch")
+
+    @pitch.setter
+    def pitch(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "pitch", value)
+
+    @property
+    @pulumi.getter(name="speakingRate")
+    def speaking_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+        """
+        return pulumi.get(self, "speaking_rate")
+
+    @speaking_rate.setter
+    def speaking_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "speaking_rate", value)
+
+    @property
+    @pulumi.getter
+    def voice(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsArgs']]:
+        """
+        Optional. The desired voice of the synthesized audio.
+        """
+        return pulumi.get(self, "voice")
+
+    @voice.setter
+    def voice(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsArgs']]):
+        pulumi.set(self, "voice", value)
+
+    @property
+    @pulumi.getter(name="volumeGainDb")
+    def volume_gain_db(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+        """
+        return pulumi.get(self, "volume_gain_db")
+
+    @volume_gain_db.setter
+    def volume_gain_db(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "volume_gain_db", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowV2TextToSpeechSettingsArgs:
     def __init__(__self__, *,
                  output_audio_encoding: pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding'],
@@ -3282,5 +3372,45 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsArgs:
     @synthesize_speech_configs.setter
     def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "synthesize_speech_configs", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2VoiceSelectionParamsArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ssml_gender: Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender']] = None):
+        """
+        Description of which voice to use for speech synthesis.
+        :param pulumi.Input[str] name: Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender.
+        :param pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender'] ssml_gender: Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ssml_gender is not None:
+            pulumi.set(__self__, "ssml_gender", ssml_gender)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ssmlGender")
+    def ssml_gender(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender']]:
+        """
+        Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+        """
+        return pulumi.get(self, "ssml_gender")
+
+    @ssml_gender.setter
+    def ssml_gender(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender']]):
+        pulumi.set(self, "ssml_gender", value)
 
 

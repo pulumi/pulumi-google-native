@@ -84,6 +84,10 @@ var resourceNameByPathOverrides = map[string]string{
 
 	// IAM.
 	"iam_v1.json:v1/organizations/{organizationsId}/roles": "OrganizationRole",
+	// Original: "iam_v1.json:v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/providers"
+	"iam_v1.json:v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/providers":                                                        "WorkforcePoolProvider",
+	"iam_v1.json:v1/locations/{locationsId}/workforcePools/{workforcePoolsId}/providers/{providersId}/keys":                                     "WorkforcePoolKey",
+	"iam_v1.json:v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/providers/{providersId}/keys": "WorkloadIdentityPoolKey",
 
 	// Integrations.
 	"integrations_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/products/{productsId}/integrations/{integrationsId}/versions":                 "Version",
@@ -106,6 +110,9 @@ var resourceNameByPathOverrides = map[string]string{
 	"logging_v2.json:v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}/views":               "BucketView",
 	"logging_v2.json:v2/{v2Id}/{v2Id1}/locations/{locationsId}/buckets":                                        "",
 	"logging_v2.json:v2/{v2Id}/{v2Id1}/sinks":                                                                  "",
+	"logging_v2.json:v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/links": "BillingAccountBucketLink",
+	"logging_v2.json:v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}/links":                 "FolderBucketLink",
+	"logging_v2.json:v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}/links":     "OrganizationBucketLink",
 
 	// Org Policy.
 	"orgpolicy_v2.json:v2/folders/{foldersId}/policies":             "FolderPolicy",
@@ -128,6 +135,10 @@ var resourceNameByPathOverrides = map[string]string{
 
 	// Storage.
 	"storage_v1.json:b/{bucket}/o": "BucketObject",
+
+	// Network Security
+	"networksecurity_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/addressGroups": "OrganizationAddressGroup",
+	"networksecurity_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/addressGroups":           "AddressGroup",
 }
 
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.

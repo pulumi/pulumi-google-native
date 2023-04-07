@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
         /// </summary>
         public readonly string Launch;
         /// <summary>
-        /// Specify `Constraint` for configurations of Cloud Platform resources.
+        /// Specify constraint for configurations of Google Cloud resources.
         /// </summary>
         public readonly Outputs.GoogleCloudOrgpolicyV2PolicySpecResponse Spec;
 

@@ -43,7 +43,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
     public readonly certificateMapEntryId!: pulumi.Output<string>;
     public readonly certificateMapId!: pulumi.Output<string>;
     /**
-     * A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
+     * A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
      */
     public readonly certificates!: pulumi.Output<string[]>;
     /**
@@ -143,7 +143,7 @@ export interface CertificateMapEntryArgs {
     certificateMapEntryId: pulumi.Input<string>;
     certificateMapId: pulumi.Input<string>;
     /**
-     * A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
+     * A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
      */
     certificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**

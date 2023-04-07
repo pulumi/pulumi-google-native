@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public readonly string ConcurrencyMode;
         /// <summary>
+        /// The timestamp at which this database was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
@@ -85,12 +89,22 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The system-generated UUID4 for this Database.
+        /// </summary>
+        public readonly string Uid;
+        /// <summary>
+        /// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetDatabaseResult(
             string appEngineIntegrationMode,
 
             string concurrencyMode,
+
+            string createTime,
 
             string etag,
 
@@ -100,15 +114,22 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
             string name,
 
-            string type)
+            string type,
+
+            string uid,
+
+            string updateTime)
         {
             AppEngineIntegrationMode = appEngineIntegrationMode;
             ConcurrencyMode = concurrencyMode;
+            CreateTime = createTime;
             Etag = etag;
             KeyPrefix = keyPrefix;
             Location = location;
             Name = name;
             Type = type;
+            Uid = uid;
+            UpdateTime = updateTime;
         }
     }
 }

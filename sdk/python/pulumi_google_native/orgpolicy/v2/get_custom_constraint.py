@@ -88,7 +88,7 @@ class GetCustomConstraintResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
         """
         return pulumi.get(self, "name")
 
@@ -96,7 +96,7 @@ class GetCustomConstraintResult:
     @pulumi.getter(name="resourceTypes")
     def resource_types(self) -> Sequence[str]:
         """
-        Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         """
         return pulumi.get(self, "resource_types")
 
@@ -129,7 +129,7 @@ def get_custom_constraint(custom_constraint_id: Optional[str] = None,
                           organization_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomConstraintResult:
     """
-    Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+    Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
     """
     __args__ = dict()
     __args__['customConstraintId'] = custom_constraint_id
@@ -153,6 +153,6 @@ def get_custom_constraint_output(custom_constraint_id: Optional[pulumi.Input[str
                                  organization_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomConstraintResult]:
     """
-    Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+    Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
     """
     ...

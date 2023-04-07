@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+        /// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         /// </summary>
         [Output("paths")]
         public Output<ImmutableArray<Outputs.GoogleCloudDataplexV1DataAttributeBindingPathResponse>> Paths { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        /// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         private InputList<Inputs.GoogleCloudDataplexV1DataAttributeBindingPathArgs>? _paths;
 
         /// <summary>
-        /// Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+        /// Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         /// </summary>
         public InputList<Inputs.GoogleCloudDataplexV1DataAttributeBindingPathArgs> Paths
         {
@@ -218,7 +218,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        /// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }

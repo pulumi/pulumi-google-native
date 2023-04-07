@@ -37,8 +37,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceAccountIamMember{}
 	case "google-native:iam/v1:ServiceAccountIamPolicy":
 		r = &ServiceAccountIamPolicy{}
+	case "google-native:iam/v1:WorkforcePool":
+		r = &WorkforcePool{}
+	case "google-native:iam/v1:WorkforcePoolIamBinding":
+		r = &WorkforcePoolIamBinding{}
+	case "google-native:iam/v1:WorkforcePoolIamMember":
+		r = &WorkforcePoolIamMember{}
+	case "google-native:iam/v1:WorkforcePoolIamPolicy":
+		r = &WorkforcePoolIamPolicy{}
+	case "google-native:iam/v1:WorkforcePoolKey":
+		r = &WorkforcePoolKey{}
+	case "google-native:iam/v1:WorkforcePoolProvider":
+		r = &WorkforcePoolProvider{}
 	case "google-native:iam/v1:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
+	case "google-native:iam/v1:WorkloadIdentityPoolKey":
+		r = &WorkloadIdentityPoolKey{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

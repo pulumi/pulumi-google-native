@@ -28,6 +28,10 @@ export interface GetBillingAccountBucketArgs {
 
 export interface GetBillingAccountBucketResult {
     /**
+     * Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+     */
+    readonly analyticsEnabled: boolean;
+    /**
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     readonly cmekSettings: outputs.logging.v2.CmekSettingsResponse;

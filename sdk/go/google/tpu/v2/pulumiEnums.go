@@ -10,6 +10,177 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Required. Type of TPU.
+type AcceleratorConfigType string
+
+const (
+	// Unspecified version.
+	AcceleratorConfigTypeTypeUnspecified = AcceleratorConfigType("TYPE_UNSPECIFIED")
+	// TPU v2.
+	AcceleratorConfigTypeV2 = AcceleratorConfigType("V2")
+	// TPU v3.
+	AcceleratorConfigTypeV3 = AcceleratorConfigType("V3")
+	// TPU v4.
+	AcceleratorConfigTypeV4 = AcceleratorConfigType("V4")
+)
+
+func (AcceleratorConfigType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigType)(nil)).Elem()
+}
+
+func (e AcceleratorConfigType) ToAcceleratorConfigTypeOutput() AcceleratorConfigTypeOutput {
+	return pulumi.ToOutput(e).(AcceleratorConfigTypeOutput)
+}
+
+func (e AcceleratorConfigType) ToAcceleratorConfigTypeOutputWithContext(ctx context.Context) AcceleratorConfigTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AcceleratorConfigTypeOutput)
+}
+
+func (e AcceleratorConfigType) ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput {
+	return e.ToAcceleratorConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorConfigType) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
+	return AcceleratorConfigType(e).ToAcceleratorConfigTypeOutputWithContext(ctx).ToAcceleratorConfigTypePtrOutputWithContext(ctx)
+}
+
+func (e AcceleratorConfigType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorConfigType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorConfigType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorConfigType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AcceleratorConfigTypeOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigType)(nil)).Elem()
+}
+
+func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypeOutput() AcceleratorConfigTypeOutput {
+	return o
+}
+
+func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypeOutputWithContext(ctx context.Context) AcceleratorConfigTypeOutput {
+	return o
+}
+
+func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput {
+	return o.ToAcceleratorConfigTypePtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigTypeOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorConfigType) *AcceleratorConfigType {
+		return &v
+	}).(AcceleratorConfigTypePtrOutput)
+}
+
+func (o AcceleratorConfigTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorConfigType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AcceleratorConfigTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorConfigType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorConfigTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorConfigType)(nil)).Elem()
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigTypePtrOutput) Elem() AcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v *AcceleratorConfigType) AcceleratorConfigType {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorConfigType
+		return ret
+	}).(AcceleratorConfigTypeOutput)
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AcceleratorConfigType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AcceleratorConfigTypeInput is an input type that accepts AcceleratorConfigTypeArgs and AcceleratorConfigTypeOutput values.
+// You can construct a concrete instance of `AcceleratorConfigTypeInput` via:
+//
+//	AcceleratorConfigTypeArgs{...}
+type AcceleratorConfigTypeInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigTypeOutput() AcceleratorConfigTypeOutput
+	ToAcceleratorConfigTypeOutputWithContext(context.Context) AcceleratorConfigTypeOutput
+}
+
+var acceleratorConfigTypePtrType = reflect.TypeOf((**AcceleratorConfigType)(nil)).Elem()
+
+type AcceleratorConfigTypePtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput
+	ToAcceleratorConfigTypePtrOutputWithContext(context.Context) AcceleratorConfigTypePtrOutput
+}
+
+type acceleratorConfigTypePtr string
+
+func AcceleratorConfigTypePtr(v string) AcceleratorConfigTypePtrInput {
+	return (*acceleratorConfigTypePtr)(&v)
+}
+
+func (*acceleratorConfigTypePtr) ElementType() reflect.Type {
+	return acceleratorConfigTypePtrType
+}
+
+func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutput() AcceleratorConfigTypePtrOutput {
+	return pulumi.ToOutput(in).(AcceleratorConfigTypePtrOutput)
+}
+
+func (in *acceleratorConfigTypePtr) ToAcceleratorConfigTypePtrOutputWithContext(ctx context.Context) AcceleratorConfigTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorConfigTypePtrOutput)
+}
+
 // The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
 type AttachedDiskMode string
 
@@ -353,10 +524,14 @@ func (in *nodeHealthPtr) ToNodeHealthPtrOutputWithContext(ctx context.Context) N
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigTypeInput)(nil)).Elem(), AcceleratorConfigType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigTypePtrInput)(nil)).Elem(), AcceleratorConfigType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskModeInput)(nil)).Elem(), AttachedDiskMode("DISK_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskModePtrInput)(nil)).Elem(), AttachedDiskMode("DISK_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeHealthInput)(nil)).Elem(), NodeHealth("HEALTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeHealthPtrInput)(nil)).Elem(), NodeHealth("HEALTH_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AcceleratorConfigTypeOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskModeOutput{})
 	pulumi.RegisterOutputType(AttachedDiskModePtrOutput{})
 	pulumi.RegisterOutputType(NodeHealthOutput{})

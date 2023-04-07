@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         /// </summary>
         public readonly Outputs.EventTriggerResponse EventTrigger;
         /// <summary>
+        /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        public readonly string KmsKeyName;
+        /// <summary>
         /// Labels associated with this Cloud Function.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
 
             Outputs.EventTriggerResponse eventTrigger,
 
+            string kmsKeyName,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -130,6 +136,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
             Description = description;
             Environment = environment;
             EventTrigger = eventTrigger;
+            KmsKeyName = kmsKeyName;
             Labels = labels;
             Name = name;
             ServiceConfig = serviceConfig;

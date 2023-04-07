@@ -564,6 +564,8 @@ class LunResponse(dict):
         suggest = None
         if key == "bootLun":
             suggest = "boot_lun"
+        elif key == "expireTime":
+            suggest = "expire_time"
         elif key == "multiprotocolType":
             suggest = "multiprotocol_type"
         elif key == "sizeGb":
@@ -586,6 +588,8 @@ class LunResponse(dict):
 
     def __init__(__self__, *,
                  boot_lun: bool,
+                 expire_time: str,
+                 instances: Sequence[str],
                  multiprotocol_type: str,
                  name: str,
                  shareable: bool,
@@ -597,6 +601,8 @@ class LunResponse(dict):
         """
         A storage volume logical unit number (LUN).
         :param bool boot_lun: Display if this LUN is a boot LUN.
+        :param str expire_time: Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+        :param Sequence[str] instances: Instances this Lun is attached to.
         :param str multiprotocol_type: The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
         :param str name: The name of the LUN.
         :param bool shareable: Display if this LUN can be shared between multiple physical servers.
@@ -607,6 +613,8 @@ class LunResponse(dict):
         :param str wwid: The WWID for this LUN.
         """
         pulumi.set(__self__, "boot_lun", boot_lun)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "multiprotocol_type", multiprotocol_type)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "shareable", shareable)
@@ -623,6 +631,22 @@ class LunResponse(dict):
         Display if this LUN is a boot LUN.
         """
         return pulumi.get(self, "boot_lun")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence[str]:
+        """
+        Instances this Lun is attached to.
+        """
+        return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter(name="multiprotocolType")
@@ -1831,6 +1855,8 @@ class VolumeResponse(dict):
             suggest = "current_size_gib"
         elif key == "emergencySizeGib":
             suggest = "emergency_size_gib"
+        elif key == "expireTime":
+            suggest = "expire_time"
         elif key == "maxSizeGib":
             suggest = "max_size_gib"
         elif key == "originallyRequestedSizeGib":
@@ -1868,10 +1894,13 @@ class VolumeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached: bool,
                  auto_grown_size_gib: str,
                  boot_volume: bool,
                  current_size_gib: str,
                  emergency_size_gib: str,
+                 expire_time: str,
+                 instances: Sequence[str],
                  labels: Mapping[str, str],
                  max_size_gib: str,
                  name: str,
@@ -1892,10 +1921,13 @@ class VolumeResponse(dict):
                  workload_profile: str):
         """
         A storage volume.
+        :param bool attached: Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
         :param str auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
         :param bool boot_volume: Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
         :param str current_size_gib: The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
         :param str emergency_size_gib: Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
+        :param str expire_time: Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+        :param Sequence[str] instances: Instances this Volume is attached to. This field is set only in Get requests.
         :param Mapping[str, str] labels: Labels as key value pairs.
         :param str max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
         :param str name: The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
@@ -1915,10 +1947,13 @@ class VolumeResponse(dict):
         :param str storage_type: The storage type for this volume.
         :param str workload_profile: The workload profile for the volume.
         """
+        pulumi.set(__self__, "attached", attached)
         pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
         pulumi.set(__self__, "boot_volume", boot_volume)
         pulumi.set(__self__, "current_size_gib", current_size_gib)
         pulumi.set(__self__, "emergency_size_gib", emergency_size_gib)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_size_gib", max_size_gib)
         pulumi.set(__self__, "name", name)
@@ -1937,6 +1972,14 @@ class VolumeResponse(dict):
         pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         pulumi.set(__self__, "storage_type", storage_type)
         pulumi.set(__self__, "workload_profile", workload_profile)
+
+    @property
+    @pulumi.getter
+    def attached(self) -> bool:
+        """
+        Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
+        """
+        return pulumi.get(self, "attached")
 
     @property
     @pulumi.getter(name="autoGrownSizeGib")
@@ -1969,6 +2012,22 @@ class VolumeResponse(dict):
         Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
         """
         return pulumi.get(self, "emergency_size_gib")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def instances(self) -> Sequence[str]:
+        """
+        Instances this Volume is attached to. This field is set only in Get requests.
+        """
+        return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
+    def __init__(__self__, create_time=None, database_persistence_policy=None, description=None, error_catcher_configs=None, integration_parameters=None, integration_parameters_internal=None, last_modifier_email=None, lock_holder=None, name=None, origin=None, parent_template_id=None, run_as_service_account=None, snapshot_number=None, state=None, status=None, task_configs=None, task_configs_internal=None, teardown=None, trigger_configs=None, trigger_configs_internal=None, update_time=None, user_label=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,6 +29,9 @@ class GetVersionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if error_catcher_configs and not isinstance(error_catcher_configs, list):
+            raise TypeError("Expected argument 'error_catcher_configs' to be a list")
+        pulumi.set(__self__, "error_catcher_configs", error_catcher_configs)
         if integration_parameters and not isinstance(integration_parameters, list):
             raise TypeError("Expected argument 'integration_parameters' to be a list")
         pulumi.set(__self__, "integration_parameters", integration_parameters)
@@ -50,6 +53,9 @@ class GetVersionResult:
         if parent_template_id and not isinstance(parent_template_id, str):
             raise TypeError("Expected argument 'parent_template_id' to be a str")
         pulumi.set(__self__, "parent_template_id", parent_template_id)
+        if run_as_service_account and not isinstance(run_as_service_account, str):
+            raise TypeError("Expected argument 'run_as_service_account' to be a str")
+        pulumi.set(__self__, "run_as_service_account", run_as_service_account)
         if snapshot_number and not isinstance(snapshot_number, str):
             raise TypeError("Expected argument 'snapshot_number' to be a str")
         pulumi.set(__self__, "snapshot_number", snapshot_number)
@@ -106,6 +112,14 @@ class GetVersionResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="errorCatcherConfigs")
+    def error_catcher_configs(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse']:
+        """
+        Optional. Error Catch Task configuration for the integration. It's optional.
+        """
+        return pulumi.get(self, "error_catcher_configs")
+
+    @property
     @pulumi.getter(name="integrationParameters")
     def integration_parameters(self) -> Sequence['outputs.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse']:
         """
@@ -160,6 +174,14 @@ class GetVersionResult:
         Optional. The id of the template which was used to create this integration_version.
         """
         return pulumi.get(self, "parent_template_id")
+
+    @property
+    @pulumi.getter(name="runAsServiceAccount")
+    def run_as_service_account(self) -> str:
+        """
+        Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+        """
+        return pulumi.get(self, "run_as_service_account")
 
     @property
     @pulumi.getter(name="snapshotNumber")
@@ -251,6 +273,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             create_time=self.create_time,
             database_persistence_policy=self.database_persistence_policy,
             description=self.description,
+            error_catcher_configs=self.error_catcher_configs,
             integration_parameters=self.integration_parameters,
             integration_parameters_internal=self.integration_parameters_internal,
             last_modifier_email=self.last_modifier_email,
@@ -258,6 +281,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             name=self.name,
             origin=self.origin,
             parent_template_id=self.parent_template_id,
+            run_as_service_account=self.run_as_service_account,
             snapshot_number=self.snapshot_number,
             state=self.state,
             status=self.status,
@@ -292,6 +316,7 @@ def get_version(integration_id: Optional[str] = None,
         create_time=__ret__.create_time,
         database_persistence_policy=__ret__.database_persistence_policy,
         description=__ret__.description,
+        error_catcher_configs=__ret__.error_catcher_configs,
         integration_parameters=__ret__.integration_parameters,
         integration_parameters_internal=__ret__.integration_parameters_internal,
         last_modifier_email=__ret__.last_modifier_email,
@@ -299,6 +324,7 @@ def get_version(integration_id: Optional[str] = None,
         name=__ret__.name,
         origin=__ret__.origin,
         parent_template_id=__ret__.parent_template_id,
+        run_as_service_account=__ret__.run_as_service_account,
         snapshot_number=__ret__.snapshot_number,
         state=__ret__.state,
         status=__ret__.status,

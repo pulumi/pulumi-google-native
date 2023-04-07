@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class ContainerPortResponse
     {
         /// <summary>
-        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// Port number the container listens on. If present, this must be a valid port number, 0 &lt; x &lt; 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
         /// </summary>
         public readonly int ContainerPort;
         /// <summary>

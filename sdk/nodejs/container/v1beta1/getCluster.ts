@@ -124,6 +124,10 @@ export interface GetClusterResult {
      */
     readonly expireTime: string;
     /**
+     * Fleet information for the cluster.
+     */
+    readonly fleet: outputs.container.v1beta1.FleetResponse;
+    /**
      * Configuration for Identity Service component.
      */
     readonly identityServiceConfig: outputs.container.v1beta1.IdentityServiceConfigResponse;

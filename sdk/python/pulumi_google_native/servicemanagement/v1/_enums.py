@@ -38,6 +38,10 @@ class ApiSyntax(str, Enum):
     """
     Syntax `proto3`.
     """
+    SYNTAX_EDITIONS = "SYNTAX_EDITIONS"
+    """
+    Syntax `editions`.
+    """
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -138,6 +142,10 @@ class EnumSyntax(str, Enum):
     SYNTAX_PROTO3 = "SYNTAX_PROTO3"
     """
     Syntax `proto3`.
+    """
+    SYNTAX_EDITIONS = "SYNTAX_EDITIONS"
+    """
+    Syntax `editions`.
     """
 
 
@@ -274,6 +282,10 @@ class MethodSyntax(str, Enum):
     SYNTAX_PROTO3 = "SYNTAX_PROTO3"
     """
     Syntax `proto3`.
+    """
+    SYNTAX_EDITIONS = "SYNTAX_EDITIONS"
+    """
+    Syntax `editions`.
     """
 
 
@@ -518,4 +530,8 @@ class TypeSyntax(str, Enum):
     SYNTAX_PROTO3 = "SYNTAX_PROTO3"
     """
     Syntax `proto3`.
+    """
+    SYNTAX_EDITIONS = "SYNTAX_EDITIONS"
+    """
+    Syntax `editions`.
     """

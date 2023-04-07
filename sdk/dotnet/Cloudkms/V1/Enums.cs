@@ -146,6 +146,18 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// This version was not imported successfully. It may not be used, enabled, disabled, or destroyed. The submitted key material has been discarded. Additional details can be found in CryptoKeyVersion.import_failure_reason.
         /// </summary>
         public static CryptoKeyVersionState ImportFailed { get; } = new CryptoKeyVersionState("IMPORT_FAILED");
+        /// <summary>
+        /// This version was not generated successfully. It may not be used, enabled, disabled, or destroyed. Additional details can be found in CryptoKeyVersion.generation_failure_reason.
+        /// </summary>
+        public static CryptoKeyVersionState GenerationFailed { get; } = new CryptoKeyVersionState("GENERATION_FAILED");
+        /// <summary>
+        /// This version was destroyed, and it may not be used or enabled again. Cloud KMS is waiting for the corresponding key material residing in an external key manager to be destroyed.
+        /// </summary>
+        public static CryptoKeyVersionState PendingExternalDestruction { get; } = new CryptoKeyVersionState("PENDING_EXTERNAL_DESTRUCTION");
+        /// <summary>
+        /// This version was destroyed, and it may not be used or enabled again. However, Cloud KMS could not confirm that the corresponding key material residing in an external key manager was destroyed. Additional details can be found in CryptoKeyVersion.external_destruction_failure_reason.
+        /// </summary>
+        public static CryptoKeyVersionState ExternalDestructionFailed { get; } = new CryptoKeyVersionState("EXTERNAL_DESTRUCTION_FAILED");
 
         public static bool operator ==(CryptoKeyVersionState left, CryptoKeyVersionState right) => left.Equals(right);
         public static bool operator !=(CryptoKeyVersionState left, CryptoKeyVersionState right) => !left.Equals(right);
@@ -349,6 +361,47 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is CryptoKeyVersionTemplateProtectionLevel other && Equals(other);
         public bool Equals(CryptoKeyVersionTemplateProtectionLevel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct EkmConnectionKeyManagementMode : IEquatable<EkmConnectionKeyManagementMode>
+    {
+        private readonly string _value;
+
+        private EkmConnectionKeyManagementMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified.
+        /// </summary>
+        public static EkmConnectionKeyManagementMode KeyManagementModeUnspecified { get; } = new EkmConnectionKeyManagementMode("KEY_MANAGEMENT_MODE_UNSPECIFIED");
+        /// <summary>
+        /// EKM-side key management operations on CryptoKeys created with this EkmConnection must be initiated from the EKM directly and cannot be performed from Cloud KMS. This means that: * When creating a CryptoKeyVersion associated with this EkmConnection, the caller must supply the key path of pre-existing external key material that will be linked to the CryptoKeyVersion. * Destruction of external key material cannot be requested via the Cloud KMS API and must be performed directly in the EKM. * Automatic rotation of key material is not supported.
+        /// </summary>
+        public static EkmConnectionKeyManagementMode Manual { get; } = new EkmConnectionKeyManagementMode("MANUAL");
+        /// <summary>
+        /// All CryptoKeys created with this EkmConnection use EKM-side key management operations initiated from Cloud KMS. This means that: * When a CryptoKeyVersion associated with this EkmConnection is created, the EKM automatically generates new key material and a new key path. The caller cannot supply the key path of pre-existing external key material. * Destruction of external key material associated with this EkmConnection can be requested by calling DestroyCryptoKeyVersion. * Automatic rotation of key material is supported.
+        /// </summary>
+        public static EkmConnectionKeyManagementMode CloudKms { get; } = new EkmConnectionKeyManagementMode("CLOUD_KMS");
+
+        public static bool operator ==(EkmConnectionKeyManagementMode left, EkmConnectionKeyManagementMode right) => left.Equals(right);
+        public static bool operator !=(EkmConnectionKeyManagementMode left, EkmConnectionKeyManagementMode right) => !left.Equals(right);
+
+        public static explicit operator string(EkmConnectionKeyManagementMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EkmConnectionKeyManagementMode other && Equals(other);
+        public bool Equals(EkmConnectionKeyManagementMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

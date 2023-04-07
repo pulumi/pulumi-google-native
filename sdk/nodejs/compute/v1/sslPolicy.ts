@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
+ * Returns the specified SSL policy resource.
  */
 export class SslPolicy extends pulumi.CustomResource {
     /**

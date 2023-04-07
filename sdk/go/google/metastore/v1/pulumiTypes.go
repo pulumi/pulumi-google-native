@@ -1321,6 +1321,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfig struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -1342,6 +1344,8 @@ type HiveMetastoreConfigInput interface {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigArgs struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions pulumi.StringMapInput `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -1428,6 +1432,11 @@ func (o HiveMetastoreConfigOutput) ToHiveMetastoreConfigPtrOutputWithContext(ctx
 	}).(HiveMetastoreConfigPtrOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.AuxiliaryVersions }).(pulumi.StringMapOutput)
+}
+
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
@@ -1467,6 +1476,16 @@ func (o HiveMetastoreConfigPtrOutput) Elem() HiveMetastoreConfigOutput {
 	}).(HiveMetastoreConfigOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigPtrOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryVersions
+	}).(pulumi.StringMapOutput)
+}
+
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 func (o HiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HiveMetastoreConfig) map[string]string {
@@ -1499,6 +1518,8 @@ func (o HiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
 
 // Specifies configuration information specific to running Hive metastore software as the metastore service.
 type HiveMetastoreConfigResponse struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions map[string]string `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
 	ConfigOverrides map[string]string `pulumi:"configOverrides"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
@@ -1520,6 +1541,11 @@ func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutput()
 
 func (o HiveMetastoreConfigResponseOutput) ToHiveMetastoreConfigResponseOutputWithContext(ctx context.Context) HiveMetastoreConfigResponseOutput {
 	return o
+}
+
+// A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o HiveMetastoreConfigResponseOutput) AuxiliaryVersions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveMetastoreConfigResponse) map[string]string { return v.AuxiliaryVersions }).(pulumi.StringMapOutput)
 }
 
 // A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
@@ -2301,6 +2327,198 @@ func (o RestoreResponseArrayOutput) Index(i pulumi.IntInput) RestoreResponseOutp
 	}).(RestoreResponseOutput)
 }
 
+// Represents the scaling configuration of a metastore service.
+type ScalingConfig struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize *ScalingConfigInstanceSize `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+}
+
+// ScalingConfigInput is an input type that accepts ScalingConfigArgs and ScalingConfigOutput values.
+// You can construct a concrete instance of `ScalingConfigInput` via:
+//
+//	ScalingConfigArgs{...}
+type ScalingConfigInput interface {
+	pulumi.Input
+
+	ToScalingConfigOutput() ScalingConfigOutput
+	ToScalingConfigOutputWithContext(context.Context) ScalingConfigOutput
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigArgs struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize ScalingConfigInstanceSizePtrInput `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+}
+
+func (ScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfig)(nil)).Elem()
+}
+
+func (i ScalingConfigArgs) ToScalingConfigOutput() ScalingConfigOutput {
+	return i.ToScalingConfigOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigArgs) ToScalingConfigOutputWithContext(ctx context.Context) ScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigOutput)
+}
+
+func (i ScalingConfigArgs) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return i.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigArgs) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigOutput).ToScalingConfigPtrOutputWithContext(ctx)
+}
+
+// ScalingConfigPtrInput is an input type that accepts ScalingConfigArgs, ScalingConfigPtr and ScalingConfigPtrOutput values.
+// You can construct a concrete instance of `ScalingConfigPtrInput` via:
+//
+//	        ScalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToScalingConfigPtrOutput() ScalingConfigPtrOutput
+	ToScalingConfigPtrOutputWithContext(context.Context) ScalingConfigPtrOutput
+}
+
+type scalingConfigPtrType ScalingConfigArgs
+
+func ScalingConfigPtr(v *ScalingConfigArgs) ScalingConfigPtrInput {
+	return (*scalingConfigPtrType)(v)
+}
+
+func (*scalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfig)(nil)).Elem()
+}
+
+func (i *scalingConfigPtrType) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return i.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *scalingConfigPtrType) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigPtrOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfig)(nil)).Elem()
+}
+
+func (o ScalingConfigOutput) ToScalingConfigOutput() ScalingConfigOutput {
+	return o
+}
+
+func (o ScalingConfigOutput) ToScalingConfigOutputWithContext(ctx context.Context) ScalingConfigOutput {
+	return o
+}
+
+func (o ScalingConfigOutput) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return o.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigOutput) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingConfig) *ScalingConfig {
+		return &v
+	}).(ScalingConfigPtrOutput)
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigOutput) InstanceSize() ScalingConfigInstanceSizePtrOutput {
+	return o.ApplyT(func(v ScalingConfig) *ScalingConfigInstanceSize { return v.InstanceSize }).(ScalingConfigInstanceSizePtrOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfig) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+type ScalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfig)(nil)).Elem()
+}
+
+func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return o
+}
+
+func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return o
+}
+
+func (o ScalingConfigPtrOutput) Elem() ScalingConfigOutput {
+	return o.ApplyT(func(v *ScalingConfig) ScalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingConfig
+		return ret
+	}).(ScalingConfigOutput)
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigPtrOutput) InstanceSize() ScalingConfigInstanceSizePtrOutput {
+	return o.ApplyT(func(v *ScalingConfig) *ScalingConfigInstanceSize {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(ScalingConfigInstanceSizePtrOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ScalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigResponse struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize string `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor float64 `pulumi:"scalingFactor"`
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigResponse)(nil)).Elem()
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutput() ScalingConfigResponseOutput {
+	return o
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ctx context.Context) ScalingConfigResponseOutput {
+	return o
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigResponseOutput) InstanceSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) string { return v.InstanceSize }).(pulumi.StringOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigResponseOutput) ScalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v ScalingConfigResponse) float64 { return v.ScalingFactor }).(pulumi.Float64Output)
+}
+
 // A securely stored value.
 type Secret struct {
 	// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -2497,6 +2715,8 @@ type ServiceResponse struct {
 	Port int `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel string `pulumi:"releaseChannel"`
+	// Scaling configuration of the metastore service.
+	ScalingConfig ScalingConfigResponse `pulumi:"scalingConfig"`
 	// The current state of the metastore service.
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -2594,6 +2814,11 @@ func (o ServiceResponseOutput) Port() pulumi.IntOutput {
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 func (o ServiceResponseOutput) ReleaseChannel() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// Scaling configuration of the metastore service.
+func (o ServiceResponseOutput) ScalingConfig() ScalingConfigResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) ScalingConfigResponse { return v.ScalingConfig }).(ScalingConfigResponseOutput)
 }
 
 // The current state of the metastore service.
@@ -2815,6 +3040,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInput)(nil)).Elem(), ScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigPtrInput)(nil)).Elem(), ScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigInput)(nil)).Elem(), TelemetryConfigArgs{})
@@ -2861,6 +3088,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigOutput{})
+	pulumi.RegisterOutputType(ScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ScalingConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})

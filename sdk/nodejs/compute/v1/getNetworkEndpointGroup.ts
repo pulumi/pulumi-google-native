@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+ * Returns the specified network endpoint group.
  */
 export function getNetworkEndpointGroup(args: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
 
@@ -98,7 +98,7 @@ export interface GetNetworkEndpointGroupResult {
     readonly zone: string;
 }
 /**
- * Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+ * Returns the specified network endpoint group.
  */
 export function getNetworkEndpointGroupOutput(args: GetNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkEndpointGroupResult> {
     return pulumi.output(args).apply((a: any) => getNetworkEndpointGroup(a, opts))

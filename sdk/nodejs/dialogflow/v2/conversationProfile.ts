@@ -92,6 +92,10 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     public readonly timeZone!: pulumi.Output<string>;
     /**
+     * Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+     */
+    public readonly ttsConfig!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse>;
+    /**
      * Update time of the conversation profile.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -124,6 +128,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
             resourceInputs["sttConfig"] = args ? args.sttConfig : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["ttsConfig"] = args ? args.ttsConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
@@ -142,6 +147,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["sttConfig"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
+            resourceInputs["ttsConfig"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -205,4 +211,8 @@ export interface ConversationProfileArgs {
      * The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
      */
     timeZone?: pulumi.Input<string>;
+    /**
+     * Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+     */
+    ttsConfig?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs>;
 }

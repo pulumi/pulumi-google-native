@@ -64,6 +64,8 @@ type LookupNoteResult struct {
 	Upgrade UpgradeNoteResponse `pulumi:"upgrade"`
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityNoteResponse `pulumi:"vulnerability"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNoteResponse `pulumi:"vulnerabilityAssessment"`
 }
 
 func LookupNoteOutput(ctx *pulumi.Context, args LookupNoteOutputArgs, opts ...pulumi.InvokeOption) LookupNoteResultOutput {
@@ -195,6 +197,11 @@ func (o LookupNoteResultOutput) Upgrade() UpgradeNoteResponseOutput {
 // A note describing a package vulnerability.
 func (o LookupNoteResultOutput) Vulnerability() VulnerabilityNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) VulnerabilityNoteResponse { return v.Vulnerability }).(VulnerabilityNoteResponseOutput)
+}
+
+// A note describing a vulnerability assessment.
+func (o LookupNoteResultOutput) VulnerabilityAssessment() VulnerabilityAssessmentNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) VulnerabilityAssessmentNoteResponse { return v.VulnerabilityAssessment }).(VulnerabilityAssessmentNoteResponseOutput)
 }
 
 func init() {

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNoteResult:
-    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, expiration_time=None, image=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, short_description=None, update_time=None, upgrade=None, vulnerability=None):
+    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, expiration_time=None, image=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, short_description=None, update_time=None, upgrade=None, vulnerability=None, vulnerability_assessment=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -77,6 +77,9 @@ class GetNoteResult:
         if vulnerability and not isinstance(vulnerability, dict):
             raise TypeError("Expected argument 'vulnerability' to be a dict")
         pulumi.set(__self__, "vulnerability", vulnerability)
+        if vulnerability_assessment and not isinstance(vulnerability_assessment, dict):
+            raise TypeError("Expected argument 'vulnerability_assessment' to be a dict")
+        pulumi.set(__self__, "vulnerability_assessment", vulnerability_assessment)
 
     @property
     @pulumi.getter
@@ -230,6 +233,14 @@ class GetNoteResult:
         """
         return pulumi.get(self, "vulnerability")
 
+    @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> 'outputs.VulnerabilityAssessmentNoteResponse':
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
+
 
 class AwaitableGetNoteResult(GetNoteResult):
     # pylint: disable=using-constant-test
@@ -255,7 +266,8 @@ class AwaitableGetNoteResult(GetNoteResult):
             short_description=self.short_description,
             update_time=self.update_time,
             upgrade=self.upgrade,
-            vulnerability=self.vulnerability)
+            vulnerability=self.vulnerability,
+            vulnerability_assessment=self.vulnerability_assessment)
 
 
 def get_note(note_id: Optional[str] = None,
@@ -289,7 +301,8 @@ def get_note(note_id: Optional[str] = None,
         short_description=__ret__.short_description,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,
-        vulnerability=__ret__.vulnerability)
+        vulnerability=__ret__.vulnerability,
+        vulnerability_assessment=__ret__.vulnerability_assessment)
 
 
 @_utilities.lift_output_func(get_note)

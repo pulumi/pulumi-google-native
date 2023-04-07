@@ -60,6 +60,10 @@ export interface GetTargetResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Information specifying a multiTarget.
+     */
+    readonly multiTarget: outputs.clouddeploy.v1.MultiTargetResponse;
+    /**
      * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */
     readonly name: string;

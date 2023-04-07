@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string ApproveTime;
         /// <summary>
+        /// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// </summary>
+        public readonly string ControllerRollout;
+        /// <summary>
         /// Time at which the `Rollout` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -160,6 +164,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             string approveTime,
 
+            string controllerRollout,
+
             string createTime,
 
             string deployEndTime,
@@ -195,6 +201,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Annotations = annotations;
             ApprovalState = approvalState;
             ApproveTime = approveTime;
+            ControllerRollout = controllerRollout;
             CreateTime = createTime;
             DeployEndTime = deployEndTime;
             DeployFailureCause = deployFailureCause;

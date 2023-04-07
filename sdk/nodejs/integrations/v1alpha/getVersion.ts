@@ -44,6 +44,10 @@ export interface GetVersionResult {
      */
     readonly description: string;
     /**
+     * Optional. Error Catch Task configuration for the integration. It's optional.
+     */
+    readonly errorCatcherConfigs: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[];
+    /**
      * Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
      */
     readonly integrationParameters: outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaIntegrationParameterResponse[];
@@ -71,6 +75,10 @@ export interface GetVersionResult {
      * Optional. The id of the template which was used to create this integration_version.
      */
     readonly parentTemplateId: string;
+    /**
+     * Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+     */
+    readonly runAsServiceAccount: string;
     /**
      * Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
      */

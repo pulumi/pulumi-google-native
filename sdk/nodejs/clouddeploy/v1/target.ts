@@ -71,6 +71,10 @@ export class Target extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Information specifying a multiTarget.
+     */
+    public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.v1.MultiTargetResponse>;
+    /**
      * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
@@ -126,6 +130,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["gke"] = args ? args.gke : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multiTarget"] = args ? args.multiTarget : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -146,6 +151,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["gke"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["multiTarget"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -196,6 +202,10 @@ export interface TargetArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Information specifying a multiTarget.
+     */
+    multiTarget?: pulumi.Input<inputs.clouddeploy.v1.MultiTargetArgs>;
     /**
      * Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
      */

@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// A list of service accounts indicating the sets of instances that are applied with this rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetServiceAccounts;
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        public readonly bool TlsInspect;
 
         [OutputConstructor]
         private FirewallPolicyRuleResponse(
@@ -101,7 +105,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> targetSecureTags,
 
-            ImmutableArray<string> targetServiceAccounts)
+            ImmutableArray<string> targetServiceAccounts,
+
+            bool tlsInspect)
         {
             Action = action;
             Description = description;
@@ -117,6 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             TargetResources = targetResources;
             TargetSecureTags = targetSecureTags;
             TargetServiceAccounts = targetServiceAccounts;
+            TlsInspect = tlsInspect;
         }
     }
 }

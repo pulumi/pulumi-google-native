@@ -35,6 +35,8 @@ type LookupFunctionResult struct {
 	Environment string `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerResponse `pulumi:"eventTrigger"`
+	// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Labels associated with this Cloud Function.
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
@@ -104,6 +106,11 @@ func (o LookupFunctionResultOutput) Environment() pulumi.StringOutput {
 // An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 func (o LookupFunctionResultOutput) EventTrigger() EventTriggerResponseOutput {
 	return o.ApplyT(func(v LookupFunctionResult) EventTriggerResponse { return v.EventTrigger }).(EventTriggerResponseOutput)
+}
+
+// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // Labels associated with this Cloud Function.

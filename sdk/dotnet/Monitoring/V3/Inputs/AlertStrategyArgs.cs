@@ -21,6 +21,18 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         [Input("autoClose")]
         public Input<string>? AutoClose { get; set; }
 
+        [Input("notificationChannelStrategy")]
+        private InputList<Inputs.NotificationChannelStrategyArgs>? _notificationChannelStrategy;
+
+        /// <summary>
+        /// Control how notifications will be sent out, on a per-channel basis.
+        /// </summary>
+        public InputList<Inputs.NotificationChannelStrategyArgs> NotificationChannelStrategy
+        {
+            get => _notificationChannelStrategy ?? (_notificationChannelStrategy = new InputList<Inputs.NotificationChannelStrategyArgs>());
+            set => _notificationChannelStrategy = value;
+        }
+
         /// <summary>
         /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>

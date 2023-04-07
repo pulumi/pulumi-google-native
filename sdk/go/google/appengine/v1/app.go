@@ -40,6 +40,8 @@ type App struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full path to the Application resource in the API. Example: apps/myapp.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The project and location in which the application should be created, specified in the format projects/*/locations/*
+	Parent pulumi.StringPtrOutput `pulumi:"parent"`
 	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Serving status of this application.
@@ -94,14 +96,14 @@ type appArgs struct {
 	// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
 	DispatchRules []UrlDispatchRule `pulumi:"dispatchRules"`
 	// The feature specific settings to be used in the application.
-	FeatureSettings *FeatureSettings `pulumi:"featureSettings"`
-	// The Google Container Registry domain used for storing managed build docker images for this application.
-	GcrDomain *string             `pulumi:"gcrDomain"`
-	Iap       *IdentityAwareProxy `pulumi:"iap"`
+	FeatureSettings *FeatureSettings    `pulumi:"featureSettings"`
+	Iap             *IdentityAwareProxy `pulumi:"iap"`
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id *string `pulumi:"id"`
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location *string `pulumi:"location"`
+	// The project and location in which the application should be created, specified in the format projects/*/locations/*
+	Parent *string `pulumi:"parent"`
 	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Serving status of this application.
@@ -120,13 +122,13 @@ type AppArgs struct {
 	DispatchRules UrlDispatchRuleArrayInput
 	// The feature specific settings to be used in the application.
 	FeatureSettings FeatureSettingsPtrInput
-	// The Google Container Registry domain used for storing managed build docker images for this application.
-	GcrDomain pulumi.StringPtrInput
-	Iap       IdentityAwareProxyPtrInput
+	Iap             IdentityAwareProxyPtrInput
 	// Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
 	Id pulumi.StringPtrInput
 	// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
 	Location pulumi.StringPtrInput
+	// The project and location in which the application should be created, specified in the format projects/*/locations/*
+	Parent pulumi.StringPtrInput
 	// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
 	ServiceAccount pulumi.StringPtrInput
 	// Serving status of this application.
@@ -227,6 +229,11 @@ func (o AppOutput) Location() pulumi.StringOutput {
 // Full path to the Application resource in the API. Example: apps/myapp.
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project and location in which the application should be created, specified in the format projects/*/locations/*
+func (o AppOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
 // The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.

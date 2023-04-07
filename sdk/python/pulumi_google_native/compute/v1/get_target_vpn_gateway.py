@@ -154,7 +154,7 @@ def get_target_vpn_gateway(project: Optional[str] = None,
                            target_vpn_gateway: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetVpnGatewayResult:
     """
-    Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+    Returns the specified target VPN gateway.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -182,6 +182,6 @@ def get_target_vpn_gateway_output(project: Optional[pulumi.Input[Optional[str]]]
                                   target_vpn_gateway: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetVpnGatewayResult]:
     """
-    Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+    Returns the specified target VPN gateway.
     """
     ...

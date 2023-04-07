@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class StrategyResponse
     {
         /// <summary>
+        /// Canary deployment strategy provides progressive percentage based deployments to a Target.
+        /// </summary>
+        public readonly Outputs.CanaryResponse Canary;
+        /// <summary>
         /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
         /// </summary>
         public readonly Outputs.StandardResponse Standard;
 
         [OutputConstructor]
-        private StrategyResponse(Outputs.StandardResponse standard)
+        private StrategyResponse(
+            Outputs.CanaryResponse canary,
+
+            Outputs.StandardResponse standard)
         {
+            Canary = canary;
             Standard = standard;
         }
     }

@@ -35,6 +35,7 @@ export class Document extends pulumi.CustomResource {
     }
 
     public readonly branchId!: pulumi.Output<string>;
+    public readonly collectionId!: pulumi.Output<string>;
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
      * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -46,7 +47,7 @@ export class Document extends pulumi.CustomResource {
     public readonly jsonData!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -77,16 +78,17 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.branchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'branchId'");
             }
+            if ((!args || args.collectionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'collectionId'");
+            }
             if ((!args || args.dataStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataStoreId'");
             }
             if ((!args || args.documentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'documentId'");
             }
-            if ((!args || args.schemaId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schemaId'");
-            }
             resourceInputs["branchId"] = args ? args.branchId : undefined;
+            resourceInputs["collectionId"] = args ? args.collectionId : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
             resourceInputs["documentId"] = args ? args.documentId : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
@@ -99,6 +101,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["structData"] = args ? args.structData : undefined;
         } else {
             resourceInputs["branchId"] = undefined /*out*/;
+            resourceInputs["collectionId"] = undefined /*out*/;
             resourceInputs["dataStoreId"] = undefined /*out*/;
             resourceInputs["documentId"] = undefined /*out*/;
             resourceInputs["jsonData"] = undefined /*out*/;
@@ -110,7 +113,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["structData"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["branchId", "dataStoreId", "documentId", "location", "project"] };
+        const replaceOnChanges = { replaceOnChanges: ["branchId", "collectionId", "dataStoreId", "documentId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Document.__pulumiType, name, resourceInputs, opts);
     }
@@ -121,6 +124,7 @@ export class Document extends pulumi.CustomResource {
  */
 export interface DocumentArgs {
     branchId: pulumi.Input<string>;
+    collectionId: pulumi.Input<string>;
     dataStoreId: pulumi.Input<string>;
     /**
      * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -136,7 +140,7 @@ export interface DocumentArgs {
     jsonData?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
     name?: pulumi.Input<string>;
     /**
@@ -147,7 +151,7 @@ export interface DocumentArgs {
     /**
      * The identifier of the schema located in the same data store.
      */
-    schemaId: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string>;
     /**
      * The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
      */

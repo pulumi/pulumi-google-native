@@ -865,6 +865,181 @@ func (in *maintenanceWindowDayOfWeekPtr) ToMaintenanceWindowDayOfWeekPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+type ScalingConfigInstanceSize string
+
+const (
+	// Unspecified instance size
+	ScalingConfigInstanceSizeInstanceSizeUnspecified = ScalingConfigInstanceSize("INSTANCE_SIZE_UNSPECIFIED")
+	// Extra small instance size, maps to a scaling factor of 0.1.
+	ScalingConfigInstanceSizeExtraSmall = ScalingConfigInstanceSize("EXTRA_SMALL")
+	// Small instance size, maps to a scaling factor of 0.5.
+	ScalingConfigInstanceSizeSmall = ScalingConfigInstanceSize("SMALL")
+	// Medium instance size, maps to a scaling factor of 1.0.
+	ScalingConfigInstanceSizeMedium = ScalingConfigInstanceSize("MEDIUM")
+	// Large instance size, maps to a scaling factor of 3.0.
+	ScalingConfigInstanceSizeLarge = ScalingConfigInstanceSize("LARGE")
+	// Extra large instance size, maps to a scaling factor of 6.0.
+	ScalingConfigInstanceSizeExtraLarge = ScalingConfigInstanceSize("EXTRA_LARGE")
+)
+
+func (ScalingConfigInstanceSize) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigInstanceSize)(nil)).Elem()
+}
+
+func (e ScalingConfigInstanceSize) ToScalingConfigInstanceSizeOutput() ScalingConfigInstanceSizeOutput {
+	return pulumi.ToOutput(e).(ScalingConfigInstanceSizeOutput)
+}
+
+func (e ScalingConfigInstanceSize) ToScalingConfigInstanceSizeOutputWithContext(ctx context.Context) ScalingConfigInstanceSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScalingConfigInstanceSizeOutput)
+}
+
+func (e ScalingConfigInstanceSize) ToScalingConfigInstanceSizePtrOutput() ScalingConfigInstanceSizePtrOutput {
+	return e.ToScalingConfigInstanceSizePtrOutputWithContext(context.Background())
+}
+
+func (e ScalingConfigInstanceSize) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
+	return ScalingConfigInstanceSize(e).ToScalingConfigInstanceSizeOutputWithContext(ctx).ToScalingConfigInstanceSizePtrOutputWithContext(ctx)
+}
+
+func (e ScalingConfigInstanceSize) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScalingConfigInstanceSize) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScalingConfigInstanceSize) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScalingConfigInstanceSize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScalingConfigInstanceSizeOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigInstanceSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigInstanceSize)(nil)).Elem()
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToScalingConfigInstanceSizeOutput() ScalingConfigInstanceSizeOutput {
+	return o
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToScalingConfigInstanceSizeOutputWithContext(ctx context.Context) ScalingConfigInstanceSizeOutput {
+	return o
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToScalingConfigInstanceSizePtrOutput() ScalingConfigInstanceSizePtrOutput {
+	return o.ToScalingConfigInstanceSizePtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingConfigInstanceSize) *ScalingConfigInstanceSize {
+		return &v
+	}).(ScalingConfigInstanceSizePtrOutput)
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScalingConfigInstanceSize) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigInstanceSizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScalingConfigInstanceSize) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScalingConfigInstanceSizePtrOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigInstanceSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfigInstanceSize)(nil)).Elem()
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) ToScalingConfigInstanceSizePtrOutput() ScalingConfigInstanceSizePtrOutput {
+	return o
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
+	return o
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) Elem() ScalingConfigInstanceSizeOutput {
+	return o.ApplyT(func(v *ScalingConfigInstanceSize) ScalingConfigInstanceSize {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingConfigInstanceSize
+		return ret
+	}).(ScalingConfigInstanceSizeOutput)
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigInstanceSizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScalingConfigInstanceSize) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScalingConfigInstanceSizeInput is an input type that accepts ScalingConfigInstanceSizeArgs and ScalingConfigInstanceSizeOutput values.
+// You can construct a concrete instance of `ScalingConfigInstanceSizeInput` via:
+//
+//	ScalingConfigInstanceSizeArgs{...}
+type ScalingConfigInstanceSizeInput interface {
+	pulumi.Input
+
+	ToScalingConfigInstanceSizeOutput() ScalingConfigInstanceSizeOutput
+	ToScalingConfigInstanceSizeOutputWithContext(context.Context) ScalingConfigInstanceSizeOutput
+}
+
+var scalingConfigInstanceSizePtrType = reflect.TypeOf((**ScalingConfigInstanceSize)(nil)).Elem()
+
+type ScalingConfigInstanceSizePtrInput interface {
+	pulumi.Input
+
+	ToScalingConfigInstanceSizePtrOutput() ScalingConfigInstanceSizePtrOutput
+	ToScalingConfigInstanceSizePtrOutputWithContext(context.Context) ScalingConfigInstanceSizePtrOutput
+}
+
+type scalingConfigInstanceSizePtr string
+
+func ScalingConfigInstanceSizePtr(v string) ScalingConfigInstanceSizePtrInput {
+	return (*scalingConfigInstanceSizePtr)(&v)
+}
+
+func (*scalingConfigInstanceSizePtr) ElementType() reflect.Type {
+	return scalingConfigInstanceSizePtrType
+}
+
+func (in *scalingConfigInstanceSizePtr) ToScalingConfigInstanceSizePtrOutput() ScalingConfigInstanceSizePtrOutput {
+	return pulumi.ToOutput(in).(ScalingConfigInstanceSizePtrOutput)
+}
+
+func (in *scalingConfigInstanceSizePtr) ToScalingConfigInstanceSizePtrOutputWithContext(ctx context.Context) ScalingConfigInstanceSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScalingConfigInstanceSizePtrOutput)
+}
+
 // Immutable. The database type that the Metastore service stores its data.
 type ServiceDatabaseType string
 
@@ -1552,6 +1727,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveMetastoreConfigEndpointProtocolPtrInput)(nil)).Elem(), HiveMetastoreConfigEndpointProtocol("ENDPOINT_PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowDayOfWeekPtrInput)(nil)).Elem(), MaintenanceWindowDayOfWeek("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInstanceSizeInput)(nil)).Elem(), ScalingConfigInstanceSize("INSTANCE_SIZE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInstanceSizePtrInput)(nil)).Elem(), ScalingConfigInstanceSize("INSTANCE_SIZE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDatabaseTypeInput)(nil)).Elem(), ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceDatabaseTypePtrInput)(nil)).Elem(), ServiceDatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceReleaseChannelInput)(nil)).Elem(), ServiceReleaseChannel("RELEASE_CHANNEL_UNSPECIFIED"))
@@ -1570,6 +1747,8 @@ func init() {
 	pulumi.RegisterOutputType(HiveMetastoreConfigEndpointProtocolPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowDayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(ScalingConfigInstanceSizeOutput{})
+	pulumi.RegisterOutputType(ScalingConfigInstanceSizePtrOutput{})
 	pulumi.RegisterOutputType(ServiceDatabaseTypeOutput{})
 	pulumi.RegisterOutputType(ServiceDatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceReleaseChannelOutput{})

@@ -122,6 +122,14 @@ class RoutineLanguage(str, Enum):
     """
     Python language.
     """
+    JAVA = "JAVA"
+    """
+    Java language.
+    """
+    SCALA = "SCALA"
+    """
+    Scala language.
+    """
 
 
 class RoutineRoutineType(str, Enum):
@@ -145,7 +153,7 @@ class RoutineRoutineType(str, Enum):
 
 class StandardSqlDataTypeTypeKind(str, Enum):
     """
-    Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+    Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
     """
     TYPE_KIND_UNSPECIFIED = "TYPE_KIND_UNSPECIFIED"
     """

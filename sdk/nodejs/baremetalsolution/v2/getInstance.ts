@@ -32,6 +32,10 @@ export interface GetInstanceResult {
      */
     readonly createTime: string;
     /**
+     * The firmware version for the instance.
+     */
+    readonly firmwareVersion: string;
+    /**
      * True if you enable hyperthreading for the server, otherwise false. The default value is false.
      */
     readonly hyperthreadingEnabled: boolean;

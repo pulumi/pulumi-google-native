@@ -52,6 +52,8 @@ type DataScan struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the scan was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDataScan registers a new resource with the given unique name, arguments, and options.
@@ -123,6 +125,8 @@ type dataScanArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a DataScan resource.
@@ -145,6 +149,8 @@ type DataScanArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (DataScanArgs) ElementType() reflect.Type {
@@ -275,6 +281,11 @@ func (o DataScanOutput) Uid() pulumi.StringOutput {
 // The time when the scan was last updated.
 func (o DataScanOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataScan) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the request, but do not perform mutations. The default is false.
+func (o DataScanOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataScan) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

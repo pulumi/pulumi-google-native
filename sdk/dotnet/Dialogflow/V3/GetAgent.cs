@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly ImmutableArray<string> SupportedLanguageCodes;
         /// <summary>
+        /// Settings on instructing the speech synthesizer on how to generate the output audio content.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse TextToSpeechSettings;
+        /// <summary>
         /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         /// </summary>
         public readonly string TimeZone;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
             ImmutableArray<string> supportedLanguageCodes,
 
+            Outputs.GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse textToSpeechSettings,
+
             string timeZone)
         {
             AdvancedSettings = advancedSettings;
@@ -163,6 +169,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             SpeechToTextSettings = speechToTextSettings;
             StartFlow = startFlow;
             SupportedLanguageCodes = supportedLanguageCodes;
+            TextToSpeechSettings = textToSpeechSettings;
             TimeZone = timeZone;
         }
     }

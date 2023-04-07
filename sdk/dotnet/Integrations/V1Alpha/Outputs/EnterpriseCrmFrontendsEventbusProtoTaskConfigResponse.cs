@@ -37,6 +37,11 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly bool DisableStrictTypeValidation;
         /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        public readonly string ErrorCatcherId;
+        public readonly string ExternalTaskType;
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
         public readonly Outputs.EnterpriseCrmEventbusProtoFailurePolicyResponse FailurePolicy;
@@ -133,6 +138,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             bool disableStrictTypeValidation,
 
+            string errorCatcherId,
+
+            string externalTaskType,
+
             Outputs.EnterpriseCrmEventbusProtoFailurePolicyResponse failurePolicy,
 
             int incomingEdgeCount,
@@ -180,6 +189,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             CreatorEmail = creatorEmail;
             Description = description;
             DisableStrictTypeValidation = disableStrictTypeValidation;
+            ErrorCatcherId = errorCatcherId;
+            ExternalTaskType = externalTaskType;
             FailurePolicy = failurePolicy;
             IncomingEdgeCount = incomingEdgeCount;
             JsonValidationOption = jsonValidationOption;

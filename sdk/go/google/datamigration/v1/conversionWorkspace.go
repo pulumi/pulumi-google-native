@@ -21,13 +21,13 @@ type ConversionWorkspace struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The destination engine details.
 	Destination DatabaseEngineInfoResponseOutput `pulumi:"destination"`
-	// The display name for the workspace
+	// The display name for the workspace.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
 	GlobalSettings pulumi.StringMapOutput `pulumi:"globalSettings"`
-	// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+	// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
 	HasUncommittedChanges pulumi.BoolOutput `pulumi:"hasUncommittedChanges"`
-	// The latest commit id
+	// The latest commit ID.
 	LatestCommitId pulumi.StringOutput `pulumi:"latestCommitId"`
 	// The timestamp when the workspace was committed.
 	LatestCommitTime pulumi.StringOutput `pulumi:"latestCommitTime"`
@@ -35,7 +35,7 @@ type ConversionWorkspace struct {
 	// Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The source engine details.
 	Source DatabaseEngineInfoResponseOutput `pulumi:"source"`
@@ -101,7 +101,7 @@ type conversionWorkspaceArgs struct {
 	ConversionWorkspaceId string `pulumi:"conversionWorkspaceId"`
 	// The destination engine details.
 	Destination DatabaseEngineInfo `pulumi:"destination"`
-	// The display name for the workspace
+	// The display name for the workspace.
 	DisplayName *string `pulumi:"displayName"`
 	// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
 	GlobalSettings map[string]string `pulumi:"globalSettings"`
@@ -109,7 +109,7 @@ type conversionWorkspaceArgs struct {
 	// Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// The source engine details.
 	Source DatabaseEngineInfo `pulumi:"source"`
@@ -121,7 +121,7 @@ type ConversionWorkspaceArgs struct {
 	ConversionWorkspaceId pulumi.StringInput
 	// The destination engine details.
 	Destination DatabaseEngineInfoInput
-	// The display name for the workspace
+	// The display name for the workspace.
 	DisplayName pulumi.StringPtrInput
 	// A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
 	GlobalSettings pulumi.StringMapInput
@@ -129,7 +129,7 @@ type ConversionWorkspaceArgs struct {
 	// Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// The source engine details.
 	Source DatabaseEngineInfoInput
@@ -187,7 +187,7 @@ func (o ConversionWorkspaceOutput) Destination() DatabaseEngineInfoResponseOutpu
 	return o.ApplyT(func(v *ConversionWorkspace) DatabaseEngineInfoResponseOutput { return v.Destination }).(DatabaseEngineInfoResponseOutput)
 }
 
-// The display name for the workspace
+// The display name for the workspace.
 func (o ConversionWorkspaceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -197,12 +197,12 @@ func (o ConversionWorkspaceOutput) GlobalSettings() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.StringMapOutput { return v.GlobalSettings }).(pulumi.StringMapOutput)
 }
 
-// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
 func (o ConversionWorkspaceOutput) HasUncommittedChanges() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.BoolOutput { return v.HasUncommittedChanges }).(pulumi.BoolOutput)
 }
 
-// The latest commit id
+// The latest commit ID.
 func (o ConversionWorkspaceOutput) LatestCommitId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.StringOutput { return v.LatestCommitId }).(pulumi.StringOutput)
 }
@@ -225,7 +225,7 @@ func (o ConversionWorkspaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o ConversionWorkspaceOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversionWorkspace) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

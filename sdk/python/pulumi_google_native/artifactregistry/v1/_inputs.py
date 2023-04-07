@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'BindingArgs',
+    'DockerRepositoryConfigArgs',
     'DockerRepositoryArgs',
     'ExprArgs',
     'MavenRepositoryConfigArgs',
@@ -77,6 +78,30 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class DockerRepositoryConfigArgs:
+    def __init__(__self__, *,
+                 immutable_tags: Optional[pulumi.Input[bool]] = None):
+        """
+        DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+        :param pulumi.Input[bool] immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        if immutable_tags is not None:
+            pulumi.set(__self__, "immutable_tags", immutable_tags)
+
+    @property
+    @pulumi.getter(name="immutableTags")
+    def immutable_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        return pulumi.get(self, "immutable_tags")
+
+    @immutable_tags.setter
+    def immutable_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "immutable_tags", value)
 
 
 @pulumi.input_type
@@ -385,7 +410,7 @@ class UpstreamPolicyArgs:
         Artifact policy configuration for the repository contents.
         :param pulumi.Input[str] id: The user-provided ID of the upstream policy.
         :param pulumi.Input[int] priority: Entries with a greater priority value take precedence in the pull order.
-        :param pulumi.Input[str] repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        :param pulumi.Input[str] repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -422,7 +447,7 @@ class UpstreamPolicyArgs:
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         return pulumi.get(self, "repository")
 

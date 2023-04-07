@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNamespaceResult:
-    def __init__(__self__, create_time=None, labels=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, labels=None, name=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -28,6 +28,9 @@ class GetNamespaceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -57,6 +60,14 @@ class GetNamespaceResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        A globally unique identifier (in UUID4 format) for this namespace.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -74,6 +85,7 @@ class AwaitableGetNamespaceResult(GetNamespaceResult):
             create_time=self.create_time,
             labels=self.labels,
             name=self.name,
+            uid=self.uid,
             update_time=self.update_time)
 
 
@@ -95,6 +107,7 @@ def get_namespace(location: Optional[str] = None,
         create_time=__ret__.create_time,
         labels=__ret__.labels,
         name=__ret__.name,
+        uid=__ret__.uid,
         update_time=__ret__.update_time)
 
 

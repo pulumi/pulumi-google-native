@@ -139,6 +139,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         [Output("vulnerability")]
         public Output<Outputs.VulnerabilityNoteResponse> Vulnerability { get; private set; } = null!;
 
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Output("vulnerabilityAssessment")]
+        public Output<Outputs.VulnerabilityAssessmentNoteResponse> VulnerabilityAssessment { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Note resource with the given unique name, arguments, and options.
@@ -299,6 +305,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         [Input("vulnerability")]
         public Input<Inputs.VulnerabilityNoteArgs>? Vulnerability { get; set; }
+
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        [Input("vulnerabilityAssessment")]
+        public Input<Inputs.VulnerabilityAssessmentNoteArgs>? VulnerabilityAssessment { get; set; }
 
         public NoteArgs()
         {

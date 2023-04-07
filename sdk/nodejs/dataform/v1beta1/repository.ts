@@ -42,6 +42,18 @@ export class Repository extends pulumi.CustomResource {
      * Optional. If set, configures this repository to be linked to a Git remote.
      */
     public readonly gitRemoteSettings!: pulumi.Output<outputs.dataform.v1beta1.GitRemoteSettingsResponse>;
+    /**
+     * Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+     */
+    public readonly initialCommitFileContents!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+     */
+    public readonly initialCommitMetadata!: pulumi.Output<outputs.dataform.v1beta1.CommitMetadataResponse>;
+    /**
+     * Optional. Repository user labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The repository's name.
@@ -76,6 +88,9 @@ export class Repository extends pulumi.CustomResource {
                 throw new Error("Missing required property 'repositoryId'");
             }
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
+            resourceInputs["initialCommitFileContents"] = args ? args.initialCommitFileContents : undefined;
+            resourceInputs["initialCommitMetadata"] = args ? args.initialCommitMetadata : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -84,6 +99,9 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["gitRemoteSettings"] = undefined /*out*/;
+            resourceInputs["initialCommitFileContents"] = undefined /*out*/;
+            resourceInputs["initialCommitMetadata"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = undefined /*out*/;
@@ -106,6 +124,18 @@ export interface RepositoryArgs {
      * Optional. If set, configures this repository to be linked to a Git remote.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.v1beta1.GitRemoteSettingsArgs>;
+    /**
+     * Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+     */
+    initialCommitFileContents?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+     */
+    initialCommitMetadata?: pulumi.Input<inputs.dataform.v1beta1.CommitMetadataArgs>;
+    /**
+     * Optional. Repository user labels.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*&#47;secrets/*&#47;versions/*`. The file itself must be in a JSON format.

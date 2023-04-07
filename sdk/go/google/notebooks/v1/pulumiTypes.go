@@ -3672,6 +3672,8 @@ type RuntimeSoftwareConfig struct {
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels []ContainerImage `pulumi:"kernels"`
+	// Bool indicating whether mixer client should be disabled. Default: False
+	MixerDisabled *bool `pulumi:"mixerDisabled"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule *string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -3707,6 +3709,8 @@ type RuntimeSoftwareConfigArgs struct {
 	InstallGpuDriver pulumi.BoolPtrInput `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels ContainerImageArrayInput `pulumi:"kernels"`
+	// Bool indicating whether mixer client should be disabled. Default: False
+	MixerDisabled pulumi.BoolPtrInput `pulumi:"mixerDisabled"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule pulumi.StringPtrInput `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -3828,6 +3832,11 @@ func (o RuntimeSoftwareConfigOutput) Kernels() ContainerImageArrayOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) []ContainerImage { return v.Kernels }).(ContainerImageArrayOutput)
 }
 
+// Bool indicating whether mixer client should be disabled. Default: False
+func (o RuntimeSoftwareConfigOutput) MixerDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.MixerDisabled }).(pulumi.BoolPtrOutput)
+}
+
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.NotebookUpgradeSchedule }).(pulumi.StringPtrOutput)
@@ -3939,6 +3948,16 @@ func (o RuntimeSoftwareConfigPtrOutput) Kernels() ContainerImageArrayOutput {
 	}).(ContainerImageArrayOutput)
 }
 
+// Bool indicating whether mixer client should be disabled. Default: False
+func (o RuntimeSoftwareConfigPtrOutput) MixerDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MixerDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 func (o RuntimeSoftwareConfigPtrOutput) NotebookUpgradeSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
@@ -3985,6 +4004,8 @@ type RuntimeSoftwareConfigResponse struct {
 	InstallGpuDriver bool `pulumi:"installGpuDriver"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	Kernels []ContainerImageResponse `pulumi:"kernels"`
+	// Bool indicating whether mixer client should be disabled. Default: False
+	MixerDisabled bool `pulumi:"mixerDisabled"`
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule string `pulumi:"notebookUpgradeSchedule"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
@@ -4045,6 +4066,11 @@ func (o RuntimeSoftwareConfigResponseOutput) InstallGpuDriver() pulumi.BoolOutpu
 // Optional. Use a list of container images to use as Kernels in the notebook instance.
 func (o RuntimeSoftwareConfigResponseOutput) Kernels() ContainerImageResponseArrayOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) []ContainerImageResponse { return v.Kernels }).(ContainerImageResponseArrayOutput)
+}
+
+// Bool indicating whether mixer client should be disabled. Default: False
+func (o RuntimeSoftwareConfigResponseOutput) MixerDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.MixerDisabled }).(pulumi.BoolOutput)
 }
 
 // Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).

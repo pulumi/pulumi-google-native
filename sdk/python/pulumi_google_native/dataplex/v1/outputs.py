@@ -559,7 +559,9 @@ class GoogleCloudDataplexV1AssetResourceStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "updateTime":
+        if key == "managedAccessIdentity":
+            suggest = "managed_access_identity"
+        elif key == "updateTime":
             suggest = "update_time"
 
         if suggest:
@@ -574,18 +576,29 @@ class GoogleCloudDataplexV1AssetResourceStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 managed_access_identity: str,
                  message: str,
                  state: str,
                  update_time: str):
         """
         Status of the resource referenced by an asset.
+        :param str managed_access_identity: Service account associated with the BigQuery Connection.
         :param str message: Additional information about the current state.
         :param str state: The current state of the managed resource.
         :param str update_time: Last update time of the status.
         """
+        pulumi.set(__self__, "managed_access_identity", managed_access_identity)
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="managedAccessIdentity")
+    def managed_access_identity(self) -> str:
+        """
+        Service account associated with the BigQuery Connection.
+        """
+        return pulumi.get(self, "managed_access_identity")
 
     @property
     @pulumi.getter
@@ -824,15 +837,15 @@ class GoogleCloudDataplexV1DataAccessSpecResponse(dict):
 @pulumi.output_type
 class GoogleCloudDataplexV1DataAttributeBindingPathResponse(dict):
     """
-    Represents a subresource of a given resource, and associated bindings with it.
+    Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
     """
     def __init__(__self__, *,
                  attributes: Sequence[str],
                  name: str):
         """
-        Represents a subresource of a given resource, and associated bindings with it.
+        Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
         :param Sequence[str] attributes: Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
-        :param str name: The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        :param str name: The name identifier of the path. Nested columns should be of the form: 'address.city'.
         """
         pulumi.set(__self__, "attributes", attributes)
         pulumi.set(__self__, "name", name)
@@ -849,7 +862,7 @@ class GoogleCloudDataplexV1DataAttributeBindingPathResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        The name identifier of the path. Nested columns should be of the form: 'address.city'.
         """
         return pulumi.get(self, "name")
 
@@ -1237,7 +1250,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldResponse(dict):
         :param str mode: The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
         :param str name: The name of the field.
         :param 'GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse' profile: Profile information for the corresponding field.
-        :param str type: The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+        :param str type: The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
@@ -1272,7 +1285,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+        The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
         """
         return pulumi.get(self, "type")
 
@@ -2192,12 +2205,15 @@ class GoogleCloudDataplexV1DataSourceResponse(dict):
     The data source for DataScan.
     """
     def __init__(__self__, *,
-                 entity: str):
+                 entity: str,
+                 resource: str):
         """
         The data source for DataScan.
         :param str entity: Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+        :param str resource: Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         """
         pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "resource", resource)
 
     @property
     @pulumi.getter
@@ -2206,6 +2222,14 @@ class GoogleCloudDataplexV1DataSourceResponse(dict):
         Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
         """
         return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter
+    def resource(self) -> str:
+        """
+        Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -2293,10 +2317,14 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusResponse(dict):
 
 @pulumi.output_type
 class GoogleCloudDataplexV1EnvironmentEndpointsResponse(dict):
+    """
+    URI Endpoints to access sessions associated with the Environment.
+    """
     def __init__(__self__, *,
                  notebooks: str,
                  sql: str):
         """
+        URI Endpoints to access sessions associated with the Environment.
         :param str notebooks: URI to serve notebook APIs
         :param str sql: URI to serve SQL APIs
         """
@@ -2513,6 +2541,9 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse(dict):
 
 @pulumi.output_type
 class GoogleCloudDataplexV1EnvironmentSessionSpecResponse(dict):
+    """
+    Configuration for sessions created for this environment.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2536,6 +2567,7 @@ class GoogleCloudDataplexV1EnvironmentSessionSpecResponse(dict):
                  enable_fast_startup: bool,
                  max_idle_duration: str):
         """
+        Configuration for sessions created for this environment.
         :param bool enable_fast_startup: Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
         :param str max_idle_duration: Optional. The idle time configuration of the session. The session will be auto-terminated at the end of this period.
         """
@@ -2561,9 +2593,13 @@ class GoogleCloudDataplexV1EnvironmentSessionSpecResponse(dict):
 
 @pulumi.output_type
 class GoogleCloudDataplexV1EnvironmentSessionStatusResponse(dict):
+    """
+    Status of sessions created for this environment.
+    """
     def __init__(__self__, *,
                  active: bool):
         """
+        Status of sessions created for this environment.
         :param bool active: Queries over sessions to mark whether the environment is currently active or not
         """
         pulumi.set(__self__, "active", active)

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         /// </summary>
         [Output("multiRegionAuxiliary")]
         public Output<bool> MultiRegionAuxiliary { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+        /// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         /// </summary>
         [Input("multiRegionAuxiliary")]
         public Input<bool>? MultiRegionAuxiliary { get; set; }

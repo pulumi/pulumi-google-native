@@ -29,7 +29,7 @@ type WorkstationConfig struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	EncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"encryptionKey"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -47,7 +47,7 @@ type WorkstationConfig struct {
 	Project               pulumi.StringOutput                    `pulumi:"project"`
 	// Indicates whether this resource is currently being updated to match its intended state.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 	RunningTimeout pulumi.StringOutput `pulumi:"runningTimeout"`
 	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -118,7 +118,7 @@ type workstationConfigArgs struct {
 	Container *Container `pulumi:"container"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
-	// Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	EncryptionKey *CustomerEncryptionKey `pulumi:"encryptionKey"`
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -134,7 +134,7 @@ type workstationConfigArgs struct {
 	// Directories to persist across workstation sessions.
 	PersistentDirectories []PersistentDirectory `pulumi:"persistentDirectories"`
 	Project               *string               `pulumi:"project"`
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 	RunningTimeout *string `pulumi:"runningTimeout"`
 	// If set, validate the request and preview the review, but do not actually apply it.
 	ValidateOnly         *bool  `pulumi:"validateOnly"`
@@ -151,7 +151,7 @@ type WorkstationConfigArgs struct {
 	Container ContainerPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
-	// Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 	EncryptionKey CustomerEncryptionKeyPtrInput
 	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -167,7 +167,7 @@ type WorkstationConfigArgs struct {
 	// Directories to persist across workstation sessions.
 	PersistentDirectories PersistentDirectoryArrayInput
 	Project               pulumi.StringPtrInput
-	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 	RunningTimeout pulumi.StringPtrInput
 	// If set, validate the request and preview the review, but do not actually apply it.
 	ValidateOnly         pulumi.BoolPtrInput
@@ -248,7 +248,7 @@ func (o WorkstationConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
 func (o WorkstationConfigOutput) EncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) CustomerEncryptionKeyResponseOutput { return v.EncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
@@ -296,7 +296,7 @@ func (o WorkstationConfigOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 func (o WorkstationConfigOutput) RunningTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.RunningTimeout }).(pulumi.StringOutput)
 }

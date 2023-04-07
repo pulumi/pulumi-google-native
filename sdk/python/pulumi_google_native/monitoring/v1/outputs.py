@@ -25,7 +25,9 @@ __all__ = [
     'EmptyResponse',
     'GaugeViewResponse',
     'GridLayoutResponse',
+    'IncidentListResponse',
     'LogsPanelResponse',
+    'MonitoredResourceResponse',
     'MosaicLayoutResponse',
     'PickTimeSeriesFilterResponse',
     'RatioPartResponse',
@@ -579,6 +581,58 @@ class GridLayoutResponse(dict):
 
 
 @pulumi.output_type
+class IncidentListResponse(dict):
+    """
+    A widget that displays a list of incidents
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monitoredResources":
+            suggest = "monitored_resources"
+        elif key == "policyNames":
+            suggest = "policy_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IncidentListResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IncidentListResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IncidentListResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 monitored_resources: Sequence['outputs.MonitoredResourceResponse'],
+                 policy_names: Sequence[str]):
+        """
+        A widget that displays a list of incidents
+        :param Sequence['MonitoredResourceResponse'] monitored_resources: Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+        :param Sequence[str] policy_names: Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+        """
+        pulumi.set(__self__, "monitored_resources", monitored_resources)
+        pulumi.set(__self__, "policy_names", policy_names)
+
+    @property
+    @pulumi.getter(name="monitoredResources")
+    def monitored_resources(self) -> Sequence['outputs.MonitoredResourceResponse']:
+        """
+        Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering.
+        """
+        return pulumi.get(self, "monitored_resources")
+
+    @property
+    @pulumi.getter(name="policyNames")
+    def policy_names(self) -> Sequence[str]:
+        """
+        Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization.
+        """
+        return pulumi.get(self, "policy_names")
+
+
+@pulumi.output_type
 class LogsPanelResponse(dict):
     """
     A widget that displays a stream of log.
@@ -626,6 +680,39 @@ class LogsPanelResponse(dict):
         The names of logging resources to collect logs for. Currently only projects are supported. If empty, the widget will default to the host project.
         """
         return pulumi.get(self, "resource_names")
+
+
+@pulumi.output_type
+class MonitoredResourceResponse(dict):
+    """
+    An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} 
+    """
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 type: str):
+        """
+        An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} 
+        :param Mapping[str, str] labels: Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+        :param str type: The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -1652,6 +1739,8 @@ class WidgetResponse(dict):
             suggest = "alert_chart"
         elif key == "collapsibleGroup":
             suggest = "collapsible_group"
+        elif key == "incidentList":
+            suggest = "incident_list"
         elif key == "logsPanel":
             suggest = "logs_panel"
         elif key == "timeSeriesTable":
@@ -1674,6 +1763,7 @@ class WidgetResponse(dict):
                  alert_chart: 'outputs.AlertChartResponse',
                  blank: 'outputs.EmptyResponse',
                  collapsible_group: 'outputs.CollapsibleGroupResponse',
+                 incident_list: 'outputs.IncidentListResponse',
                  logs_panel: 'outputs.LogsPanelResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
@@ -1685,6 +1775,7 @@ class WidgetResponse(dict):
         :param 'AlertChartResponse' alert_chart: A chart of alert policy data.
         :param 'EmptyResponse' blank: A blank space.
         :param 'CollapsibleGroupResponse' collapsible_group: A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+        :param 'IncidentListResponse' incident_list: A widget that shows list of incidents.
         :param 'LogsPanelResponse' logs_panel: A widget that shows a stream of logs.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
@@ -1695,6 +1786,7 @@ class WidgetResponse(dict):
         pulumi.set(__self__, "alert_chart", alert_chart)
         pulumi.set(__self__, "blank", blank)
         pulumi.set(__self__, "collapsible_group", collapsible_group)
+        pulumi.set(__self__, "incident_list", incident_list)
         pulumi.set(__self__, "logs_panel", logs_panel)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
@@ -1725,6 +1817,14 @@ class WidgetResponse(dict):
         A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
         """
         return pulumi.get(self, "collapsible_group")
+
+    @property
+    @pulumi.getter(name="incidentList")
+    def incident_list(self) -> 'outputs.IncidentListResponse':
+        """
+        A widget that shows list of incidents.
+        """
+        return pulumi.get(self, "incident_list")
 
     @property
     @pulumi.getter(name="logsPanel")
@@ -1821,9 +1921,9 @@ class XyChartResponse(dict):
         :param Sequence['DataSetResponse'] data_sets: The data displayed in this chart.
         :param Sequence['ThresholdResponse'] thresholds: Threshold lines drawn horizontally across the chart.
         :param str timeshift_duration: The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
-        :param 'AxisResponse' x_axis: The properties applied to the X axis.
-        :param 'AxisResponse' y2_axis: The properties applied to the Y2 axis.
-        :param 'AxisResponse' y_axis: The properties applied to the Y axis.
+        :param 'AxisResponse' x_axis: The properties applied to the x-axis.
+        :param 'AxisResponse' y2_axis: The properties applied to the y2-axis.
+        :param 'AxisResponse' y_axis: The properties applied to the y-axis.
         """
         pulumi.set(__self__, "chart_options", chart_options)
         pulumi.set(__self__, "data_sets", data_sets)
@@ -1869,7 +1969,7 @@ class XyChartResponse(dict):
     @pulumi.getter(name="xAxis")
     def x_axis(self) -> 'outputs.AxisResponse':
         """
-        The properties applied to the X axis.
+        The properties applied to the x-axis.
         """
         return pulumi.get(self, "x_axis")
 
@@ -1877,7 +1977,7 @@ class XyChartResponse(dict):
     @pulumi.getter(name="y2Axis")
     def y2_axis(self) -> 'outputs.AxisResponse':
         """
-        The properties applied to the Y2 axis.
+        The properties applied to the y2-axis.
         """
         return pulumi.get(self, "y2_axis")
 
@@ -1885,7 +1985,7 @@ class XyChartResponse(dict):
     @pulumi.getter(name="yAxis")
     def y_axis(self) -> 'outputs.AxisResponse':
         """
-        The properties applied to the Y axis.
+        The properties applied to the y-axis.
         """
         return pulumi.get(self, "y_axis")
 

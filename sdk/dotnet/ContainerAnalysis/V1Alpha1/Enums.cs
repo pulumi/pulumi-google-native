@@ -8,6 +8,55 @@ using Pulumi;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
+    /// Provides the state of this Vulnerability assessment.
+    /// </summary>
+    [EnumType]
+    public readonly struct AssessmentState : IEquatable<AssessmentState>
+    {
+        private readonly string _value;
+
+        private AssessmentState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No state is specified.
+        /// </summary>
+        public static AssessmentState StateUnspecified { get; } = new AssessmentState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// This product is known to be affected by this vulnerability.
+        /// </summary>
+        public static AssessmentState Affected { get; } = new AssessmentState("AFFECTED");
+        /// <summary>
+        /// This product is known to be not affected by this vulnerability.
+        /// </summary>
+        public static AssessmentState NotAffected { get; } = new AssessmentState("NOT_AFFECTED");
+        /// <summary>
+        /// This product contains a fix for this vulnerability.
+        /// </summary>
+        public static AssessmentState Fixed { get; } = new AssessmentState("FIXED");
+        /// <summary>
+        /// It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+        /// </summary>
+        public static AssessmentState UnderInvestigation { get; } = new AssessmentState("UNDER_INVESTIGATION");
+
+        public static bool operator ==(AssessmentState left, AssessmentState right) => left.Equals(right);
+        public static bool operator !=(AssessmentState left, AssessmentState right) => !left.Equals(right);
+
+        public static explicit operator string(AssessmentState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AssessmentState other && Equals(other);
+        public bool Equals(AssessmentState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of the key, either stored in `public_key` or referenced in `key_id`
     /// </summary>
     [EnumType]
@@ -742,6 +791,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// This represents a DSSE attestation Note
         /// </summary>
         public static DiscoveryAnalysisKind DsseAttestation { get; } = new DiscoveryAnalysisKind("DSSE_ATTESTATION");
+        /// <summary>
+        /// This represents a Vulnerability Assessment.
+        /// </summary>
+        public static DiscoveryAnalysisKind VulnerabilityAssessment { get; } = new DiscoveryAnalysisKind("VULNERABILITY_ASSESSMENT");
+        /// <summary>
+        /// This represents a reference to an SBOM.
+        /// </summary>
+        public static DiscoveryAnalysisKind SbomReference { get; } = new DiscoveryAnalysisKind("SBOM_REFERENCE");
 
         public static bool operator ==(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => left.Equals(right);
         public static bool operator !=(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => !left.Equals(right);
@@ -1000,6 +1057,96 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is HashType other && Equals(other);
         public bool Equals(HashType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The field that is set in the API proto.
+    /// </summary>
+    [EnumType]
+    public readonly struct IdentifierHelperField : IEquatable<IdentifierHelperField>
+    {
+        private readonly string _value;
+
+        private IdentifierHelperField(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The helper isn't set.
+        /// </summary>
+        public static IdentifierHelperField IdentifierHelperFieldUnspecified { get; } = new IdentifierHelperField("IDENTIFIER_HELPER_FIELD_UNSPECIFIED");
+        /// <summary>
+        /// The generic_uri one-of field is set.
+        /// </summary>
+        public static IdentifierHelperField GenericUri { get; } = new IdentifierHelperField("GENERIC_URI");
+
+        public static bool operator ==(IdentifierHelperField left, IdentifierHelperField right) => left.Equals(right);
+        public static bool operator !=(IdentifierHelperField left, IdentifierHelperField right) => !left.Equals(right);
+
+        public static explicit operator string(IdentifierHelperField value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IdentifierHelperField other && Equals(other);
+        public bool Equals(IdentifierHelperField other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The justification type for this vulnerability.
+    /// </summary>
+    [EnumType]
+    public readonly struct JustificationJustificationType : IEquatable<JustificationJustificationType>
+    {
+        private readonly string _value;
+
+        private JustificationJustificationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// JUSTIFICATION_TYPE_UNSPECIFIED.
+        /// </summary>
+        public static JustificationJustificationType JustificationTypeUnspecified { get; } = new JustificationJustificationType("JUSTIFICATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The vulnerable component is not present in the product.
+        /// </summary>
+        public static JustificationJustificationType ComponentNotPresent { get; } = new JustificationJustificationType("COMPONENT_NOT_PRESENT");
+        /// <summary>
+        /// The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+        /// </summary>
+        public static JustificationJustificationType VulnerableCodeNotPresent { get; } = new JustificationJustificationType("VULNERABLE_CODE_NOT_PRESENT");
+        /// <summary>
+        /// The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+        /// </summary>
+        public static JustificationJustificationType VulnerableCodeNotInExecutePath { get; } = new JustificationJustificationType("VULNERABLE_CODE_NOT_IN_EXECUTE_PATH");
+        /// <summary>
+        /// The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+        /// </summary>
+        public static JustificationJustificationType VulnerableCodeCannotBeControlledByAdversary { get; } = new JustificationJustificationType("VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY");
+        /// <summary>
+        /// The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
+        /// </summary>
+        public static JustificationJustificationType InlineMitigationsAlreadyExist { get; } = new JustificationJustificationType("INLINE_MITIGATIONS_ALREADY_EXIST");
+
+        public static bool operator ==(JustificationJustificationType left, JustificationJustificationType right) => left.Equals(right);
+        public static bool operator !=(JustificationJustificationType left, JustificationJustificationType right) => !left.Equals(right);
+
+        public static explicit operator string(JustificationJustificationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JustificationJustificationType other && Equals(other);
+        public bool Equals(JustificationJustificationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1392,6 +1539,59 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     }
 
     /// <summary>
+    /// The type of remediation that can be applied.
+    /// </summary>
+    [EnumType]
+    public readonly struct RemediationRemediationType : IEquatable<RemediationRemediationType>
+    {
+        private readonly string _value;
+
+        private RemediationRemediationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No remediation type specified.
+        /// </summary>
+        public static RemediationRemediationType RemediationTypeUnspecified { get; } = new RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A MITIGATION is available.
+        /// </summary>
+        public static RemediationRemediationType Mitigation { get; } = new RemediationRemediationType("MITIGATION");
+        /// <summary>
+        /// No fix is planned.
+        /// </summary>
+        public static RemediationRemediationType NoFixPlanned { get; } = new RemediationRemediationType("NO_FIX_PLANNED");
+        /// <summary>
+        /// Not available.
+        /// </summary>
+        public static RemediationRemediationType NoneAvailable { get; } = new RemediationRemediationType("NONE_AVAILABLE");
+        /// <summary>
+        /// A vendor fix is available.
+        /// </summary>
+        public static RemediationRemediationType VendorFix { get; } = new RemediationRemediationType("VENDOR_FIX");
+        /// <summary>
+        /// A workaround is available.
+        /// </summary>
+        public static RemediationRemediationType Workaround { get; } = new RemediationRemediationType("WORKAROUND");
+
+        public static bool operator ==(RemediationRemediationType left, RemediationRemediationType right) => left.Equals(right);
+        public static bool operator !=(RemediationRemediationType left, RemediationRemediationType right) => !left.Equals(right);
+
+        public static explicit operator string(RemediationRemediationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RemediationRemediationType other && Equals(other);
+        public bool Equals(RemediationRemediationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
     /// </summary>
     [EnumType]
@@ -1425,6 +1625,55 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VersionKind other && Equals(other);
         public bool Equals(VersionKind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Provides the state of this Vulnerability assessment.
+    /// </summary>
+    [EnumType]
+    public readonly struct VexAssessmentState : IEquatable<VexAssessmentState>
+    {
+        private readonly string _value;
+
+        private VexAssessmentState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No state is specified.
+        /// </summary>
+        public static VexAssessmentState StateUnspecified { get; } = new VexAssessmentState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// This product is known to be affected by this vulnerability.
+        /// </summary>
+        public static VexAssessmentState Affected { get; } = new VexAssessmentState("AFFECTED");
+        /// <summary>
+        /// This product is known to be not affected by this vulnerability.
+        /// </summary>
+        public static VexAssessmentState NotAffected { get; } = new VexAssessmentState("NOT_AFFECTED");
+        /// <summary>
+        /// This product contains a fix for this vulnerability.
+        /// </summary>
+        public static VexAssessmentState Fixed { get; } = new VexAssessmentState("FIXED");
+        /// <summary>
+        /// It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+        /// </summary>
+        public static VexAssessmentState UnderInvestigation { get; } = new VexAssessmentState("UNDER_INVESTIGATION");
+
+        public static bool operator ==(VexAssessmentState left, VexAssessmentState right) => left.Equals(right);
+        public static bool operator !=(VexAssessmentState left, VexAssessmentState right) => !left.Equals(right);
+
+        public static explicit operator string(VexAssessmentState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VexAssessmentState other && Equals(other);
+        public bool Equals(VexAssessmentState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1478,6 +1727,47 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VulnerabilityDetailsEffectiveSeverity other && Equals(other);
         public bool Equals(VulnerabilityDetailsEffectiveSeverity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// CVSS version used to populate cvss_score and severity.
+    /// </summary>
+    [EnumType]
+    public readonly struct VulnerabilityTypeCvssVersion : IEquatable<VulnerabilityTypeCvssVersion>
+    {
+        private readonly string _value;
+
+        private VulnerabilityTypeCvssVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// CVSS Version unspecified.
+        /// </summary>
+        public static VulnerabilityTypeCvssVersion CvssVersionUnspecified { get; } = new VulnerabilityTypeCvssVersion("CVSS_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// CVSS v2.
+        /// </summary>
+        public static VulnerabilityTypeCvssVersion CvssVersion2 { get; } = new VulnerabilityTypeCvssVersion("CVSS_VERSION_2");
+        /// <summary>
+        /// CVSS v3.
+        /// </summary>
+        public static VulnerabilityTypeCvssVersion CvssVersion3 { get; } = new VulnerabilityTypeCvssVersion("CVSS_VERSION_3");
+
+        public static bool operator ==(VulnerabilityTypeCvssVersion left, VulnerabilityTypeCvssVersion right) => left.Equals(right);
+        public static bool operator !=(VulnerabilityTypeCvssVersion left, VulnerabilityTypeCvssVersion right) => !left.Equals(right);
+
+        public static explicit operator string(VulnerabilityTypeCvssVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VulnerabilityTypeCvssVersion other && Equals(other);
+        public bool Equals(VulnerabilityTypeCvssVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

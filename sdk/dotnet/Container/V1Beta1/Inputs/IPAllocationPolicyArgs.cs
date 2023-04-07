@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<string>? NodeIpv4CidrBlock { get; set; }
 
         /// <summary>
+        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        /// </summary>
+        [Input("podCidrOverprovisionConfig")]
+        public Input<Inputs.PodCIDROverprovisionConfigArgs>? PodCidrOverprovisionConfig { get; set; }
+
+        /// <summary>
         /// This field is deprecated, use services_ipv4_cidr_block.
         /// </summary>
         [Input("servicesIpv4Cidr")]

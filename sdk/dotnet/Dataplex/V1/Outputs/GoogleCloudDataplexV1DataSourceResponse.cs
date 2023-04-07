@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
         /// </summary>
         public readonly string Entity;
+        /// <summary>
+        /// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        public readonly string Resource;
 
         [OutputConstructor]
-        private GoogleCloudDataplexV1DataSourceResponse(string entity)
+        private GoogleCloudDataplexV1DataSourceResponse(
+            string entity,
+
+            string resource)
         {
             Entity = entity;
+            Resource = resource;
         }
     }
 }

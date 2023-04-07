@@ -15,30 +15,31 @@ __all__ = ['DocumentArgs', 'Document']
 class DocumentArgs:
     def __init__(__self__, *,
                  branch_id: pulumi.Input[str],
+                 collection_id: pulumi.Input[str],
                  data_store_id: pulumi.Input[str],
                  document_id: pulumi.Input[str],
-                 schema_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  json_data: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_document_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 schema_id: Optional[pulumi.Input[str]] = None,
                  struct_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+        :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
         """
         pulumi.set(__self__, "branch_id", branch_id)
+        pulumi.set(__self__, "collection_id", collection_id)
         pulumi.set(__self__, "data_store_id", data_store_id)
         pulumi.set(__self__, "document_id", document_id)
-        pulumi.set(__self__, "schema_id", schema_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if json_data is not None:
@@ -51,6 +52,8 @@ class DocumentArgs:
             pulumi.set(__self__, "parent_document_id", parent_document_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
         if struct_data is not None:
             pulumi.set(__self__, "struct_data", struct_data)
 
@@ -62,6 +65,15 @@ class DocumentArgs:
     @branch_id.setter
     def branch_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "branch_id", value)
+
+    @property
+    @pulumi.getter(name="collectionId")
+    def collection_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "collection_id")
+
+    @collection_id.setter
+    def collection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "collection_id", value)
 
     @property
     @pulumi.getter(name="dataStoreId")
@@ -83,18 +95,6 @@ class DocumentArgs:
     @document_id.setter
     def document_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "document_id", value)
-
-    @property
-    @pulumi.getter(name="schemaId")
-    def schema_id(self) -> pulumi.Input[str]:
-        """
-        The identifier of the schema located in the same data store.
-        """
-        return pulumi.get(self, "schema_id")
-
-    @schema_id.setter
-    def schema_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "schema_id", value)
 
     @property
     @pulumi.getter
@@ -133,7 +133,7 @@ class DocumentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         """
         return pulumi.get(self, "name")
 
@@ -163,6 +163,18 @@ class DocumentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of the schema located in the same data store.
+        """
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_id", value)
+
+    @property
     @pulumi.getter(name="structData")
     def struct_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -181,6 +193,7 @@ class Document(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
+                 collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -200,7 +213,7 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
@@ -230,6 +243,7 @@ class Document(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch_id: Optional[pulumi.Input[str]] = None,
+                 collection_id: Optional[pulumi.Input[str]] = None,
                  data_store_id: Optional[pulumi.Input[str]] = None,
                  document_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -252,6 +266,9 @@ class Document(pulumi.CustomResource):
             if branch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'branch_id'")
             __props__.__dict__["branch_id"] = branch_id
+            if collection_id is None and not opts.urn:
+                raise TypeError("Missing required property 'collection_id'")
+            __props__.__dict__["collection_id"] = collection_id
             if data_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_id'")
             __props__.__dict__["data_store_id"] = data_store_id
@@ -264,11 +281,9 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_document_id"] = parent_document_id
             __props__.__dict__["project"] = project
-            if schema_id is None and not opts.urn:
-                raise TypeError("Missing required property 'schema_id'")
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["struct_data"] = struct_data
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "data_store_id", "document_id", "location", "project"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["branch_id", "collection_id", "data_store_id", "document_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Document, __self__).__init__(
             'google-native:discoveryengine/v1alpha:Document',
@@ -293,6 +308,7 @@ class Document(pulumi.CustomResource):
         __props__ = DocumentArgs.__new__(DocumentArgs)
 
         __props__.__dict__["branch_id"] = None
+        __props__.__dict__["collection_id"] = None
         __props__.__dict__["data_store_id"] = None
         __props__.__dict__["document_id"] = None
         __props__.__dict__["json_data"] = None
@@ -308,6 +324,11 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="branchId")
     def branch_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "branch_id")
+
+    @property
+    @pulumi.getter(name="collectionId")
+    def collection_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "collection_id")
 
     @property
     @pulumi.getter(name="dataStoreId")
@@ -339,7 +360,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         """
         return pulumi.get(self, "name")
 

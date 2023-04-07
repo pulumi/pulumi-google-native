@@ -157,7 +157,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> str:
         """
-        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -214,7 +214,7 @@ def get_region_target_https_proxy(project: Optional[str] = None,
                                   target_https_proxy: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionTargetHttpsProxyResult:
     """
-    Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpsProxy resource in the specified region.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -247,6 +247,6 @@ def get_region_target_https_proxy_output(project: Optional[pulumi.Input[Optional
                                          target_https_proxy: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionTargetHttpsProxyResult]:
     """
-    Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpsProxy resource in the specified region.
     """
     ...

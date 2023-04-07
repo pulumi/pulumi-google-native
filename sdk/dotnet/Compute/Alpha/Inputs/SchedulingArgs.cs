@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<bool>? LatencyTolerant { get; set; }
 
         /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+        /// </summary>
+        [Input("localSsdRecoveryTimeout")]
+        public Input<Inputs.DurationArgs>? LocalSsdRecoveryTimeout { get; set; }
+
+        /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         [Input("locationHint")]

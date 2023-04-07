@@ -132,6 +132,7 @@ class BigQueryDestinationConfigArgs:
                  single_target_dataset: Optional[pulumi.Input['SingleTargetDatasetArgs']] = None,
                  source_hierarchy_datasets: Optional[pulumi.Input['SourceHierarchyDatasetsArgs']] = None):
         """
+        BigQuery destination configuration
         :param pulumi.Input[str] data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
         :param pulumi.Input['SingleTargetDatasetArgs'] single_target_dataset: Single destination dataset.
         :param pulumi.Input['SourceHierarchyDatasetsArgs'] source_hierarchy_datasets: Source hierarchy datasets.
@@ -835,17 +836,21 @@ class MysqlSourceConfigArgs:
     def __init__(__self__, *,
                  exclude_objects: Optional[pulumi.Input['MysqlRdbmsArgs']] = None,
                  include_objects: Optional[pulumi.Input['MysqlRdbmsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
         """
         MySQL source configuration
         :param pulumi.Input['MysqlRdbmsArgs'] exclude_objects: MySQL objects to exclude from the stream.
         :param pulumi.Input['MysqlRdbmsArgs'] include_objects: MySQL objects to retrieve from the source.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         """
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
 
@@ -872,6 +877,18 @@ class MysqlSourceConfigArgs:
     @include_objects.setter
     def include_objects(self, value: Optional[pulumi.Input['MysqlRdbmsArgs']]):
         pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @property
     @pulumi.getter(name="maxConcurrentCdcTasks")
@@ -1304,6 +1321,7 @@ class OracleSourceConfigArgs:
                  drop_large_objects: Optional[pulumi.Input['DropLargeObjectsArgs']] = None,
                  exclude_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
                  include_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None,
                  stream_large_objects: Optional[pulumi.Input['StreamLargeObjectsArgs']] = None):
         """
@@ -1311,7 +1329,8 @@ class OracleSourceConfigArgs:
         :param pulumi.Input['DropLargeObjectsArgs'] drop_large_objects: Drop large object values.
         :param pulumi.Input['OracleRdbmsArgs'] exclude_objects: Oracle objects to exclude from the stream.
         :param pulumi.Input['OracleRdbmsArgs'] include_objects: Oracle objects to include in the stream.
-        :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+        :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         :param pulumi.Input['StreamLargeObjectsArgs'] stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
         """
         if drop_large_objects is not None:
@@ -1320,6 +1339,8 @@ class OracleSourceConfigArgs:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
         if stream_large_objects is not None:
@@ -1362,10 +1383,22 @@ class OracleSourceConfigArgs:
         pulumi.set(self, "include_objects", value)
 
     @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
+
+    @property
     @pulumi.getter(name="maxConcurrentCdcTasks")
     def max_concurrent_cdc_tasks(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
@@ -1716,13 +1749,15 @@ class PostgresqlSourceConfigArgs:
                  publication: pulumi.Input[str],
                  replication_slot: pulumi.Input[str],
                  exclude_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None,
-                 include_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None):
+                 include_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None):
         """
         PostgreSQL data source configuration
         :param pulumi.Input[str] publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
         :param pulumi.Input[str] replication_slot: Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         :param pulumi.Input['PostgresqlRdbmsArgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
         :param pulumi.Input['PostgresqlRdbmsArgs'] include_objects: PostgreSQL objects to include in the stream.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         """
         pulumi.set(__self__, "publication", publication)
         pulumi.set(__self__, "replication_slot", replication_slot)
@@ -1730,6 +1765,8 @@ class PostgresqlSourceConfigArgs:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
 
     @property
     @pulumi.getter
@@ -1778,6 +1815,18 @@ class PostgresqlSourceConfigArgs:
     @include_objects.setter
     def include_objects(self, value: Optional[pulumi.Input['PostgresqlRdbmsArgs']]):
         pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
 
 @pulumi.input_type
@@ -1944,6 +1993,7 @@ class SourceHierarchyDatasetsArgs:
                  dataset_template: Optional[pulumi.Input['DatasetTemplateArgs']] = None):
         """
         Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        :param pulumi.Input['DatasetTemplateArgs'] dataset_template: The dataset template to use for dynamic dataset creation.
         """
         if dataset_template is not None:
             pulumi.set(__self__, "dataset_template", dataset_template)
@@ -1951,6 +2001,9 @@ class SourceHierarchyDatasetsArgs:
     @property
     @pulumi.getter(name="datasetTemplate")
     def dataset_template(self) -> Optional[pulumi.Input['DatasetTemplateArgs']]:
+        """
+        The dataset template to use for dynamic dataset creation.
+        """
         return pulumi.get(self, "dataset_template")
 
     @dataset_template.setter
@@ -1962,7 +2015,7 @@ class SourceHierarchyDatasetsArgs:
 class StaticServiceIpConnectivityArgs:
     def __init__(__self__):
         """
-        Static IP address connectivity.
+        Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
         """
         pass
 

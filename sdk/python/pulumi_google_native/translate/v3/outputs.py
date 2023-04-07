@@ -251,8 +251,8 @@ class LanguageCodePairResponse(dict):
                  target_language_code: str):
         """
         Used with unidirectional glossaries.
-        :param str source_language_code: The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-        :param str target_language_code: The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        :param str source_language_code: The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        :param str target_language_code: The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         """
         pulumi.set(__self__, "source_language_code", source_language_code)
         pulumi.set(__self__, "target_language_code", target_language_code)
@@ -261,7 +261,7 @@ class LanguageCodePairResponse(dict):
     @pulumi.getter(name="sourceLanguageCode")
     def source_language_code(self) -> str:
         """
-        The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "source_language_code")
 
@@ -269,7 +269,7 @@ class LanguageCodePairResponse(dict):
     @pulumi.getter(name="targetLanguageCode")
     def target_language_code(self) -> str:
         """
-        The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "target_language_code")
 
@@ -300,7 +300,7 @@ class LanguageCodesSetResponse(dict):
                  language_codes: Sequence[str]):
         """
         Used with equivalent term set glossaries.
-        :param Sequence[str] language_codes: The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+        :param Sequence[str] language_codes: The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
         """
         pulumi.set(__self__, "language_codes", language_codes)
 
@@ -308,7 +308,7 @@ class LanguageCodesSetResponse(dict):
     @pulumi.getter(name="languageCodes")
     def language_codes(self) -> Sequence[str]:
         """
-        The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
+        The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "language_codes")
 

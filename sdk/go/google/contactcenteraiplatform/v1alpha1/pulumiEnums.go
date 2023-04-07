@@ -22,6 +22,12 @@ const (
 	InstanceConfigInstanceSizeStandardMedium = InstanceConfigInstanceSize("STANDARD_MEDIUM")
 	// Instance Size STANDARD_LARGE.
 	InstanceConfigInstanceSizeStandardLarge = InstanceConfigInstanceSize("STANDARD_LARGE")
+	// Instance Size STANDARD_XLARGE.
+	InstanceConfigInstanceSizeStandardXlarge = InstanceConfigInstanceSize("STANDARD_XLARGE")
+	// Instance Size STANDARD_2XLARGE.
+	InstanceConfigInstanceSizeStandard2xlarge = InstanceConfigInstanceSize("STANDARD_2XLARGE")
+	// Instance Size STANDARD_3XLARGE.
+	InstanceConfigInstanceSizeStandard3xlarge = InstanceConfigInstanceSize("STANDARD_3XLARGE")
 )
 
 func (InstanceConfigInstanceSize) ElementType() reflect.Type {

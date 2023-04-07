@@ -58,6 +58,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly functionId!: pulumi.Output<string | undefined>;
     /**
+     * [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string>;
+    /**
      * Labels associated with this Cloud Function.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -100,6 +104,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["environment"] = args ? args.environment : undefined;
             resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
             resourceInputs["functionId"] = args ? args.functionId : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -114,6 +119,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["eventTrigger"] = undefined /*out*/;
             resourceInputs["functionId"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -154,6 +160,10 @@ export interface FunctionArgs {
      * The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
      */
     functionId?: pulumi.Input<string>;
+    /**
+     * [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * Labels associated with this Cloud Function.
      */

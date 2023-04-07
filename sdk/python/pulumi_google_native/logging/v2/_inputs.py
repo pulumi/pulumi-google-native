@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'BigQueryDatasetArgs',
     'BigQueryOptionsArgs',
     'BucketOptionsArgs',
     'CmekSettingsArgs',
@@ -23,6 +24,15 @@ __all__ = [
     'MetricDescriptorMetadataArgs',
     'MetricDescriptorArgs',
 ]
+
+@pulumi.input_type
+class BigQueryDatasetArgs:
+    def __init__(__self__):
+        """
+        Describes a BigQuery dataset that was created by a link.
+        """
+        pass
+
 
 @pulumi.input_type
 class BigQueryOptionsArgs:

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// A globally unique identifier (in UUID4 format) for this namespace.
+        /// </summary>
+        public readonly string Uid;
+        /// <summary>
         /// The timestamp when the namespace was last updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -88,11 +92,14 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
 
             string name,
 
+            string uid,
+
             string updateTime)
         {
             CreateTime = createTime;
             Labels = labels;
             Name = name;
+            Uid = uid;
             UpdateTime = updateTime;
         }
     }

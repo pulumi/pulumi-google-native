@@ -142,7 +142,7 @@ type entityArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormat `pulumi:"format"`
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores, and consist of 256 or fewer characters.
 	Id       string  `pulumi:"id"`
 	LakeId   string  `pulumi:"lakeId"`
 	Location *string `pulumi:"location"`
@@ -174,7 +174,7 @@ type EntityArgs struct {
 	Etag pulumi.StringPtrInput
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormatInput
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores, and consist of 256 or fewer characters.
 	Id       pulumi.StringInput
 	LakeId   pulumi.StringInput
 	Location pulumi.StringPtrInput

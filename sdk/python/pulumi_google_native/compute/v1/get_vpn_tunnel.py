@@ -286,7 +286,7 @@ def get_vpn_tunnel(project: Optional[str] = None,
                    vpn_tunnel: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnTunnelResult:
     """
-    Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+    Returns the specified VpnTunnel resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -325,6 +325,6 @@ def get_vpn_tunnel_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                           vpn_tunnel: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpnTunnelResult]:
     """
-    Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+    Returns the specified VpnTunnel resource.
     """
     ...

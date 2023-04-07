@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// Configuration detail of a trigger. Next available id: 17
+    /// Configuration detail of a trigger. Next available id: 19
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse
@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
         /// </summary>
         public readonly ImmutableArray<string> EnabledClients;
+        /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        public readonly string ErrorCatcherId;
         /// <summary>
         /// The user created label for a particular trigger.
         /// </summary>
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             ImmutableArray<string> enabledClients,
 
+            string errorCatcherId,
+
             string label,
 
             string nextTasksExecutionPolicy,
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             CloudSchedulerConfig = cloudSchedulerConfig;
             Description = description;
             EnabledClients = enabledClients;
+            ErrorCatcherId = errorCatcherId;
             Label = label;
             NextTasksExecutionPolicy = nextTasksExecutionPolicy;
             PauseWorkflowExecutions = pauseWorkflowExecutions;

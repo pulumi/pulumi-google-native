@@ -77,6 +77,10 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// Use reCAPTCHA action-tokens to protect user actions.
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature ActionToken { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("ACTION_TOKEN");
+        /// <summary>
+        /// Use reCAPTCHA WAF express protection to protect any content other than web pages, like APIs and IoT devices.
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature Express { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("EXPRESS");
 
         public static bool operator ==(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature right) => left.Equals(right);
         public static bool operator !=(GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature right) => !left.Equals(right);
@@ -114,6 +118,10 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// Cloud Armor
         /// </summary>
         public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService Ca { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CA");
+        /// <summary>
+        /// Fastly
+        /// </summary>
+        public static GoogleCloudRecaptchaenterpriseV1WafSettingsWafService Fastly { get; } = new GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("FASTLY");
 
         public static bool operator ==(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => left.Equals(right);
         public static bool operator !=(GoogleCloudRecaptchaenterpriseV1WafSettingsWafService left, GoogleCloudRecaptchaenterpriseV1WafSettingsWafService right) => !left.Equals(right);

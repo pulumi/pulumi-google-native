@@ -56,11 +56,11 @@ export interface GetDataAttributeBindingResult {
      */
     readonly name: string;
     /**
-     * Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+     * Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
      */
     readonly paths: outputs.dataplex.v1.GoogleCloudDataplexV1DataAttributeBindingPathResponse[];
     /**
-     * Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+     * Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
      */
     readonly resource: string;
     /**

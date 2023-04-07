@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetContactCenterResult:
-    def __init__(__self__, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, labels=None, name=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
+    def __init__(__self__, admin_user=None, ccaip_managed_users=None, create_time=None, customer_domain_prefix=None, display_name=None, instance_config=None, labels=None, name=None, saml_params=None, state=None, update_time=None, uris=None, user_email=None):
+        if admin_user and not isinstance(admin_user, dict):
+            raise TypeError("Expected argument 'admin_user' to be a dict")
+        pulumi.set(__self__, "admin_user", admin_user)
         if ccaip_managed_users and not isinstance(ccaip_managed_users, bool):
             raise TypeError("Expected argument 'ccaip_managed_users' to be a bool")
         pulumi.set(__self__, "ccaip_managed_users", ccaip_managed_users)
@@ -56,6 +59,14 @@ class GetContactCenterResult:
         if user_email and not isinstance(user_email, str):
             raise TypeError("Expected argument 'user_email' to be a str")
         pulumi.set(__self__, "user_email", user_email)
+
+    @property
+    @pulumi.getter(name="adminUser")
+    def admin_user(self) -> 'outputs.AdminUserResponse':
+        """
+        Optional. Info about the first admin user, such as given name and family name.
+        """
+        return pulumi.get(self, "admin_user")
 
     @property
     @pulumi.getter(name="ccaipManagedUsers")
@@ -149,7 +160,7 @@ class GetContactCenterResult:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> str:
         """
-        Optional. Email address of the first admin users.
+        Optional. Email address of the first admin user.
         """
         return pulumi.get(self, "user_email")
 
@@ -160,6 +171,7 @@ class AwaitableGetContactCenterResult(GetContactCenterResult):
         if False:
             yield self
         return GetContactCenterResult(
+            admin_user=self.admin_user,
             ccaip_managed_users=self.ccaip_managed_users,
             create_time=self.create_time,
             customer_domain_prefix=self.customer_domain_prefix,
@@ -189,6 +201,7 @@ def get_contact_center(contact_center_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contactcenteraiplatform/v1alpha1:getContactCenter', __args__, opts=opts, typ=GetContactCenterResult).value
 
     return AwaitableGetContactCenterResult(
+        admin_user=__ret__.admin_user,
         ccaip_managed_users=__ret__.ccaip_managed_users,
         create_time=__ret__.create_time,
         customer_domain_prefix=__ret__.customer_domain_prefix,

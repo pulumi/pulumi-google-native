@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomerResult:
-    def __init__(__self__, alternate_email=None, channel_partner_id=None, cloud_identity_id=None, cloud_identity_info=None, create_time=None, domain=None, language_code=None, name=None, org_display_name=None, org_postal_address=None, primary_contact_info=None, update_time=None):
+    def __init__(__self__, alternate_email=None, channel_partner_id=None, cloud_identity_id=None, cloud_identity_info=None, correlation_id=None, create_time=None, domain=None, language_code=None, name=None, org_display_name=None, org_postal_address=None, primary_contact_info=None, update_time=None):
         if alternate_email and not isinstance(alternate_email, str):
             raise TypeError("Expected argument 'alternate_email' to be a str")
         pulumi.set(__self__, "alternate_email", alternate_email)
@@ -32,6 +32,9 @@ class GetCustomerResult:
         if cloud_identity_info and not isinstance(cloud_identity_info, dict):
             raise TypeError("Expected argument 'cloud_identity_info' to be a dict")
         pulumi.set(__self__, "cloud_identity_info", cloud_identity_info)
+        if correlation_id and not isinstance(correlation_id, str):
+            raise TypeError("Expected argument 'correlation_id' to be a str")
+        pulumi.set(__self__, "correlation_id", correlation_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -88,6 +91,14 @@ class GetCustomerResult:
         Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
         """
         return pulumi.get(self, "cloud_identity_info")
+
+    @property
+    @pulumi.getter(name="correlationId")
+    def correlation_id(self) -> str:
+        """
+        Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+        """
+        return pulumi.get(self, "correlation_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -164,6 +175,7 @@ class AwaitableGetCustomerResult(GetCustomerResult):
             channel_partner_id=self.channel_partner_id,
             cloud_identity_id=self.cloud_identity_id,
             cloud_identity_info=self.cloud_identity_info,
+            correlation_id=self.correlation_id,
             create_time=self.create_time,
             domain=self.domain,
             language_code=self.language_code,
@@ -193,6 +205,7 @@ def get_customer(account_id: Optional[str] = None,
         channel_partner_id=__ret__.channel_partner_id,
         cloud_identity_id=__ret__.cloud_identity_id,
         cloud_identity_info=__ret__.cloud_identity_info,
+        correlation_id=__ret__.correlation_id,
         create_time=__ret__.create_time,
         domain=__ret__.domain,
         language_code=__ret__.language_code,

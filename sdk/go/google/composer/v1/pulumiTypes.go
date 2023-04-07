@@ -1036,6 +1036,8 @@ func (o EnvironmentConfigPtrOutput) WorkloadsConfig() WorkloadsConfigPtrOutput {
 
 // Configuration information for an environment.
 type EnvironmentConfigResponse struct {
+	// The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
+	AirflowByoidUri string `pulumi:"airflowByoidUri"`
 	// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
 	AirflowUri string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
@@ -1083,6 +1085,11 @@ func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutput() Env
 
 func (o EnvironmentConfigResponseOutput) ToEnvironmentConfigResponseOutputWithContext(ctx context.Context) EnvironmentConfigResponseOutput {
 	return o
+}
+
+// The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
+func (o EnvironmentConfigResponseOutput) AirflowByoidUri() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.AirflowByoidUri }).(pulumi.StringOutput)
 }
 
 // The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetTargetHttpsProxy
     {
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource.
         /// </summary>
         public static Task<GetTargetHttpsProxyResult> InvokeAsync(GetTargetHttpsProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpsProxyResult>("google-native:compute/alpha:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource.
         /// </summary>
         public static Output<GetTargetHttpsProxyResult> Invoke(GetTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetHttpsProxyResult>("google-native:compute/alpha:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyInvokeArgs(), options.WithDefaults());
@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableArray<string> HttpFilters;
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        /// </summary>
+        public readonly int HttpKeepAliveTimeoutSec;
+        /// <summary>
         /// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         /// </summary>
         public readonly string Kind;
@@ -118,7 +122,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         /// </summary>
         public readonly string ServerTlsPolicy;
         /// <summary>
@@ -152,6 +156,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<string> httpFilters,
 
+            int httpKeepAliveTimeoutSec,
+
             string kind,
 
             string name,
@@ -182,6 +188,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             Fingerprint = fingerprint;
             HttpFilters = httpFilters;
+            HttpKeepAliveTimeoutSec = httpKeepAliveTimeoutSec;
             Kind = kind;
             Name = name;
             ProxyBind = proxyBind;

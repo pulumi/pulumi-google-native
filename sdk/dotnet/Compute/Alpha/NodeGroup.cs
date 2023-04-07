@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> LocationHint { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        /// </summary>
+        [Output("maintenanceInterval")]
+        public Output<string> MaintenanceInterval { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         [Output("maintenancePolicy")]
@@ -188,6 +194,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("locationHint")]
         public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
+        /// Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupMaintenanceInterval>? MaintenanceInterval { get; set; }
 
         /// <summary>
         /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.

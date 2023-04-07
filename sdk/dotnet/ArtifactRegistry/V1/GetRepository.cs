@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// </summary>
+        public readonly Outputs.DockerRepositoryConfigResponse DockerConfig;
+        /// <summary>
         /// The format of packages that are stored in the repository.
         /// </summary>
         public readonly string Format;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
             string description,
 
+            Outputs.DockerRepositoryConfigResponse dockerConfig,
+
             string format,
 
             string kmsKeyName,
@@ -146,6 +152,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         {
             CreateTime = createTime;
             Description = description;
+            DockerConfig = dockerConfig;
             Format = format;
             KmsKeyName = kmsKeyName;
             Labels = labels;

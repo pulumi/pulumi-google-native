@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'MultiClusterIngressFeatureSpecBilling',
+    'RolePredefinedRole',
 ]
 
 
@@ -47,4 +48,26 @@ class MultiClusterIngressFeatureSpecBilling(str, Enum):
     ANTHOS_LICENSE = "ANTHOS_LICENSE"
     """
     User is paying for Anthos as a whole.
+    """
+
+
+class RolePredefinedRole(str, Enum):
+    """
+    predefined_role is the Kubernetes default role to use
+    """
+    UNKNOWN = "UNKNOWN"
+    """
+    UNKNOWN
+    """
+    ADMIN = "ADMIN"
+    """
+    ADMIN has EDIT and RBAC permissions
+    """
+    EDIT = "EDIT"
+    """
+    EDIT can edit all resources except RBAC
+    """
+    VIEW = "VIEW"
+    """
+    VIEW can only read resources
     """

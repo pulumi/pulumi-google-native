@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        public readonly string ErrorCatcherId;
+        /// <summary>
         /// Optional. The user created label for a particular trigger.
         /// </summary>
         public readonly string Label;
@@ -36,6 +40,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// Optional. Dictates how next tasks will be executed.
         /// </summary>
         public readonly string NextTasksExecutionPolicy;
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIntegrationsV1alphaCoordinateResponse Position;
         /// <summary>
         /// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
         /// </summary>
@@ -65,9 +73,13 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string description,
 
+            string errorCatcherId,
+
             string label,
 
             string nextTasksExecutionPolicy,
+
+            Outputs.GoogleCloudIntegrationsV1alphaCoordinateResponse position,
 
             ImmutableDictionary<string, string> properties,
 
@@ -82,8 +94,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             AlertConfig = alertConfig;
             CloudSchedulerConfig = cloudSchedulerConfig;
             Description = description;
+            ErrorCatcherId = errorCatcherId;
             Label = label;
             NextTasksExecutionPolicy = nextTasksExecutionPolicy;
+            Position = position;
             Properties = properties;
             StartTasks = startTasks;
             TriggerId = triggerId;

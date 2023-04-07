@@ -16,10 +16,16 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     public partial class GcpUserAccessBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
         [Output("accessLevels")]
         public Output<ImmutableArray<string>> AccessLevels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        [Output("dryRunAccessLevels")]
+        public Output<ImmutableArray<string>> DryRunAccessLevels { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
@@ -85,16 +91,28 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
 
     public sealed class GcpUserAccessBindingArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessLevels", required: true)]
+        [Input("accessLevels")]
         private InputList<string>? _accessLevels;
 
         /// <summary>
-        /// Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
         public InputList<string> AccessLevels
         {
             get => _accessLevels ?? (_accessLevels = new InputList<string>());
             set => _accessLevels = value;
+        }
+
+        [Input("dryRunAccessLevels")]
+        private InputList<string>? _dryRunAccessLevels;
+
+        /// <summary>
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        public InputList<string> DryRunAccessLevels
+        {
+            get => _dryRunAccessLevels ?? (_dryRunAccessLevels = new InputList<string>());
+            set => _dryRunAccessLevels = value;
         }
 
         /// <summary>

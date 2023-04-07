@@ -501,6 +501,10 @@ class AudioStreamResponse(dict):
             suggest = "channel_count"
         elif key == "channelLayout":
             suggest = "channel_layout"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "languageCode":
+            suggest = "language_code"
         elif key == "sampleRateHertz":
             suggest = "sample_rate_hertz"
 
@@ -520,6 +524,8 @@ class AudioStreamResponse(dict):
                  channel_count: int,
                  channel_layout: Sequence[str],
                  codec: str,
+                 display_name: str,
+                 language_code: str,
                  mapping: Sequence['outputs.AudioMappingResponse'],
                  sample_rate_hertz: int):
         """
@@ -528,6 +534,8 @@ class AudioStreamResponse(dict):
         :param int channel_count: Number of audio channels. Must be between 1 and 6. The default is 2.
         :param Sequence[str] channel_layout: A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency
         :param str codec: The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
+        :param str display_name: The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+        :param str language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
         :param Sequence['AudioMappingResponse'] mapping: The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
         :param int sample_rate_hertz: The audio sample rate in Hertz. The default is 48000 Hertz.
         """
@@ -535,6 +543,8 @@ class AudioStreamResponse(dict):
         pulumi.set(__self__, "channel_count", channel_count)
         pulumi.set(__self__, "channel_layout", channel_layout)
         pulumi.set(__self__, "codec", codec)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "language_code", language_code)
         pulumi.set(__self__, "mapping", mapping)
         pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
 
@@ -569,6 +579,22 @@ class AudioStreamResponse(dict):
         The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
         """
         return pulumi.get(self, "codec")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+        """
+        return pulumi.get(self, "language_code")
 
     @property
     @pulumi.getter
@@ -2574,15 +2600,40 @@ class TextStreamResponse(dict):
     """
     Encoding of a text stream. For example, closed captions or subtitles.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TextStreamResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TextStreamResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TextStreamResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  codec: str,
+                 display_name: str,
+                 language_code: str,
                  mapping: Sequence['outputs.TextMappingResponse']):
         """
         Encoding of a text stream. For example, closed captions or subtitles.
         :param str codec: The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
+        :param str display_name: The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+        :param str language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
         :param Sequence['TextMappingResponse'] mapping: The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
         """
         pulumi.set(__self__, "codec", codec)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "language_code", language_code)
         pulumi.set(__self__, "mapping", mapping)
 
     @property
@@ -2592,6 +2643,22 @@ class TextStreamResponse(dict):
         The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
         """
         return pulumi.get(self, "codec")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+        """
+        return pulumi.get(self, "language_code")
 
     @property
     @pulumi.getter

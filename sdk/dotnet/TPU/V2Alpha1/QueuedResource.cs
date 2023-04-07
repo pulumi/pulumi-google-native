@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+        /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
         /// </summary>
         [Output("queuedResourceId")]
         public Output<string?> QueuedResourceId { get; private set; } = null!;
@@ -59,7 +59,13 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// State of the QueuedResource request
+        /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        /// </summary>
+        [Output("reservationName")]
+        public Output<string> ReservationName { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the QueuedResource request.
         /// </summary>
         [Output("state")]
         public Output<Outputs.QueuedResourceStateResponse> State { get; private set; } = null!;
@@ -139,7 +145,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+        /// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
         /// </summary>
         [Input("queuedResourceId")]
         public Input<string>? QueuedResourceId { get; set; }
@@ -155,6 +161,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+        /// </summary>
+        [Input("reservationName")]
+        public Input<string>? ReservationName { get; set; }
 
         /// <summary>
         /// Defines a TPU resource.

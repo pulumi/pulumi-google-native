@@ -5269,6 +5269,186 @@ func (o FilterResponseOutput) EventType() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FilterResponse) []string { return v.EventType }).(pulumi.StringArrayOutput)
 }
 
+// Fleet is the fleet configuration for the cluster.
+type Fleet struct {
+	// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+	Project *string `pulumi:"project"`
+}
+
+// FleetInput is an input type that accepts FleetArgs and FleetOutput values.
+// You can construct a concrete instance of `FleetInput` via:
+//
+//	FleetArgs{...}
+type FleetInput interface {
+	pulumi.Input
+
+	ToFleetOutput() FleetOutput
+	ToFleetOutputWithContext(context.Context) FleetOutput
+}
+
+// Fleet is the fleet configuration for the cluster.
+type FleetArgs struct {
+	// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (FleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fleet)(nil)).Elem()
+}
+
+func (i FleetArgs) ToFleetOutput() FleetOutput {
+	return i.ToFleetOutputWithContext(context.Background())
+}
+
+func (i FleetArgs) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetOutput)
+}
+
+func (i FleetArgs) ToFleetPtrOutput() FleetPtrOutput {
+	return i.ToFleetPtrOutputWithContext(context.Background())
+}
+
+func (i FleetArgs) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetOutput).ToFleetPtrOutputWithContext(ctx)
+}
+
+// FleetPtrInput is an input type that accepts FleetArgs, FleetPtr and FleetPtrOutput values.
+// You can construct a concrete instance of `FleetPtrInput` via:
+//
+//	        FleetArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetPtrInput interface {
+	pulumi.Input
+
+	ToFleetPtrOutput() FleetPtrOutput
+	ToFleetPtrOutputWithContext(context.Context) FleetPtrOutput
+}
+
+type fleetPtrType FleetArgs
+
+func FleetPtr(v *FleetArgs) FleetPtrInput {
+	return (*fleetPtrType)(v)
+}
+
+func (*fleetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fleet)(nil)).Elem()
+}
+
+func (i *fleetPtrType) ToFleetPtrOutput() FleetPtrOutput {
+	return i.ToFleetPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetPtrType) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetPtrOutput)
+}
+
+// Fleet is the fleet configuration for the cluster.
+type FleetOutput struct{ *pulumi.OutputState }
+
+func (FleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Fleet)(nil)).Elem()
+}
+
+func (o FleetOutput) ToFleetOutput() FleetOutput {
+	return o
+}
+
+func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
+	return o
+}
+
+func (o FleetOutput) ToFleetPtrOutput() FleetPtrOutput {
+	return o.ToFleetPtrOutputWithContext(context.Background())
+}
+
+func (o FleetOutput) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Fleet) *Fleet {
+		return &v
+	}).(FleetPtrOutput)
+}
+
+// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+func (o FleetOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Fleet) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type FleetPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Fleet)(nil)).Elem()
+}
+
+func (o FleetPtrOutput) ToFleetPtrOutput() FleetPtrOutput {
+	return o
+}
+
+func (o FleetPtrOutput) ToFleetPtrOutputWithContext(ctx context.Context) FleetPtrOutput {
+	return o
+}
+
+func (o FleetPtrOutput) Elem() FleetOutput {
+	return o.ApplyT(func(v *Fleet) Fleet {
+		if v != nil {
+			return *v
+		}
+		var ret Fleet
+		return ret
+	}).(FleetOutput)
+}
+
+// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+func (o FleetPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Fleet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fleet is the fleet configuration for the cluster.
+type FleetResponse struct {
+	// [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
+	Membership string `pulumi:"membership"`
+	// [Output only] Whether the cluster has been registered through the fleet API.
+	PreRegistered bool `pulumi:"preRegistered"`
+	// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+	Project string `pulumi:"project"`
+}
+
+// Fleet is the fleet configuration for the cluster.
+type FleetResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetResponse)(nil)).Elem()
+}
+
+func (o FleetResponseOutput) ToFleetResponseOutput() FleetResponseOutput {
+	return o
+}
+
+func (o FleetResponseOutput) ToFleetResponseOutputWithContext(ctx context.Context) FleetResponseOutput {
+	return o
+}
+
+// [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
+func (o FleetResponseOutput) Membership() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetResponse) string { return v.Membership }).(pulumi.StringOutput)
+}
+
+// [Output only] Whether the cluster has been registered through the fleet API.
+func (o FleetResponseOutput) PreRegistered() pulumi.BoolOutput {
+	return o.ApplyT(func(v FleetResponse) bool { return v.PreRegistered }).(pulumi.BoolOutput)
+}
+
+// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
+func (o FleetResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
 // GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
 type GPUSharingConfig struct {
 	// The type of GPU sharing strategy to enable on the GPU node.
@@ -14648,7 +14828,7 @@ func (o NodePoolResponseArrayOutput) Index(i pulumi.IntInput) NodePoolResponseOu
 	}).(NodePoolResponseOutput)
 }
 
-// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaint struct {
 	// Effect for taint.
 	Effect *NodeTaintEffect `pulumi:"effect"`
@@ -14669,7 +14849,7 @@ type NodeTaintInput interface {
 	ToNodeTaintOutputWithContext(context.Context) NodeTaintOutput
 }
 
-// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintArgs struct {
 	// Effect for taint.
 	Effect NodeTaintEffectPtrInput `pulumi:"effect"`
@@ -14716,7 +14896,7 @@ func (i NodeTaintArray) ToNodeTaintArrayOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTaintArrayOutput)
 }
 
-// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintOutput struct{ *pulumi.OutputState }
 
 func (NodeTaintOutput) ElementType() reflect.Type {
@@ -14766,7 +14946,7 @@ func (o NodeTaintArrayOutput) Index(i pulumi.IntInput) NodeTaintOutput {
 	}).(NodeTaintOutput)
 }
 
-// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintResponse struct {
 	// Effect for taint.
 	Effect string `pulumi:"effect"`
@@ -14776,7 +14956,7 @@ type NodeTaintResponse struct {
 	Value string `pulumi:"value"`
 }
 
-// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
+// Kubernetes taint is composed of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeTaintResponseOutput) ElementType() reflect.Type {
@@ -19352,6 +19532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FastSocketPtrInput)(nil)).Elem(), FastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetInput)(nil)).Elem(), FleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetPtrInput)(nil)).Elem(), FleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigPtrInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigInput)(nil)).Elem(), GatewayAPIConfigArgs{})
@@ -19565,6 +19747,9 @@ func init() {
 	pulumi.RegisterOutputType(FilterOutput{})
 	pulumi.RegisterOutputType(FilterPtrOutput{})
 	pulumi.RegisterOutputType(FilterResponseOutput{})
+	pulumi.RegisterOutputType(FleetOutput{})
+	pulumi.RegisterOutputType(FleetPtrOutput{})
+	pulumi.RegisterOutputType(FleetResponseOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigResponseOutput{})

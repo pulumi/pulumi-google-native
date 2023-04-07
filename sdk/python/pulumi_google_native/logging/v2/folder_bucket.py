@@ -19,6 +19,7 @@ class FolderBucketArgs:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[str],
                  folder_id: pulumi.Input[str],
+                 analytics_enabled: Optional[pulumi.Input[bool]] = None,
                  cmek_settings: Optional[pulumi.Input['CmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  index_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IndexConfigArgs']]]] = None,
@@ -29,6 +30,7 @@ class FolderBucketArgs:
         """
         The set of arguments for constructing a FolderBucket resource.
         :param pulumi.Input[str] bucket_id: Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
+        :param pulumi.Input[bool] analytics_enabled: Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
         :param pulumi.Input['CmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input['IndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data.
@@ -38,6 +40,8 @@ class FolderBucketArgs:
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
         pulumi.set(__self__, "folder_id", folder_id)
+        if analytics_enabled is not None:
+            pulumi.set(__self__, "analytics_enabled", analytics_enabled)
         if cmek_settings is not None:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
@@ -73,6 +77,18 @@ class FolderBucketArgs:
     @folder_id.setter
     def folder_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "folder_id", value)
+
+    @property
+    @pulumi.getter(name="analyticsEnabled")
+    def analytics_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        """
+        return pulumi.get(self, "analytics_enabled")
+
+    @analytics_enabled.setter
+    def analytics_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "analytics_enabled", value)
 
     @property
     @pulumi.getter(name="cmekSettings")
@@ -161,6 +177,7 @@ class FolderBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 analytics_enabled: Optional[pulumi.Input[bool]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['CmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -177,6 +194,7 @@ class FolderBucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] analytics_enabled: Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
         :param pulumi.Input[str] bucket_id: Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         :param pulumi.Input[pulumi.InputType['CmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
@@ -210,6 +228,7 @@ class FolderBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 analytics_enabled: Optional[pulumi.Input[bool]] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  cmek_settings: Optional[pulumi.Input[pulumi.InputType['CmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -228,6 +247,7 @@ class FolderBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FolderBucketArgs.__new__(FolderBucketArgs)
 
+            __props__.__dict__["analytics_enabled"] = analytics_enabled
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
@@ -269,6 +289,7 @@ class FolderBucket(pulumi.CustomResource):
 
         __props__ = FolderBucketArgs.__new__(FolderBucketArgs)
 
+        __props__.__dict__["analytics_enabled"] = None
         __props__.__dict__["bucket_id"] = None
         __props__.__dict__["cmek_settings"] = None
         __props__.__dict__["create_time"] = None
@@ -283,6 +304,14 @@ class FolderBucket(pulumi.CustomResource):
         __props__.__dict__["retention_days"] = None
         __props__.__dict__["update_time"] = None
         return FolderBucket(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="analyticsEnabled")
+    def analytics_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        """
+        return pulumi.get(self, "analytics_enabled")
 
     @property
     @pulumi.getter(name="bucketId")

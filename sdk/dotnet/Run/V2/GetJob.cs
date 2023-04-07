@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ExecutionReferenceResponse LatestCreatedExecution;
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// </summary>
         public readonly string LaunchStage;
         /// <summary>
@@ -139,6 +139,10 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         /// </summary>
         public readonly bool Reconciling;
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// The template used to create executions for this Job.
         /// </summary>
@@ -196,6 +200,8 @@ namespace Pulumi.GoogleNative.Run.V2
 
             bool reconciling,
 
+            bool satisfiesPzs,
+
             Outputs.GoogleCloudRunV2ExecutionTemplateResponse template,
 
             Outputs.GoogleCloudRunV2ConditionResponse terminalCondition,
@@ -223,6 +229,7 @@ namespace Pulumi.GoogleNative.Run.V2
             Name = name;
             ObservedGeneration = observedGeneration;
             Reconciling = reconciling;
+            SatisfiesPzs = satisfiesPzs;
             Template = template;
             TerminalCondition = terminalCondition;
             Uid = uid;

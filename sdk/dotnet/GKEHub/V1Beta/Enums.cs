@@ -92,4 +92,49 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// predefined_role is the Kubernetes default role to use
+    /// </summary>
+    [EnumType]
+    public readonly struct RolePredefinedRole : IEquatable<RolePredefinedRole>
+    {
+        private readonly string _value;
+
+        private RolePredefinedRole(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// UNKNOWN
+        /// </summary>
+        public static RolePredefinedRole Unknown { get; } = new RolePredefinedRole("UNKNOWN");
+        /// <summary>
+        /// ADMIN has EDIT and RBAC permissions
+        /// </summary>
+        public static RolePredefinedRole Admin { get; } = new RolePredefinedRole("ADMIN");
+        /// <summary>
+        /// EDIT can edit all resources except RBAC
+        /// </summary>
+        public static RolePredefinedRole Edit { get; } = new RolePredefinedRole("EDIT");
+        /// <summary>
+        /// VIEW can only read resources
+        /// </summary>
+        public static RolePredefinedRole View { get; } = new RolePredefinedRole("VIEW");
+
+        public static bool operator ==(RolePredefinedRole left, RolePredefinedRole right) => left.Equals(right);
+        public static bool operator !=(RolePredefinedRole left, RolePredefinedRole right) => !left.Equals(right);
+
+        public static explicit operator string(RolePredefinedRole value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RolePredefinedRole other && Equals(other);
+        public bool Equals(RolePredefinedRole other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -5,9 +5,30 @@
 from enum import Enum
 
 __all__ = [
+    'AddressGroupType',
     'AuthorizationPolicyAction',
     'GoogleIamV1AuditLogConfigLogType',
+    'OrganizationAddressGroupType',
+    'RuleBasicProfile',
 ]
+
+
+class AddressGroupType(str, Enum):
+    """
+    Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    IPV4 = "IPV4"
+    """
+    IP v4 ranges.
+    """
+    IPV6 = "IPV6"
+    """
+    IP v6 ranges.
+    """
 
 
 class AuthorizationPolicyAction(str, Enum):
@@ -47,4 +68,40 @@ class GoogleIamV1AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class OrganizationAddressGroupType(str, Enum):
+    """
+    Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    IPV4 = "IPV4"
+    """
+    IP v4 ranges.
+    """
+    IPV6 = "IPV6"
+    """
+    IP v6 ranges.
+    """
+
+
+class RuleBasicProfile(str, Enum):
+    """
+    Required. Profile which tells what the primitive action should be.
+    """
+    BASIC_PROFILE_UNSPECIFIED = "BASIC_PROFILE_UNSPECIFIED"
+    """
+    If there is not a mentioned action for the target.
+    """
+    ALLOW = "ALLOW"
+    """
+    Allow the matched traffic.
+    """
+    DENY = "DENY"
+    """
+    Deny the matched traffic.
     """

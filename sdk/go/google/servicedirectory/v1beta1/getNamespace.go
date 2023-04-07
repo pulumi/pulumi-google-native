@@ -33,6 +33,8 @@ type LookupNamespaceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name string `pulumi:"name"`
+	// A globally unique identifier (in UUID4 format) for this namespace.
+	Uid string `pulumi:"uid"`
 	// The timestamp when the namespace was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -87,6 +89,11 @@ func (o LookupNamespaceResultOutput) Labels() pulumi.StringMapOutput {
 // Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this namespace.
+func (o LookupNamespaceResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the namespace was last updated.

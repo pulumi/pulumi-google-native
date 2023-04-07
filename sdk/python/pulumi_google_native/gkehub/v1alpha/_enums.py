@@ -10,6 +10,7 @@ __all__ = [
     'MembershipSpecCertificateManagement',
     'MultiClusterIngressFeatureSpecBilling',
     'OnPremClusterClusterType',
+    'RolePredefinedRole',
 ]
 
 
@@ -112,4 +113,26 @@ class OnPremClusterClusterType(str, Enum):
     USER = "USER"
     """
     The ClusterType is user cluster.
+    """
+
+
+class RolePredefinedRole(str, Enum):
+    """
+    predefined_role is the Kubernetes default role to use
+    """
+    UNKNOWN = "UNKNOWN"
+    """
+    UNKNOWN
+    """
+    ADMIN = "ADMIN"
+    """
+    ADMIN has EDIT and RBAC permissions
+    """
+    EDIT = "EDIT"
+    """
+    EDIT can edit all resources except RBAC
+    """
+    VIEW = "VIEW"
+    """
+    VIEW can only read resources
     """

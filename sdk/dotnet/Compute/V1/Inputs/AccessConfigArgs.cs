@@ -16,25 +16,25 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class AccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         /// </summary>
         [Input("externalIpv6")]
         public Input<string>? ExternalIpv6 { get; set; }
 
         /// <summary>
-        /// The prefix length of the external IPv6 range.
+        /// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
         /// </summary>
         [Input("externalIpv6PrefixLength")]
         public Input<int>? ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
-        /// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+        /// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+        /// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         /// </summary>
         [Input("natIP")]
         public Input<string>? NatIP { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<bool>? SetPublicPtr { get; set; }
 
         /// <summary>
-        /// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        /// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.AccessConfigType>? Type { get; set; }

@@ -11,12 +11,51 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AcceleratorConfigArgs',
     'AttachedDiskArgs',
     'NetworkConfigArgs',
     'SchedulingConfigArgs',
     'ServiceAccountArgs',
     'ShieldedInstanceConfigArgs',
 ]
+
+@pulumi.input_type
+class AcceleratorConfigArgs:
+    def __init__(__self__, *,
+                 topology: pulumi.Input[str],
+                 type: pulumi.Input['AcceleratorConfigType']):
+        """
+        A TPU accelerator configuration.
+        :param pulumi.Input[str] topology: Topology of TPU in chips.
+        :param pulumi.Input['AcceleratorConfigType'] type: Type of TPU.
+        """
+        pulumi.set(__self__, "topology", topology)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def topology(self) -> pulumi.Input[str]:
+        """
+        Topology of TPU in chips.
+        """
+        return pulumi.get(self, "topology")
+
+    @topology.setter
+    def topology(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topology", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['AcceleratorConfigType']:
+        """
+        Type of TPU.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['AcceleratorConfigType']):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class AttachedDiskArgs:

@@ -28,6 +28,10 @@ export interface GetContactCenterArgs {
 
 export interface GetContactCenterResult {
     /**
+     * Optional. Info about the first admin user, such as given name and family name.
+     */
+    readonly adminUser: outputs.contactcenteraiplatform.v1alpha1.AdminUserResponse;
+    /**
      * Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
      */
     readonly ccaipManagedUsers: boolean;
@@ -72,7 +76,7 @@ export interface GetContactCenterResult {
      */
     readonly uris: outputs.contactcenteraiplatform.v1alpha1.URIsResponse;
     /**
-     * Optional. Email address of the first admin users.
+     * Optional. Email address of the first admin user.
      */
     readonly userEmail: string;
 }

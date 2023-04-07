@@ -389,7 +389,7 @@ class ContainerPortArgs:
                  protocol: Optional[pulumi.Input[str]] = None):
         """
         ContainerPort represents a network port in a single container.
-        :param pulumi.Input[int] container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[int] container_port: Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
         :param pulumi.Input[str] name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         :param pulumi.Input[str] protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
@@ -404,7 +404,7 @@ class ContainerPortArgs:
     @pulumi.getter(name="containerPort")
     def container_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
         """
         return pulumi.get(self, "container_port")
 
@@ -1065,12 +1065,14 @@ class HTTPGetActionArgs:
                  host: Optional[pulumi.Input[str]] = None,
                  http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['HTTPHeaderArgs']]]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  scheme: Optional[pulumi.Input[str]] = None):
         """
         HTTPGetAction describes an action based on HTTP Get requests.
         :param pulumi.Input[str] host: Not supported by Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input['HTTPHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
         :param pulumi.Input[str] path: Path to access on the HTTP server.
+        :param pulumi.Input[int] port: Port number to access on the container. Number must be in the range 1 to 65535.
         :param pulumi.Input[str] scheme: Not supported by Cloud Run.
         """
         if host is not None:
@@ -1079,6 +1081,8 @@ class HTTPGetActionArgs:
             pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if scheme is not None:
             pulumi.set(__self__, "scheme", scheme)
 
@@ -1117,6 +1121,18 @@ class HTTPGetActionArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter

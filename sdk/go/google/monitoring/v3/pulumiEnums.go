@@ -758,6 +758,8 @@ const (
 	HttpCheckContentTypeTypeUnspecified = HttpCheckContentType("TYPE_UNSPECIFIED")
 	// body is in URL-encoded form. Equivalent to setting the Content-Type to application/x-www-form-urlencoded in the HTTP request.
 	HttpCheckContentTypeUrlEncoded = HttpCheckContentType("URL_ENCODED")
+	// body is in custom_content_type form. Equivalent to setting the Content-Type to the contents of custom_content_type in the HTTP request.
+	HttpCheckContentTypeUserProvided = HttpCheckContentType("USER_PROVIDED")
 )
 
 func (HttpCheckContentType) ElementType() reflect.Type {

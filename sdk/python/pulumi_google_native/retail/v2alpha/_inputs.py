@@ -19,6 +19,9 @@ __all__ = [
     'GoogleCloudRetailV2alphaFulfillmentInfoArgs',
     'GoogleCloudRetailV2alphaImageArgs',
     'GoogleCloudRetailV2alphaIntervalArgs',
+    'GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs',
+    'GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs',
+    'GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs',
     'GoogleCloudRetailV2alphaPriceInfoArgs',
     'GoogleCloudRetailV2alphaPromotionArgs',
     'GoogleCloudRetailV2alphaRatingArgs',
@@ -402,6 +405,138 @@ class GoogleCloudRetailV2alphaIntervalArgs:
     @minimum.setter
     def minimum(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "minimum", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs:
+    def __init__(__self__, *,
+                 serving_config_id: Optional[pulumi.Input[str]] = None):
+        """
+        A candidate to consider for a given panel. Currently only ServingConfig are valid candidates.
+        :param pulumi.Input[str] serving_config_id: This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+        """
+        if serving_config_id is not None:
+            pulumi.set(__self__, "serving_config_id", serving_config_id)
+
+    @property
+    @pulumi.getter(name="servingConfigId")
+    def serving_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
+        """
+        return pulumi.get(self, "serving_config_id")
+
+    @serving_config_id.setter
+    def serving_config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serving_config_id", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs:
+    def __init__(__self__, *,
+                 candidates: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']]],
+                 default_candidate: pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs'],
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        An individual panel with a list of ServingConfigs to consider for it.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']]] candidates: The candidates to consider on the panel.
+        :param pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs'] default_candidate: The default candidate. If the model fails at serving time, we fall back to the default.
+        :param pulumi.Input[str] display_name: Optional. The name to display for the panel.
+        """
+        pulumi.set(__self__, "candidates", candidates)
+        pulumi.set(__self__, "default_candidate", default_candidate)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter
+    def candidates(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']]]:
+        """
+        The candidates to consider on the panel.
+        """
+        return pulumi.get(self, "candidates")
+
+    @candidates.setter
+    def candidates(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']]]):
+        pulumi.set(self, "candidates", value)
+
+    @property
+    @pulumi.getter(name="defaultCandidate")
+    def default_candidate(self) -> pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']:
+        """
+        The default candidate. If the model fails at serving time, we fall back to the default.
+        """
+        return pulumi.get(self, "default_candidate")
+
+    @default_candidate.setter
+    def default_candidate(self, value: pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs']):
+        pulumi.set(self, "default_candidate", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name to display for the panel.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs:
+    def __init__(__self__, *,
+                 page_optimization_event_type: pulumi.Input[str],
+                 panels: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs']]],
+                 restriction: Optional[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction']] = None):
+        """
+        The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
+        :param pulumi.Input[str] page_optimization_event_type: The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs']]] panels: A list of panel configurations. Limit = 5.
+        :param pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction'] restriction: Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+        """
+        pulumi.set(__self__, "page_optimization_event_type", page_optimization_event_type)
+        pulumi.set(__self__, "panels", panels)
+        if restriction is not None:
+            pulumi.set(__self__, "restriction", restriction)
+
+    @property
+    @pulumi.getter(name="pageOptimizationEventType")
+    def page_optimization_event_type(self) -> pulumi.Input[str]:
+        """
+        The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
+        """
+        return pulumi.get(self, "page_optimization_event_type")
+
+    @page_optimization_event_type.setter
+    def page_optimization_event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "page_optimization_event_type", value)
+
+    @property
+    @pulumi.getter
+    def panels(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs']]]:
+        """
+        A list of panel configurations. Limit = 5.
+        """
+        return pulumi.get(self, "panels")
+
+    @panels.setter
+    def panels(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelArgs']]]):
+        pulumi.set(self, "panels", value)
+
+    @property
+    @pulumi.getter
+    def restriction(self) -> Optional[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction']]:
+        """
+        Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+        """
+        return pulumi.get(self, "restriction")
+
+    @restriction.setter
+    def restriction(self, value: Optional[pulumi.Input['GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction']]):
+        pulumi.set(self, "restriction", value)
 
 
 @pulumi.input_type
@@ -1084,7 +1219,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs:
         :param pulumi.Input[str] key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
         :param pulumi.Input[bool] case_insensitive: True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaIntervalArgs']]] intervals: Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaIntervalArgs']]] intervals: For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
         :param pulumi.Input[str] order_by: The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
         :param pulumi.Input[str] query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet will count the products that are both in stock and ship to store "123".
@@ -1149,7 +1284,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs:
     @pulumi.getter
     def intervals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2alphaIntervalArgs']]]]:
         """
-        Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
         """
         return pulumi.get(self, "intervals")
 

@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Delivery setting associated with the membership.
+        /// </summary>
+        public readonly string DeliverySetting;
+        /// <summary>
         /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
         /// </summary>
         public readonly string Name;
@@ -86,6 +90,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         private GetMembershipResult(
             string createTime,
 
+            string deliverySetting,
+
             string name,
 
             Outputs.EntityKeyResponse preferredMemberKey,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
             string updateTime)
         {
             CreateTime = createTime;
+            DeliverySetting = deliverySetting;
             Name = name;
             PreferredMemberKey = preferredMemberKey;
             Roles = roles;

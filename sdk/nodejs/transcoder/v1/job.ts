@@ -63,6 +63,10 @@ export class Job extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+     */
+    public readonly mode!: pulumi.Output<string>;
+    /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     public readonly name!: pulumi.Output<string>;
@@ -80,7 +84,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -103,6 +107,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["inputUri"] = args ? args.inputUri : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["outputUri"] = args ? args.outputUri : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -121,6 +126,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["inputUri"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["mode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outputUri"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -154,6 +160,10 @@ export interface JobArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
+     * The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+     */
+    mode?: pulumi.Input<enums.transcoder.v1.JobMode>;
+    /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     name?: pulumi.Input<string>;
@@ -163,7 +173,7 @@ export interface JobArgs {
     outputUri?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
      */
     templateId?: pulumi.Input<string>;
     /**

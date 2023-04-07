@@ -18,6 +18,9 @@ class RepositoryArgs:
     def __init__(__self__, *,
                  repository_id: pulumi.Input[str],
                  git_remote_settings: Optional[pulumi.Input['GitRemoteSettingsArgs']] = None,
+                 initial_commit_file_contents: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 initial_commit_metadata: Optional[pulumi.Input['CommitMetadataArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -26,12 +29,21 @@ class RepositoryArgs:
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         :param pulumi.Input['GitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] initial_commit_file_contents: Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        :param pulumi.Input['CommitMetadataArgs'] initial_commit_metadata: Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input['WorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         pulumi.set(__self__, "repository_id", repository_id)
         if git_remote_settings is not None:
             pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if initial_commit_file_contents is not None:
+            pulumi.set(__self__, "initial_commit_file_contents", initial_commit_file_contents)
+        if initial_commit_metadata is not None:
+            pulumi.set(__self__, "initial_commit_metadata", initial_commit_metadata)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if npmrc_environment_variables_secret_version is not None:
@@ -64,6 +76,42 @@ class RepositoryArgs:
     @git_remote_settings.setter
     def git_remote_settings(self, value: Optional[pulumi.Input['GitRemoteSettingsArgs']]):
         pulumi.set(self, "git_remote_settings", value)
+
+    @property
+    @pulumi.getter(name="initialCommitFileContents")
+    def initial_commit_file_contents(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        """
+        return pulumi.get(self, "initial_commit_file_contents")
+
+    @initial_commit_file_contents.setter
+    def initial_commit_file_contents(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "initial_commit_file_contents", value)
+
+    @property
+    @pulumi.getter(name="initialCommitMetadata")
+    def initial_commit_metadata(self) -> Optional[pulumi.Input['CommitMetadataArgs']]:
+        """
+        Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        """
+        return pulumi.get(self, "initial_commit_metadata")
+
+    @initial_commit_metadata.setter
+    def initial_commit_metadata(self, value: Optional[pulumi.Input['CommitMetadataArgs']]):
+        pulumi.set(self, "initial_commit_metadata", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -114,6 +162,9 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 initial_commit_file_contents: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 initial_commit_metadata: Optional[pulumi.Input[pulumi.InputType['CommitMetadataArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -127,6 +178,9 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] initial_commit_file_contents: Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        :param pulumi.Input[pulumi.InputType['CommitMetadataArgs']] initial_commit_metadata: Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Repository user labels.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         :param pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
@@ -157,6 +211,9 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  git_remote_settings: Optional[pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']]] = None,
+                 initial_commit_file_contents: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 initial_commit_metadata: Optional[pulumi.Input[pulumi.InputType['CommitMetadataArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -172,6 +229,9 @@ class Repository(pulumi.CustomResource):
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
             __props__.__dict__["git_remote_settings"] = git_remote_settings
+            __props__.__dict__["initial_commit_file_contents"] = initial_commit_file_contents
+            __props__.__dict__["initial_commit_metadata"] = initial_commit_metadata
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["npmrc_environment_variables_secret_version"] = npmrc_environment_variables_secret_version
             __props__.__dict__["project"] = project
@@ -205,6 +265,9 @@ class Repository(pulumi.CustomResource):
         __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
         __props__.__dict__["git_remote_settings"] = None
+        __props__.__dict__["initial_commit_file_contents"] = None
+        __props__.__dict__["initial_commit_metadata"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["npmrc_environment_variables_secret_version"] = None
@@ -220,6 +283,30 @@ class Repository(pulumi.CustomResource):
         Optional. If set, configures this repository to be linked to a Git remote.
         """
         return pulumi.get(self, "git_remote_settings")
+
+    @property
+    @pulumi.getter(name="initialCommitFileContents")
+    def initial_commit_file_contents(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        """
+        return pulumi.get(self, "initial_commit_file_contents")
+
+    @property
+    @pulumi.getter(name="initialCommitMetadata")
+    def initial_commit_metadata(self) -> pulumi.Output['outputs.CommitMetadataResponse']:
+        """
+        Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        """
+        return pulumi.get(self, "initial_commit_metadata")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

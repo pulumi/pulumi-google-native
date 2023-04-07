@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetDisk
     {
         /// <summary>
-        /// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+        /// Returns the specified persistent disk.
         /// </summary>
         public static Task<GetDiskResult> InvokeAsync(GetDiskArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskResult>("google-native:compute/v1:getDisk", args ?? new GetDiskArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+        /// Returns the specified persistent disk.
         /// </summary>
         public static Output<GetDiskResult> Invoke(GetDiskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskResult>("google-native:compute/v1:getDisk", args ?? new GetDiskInvokeArgs(), options.WithDefaults());

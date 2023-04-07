@@ -14,6 +14,7 @@ from ._enums import *
 __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse',
@@ -112,6 +113,71 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse(dict):
         Count of active Violations which haven't been acknowledged.
         """
         return pulumi.get(self, "active_violation_count")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(dict):
+    """
+    External key management systems(EKM) Provisioning response
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ekmProvisioningErrorDomain":
+            suggest = "ekm_provisioning_error_domain"
+        elif key == "ekmProvisioningErrorMessage":
+            suggest = "ekm_provisioning_error_message"
+        elif key == "ekmProvisioningState":
+            suggest = "ekm_provisioning_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ekm_provisioning_error_domain: str,
+                 ekm_provisioning_error_message: str,
+                 ekm_provisioning_state: str):
+        """
+        External key management systems(EKM) Provisioning response
+        :param str ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
+        :param str ekm_provisioning_error_message: Detailed error message if Ekm provisioning fails
+        :param str ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
+        pulumi.set(__self__, "ekm_provisioning_error_message", ekm_provisioning_error_message)
+        pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorDomain")
+    def ekm_provisioning_error_domain(self) -> str:
+        """
+        Indicates Ekm provisioning error if any.
+        """
+        return pulumi.get(self, "ekm_provisioning_error_domain")
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorMessage")
+    def ekm_provisioning_error_message(self) -> str:
+        """
+        Detailed error message if Ekm provisioning fails
+        """
+        return pulumi.get(self, "ekm_provisioning_error_message")
+
+    @property
+    @pulumi.getter(name="ekmProvisioningState")
+    def ekm_provisioning_state(self) -> str:
+        """
+        Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        return pulumi.get(self, "ekm_provisioning_state")
 
 
 @pulumi.output_type

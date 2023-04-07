@@ -25,6 +25,14 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        public readonly string ErrorCatcherId;
+        /// <summary>
+        /// Optional. External task type of the task
+        /// </summary>
+        public readonly string ExternalTaskType;
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
         public readonly Outputs.GoogleCloudIntegrationsV1alphaFailurePolicyResponse FailurePolicy;
@@ -44,6 +52,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// Optional. The customized parameters the user can pass to this task.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Parameters;
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIntegrationsV1alphaCoordinateResponse Position;
         /// <summary>
         /// Optional. Determines what action to take upon successful task completion.
         /// </summary>
@@ -75,6 +87,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 
             string displayName,
 
+            string errorCatcherId,
+
+            string externalTaskType,
+
             Outputs.GoogleCloudIntegrationsV1alphaFailurePolicyResponse failurePolicy,
 
             string jsonValidationOption,
@@ -84,6 +100,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
             string nextTasksExecutionPolicy,
 
             ImmutableDictionary<string, string> parameters,
+
+            Outputs.GoogleCloudIntegrationsV1alphaCoordinateResponse position,
 
             Outputs.GoogleCloudIntegrationsV1alphaSuccessPolicyResponse successPolicy,
 
@@ -99,11 +117,14 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         {
             Description = description;
             DisplayName = displayName;
+            ErrorCatcherId = errorCatcherId;
+            ExternalTaskType = externalTaskType;
             FailurePolicy = failurePolicy;
             JsonValidationOption = jsonValidationOption;
             NextTasks = nextTasks;
             NextTasksExecutionPolicy = nextTasksExecutionPolicy;
             Parameters = parameters;
+            Position = position;
             SuccessPolicy = successPolicy;
             SynchronousCallFailurePolicy = synchronousCallFailurePolicy;
             Task = task;

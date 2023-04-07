@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.InstanceGroupManagerResizeRequestStatusResponse Status;
         /// <summary>
-        /// The URL of a zone where the resize request is located.
+        /// The URL of a zone where the resize request is located. Populated only for zonal resize requests.
         /// </summary>
         public readonly string Zone;
 

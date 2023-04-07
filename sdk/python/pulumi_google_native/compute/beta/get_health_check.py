@@ -232,7 +232,7 @@ def get_health_check(health_check: Optional[str] = None,
                      project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHealthCheckResult:
     """
-    Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+    Returns the specified HealthCheck resource.
     """
     __args__ = dict()
     __args__['healthCheck'] = health_check
@@ -266,6 +266,6 @@ def get_health_check_output(health_check: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHealthCheckResult]:
     """
-    Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+    Returns the specified HealthCheck resource.
     """
     ...

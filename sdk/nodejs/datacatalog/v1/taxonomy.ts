@@ -61,7 +61,7 @@ export class Taxonomy extends pulumi.CustomResource {
     public /*out*/ readonly policyTagCount!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+     * Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
      */
     public /*out*/ readonly service!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1TaxonomyServiceResponse>;
     /**

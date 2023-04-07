@@ -28,7 +28,13 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> ConcurrencyMode { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        /// The timestamp at which this database was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         /// </summary>
         [Output("databaseId")]
         public Output<string> DatabaseId { get; private set; } = null!;
@@ -65,6 +71,18 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The system-generated UUID4 for this Database.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,7 +147,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Input<Pulumi.GoogleNative.Firestore.V1.DatabaseConcurrencyMode>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        /// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         /// </summary>
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;

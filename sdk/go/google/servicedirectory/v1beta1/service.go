@@ -28,6 +28,8 @@ type Service struct {
 	Project     pulumi.StringOutput `pulumi:"project"`
 	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
+	// A globally unique identifier (in UUID4 format) for this service.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -180,6 +182,11 @@ func (o ServiceOutput) Project() pulumi.StringOutput {
 // Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier (in UUID4 format) for this service.
+func (o ServiceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.

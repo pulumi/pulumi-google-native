@@ -16,6 +16,10 @@ type Disk struct {
 
 	// The architecture of the disk. Valid values are ARM64 or X86_64.
 	Architecture pulumi.StringOutput `pulumi:"architecture"`
+	// Disk asynchronously replicated into this disk.
+	AsyncPrimaryDisk DiskAsyncReplicationResponseOutput `pulumi:"asyncPrimaryDisk"`
+	// A list of disks this disk is asynchronously replicated to.
+	AsyncSecondaryDisks pulumi.StringMapOutput `pulumi:"asyncSecondaryDisks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -71,12 +75,18 @@ type Disk struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies pulumi.StringArrayOutput `pulumi:"resourcePolicies"`
+	// Status information for the disk resource.
+	ResourceStatus DiskResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
 	SizeGb pulumi.StringOutput `pulumi:"sizeGb"`
+	// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+	SourceConsistencyGroupPolicy pulumi.StringOutput `pulumi:"sourceConsistencyGroupPolicy"`
+	// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+	SourceConsistencyGroupPolicyId pulumi.StringOutput `pulumi:"sourceConsistencyGroupPolicyId"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
@@ -156,6 +166,8 @@ func (DiskState) ElementType() reflect.Type {
 type diskArgs struct {
 	// The architecture of the disk. Valid values are ARM64 or X86_64.
 	Architecture *DiskArchitecture `pulumi:"architecture"`
+	// Disk asynchronously replicated into this disk.
+	AsyncPrimaryDisk *DiskAsyncReplication `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
@@ -226,6 +238,8 @@ type diskArgs struct {
 type DiskArgs struct {
 	// The architecture of the disk. Valid values are ARM64 or X86_64.
 	Architecture DiskArchitecturePtrInput
+	// Disk asynchronously replicated into this disk.
+	AsyncPrimaryDisk DiskAsyncReplicationPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
@@ -332,6 +346,16 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 // The architecture of the disk. Valid values are ARM64 or X86_64.
 func (o DiskOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// Disk asynchronously replicated into this disk.
+func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncReplicationResponseOutput {
+	return o.ApplyT(func(v *Disk) DiskAsyncReplicationResponseOutput { return v.AsyncPrimaryDisk }).(DiskAsyncReplicationResponseOutput)
+}
+
+// A list of disks this disk is asynchronously replicated to.
+func (o DiskOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -470,6 +494,11 @@ func (o DiskOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
 
+// Status information for the disk resource.
+func (o DiskOutput) ResourceStatus() DiskResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Disk) DiskResourceStatusResponseOutput { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o DiskOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -483,6 +512,16 @@ func (o DiskOutput) SelfLink() pulumi.StringOutput {
 // Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
 func (o DiskOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SizeGb }).(pulumi.StringOutput)
+}
+
+// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+func (o DiskOutput) SourceConsistencyGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceConsistencyGroupPolicy }).(pulumi.StringOutput)
+}
+
+// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+func (o DiskOutput) SourceConsistencyGroupPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceConsistencyGroupPolicyId }).(pulumi.StringOutput)
 }
 
 // The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk

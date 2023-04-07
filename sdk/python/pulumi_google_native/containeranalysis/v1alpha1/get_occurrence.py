@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build_details=None, compliance=None, create_time=None, deployment=None, derived_image=None, discovered=None, dsse_attestation=None, envelope=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, sbom=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, upgrade=None, vulnerability_details=None):
+    def __init__(__self__, attestation=None, build_details=None, compliance=None, create_time=None, deployment=None, derived_image=None, discovered=None, dsse_attestation=None, envelope=None, installation=None, kind=None, name=None, note_name=None, remediation=None, resource=None, resource_url=None, sbom=None, sbom_reference=None, spdx_file=None, spdx_package=None, spdx_relationship=None, update_time=None, upgrade=None, vulnerability_details=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -71,6 +71,9 @@ class GetOccurrenceResult:
         if sbom and not isinstance(sbom, dict):
             raise TypeError("Expected argument 'sbom' to be a dict")
         pulumi.set(__self__, "sbom", sbom)
+        if sbom_reference and not isinstance(sbom_reference, dict):
+            raise TypeError("Expected argument 'sbom_reference' to be a dict")
+        pulumi.set(__self__, "sbom_reference", sbom_reference)
         if spdx_file and not isinstance(spdx_file, dict):
             raise TypeError("Expected argument 'spdx_file' to be a dict")
         pulumi.set(__self__, "spdx_file", spdx_file)
@@ -227,6 +230,14 @@ class GetOccurrenceResult:
         return pulumi.get(self, "sbom")
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> 'outputs.SBOMReferenceOccurrenceResponse':
+        """
+        This represents an SBOM reference occurrence
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @property
     @pulumi.getter(name="spdxFile")
     def spdx_file(self) -> 'outputs.FileOccurrenceResponse':
         """
@@ -298,6 +309,7 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             resource=self.resource,
             resource_url=self.resource_url,
             sbom=self.sbom,
+            sbom_reference=self.sbom_reference,
             spdx_file=self.spdx_file,
             spdx_package=self.spdx_package,
             spdx_relationship=self.spdx_relationship,
@@ -336,6 +348,7 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         resource=__ret__.resource,
         resource_url=__ret__.resource_url,
         sbom=__ret__.sbom,
+        sbom_reference=__ret__.sbom_reference,
         spdx_file=__ret__.spdx_file,
         spdx_package=__ret__.spdx_package,
         spdx_relationship=__ret__.spdx_relationship,

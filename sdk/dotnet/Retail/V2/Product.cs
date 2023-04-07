@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Retail.V2
         public Output<string> LanguageCode { get; private set; } = null!;
 
         /// <summary>
-        /// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        /// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         /// </summary>
         [Output("localInventories")]
         public Output<ImmutableArray<Outputs.GoogleCloudRetailV2LocalInventoryResponse>> LocalInventories { get; private set; } = null!;

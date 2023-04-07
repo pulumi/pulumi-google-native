@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public static DatabaseDatabaseDialect DatabaseDialectUnspecified { get; } = new DatabaseDatabaseDialect("DATABASE_DIALECT_UNSPECIFIED");
         /// <summary>
-        /// Google standard SQL.
+        /// GoogleSQL supported SQL.
         /// </summary>
         public static DatabaseDatabaseDialect GoogleStandardSql { get; } = new DatabaseDatabaseDialect("GOOGLE_STANDARD_SQL");
         /// <summary>

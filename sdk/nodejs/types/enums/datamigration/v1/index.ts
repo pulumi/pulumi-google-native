@@ -216,13 +216,13 @@ export const DatabaseEngineInfoEngine = {
      */
     Postgresql: "POSTGRESQL",
     /**
-     * The source engine is Oracle
+     * The source engine is Oracle.
      */
     Oracle: "ORACLE",
 } as const;
 
 /**
- * Required. Engine Type.
+ * Required. Engine type.
  */
 export type DatabaseEngineInfoEngine = (typeof DatabaseEngineInfoEngine)[keyof typeof DatabaseEngineInfoEngine];
 
@@ -240,7 +240,7 @@ export const DatabaseTypeEngine = {
      */
     Postgresql: "POSTGRESQL",
     /**
-     * The source engine is Oracle
+     * The source engine is Oracle.
      */
     Oracle: "ORACLE",
 } as const;

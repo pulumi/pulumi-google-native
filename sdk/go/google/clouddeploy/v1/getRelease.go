@@ -34,6 +34,8 @@ type LookupReleaseResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts []BuildArtifactResponse `pulumi:"buildArtifacts"`
+	// Information around the state of the Release.
+	Condition ReleaseConditionResponse `pulumi:"condition"`
 	// Time at which the `Release` was created.
 	CreateTime string `pulumi:"createTime"`
 	// Snapshot of the parent pipeline taken at release creation time.
@@ -119,6 +121,11 @@ func (o LookupReleaseResultOutput) Annotations() pulumi.StringMapOutput {
 // List of artifacts to pass through to Skaffold command.
 func (o LookupReleaseResultOutput) BuildArtifacts() BuildArtifactResponseArrayOutput {
 	return o.ApplyT(func(v LookupReleaseResult) []BuildArtifactResponse { return v.BuildArtifacts }).(BuildArtifactResponseArrayOutput)
+}
+
+// Information around the state of the Release.
+func (o LookupReleaseResultOutput) Condition() ReleaseConditionResponseOutput {
+	return o.ApplyT(func(v LookupReleaseResult) ReleaseConditionResponse { return v.Condition }).(ReleaseConditionResponseOutput)
 }
 
 // Time at which the `Release` was created.

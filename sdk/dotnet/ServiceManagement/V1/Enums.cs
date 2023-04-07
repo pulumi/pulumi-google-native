@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Syntax `proto3`.
         /// </summary>
         public static ApiSyntax SyntaxProto3 { get; } = new ApiSyntax("SYNTAX_PROTO3");
+        /// <summary>
+        /// Syntax `editions`.
+        /// </summary>
+        public static ApiSyntax SyntaxEditions { get; } = new ApiSyntax("SYNTAX_EDITIONS");
 
         public static bool operator ==(ApiSyntax left, ApiSyntax right) => left.Equals(right);
         public static bool operator !=(ApiSyntax left, ApiSyntax right) => !left.Equals(right);
@@ -244,6 +248,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Syntax `proto3`.
         /// </summary>
         public static EnumSyntax SyntaxProto3 { get; } = new EnumSyntax("SYNTAX_PROTO3");
+        /// <summary>
+        /// Syntax `editions`.
+        /// </summary>
+        public static EnumSyntax SyntaxEditions { get; } = new EnumSyntax("SYNTAX_EDITIONS");
 
         public static bool operator ==(EnumSyntax left, EnumSyntax right) => left.Equals(right);
         public static bool operator !=(EnumSyntax left, EnumSyntax right) => !left.Equals(right);
@@ -472,6 +480,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Syntax `proto3`.
         /// </summary>
         public static MethodSyntax SyntaxProto3 { get; } = new MethodSyntax("SYNTAX_PROTO3");
+        /// <summary>
+        /// Syntax `editions`.
+        /// </summary>
+        public static MethodSyntax SyntaxEditions { get; } = new MethodSyntax("SYNTAX_EDITIONS");
 
         public static bool operator ==(MethodSyntax left, MethodSyntax right) => left.Equals(right);
         public static bool operator !=(MethodSyntax left, MethodSyntax right) => !left.Equals(right);
@@ -900,6 +912,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Syntax `proto3`.
         /// </summary>
         public static TypeSyntax SyntaxProto3 { get; } = new TypeSyntax("SYNTAX_PROTO3");
+        /// <summary>
+        /// Syntax `editions`.
+        /// </summary>
+        public static TypeSyntax SyntaxEditions { get; } = new TypeSyntax("SYNTAX_EDITIONS");
 
         public static bool operator ==(TypeSyntax left, TypeSyntax right) => left.Equals(right);
         public static bool operator !=(TypeSyntax left, TypeSyntax right) => !left.Equals(right);

@@ -20,6 +20,7 @@ class EntryArgs:
                  entry_group_id: pulumi.Input[str],
                  entry_id: pulumi.Input[str],
                  business_context: Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']] = None,
+                 cloud_bigtable_system_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']] = None,
                  data_source_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] = None,
                  database_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class EntryArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgs']] = None,
                  schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs']] = None,
+                 service_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1ServiceSpecArgs']] = None,
                  source_system_timestamps: Optional[pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs']] = None,
                  sql_database_system_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
@@ -44,6 +46,7 @@ class EntryArgs:
         The set of arguments for constructing a Entry resource.
         :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
         :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry. Not supported for BigQuery datasets
+        :param pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs'] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
         :param pulumi.Input['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs'] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecArgs'] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -56,6 +59,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1LookerSystemSpecArgs'] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
         :param pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgs'] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
+        :param pulumi.Input['GoogleCloudDatacatalogV1ServiceSpecArgs'] service_spec: Specification that applies to a Service resource.
         :param pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs'] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs'] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
@@ -67,6 +71,8 @@ class EntryArgs:
         pulumi.set(__self__, "entry_id", entry_id)
         if business_context is not None:
             pulumi.set(__self__, "business_context", business_context)
+        if cloud_bigtable_system_spec is not None:
+            pulumi.set(__self__, "cloud_bigtable_system_spec", cloud_bigtable_system_spec)
         if data_source_connection_spec is not None:
             pulumi.set(__self__, "data_source_connection_spec", data_source_connection_spec)
         if database_table_spec is not None:
@@ -95,6 +101,8 @@ class EntryArgs:
             pulumi.set(__self__, "routine_spec", routine_spec)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if service_spec is not None:
+            pulumi.set(__self__, "service_spec", service_spec)
         if source_system_timestamps is not None:
             pulumi.set(__self__, "source_system_timestamps", source_system_timestamps)
         if sql_database_system_spec is not None:
@@ -140,6 +148,18 @@ class EntryArgs:
     @business_context.setter
     def business_context(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs']]):
         pulumi.set(self, "business_context", value)
+
+    @property
+    @pulumi.getter(name="cloudBigtableSystemSpec")
+    def cloud_bigtable_system_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]:
+        """
+        Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        """
+        return pulumi.get(self, "cloud_bigtable_system_spec")
+
+    @cloud_bigtable_system_spec.setter
+    def cloud_bigtable_system_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]):
+        pulumi.set(self, "cloud_bigtable_system_spec", value)
 
     @property
     @pulumi.getter(name="dataSourceConnectionSpec")
@@ -304,6 +324,18 @@ class EntryArgs:
         pulumi.set(self, "schema", value)
 
     @property
+    @pulumi.getter(name="serviceSpec")
+    def service_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ServiceSpecArgs']]:
+        """
+        Specification that applies to a Service resource.
+        """
+        return pulumi.get(self, "service_spec")
+
+    @service_spec.setter
+    def service_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ServiceSpecArgs']]):
+        pulumi.set(self, "service_spec", value)
+
+    @property
     @pulumi.getter(name="sourceSystemTimestamps")
     def source_system_timestamps(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs']]:
         """
@@ -382,6 +414,7 @@ class Entry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
+                 cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -398,6 +431,7 @@ class Entry(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
+                 service_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']]] = None,
                  source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
                  sql_database_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
@@ -412,6 +446,7 @@ class Entry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']] business_context: Business Context of the entry. Not supported for BigQuery datasets
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']] cloud_bigtable_system_spec: Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']] data_source_connection_spec: Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
@@ -425,6 +460,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1LookerSystemSpecArgs']] looker_system_spec: Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']] routine_spec: Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']] service_spec: Specification that applies to a Service resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']] sql_database_system_spec: Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
@@ -458,6 +494,7 @@ class Entry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  business_context: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1BusinessContextArgs']]] = None,
+                 cloud_bigtable_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs']]] = None,
                  data_source_connection_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs']]] = None,
                  database_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -474,6 +511,7 @@ class Entry(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  routine_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1RoutineSpecArgs']]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
+                 service_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1ServiceSpecArgs']]] = None,
                  source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
                  sql_database_system_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
@@ -490,6 +528,7 @@ class Entry(pulumi.CustomResource):
             __props__ = EntryArgs.__new__(EntryArgs)
 
             __props__.__dict__["business_context"] = business_context
+            __props__.__dict__["cloud_bigtable_system_spec"] = cloud_bigtable_system_spec
             __props__.__dict__["data_source_connection_spec"] = data_source_connection_spec
             __props__.__dict__["database_table_spec"] = database_table_spec
             __props__.__dict__["description"] = description
@@ -510,6 +549,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["routine_spec"] = routine_spec
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["service_spec"] = service_spec
             __props__.__dict__["source_system_timestamps"] = source_system_timestamps
             __props__.__dict__["sql_database_system_spec"] = sql_database_system_spec
             __props__.__dict__["type"] = type
@@ -549,6 +589,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["bigquery_date_sharded_spec"] = None
         __props__.__dict__["bigquery_table_spec"] = None
         __props__.__dict__["business_context"] = None
+        __props__.__dict__["cloud_bigtable_system_spec"] = None
         __props__.__dict__["data_source"] = None
         __props__.__dict__["data_source_connection_spec"] = None
         __props__.__dict__["database_table_spec"] = None
@@ -569,6 +610,7 @@ class Entry(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["routine_spec"] = None
         __props__.__dict__["schema"] = None
+        __props__.__dict__["service_spec"] = None
         __props__.__dict__["source_system_timestamps"] = None
         __props__.__dict__["sql_database_system_spec"] = None
         __props__.__dict__["type"] = None
@@ -600,6 +642,14 @@ class Entry(pulumi.CustomResource):
         Business Context of the entry. Not supported for BigQuery datasets
         """
         return pulumi.get(self, "business_context")
+
+    @property
+    @pulumi.getter(name="cloudBigtableSystemSpec")
+    def cloud_bigtable_system_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse']:
+        """
+        Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        """
+        return pulumi.get(self, "cloud_bigtable_system_spec")
 
     @property
     @pulumi.getter(name="dataSource")
@@ -751,6 +801,14 @@ class Entry(pulumi.CustomResource):
         Schema of the entry. An entry might not have any schema attached to it.
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="serviceSpec")
+    def service_spec(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1ServiceSpecResponse']:
+        """
+        Specification that applies to a Service resource.
+        """
+        return pulumi.get(self, "service_spec")
 
     @property
     @pulumi.getter(name="sourceSystemTimestamps")

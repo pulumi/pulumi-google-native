@@ -392,6 +392,177 @@ func (in *googleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtr) ToGoog
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput)
 }
 
+// Describes the state of the MultiFactor Authentication type.
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigState string
+
+const (
+	// Illegal State, should not be used.
+	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateMfaStateUnspecified = GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED")
+	// Multi-factor authentication cannot be used for this project.
+	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateDisabled = GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("DISABLED")
+	// Multi-factor authentication can be used for this project.
+	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnabled = GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("ENABLED")
+	// Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateMandatory = GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MANDATORY")
+)
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)(nil)).Elem()
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return e.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return GoogleCloudIdentitytoolkitAdminV2ProviderConfigState(e).ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutputWithContext(ctx).ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) *GoogleCloudIdentitytoolkitAdminV2ProviderConfigState {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) GoogleCloudIdentitytoolkitAdminV2ProviderConfigState {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2ProviderConfigState
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIdentitytoolkitAdminV2ProviderConfigState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateArgs and GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput
+}
+
+var googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrType = reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)(nil)).Elem()
+
+type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr string
+
+func GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr(v string) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr)(&v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ElementType() reflect.Type {
+	return googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrType
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToGoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
+}
+
 // The log type that this config enables.
 type GoogleIamV1AuditLogConfigLogType string
 
@@ -569,6 +740,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput{})
@@ -576,6 +749,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 }

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:retail/v2:Control":
 		r = &Control{}
+	case "google-native:retail/v2:Model":
+		r = &Model{}
 	case "google-native:retail/v2:Product":
 		r = &Product{}
 	case "google-native:retail/v2:ServingConfig":

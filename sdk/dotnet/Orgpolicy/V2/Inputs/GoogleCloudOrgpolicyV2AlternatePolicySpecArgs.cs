@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         public Input<string>? Launch { get; set; }
 
         /// <summary>
-        /// Specify `Constraint` for configurations of Cloud Platform resources.
+        /// Specify constraint for configurations of Google Cloud resources.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.GoogleCloudOrgpolicyV2PolicySpecArgs>? Spec { get; set; }

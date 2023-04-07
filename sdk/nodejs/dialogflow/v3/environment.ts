@@ -86,9 +86,6 @@ export class Environment extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.versionConfigs === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionConfigs'");
-            }
             resourceInputs["agentId"] = args ? args.agentId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -144,7 +141,7 @@ export interface EnvironmentArgs {
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
-    versionConfigs: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs>[]>;
+    versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs>[]>;
     /**
      * The webhook configuration for this environment.
      */

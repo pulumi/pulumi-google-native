@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+// Returns the specified TargetSslProxy resource.
 func LookupTargetSslProxy(ctx *pulumi.Context, args *LookupTargetSslProxyArgs, opts ...pulumi.InvokeOption) (*LookupTargetSslProxyResult, error) {
 	var rv LookupTargetSslProxyResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetSslProxy", args, &rv, opts...)

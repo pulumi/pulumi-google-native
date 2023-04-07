@@ -84,8 +84,6 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// The time when the repository was created.
-	CreateTime *string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// The format of packages that are stored in the repository.
@@ -102,14 +100,10 @@ type repositoryArgs struct {
 	Project *string `pulumi:"project"`
 	// The repository id to use for this repository.
 	RepositoryId *string `pulumi:"repositoryId"`
-	// The time when the repository was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// The time when the repository was created.
-	CreateTime pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// The format of packages that are stored in the repository.
@@ -126,8 +120,6 @@ type RepositoryArgs struct {
 	Project pulumi.StringPtrInput
 	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrInput
-	// The time when the repository was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {

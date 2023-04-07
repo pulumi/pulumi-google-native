@@ -78,6 +78,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopGateway!: pulumi.Output<string>;
     /**
+     * The full resource name of the network connectivity center hub that should handle matching packets.
+     */
+    public /*out*/ readonly nextHopHub!: pulumi.Output<string>;
+    /**
      * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
      */
     public readonly nextHopIlb!: pulumi.Output<string>;
@@ -169,6 +173,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["asPaths"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["nextHopHub"] = undefined /*out*/;
             resourceInputs["nextHopInterconnectAttachment"] = undefined /*out*/;
             resourceInputs["nextHopPeering"] = undefined /*out*/;
             resourceInputs["routeStatus"] = undefined /*out*/;
@@ -187,6 +192,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["nextHopGateway"] = undefined /*out*/;
+            resourceInputs["nextHopHub"] = undefined /*out*/;
             resourceInputs["nextHopIlb"] = undefined /*out*/;
             resourceInputs["nextHopInstance"] = undefined /*out*/;
             resourceInputs["nextHopInterconnectAttachment"] = undefined /*out*/;

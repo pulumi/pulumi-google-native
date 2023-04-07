@@ -31,6 +31,7 @@ class InterconnectArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
@@ -47,6 +48,7 @@ class InterconnectArgs:
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         if admin_enabled is not None:
@@ -77,6 +79,8 @@ class InterconnectArgs:
             pulumi.set(__self__, "remote_location", remote_location)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if requested_features is not None:
+            pulumi.set(__self__, "requested_features", requested_features)
         if requested_link_count is not None:
             pulumi.set(__self__, "requested_link_count", requested_link_count)
 
@@ -246,6 +250,18 @@ class InterconnectArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]]:
+        """
+        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        """
+        return pulumi.get(self, "requested_features")
+
+    @requested_features.setter
+    def requested_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]]):
+        pulumi.set(self, "requested_features", value)
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -277,6 +293,7 @@ class Interconnect(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -297,6 +314,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[str] noc_contact_email: Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         :param pulumi.Input[str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]] requested_features: Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         """
         ...
@@ -337,6 +355,7 @@ class Interconnect(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remote_location: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectRequestedFeaturesItem']]]] = None,
                  requested_link_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -361,7 +380,9 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["remote_location"] = remote_location
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["requested_features"] = requested_features
             __props__.__dict__["requested_link_count"] = requested_link_count
+            __props__.__dict__["available_features"] = None
             __props__.__dict__["circuit_infos"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["expected_outages"] = None
@@ -402,6 +423,7 @@ class Interconnect(pulumi.CustomResource):
         __props__ = InterconnectArgs.__new__(InterconnectArgs)
 
         __props__.__dict__["admin_enabled"] = None
+        __props__.__dict__["available_features"] = None
         __props__.__dict__["circuit_infos"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["customer_name"] = None
@@ -426,6 +448,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["provisioned_link_count"] = None
         __props__.__dict__["remote_location"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["requested_features"] = None
         __props__.__dict__["requested_link_count"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
@@ -440,6 +463,14 @@ class Interconnect(pulumi.CustomResource):
         Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         """
         return pulumi.get(self, "admin_enabled")
+
+    @property
+    @pulumi.getter(name="availableFeatures")
+    def available_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        """
+        return pulumi.get(self, "available_features")
 
     @property
     @pulumi.getter(name="circuitInfos")
@@ -631,6 +662,14 @@ class Interconnect(pulumi.CustomResource):
         return pulumi.get(self, "request_id")
 
     @property
+    @pulumi.getter(name="requestedFeatures")
+    def requested_features(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        """
+        return pulumi.get(self, "requested_features")
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> pulumi.Output[int]:
         """
@@ -642,7 +681,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
-        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 

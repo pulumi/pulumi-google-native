@@ -48,6 +48,10 @@ export interface GetTriggerResult {
      */
     readonly etag: string;
     /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     */
+    readonly eventDataContentType: string;
+    /**
      * Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
      */
     readonly eventFilters: outputs.eventarc.v1.EventFilterResponse[];

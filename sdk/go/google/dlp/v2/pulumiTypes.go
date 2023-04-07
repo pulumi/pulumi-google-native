@@ -172,6 +172,54 @@ func (o GooglePrivacyDlpV2ActionArrayOutput) Index(i pulumi.IntInput) GooglePriv
 	}).(GooglePrivacyDlpV2ActionOutput)
 }
 
+// The results of an Action.
+type GooglePrivacyDlpV2ActionDetailsResponse struct {
+	// Outcome of a de-identification action.
+	DeidentifyDetails GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse `pulumi:"deidentifyDetails"`
+}
+
+// The results of an Action.
+type GooglePrivacyDlpV2ActionDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ActionDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ActionDetailsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ActionDetailsResponseOutput) ToGooglePrivacyDlpV2ActionDetailsResponseOutput() GooglePrivacyDlpV2ActionDetailsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ActionDetailsResponseOutput) ToGooglePrivacyDlpV2ActionDetailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ActionDetailsResponseOutput {
+	return o
+}
+
+// Outcome of a de-identification action.
+func (o GooglePrivacyDlpV2ActionDetailsResponseOutput) DeidentifyDetails() GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ActionDetailsResponse) GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
+		return v.DeidentifyDetails
+	}).(GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput)
+}
+
+type GooglePrivacyDlpV2ActionDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ActionDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2ActionDetailsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ActionDetailsResponseArrayOutput) ToGooglePrivacyDlpV2ActionDetailsResponseArrayOutput() GooglePrivacyDlpV2ActionDetailsResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ActionDetailsResponseArrayOutput) ToGooglePrivacyDlpV2ActionDetailsResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ActionDetailsResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ActionDetailsResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2ActionDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2ActionDetailsResponse {
+		return vs[0].([]GooglePrivacyDlpV2ActionDetailsResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2ActionDetailsResponseOutput)
+}
+
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponse struct {
 	// Create a de-identified copy of the input data.
@@ -6111,6 +6159,83 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) TransformationErrorHan
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
 }
 
+// The results of a Deidentify action from an Inspect job.
+type GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse struct {
+	// Stats about de-identification.
+	DeidentifyStats GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse `pulumi:"deidentifyStats"`
+	// De-identification config used for the request.
+	RequestedOptions GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse `pulumi:"requestedOptions"`
+}
+
+// The results of a Deidentify action from an Inspect job.
+type GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) ToGooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput() GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) ToGooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput {
+	return o
+}
+
+// Stats about de-identification.
+func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) DeidentifyStats() GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse) GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
+		return v.DeidentifyStats
+	}).(GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput)
+}
+
+// De-identification config used for the request.
+func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) RequestedOptions() GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse) GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse {
+		return v.RequestedOptions
+	}).(GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput)
+}
+
+// Summary of what was modified during a transformation.
+type GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse struct {
+	// Number of successfully applied transformations.
+	TransformationCount string `pulumi:"transformationCount"`
+	// Number of errors encountered while trying to apply transformations.
+	TransformationErrorCount string `pulumi:"transformationErrorCount"`
+	// Total size in bytes that were transformed in some way.
+	TransformedBytes string `pulumi:"transformedBytes"`
+}
+
+// Summary of what was modified during a transformation.
+type GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) ToGooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput() GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) ToGooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput {
+	return o
+}
+
+// Number of successfully applied transformations.
+func (o GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) TransformationCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse) string { return v.TransformationCount }).(pulumi.StringOutput)
+}
+
+// Number of errors encountered while trying to apply transformations.
+func (o GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) TransformationErrorCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse) string { return v.TransformationErrorCount }).(pulumi.StringOutput)
+}
+
+// Total size in bytes that were transformed in some way.
+func (o GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput) TransformedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse) string { return v.TransformedBytes }).(pulumi.StringOutput)
+}
+
 // Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2DeidentifyResponse struct {
 	// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
@@ -6160,6 +6285,69 @@ func (o GooglePrivacyDlpV2DeidentifyResponseOutput) TransformationDetailsStorage
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse {
 		return v.TransformationDetailsStorageConfig
 	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput)
+}
+
+// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+type GooglePrivacyDlpV2DeidentifyTemplateResponse struct {
+	// The creation timestamp of an inspectTemplate.
+	CreateTime string `pulumi:"createTime"`
+	// The core content of the template.
+	DeidentifyConfig GooglePrivacyDlpV2DeidentifyConfigResponse `pulumi:"deidentifyConfig"`
+	// Short description (max 256 chars).
+	Description string `pulumi:"description"`
+	// Display name (max 256 chars).
+	DisplayName string `pulumi:"displayName"`
+	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+	Name string `pulumi:"name"`
+	// The last update timestamp of an inspectTemplate.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+type GooglePrivacyDlpV2DeidentifyTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyTemplateResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) ToGooglePrivacyDlpV2DeidentifyTemplateResponseOutput() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) ToGooglePrivacyDlpV2DeidentifyTemplateResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
+	return o
+}
+
+// The creation timestamp of an inspectTemplate.
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The core content of the template.
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) GooglePrivacyDlpV2DeidentifyConfigResponse {
+		return v.DeidentifyConfig
+	}).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput)
+}
+
+// Short description (max 256 chars).
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name (max 256 chars).
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of an inspectTemplate.
+func (o GooglePrivacyDlpV2DeidentifyTemplateResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyTemplateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
@@ -10727,7 +10915,7 @@ type GooglePrivacyDlpV2InspectConfig struct {
 	IncludeQuote *bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits *GooglePrivacyDlpV2FindingLimits `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
@@ -10760,7 +10948,7 @@ type GooglePrivacyDlpV2InspectConfigArgs struct {
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrInput `pulumi:"minLikelihood"`
@@ -10875,7 +11063,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) InfoTypes() GooglePrivacyDlpV2Inf
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 func (o GooglePrivacyDlpV2InspectConfigOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits { return v.Limits }).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
@@ -10968,7 +11156,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) InfoTypes() GooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits {
 		if v == nil {
@@ -11012,7 +11200,7 @@ type GooglePrivacyDlpV2InspectConfigResponse struct {
 	IncludeQuote bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 	Limits GooglePrivacyDlpV2FindingLimitsResponse `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood string `pulumi:"minLikelihood"`
@@ -11066,7 +11254,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) InfoTypes() GooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within `InspectJobConfig`, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) Limits() GooglePrivacyDlpV2FindingLimitsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2FindingLimitsResponse {
 		return v.Limits
@@ -18154,6 +18342,52 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput) ToGooglePriva
 	return o
 }
 
+// De-id options.
+type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse struct {
+	// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+	SnapshotDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotDeidentifyTemplate"`
+	// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+	SnapshotImageRedactTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotImageRedactTemplate"`
+	// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+	SnapshotStructuredDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotStructuredDeidentifyTemplate"`
+}
+
+// De-id options.
+type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput() GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) ToGooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput {
+	return o
+}
+
+// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotDeidentifyTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
+		return v.SnapshotDeidentifyTemplate
+	}).(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput)
+}
+
+// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotImageRedactTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
+		return v.SnapshotImageRedactTemplate
+	}).(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput)
+}
+
+// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotStructuredDeidentifyTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
+		return v.SnapshotStructuredDeidentifyTemplate
+	}).(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput)
+}
+
 // Snapshot of the inspection configuration.
 type GooglePrivacyDlpV2RequestedOptionsResponse struct {
 	// Inspect config.
@@ -23498,6 +23732,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeTimeOfDayPtrInput)(nil)).Elem(), GoogleTypeTimeOfDayArgs{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionDetailsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesOutput{})
@@ -23589,7 +23825,10 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput{})
@@ -23802,6 +24041,7 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ResultResponseOutput{})

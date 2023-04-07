@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetResourcePolicyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, group_placement_policy=None, instance_schedule_policy=None, kind=None, name=None, region=None, resource_status=None, self_link=None, snapshot_schedule_policy=None, status=None):
+    def __init__(__self__, creation_timestamp=None, description=None, disk_consistency_group_policy=None, group_placement_policy=None, instance_schedule_policy=None, kind=None, name=None, region=None, resource_status=None, self_link=None, snapshot_schedule_policy=None, status=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disk_consistency_group_policy and not isinstance(disk_consistency_group_policy, dict):
+            raise TypeError("Expected argument 'disk_consistency_group_policy' to be a dict")
+        pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy and not isinstance(group_placement_policy, dict):
             raise TypeError("Expected argument 'group_placement_policy' to be a dict")
         pulumi.set(__self__, "group_placement_policy", group_placement_policy)
@@ -66,6 +69,14 @@ class GetResourcePolicyResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> 'outputs.ResourcePolicyDiskConsistencyGroupPolicyResponse':
+        """
+        Resource policy for disk consistency groups.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -145,6 +156,7 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
         return GetResourcePolicyResult(
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            disk_consistency_group_policy=self.disk_consistency_group_policy,
             group_placement_policy=self.group_placement_policy,
             instance_schedule_policy=self.instance_schedule_policy,
             kind=self.kind,
@@ -173,6 +185,7 @@ def get_resource_policy(project: Optional[str] = None,
     return AwaitableGetResourcePolicyResult(
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        disk_consistency_group_policy=__ret__.disk_consistency_group_policy,
         group_placement_policy=__ret__.group_placement_policy,
         instance_schedule_policy=__ret__.instance_schedule_policy,
         kind=__ret__.kind,

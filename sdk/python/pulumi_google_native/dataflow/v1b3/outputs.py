@@ -1153,6 +1153,8 @@ class JobMetadataResponse(dict):
             suggest = "sdk_version"
         elif key == "spannerDetails":
             suggest = "spanner_details"
+        elif key == "userDisplayProperties":
+            suggest = "user_display_properties"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobMetadataResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1172,7 +1174,8 @@ class JobMetadataResponse(dict):
                  file_details: Sequence['outputs.FileIODetailsResponse'],
                  pubsub_details: Sequence['outputs.PubSubIODetailsResponse'],
                  sdk_version: 'outputs.SdkVersionResponse',
-                 spanner_details: Sequence['outputs.SpannerIODetailsResponse']):
+                 spanner_details: Sequence['outputs.SpannerIODetailsResponse'],
+                 user_display_properties: Mapping[str, str]):
         """
         Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
         :param Sequence['BigTableIODetailsResponse'] big_table_details: Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -1182,6 +1185,7 @@ class JobMetadataResponse(dict):
         :param Sequence['PubSubIODetailsResponse'] pubsub_details: Identification of a Pub/Sub source used in the Dataflow job.
         :param 'SdkVersionResponse' sdk_version: The SDK version used to run the job.
         :param Sequence['SpannerIODetailsResponse'] spanner_details: Identification of a Spanner source used in the Dataflow job.
+        :param Mapping[str, str] user_display_properties: List of display properties to help UI filter jobs.
         """
         pulumi.set(__self__, "big_table_details", big_table_details)
         pulumi.set(__self__, "bigquery_details", bigquery_details)
@@ -1190,6 +1194,7 @@ class JobMetadataResponse(dict):
         pulumi.set(__self__, "pubsub_details", pubsub_details)
         pulumi.set(__self__, "sdk_version", sdk_version)
         pulumi.set(__self__, "spanner_details", spanner_details)
+        pulumi.set(__self__, "user_display_properties", user_display_properties)
 
     @property
     @pulumi.getter(name="bigTableDetails")
@@ -1247,6 +1252,14 @@ class JobMetadataResponse(dict):
         """
         return pulumi.get(self, "spanner_details")
 
+    @property
+    @pulumi.getter(name="userDisplayProperties")
+    def user_display_properties(self) -> Mapping[str, str]:
+        """
+        List of display properties to help UI filter jobs.
+        """
+        return pulumi.get(self, "user_display_properties")
+
 
 @pulumi.output_type
 class PackageResponse(dict):
@@ -1291,12 +1304,18 @@ class ParameterMetadataResponse(dict):
         suggest = None
         if key == "customMetadata":
             suggest = "custom_metadata"
+        elif key == "groupName":
+            suggest = "group_name"
         elif key == "helpText":
             suggest = "help_text"
         elif key == "isOptional":
             suggest = "is_optional"
         elif key == "paramType":
             suggest = "param_type"
+        elif key == "parentName":
+            suggest = "parent_name"
+        elif key == "parentTriggerValues":
+            suggest = "parent_trigger_values"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ParameterMetadataResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1311,28 +1330,37 @@ class ParameterMetadataResponse(dict):
 
     def __init__(__self__, *,
                  custom_metadata: Mapping[str, str],
+                 group_name: str,
                  help_text: str,
                  is_optional: bool,
                  label: str,
                  name: str,
                  param_type: str,
+                 parent_name: str,
+                 parent_trigger_values: Sequence[str],
                  regexes: Sequence[str]):
         """
         Metadata for a specific parameter.
         :param Mapping[str, str] custom_metadata: Optional. Additional metadata for describing this parameter.
+        :param str group_name: Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
         :param str help_text: The help text to display for the parameter.
         :param bool is_optional: Optional. Whether the parameter is optional. Defaults to false.
         :param str label: The label to display for the parameter.
         :param str name: The name of the parameter.
         :param str param_type: Optional. The type of the parameter. Used for selecting input picker.
+        :param str parent_name: Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+        :param Sequence[str] parent_trigger_values: Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
         :param Sequence[str] regexes: Optional. Regexes that the parameter must match.
         """
         pulumi.set(__self__, "custom_metadata", custom_metadata)
+        pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "help_text", help_text)
         pulumi.set(__self__, "is_optional", is_optional)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "param_type", param_type)
+        pulumi.set(__self__, "parent_name", parent_name)
+        pulumi.set(__self__, "parent_trigger_values", parent_trigger_values)
         pulumi.set(__self__, "regexes", regexes)
 
     @property
@@ -1342,6 +1370,14 @@ class ParameterMetadataResponse(dict):
         Optional. Additional metadata for describing this parameter.
         """
         return pulumi.get(self, "custom_metadata")
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
+        """
+        return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="helpText")
@@ -1382,6 +1418,22 @@ class ParameterMetadataResponse(dict):
         Optional. The type of the parameter. Used for selecting input picker.
         """
         return pulumi.get(self, "param_type")
+
+    @property
+    @pulumi.getter(name="parentName")
+    def parent_name(self) -> str:
+        """
+        Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+        """
+        return pulumi.get(self, "parent_name")
+
+    @property
+    @pulumi.getter(name="parentTriggerValues")
+    def parent_trigger_values(self) -> Sequence[str]:
+        """
+        Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
+        """
+        return pulumi.get(self, "parent_trigger_values")
 
     @property
     @pulumi.getter

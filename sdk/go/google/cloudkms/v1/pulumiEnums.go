@@ -374,6 +374,12 @@ const (
 	CryptoKeyVersionStateEnumPendingImport = CryptoKeyVersionStateEnum("PENDING_IMPORT")
 	// This version was not imported successfully. It may not be used, enabled, disabled, or destroyed. The submitted key material has been discarded. Additional details can be found in CryptoKeyVersion.import_failure_reason.
 	CryptoKeyVersionStateEnumImportFailed = CryptoKeyVersionStateEnum("IMPORT_FAILED")
+	// This version was not generated successfully. It may not be used, enabled, disabled, or destroyed. Additional details can be found in CryptoKeyVersion.generation_failure_reason.
+	CryptoKeyVersionStateEnumGenerationFailed = CryptoKeyVersionStateEnum("GENERATION_FAILED")
+	// This version was destroyed, and it may not be used or enabled again. Cloud KMS is waiting for the corresponding key material residing in an external key manager to be destroyed.
+	CryptoKeyVersionStateEnumPendingExternalDestruction = CryptoKeyVersionStateEnum("PENDING_EXTERNAL_DESTRUCTION")
+	// This version was destroyed, and it may not be used or enabled again. However, Cloud KMS could not confirm that the corresponding key material residing in an external key manager was destroyed. Additional details can be found in CryptoKeyVersion.external_destruction_failure_reason.
+	CryptoKeyVersionStateEnumExternalDestructionFailed = CryptoKeyVersionStateEnum("EXTERNAL_DESTRUCTION_FAILED")
 )
 
 func (CryptoKeyVersionStateEnum) ElementType() reflect.Type {
@@ -927,6 +933,175 @@ func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplate
 	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
 }
 
+// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+type EkmConnectionKeyManagementMode string
+
+const (
+	// Not specified.
+	EkmConnectionKeyManagementModeKeyManagementModeUnspecified = EkmConnectionKeyManagementMode("KEY_MANAGEMENT_MODE_UNSPECIFIED")
+	// EKM-side key management operations on CryptoKeys created with this EkmConnection must be initiated from the EKM directly and cannot be performed from Cloud KMS. This means that: * When creating a CryptoKeyVersion associated with this EkmConnection, the caller must supply the key path of pre-existing external key material that will be linked to the CryptoKeyVersion. * Destruction of external key material cannot be requested via the Cloud KMS API and must be performed directly in the EKM. * Automatic rotation of key material is not supported.
+	EkmConnectionKeyManagementModeManual = EkmConnectionKeyManagementMode("MANUAL")
+	// All CryptoKeys created with this EkmConnection use EKM-side key management operations initiated from Cloud KMS. This means that: * When a CryptoKeyVersion associated with this EkmConnection is created, the EKM automatically generates new key material and a new key path. The caller cannot supply the key path of pre-existing external key material. * Destruction of external key material associated with this EkmConnection can be requested by calling DestroyCryptoKeyVersion. * Automatic rotation of key material is supported.
+	EkmConnectionKeyManagementModeCloudKms = EkmConnectionKeyManagementMode("CLOUD_KMS")
+)
+
+func (EkmConnectionKeyManagementMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionKeyManagementMode)(nil)).Elem()
+}
+
+func (e EkmConnectionKeyManagementMode) ToEkmConnectionKeyManagementModeOutput() EkmConnectionKeyManagementModeOutput {
+	return pulumi.ToOutput(e).(EkmConnectionKeyManagementModeOutput)
+}
+
+func (e EkmConnectionKeyManagementMode) ToEkmConnectionKeyManagementModeOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EkmConnectionKeyManagementModeOutput)
+}
+
+func (e EkmConnectionKeyManagementMode) ToEkmConnectionKeyManagementModePtrOutput() EkmConnectionKeyManagementModePtrOutput {
+	return e.ToEkmConnectionKeyManagementModePtrOutputWithContext(context.Background())
+}
+
+func (e EkmConnectionKeyManagementMode) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
+	return EkmConnectionKeyManagementMode(e).ToEkmConnectionKeyManagementModeOutputWithContext(ctx).ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx)
+}
+
+func (e EkmConnectionKeyManagementMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EkmConnectionKeyManagementMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EkmConnectionKeyManagementMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EkmConnectionKeyManagementMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EkmConnectionKeyManagementModeOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionKeyManagementModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EkmConnectionKeyManagementMode)(nil)).Elem()
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToEkmConnectionKeyManagementModeOutput() EkmConnectionKeyManagementModeOutput {
+	return o
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToEkmConnectionKeyManagementModeOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModeOutput {
+	return o
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToEkmConnectionKeyManagementModePtrOutput() EkmConnectionKeyManagementModePtrOutput {
+	return o.ToEkmConnectionKeyManagementModePtrOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EkmConnectionKeyManagementMode) *EkmConnectionKeyManagementMode {
+		return &v
+	}).(EkmConnectionKeyManagementModePtrOutput)
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EkmConnectionKeyManagementMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionKeyManagementModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EkmConnectionKeyManagementMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EkmConnectionKeyManagementModePtrOutput struct{ *pulumi.OutputState }
+
+func (EkmConnectionKeyManagementModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EkmConnectionKeyManagementMode)(nil)).Elem()
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) ToEkmConnectionKeyManagementModePtrOutput() EkmConnectionKeyManagementModePtrOutput {
+	return o
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
+	return o
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) Elem() EkmConnectionKeyManagementModeOutput {
+	return o.ApplyT(func(v *EkmConnectionKeyManagementMode) EkmConnectionKeyManagementMode {
+		if v != nil {
+			return *v
+		}
+		var ret EkmConnectionKeyManagementMode
+		return ret
+	}).(EkmConnectionKeyManagementModeOutput)
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EkmConnectionKeyManagementModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EkmConnectionKeyManagementMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EkmConnectionKeyManagementModeInput is an input type that accepts EkmConnectionKeyManagementModeArgs and EkmConnectionKeyManagementModeOutput values.
+// You can construct a concrete instance of `EkmConnectionKeyManagementModeInput` via:
+//
+//	EkmConnectionKeyManagementModeArgs{...}
+type EkmConnectionKeyManagementModeInput interface {
+	pulumi.Input
+
+	ToEkmConnectionKeyManagementModeOutput() EkmConnectionKeyManagementModeOutput
+	ToEkmConnectionKeyManagementModeOutputWithContext(context.Context) EkmConnectionKeyManagementModeOutput
+}
+
+var ekmConnectionKeyManagementModePtrType = reflect.TypeOf((**EkmConnectionKeyManagementMode)(nil)).Elem()
+
+type EkmConnectionKeyManagementModePtrInput interface {
+	pulumi.Input
+
+	ToEkmConnectionKeyManagementModePtrOutput() EkmConnectionKeyManagementModePtrOutput
+	ToEkmConnectionKeyManagementModePtrOutputWithContext(context.Context) EkmConnectionKeyManagementModePtrOutput
+}
+
+type ekmConnectionKeyManagementModePtr string
+
+func EkmConnectionKeyManagementModePtr(v string) EkmConnectionKeyManagementModePtrInput {
+	return (*ekmConnectionKeyManagementModePtr)(&v)
+}
+
+func (*ekmConnectionKeyManagementModePtr) ElementType() reflect.Type {
+	return ekmConnectionKeyManagementModePtrType
+}
+
+func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtrOutput() EkmConnectionKeyManagementModePtrOutput {
+	return pulumi.ToOutput(in).(EkmConnectionKeyManagementModePtrOutput)
+}
+
+func (in *ekmConnectionKeyManagementModePtr) ToEkmConnectionKeyManagementModePtrOutputWithContext(ctx context.Context) EkmConnectionKeyManagementModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EkmConnectionKeyManagementModePtrOutput)
+}
+
 // Required. Immutable. The wrapping method to be used for incoming key material.
 type ImportJobImportMethod string
 
@@ -1288,6 +1463,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateAlgorithmPtrInput)(nil)).Elem(), CryptoKeyVersionTemplateAlgorithm("CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevelInput)(nil)).Elem(), CryptoKeyVersionTemplateProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevelPtrInput)(nil)).Elem(), CryptoKeyVersionTemplateProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionKeyManagementModeInput)(nil)).Elem(), EkmConnectionKeyManagementMode("KEY_MANAGEMENT_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*EkmConnectionKeyManagementModePtrInput)(nil)).Elem(), EkmConnectionKeyManagementMode("KEY_MANAGEMENT_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobImportMethodInput)(nil)).Elem(), ImportJobImportMethod("IMPORT_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobImportMethodPtrInput)(nil)).Elem(), ImportJobImportMethod("IMPORT_METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ImportJobProtectionLevelInput)(nil)).Elem(), ImportJobProtectionLevel("PROTECTION_LEVEL_UNSPECIFIED"))
@@ -1302,6 +1479,8 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateProtectionLevelOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateProtectionLevelPtrOutput{})
+	pulumi.RegisterOutputType(EkmConnectionKeyManagementModeOutput{})
+	pulumi.RegisterOutputType(EkmConnectionKeyManagementModePtrOutput{})
 	pulumi.RegisterOutputType(ImportJobImportMethodOutput{})
 	pulumi.RegisterOutputType(ImportJobImportMethodPtrOutput{})
 	pulumi.RegisterOutputType(ImportJobProtectionLevelOutput{})

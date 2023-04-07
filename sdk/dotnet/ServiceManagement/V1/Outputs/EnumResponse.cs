@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
     public sealed class EnumResponse
     {
         /// <summary>
+        /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        /// </summary>
+        public readonly string Edition;
+        /// <summary>
         /// Enum value definitions.
         /// </summary>
         public readonly ImmutableArray<Outputs.EnumValueResponse> Enumvalue;
@@ -39,6 +43,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
         [OutputConstructor]
         private EnumResponse(
+            string edition,
+
             ImmutableArray<Outputs.EnumValueResponse> enumvalue,
 
             string name,
@@ -49,6 +55,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
             string syntax)
         {
+            Edition = edition;
             Enumvalue = enumvalue;
             Name = name;
             Options = options;

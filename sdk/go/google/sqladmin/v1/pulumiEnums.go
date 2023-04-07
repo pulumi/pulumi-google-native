@@ -762,6 +762,8 @@ const (
 	InstanceDatabaseVersionMysql8030 = InstanceDatabaseVersion("MYSQL_8_0_30")
 	// The database major version is MySQL 8.0 and the minor version is 31.
 	InstanceDatabaseVersionMysql8031 = InstanceDatabaseVersion("MYSQL_8_0_31")
+	// The database major version is MySQL 8.0 and the minor version is 32.
+	InstanceDatabaseVersionMysql8032 = InstanceDatabaseVersion("MYSQL_8_0_32")
 	// The database version is SQL Server 2019 Standard.
 	InstanceDatabaseVersionSqlserver2019Standard = InstanceDatabaseVersion("SQLSERVER_2019_STANDARD")
 	// The database version is SQL Server 2019 Enterprise.

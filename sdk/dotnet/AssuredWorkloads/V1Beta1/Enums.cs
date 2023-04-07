@@ -8,6 +8,104 @@ using Pulumi;
 namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
 {
     /// <summary>
+    /// Indicates Ekm provisioning error if any.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain : IEquatable<GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No error domain
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain EkmProvisioningErrorDomainUnspecified { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED");
+        /// <summary>
+        /// Error but domain is unspecified.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain UnspecifiedError { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("UNSPECIFIED_ERROR");
+        /// <summary>
+        /// Internal logic breaks within provisioning code.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain GoogleServerError { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("GOOGLE_SERVER_ERROR");
+        /// <summary>
+        /// Error occurred with the customer not granting permission/creating resource.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain ExternalUserError { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("EXTERNAL_USER_ERROR");
+        /// <summary>
+        /// Error occurred within the partner’s provisioning cluster.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain ExternalPartnerError { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("EXTERNAL_PARTNER_ERROR");
+        /// <summary>
+        /// Resource wasn't provisioned in the required 7 day time period
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain TimeoutError { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain("TIMEOUT_ERROR");
+
+        public static bool operator ==(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain other && Equals(other);
+        public bool Equals(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Indicates Ekm enrollment Provisioning of a given workload.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState : IEquatable<GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default State for Ekm Provisioning
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState EkmProvisioningStateUnspecified { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState("EKM_PROVISIONING_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Pending State for Ekm Provisioning
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState EkmProvisioningStatePending { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState("EKM_PROVISIONING_STATE_PENDING");
+        /// <summary>
+        /// Failed State for Ekm Provisioning
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState EkmProvisioningStateFailed { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState("EKM_PROVISIONING_STATE_FAILED");
+        /// <summary>
+        /// Completed State for Ekm Provisioning
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState EkmProvisioningStateCompleted { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState("EKM_PROVISIONING_STATE_COMPLETED");
+
+        public static bool operator ==(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState other && Equals(other);
+        public bool Equals(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
     /// </summary>
     [EnumType]
@@ -125,6 +223,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// Assured Workloads for Israel
         /// </summary>
         public static WorkloadComplianceRegime IsrRegions { get; } = new WorkloadComplianceRegime("ISR_REGIONS");
+        /// <summary>
+        /// Assured Workloads for Israel Regions
+        /// </summary>
+        public static WorkloadComplianceRegime IsrRegionsAndSupport { get; } = new WorkloadComplianceRegime("ISR_REGIONS_AND_SUPPORT");
         /// <summary>
         /// Assured Workloads for Canada Protected B regime
         /// </summary>

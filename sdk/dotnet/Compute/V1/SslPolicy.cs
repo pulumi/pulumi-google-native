@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
-    /// Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
+    /// Returns the specified SSL policy resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:SslPolicy")]
     public partial class SslPolicy : global::Pulumi.CustomResource

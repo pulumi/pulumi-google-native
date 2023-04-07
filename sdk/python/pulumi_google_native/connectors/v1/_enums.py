@@ -7,6 +7,10 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'AuthConfigAuthType',
+    'SslConfigClientCertType',
+    'SslConfigServerCertType',
+    'SslConfigTrustModel',
+    'SslConfigType',
 ]
 
 
@@ -59,4 +63,68 @@ class AuthConfigAuthType(str, Enum):
     OAUTH2_AUTH_CODE_FLOW = "OAUTH2_AUTH_CODE_FLOW"
     """
     Oauth 2.0 Authorization Code Flow
+    """
+
+
+class SslConfigClientCertType(str, Enum):
+    """
+    Type of Client Cert (PEM/JKS/.. etc.)
+    """
+    CERT_TYPE_UNSPECIFIED = "CERT_TYPE_UNSPECIFIED"
+    """
+    Cert type unspecified.
+    """
+    PEM = "PEM"
+    """
+    Privacy Enhanced Mail (PEM) Type
+    """
+
+
+class SslConfigServerCertType(str, Enum):
+    """
+    Type of Server Cert (PEM/JKS/.. etc.)
+    """
+    CERT_TYPE_UNSPECIFIED = "CERT_TYPE_UNSPECIFIED"
+    """
+    Cert type unspecified.
+    """
+    PEM = "PEM"
+    """
+    Privacy Enhanced Mail (PEM) Type
+    """
+
+
+class SslConfigTrustModel(str, Enum):
+    """
+    Trust Model of the SSL connection
+    """
+    PUBLIC = "PUBLIC"
+    """
+    Public Trust Model. Takes the Default Java trust store.
+    """
+    PRIVATE = "PRIVATE"
+    """
+    Private Trust Model. Takes custom/private trust store.
+    """
+    INSECURE = "INSECURE"
+    """
+    Insecure Trust Model. Accept all certificates.
+    """
+
+
+class SslConfigType(str, Enum):
+    """
+    Controls the ssl type for the given connector version.
+    """
+    SSL_TYPE_UNSPECIFIED = "SSL_TYPE_UNSPECIFIED"
+    """
+    No SSL configuration required.
+    """
+    TLS = "TLS"
+    """
+    TLS Handshake
+    """
+    MTLS = "MTLS"
+    """
+    mutual TLS (MTLS) Handshake
     """

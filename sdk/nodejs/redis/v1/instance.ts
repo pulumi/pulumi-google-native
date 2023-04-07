@@ -50,6 +50,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
+     * Optional. The available maintenance versions that an instance could update to.
+     */
+    public readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
+    /**
      * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
      */
     public readonly connectMode!: pulumi.Output<string>;
@@ -90,6 +94,10 @@ export class Instance extends pulumi.CustomResource {
      * Date and time of upcoming maintenance events which have been scheduled.
      */
     public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.v1.MaintenanceScheduleResponse>;
+    /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    public readonly maintenanceVersion!: pulumi.Output<string>;
     /**
      * Redis memory size in GiB.
      */
@@ -195,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             resourceInputs["authEnabled"] = args ? args.authEnabled : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
+            resourceInputs["availableMaintenanceVersions"] = args ? args.availableMaintenanceVersions : undefined;
             resourceInputs["connectMode"] = args ? args.connectMode : undefined;
             resourceInputs["customerManagedKey"] = args ? args.customerManagedKey : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -202,6 +211,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
+            resourceInputs["maintenanceVersion"] = args ? args.maintenanceVersion : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -231,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["alternativeLocationId"] = undefined /*out*/;
             resourceInputs["authEnabled"] = undefined /*out*/;
             resourceInputs["authorizedNetwork"] = undefined /*out*/;
+            resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectMode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;
@@ -242,6 +253,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceSchedule"] = undefined /*out*/;
+            resourceInputs["maintenanceVersion"] = undefined /*out*/;
             resourceInputs["memorySizeGb"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -288,6 +300,10 @@ export interface InstanceArgs {
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
+     * Optional. The available maintenance versions that an instance could update to.
+     */
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
      */
     connectMode?: pulumi.Input<enums.redis.v1.InstanceConnectMode>;
@@ -315,6 +331,10 @@ export interface InstanceArgs {
      * Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.v1.MaintenancePolicyArgs>;
+    /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    maintenanceVersion?: pulumi.Input<string>;
     /**
      * Redis memory size in GiB.
      */

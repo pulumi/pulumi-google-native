@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+    /// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
     /// </summary>
     [EnumType]
     public readonly struct AccessConfigType : IEquatable<AccessConfigType>
@@ -1076,6 +1076,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static BackendServiceLocalityLbPolicy RoundRobin { get; } = new BackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static BackendServiceLocalityLbPolicy WeightedMaglev { get; } = new BackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => !left.Equals(right);
@@ -1130,6 +1134,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName RoundRobin { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName WeightedMaglev { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("WEIGHTED_MAGLEV");
 
         public static bool operator ==(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName left, BackendServiceLocalityLoadBalancingPolicyConfigPolicyName right) => left.Equals(right);
         public static bool operator !=(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName left, BackendServiceLocalityLoadBalancingPolicyConfigPolicyName right) => !left.Equals(right);
@@ -2512,7 +2520,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -2529,6 +2537,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static GuestOsFeatureType MultiIpSubnet { get; } = new GuestOsFeatureType("MULTI_IP_SUBNET");
         public static GuestOsFeatureType SecureBoot { get; } = new GuestOsFeatureType("SECURE_BOOT");
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
+        public static GuestOsFeatureType SevLiveMigratable { get; } = new GuestOsFeatureType("SEV_LIVE_MIGRATABLE");
         public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
@@ -3902,7 +3911,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+    /// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
     /// </summary>
     [EnumType]
     public readonly struct NetworkInterfaceStackType : IEquatable<NetworkInterfaceStackType>
@@ -4428,6 +4437,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static RegionBackendServiceLocalityLbPolicy RoundRobin { get; } = new RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static RegionBackendServiceLocalityLbPolicy WeightedMaglev { get; } = new RegionBackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => !left.Equals(right);
@@ -4640,6 +4653,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static RegionCommitmentType AcceleratorOptimized { get; } = new RegionCommitmentType("ACCELERATOR_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimized { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimizedC2d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C2D");
+        public static RegionCommitmentType ComputeOptimizedC3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3");
         public static RegionCommitmentType GeneralPurpose { get; } = new RegionCommitmentType("GENERAL_PURPOSE");
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
@@ -4873,7 +4887,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct RegionSecurityPolicyType : IEquatable<RegionSecurityPolicyType>
@@ -6079,6 +6093,55 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The match operator for the field.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp : IEquatable<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The operator matches if the field value contains the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp Contains { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS");
+        /// <summary>
+        /// The operator matches if the field value ends with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EndsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH");
+        /// <summary>
+        /// The operator matches if the field value equals the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsValue { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS");
+        /// <summary>
+        /// The operator matches if the field value is any value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsAny { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY");
+        /// <summary>
+        /// The operator matches if the field value starts with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp StartsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH");
+
+        public static bool operator ==(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other && Equals(other);
+        public bool Equals(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
@@ -6147,7 +6210,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyType : IEquatable<SecurityPolicyType>

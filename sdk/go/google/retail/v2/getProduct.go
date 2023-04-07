@@ -61,7 +61,7 @@ type LookupProductResult struct {
 	Images []GoogleCloudRetailV2ImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
-	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+	// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 	LocalInventories []GoogleCloudRetailV2LocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
@@ -218,7 +218,7 @@ func (o LookupProductResultOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 func (o LookupProductResultOutput) LocalInventories() GoogleCloudRetailV2LocalInventoryResponseArrayOutput {
 	return o.ApplyT(func(v LookupProductResult) []GoogleCloudRetailV2LocalInventoryResponse { return v.LocalInventories }).(GoogleCloudRetailV2LocalInventoryResponseArrayOutput)
 }

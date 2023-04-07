@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse CloudIdentityInfo;
         /// <summary>
+        /// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+        /// </summary>
+        public readonly string CorrelationId;
+        /// <summary>
         /// Time when the customer was created.
         /// </summary>
         public readonly string CreateTime;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
 
             Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse cloudIdentityInfo,
 
+            string correlationId,
+
             string createTime,
 
             string domain,
@@ -142,6 +148,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
             ChannelPartnerId = channelPartnerId;
             CloudIdentityId = cloudIdentityId;
             CloudIdentityInfo = cloudIdentityInfo;
+            CorrelationId = correlationId;
             CreateTime = createTime;
             Domain = domain;
             LanguageCode = languageCode;

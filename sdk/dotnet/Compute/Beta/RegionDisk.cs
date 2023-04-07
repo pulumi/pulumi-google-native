@@ -22,6 +22,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Architecture { get; private set; } = null!;
 
         /// <summary>
+        /// Disk asynchronously replicated into this disk.
+        /// </summary>
+        [Output("asyncPrimaryDisk")]
+        public Output<Outputs.DiskAsyncReplicationResponse> AsyncPrimaryDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of disks this disk is asynchronously replicated to.
+        /// </summary>
+        [Output("asyncSecondaryDisks")]
+        public Output<ImmutableDictionary<string, string>> AsyncSecondaryDisks { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -178,6 +190,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
+        /// Status information for the disk resource.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.DiskResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -194,6 +212,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("sizeGb")]
         public Output<string> SizeGb { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        /// </summary>
+        [Output("sourceConsistencyGroupPolicy")]
+        public Output<string> SourceConsistencyGroupPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        /// </summary>
+        [Output("sourceConsistencyGroupPolicyId")]
+        public Output<string> SourceConsistencyGroupPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
@@ -340,6 +370,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("architecture")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionDiskArchitecture>? Architecture { get; set; }
+
+        /// <summary>
+        /// Disk asynchronously replicated into this disk.
+        /// </summary>
+        [Input("asyncPrimaryDisk")]
+        public Input<Inputs.DiskAsyncReplicationArgs>? AsyncPrimaryDisk { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.

@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+        /// </summary>
+        public readonly int Port;
 
         [OutputConstructor]
         private GoogleCloudRunV2HTTPGetActionResponse(
             ImmutableArray<Outputs.GoogleCloudRunV2HTTPHeaderResponse> httpHeaders,
 
-            string path)
+            string path,
+
+            int port)
         {
             HttpHeaders = httpHeaders;
             Path = path;
+            Port = port;
         }
     }
 }

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, cutover_forecast=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
         if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
             raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
         pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
@@ -32,6 +32,9 @@ class GetMigratingVmResult:
         if current_sync_info and not isinstance(current_sync_info, dict):
             raise TypeError("Expected argument 'current_sync_info' to be a dict")
         pulumi.set(__self__, "current_sync_info", current_sync_info)
+        if cutover_forecast and not isinstance(cutover_forecast, dict):
+            raise TypeError("Expected argument 'cutover_forecast' to be a dict")
+        pulumi.set(__self__, "cutover_forecast", cutover_forecast)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -47,6 +50,9 @@ class GetMigratingVmResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if last_replication_cycle and not isinstance(last_replication_cycle, dict):
+            raise TypeError("Expected argument 'last_replication_cycle' to be a dict")
+        pulumi.set(__self__, "last_replication_cycle", last_replication_cycle)
         if last_sync and not isinstance(last_sync, dict):
             raise TypeError("Expected argument 'last_sync' to be a dict")
         pulumi.set(__self__, "last_sync", last_sync)
@@ -108,6 +114,14 @@ class GetMigratingVmResult:
         return pulumi.get(self, "current_sync_info")
 
     @property
+    @pulumi.getter(name="cutoverForecast")
+    def cutover_forecast(self) -> 'outputs.CutoverForecastResponse':
+        """
+        Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        """
+        return pulumi.get(self, "cutover_forecast")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -146,6 +160,14 @@ class GetMigratingVmResult:
         The labels of the migrating VM.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastReplicationCycle")
+    def last_replication_cycle(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+        """
+        return pulumi.get(self, "last_replication_cycle")
 
     @property
     @pulumi.getter(name="lastSync")
@@ -230,11 +252,13 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             compute_engine_target_defaults=self.compute_engine_target_defaults,
             create_time=self.create_time,
             current_sync_info=self.current_sync_info,
+            cutover_forecast=self.cutover_forecast,
             description=self.description,
             display_name=self.display_name,
             error=self.error,
             group=self.group,
             labels=self.labels,
+            last_replication_cycle=self.last_replication_cycle,
             last_sync=self.last_sync,
             name=self.name,
             policy=self.policy,
@@ -269,11 +293,13 @@ def get_migrating_vm(location: Optional[str] = None,
         compute_engine_target_defaults=__ret__.compute_engine_target_defaults,
         create_time=__ret__.create_time,
         current_sync_info=__ret__.current_sync_info,
+        cutover_forecast=__ret__.cutover_forecast,
         description=__ret__.description,
         display_name=__ret__.display_name,
         error=__ret__.error,
         group=__ret__.group,
         labels=__ret__.labels,
+        last_replication_cycle=__ret__.last_replication_cycle,
         last_sync=__ret__.last_sync,
         name=__ret__.name,
         policy=__ret__.policy,

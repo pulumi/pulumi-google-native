@@ -16,7 +16,7 @@ type Key struct {
 
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput `pulumi:"androidSettings"`
-	// The timestamp corresponding to the creation of this Key.
+	// The timestamp corresponding to the creation of this key.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable display name of this key. Modifiable by user.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -80,8 +80,6 @@ func (KeyState) ElementType() reflect.Type {
 type keyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings *GoogleCloudRecaptchaenterpriseV1AndroidKeySettings `pulumi:"androidSettings"`
-	// The timestamp corresponding to the creation of this Key.
-	CreateTime *string `pulumi:"createTime"`
 	// Human-readable display name of this key. Modifiable by user.
 	DisplayName *string `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
@@ -103,8 +101,6 @@ type keyArgs struct {
 type KeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput
-	// The timestamp corresponding to the creation of this Key.
-	CreateTime pulumi.StringPtrInput
 	// Human-readable display name of this key. Modifiable by user.
 	DisplayName pulumi.StringPtrInput
 	// Settings for keys that can be used by iOS apps.
@@ -166,7 +162,7 @@ func (o KeyOutput) AndroidSettings() GoogleCloudRecaptchaenterpriseV1AndroidKeyS
 	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput)
 }
 
-// The timestamp corresponding to the creation of this Key.
+// The timestamp corresponding to the creation of this key.
 func (o KeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }

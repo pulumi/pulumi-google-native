@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, etag=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, cost_management_config=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, etag=None, expire_time=None, fleet=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, protect_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -94,6 +94,9 @@ class GetClusterResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
+        if fleet and not isinstance(fleet, dict):
+            raise TypeError("Expected argument 'fleet' to be a dict")
+        pulumi.set(__self__, "fleet", fleet)
         if identity_service_config and not isinstance(identity_service_config, dict):
             raise TypeError("Expected argument 'identity_service_config' to be a dict")
         pulumi.set(__self__, "identity_service_config", identity_service_config)
@@ -445,6 +448,14 @@ class GetClusterResult:
         [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> 'outputs.FleetResponse':
+        """
+        Fleet information for the cluster.
+        """
+        return pulumi.get(self, "fleet")
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -867,6 +878,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             endpoint=self.endpoint,
             etag=self.etag,
             expire_time=self.expire_time,
+            fleet=self.fleet,
             identity_service_config=self.identity_service_config,
             initial_cluster_version=self.initial_cluster_version,
             initial_node_count=self.initial_node_count,
@@ -959,6 +971,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         endpoint=__ret__.endpoint,
         etag=__ret__.etag,
         expire_time=__ret__.expire_time,
+        fleet=__ret__.fleet,
         identity_service_config=__ret__.identity_service_config,
         initial_cluster_version=__ret__.initial_cluster_version,
         initial_node_count=__ret__.initial_node_count,

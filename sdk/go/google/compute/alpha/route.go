@@ -34,6 +34,8 @@ type Route struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 	NextHopGateway pulumi.StringOutput `pulumi:"nextHopGateway"`
+	// The full resource name of the network connectivity center hub that should handle matching packets.
+	NextHopHub pulumi.StringOutput `pulumi:"nextHopHub"`
 	// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule
 	NextHopIlb pulumi.StringOutput `pulumi:"nextHopIlb"`
 	// The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
@@ -263,6 +265,11 @@ func (o RouteOutput) Network() pulumi.StringOutput {
 // The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
 func (o RouteOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopGateway }).(pulumi.StringOutput)
+}
+
+// The full resource name of the network connectivity center hub that should handle matching packets.
+func (o RouteOutput) NextHopHub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopHub }).(pulumi.StringOutput)
 }
 
 // The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule

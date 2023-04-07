@@ -92,7 +92,7 @@ class HttpRequestHttpMethod(str, Enum):
 
 class HttpTargetHttpMethod(str, Enum):
     """
-    The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+    The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
     """
     HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
     """

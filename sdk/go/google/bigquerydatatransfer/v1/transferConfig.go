@@ -46,7 +46,7 @@ type TransferConfig struct {
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	ScheduleOptions ScheduleOptionsResponseOutput `pulumi:"scheduleOptions"`
-	// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+	// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
 	ServiceAccountName pulumi.StringPtrOutput `pulumi:"serviceAccountName"`
 	// State of the most recently updated transfer run.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -130,7 +130,7 @@ type transferConfigArgs struct {
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
 	ScheduleOptions *ScheduleOptions `pulumi:"scheduleOptions"`
-	// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+	// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// Deprecated. Unique ID of the user on whose behalf transfer is done.
 	//
@@ -168,7 +168,7 @@ type TransferConfigArgs struct {
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
 	ScheduleOptions ScheduleOptionsPtrInput
-	// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+	// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
 	ServiceAccountName pulumi.StringPtrInput
 	// Deprecated. Unique ID of the user on whose behalf transfer is done.
 	//
@@ -298,7 +298,7 @@ func (o TransferConfigOutput) ScheduleOptions() ScheduleOptionsResponseOutput {
 	return o.ApplyT(func(v *TransferConfig) ScheduleOptionsResponseOutput { return v.ScheduleOptions }).(ScheduleOptionsResponseOutput)
 }
 
-// Optional service account name. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
+// Optional service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, read about [using service accounts](https://cloud.google.com/bigquery-transfer/docs/use-service-accounts).
 func (o TransferConfigOutput) ServiceAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferConfig) pulumi.StringPtrOutput { return v.ServiceAccountName }).(pulumi.StringPtrOutput)
 }

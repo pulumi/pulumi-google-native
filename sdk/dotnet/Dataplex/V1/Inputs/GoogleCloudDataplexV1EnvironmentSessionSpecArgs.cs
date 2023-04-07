@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
 {
 
+    /// <summary>
+    /// Configuration for sessions created for this environment.
+    /// </summary>
     public sealed class GoogleCloudDataplexV1EnvironmentSessionSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>

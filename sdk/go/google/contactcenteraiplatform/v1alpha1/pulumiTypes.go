@@ -10,6 +10,198 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Message storing info about the first admin user. Next ID: 3
+type AdminUser struct {
+	// Optional. Last/family name of the first admin user.
+	FamilyName *string `pulumi:"familyName"`
+	// Optional. First/given name of the first admin user.
+	GivenName *string `pulumi:"givenName"`
+}
+
+// AdminUserInput is an input type that accepts AdminUserArgs and AdminUserOutput values.
+// You can construct a concrete instance of `AdminUserInput` via:
+//
+//	AdminUserArgs{...}
+type AdminUserInput interface {
+	pulumi.Input
+
+	ToAdminUserOutput() AdminUserOutput
+	ToAdminUserOutputWithContext(context.Context) AdminUserOutput
+}
+
+// Message storing info about the first admin user. Next ID: 3
+type AdminUserArgs struct {
+	// Optional. Last/family name of the first admin user.
+	FamilyName pulumi.StringPtrInput `pulumi:"familyName"`
+	// Optional. First/given name of the first admin user.
+	GivenName pulumi.StringPtrInput `pulumi:"givenName"`
+}
+
+func (AdminUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdminUser)(nil)).Elem()
+}
+
+func (i AdminUserArgs) ToAdminUserOutput() AdminUserOutput {
+	return i.ToAdminUserOutputWithContext(context.Background())
+}
+
+func (i AdminUserArgs) ToAdminUserOutputWithContext(ctx context.Context) AdminUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdminUserOutput)
+}
+
+func (i AdminUserArgs) ToAdminUserPtrOutput() AdminUserPtrOutput {
+	return i.ToAdminUserPtrOutputWithContext(context.Background())
+}
+
+func (i AdminUserArgs) ToAdminUserPtrOutputWithContext(ctx context.Context) AdminUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdminUserOutput).ToAdminUserPtrOutputWithContext(ctx)
+}
+
+// AdminUserPtrInput is an input type that accepts AdminUserArgs, AdminUserPtr and AdminUserPtrOutput values.
+// You can construct a concrete instance of `AdminUserPtrInput` via:
+//
+//	        AdminUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdminUserPtrInput interface {
+	pulumi.Input
+
+	ToAdminUserPtrOutput() AdminUserPtrOutput
+	ToAdminUserPtrOutputWithContext(context.Context) AdminUserPtrOutput
+}
+
+type adminUserPtrType AdminUserArgs
+
+func AdminUserPtr(v *AdminUserArgs) AdminUserPtrInput {
+	return (*adminUserPtrType)(v)
+}
+
+func (*adminUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdminUser)(nil)).Elem()
+}
+
+func (i *adminUserPtrType) ToAdminUserPtrOutput() AdminUserPtrOutput {
+	return i.ToAdminUserPtrOutputWithContext(context.Background())
+}
+
+func (i *adminUserPtrType) ToAdminUserPtrOutputWithContext(ctx context.Context) AdminUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdminUserPtrOutput)
+}
+
+// Message storing info about the first admin user. Next ID: 3
+type AdminUserOutput struct{ *pulumi.OutputState }
+
+func (AdminUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdminUser)(nil)).Elem()
+}
+
+func (o AdminUserOutput) ToAdminUserOutput() AdminUserOutput {
+	return o
+}
+
+func (o AdminUserOutput) ToAdminUserOutputWithContext(ctx context.Context) AdminUserOutput {
+	return o
+}
+
+func (o AdminUserOutput) ToAdminUserPtrOutput() AdminUserPtrOutput {
+	return o.ToAdminUserPtrOutputWithContext(context.Background())
+}
+
+func (o AdminUserOutput) ToAdminUserPtrOutputWithContext(ctx context.Context) AdminUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdminUser) *AdminUser {
+		return &v
+	}).(AdminUserPtrOutput)
+}
+
+// Optional. Last/family name of the first admin user.
+func (o AdminUserOutput) FamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdminUser) *string { return v.FamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. First/given name of the first admin user.
+func (o AdminUserOutput) GivenName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdminUser) *string { return v.GivenName }).(pulumi.StringPtrOutput)
+}
+
+type AdminUserPtrOutput struct{ *pulumi.OutputState }
+
+func (AdminUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdminUser)(nil)).Elem()
+}
+
+func (o AdminUserPtrOutput) ToAdminUserPtrOutput() AdminUserPtrOutput {
+	return o
+}
+
+func (o AdminUserPtrOutput) ToAdminUserPtrOutputWithContext(ctx context.Context) AdminUserPtrOutput {
+	return o
+}
+
+func (o AdminUserPtrOutput) Elem() AdminUserOutput {
+	return o.ApplyT(func(v *AdminUser) AdminUser {
+		if v != nil {
+			return *v
+		}
+		var ret AdminUser
+		return ret
+	}).(AdminUserOutput)
+}
+
+// Optional. Last/family name of the first admin user.
+func (o AdminUserPtrOutput) FamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdminUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. First/given name of the first admin user.
+func (o AdminUserPtrOutput) GivenName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdminUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GivenName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message storing info about the first admin user. Next ID: 3
+type AdminUserResponse struct {
+	// Optional. Last/family name of the first admin user.
+	FamilyName string `pulumi:"familyName"`
+	// Optional. First/given name of the first admin user.
+	GivenName string `pulumi:"givenName"`
+}
+
+// Message storing info about the first admin user. Next ID: 3
+type AdminUserResponseOutput struct{ *pulumi.OutputState }
+
+func (AdminUserResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdminUserResponse)(nil)).Elem()
+}
+
+func (o AdminUserResponseOutput) ToAdminUserResponseOutput() AdminUserResponseOutput {
+	return o
+}
+
+func (o AdminUserResponseOutput) ToAdminUserResponseOutputWithContext(ctx context.Context) AdminUserResponseOutput {
+	return o
+}
+
+// Optional. Last/family name of the first admin user.
+func (o AdminUserResponseOutput) FamilyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AdminUserResponse) string { return v.FamilyName }).(pulumi.StringOutput)
+}
+
+// Optional. First/given name of the first admin user.
+func (o AdminUserResponseOutput) GivenName() pulumi.StringOutput {
+	return o.ApplyT(func(v AdminUserResponse) string { return v.GivenName }).(pulumi.StringOutput)
+}
+
 // Message storing the instance configuration.
 type InstanceConfig struct {
 	// The instance size of this the instance configuration.
@@ -468,10 +660,15 @@ func (o URIsResponseOutput) VirtualAgentStreamingServiceUri() pulumi.StringOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AdminUserInput)(nil)).Elem(), AdminUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdminUserPtrInput)(nil)).Elem(), AdminUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInput)(nil)).Elem(), InstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigPtrInput)(nil)).Elem(), InstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SAMLParamsInput)(nil)).Elem(), SAMLParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SAMLParamsPtrInput)(nil)).Elem(), SAMLParamsArgs{})
+	pulumi.RegisterOutputType(AdminUserOutput{})
+	pulumi.RegisterOutputType(AdminUserPtrOutput{})
+	pulumi.RegisterOutputType(AdminUserResponseOutput{})
 	pulumi.RegisterOutputType(InstanceConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigResponseOutput{})

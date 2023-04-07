@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Inputs
     public sealed class PathOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URI path (e.g., a/b/c). Default is Empty string.
+        /// The URI path (e.g., /users/1234). Default is an empty string.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

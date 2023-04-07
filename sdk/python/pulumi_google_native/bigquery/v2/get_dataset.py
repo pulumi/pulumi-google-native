@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_rounding_mode=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, storage_billing_model=None, tags=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -38,6 +38,9 @@ class GetDatasetResult:
         if default_partition_expiration_ms and not isinstance(default_partition_expiration_ms, str):
             raise TypeError("Expected argument 'default_partition_expiration_ms' to be a str")
         pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_rounding_mode and not isinstance(default_rounding_mode, str):
+            raise TypeError("Expected argument 'default_rounding_mode' to be a str")
+        pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if default_table_expiration_ms and not isinstance(default_table_expiration_ms, str):
             raise TypeError("Expected argument 'default_table_expiration_ms' to be a str")
         pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
@@ -125,6 +128,14 @@ class GetDatasetResult:
         [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
+
+    @property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> str:
+        """
+        The default rounding mode of the dataset.
+        """
+        return pulumi.get(self, "default_rounding_mode")
 
     @property
     @pulumi.getter(name="defaultTableExpirationMs")
@@ -251,6 +262,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             default_collation=self.default_collation,
             default_encryption_configuration=self.default_encryption_configuration,
             default_partition_expiration_ms=self.default_partition_expiration_ms,
+            default_rounding_mode=self.default_rounding_mode,
             default_table_expiration_ms=self.default_table_expiration_ms,
             description=self.description,
             etag=self.etag,
@@ -286,6 +298,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         default_collation=__ret__.default_collation,
         default_encryption_configuration=__ret__.default_encryption_configuration,
         default_partition_expiration_ms=__ret__.default_partition_expiration_ms,
+        default_rounding_mode=__ret__.default_rounding_mode,
         default_table_expiration_ms=__ret__.default_table_expiration_ms,
         description=__ret__.description,
         etag=__ret__.etag,

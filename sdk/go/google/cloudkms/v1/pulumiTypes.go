@@ -766,10 +766,14 @@ type CryptoKeyVersionResponse struct {
 	DestroyEventTime string `pulumi:"destroyEventTime"`
 	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
 	DestroyTime string `pulumi:"destroyTime"`
+	// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+	ExternalDestructionFailureReason string `pulumi:"externalDestructionFailureReason"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
 	// The time this CryptoKeyVersion's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
+	// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+	GenerationFailureReason string `pulumi:"generationFailureReason"`
 	// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
 	ImportFailureReason string `pulumi:"importFailureReason"`
 	// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
@@ -826,6 +830,11 @@ func (o CryptoKeyVersionResponseOutput) DestroyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.DestroyTime }).(pulumi.StringOutput)
 }
 
+// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+func (o CryptoKeyVersionResponseOutput) ExternalDestructionFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.ExternalDestructionFailureReason }).(pulumi.StringOutput)
+}
+
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 func (o CryptoKeyVersionResponseOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponseOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) ExternalProtectionLevelOptionsResponse {
@@ -836,6 +845,11 @@ func (o CryptoKeyVersionResponseOutput) ExternalProtectionLevelOptions() Externa
 // The time this CryptoKeyVersion's key material was generated.
 func (o CryptoKeyVersionResponseOutput) GenerateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.GenerateTime }).(pulumi.StringOutput)
+}
+
+// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+func (o CryptoKeyVersionResponseOutput) GenerationFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyVersionResponse) string { return v.GenerationFailureReason }).(pulumi.StringOutput)
 }
 
 // The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.

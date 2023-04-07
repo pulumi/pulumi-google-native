@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         public Output<string?> FunctionId { get; private set; } = null!;
 
         /// <summary>
+        /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// Labels associated with this Cloud Function.
         /// </summary>
         [Output("labels")]
@@ -166,6 +172,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         /// </summary>
         [Input("functionId")]
         public Input<string>? FunctionId { get; set; }
+
+        /// <summary>
+        /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

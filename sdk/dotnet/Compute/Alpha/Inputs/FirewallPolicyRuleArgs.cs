@@ -105,6 +105,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _targetServiceAccounts = value;
         }
 
+        /// <summary>
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        /// </summary>
+        [Input("tlsInspect")]
+        public Input<bool>? TlsInspect { get; set; }
+
         public FirewallPolicyRuleArgs()
         {
         }

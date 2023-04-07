@@ -153,7 +153,7 @@ def get_target_ssl_proxy(project: Optional[str] = None,
                          target_ssl_proxy: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetSslProxyResult:
     """
-    Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+    Returns the specified TargetSslProxy resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -179,6 +179,6 @@ def get_target_ssl_proxy_output(project: Optional[pulumi.Input[Optional[str]]] =
                                 target_ssl_proxy: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetSslProxyResult]:
     """
-    Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by making a list() request.
+    Returns the specified TargetSslProxy resource.
     """
     ...

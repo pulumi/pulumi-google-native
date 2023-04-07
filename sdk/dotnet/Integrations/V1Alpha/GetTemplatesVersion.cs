@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> ErrorCatcherConfigs;
+        /// <summary>
         /// Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         /// </summary>
         public readonly string LastModifierEmail;
@@ -140,6 +144,8 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
 
             string description,
 
+            ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse> errorCatcherConfigs,
+
             string lastModifierEmail,
 
             string name,
@@ -165,6 +171,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
             CreateTime = createTime;
             DatabasePersistencePolicy = databasePersistencePolicy;
             Description = description;
+            ErrorCatcherConfigs = errorCatcherConfigs;
             LastModifierEmail = lastModifierEmail;
             Name = name;
             ParentIntegrationVersionId = parentIntegrationVersionId;

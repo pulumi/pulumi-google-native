@@ -32,6 +32,18 @@ export interface GetRepositoryResult {
      */
     readonly gitRemoteSettings: outputs.dataform.v1beta1.GitRemoteSettingsResponse;
     /**
+     * Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+     */
+    readonly initialCommitFileContents: {[key: string]: string};
+    /**
+     * Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+     */
+    readonly initialCommitMetadata: outputs.dataform.v1beta1.CommitMetadataResponse;
+    /**
+     * Optional. Repository user labels.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * The repository's name.
      */
     readonly name: string;

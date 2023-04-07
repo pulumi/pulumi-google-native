@@ -208,7 +208,7 @@ class ConnectionProfileState(str, Enum):
 
 class DatabaseEngineInfoEngine(str, Enum):
     """
-    Required. Engine Type.
+    Required. Engine type.
     """
     DATABASE_ENGINE_UNSPECIFIED = "DATABASE_ENGINE_UNSPECIFIED"
     """
@@ -224,7 +224,7 @@ class DatabaseEngineInfoEngine(str, Enum):
     """
     ORACLE = "ORACLE"
     """
-    The source engine is Oracle
+    The source engine is Oracle.
     """
 
 
@@ -246,7 +246,7 @@ class DatabaseTypeEngine(str, Enum):
     """
     ORACLE = "ORACLE"
     """
-    The source engine is Oracle
+    The source engine is Oracle.
     """
 
 

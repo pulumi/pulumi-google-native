@@ -36,7 +36,7 @@ export interface GetConversionWorkspaceResult {
      */
     readonly destination: outputs.datamigration.v1.DatabaseEngineInfoResponse;
     /**
-     * The display name for the workspace
+     * The display name for the workspace.
      */
     readonly displayName: string;
     /**
@@ -44,11 +44,11 @@ export interface GetConversionWorkspaceResult {
      */
     readonly globalSettings: {[key: string]: string};
     /**
-     * Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+     * Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
      */
     readonly hasUncommittedChanges: boolean;
     /**
-     * The latest commit id
+     * The latest commit ID.
      */
     readonly latestCommitId: string;
     /**

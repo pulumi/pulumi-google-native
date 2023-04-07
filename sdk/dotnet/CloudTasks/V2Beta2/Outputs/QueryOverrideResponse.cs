@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Outputs
     public sealed class QueryOverrideResponse
     {
         /// <summary>
-        /// The query parameters (e.g., qparam1=123&amp;qparam2=456). Default is Empty string.
+        /// The query parameters (e.g., qparam1=123&amp;qparam2=456). Default is an empty string.
         /// </summary>
         public readonly string QueryParams;
 

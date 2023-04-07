@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// For whom the client library is being published.
         /// </summary>
         public readonly string Organization;
+        /// <summary>
+        /// Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
+        /// </summary>
+        public readonly string ProtoReferenceDocumentationUri;
 
         [OutputConstructor]
         private PublishingResponse(
@@ -71,7 +75,9 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
             string newIssueUri,
 
-            string organization)
+            string organization,
+
+            string protoReferenceDocumentationUri)
         {
             ApiShortName = apiShortName;
             CodeownerGithubTeams = codeownerGithubTeams;
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
             MethodSettings = methodSettings;
             NewIssueUri = newIssueUri;
             Organization = organization;
+            ProtoReferenceDocumentationUri = protoReferenceDocumentationUri;
         }
     }
 }

@@ -55,6 +55,8 @@ type LookupServiceResult struct {
 	Port int `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel string `pulumi:"releaseChannel"`
+	// Scaling configuration of the metastore service.
+	ScalingConfig ScalingConfigResponse `pulumi:"scalingConfig"`
 	// The current state of the metastore service.
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -174,6 +176,11 @@ func (o LookupServiceResultOutput) Port() pulumi.IntOutput {
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 func (o LookupServiceResultOutput) ReleaseChannel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// Scaling configuration of the metastore service.
+func (o LookupServiceResultOutput) ScalingConfig() ScalingConfigResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) ScalingConfigResponse { return v.ScalingConfig }).(ScalingConfigResponseOutput)
 }
 
 // The current state of the metastore service.

@@ -53,6 +53,10 @@ export class Rollout extends pulumi.CustomResource {
      */
     public /*out*/ readonly approveTime!: pulumi.Output<string>;
     /**
+     * Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     */
+    public /*out*/ readonly controllerRollout!: pulumi.Output<string>;
+    /**
      * Time at which the `Rollout` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -176,6 +180,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["approvalState"] = undefined /*out*/;
             resourceInputs["approveTime"] = undefined /*out*/;
+            resourceInputs["controllerRollout"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployEndTime"] = undefined /*out*/;
             resourceInputs["deployFailureCause"] = undefined /*out*/;
@@ -191,6 +196,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["approvalState"] = undefined /*out*/;
             resourceInputs["approveTime"] = undefined /*out*/;
+            resourceInputs["controllerRollout"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deliveryPipelineId"] = undefined /*out*/;
             resourceInputs["deployEndTime"] = undefined /*out*/;
