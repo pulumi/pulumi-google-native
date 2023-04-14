@@ -16,6 +16,7 @@ __all__ = [
     'PositionResponse',
     'StackTraceElementResponse',
     'StackTraceResponse',
+    'StateErrorResponse',
     'StatusResponse',
     'StepResponse',
 ]
@@ -189,6 +190,39 @@ class StackTraceResponse(dict):
         An array of stack elements.
         """
         return pulumi.get(self, "elements")
+
+
+@pulumi.output_type
+class StateErrorResponse(dict):
+    """
+    Describes an error related to the current state of the Execution resource.
+    """
+    def __init__(__self__, *,
+                 details: str,
+                 type: str):
+        """
+        Describes an error related to the current state of the Execution resource.
+        :param str details: Provides specifics about the error.
+        :param str type: The type of this state error.
+        """
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def details(self) -> str:
+        """
+        Provides specifics about the error.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of this state error.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

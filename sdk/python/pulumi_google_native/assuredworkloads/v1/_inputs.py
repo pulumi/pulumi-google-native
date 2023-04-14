@@ -78,7 +78,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
                  next_rotation_time: pulumi.Input[str],
                  rotation_period: pulumi.Input[str]):
         """
-        Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        Settings specific to the Key Management Service.
         :param pulumi.Input[str] next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
         :param pulumi.Input[str] rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
@@ -120,7 +120,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
         Represent the custom settings for the resources to be created.
         :param pulumi.Input[str] display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
         :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
-        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType'] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType'] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -157,7 +157,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType']]:
         """
-        Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+        Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         return pulumi.get(self, "resource_type")
 

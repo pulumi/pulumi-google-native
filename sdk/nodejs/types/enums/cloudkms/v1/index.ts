@@ -188,15 +188,15 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      */
     RsaDecryptOaep4096Sha1: "RSA_DECRYPT_OAEP_4096_SHA1",
     /**
-     * ECDSA on the NIST P-256 curve with a SHA256 digest.
+     * ECDSA on the NIST P-256 curve with a SHA256 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
      */
     EcSignP256Sha256: "EC_SIGN_P256_SHA256",
     /**
-     * ECDSA on the NIST P-384 curve with a SHA384 digest.
+     * ECDSA on the NIST P-384 curve with a SHA384 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
      */
     EcSignP384Sha384: "EC_SIGN_P384_SHA384",
     /**
-     * ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+     * ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
      */
     EcSignSecp256k1Sha256: "EC_SIGN_SECP256K1_SHA256",
     /**

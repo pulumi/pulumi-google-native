@@ -26,6 +26,7 @@ class ConnectionArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input['LockConfigArgs']] = None,
+                 log_config: Optional[pulumi.Input['ConnectorsLogConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
+        :param pulumi.Input['ConnectorsLogConfigArgs'] log_config: Optional. Log configuration for the connection.
         :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input['SslConfigArgs'] ssl_config: Optional. Ssl config of a connection
@@ -62,6 +64,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "location", location)
         if lock_config is not None:
             pulumi.set(__self__, "lock_config", lock_config)
+        if log_config is not None:
+            pulumi.set(__self__, "log_config", log_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if project is not None:
@@ -179,6 +183,18 @@ class ConnectionArgs:
         pulumi.set(self, "lock_config", value)
 
     @property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> Optional[pulumi.Input['ConnectorsLogConfigArgs']]:
+        """
+        Optional. Log configuration for the connection.
+        """
+        return pulumi.get(self, "log_config")
+
+    @log_config.setter
+    def log_config(self, value: Optional[pulumi.Input['ConnectorsLogConfigArgs']]):
+        pulumi.set(self, "log_config", value)
+
+    @property
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
         """
@@ -250,6 +266,7 @@ class Connection(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectorsLogConfigArgs']]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -270,6 +287,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
+        :param pulumi.Input[pulumi.InputType['ConnectorsLogConfigArgs']] log_config: Optional. Log configuration for the connection.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input[pulumi.InputType['SslConfigArgs']] ssl_config: Optional. Ssl config of a connection
@@ -309,6 +327,7 @@ class Connection(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['ConnectorsLogConfigArgs']]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -336,6 +355,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["lock_config"] = lock_config
+            __props__.__dict__["log_config"] = log_config
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
@@ -384,6 +404,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["lock_config"] = None
+        __props__.__dict__["log_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["node_config"] = None
         __props__.__dict__["project"] = None
@@ -487,6 +508,14 @@ class Connection(pulumi.CustomResource):
         Optional. Configuration that indicates whether or not the Connection can be edited.
         """
         return pulumi.get(self, "lock_config")
+
+    @property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> pulumi.Output['outputs.ConnectorsLogConfigResponse']:
+        """
+        Optional. Log configuration for the connection.
+        """
+        return pulumi.get(self, "log_config")
 
     @property
     @pulumi.getter

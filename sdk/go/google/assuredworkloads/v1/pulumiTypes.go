@@ -277,7 +277,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutp
 	}).(pulumi.StringOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime string `pulumi:"nextRotationTime"`
@@ -296,7 +296,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput interface {
 	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
@@ -357,7 +357,7 @@ func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ElementType() reflect.Type {
@@ -436,7 +436,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) RotationPerio
 	}).(pulumi.StringPtrOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime string `pulumi:"nextRotationTime"`
@@ -444,7 +444,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
 	RotationPeriod string `pulumi:"rotationPeriod"`
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ElementType() reflect.Type {
@@ -528,7 +528,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettings struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId *string `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType `pulumi:"resourceType"`
 }
 
@@ -549,7 +549,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrInput `pulumi:"resourceType"`
 }
 
@@ -615,7 +615,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceId(
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceType() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
 		return v.ResourceType
@@ -648,7 +648,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId string `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -677,7 +677,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) Res
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
 }

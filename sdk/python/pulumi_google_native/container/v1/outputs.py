@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'AcceleratorConfigResponse',
+    'AdditionalPodRangesConfigResponse',
     'AddonsConfigResponse',
     'AdvancedMachineFeaturesResponse',
     'AuthenticatorGroupsConfigResponse',
@@ -85,6 +86,7 @@ __all__ = [
     'NodeTaintResponse',
     'NotificationConfigResponse',
     'PlacementPolicyResponse',
+    'PodCIDROverprovisionConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateClusterMasterGlobalAccessConfigResponse',
     'PubSubResponse',
@@ -186,6 +188,18 @@ class AcceleratorConfigResponse(dict):
         The configuration for GPU sharing options.
         """
         return pulumi.get(self, "gpu_sharing_config")
+
+
+@pulumi.output_type
+class AdditionalPodRangesConfigResponse(dict):
+    """
+    AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+    """
+    def __init__(__self__):
+        """
+        AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1793,7 +1807,9 @@ class IPAllocationPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clusterIpv4Cidr":
+        if key == "additionalPodRangesConfig":
+            suggest = "additional_pod_ranges_config"
+        elif key == "clusterIpv4Cidr":
             suggest = "cluster_ipv4_cidr"
         elif key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
@@ -1807,6 +1823,8 @@ class IPAllocationPolicyResponse(dict):
             suggest = "node_ipv4_cidr"
         elif key == "nodeIpv4CidrBlock":
             suggest = "node_ipv4_cidr_block"
+        elif key == "podCidrOverprovisionConfig":
+            suggest = "pod_cidr_overprovision_config"
         elif key == "servicesIpv4Cidr":
             suggest = "services_ipv4_cidr"
         elif key == "servicesIpv4CidrBlock":
@@ -1840,6 +1858,7 @@ class IPAllocationPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_pod_ranges_config: 'outputs.AdditionalPodRangesConfigResponse',
                  cluster_ipv4_cidr: str,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
@@ -1847,6 +1866,7 @@ class IPAllocationPolicyResponse(dict):
                  ipv6_access_type: str,
                  node_ipv4_cidr: str,
                  node_ipv4_cidr_block: str,
+                 pod_cidr_overprovision_config: 'outputs.PodCIDROverprovisionConfigResponse',
                  services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
                  services_ipv6_cidr_block: str,
@@ -1859,6 +1879,7 @@ class IPAllocationPolicyResponse(dict):
                  use_routes: bool):
         """
         Configuration for controlling how IPs are allocated in the cluster.
+        :param 'AdditionalPodRangesConfigResponse' additional_pod_ranges_config: [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in IPAllocationPolicy.
         :param str cluster_ipv4_cidr: This field is deprecated, use cluster_ipv4_cidr_block.
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
@@ -1866,6 +1887,7 @@ class IPAllocationPolicyResponse(dict):
         :param str ipv6_access_type: The ipv6 access type (internal or external) when create_subnetwork is true
         :param str node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+        :param 'PodCIDROverprovisionConfigResponse' pod_cidr_overprovision_config: [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
         :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_ipv6_cidr_block: [Output only] The services IPv6 CIDR block for the cluster.
@@ -1877,6 +1899,7 @@ class IPAllocationPolicyResponse(dict):
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         :param bool use_routes: Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         """
+        pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
         pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
@@ -1884,6 +1907,7 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
+        pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv6_cidr_block", services_ipv6_cidr_block)
@@ -1894,6 +1918,14 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
         pulumi.set(__self__, "use_routes", use_routes)
+
+    @property
+    @pulumi.getter(name="additionalPodRangesConfig")
+    def additional_pod_ranges_config(self) -> 'outputs.AdditionalPodRangesConfigResponse':
+        """
+        [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in IPAllocationPolicy.
+        """
+        return pulumi.get(self, "additional_pod_ranges_config")
 
     @property
     @pulumi.getter(name="clusterIpv4Cidr")
@@ -1950,6 +1982,14 @@ class IPAllocationPolicyResponse(dict):
         The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         """
         return pulumi.get(self, "node_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="podCidrOverprovisionConfig")
+    def pod_cidr_overprovision_config(self) -> 'outputs.PodCIDROverprovisionConfigResponse':
+        """
+        [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        """
+        return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @property
     @pulumi.getter(name="servicesIpv4Cidr")
@@ -3694,6 +3734,8 @@ class NodeNetworkConfigResponse(dict):
             suggest = "enable_private_nodes"
         elif key == "networkPerformanceConfig":
             suggest = "network_performance_config"
+        elif key == "podCidrOverprovisionConfig":
+            suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
         elif key == "podRange":
@@ -3714,6 +3756,7 @@ class NodeNetworkConfigResponse(dict):
                  create_pod_range: bool,
                  enable_private_nodes: bool,
                  network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
+                 pod_cidr_overprovision_config: 'outputs.PodCIDROverprovisionConfigResponse',
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
         """
@@ -3721,12 +3764,14 @@ class NodeNetworkConfigResponse(dict):
         :param bool create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param bool enable_private_nodes: Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
         :param 'NetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
+        :param 'PodCIDROverprovisionConfigResponse' pod_cidr_overprovision_config: [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         pulumi.set(__self__, "create_pod_range", create_pod_range)
         pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
         pulumi.set(__self__, "network_performance_config", network_performance_config)
+        pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
 
@@ -3753,6 +3798,14 @@ class NodeNetworkConfigResponse(dict):
         Network bandwidth tier configuration.
         """
         return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter(name="podCidrOverprovisionConfig")
+    def pod_cidr_overprovision_config(self) -> 'outputs.PodCIDROverprovisionConfigResponse':
+        """
+        [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        """
+        return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")
@@ -4342,6 +4395,28 @@ class PlacementPolicyResponse(dict):
         The type of placement.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class PodCIDROverprovisionConfigResponse(dict):
+    """
+    [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+    """
+    def __init__(__self__, *,
+                 disable: bool):
+        """
+        [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+        :param bool disable: Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+        """
+        pulumi.set(__self__, "disable", disable)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> bool:
+        """
+        Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+        """
+        return pulumi.get(self, "disable")
 
 
 @pulumi.output_type

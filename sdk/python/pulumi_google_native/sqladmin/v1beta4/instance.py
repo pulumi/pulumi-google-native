@@ -17,7 +17,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -53,7 +52,6 @@ class InstanceArgs:
                  suspension_reason: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: List all maintenance versions applicable on the instance
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
@@ -88,8 +86,6 @@ class InstanceArgs:
         :param pulumi.Input['InstanceState'] state: The current serving state of the Cloud SQL instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSuspensionReasonItem']]] suspension_reason: If the instance state is SUSPENDED, the reason for the suspension.
         """
-        if available_maintenance_versions is not None:
-            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if backend_type is not None:
             pulumi.set(__self__, "backend_type", backend_type)
         if connection_name is not None:
@@ -162,18 +158,6 @@ class InstanceArgs:
             pulumi.set(__self__, "state", state)
         if suspension_reason is not None:
             pulumi.set(__self__, "suspension_reason", suspension_reason)
-
-    @property
-    @pulumi.getter(name="availableMaintenanceVersions")
-    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List all maintenance versions applicable on the instance
-        """
-        return pulumi.get(self, "available_maintenance_versions")
-
-    @available_maintenance_versions.setter
-    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "available_maintenance_versions", value)
 
     @property
     @pulumi.getter(name="backendType")
@@ -577,7 +561,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -617,7 +600,6 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: List all maintenance versions applicable on the instance
         :param pulumi.Input['InstanceBackendType'] backend_type: The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         :param pulumi.Input[str] connection_name: Connection name of the Cloud SQL instance used in connection strings.
         :param pulumi.Input[str] current_disk_size: The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
@@ -676,7 +658,6 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backend_type: Optional[pulumi.Input['InstanceBackendType']] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  current_disk_size: Optional[pulumi.Input[str]] = None,
@@ -719,7 +700,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
             __props__.__dict__["backend_type"] = backend_type
             __props__.__dict__["connection_name"] = connection_name
             __props__.__dict__["current_disk_size"] = current_disk_size
@@ -759,6 +739,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["settings"] = settings
             __props__.__dict__["state"] = state
             __props__.__dict__["suspension_reason"] = suspension_reason
+            __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["database_installed_version"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])

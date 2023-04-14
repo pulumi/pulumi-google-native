@@ -132,7 +132,7 @@ class BillingAccountBucketLink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to read the logs stored in the bucket. A bucket may currently only contain one link.
+        Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -149,7 +149,7 @@ class BillingAccountBucketLink(pulumi.CustomResource):
                  args: BillingAccountBucketLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to read the logs stored in the bucket. A bucket may currently only contain one link.
+        Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.

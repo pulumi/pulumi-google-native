@@ -40,7 +40,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * List all maintenance versions applicable on the instance
      */
-    public readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
+    public /*out*/ readonly availableMaintenanceVersions!: pulumi.Output<string[]>;
     /**
      * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */
@@ -194,7 +194,6 @@ export class Instance extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            resourceInputs["availableMaintenanceVersions"] = args ? args.availableMaintenanceVersions : undefined;
             resourceInputs["backendType"] = args ? args.backendType : undefined;
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
             resourceInputs["currentDiskSize"] = args ? args.currentDiskSize : undefined;
@@ -228,6 +227,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["suspensionReason"] = args ? args.suspensionReason : undefined;
+            resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseInstalledVersion"] = undefined /*out*/;
         } else {
@@ -279,10 +279,6 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * List all maintenance versions applicable on the instance
-     */
-    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
      */

@@ -129,6 +129,9 @@ class RRSetRoutingPolicyLoadBalancerTargetIpProtocol(str, Enum):
 
 
 class RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(str, Enum):
+    """
+    The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+    """
     NONE = "none"
     REGIONAL_L4ILB = "regionalL4ilb"
 

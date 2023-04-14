@@ -134,6 +134,9 @@ export const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = {
     RegionalL4ilb: "regionalL4ilb",
 } as const;
 
+/**
+ * The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+ */
 export type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = (typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)[keyof typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType];
 
 export const ResponsePolicyRuleBehavior = {

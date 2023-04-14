@@ -185,7 +185,7 @@ class ExponentialArgs:
                  num_finite_buckets: Optional[pulumi.Input[int]] = None,
                  scale: Optional[pulumi.Input[float]] = None):
         """
-        Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+        Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i).Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
         :param pulumi.Input[float] growth_factor: Must be greater than 1.
         :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] scale: Must be greater than 0.
@@ -335,7 +335,7 @@ class LinearArgs:
                  offset: Optional[pulumi.Input[float]] = None,
                  width: Optional[pulumi.Input[float]] = None):
         """
-        Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+        Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i).Lower bound (1 <= i < N): offset + (width * (i - 1)).
         :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] offset: Lower bound of the first bucket.
         :param pulumi.Input[float] width: Must be greater than 0.

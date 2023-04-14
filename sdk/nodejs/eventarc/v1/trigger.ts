@@ -58,7 +58,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
     public readonly eventDataContentType!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface TriggerArgs {
      */
     destination: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
     /**
-     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
     eventDataContentType?: pulumi.Input<string>;
     /**

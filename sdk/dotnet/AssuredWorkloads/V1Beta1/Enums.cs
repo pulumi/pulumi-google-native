@@ -262,11 +262,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
 
         public static WorkloadPartner PartnerUnspecified { get; } = new WorkloadPartner("PARTNER_UNSPECIFIED");
         /// <summary>
-        /// Enum representing S3NS partner.
+        /// Enum representing S3NS (Thales) partner.
         /// </summary>
         public static WorkloadPartner LocalControlsByS3ns { get; } = new WorkloadPartner("LOCAL_CONTROLS_BY_S3NS");
         /// <summary>
-        /// Enum representing T_SYSTEM partner.
+        /// Enum representing T_SYSTEM (TSI) partner.
         /// </summary>
         public static WorkloadPartner SovereignControlsByTSystems { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS");
 

@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> EarliestVersionTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false, if not set.
+        /// </summary>
+        [Output("enableDropProtection")]
+        public Output<bool> EnableDropProtection { get; private set; } = null!;
+
+        /// <summary>
         /// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
         /// </summary>
         [Output("encryptionConfig")]
@@ -63,6 +69,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the database is being updated. If false, there are no ongoing update operations for the database.
+        /// </summary>
+        [Output("reconciling")]
+        public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
         /// Applicable only for restored databases. Contains information about the restore source.

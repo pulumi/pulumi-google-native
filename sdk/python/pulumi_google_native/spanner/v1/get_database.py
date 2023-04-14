@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, create_time=None, database_dialect=None, default_leader=None, earliest_version_time=None, encryption_config=None, encryption_info=None, name=None, restore_info=None, state=None, version_retention_period=None):
+    def __init__(__self__, create_time=None, database_dialect=None, default_leader=None, earliest_version_time=None, enable_drop_protection=None, encryption_config=None, encryption_info=None, name=None, reconciling=None, restore_info=None, state=None, version_retention_period=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +32,9 @@ class GetDatabaseResult:
         if earliest_version_time and not isinstance(earliest_version_time, str):
             raise TypeError("Expected argument 'earliest_version_time' to be a str")
         pulumi.set(__self__, "earliest_version_time", earliest_version_time)
+        if enable_drop_protection and not isinstance(enable_drop_protection, bool):
+            raise TypeError("Expected argument 'enable_drop_protection' to be a bool")
+        pulumi.set(__self__, "enable_drop_protection", enable_drop_protection)
         if encryption_config and not isinstance(encryption_config, dict):
             raise TypeError("Expected argument 'encryption_config' to be a dict")
         pulumi.set(__self__, "encryption_config", encryption_config)
@@ -41,6 +44,9 @@ class GetDatabaseResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if reconciling and not isinstance(reconciling, bool):
+            raise TypeError("Expected argument 'reconciling' to be a bool")
+        pulumi.set(__self__, "reconciling", reconciling)
         if restore_info and not isinstance(restore_info, dict):
             raise TypeError("Expected argument 'restore_info' to be a dict")
         pulumi.set(__self__, "restore_info", restore_info)
@@ -84,6 +90,14 @@ class GetDatabaseResult:
         return pulumi.get(self, "earliest_version_time")
 
     @property
+    @pulumi.getter(name="enableDropProtection")
+    def enable_drop_protection(self) -> bool:
+        """
+        Whether drop protection is enabled for this database. Defaults to false, if not set.
+        """
+        return pulumi.get(self, "enable_drop_protection")
+
+    @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
         """
@@ -106,6 +120,14 @@ class GetDatabaseResult:
         The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def reconciling(self) -> bool:
+        """
+        If true, the database is being updated. If false, there are no ongoing update operations for the database.
+        """
+        return pulumi.get(self, "reconciling")
 
     @property
     @pulumi.getter(name="restoreInfo")
@@ -142,9 +164,11 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             database_dialect=self.database_dialect,
             default_leader=self.default_leader,
             earliest_version_time=self.earliest_version_time,
+            enable_drop_protection=self.enable_drop_protection,
             encryption_config=self.encryption_config,
             encryption_info=self.encryption_info,
             name=self.name,
+            reconciling=self.reconciling,
             restore_info=self.restore_info,
             state=self.state,
             version_retention_period=self.version_retention_period)
@@ -169,9 +193,11 @@ def get_database(database_id: Optional[str] = None,
         database_dialect=__ret__.database_dialect,
         default_leader=__ret__.default_leader,
         earliest_version_time=__ret__.earliest_version_time,
+        enable_drop_protection=__ret__.enable_drop_protection,
         encryption_config=__ret__.encryption_config,
         encryption_info=__ret__.encryption_info,
         name=__ret__.name,
+        reconciling=__ret__.reconciling,
         restore_info=__ret__.restore_info,
         state=__ret__.state,
         version_retention_period=__ret__.version_retention_period)

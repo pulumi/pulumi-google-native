@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<Outputs.ReplicationCycleResponse> CurrentSyncInfo { get; private set; } = null!;
 
         /// <summary>
+        /// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        /// </summary>
+        [Output("cutoverForecast")]
+        public Output<Outputs.CutoverForecastResponse> CutoverForecast { get; private set; } = null!;
+
+        /// <summary>
         /// The description attached to the migrating VM by the user.
         /// </summary>
         [Output("description")]

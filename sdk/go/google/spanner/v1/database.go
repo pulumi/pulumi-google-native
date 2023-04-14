@@ -24,6 +24,8 @@ type Database struct {
 	DefaultLeader pulumi.StringOutput `pulumi:"defaultLeader"`
 	// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 	EarliestVersionTime pulumi.StringOutput `pulumi:"earliestVersionTime"`
+	// Whether drop protection is enabled for this database. Defaults to false, if not set.
+	EnableDropProtection pulumi.BoolOutput `pulumi:"enableDropProtection"`
 	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
 	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
 	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The ` encryption_status' field inside of each  `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
@@ -32,6 +34,8 @@ type Database struct {
 	// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// If true, the database is being updated. If false, there are no ongoing update operations for the database.
+	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Applicable only for restored databases. Contains information about the restore source.
 	RestoreInfo RestoreInfoResponseOutput `pulumi:"restoreInfo"`
 	// The current database state.
@@ -177,6 +181,11 @@ func (o DatabaseOutput) EarliestVersionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EarliestVersionTime }).(pulumi.StringOutput)
 }
 
+// Whether drop protection is enabled for this database. Defaults to false, if not set.
+func (o DatabaseOutput) EnableDropProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolOutput { return v.EnableDropProtection }).(pulumi.BoolOutput)
+}
+
 // For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
 func (o DatabaseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v *Database) EncryptionConfigResponseOutput { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
@@ -198,6 +207,11 @@ func (o DatabaseOutput) Name() pulumi.StringOutput {
 
 func (o DatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// If true, the database is being updated. If false, there are no ongoing update operations for the database.
+func (o DatabaseOutput) Reconciling() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
 // Applicable only for restored databases. Contains information about the restore source.

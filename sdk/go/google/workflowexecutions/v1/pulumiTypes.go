@@ -176,6 +176,39 @@ func (o StackTraceResponseOutput) Elements() StackTraceElementResponseArrayOutpu
 	return o.ApplyT(func(v StackTraceResponse) []StackTraceElementResponse { return v.Elements }).(StackTraceElementResponseArrayOutput)
 }
 
+// Describes an error related to the current state of the Execution resource.
+type StateErrorResponse struct {
+	// Provides specifics about the error.
+	Details string `pulumi:"details"`
+	// The type of this state error.
+	Type string `pulumi:"type"`
+}
+
+// Describes an error related to the current state of the Execution resource.
+type StateErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (StateErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateErrorResponse)(nil)).Elem()
+}
+
+func (o StateErrorResponseOutput) ToStateErrorResponseOutput() StateErrorResponseOutput {
+	return o
+}
+
+func (o StateErrorResponseOutput) ToStateErrorResponseOutputWithContext(ctx context.Context) StateErrorResponseOutput {
+	return o
+}
+
+// Provides specifics about the error.
+func (o StateErrorResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v StateErrorResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// The type of this state error.
+func (o StateErrorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StateErrorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Represents the current status of this execution.
 type StatusResponse struct {
 	// A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step.
@@ -261,6 +294,7 @@ func init() {
 	pulumi.RegisterOutputType(StackTraceElementResponseOutput{})
 	pulumi.RegisterOutputType(StackTraceElementResponseArrayOutput{})
 	pulumi.RegisterOutputType(StackTraceResponseOutput{})
+	pulumi.RegisterOutputType(StateErrorResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})

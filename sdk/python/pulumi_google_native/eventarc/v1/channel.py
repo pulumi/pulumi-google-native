@@ -25,7 +25,7 @@ class ChannelArgs:
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
         :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
@@ -70,7 +70,7 @@ class ChannelArgs:
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
 
@@ -140,7 +140,7 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
-        :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
@@ -269,7 +269,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="cryptoKeyName")
     def crypto_key_name(self) -> pulumi.Output[str]:
         """
-        Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "crypto_key_name")
 

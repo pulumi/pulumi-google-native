@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Output("cryptoKeyName")]
         public Output<string> CryptoKeyName { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Input<string> ChannelId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }

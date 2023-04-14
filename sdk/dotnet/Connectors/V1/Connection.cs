@@ -86,6 +86,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<Outputs.LockConfigResponse> LockConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Log configuration for the connection.
+        /// </summary>
+        [Output("logConfig")]
+        public Output<Outputs.ConnectorsLogConfigResponse> LogConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         /// </summary>
         [Output("name")]
@@ -255,6 +261,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("lockConfig")]
         public Input<Inputs.LockConfigArgs>? LockConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Log configuration for the connection.
+        /// </summary>
+        [Input("logConfig")]
+        public Input<Inputs.ConnectorsLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
         /// Optional. Node configuration for the connection.

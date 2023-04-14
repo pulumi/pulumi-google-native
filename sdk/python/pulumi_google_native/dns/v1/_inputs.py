@@ -1135,11 +1135,12 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ip_address: The frontend IP address of the
-        :param pulumi.Input[str] network_url: The fully qualified url of the network on which the ILB is
-        :param pulumi.Input[str] port: Load Balancer to health check. The configured port of the Load Balancer.
-        :param pulumi.Input[str] project: present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
-        :param pulumi.Input[str] region: The region for regional ILBs.
+        :param pulumi.Input[str] ip_address: The frontend IP address of the Load Balancer to health check.
+        :param pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType'] load_balancer_type: The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        :param pulumi.Input[str] network_url: The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        :param pulumi.Input[str] port: The configured port of the Load Balancer.
+        :param pulumi.Input[str] project: The project ID in which the ILB exists.
+        :param pulumi.Input[str] region: The region in which the ILB exists.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -1162,7 +1163,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The frontend IP address of the
+        The frontend IP address of the Load Balancer to health check.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1191,6 +1192,9 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @property
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> Optional[pulumi.Input['RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType']]:
+        """
+        The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        """
         return pulumi.get(self, "load_balancer_type")
 
     @load_balancer_type.setter
@@ -1201,7 +1205,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter(name="networkUrl")
     def network_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified url of the network on which the ILB is
+        The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network_url")
 
@@ -1213,7 +1217,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        Load Balancer to health check. The configured port of the Load Balancer.
+        The configured port of the Load Balancer.
         """
         return pulumi.get(self, "port")
 
@@ -1225,7 +1229,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        The project ID in which the ILB exists.
         """
         return pulumi.get(self, "project")
 
@@ -1237,7 +1241,7 @@ class RRSetRoutingPolicyLoadBalancerTargetArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region for regional ILBs.
+        The region in which the ILB exists.
         """
         return pulumi.get(self, "region")
 

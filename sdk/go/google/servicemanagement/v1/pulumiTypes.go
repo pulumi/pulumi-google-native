@@ -4680,6 +4680,16 @@ func (o DocumentationRuleResponseArrayOutput) Index(i pulumi.IntInput) Documenta
 type DotnetSettings struct {
 	// Some settings.
 	Common *CommonLanguageSettings `pulumi:"common"`
+	// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+	ForcedNamespaceAliases []string `pulumi:"forcedNamespaceAliases"`
+	// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+	HandwrittenSignatures []string `pulumi:"handwrittenSignatures"`
+	// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+	IgnoredResources []string `pulumi:"ignoredResources"`
+	// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+	RenamedResources map[string]string `pulumi:"renamedResources"`
+	// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+	RenamedServices map[string]string `pulumi:"renamedServices"`
 }
 
 // DotnetSettingsInput is an input type that accepts DotnetSettingsArgs and DotnetSettingsOutput values.
@@ -4697,6 +4707,16 @@ type DotnetSettingsInput interface {
 type DotnetSettingsArgs struct {
 	// Some settings.
 	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+	// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+	ForcedNamespaceAliases pulumi.StringArrayInput `pulumi:"forcedNamespaceAliases"`
+	// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+	HandwrittenSignatures pulumi.StringArrayInput `pulumi:"handwrittenSignatures"`
+	// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+	IgnoredResources pulumi.StringArrayInput `pulumi:"ignoredResources"`
+	// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+	RenamedResources pulumi.StringMapInput `pulumi:"renamedResources"`
+	// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+	RenamedServices pulumi.StringMapInput `pulumi:"renamedServices"`
 }
 
 func (DotnetSettingsArgs) ElementType() reflect.Type {
@@ -4782,6 +4802,31 @@ func (o DotnetSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
 	return o.ApplyT(func(v DotnetSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
 }
 
+// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+func (o DotnetSettingsOutput) ForcedNamespaceAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettings) []string { return v.ForcedNamespaceAliases }).(pulumi.StringArrayOutput)
+}
+
+// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+func (o DotnetSettingsOutput) HandwrittenSignatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettings) []string { return v.HandwrittenSignatures }).(pulumi.StringArrayOutput)
+}
+
+// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+func (o DotnetSettingsOutput) IgnoredResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettings) []string { return v.IgnoredResources }).(pulumi.StringArrayOutput)
+}
+
+// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+func (o DotnetSettingsOutput) RenamedResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DotnetSettings) map[string]string { return v.RenamedResources }).(pulumi.StringMapOutput)
+}
+
+// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+func (o DotnetSettingsOutput) RenamedServices() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DotnetSettings) map[string]string { return v.RenamedServices }).(pulumi.StringMapOutput)
+}
+
 type DotnetSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (DotnetSettingsPtrOutput) ElementType() reflect.Type {
@@ -4816,10 +4861,70 @@ func (o DotnetSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
 	}).(CommonLanguageSettingsPtrOutput)
 }
 
+// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+func (o DotnetSettingsPtrOutput) ForcedNamespaceAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DotnetSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForcedNamespaceAliases
+	}).(pulumi.StringArrayOutput)
+}
+
+// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+func (o DotnetSettingsPtrOutput) HandwrittenSignatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DotnetSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HandwrittenSignatures
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+func (o DotnetSettingsPtrOutput) IgnoredResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DotnetSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoredResources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+func (o DotnetSettingsPtrOutput) RenamedResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DotnetSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RenamedResources
+	}).(pulumi.StringMapOutput)
+}
+
+// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+func (o DotnetSettingsPtrOutput) RenamedServices() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DotnetSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RenamedServices
+	}).(pulumi.StringMapOutput)
+}
+
 // Settings for Dotnet client libraries.
 type DotnetSettingsResponse struct {
 	// Some settings.
 	Common CommonLanguageSettingsResponse `pulumi:"common"`
+	// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+	ForcedNamespaceAliases []string `pulumi:"forcedNamespaceAliases"`
+	// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+	HandwrittenSignatures []string `pulumi:"handwrittenSignatures"`
+	// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+	IgnoredResources []string `pulumi:"ignoredResources"`
+	// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+	RenamedResources map[string]string `pulumi:"renamedResources"`
+	// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+	RenamedServices map[string]string `pulumi:"renamedServices"`
 }
 
 // Settings for Dotnet client libraries.
@@ -4840,6 +4945,31 @@ func (o DotnetSettingsResponseOutput) ToDotnetSettingsResponseOutputWithContext(
 // Some settings.
 func (o DotnetSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
 	return o.ApplyT(func(v DotnetSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
+// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+func (o DotnetSettingsResponseOutput) ForcedNamespaceAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) []string { return v.ForcedNamespaceAliases }).(pulumi.StringArrayOutput)
+}
+
+// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+func (o DotnetSettingsResponseOutput) HandwrittenSignatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) []string { return v.HandwrittenSignatures }).(pulumi.StringArrayOutput)
+}
+
+// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+func (o DotnetSettingsResponseOutput) IgnoredResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) []string { return v.IgnoredResources }).(pulumi.StringArrayOutput)
+}
+
+// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+func (o DotnetSettingsResponseOutput) RenamedResources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) map[string]string { return v.RenamedResources }).(pulumi.StringMapOutput)
+}
+
+// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+func (o DotnetSettingsResponseOutput) RenamedServices() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) map[string]string { return v.RenamedServices }).(pulumi.StringMapOutput)
 }
 
 // `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true

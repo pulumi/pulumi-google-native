@@ -109,7 +109,7 @@ class MessageNewTaskState(str, Enum):
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
     """
-    unknown state
+    Unknown state.
     """
     PENDING = "PENDING"
     """
@@ -130,6 +130,10 @@ class MessageNewTaskState(str, Enum):
     SUCCEEDED = "SUCCEEDED"
     """
     The Task has succeeded.
+    """
+    UNEXECUTED = "UNEXECUTED"
+    """
+    The Task has not been executed when the Job finishes.
     """
 
 

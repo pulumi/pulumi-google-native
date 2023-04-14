@@ -84,6 +84,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly lockConfig!: pulumi.Output<outputs.connectors.v1.LockConfigResponse>;
     /**
+     * Optional. Log configuration for the connection.
+     */
+    public readonly logConfig!: pulumi.Output<outputs.connectors.v1.ConnectorsLogConfigResponse>;
+    /**
      * Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
+            resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -168,6 +173,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lockConfig"] = undefined /*out*/;
+            resourceInputs["logConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -222,6 +228,10 @@ export interface ConnectionArgs {
      * Optional. Configuration that indicates whether or not the Connection can be edited.
      */
     lockConfig?: pulumi.Input<inputs.connectors.v1.LockConfigArgs>;
+    /**
+     * Optional. Log configuration for the connection.
+     */
+    logConfig?: pulumi.Input<inputs.connectors.v1.ConnectorsLogConfigArgs>;
     /**
      * Optional. Node configuration for the connection.
      */

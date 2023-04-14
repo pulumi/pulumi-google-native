@@ -83,6 +83,10 @@ export class Execution extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+     */
+    public /*out*/ readonly stateError!: pulumi.Output<outputs.workflowexecutions.v1.StateErrorResponse>;
+    /**
      * Status tracks the current steps and progress data of this execution.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.workflowexecutions.v1.StatusResponse>;
@@ -119,6 +123,7 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["result"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateError"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["workflowRevisionId"] = undefined /*out*/;
         } else {
@@ -134,6 +139,7 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["result"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateError"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["workflowId"] = undefined /*out*/;
             resourceInputs["workflowRevisionId"] = undefined /*out*/;

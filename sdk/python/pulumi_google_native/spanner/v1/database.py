@@ -204,8 +204,10 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["default_leader"] = None
             __props__.__dict__["earliest_version_time"] = None
+            __props__.__dict__["enable_drop_protection"] = None
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["reconciling"] = None
             __props__.__dict__["restore_info"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["version_retention_period"] = None
@@ -237,11 +239,13 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["database_dialect"] = None
         __props__.__dict__["default_leader"] = None
         __props__.__dict__["earliest_version_time"] = None
+        __props__.__dict__["enable_drop_protection"] = None
         __props__.__dict__["encryption_config"] = None
         __props__.__dict__["encryption_info"] = None
         __props__.__dict__["instance_id"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["reconciling"] = None
         __props__.__dict__["restore_info"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["version_retention_period"] = None
@@ -280,6 +284,14 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "earliest_version_time")
 
     @property
+    @pulumi.getter(name="enableDropProtection")
+    def enable_drop_protection(self) -> pulumi.Output[bool]:
+        """
+        Whether drop protection is enabled for this database. Defaults to false, if not set.
+        """
+        return pulumi.get(self, "enable_drop_protection")
+
+    @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> pulumi.Output['outputs.EncryptionConfigResponse']:
         """
@@ -312,6 +324,14 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def reconciling(self) -> pulumi.Output[bool]:
+        """
+        If true, the database is being updated. If false, there are no ongoing update operations for the database.
+        """
+        return pulumi.get(self, "reconciling")
 
     @property
     @pulumi.getter(name="restoreInfo")

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         [Input("activeDirectoryConfig")]
         public Input<Inputs.SqlActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
 
+        /// <summary>
+        /// Specifies advance machine configuration for the instance relevant only for SQL Server.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.AdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
         [Input("authorizedGaeApplications")]
         private InputList<string>? _authorizedGaeApplications;
 

@@ -70,6 +70,10 @@ export interface GetConnectionResult {
      */
     readonly lockConfig: outputs.connectors.v1.LockConfigResponse;
     /**
+     * Optional. Log configuration for the connection.
+     */
+    readonly logConfig: outputs.connectors.v1.ConnectorsLogConfigResponse;
+    /**
      * Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
      */
     readonly name: string;

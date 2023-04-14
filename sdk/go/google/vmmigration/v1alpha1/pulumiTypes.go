@@ -1854,6 +1854,32 @@ func (o ComputeSchedulingResponseOutput) RestartType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeSchedulingResponse) string { return v.RestartType }).(pulumi.StringOutput)
 }
 
+// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+type CutoverForecastResponse struct {
+	// Estimation of the CutoverJob duration.
+	EstimatedCutoverJobDuration string `pulumi:"estimatedCutoverJobDuration"`
+}
+
+// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+type CutoverForecastResponseOutput struct{ *pulumi.OutputState }
+
+func (CutoverForecastResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CutoverForecastResponse)(nil)).Elem()
+}
+
+func (o CutoverForecastResponseOutput) ToCutoverForecastResponseOutput() CutoverForecastResponseOutput {
+	return o
+}
+
+func (o CutoverForecastResponseOutput) ToCutoverForecastResponseOutputWithContext(ctx context.Context) CutoverForecastResponseOutput {
+	return o
+}
+
+// Estimation of the CutoverJob duration.
+func (o CutoverForecastResponseOutput) EstimatedCutoverJobDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverForecastResponse) string { return v.EstimatedCutoverJobDuration }).(pulumi.StringOutput)
+}
+
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 type CutoverJobResponse struct {
 	// Details of the target VM in Compute Engine.
@@ -5513,6 +5539,7 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(CutoverForecastResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(CutoverStepResponseOutput{})

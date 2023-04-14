@@ -16,12 +16,14 @@ __all__ = [
     'AuthConfigArgs',
     'BindingArgs',
     'ConfigVariableArgs',
+    'ConnectorsLogConfigArgs',
     'DestinationConfigArgs',
     'DestinationArgs',
     'ExprArgs',
     'JwtClaimsArgs',
     'LockConfigArgs',
     'NodeConfigArgs',
+    'Oauth2AuthCodeFlowArgs',
     'Oauth2ClientCredentialsArgs',
     'Oauth2JwtBearerArgs',
     'SecretArgs',
@@ -115,6 +117,7 @@ class AuthConfigArgs:
     def __init__(__self__, *,
                  additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  auth_type: Optional[pulumi.Input['AuthConfigAuthType']] = None,
+                 oauth2_auth_code_flow: Optional[pulumi.Input['Oauth2AuthCodeFlowArgs']] = None,
                  oauth2_client_credentials: Optional[pulumi.Input['Oauth2ClientCredentialsArgs']] = None,
                  oauth2_jwt_bearer: Optional[pulumi.Input['Oauth2JwtBearerArgs']] = None,
                  ssh_public_key: Optional[pulumi.Input['SshPublicKeyArgs']] = None,
@@ -123,6 +126,7 @@ class AuthConfigArgs:
         AuthConfig defines details of a authentication type.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: List containing additional auth configs.
         :param pulumi.Input['AuthConfigAuthType'] auth_type: The type of authentication configured.
+        :param pulumi.Input['Oauth2AuthCodeFlowArgs'] oauth2_auth_code_flow: Oauth2AuthCodeFlow.
         :param pulumi.Input['Oauth2ClientCredentialsArgs'] oauth2_client_credentials: Oauth2ClientCredentials.
         :param pulumi.Input['Oauth2JwtBearerArgs'] oauth2_jwt_bearer: Oauth2JwtBearer.
         :param pulumi.Input['SshPublicKeyArgs'] ssh_public_key: SSH Public Key.
@@ -132,6 +136,8 @@ class AuthConfigArgs:
             pulumi.set(__self__, "additional_variables", additional_variables)
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
+        if oauth2_auth_code_flow is not None:
+            pulumi.set(__self__, "oauth2_auth_code_flow", oauth2_auth_code_flow)
         if oauth2_client_credentials is not None:
             pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
         if oauth2_jwt_bearer is not None:
@@ -164,6 +170,18 @@ class AuthConfigArgs:
     @auth_type.setter
     def auth_type(self, value: Optional[pulumi.Input['AuthConfigAuthType']]):
         pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="oauth2AuthCodeFlow")
+    def oauth2_auth_code_flow(self) -> Optional[pulumi.Input['Oauth2AuthCodeFlowArgs']]:
+        """
+        Oauth2AuthCodeFlow.
+        """
+        return pulumi.get(self, "oauth2_auth_code_flow")
+
+    @oauth2_auth_code_flow.setter
+    def oauth2_auth_code_flow(self, value: Optional[pulumi.Input['Oauth2AuthCodeFlowArgs']]):
+        pulumi.set(self, "oauth2_auth_code_flow", value)
 
     @property
     @pulumi.getter(name="oauth2ClientCredentials")
@@ -356,6 +374,30 @@ class ConfigVariableArgs:
     @string_value.setter
     def string_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "string_value", value)
+
+
+@pulumi.input_type
+class ConnectorsLogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Log configuration for the connection.
+        :param pulumi.Input[bool] enabled: Enabled represents whether logging is enabled or not for a connection.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled represents whether logging is enabled or not for a connection.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -659,6 +701,126 @@ class NodeConfigArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class Oauth2AuthCodeFlowArgs:
+    def __init__(__self__, *,
+                 auth_code: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input['SecretArgs']] = None,
+                 enable_pkce: Optional[pulumi.Input[bool]] = None,
+                 pkce_verifier: Optional[pulumi.Input[str]] = None,
+                 redirect_uri: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+        :param pulumi.Input[str] auth_code: Authorization code to be exchanged for access and refresh tokens.
+        :param pulumi.Input[str] client_id: Client ID for user-provided OAuth app.
+        :param pulumi.Input['SecretArgs'] client_secret: Client secret for user-provided OAuth app.
+        :param pulumi.Input[bool] enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
+        :param pulumi.Input[str] pkce_verifier: PKCE verifier to be used during the auth code exchange.
+        :param pulumi.Input[str] redirect_uri: Redirect URI to be provided during the auth code exchange.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes the connection will request when the user performs the auth code flow.
+        """
+        if auth_code is not None:
+            pulumi.set(__self__, "auth_code", auth_code)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if enable_pkce is not None:
+            pulumi.set(__self__, "enable_pkce", enable_pkce)
+        if pkce_verifier is not None:
+            pulumi.set(__self__, "pkce_verifier", pkce_verifier)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter(name="authCode")
+    def auth_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authorization code to be exchanged for access and refresh tokens.
+        """
+        return pulumi.get(self, "auth_code")
+
+    @auth_code.setter
+    def auth_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_code", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID for user-provided OAuth app.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input['SecretArgs']]:
+        """
+        Client secret for user-provided OAuth app.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input['SecretArgs']]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="enablePkce")
+    def enable_pkce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable PKCE when the user performs the auth code flow.
+        """
+        return pulumi.get(self, "enable_pkce")
+
+    @enable_pkce.setter
+    def enable_pkce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_pkce", value)
+
+    @property
+    @pulumi.getter(name="pkceVerifier")
+    def pkce_verifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        PKCE verifier to be used during the auth code exchange.
+        """
+        return pulumi.get(self, "pkce_verifier")
+
+    @pkce_verifier.setter
+    def pkce_verifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pkce_verifier", value)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Redirect URI to be provided during the auth code exchange.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_uri", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Scopes the connection will request when the user performs the auth code flow.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
 
 
 @pulumi.input_type

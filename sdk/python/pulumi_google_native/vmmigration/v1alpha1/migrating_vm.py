@@ -331,6 +331,7 @@ class MigratingVm(pulumi.CustomResource):
             __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
+            __props__.__dict__["cutover_forecast"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["group"] = None
             __props__.__dict__["last_replication_cycle"] = None
@@ -370,6 +371,7 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["compute_engine_vm_defaults"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_sync_info"] = None
+        __props__.__dict__["cutover_forecast"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["error"] = None
@@ -432,6 +434,14 @@ class MigratingVm(pulumi.CustomResource):
         Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
+
+    @property
+    @pulumi.getter(name="cutoverForecast")
+    def cutover_forecast(self) -> pulumi.Output['outputs.CutoverForecastResponse']:
+        """
+        Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        """
+        return pulumi.get(self, "cutover_forecast")
 
     @property
     @pulumi.getter

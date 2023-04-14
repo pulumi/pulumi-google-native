@@ -39,6 +39,8 @@ type Connection struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigResponseOutput `pulumi:"lockConfig"`
+	// Optional. Log configuration for the connection.
+	LogConfig ConnectorsLogConfigResponseOutput `pulumi:"logConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Node configuration for the connection.
@@ -126,6 +128,8 @@ type connectionArgs struct {
 	Location *string           `pulumi:"location"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig *LockConfig `pulumi:"lockConfig"`
+	// Optional. Log configuration for the connection.
+	LogConfig *ConnectorsLogConfig `pulumi:"logConfig"`
 	// Optional. Node configuration for the connection.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	Project    *string     `pulumi:"project"`
@@ -156,6 +160,8 @@ type ConnectionArgs struct {
 	Location pulumi.StringPtrInput
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigPtrInput
+	// Optional. Log configuration for the connection.
+	LogConfig ConnectorsLogConfigPtrInput
 	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigPtrInput
 	Project    pulumi.StringPtrInput
@@ -261,6 +267,11 @@ func (o ConnectionOutput) Location() pulumi.StringOutput {
 // Optional. Configuration that indicates whether or not the Connection can be edited.
 func (o ConnectionOutput) LockConfig() LockConfigResponseOutput {
 	return o.ApplyT(func(v *Connection) LockConfigResponseOutput { return v.LockConfig }).(LockConfigResponseOutput)
+}
+
+// Optional. Log configuration for the connection.
+func (o ConnectionOutput) LogConfig() ConnectorsLogConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) ConnectorsLogConfigResponseOutput { return v.LogConfig }).(ConnectorsLogConfigResponseOutput)
 }
 
 // Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}

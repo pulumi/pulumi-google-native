@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, cutover_forecast=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
         if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
             raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
         pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
@@ -39,6 +39,9 @@ class GetMigratingVmResult:
         if current_sync_info and not isinstance(current_sync_info, dict):
             raise TypeError("Expected argument 'current_sync_info' to be a dict")
         pulumi.set(__self__, "current_sync_info", current_sync_info)
+        if cutover_forecast and not isinstance(cutover_forecast, dict):
+            raise TypeError("Expected argument 'cutover_forecast' to be a dict")
+        pulumi.set(__self__, "cutover_forecast", cutover_forecast)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -131,6 +134,14 @@ class GetMigratingVmResult:
         Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
+
+    @property
+    @pulumi.getter(name="cutoverForecast")
+    def cutover_forecast(self) -> 'outputs.CutoverForecastResponse':
+        """
+        Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        """
+        return pulumi.get(self, "cutover_forecast")
 
     @property
     @pulumi.getter
@@ -272,6 +283,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             compute_engine_vm_defaults=self.compute_engine_vm_defaults,
             create_time=self.create_time,
             current_sync_info=self.current_sync_info,
+            cutover_forecast=self.cutover_forecast,
             description=self.description,
             display_name=self.display_name,
             error=self.error,
@@ -314,6 +326,7 @@ def get_migrating_vm(location: Optional[str] = None,
         compute_engine_vm_defaults=__ret__.compute_engine_vm_defaults,
         create_time=__ret__.create_time,
         current_sync_info=__ret__.current_sync_info,
+        cutover_forecast=__ret__.cutover_forecast,
         description=__ret__.description,
         display_name=__ret__.display_name,
         error=__ret__.error,

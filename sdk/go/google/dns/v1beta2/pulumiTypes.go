@@ -4513,18 +4513,19 @@ func (o RRSetRoutingPolicyHealthCheckTargetsResponseOutput) InternalLoadBalancer
 }
 
 type RRSetRoutingPolicyLoadBalancerTarget struct {
-	// The frontend IP address of the
-	IpAddress        *string                                               `pulumi:"ipAddress"`
-	IpProtocol       *RRSetRoutingPolicyLoadBalancerTargetIpProtocol       `pulumi:"ipProtocol"`
-	Kind             *string                                               `pulumi:"kind"`
+	// The frontend IP address of the Load Balancer to health check.
+	IpAddress  *string                                         `pulumi:"ipAddress"`
+	IpProtocol *RRSetRoutingPolicyLoadBalancerTargetIpProtocol `pulumi:"ipProtocol"`
+	Kind       *string                                         `pulumi:"kind"`
+	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 	LoadBalancerType *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is
+	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 	NetworkUrl *string `pulumi:"networkUrl"`
-	// Load Balancer to health check. The configured port of the Load Balancer.
+	// The configured port of the Load Balancer.
 	Port *string `pulumi:"port"`
-	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	// The project ID in which the ILB exists.
 	Project *string `pulumi:"project"`
-	// The region for regional ILBs.
+	// The region in which the ILB exists.
 	Region *string `pulumi:"region"`
 }
 
@@ -4540,18 +4541,19 @@ type RRSetRoutingPolicyLoadBalancerTargetInput interface {
 }
 
 type RRSetRoutingPolicyLoadBalancerTargetArgs struct {
-	// The frontend IP address of the
-	IpAddress        pulumi.StringPtrInput                                        `pulumi:"ipAddress"`
-	IpProtocol       RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput       `pulumi:"ipProtocol"`
-	Kind             pulumi.StringPtrInput                                        `pulumi:"kind"`
+	// The frontend IP address of the Load Balancer to health check.
+	IpAddress  pulumi.StringPtrInput                                  `pulumi:"ipAddress"`
+	IpProtocol RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput `pulumi:"ipProtocol"`
+	Kind       pulumi.StringPtrInput                                  `pulumi:"kind"`
+	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 	LoadBalancerType RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is
+	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
-	// Load Balancer to health check. The configured port of the Load Balancer.
+	// The configured port of the Load Balancer.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	// The project ID in which the ILB exists.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The region for regional ILBs.
+	// The region in which the ILB exists.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -4606,7 +4608,7 @@ func (o RRSetRoutingPolicyLoadBalancerTargetOutput) ToRRSetRoutingPolicyLoadBala
 	return o
 }
 
-// The frontend IP address of the
+// The frontend IP address of the Load Balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -4621,28 +4623,29 @@ func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Kind() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) LoadBalancerType() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
 		return v.LoadBalancerType
 	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
 }
 
-// The fully qualified url of the network on which the ILB is
+// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) NetworkUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
 }
 
-// Load Balancer to health check. The configured port of the Load Balancer.
+// The configured port of the Load Balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+// The project ID in which the ILB exists.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-// The region for regional ILBs.
+// The region in which the ILB exists.
 func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -4668,18 +4671,19 @@ func (o RRSetRoutingPolicyLoadBalancerTargetArrayOutput) Index(i pulumi.IntInput
 }
 
 type RRSetRoutingPolicyLoadBalancerTargetResponse struct {
-	// The frontend IP address of the
-	IpAddress        string `pulumi:"ipAddress"`
-	IpProtocol       string `pulumi:"ipProtocol"`
-	Kind             string `pulumi:"kind"`
+	// The frontend IP address of the Load Balancer to health check.
+	IpAddress  string `pulumi:"ipAddress"`
+	IpProtocol string `pulumi:"ipProtocol"`
+	Kind       string `pulumi:"kind"`
+	// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 	LoadBalancerType string `pulumi:"loadBalancerType"`
-	// The fully qualified url of the network on which the ILB is
+	// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 	NetworkUrl string `pulumi:"networkUrl"`
-	// Load Balancer to health check. The configured port of the Load Balancer.
+	// The configured port of the Load Balancer.
 	Port string `pulumi:"port"`
-	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	// The project ID in which the ILB exists.
 	Project string `pulumi:"project"`
-	// The region for regional ILBs.
+	// The region in which the ILB exists.
 	Region string `pulumi:"region"`
 }
 
@@ -4697,7 +4701,7 @@ func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ToRRSetRoutingPolicy
 	return o
 }
 
-// The frontend IP address of the
+// The frontend IP address of the Load Balancer to health check.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -4710,26 +4714,27 @@ func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Kind() pulumi.String
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) LoadBalancerType() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.LoadBalancerType }).(pulumi.StringOutput)
 }
 
-// The fully qualified url of the network on which the ILB is
+// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) NetworkUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
-// Load Balancer to health check. The configured port of the Load Balancer.
+// The configured port of the Load Balancer.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+// The project ID in which the ILB exists.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The region for regional ILBs.
+// The region in which the ILB exists.
 func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Region }).(pulumi.StringOutput)
 }

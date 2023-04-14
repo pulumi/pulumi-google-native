@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Input<Pulumi.GoogleNative.Connectors.V1.AuthConfigAuthType>? AuthType { get; set; }
 
         /// <summary>
+        /// Oauth2AuthCodeFlow.
+        /// </summary>
+        [Input("oauth2AuthCodeFlow")]
+        public Input<Inputs.Oauth2AuthCodeFlowArgs>? Oauth2AuthCodeFlow { get; set; }
+
+        /// <summary>
         /// Oauth2ClientCredentials.
         /// </summary>
         [Input("oauth2ClientCredentials")]

@@ -44,6 +44,10 @@ export interface GetDatabaseResult {
      */
     readonly earliestVersionTime: string;
     /**
+     * Whether drop protection is enabled for this database. Defaults to false, if not set.
+     */
+    readonly enableDropProtection: boolean;
+    /**
      * For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
      */
     readonly encryptionConfig: outputs.spanner.v1.EncryptionConfigResponse;
@@ -55,6 +59,10 @@ export interface GetDatabaseResult {
      * The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
      */
     readonly name: string;
+    /**
+     * If true, the database is being updated. If false, there are no ongoing update operations for the database.
+     */
+    readonly reconciling: boolean;
     /**
      * Applicable only for restored databases. Contains information about the restore source.
      */

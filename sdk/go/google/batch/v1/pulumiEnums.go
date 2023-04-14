@@ -699,7 +699,7 @@ func (in *messageNewJobStatePtr) ToMessageNewJobStatePtrOutputWithContext(ctx co
 type MessageNewTaskState string
 
 const (
-	// unknown state
+	// Unknown state.
 	MessageNewTaskStateStateUnspecified = MessageNewTaskState("STATE_UNSPECIFIED")
 	// The Task is created and waiting for resources.
 	MessageNewTaskStatePending = MessageNewTaskState("PENDING")
@@ -711,6 +711,8 @@ const (
 	MessageNewTaskStateFailed = MessageNewTaskState("FAILED")
 	// The Task has succeeded.
 	MessageNewTaskStateSucceeded = MessageNewTaskState("SUCCEEDED")
+	// The Task has not been executed when the Job finishes.
+	MessageNewTaskStateUnexecuted = MessageNewTaskState("UNEXECUTED")
 )
 
 func (MessageNewTaskState) ElementType() reflect.Type {

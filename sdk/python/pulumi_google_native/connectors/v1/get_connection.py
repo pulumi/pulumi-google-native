@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, log_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -50,6 +50,9 @@ class GetConnectionResult:
         if lock_config and not isinstance(lock_config, dict):
             raise TypeError("Expected argument 'lock_config' to be a dict")
         pulumi.set(__self__, "lock_config", lock_config)
+        if log_config and not isinstance(log_config, dict):
+            raise TypeError("Expected argument 'log_config' to be a dict")
+        pulumi.set(__self__, "log_config", log_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -156,6 +159,14 @@ class GetConnectionResult:
         return pulumi.get(self, "lock_config")
 
     @property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> 'outputs.ConnectorsLogConfigResponse':
+        """
+        Optional. Log configuration for the connection.
+        """
+        return pulumi.get(self, "log_config")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -236,6 +247,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             image_location=self.image_location,
             labels=self.labels,
             lock_config=self.lock_config,
+            log_config=self.log_config,
             name=self.name,
             node_config=self.node_config,
             service_account=self.service_account,
@@ -273,6 +285,7 @@ def get_connection(connection_id: Optional[str] = None,
         image_location=__ret__.image_location,
         labels=__ret__.labels,
         lock_config=__ret__.lock_config,
+        log_config=__ret__.log_config,
         name=__ret__.name,
         node_config=__ret__.node_config,
         service_account=__ret__.service_account,

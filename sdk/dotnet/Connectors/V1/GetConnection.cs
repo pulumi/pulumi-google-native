@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly Outputs.LockConfigResponse LockConfig;
         /// <summary>
+        /// Optional. Log configuration for the connection.
+        /// </summary>
+        public readonly Outputs.ConnectorsLogConfigResponse LogConfig;
+        /// <summary>
         /// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         /// </summary>
         public readonly string Name;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             Outputs.LockConfigResponse lockConfig,
 
+            Outputs.ConnectorsLogConfigResponse logConfig,
+
             string name,
 
             Outputs.NodeConfigResponse nodeConfig,
@@ -190,6 +196,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
             ImageLocation = imageLocation;
             Labels = labels;
             LockConfig = lockConfig;
+            LogConfig = logConfig;
             Name = name;
             NodeConfig = nodeConfig;
             ServiceAccount = serviceAccount;

@@ -31,7 +31,7 @@ type LookupChannelResult struct {
 	ActivationToken string `pulumi:"activationToken"`
 	// The creation time.
 	CreateTime string `pulumi:"createTime"`
-	// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
 	// The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
 	Name string `pulumi:"name"`
@@ -94,7 +94,7 @@ func (o LookupChannelResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o LookupChannelResultOutput) CryptoKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChannelResult) string { return v.CryptoKeyName }).(pulumi.StringOutput)
 }

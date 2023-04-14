@@ -323,6 +323,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+    /// </summary>
     [EnumType]
     public readonly struct RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType : IEquatable<RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType>
     {

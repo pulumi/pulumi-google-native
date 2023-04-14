@@ -268,15 +268,15 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm RsaDecryptOaep4096Sha1 { get; } = new CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA1");
         /// <summary>
-        /// ECDSA on the NIST P-256 curve with a SHA256 digest.
+        /// ECDSA on the NIST P-256 curve with a SHA256 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm EcSignP256Sha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P256_SHA256");
         /// <summary>
-        /// ECDSA on the NIST P-384 curve with a SHA384 digest.
+        /// ECDSA on the NIST P-384 curve with a SHA384 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm EcSignP384Sha384 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P384_SHA384");
         /// <summary>
-        /// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+        /// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm EcSignSecp256k1Sha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256");
         /// <summary>

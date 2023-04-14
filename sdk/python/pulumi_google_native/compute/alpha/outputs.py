@@ -5044,7 +5044,11 @@ class DiskAsyncReplicationResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskId":
+        if key == "consistencyGroupPolicy":
+            suggest = "consistency_group_policy"
+        elif key == "consistencyGroupPolicyId":
+            suggest = "consistency_group_policy_id"
+        elif key == "diskId":
             suggest = "disk_id"
 
         if suggest:
@@ -5059,14 +5063,36 @@ class DiskAsyncReplicationResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 consistency_group_policy: str,
+                 consistency_group_policy_id: str,
                  disk: str,
                  disk_id: str):
         """
+        :param str consistency_group_policy: URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        :param str consistency_group_policy_id: ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
         :param str disk: The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         :param str disk_id: The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
         """
+        pulumi.set(__self__, "consistency_group_policy", consistency_group_policy)
+        pulumi.set(__self__, "consistency_group_policy_id", consistency_group_policy_id)
         pulumi.set(__self__, "disk", disk)
         pulumi.set(__self__, "disk_id", disk_id)
+
+    @property
+    @pulumi.getter(name="consistencyGroupPolicy")
+    def consistency_group_policy(self) -> str:
+        """
+        URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        """
+        return pulumi.get(self, "consistency_group_policy")
+
+    @property
+    @pulumi.getter(name="consistencyGroupPolicyId")
+    def consistency_group_policy_id(self) -> str:
+        """
+        ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        """
+        return pulumi.get(self, "consistency_group_policy_id")
 
     @property
     @pulumi.getter

@@ -583,11 +583,11 @@ const (
 	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep3072Sha1 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_3072_SHA1")
 	// RSAES-OAEP 4096 bit key with a SHA1 digest.
 	CryptoKeyVersionTemplateAlgorithmRsaDecryptOaep4096Sha1 = CryptoKeyVersionTemplateAlgorithm("RSA_DECRYPT_OAEP_4096_SHA1")
-	// ECDSA on the NIST P-256 curve with a SHA256 digest.
+	// ECDSA on the NIST P-256 curve with a SHA256 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
 	CryptoKeyVersionTemplateAlgorithmEcSignP256Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P256_SHA256")
-	// ECDSA on the NIST P-384 curve with a SHA384 digest.
+	// ECDSA on the NIST P-384 curve with a SHA384 digest. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
 	CryptoKeyVersionTemplateAlgorithmEcSignP384Sha384 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P384_SHA384")
-	// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+	// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level. Other hash functions can also be used: https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
 	CryptoKeyVersionTemplateAlgorithmEcSignSecp256k1Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256")
 	// HMAC-SHA256 signing with a 256 bit key.
 	CryptoKeyVersionTemplateAlgorithmHmacSha256 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA256")

@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string EarliestVersionTime;
         /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false, if not set.
+        /// </summary>
+        public readonly bool EnableDropProtection;
+        /// <summary>
         /// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
@@ -91,6 +95,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// If true, the database is being updated. If false, there are no ongoing update operations for the database.
+        /// </summary>
+        public readonly bool Reconciling;
         /// <summary>
         /// Applicable only for restored databases. Contains information about the restore source.
         /// </summary>
@@ -114,11 +122,15 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             string earliestVersionTime,
 
+            bool enableDropProtection,
+
             Outputs.EncryptionConfigResponse encryptionConfig,
 
             ImmutableArray<Outputs.EncryptionInfoResponse> encryptionInfo,
 
             string name,
+
+            bool reconciling,
 
             Outputs.RestoreInfoResponse restoreInfo,
 
@@ -130,9 +142,11 @@ namespace Pulumi.GoogleNative.Spanner.V1
             DatabaseDialect = databaseDialect;
             DefaultLeader = defaultLeader;
             EarliestVersionTime = earliestVersionTime;
+            EnableDropProtection = enableDropProtection;
             EncryptionConfig = encryptionConfig;
             EncryptionInfo = encryptionInfo;
             Name = name;
+            Reconciling = reconciling;
             RestoreInfo = restoreInfo;
             State = state;
             VersionRetentionPeriod = versionRetentionPeriod;

@@ -1488,13 +1488,53 @@ class DotnetSettingsResponse(dict):
     """
     Settings for Dotnet client libraries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forcedNamespaceAliases":
+            suggest = "forced_namespace_aliases"
+        elif key == "handwrittenSignatures":
+            suggest = "handwritten_signatures"
+        elif key == "ignoredResources":
+            suggest = "ignored_resources"
+        elif key == "renamedResources":
+            suggest = "renamed_resources"
+        elif key == "renamedServices":
+            suggest = "renamed_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DotnetSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DotnetSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DotnetSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 common: 'outputs.CommonLanguageSettingsResponse'):
+                 common: 'outputs.CommonLanguageSettingsResponse',
+                 forced_namespace_aliases: Sequence[str],
+                 handwritten_signatures: Sequence[str],
+                 ignored_resources: Sequence[str],
+                 renamed_resources: Mapping[str, str],
+                 renamed_services: Mapping[str, str]):
         """
         Settings for Dotnet client libraries.
         :param 'CommonLanguageSettingsResponse' common: Some settings.
+        :param Sequence[str] forced_namespace_aliases: Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        :param Sequence[str] handwritten_signatures: Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+        :param Sequence[str] ignored_resources: List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+        :param Mapping[str, str] renamed_resources: Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        :param Mapping[str, str] renamed_services: Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
         """
         pulumi.set(__self__, "common", common)
+        pulumi.set(__self__, "forced_namespace_aliases", forced_namespace_aliases)
+        pulumi.set(__self__, "handwritten_signatures", handwritten_signatures)
+        pulumi.set(__self__, "ignored_resources", ignored_resources)
+        pulumi.set(__self__, "renamed_resources", renamed_resources)
+        pulumi.set(__self__, "renamed_services", renamed_services)
 
     @property
     @pulumi.getter
@@ -1503,6 +1543,46 @@ class DotnetSettingsResponse(dict):
         Some settings.
         """
         return pulumi.get(self, "common")
+
+    @property
+    @pulumi.getter(name="forcedNamespaceAliases")
+    def forced_namespace_aliases(self) -> Sequence[str]:
+        """
+        Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        """
+        return pulumi.get(self, "forced_namespace_aliases")
+
+    @property
+    @pulumi.getter(name="handwrittenSignatures")
+    def handwritten_signatures(self) -> Sequence[str]:
+        """
+        Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+        """
+        return pulumi.get(self, "handwritten_signatures")
+
+    @property
+    @pulumi.getter(name="ignoredResources")
+    def ignored_resources(self) -> Sequence[str]:
+        """
+        List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+        """
+        return pulumi.get(self, "ignored_resources")
+
+    @property
+    @pulumi.getter(name="renamedResources")
+    def renamed_resources(self) -> Mapping[str, str]:
+        """
+        Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        """
+        return pulumi.get(self, "renamed_resources")
+
+    @property
+    @pulumi.getter(name="renamedServices")
+    def renamed_services(self) -> Mapping[str, str]:
+        """
+        Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+        """
+        return pulumi.get(self, "renamed_services")
 
 
 @pulumi.output_type

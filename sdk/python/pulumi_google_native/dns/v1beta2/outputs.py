@@ -1225,11 +1225,12 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
                  project: str,
                  region: str):
         """
-        :param str ip_address: The frontend IP address of the
-        :param str network_url: The fully qualified url of the network on which the ILB is
-        :param str port: Load Balancer to health check. The configured port of the Load Balancer.
-        :param str project: present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
-        :param str region: The region for regional ILBs.
+        :param str ip_address: The frontend IP address of the Load Balancer to health check.
+        :param str load_balancer_type: The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        :param str network_url: The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        :param str port: The configured port of the Load Balancer.
+        :param str project: The project ID in which the ILB exists.
+        :param str region: The region in which the ILB exists.
         """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_protocol", ip_protocol)
@@ -1244,7 +1245,7 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
         """
-        The frontend IP address of the
+        The frontend IP address of the Load Balancer to health check.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1261,13 +1262,16 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
     @property
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> str:
+        """
+        The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        """
         return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter(name="networkUrl")
     def network_url(self) -> str:
         """
-        The fully qualified url of the network on which the ILB is
+        The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         """
         return pulumi.get(self, "network_url")
 
@@ -1275,7 +1279,7 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
     @pulumi.getter
     def port(self) -> str:
         """
-        Load Balancer to health check. The configured port of the Load Balancer.
+        The configured port of the Load Balancer.
         """
         return pulumi.get(self, "port")
 
@@ -1283,7 +1287,7 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        The project ID in which the ILB exists.
         """
         return pulumi.get(self, "project")
 
@@ -1291,7 +1295,7 @@ class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        The region for regional ILBs.
+        The region in which the ILB exists.
         """
         return pulumi.get(self, "region")
 

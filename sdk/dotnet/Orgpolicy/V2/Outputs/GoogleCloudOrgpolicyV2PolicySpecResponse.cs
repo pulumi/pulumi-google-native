@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Outputs
         /// </summary>
         public readonly bool Reset;
         /// <summary>
-        /// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse> Rules;
         /// <summary>

@@ -101,7 +101,7 @@ export type MessageNewJobState = (typeof MessageNewJobState)[keyof typeof Messag
 
 export const MessageNewTaskState = {
     /**
-     * unknown state
+     * Unknown state.
      */
     StateUnspecified: "STATE_UNSPECIFIED",
     /**
@@ -124,6 +124,10 @@ export const MessageNewTaskState = {
      * The Task has succeeded.
      */
     Succeeded: "SUCCEEDED",
+    /**
+     * The Task has not been executed when the Job finishes.
+     */
+    Unexecuted: "UNEXECUTED",
 } as const;
 
 /**

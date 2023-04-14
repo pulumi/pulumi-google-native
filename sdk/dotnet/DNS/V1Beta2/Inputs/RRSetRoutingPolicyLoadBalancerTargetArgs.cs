@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     public sealed class RRSetRoutingPolicyLoadBalancerTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The frontend IP address of the
+        /// The frontend IP address of the Load Balancer to health check.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -24,29 +24,32 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        /// </summary>
         [Input("loadBalancerType")]
         public Input<Pulumi.GoogleNative.DNS.V1Beta2.RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType>? LoadBalancerType { get; set; }
 
         /// <summary>
-        /// The fully qualified url of the network on which the ILB is
+        /// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         /// </summary>
         [Input("networkUrl")]
         public Input<string>? NetworkUrl { get; set; }
 
         /// <summary>
-        /// Load Balancer to health check. The configured port of the Load Balancer.
+        /// The configured port of the Load Balancer.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        /// The project ID in which the ILB exists.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region for regional ILBs.
+        /// The region in which the ILB exists.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

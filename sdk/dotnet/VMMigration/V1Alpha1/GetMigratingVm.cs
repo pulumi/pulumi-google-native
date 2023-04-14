@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly Outputs.ReplicationCycleResponse CurrentSyncInfo;
         /// <summary>
+        /// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        /// </summary>
+        public readonly Outputs.CutoverForecastResponse CutoverForecast;
+        /// <summary>
         /// The description attached to the migrating VM by the user.
         /// </summary>
         public readonly string Description;
@@ -172,6 +176,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             Outputs.ReplicationCycleResponse currentSyncInfo,
 
+            Outputs.CutoverForecastResponse cutoverForecast,
+
             string description,
 
             string displayName,
@@ -209,6 +215,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             ComputeEngineVmDefaults = computeEngineVmDefaults;
             CreateTime = createTime;
             CurrentSyncInfo = currentSyncInfo;
+            CutoverForecast = cutoverForecast;
             Description = description;
             DisplayName = displayName;
             Error = error;

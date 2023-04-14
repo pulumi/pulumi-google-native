@@ -25,7 +25,7 @@ type Trigger struct {
 	Destination DestinationResponseOutput `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and might be sent only on create requests to ensure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType pulumi.StringOutput `pulumi:"eventDataContentType"`
 	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters EventFilterResponseArrayOutput `pulumi:"eventFilters"`
@@ -111,7 +111,7 @@ type triggerArgs struct {
 	Channel *string `pulumi:"channel"`
 	// Destination specifies where the events should be sent to.
 	Destination Destination `pulumi:"destination"`
-	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters []EventFilter `pulumi:"eventFilters"`
@@ -137,7 +137,7 @@ type TriggerArgs struct {
 	Channel pulumi.StringPtrInput
 	// Destination specifies where the events should be sent to.
 	Destination DestinationInput
-	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType pulumi.StringPtrInput
 	// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
 	EventFilters EventFilterArrayInput
@@ -219,7 +219,7 @@ func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 func (o TriggerOutput) EventDataContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.EventDataContentType }).(pulumi.StringOutput)
 }

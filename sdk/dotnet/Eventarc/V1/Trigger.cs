@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         /// </summary>
         [Output("eventDataContentType")]
         public Output<string> EventDataContentType { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Input<Inputs.DestinationArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         /// </summary>
         [Input("eventDataContentType")]
         public Input<string>? EventDataContentType { get; set; }

@@ -185,6 +185,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["result"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["state_error"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["workflow_revision_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflow_id"])
@@ -223,6 +224,7 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["result"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["state_error"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["workflow_id"] = None
         __props__.__dict__["workflow_revision_id"] = None
@@ -317,6 +319,14 @@ class Execution(pulumi.CustomResource):
         Current state of the execution.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateError")
+    def state_error(self) -> pulumi.Output['outputs.StateErrorResponse']:
+        """
+        Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        """
+        return pulumi.get(self, "state_error")
 
     @property
     @pulumi.getter

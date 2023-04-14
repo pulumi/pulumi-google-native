@@ -729,9 +729,9 @@ type WorkloadPartner string
 
 const (
 	WorkloadPartnerPartnerUnspecified = WorkloadPartner("PARTNER_UNSPECIFIED")
-	// Enum representing S3NS partner.
+	// Enum representing S3NS (Thales) partner.
 	WorkloadPartnerLocalControlsByS3ns = WorkloadPartner("LOCAL_CONTROLS_BY_S3NS")
-	// Enum representing T_SYSTEM partner.
+	// Enum representing T_SYSTEM (TSI) partner.
 	WorkloadPartnerSovereignControlsByTSystems = WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS")
 )
 

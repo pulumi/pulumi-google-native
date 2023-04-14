@@ -49,6 +49,8 @@ type LookupExecutionResult struct {
 	StartTime string `pulumi:"startTime"`
 	// Current state of the execution.
 	State string `pulumi:"state"`
+	// Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+	StateError StateErrorResponse `pulumi:"stateError"`
 	// Status tracks the current steps and progress data of this execution.
 	Status StatusResponse `pulumi:"status"`
 	// Revision of the workflow this execution is using.
@@ -142,6 +144,11 @@ func (o LookupExecutionResultOutput) StartTime() pulumi.StringOutput {
 // Current state of the execution.
 func (o LookupExecutionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExecutionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+func (o LookupExecutionResultOutput) StateError() StateErrorResponseOutput {
+	return o.ApplyT(func(v LookupExecutionResult) StateErrorResponse { return v.StateError }).(StateErrorResponseOutput)
 }
 
 // Status tracks the current steps and progress data of this execution.

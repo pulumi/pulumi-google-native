@@ -277,18 +277,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
-        [Input("availableMaintenanceVersions")]
-        private InputList<string>? _availableMaintenanceVersions;
-
-        /// <summary>
-        /// List all maintenance versions applicable on the instance
-        /// </summary>
-        public InputList<string> AvailableMaintenanceVersions
-        {
-            get => _availableMaintenanceVersions ?? (_availableMaintenanceVersions = new InputList<string>());
-            set => _availableMaintenanceVersions = value;
-        }
-
         /// <summary>
         /// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
         /// </summary>

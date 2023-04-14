@@ -1523,13 +1523,33 @@ class DocumentationArgs:
 @pulumi.input_type
 class DotnetSettingsArgs:
     def __init__(__self__, *,
-                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None,
+                 forced_namespace_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 handwritten_signatures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ignored_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 renamed_resources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 renamed_services: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Settings for Dotnet client libraries.
         :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] forced_namespace_aliases: Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] handwritten_signatures: Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_resources: List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] renamed_resources: Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] renamed_services: Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
         """
         if common is not None:
             pulumi.set(__self__, "common", common)
+        if forced_namespace_aliases is not None:
+            pulumi.set(__self__, "forced_namespace_aliases", forced_namespace_aliases)
+        if handwritten_signatures is not None:
+            pulumi.set(__self__, "handwritten_signatures", handwritten_signatures)
+        if ignored_resources is not None:
+            pulumi.set(__self__, "ignored_resources", ignored_resources)
+        if renamed_resources is not None:
+            pulumi.set(__self__, "renamed_resources", renamed_resources)
+        if renamed_services is not None:
+            pulumi.set(__self__, "renamed_services", renamed_services)
 
     @property
     @pulumi.getter
@@ -1542,6 +1562,66 @@ class DotnetSettingsArgs:
     @common.setter
     def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
         pulumi.set(self, "common", value)
+
+    @property
+    @pulumi.getter(name="forcedNamespaceAliases")
+    def forced_namespace_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        """
+        return pulumi.get(self, "forced_namespace_aliases")
+
+    @forced_namespace_aliases.setter
+    def forced_namespace_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "forced_namespace_aliases", value)
+
+    @property
+    @pulumi.getter(name="handwrittenSignatures")
+    def handwritten_signatures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+        """
+        return pulumi.get(self, "handwritten_signatures")
+
+    @handwritten_signatures.setter
+    def handwritten_signatures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "handwritten_signatures", value)
+
+    @property
+    @pulumi.getter(name="ignoredResources")
+    def ignored_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+        """
+        return pulumi.get(self, "ignored_resources")
+
+    @ignored_resources.setter
+    def ignored_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignored_resources", value)
+
+    @property
+    @pulumi.getter(name="renamedResources")
+    def renamed_resources(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        """
+        return pulumi.get(self, "renamed_resources")
+
+    @renamed_resources.setter
+    def renamed_resources(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "renamed_resources", value)
+
+    @property
+    @pulumi.getter(name="renamedServices")
+    def renamed_services(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+        """
+        return pulumi.get(self, "renamed_services")
+
+    @renamed_services.setter
+    def renamed_services(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "renamed_services", value)
 
 
 @pulumi.input_type

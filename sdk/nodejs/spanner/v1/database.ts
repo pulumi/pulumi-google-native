@@ -55,6 +55,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly earliestVersionTime!: pulumi.Output<string>;
     /**
+     * Whether drop protection is enabled for this database. Defaults to false, if not set.
+     */
+    public /*out*/ readonly enableDropProtection!: pulumi.Output<boolean>;
+    /**
      * For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.spanner.v1.EncryptionConfigResponse>;
@@ -68,6 +72,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * If true, the database is being updated. If false, there are no ongoing update operations for the database.
+     */
+    public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
      * Applicable only for restored databases. Contains information about the restore source.
      */
@@ -108,8 +116,10 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["defaultLeader"] = undefined /*out*/;
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
+            resourceInputs["enableDropProtection"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;
@@ -118,11 +128,13 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseDialect"] = undefined /*out*/;
             resourceInputs["defaultLeader"] = undefined /*out*/;
             resourceInputs["earliestVersionTime"] = undefined /*out*/;
+            resourceInputs["enableDropProtection"] = undefined /*out*/;
             resourceInputs["encryptionConfig"] = undefined /*out*/;
             resourceInputs["encryptionInfo"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["versionRetentionPeriod"] = undefined /*out*/;

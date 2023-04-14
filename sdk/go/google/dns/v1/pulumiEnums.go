@@ -1512,6 +1512,7 @@ func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToRRSetRoutingPolic
 	return pulumi.ToOutputWithContext(ctx, in).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
 }
 
+// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
 type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType string
 
 const (

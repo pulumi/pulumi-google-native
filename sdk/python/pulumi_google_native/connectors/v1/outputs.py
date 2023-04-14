@@ -18,12 +18,14 @@ __all__ = [
     'BindingResponse',
     'ConfigVariableResponse',
     'ConnectionStatusResponse',
+    'ConnectorsLogConfigResponse',
     'DestinationConfigResponse',
     'DestinationResponse',
     'ExprResponse',
     'JwtClaimsResponse',
     'LockConfigResponse',
     'NodeConfigResponse',
+    'Oauth2AuthCodeFlowResponse',
     'Oauth2ClientCredentialsResponse',
     'Oauth2JwtBearerResponse',
     'SecretResponse',
@@ -146,6 +148,8 @@ class AuthConfigResponse(dict):
             suggest = "additional_variables"
         elif key == "authType":
             suggest = "auth_type"
+        elif key == "oauth2AuthCodeFlow":
+            suggest = "oauth2_auth_code_flow"
         elif key == "oauth2ClientCredentials":
             suggest = "oauth2_client_credentials"
         elif key == "oauth2JwtBearer":
@@ -169,6 +173,7 @@ class AuthConfigResponse(dict):
     def __init__(__self__, *,
                  additional_variables: Sequence['outputs.ConfigVariableResponse'],
                  auth_type: str,
+                 oauth2_auth_code_flow: 'outputs.Oauth2AuthCodeFlowResponse',
                  oauth2_client_credentials: 'outputs.Oauth2ClientCredentialsResponse',
                  oauth2_jwt_bearer: 'outputs.Oauth2JwtBearerResponse',
                  ssh_public_key: 'outputs.SshPublicKeyResponse',
@@ -177,6 +182,7 @@ class AuthConfigResponse(dict):
         AuthConfig defines details of a authentication type.
         :param Sequence['ConfigVariableResponse'] additional_variables: List containing additional auth configs.
         :param str auth_type: The type of authentication configured.
+        :param 'Oauth2AuthCodeFlowResponse' oauth2_auth_code_flow: Oauth2AuthCodeFlow.
         :param 'Oauth2ClientCredentialsResponse' oauth2_client_credentials: Oauth2ClientCredentials.
         :param 'Oauth2JwtBearerResponse' oauth2_jwt_bearer: Oauth2JwtBearer.
         :param 'SshPublicKeyResponse' ssh_public_key: SSH Public Key.
@@ -184,6 +190,7 @@ class AuthConfigResponse(dict):
         """
         pulumi.set(__self__, "additional_variables", additional_variables)
         pulumi.set(__self__, "auth_type", auth_type)
+        pulumi.set(__self__, "oauth2_auth_code_flow", oauth2_auth_code_flow)
         pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
         pulumi.set(__self__, "oauth2_jwt_bearer", oauth2_jwt_bearer)
         pulumi.set(__self__, "ssh_public_key", ssh_public_key)
@@ -204,6 +211,14 @@ class AuthConfigResponse(dict):
         The type of authentication configured.
         """
         return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="oauth2AuthCodeFlow")
+    def oauth2_auth_code_flow(self) -> 'outputs.Oauth2AuthCodeFlowResponse':
+        """
+        Oauth2AuthCodeFlow.
+        """
+        return pulumi.get(self, "oauth2_auth_code_flow")
 
     @property
     @pulumi.getter(name="oauth2ClientCredentials")
@@ -413,6 +428,28 @@ class ConnectionStatusResponse(dict):
         Status provides detailed information for the state.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ConnectorsLogConfigResponse(dict):
+    """
+    Log configuration for the connection.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Log configuration for the connection.
+        :param bool enabled: Enabled represents whether logging is enabled or not for a connection.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enabled represents whether logging is enabled or not for a connection.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -687,6 +724,121 @@ class NodeConfigResponse(dict):
         Minimum number of nodes in the runtime nodes.
         """
         return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class Oauth2AuthCodeFlowResponse(dict):
+    """
+    Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authCode":
+            suggest = "auth_code"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "enablePkce":
+            suggest = "enable_pkce"
+        elif key == "pkceVerifier":
+            suggest = "pkce_verifier"
+        elif key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Oauth2AuthCodeFlowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Oauth2AuthCodeFlowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Oauth2AuthCodeFlowResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_code: str,
+                 client_id: str,
+                 client_secret: 'outputs.SecretResponse',
+                 enable_pkce: bool,
+                 pkce_verifier: str,
+                 redirect_uri: str,
+                 scopes: Sequence[str]):
+        """
+        Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+        :param str auth_code: Authorization code to be exchanged for access and refresh tokens.
+        :param str client_id: Client ID for user-provided OAuth app.
+        :param 'SecretResponse' client_secret: Client secret for user-provided OAuth app.
+        :param bool enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
+        :param str pkce_verifier: PKCE verifier to be used during the auth code exchange.
+        :param str redirect_uri: Redirect URI to be provided during the auth code exchange.
+        :param Sequence[str] scopes: Scopes the connection will request when the user performs the auth code flow.
+        """
+        pulumi.set(__self__, "auth_code", auth_code)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "enable_pkce", enable_pkce)
+        pulumi.set(__self__, "pkce_verifier", pkce_verifier)
+        pulumi.set(__self__, "redirect_uri", redirect_uri)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter(name="authCode")
+    def auth_code(self) -> str:
+        """
+        Authorization code to be exchanged for access and refresh tokens.
+        """
+        return pulumi.get(self, "auth_code")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        Client ID for user-provided OAuth app.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> 'outputs.SecretResponse':
+        """
+        Client secret for user-provided OAuth app.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="enablePkce")
+    def enable_pkce(self) -> bool:
+        """
+        Whether to enable PKCE when the user performs the auth code flow.
+        """
+        return pulumi.get(self, "enable_pkce")
+
+    @property
+    @pulumi.getter(name="pkceVerifier")
+    def pkce_verifier(self) -> str:
+        """
+        PKCE verifier to be used during the auth code exchange.
+        """
+        return pulumi.get(self, "pkce_verifier")
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> str:
+        """
+        Redirect URI to be provided during the auth code exchange.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        Scopes the connection will request when the user performs the auth code flow.
+        """
+        return pulumi.get(self, "scopes")
 
 
 @pulumi.output_type

@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AclEntryArgs',
+    'AdvancedMachineFeaturesArgs',
     'BackupConfigurationArgs',
     'BackupRetentionSettingsArgs',
     'DatabaseFlagsArgs',
@@ -111,6 +112,30 @@ class AclEntryArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class AdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        """
+        Specifies options for controlling advanced machine features.
+        :param pulumi.Input[int] threads_per_core: The number of threads per physical core.
+        """
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per physical core.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -1526,6 +1551,7 @@ class SettingsArgs:
     def __init__(__self__, *,
                  activation_policy: Optional[pulumi.Input['SettingsActivationPolicy']] = None,
                  active_directory_config: Optional[pulumi.Input['SqlActiveDirectoryConfigArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  authorized_gae_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input['SettingsAvailabilityType']] = None,
                  backup_configuration: Optional[pulumi.Input['BackupConfigurationArgs']] = None,
@@ -1557,6 +1583,7 @@ class SettingsArgs:
         Database instance settings.
         :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input['SqlActiveDirectoryConfigArgs'] active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+        :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies advance machine configuration for the instance relevant only for SQL Server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_gae_applications: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
@@ -1589,6 +1616,8 @@ class SettingsArgs:
             pulumi.set(__self__, "activation_policy", activation_policy)
         if active_directory_config is not None:
             pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if authorized_gae_applications is not None:
             warnings.warn("""The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""", DeprecationWarning)
             pulumi.log.warn("""authorized_gae_applications is deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""")
@@ -1673,6 +1702,18 @@ class SettingsArgs:
     @active_directory_config.setter
     def active_directory_config(self, value: Optional[pulumi.Input['SqlActiveDirectoryConfigArgs']]):
         pulumi.set(self, "active_directory_config", value)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]:
+        """
+        Specifies advance machine configuration for the instance relevant only for SQL Server.
+        """
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")

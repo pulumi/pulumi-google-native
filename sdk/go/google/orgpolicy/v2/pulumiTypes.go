@@ -212,7 +212,7 @@ type GoogleCloudOrgpolicyV2PolicySpec struct {
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
 	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
 	Reset *bool `pulumi:"reset"`
-	// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 	Rules []GoogleCloudOrgpolicyV2PolicySpecPolicyRule `pulumi:"rules"`
 }
 
@@ -235,7 +235,7 @@ type GoogleCloudOrgpolicyV2PolicySpecArgs struct {
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
 	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
 	Reset pulumi.BoolPtrInput `pulumi:"reset"`
-	// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 	Rules GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput `pulumi:"rules"`
 }
 
@@ -332,7 +332,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Reset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) *bool { return v.Reset }).(pulumi.BoolPtrOutput)
 }
 
-// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 func (o GoogleCloudOrgpolicyV2PolicySpecOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpec) []GoogleCloudOrgpolicyV2PolicySpecPolicyRule { return v.Rules }).(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput)
 }
@@ -391,7 +391,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Reset() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 func (o GoogleCloudOrgpolicyV2PolicySpecPtrOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2PolicySpec) []GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 		if v == nil {
@@ -817,7 +817,7 @@ type GoogleCloudOrgpolicyV2PolicySpecResponse struct {
 	InheritFromParent bool `pulumi:"inheritFromParent"`
 	// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
 	Reset bool `pulumi:"reset"`
-	// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 	Rules []GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse `pulumi:"rules"`
 	// The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
 	UpdateTime string `pulumi:"updateTime"`
@@ -853,7 +853,7 @@ func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Reset() pulumi.BoolOutpu
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) bool { return v.Reset }).(pulumi.BoolOutput)
 }
 
-// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
 func (o GoogleCloudOrgpolicyV2PolicySpecResponseOutput) Rules() GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudOrgpolicyV2PolicySpecResponse) []GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse {
 		return v.Rules

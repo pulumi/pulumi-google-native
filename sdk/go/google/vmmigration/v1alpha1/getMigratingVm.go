@@ -41,6 +41,8 @@ type LookupMigratingVmResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponse `pulumi:"currentSyncInfo"`
+	// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+	CutoverForecast CutoverForecastResponse `pulumi:"cutoverForecast"`
 	// The description attached to the migrating VM by the user.
 	Description string `pulumi:"description"`
 	// The display name attached to the MigratingVm by the user.
@@ -143,6 +145,11 @@ func (o LookupMigratingVmResultOutput) CreateTime() pulumi.StringOutput {
 // Details of the current running replication cycle.
 func (o LookupMigratingVmResultOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) ReplicationCycleResponse { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
+}
+
+// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+func (o LookupMigratingVmResultOutput) CutoverForecast() CutoverForecastResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) CutoverForecastResponse { return v.CutoverForecast }).(CutoverForecastResponseOutput)
 }
 
 // The description attached to the migrating VM by the user.

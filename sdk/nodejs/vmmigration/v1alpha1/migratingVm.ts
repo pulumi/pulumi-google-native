@@ -61,6 +61,10 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentSyncInfo!: pulumi.Output<outputs.vmmigration.v1alpha1.ReplicationCycleResponse>;
     /**
+     * Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+     */
+    public /*out*/ readonly cutoverForecast!: pulumi.Output<outputs.vmmigration.v1alpha1.CutoverForecastResponse>;
+    /**
      * The description attached to the migrating VM by the user.
      */
     public readonly description!: pulumi.Output<string>;
@@ -171,6 +175,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
+            resourceInputs["cutoverForecast"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["group"] = undefined /*out*/;
             resourceInputs["lastReplicationCycle"] = undefined /*out*/;
@@ -187,6 +192,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["computeEngineVmDefaults"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
+            resourceInputs["cutoverForecast"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;

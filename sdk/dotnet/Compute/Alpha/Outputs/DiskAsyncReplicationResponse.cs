@@ -14,6 +14,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class DiskAsyncReplicationResponse
     {
         /// <summary>
+        /// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        /// </summary>
+        public readonly string ConsistencyGroupPolicy;
+        /// <summary>
+        /// ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        /// </summary>
+        public readonly string ConsistencyGroupPolicyId;
+        /// <summary>
         /// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         /// </summary>
         public readonly string Disk;
@@ -24,10 +32,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private DiskAsyncReplicationResponse(
+            string consistencyGroupPolicy,
+
+            string consistencyGroupPolicyId,
+
             string disk,
 
             string diskId)
         {
+            ConsistencyGroupPolicy = consistencyGroupPolicy;
+            ConsistencyGroupPolicyId = consistencyGroupPolicyId;
             Disk = disk;
             DiskId = diskId;
         }

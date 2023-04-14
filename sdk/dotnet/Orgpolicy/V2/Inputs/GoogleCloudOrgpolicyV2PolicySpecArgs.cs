@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         private InputList<Inputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs>? _rules;
 
         /// <summary>
-        /// Up to 10 policy rules are allowed. In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
         /// </summary>
         public InputList<Inputs.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs> Rules
         {

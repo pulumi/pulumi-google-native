@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, argument=None, call_log_level=None, duration=None, end_time=None, error=None, labels=None, name=None, result=None, start_time=None, state=None, status=None, workflow_revision_id=None):
+    def __init__(__self__, argument=None, call_log_level=None, duration=None, end_time=None, error=None, labels=None, name=None, result=None, start_time=None, state=None, state_error=None, status=None, workflow_revision_id=None):
         if argument and not isinstance(argument, str):
             raise TypeError("Expected argument 'argument' to be a str")
         pulumi.set(__self__, "argument", argument)
@@ -50,6 +50,9 @@ class GetExecutionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if state_error and not isinstance(state_error, dict):
+            raise TypeError("Expected argument 'state_error' to be a dict")
+        pulumi.set(__self__, "state_error", state_error)
         if status and not isinstance(status, dict):
             raise TypeError("Expected argument 'status' to be a dict")
         pulumi.set(__self__, "status", status)
@@ -138,6 +141,14 @@ class GetExecutionResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="stateError")
+    def state_error(self) -> 'outputs.StateErrorResponse':
+        """
+        Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        """
+        return pulumi.get(self, "state_error")
+
+    @property
     @pulumi.getter
     def status(self) -> 'outputs.StatusResponse':
         """
@@ -170,6 +181,7 @@ class AwaitableGetExecutionResult(GetExecutionResult):
             result=self.result,
             start_time=self.start_time,
             state=self.state,
+            state_error=self.state_error,
             status=self.status,
             workflow_revision_id=self.workflow_revision_id)
 
@@ -203,6 +215,7 @@ def get_execution(execution_id: Optional[str] = None,
         result=__ret__.result,
         start_time=__ret__.start_time,
         state=__ret__.state,
+        state_error=__ret__.state_error,
         status=__ret__.status,
         workflow_revision_id=__ret__.workflow_revision_id)
 

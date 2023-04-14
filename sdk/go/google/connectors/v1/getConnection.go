@@ -48,6 +48,8 @@ type LookupConnectionResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigResponse `pulumi:"lockConfig"`
+	// Optional. Log configuration for the connection.
+	LogConfig ConnectorsLogConfigResponse `pulumi:"logConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 	Name string `pulumi:"name"`
 	// Optional. Node configuration for the connection.
@@ -152,6 +154,11 @@ func (o LookupConnectionResultOutput) Labels() pulumi.StringMapOutput {
 // Optional. Configuration that indicates whether or not the Connection can be edited.
 func (o LookupConnectionResultOutput) LockConfig() LockConfigResponseOutput {
 	return o.ApplyT(func(v LookupConnectionResult) LockConfigResponse { return v.LockConfig }).(LockConfigResponseOutput)
+}
+
+// Optional. Log configuration for the connection.
+func (o LookupConnectionResultOutput) LogConfig() ConnectorsLogConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) ConnectorsLogConfigResponse { return v.LogConfig }).(ConnectorsLogConfigResponseOutput)
 }
 
 // Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}

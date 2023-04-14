@@ -14,26 +14,29 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     public sealed class RRSetRoutingPolicyLoadBalancerTargetResponse
     {
         /// <summary>
-        /// The frontend IP address of the
+        /// The frontend IP address of the Load Balancer to health check.
         /// </summary>
         public readonly string IpAddress;
         public readonly string IpProtocol;
         public readonly string Kind;
+        /// <summary>
+        /// The type of Load Balancer specified by this target. Must match the configuration of the Load Balancer located at the LoadBalancerTarget's IP address/port and region.
+        /// </summary>
         public readonly string LoadBalancerType;
         /// <summary>
-        /// The fully qualified url of the network on which the ILB is
+        /// The fully qualified url of the network on which the ILB is present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         /// </summary>
         public readonly string NetworkUrl;
         /// <summary>
-        /// Load Balancer to health check. The configured port of the Load Balancer.
+        /// The configured port of the Load Balancer.
         /// </summary>
         public readonly string Port;
         /// <summary>
-        /// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        /// The project ID in which the ILB exists.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The region for regional ILBs.
+        /// The region in which the ILB exists.
         /// </summary>
         public readonly string Region;
 

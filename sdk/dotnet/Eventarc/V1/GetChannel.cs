@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         public readonly string CryptoKeyName;
         /// <summary>

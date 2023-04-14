@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     }
 
     /// <summary>
-    /// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+    /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType : IEquatable<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType>
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ResourceTypeUnspecified { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
+        /// Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ConsumerProject { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_PROJECT");
         /// <summary>
@@ -216,11 +216,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static WorkloadComplianceRegime AuRegionsAndUsSupport { get; } = new WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT");
         /// <summary>
-        /// Assured Workloads for Partners
+        /// Assured Workloads for Partners;
         /// </summary>
         public static WorkloadComplianceRegime AssuredWorkloadsForPartners { get; } = new WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS");
         /// <summary>
-        /// Assured Workloads for Israel Regions
+        /// Assured Workloads for Israel
         /// </summary>
         public static WorkloadComplianceRegime IsrRegions { get; } = new WorkloadComplianceRegime("ISR_REGIONS");
         /// <summary>
@@ -262,11 +262,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
         public static WorkloadPartner PartnerUnspecified { get; } = new WorkloadPartner("PARTNER_UNSPECIFIED");
         /// <summary>
-        /// Enum representing S3NS partner.
+        /// Enum representing S3NS (Thales) partner.
         /// </summary>
         public static WorkloadPartner LocalControlsByS3ns { get; } = new WorkloadPartner("LOCAL_CONTROLS_BY_S3NS");
         /// <summary>
-        /// Enum representing T_SYSTEM partner.
+        /// Enum representing T_SYSTEM (TSI) partner.
         /// </summary>
         public static WorkloadPartner SovereignControlsByTSystems { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS");
 

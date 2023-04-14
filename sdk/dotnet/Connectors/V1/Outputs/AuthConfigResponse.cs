@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Oauth2AuthCodeFlow.
+        /// </summary>
+        public readonly Outputs.Oauth2AuthCodeFlowResponse Oauth2AuthCodeFlow;
+        /// <summary>
         /// Oauth2ClientCredentials.
         /// </summary>
         public readonly Outputs.Oauth2ClientCredentialsResponse Oauth2ClientCredentials;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 
             string authType,
 
+            Outputs.Oauth2AuthCodeFlowResponse oauth2AuthCodeFlow,
+
             Outputs.Oauth2ClientCredentialsResponse oauth2ClientCredentials,
 
             Outputs.Oauth2JwtBearerResponse oauth2JwtBearer,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         {
             AdditionalVariables = additionalVariables;
             AuthType = authType;
+            Oauth2AuthCodeFlow = oauth2AuthCodeFlow;
             Oauth2ClientCredentials = oauth2ClientCredentials;
             Oauth2JwtBearer = oauth2JwtBearer;
             SshPublicKey = sshPublicKey;

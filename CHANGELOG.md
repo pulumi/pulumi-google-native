@@ -2,6 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+
+## v0.30.0 (2023-04-14)
+Upstream breaking changes:
+- Resource "google-native:sqladmin/v1beta4:Instance" missing input "availableMaintenanceVersions"
+  - This input has been marked as "Output only" by GCP, and is now deprecated.
+- Resource "google-native:sqladmin/v1:Instance" missing input "availableMaintenanceVersions"
+  - This input has been marked as "Output only" by GCP, and is now deprecated.
+
+## v0.29.0 (2023-04-07)
 ### Does the PR have any schema changes?
 
 Upstream breaking changes:

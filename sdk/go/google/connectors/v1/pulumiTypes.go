@@ -340,6 +340,8 @@ type AuthConfig struct {
 	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
 	// The type of authentication configured.
 	AuthType *AuthConfigAuthType `pulumi:"authType"`
+	// Oauth2AuthCodeFlow.
+	Oauth2AuthCodeFlow *Oauth2AuthCodeFlow `pulumi:"oauth2AuthCodeFlow"`
 	// Oauth2ClientCredentials.
 	Oauth2ClientCredentials *Oauth2ClientCredentials `pulumi:"oauth2ClientCredentials"`
 	// Oauth2JwtBearer.
@@ -367,6 +369,8 @@ type AuthConfigArgs struct {
 	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
 	// The type of authentication configured.
 	AuthType AuthConfigAuthTypePtrInput `pulumi:"authType"`
+	// Oauth2AuthCodeFlow.
+	Oauth2AuthCodeFlow Oauth2AuthCodeFlowPtrInput `pulumi:"oauth2AuthCodeFlow"`
 	// Oauth2ClientCredentials.
 	Oauth2ClientCredentials Oauth2ClientCredentialsPtrInput `pulumi:"oauth2ClientCredentials"`
 	// Oauth2JwtBearer.
@@ -465,6 +469,11 @@ func (o AuthConfigOutput) AuthType() AuthConfigAuthTypePtrOutput {
 	return o.ApplyT(func(v AuthConfig) *AuthConfigAuthType { return v.AuthType }).(AuthConfigAuthTypePtrOutput)
 }
 
+// Oauth2AuthCodeFlow.
+func (o AuthConfigOutput) Oauth2AuthCodeFlow() Oauth2AuthCodeFlowPtrOutput {
+	return o.ApplyT(func(v AuthConfig) *Oauth2AuthCodeFlow { return v.Oauth2AuthCodeFlow }).(Oauth2AuthCodeFlowPtrOutput)
+}
+
 // Oauth2ClientCredentials.
 func (o AuthConfigOutput) Oauth2ClientCredentials() Oauth2ClientCredentialsPtrOutput {
 	return o.ApplyT(func(v AuthConfig) *Oauth2ClientCredentials { return v.Oauth2ClientCredentials }).(Oauth2ClientCredentialsPtrOutput)
@@ -529,6 +538,16 @@ func (o AuthConfigPtrOutput) AuthType() AuthConfigAuthTypePtrOutput {
 	}).(AuthConfigAuthTypePtrOutput)
 }
 
+// Oauth2AuthCodeFlow.
+func (o AuthConfigPtrOutput) Oauth2AuthCodeFlow() Oauth2AuthCodeFlowPtrOutput {
+	return o.ApplyT(func(v *AuthConfig) *Oauth2AuthCodeFlow {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2AuthCodeFlow
+	}).(Oauth2AuthCodeFlowPtrOutput)
+}
+
 // Oauth2ClientCredentials.
 func (o AuthConfigPtrOutput) Oauth2ClientCredentials() Oauth2ClientCredentialsPtrOutput {
 	return o.ApplyT(func(v *AuthConfig) *Oauth2ClientCredentials {
@@ -575,6 +594,8 @@ type AuthConfigResponse struct {
 	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
 	// The type of authentication configured.
 	AuthType string `pulumi:"authType"`
+	// Oauth2AuthCodeFlow.
+	Oauth2AuthCodeFlow Oauth2AuthCodeFlowResponse `pulumi:"oauth2AuthCodeFlow"`
 	// Oauth2ClientCredentials.
 	Oauth2ClientCredentials Oauth2ClientCredentialsResponse `pulumi:"oauth2ClientCredentials"`
 	// Oauth2JwtBearer.
@@ -608,6 +629,11 @@ func (o AuthConfigResponseOutput) AdditionalVariables() ConfigVariableResponseAr
 // The type of authentication configured.
 func (o AuthConfigResponseOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthConfigResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Oauth2AuthCodeFlow.
+func (o AuthConfigResponseOutput) Oauth2AuthCodeFlow() Oauth2AuthCodeFlowResponseOutput {
+	return o.ApplyT(func(v AuthConfigResponse) Oauth2AuthCodeFlowResponse { return v.Oauth2AuthCodeFlow }).(Oauth2AuthCodeFlowResponseOutput)
 }
 
 // Oauth2ClientCredentials.
@@ -1056,6 +1082,172 @@ func (o ConnectionStatusResponseOutput) State() pulumi.StringOutput {
 // Status provides detailed information for the state.
 func (o ConnectionStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Log configuration for the connection.
+type ConnectorsLogConfig struct {
+	// Enabled represents whether logging is enabled or not for a connection.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConnectorsLogConfigInput is an input type that accepts ConnectorsLogConfigArgs and ConnectorsLogConfigOutput values.
+// You can construct a concrete instance of `ConnectorsLogConfigInput` via:
+//
+//	ConnectorsLogConfigArgs{...}
+type ConnectorsLogConfigInput interface {
+	pulumi.Input
+
+	ToConnectorsLogConfigOutput() ConnectorsLogConfigOutput
+	ToConnectorsLogConfigOutputWithContext(context.Context) ConnectorsLogConfigOutput
+}
+
+// Log configuration for the connection.
+type ConnectorsLogConfigArgs struct {
+	// Enabled represents whether logging is enabled or not for a connection.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConnectorsLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorsLogConfig)(nil)).Elem()
+}
+
+func (i ConnectorsLogConfigArgs) ToConnectorsLogConfigOutput() ConnectorsLogConfigOutput {
+	return i.ToConnectorsLogConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectorsLogConfigArgs) ToConnectorsLogConfigOutputWithContext(ctx context.Context) ConnectorsLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorsLogConfigOutput)
+}
+
+func (i ConnectorsLogConfigArgs) ToConnectorsLogConfigPtrOutput() ConnectorsLogConfigPtrOutput {
+	return i.ToConnectorsLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorsLogConfigArgs) ToConnectorsLogConfigPtrOutputWithContext(ctx context.Context) ConnectorsLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorsLogConfigOutput).ToConnectorsLogConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectorsLogConfigPtrInput is an input type that accepts ConnectorsLogConfigArgs, ConnectorsLogConfigPtr and ConnectorsLogConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectorsLogConfigPtrInput` via:
+//
+//	        ConnectorsLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorsLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectorsLogConfigPtrOutput() ConnectorsLogConfigPtrOutput
+	ToConnectorsLogConfigPtrOutputWithContext(context.Context) ConnectorsLogConfigPtrOutput
+}
+
+type connectorsLogConfigPtrType ConnectorsLogConfigArgs
+
+func ConnectorsLogConfigPtr(v *ConnectorsLogConfigArgs) ConnectorsLogConfigPtrInput {
+	return (*connectorsLogConfigPtrType)(v)
+}
+
+func (*connectorsLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorsLogConfig)(nil)).Elem()
+}
+
+func (i *connectorsLogConfigPtrType) ToConnectorsLogConfigPtrOutput() ConnectorsLogConfigPtrOutput {
+	return i.ToConnectorsLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorsLogConfigPtrType) ToConnectorsLogConfigPtrOutputWithContext(ctx context.Context) ConnectorsLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorsLogConfigPtrOutput)
+}
+
+// Log configuration for the connection.
+type ConnectorsLogConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectorsLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorsLogConfig)(nil)).Elem()
+}
+
+func (o ConnectorsLogConfigOutput) ToConnectorsLogConfigOutput() ConnectorsLogConfigOutput {
+	return o
+}
+
+func (o ConnectorsLogConfigOutput) ToConnectorsLogConfigOutputWithContext(ctx context.Context) ConnectorsLogConfigOutput {
+	return o
+}
+
+func (o ConnectorsLogConfigOutput) ToConnectorsLogConfigPtrOutput() ConnectorsLogConfigPtrOutput {
+	return o.ToConnectorsLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorsLogConfigOutput) ToConnectorsLogConfigPtrOutputWithContext(ctx context.Context) ConnectorsLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorsLogConfig) *ConnectorsLogConfig {
+		return &v
+	}).(ConnectorsLogConfigPtrOutput)
+}
+
+// Enabled represents whether logging is enabled or not for a connection.
+func (o ConnectorsLogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorsLogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConnectorsLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorsLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorsLogConfig)(nil)).Elem()
+}
+
+func (o ConnectorsLogConfigPtrOutput) ToConnectorsLogConfigPtrOutput() ConnectorsLogConfigPtrOutput {
+	return o
+}
+
+func (o ConnectorsLogConfigPtrOutput) ToConnectorsLogConfigPtrOutputWithContext(ctx context.Context) ConnectorsLogConfigPtrOutput {
+	return o
+}
+
+func (o ConnectorsLogConfigPtrOutput) Elem() ConnectorsLogConfigOutput {
+	return o.ApplyT(func(v *ConnectorsLogConfig) ConnectorsLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorsLogConfig
+		return ret
+	}).(ConnectorsLogConfigOutput)
+}
+
+// Enabled represents whether logging is enabled or not for a connection.
+func (o ConnectorsLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectorsLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Log configuration for the connection.
+type ConnectorsLogConfigResponse struct {
+	// Enabled represents whether logging is enabled or not for a connection.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Log configuration for the connection.
+type ConnectorsLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorsLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorsLogConfigResponse)(nil)).Elem()
+}
+
+func (o ConnectorsLogConfigResponseOutput) ToConnectorsLogConfigResponseOutput() ConnectorsLogConfigResponseOutput {
+	return o
+}
+
+func (o ConnectorsLogConfigResponseOutput) ToConnectorsLogConfigResponseOutputWithContext(ctx context.Context) ConnectorsLogConfigResponseOutput {
+	return o
+}
+
+// Enabled represents whether logging is enabled or not for a connection.
+func (o ConnectorsLogConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConnectorsLogConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 type Destination struct {
@@ -2237,6 +2429,328 @@ func (o NodeConfigResponseOutput) MaxNodeCount() pulumi.IntOutput {
 // Minimum number of nodes in the runtime nodes.
 func (o NodeConfigResponseOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+type Oauth2AuthCodeFlow struct {
+	// Authorization code to be exchanged for access and refresh tokens.
+	AuthCode *string `pulumi:"authCode"`
+	// Client ID for user-provided OAuth app.
+	ClientId *string `pulumi:"clientId"`
+	// Client secret for user-provided OAuth app.
+	ClientSecret *Secret `pulumi:"clientSecret"`
+	// Whether to enable PKCE when the user performs the auth code flow.
+	EnablePkce *bool `pulumi:"enablePkce"`
+	// PKCE verifier to be used during the auth code exchange.
+	PkceVerifier *string `pulumi:"pkceVerifier"`
+	// Redirect URI to be provided during the auth code exchange.
+	RedirectUri *string `pulumi:"redirectUri"`
+	// Scopes the connection will request when the user performs the auth code flow.
+	Scopes []string `pulumi:"scopes"`
+}
+
+// Oauth2AuthCodeFlowInput is an input type that accepts Oauth2AuthCodeFlowArgs and Oauth2AuthCodeFlowOutput values.
+// You can construct a concrete instance of `Oauth2AuthCodeFlowInput` via:
+//
+//	Oauth2AuthCodeFlowArgs{...}
+type Oauth2AuthCodeFlowInput interface {
+	pulumi.Input
+
+	ToOauth2AuthCodeFlowOutput() Oauth2AuthCodeFlowOutput
+	ToOauth2AuthCodeFlowOutputWithContext(context.Context) Oauth2AuthCodeFlowOutput
+}
+
+// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+type Oauth2AuthCodeFlowArgs struct {
+	// Authorization code to be exchanged for access and refresh tokens.
+	AuthCode pulumi.StringPtrInput `pulumi:"authCode"`
+	// Client ID for user-provided OAuth app.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Client secret for user-provided OAuth app.
+	ClientSecret SecretPtrInput `pulumi:"clientSecret"`
+	// Whether to enable PKCE when the user performs the auth code flow.
+	EnablePkce pulumi.BoolPtrInput `pulumi:"enablePkce"`
+	// PKCE verifier to be used during the auth code exchange.
+	PkceVerifier pulumi.StringPtrInput `pulumi:"pkceVerifier"`
+	// Redirect URI to be provided during the auth code exchange.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+	// Scopes the connection will request when the user performs the auth code flow.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (Oauth2AuthCodeFlowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oauth2AuthCodeFlow)(nil)).Elem()
+}
+
+func (i Oauth2AuthCodeFlowArgs) ToOauth2AuthCodeFlowOutput() Oauth2AuthCodeFlowOutput {
+	return i.ToOauth2AuthCodeFlowOutputWithContext(context.Background())
+}
+
+func (i Oauth2AuthCodeFlowArgs) ToOauth2AuthCodeFlowOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Oauth2AuthCodeFlowOutput)
+}
+
+func (i Oauth2AuthCodeFlowArgs) ToOauth2AuthCodeFlowPtrOutput() Oauth2AuthCodeFlowPtrOutput {
+	return i.ToOauth2AuthCodeFlowPtrOutputWithContext(context.Background())
+}
+
+func (i Oauth2AuthCodeFlowArgs) ToOauth2AuthCodeFlowPtrOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Oauth2AuthCodeFlowOutput).ToOauth2AuthCodeFlowPtrOutputWithContext(ctx)
+}
+
+// Oauth2AuthCodeFlowPtrInput is an input type that accepts Oauth2AuthCodeFlowArgs, Oauth2AuthCodeFlowPtr and Oauth2AuthCodeFlowPtrOutput values.
+// You can construct a concrete instance of `Oauth2AuthCodeFlowPtrInput` via:
+//
+//	        Oauth2AuthCodeFlowArgs{...}
+//
+//	or:
+//
+//	        nil
+type Oauth2AuthCodeFlowPtrInput interface {
+	pulumi.Input
+
+	ToOauth2AuthCodeFlowPtrOutput() Oauth2AuthCodeFlowPtrOutput
+	ToOauth2AuthCodeFlowPtrOutputWithContext(context.Context) Oauth2AuthCodeFlowPtrOutput
+}
+
+type oauth2AuthCodeFlowPtrType Oauth2AuthCodeFlowArgs
+
+func Oauth2AuthCodeFlowPtr(v *Oauth2AuthCodeFlowArgs) Oauth2AuthCodeFlowPtrInput {
+	return (*oauth2AuthCodeFlowPtrType)(v)
+}
+
+func (*oauth2AuthCodeFlowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Oauth2AuthCodeFlow)(nil)).Elem()
+}
+
+func (i *oauth2AuthCodeFlowPtrType) ToOauth2AuthCodeFlowPtrOutput() Oauth2AuthCodeFlowPtrOutput {
+	return i.ToOauth2AuthCodeFlowPtrOutputWithContext(context.Background())
+}
+
+func (i *oauth2AuthCodeFlowPtrType) ToOauth2AuthCodeFlowPtrOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Oauth2AuthCodeFlowPtrOutput)
+}
+
+// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+type Oauth2AuthCodeFlowOutput struct{ *pulumi.OutputState }
+
+func (Oauth2AuthCodeFlowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oauth2AuthCodeFlow)(nil)).Elem()
+}
+
+func (o Oauth2AuthCodeFlowOutput) ToOauth2AuthCodeFlowOutput() Oauth2AuthCodeFlowOutput {
+	return o
+}
+
+func (o Oauth2AuthCodeFlowOutput) ToOauth2AuthCodeFlowOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowOutput {
+	return o
+}
+
+func (o Oauth2AuthCodeFlowOutput) ToOauth2AuthCodeFlowPtrOutput() Oauth2AuthCodeFlowPtrOutput {
+	return o.ToOauth2AuthCodeFlowPtrOutputWithContext(context.Background())
+}
+
+func (o Oauth2AuthCodeFlowOutput) ToOauth2AuthCodeFlowPtrOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Oauth2AuthCodeFlow) *Oauth2AuthCodeFlow {
+		return &v
+	}).(Oauth2AuthCodeFlowPtrOutput)
+}
+
+// Authorization code to be exchanged for access and refresh tokens.
+func (o Oauth2AuthCodeFlowOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.AuthCode }).(pulumi.StringPtrOutput)
+}
+
+// Client ID for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Client secret for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowOutput) ClientSecret() SecretPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *Secret { return v.ClientSecret }).(SecretPtrOutput)
+}
+
+// Whether to enable PKCE when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowOutput) EnablePkce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *bool { return v.EnablePkce }).(pulumi.BoolPtrOutput)
+}
+
+// PKCE verifier to be used during the auth code exchange.
+func (o Oauth2AuthCodeFlowOutput) PkceVerifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.PkceVerifier }).(pulumi.StringPtrOutput)
+}
+
+// Redirect URI to be provided during the auth code exchange.
+func (o Oauth2AuthCodeFlowOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+// Scopes the connection will request when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlow) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type Oauth2AuthCodeFlowPtrOutput struct{ *pulumi.OutputState }
+
+func (Oauth2AuthCodeFlowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Oauth2AuthCodeFlow)(nil)).Elem()
+}
+
+func (o Oauth2AuthCodeFlowPtrOutput) ToOauth2AuthCodeFlowPtrOutput() Oauth2AuthCodeFlowPtrOutput {
+	return o
+}
+
+func (o Oauth2AuthCodeFlowPtrOutput) ToOauth2AuthCodeFlowPtrOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowPtrOutput {
+	return o
+}
+
+func (o Oauth2AuthCodeFlowPtrOutput) Elem() Oauth2AuthCodeFlowOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) Oauth2AuthCodeFlow {
+		if v != nil {
+			return *v
+		}
+		var ret Oauth2AuthCodeFlow
+		return ret
+	}).(Oauth2AuthCodeFlowOutput)
+}
+
+// Authorization code to be exchanged for access and refresh tokens.
+func (o Oauth2AuthCodeFlowPtrOutput) AuthCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client ID for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client secret for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowPtrOutput) ClientSecret() SecretPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *Secret {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(SecretPtrOutput)
+}
+
+// Whether to enable PKCE when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowPtrOutput) EnablePkce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePkce
+	}).(pulumi.BoolPtrOutput)
+}
+
+// PKCE verifier to be used during the auth code exchange.
+func (o Oauth2AuthCodeFlowPtrOutput) PkceVerifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PkceVerifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redirect URI to be provided during the auth code exchange.
+func (o Oauth2AuthCodeFlowPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scopes the connection will request when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Oauth2AuthCodeFlow) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+type Oauth2AuthCodeFlowResponse struct {
+	// Authorization code to be exchanged for access and refresh tokens.
+	AuthCode string `pulumi:"authCode"`
+	// Client ID for user-provided OAuth app.
+	ClientId string `pulumi:"clientId"`
+	// Client secret for user-provided OAuth app.
+	ClientSecret SecretResponse `pulumi:"clientSecret"`
+	// Whether to enable PKCE when the user performs the auth code flow.
+	EnablePkce bool `pulumi:"enablePkce"`
+	// PKCE verifier to be used during the auth code exchange.
+	PkceVerifier string `pulumi:"pkceVerifier"`
+	// Redirect URI to be provided during the auth code exchange.
+	RedirectUri string `pulumi:"redirectUri"`
+	// Scopes the connection will request when the user performs the auth code flow.
+	Scopes []string `pulumi:"scopes"`
+}
+
+// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+type Oauth2AuthCodeFlowResponseOutput struct{ *pulumi.OutputState }
+
+func (Oauth2AuthCodeFlowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Oauth2AuthCodeFlowResponse)(nil)).Elem()
+}
+
+func (o Oauth2AuthCodeFlowResponseOutput) ToOauth2AuthCodeFlowResponseOutput() Oauth2AuthCodeFlowResponseOutput {
+	return o
+}
+
+func (o Oauth2AuthCodeFlowResponseOutput) ToOauth2AuthCodeFlowResponseOutputWithContext(ctx context.Context) Oauth2AuthCodeFlowResponseOutput {
+	return o
+}
+
+// Authorization code to be exchanged for access and refresh tokens.
+func (o Oauth2AuthCodeFlowResponseOutput) AuthCode() pulumi.StringOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.AuthCode }).(pulumi.StringOutput)
+}
+
+// Client ID for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Client secret for user-provided OAuth app.
+func (o Oauth2AuthCodeFlowResponseOutput) ClientSecret() SecretResponseOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) SecretResponse { return v.ClientSecret }).(SecretResponseOutput)
+}
+
+// Whether to enable PKCE when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowResponseOutput) EnablePkce() pulumi.BoolOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) bool { return v.EnablePkce }).(pulumi.BoolOutput)
+}
+
+// PKCE verifier to be used during the auth code exchange.
+func (o Oauth2AuthCodeFlowResponseOutput) PkceVerifier() pulumi.StringOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.PkceVerifier }).(pulumi.StringOutput)
+}
+
+// Redirect URI to be provided during the auth code exchange.
+func (o Oauth2AuthCodeFlowResponseOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+// Scopes the connection will request when the user performs the auth code flow.
+func (o Oauth2AuthCodeFlowResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Oauth2AuthCodeFlowResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
 // Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -3636,6 +4150,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorsLogConfigPtrInput)(nil)).Elem(), ConnectorsLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationInput)(nil)).Elem(), DestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationArrayInput)(nil)).Elem(), DestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
@@ -3648,6 +4164,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigPtrInput)(nil)).Elem(), LockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2AuthCodeFlowInput)(nil)).Elem(), Oauth2AuthCodeFlowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2AuthCodeFlowPtrInput)(nil)).Elem(), Oauth2AuthCodeFlowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsPtrInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
@@ -3680,6 +4198,9 @@ func init() {
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorsLogConfigOutput{})
+	pulumi.RegisterOutputType(ConnectorsLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorsLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(DestinationOutput{})
 	pulumi.RegisterOutputType(DestinationArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
@@ -3700,6 +4221,9 @@ func init() {
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
+	pulumi.RegisterOutputType(Oauth2AuthCodeFlowOutput{})
+	pulumi.RegisterOutputType(Oauth2AuthCodeFlowPtrOutput{})
+	pulumi.RegisterOutputType(Oauth2AuthCodeFlowResponseOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsResponseOutput{})

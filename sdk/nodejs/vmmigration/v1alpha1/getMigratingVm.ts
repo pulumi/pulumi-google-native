@@ -54,6 +54,10 @@ export interface GetMigratingVmResult {
      */
     readonly currentSyncInfo: outputs.vmmigration.v1alpha1.ReplicationCycleResponse;
     /**
+     * Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+     */
+    readonly cutoverForecast: outputs.vmmigration.v1alpha1.CutoverForecastResponse;
+    /**
      * The description attached to the migrating VM by the user.
      */
     readonly description: string;

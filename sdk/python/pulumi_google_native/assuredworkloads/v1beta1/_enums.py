@@ -168,9 +168,9 @@ class WorkloadPartner(str, Enum):
     PARTNER_UNSPECIFIED = "PARTNER_UNSPECIFIED"
     LOCAL_CONTROLS_BY_S3NS = "LOCAL_CONTROLS_BY_S3NS"
     """
-    Enum representing S3NS partner.
+    Enum representing S3NS (Thales) partner.
     """
     SOVEREIGN_CONTROLS_BY_T_SYSTEMS = "SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
     """
-    Enum representing T_SYSTEM partner.
+    Enum representing T_SYSTEM (TSI) partner.
     """

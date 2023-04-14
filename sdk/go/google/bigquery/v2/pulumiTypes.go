@@ -13049,7 +13049,7 @@ type SparkOptions struct {
 	JarUris []string `pulumi:"jarUris"`
 	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
 	MainClass *string `pulumi:"mainClass"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri *string `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties map[string]string `pulumi:"properties"`
@@ -13084,7 +13084,7 @@ type SparkOptionsArgs struct {
 	JarUris pulumi.StringArrayInput `pulumi:"jarUris"`
 	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri pulumi.StringPtrInput `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -13202,7 +13202,7 @@ func (o SparkOptionsOutput) MainClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkOptions) *string { return v.MainClass }).(pulumi.StringPtrOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkOptions) *string { return v.MainFileUri }).(pulumi.StringPtrOutput)
 }
@@ -13306,7 +13306,7 @@ func (o SparkOptionsPtrOutput) MainClass() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkOptions) *string {
 		if v == nil {
@@ -13360,7 +13360,7 @@ type SparkOptionsResponse struct {
 	JarUris []string `pulumi:"jarUris"`
 	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
 	MainClass string `pulumi:"mainClass"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri string `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties map[string]string `pulumi:"properties"`
@@ -13415,7 +13415,7 @@ func (o SparkOptionsResponseOutput) MainClass() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainClass }).(pulumi.StringOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsResponseOutput) MainFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainFileUri }).(pulumi.StringOutput)
 }

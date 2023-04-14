@@ -24,6 +24,7 @@ __all__ = [
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
+    'CutoverForecastResponse',
     'CutoverJobResponse',
     'CutoverStepResponse',
     'CycleStepResponse',
@@ -1304,6 +1305,45 @@ class ComputeSchedulingResponse(dict):
         Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart.
         """
         return pulumi.get(self, "restart_type")
+
+
+@pulumi.output_type
+class CutoverForecastResponse(dict):
+    """
+    CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedCutoverJobDuration":
+            suggest = "estimated_cutover_job_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CutoverForecastResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CutoverForecastResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CutoverForecastResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 estimated_cutover_job_duration: str):
+        """
+        CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+        :param str estimated_cutover_job_duration: Estimation of the CutoverJob duration.
+        """
+        pulumi.set(__self__, "estimated_cutover_job_duration", estimated_cutover_job_duration)
+
+    @property
+    @pulumi.getter(name="estimatedCutoverJobDuration")
+    def estimated_cutover_job_duration(self) -> str:
+        """
+        Estimation of the CutoverJob duration.
+        """
+        return pulumi.get(self, "estimated_cutover_job_duration")
 
 
 @pulumi.output_type

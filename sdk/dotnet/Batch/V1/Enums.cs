@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Batch.V1
         }
 
         /// <summary>
-        /// unknown state
+        /// Unknown state.
         /// </summary>
         public static MessageNewTaskState StateUnspecified { get; } = new MessageNewTaskState("STATE_UNSPECIFIED");
         /// <summary>
@@ -225,6 +225,10 @@ namespace Pulumi.GoogleNative.Batch.V1
         /// The Task has succeeded.
         /// </summary>
         public static MessageNewTaskState Succeeded { get; } = new MessageNewTaskState("SUCCEEDED");
+        /// <summary>
+        /// The Task has not been executed when the Job finishes.
+        /// </summary>
+        public static MessageNewTaskState Unexecuted { get; } = new MessageNewTaskState("UNEXECUTED");
 
         public static bool operator ==(MessageNewTaskState left, MessageNewTaskState right) => left.Equals(right);
         public static bool operator !=(MessageNewTaskState left, MessageNewTaskState right) => !left.Equals(right);

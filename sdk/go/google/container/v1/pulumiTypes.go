@@ -204,6 +204,29 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 	}).(AcceleratorConfigResponseOutput)
 }
 
+// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+type AdditionalPodRangesConfig struct {
+}
+
+// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+type AdditionalPodRangesConfigResponse struct {
+}
+
+// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+type AdditionalPodRangesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AdditionalPodRangesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalPodRangesConfigResponse)(nil)).Elem()
+}
+
+func (o AdditionalPodRangesConfigResponseOutput) ToAdditionalPodRangesConfigResponseOutput() AdditionalPodRangesConfigResponseOutput {
+	return o
+}
+
+func (o AdditionalPodRangesConfigResponseOutput) ToAdditionalPodRangesConfigResponseOutputWithContext(ctx context.Context) AdditionalPodRangesConfigResponseOutput {
+	return o
+}
+
 // Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 type AddonsConfig struct {
 	// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -3110,6 +3133,8 @@ func (o ClusterAutoscalingResponseOutput) ResourceLimits() ResourceLimitResponse
 
 // ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
 type ClusterUpdate struct {
+	// The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.
+	AdditionalPodRangesConfig *AdditionalPodRangesConfig `pulumi:"additionalPodRangesConfig"`
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
 	// The desired authenticator groups config for the cluster.
@@ -3190,6 +3215,8 @@ type ClusterUpdate struct {
 	DesiredWorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"desiredWorkloadIdentityConfig"`
 	// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
 	Etag *string `pulumi:"etag"`
+	// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
+	RemovedAdditionalPodRangesConfig *AdditionalPodRangesConfig `pulumi:"removedAdditionalPodRangesConfig"`
 }
 
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -6829,6 +6856,8 @@ type IPAllocationPolicy struct {
 	NodeIpv4Cidr *string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock *string `pulumi:"nodeIpv4CidrBlock"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig *PodCIDROverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// This field is deprecated, use services_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
@@ -6880,6 +6909,8 @@ type IPAllocationPolicyArgs struct {
 	NodeIpv4Cidr pulumi.StringPtrInput `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock pulumi.StringPtrInput `pulumi:"nodeIpv4CidrBlock"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig PodCIDROverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// This field is deprecated, use services_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
@@ -7015,6 +7046,11 @@ func (o IPAllocationPolicyOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.NodeIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o IPAllocationPolicyOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *PodCIDROverprovisionConfig { return v.PodCidrOverprovisionConfig }).(PodCIDROverprovisionConfigPtrOutput)
 }
 
 // This field is deprecated, use services_ipv4_cidr_block.
@@ -7157,6 +7193,16 @@ func (o IPAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o IPAllocationPolicyPtrOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *PodCIDROverprovisionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PodCidrOverprovisionConfig
+	}).(PodCIDROverprovisionConfigPtrOutput)
+}
+
 // This field is deprecated, use services_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use services_ipv4_cidr_block.
@@ -7241,6 +7287,8 @@ func (o IPAllocationPolicyPtrOutput) UseRoutes() pulumi.BoolPtrOutput {
 
 // Configuration for controlling how IPs are allocated in the cluster.
 type IPAllocationPolicyResponse struct {
+	// [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in IPAllocationPolicy.
+	AdditionalPodRangesConfig AdditionalPodRangesConfigResponse `pulumi:"additionalPodRangesConfig"`
 	// This field is deprecated, use cluster_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
@@ -7259,6 +7307,8 @@ type IPAllocationPolicyResponse struct {
 	NodeIpv4Cidr string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock string `pulumi:"nodeIpv4CidrBlock"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig PodCIDROverprovisionConfigResponse `pulumi:"podCidrOverprovisionConfig"`
 	// This field is deprecated, use services_ipv4_cidr_block.
 	//
 	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
@@ -7298,6 +7348,13 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponseOutputWith
 	return o
 }
 
+// [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in IPAllocationPolicy.
+func (o IPAllocationPolicyResponseOutput) AdditionalPodRangesConfig() AdditionalPodRangesConfigResponseOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) AdditionalPodRangesConfigResponse {
+		return v.AdditionalPodRangesConfig
+	}).(AdditionalPodRangesConfigResponseOutput)
+}
+
 // This field is deprecated, use cluster_ipv4_cidr_block.
 //
 // Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
@@ -7335,6 +7392,13 @@ func (o IPAllocationPolicyResponseOutput) NodeIpv4Cidr() pulumi.StringOutput {
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o IPAllocationPolicyResponseOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigResponseOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) PodCIDROverprovisionConfigResponse {
+		return v.PodCidrOverprovisionConfig
+	}).(PodCIDROverprovisionConfigResponseOutput)
 }
 
 // This field is deprecated, use services_ipv4_cidr_block.
@@ -13362,6 +13426,8 @@ type NodeNetworkConfig struct {
 	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig *PodCIDROverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13387,6 +13453,8 @@ type NodeNetworkConfigArgs struct {
 	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig PodCIDROverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13486,6 +13554,11 @@ func (o NodeNetworkConfigOutput) NetworkPerformanceConfig() NetworkPerformanceCo
 	return o.ApplyT(func(v NodeNetworkConfig) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
 }
 
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o NodeNetworkConfigOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *PodCIDROverprovisionConfig { return v.PodCidrOverprovisionConfig }).(PodCIDROverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -13550,6 +13623,16 @@ func (o NodeNetworkConfigPtrOutput) NetworkPerformanceConfig() NetworkPerformanc
 	}).(NetworkPerformanceConfigPtrOutput)
 }
 
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o NodeNetworkConfigPtrOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *PodCIDROverprovisionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PodCidrOverprovisionConfig
+	}).(PodCIDROverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *string {
@@ -13578,6 +13661,8 @@ type NodeNetworkConfigResponse struct {
 	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
+	// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+	PodCidrOverprovisionConfig PodCIDROverprovisionConfigResponse `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13612,6 +13697,13 @@ func (o NodeNetworkConfigResponseOutput) EnablePrivateNodes() pulumi.BoolOutput 
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
+}
+
+// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+func (o NodeNetworkConfigResponseOutput) PodCidrOverprovisionConfig() PodCIDROverprovisionConfigResponseOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) PodCIDROverprovisionConfigResponse {
+		return v.PodCidrOverprovisionConfig
+	}).(PodCIDROverprovisionConfigResponseOutput)
 }
 
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -15342,6 +15434,172 @@ func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponseOutputWithContex
 // The type of placement.
 func (o PlacementPolicyResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+type PodCIDROverprovisionConfig struct {
+	// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+	Disable *bool `pulumi:"disable"`
+}
+
+// PodCIDROverprovisionConfigInput is an input type that accepts PodCIDROverprovisionConfigArgs and PodCIDROverprovisionConfigOutput values.
+// You can construct a concrete instance of `PodCIDROverprovisionConfigInput` via:
+//
+//	PodCIDROverprovisionConfigArgs{...}
+type PodCIDROverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToPodCIDROverprovisionConfigOutput() PodCIDROverprovisionConfigOutput
+	ToPodCIDROverprovisionConfigOutputWithContext(context.Context) PodCIDROverprovisionConfigOutput
+}
+
+// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+type PodCIDROverprovisionConfigArgs struct {
+	// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+}
+
+func (PodCIDROverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodCIDROverprovisionConfig)(nil)).Elem()
+}
+
+func (i PodCIDROverprovisionConfigArgs) ToPodCIDROverprovisionConfigOutput() PodCIDROverprovisionConfigOutput {
+	return i.ToPodCIDROverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i PodCIDROverprovisionConfigArgs) ToPodCIDROverprovisionConfigOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodCIDROverprovisionConfigOutput)
+}
+
+func (i PodCIDROverprovisionConfigArgs) ToPodCIDROverprovisionConfigPtrOutput() PodCIDROverprovisionConfigPtrOutput {
+	return i.ToPodCIDROverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PodCIDROverprovisionConfigArgs) ToPodCIDROverprovisionConfigPtrOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodCIDROverprovisionConfigOutput).ToPodCIDROverprovisionConfigPtrOutputWithContext(ctx)
+}
+
+// PodCIDROverprovisionConfigPtrInput is an input type that accepts PodCIDROverprovisionConfigArgs, PodCIDROverprovisionConfigPtr and PodCIDROverprovisionConfigPtrOutput values.
+// You can construct a concrete instance of `PodCIDROverprovisionConfigPtrInput` via:
+//
+//	        PodCIDROverprovisionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PodCIDROverprovisionConfigPtrInput interface {
+	pulumi.Input
+
+	ToPodCIDROverprovisionConfigPtrOutput() PodCIDROverprovisionConfigPtrOutput
+	ToPodCIDROverprovisionConfigPtrOutputWithContext(context.Context) PodCIDROverprovisionConfigPtrOutput
+}
+
+type podCIDROverprovisionConfigPtrType PodCIDROverprovisionConfigArgs
+
+func PodCIDROverprovisionConfigPtr(v *PodCIDROverprovisionConfigArgs) PodCIDROverprovisionConfigPtrInput {
+	return (*podCIDROverprovisionConfigPtrType)(v)
+}
+
+func (*podCIDROverprovisionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodCIDROverprovisionConfig)(nil)).Elem()
+}
+
+func (i *podCIDROverprovisionConfigPtrType) ToPodCIDROverprovisionConfigPtrOutput() PodCIDROverprovisionConfigPtrOutput {
+	return i.ToPodCIDROverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *podCIDROverprovisionConfigPtrType) ToPodCIDROverprovisionConfigPtrOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PodCIDROverprovisionConfigPtrOutput)
+}
+
+// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+type PodCIDROverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (PodCIDROverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodCIDROverprovisionConfig)(nil)).Elem()
+}
+
+func (o PodCIDROverprovisionConfigOutput) ToPodCIDROverprovisionConfigOutput() PodCIDROverprovisionConfigOutput {
+	return o
+}
+
+func (o PodCIDROverprovisionConfigOutput) ToPodCIDROverprovisionConfigOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigOutput {
+	return o
+}
+
+func (o PodCIDROverprovisionConfigOutput) ToPodCIDROverprovisionConfigPtrOutput() PodCIDROverprovisionConfigPtrOutput {
+	return o.ToPodCIDROverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PodCIDROverprovisionConfigOutput) ToPodCIDROverprovisionConfigPtrOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PodCIDROverprovisionConfig) *PodCIDROverprovisionConfig {
+		return &v
+	}).(PodCIDROverprovisionConfigPtrOutput)
+}
+
+// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+func (o PodCIDROverprovisionConfigOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PodCIDROverprovisionConfig) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+type PodCIDROverprovisionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PodCIDROverprovisionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PodCIDROverprovisionConfig)(nil)).Elem()
+}
+
+func (o PodCIDROverprovisionConfigPtrOutput) ToPodCIDROverprovisionConfigPtrOutput() PodCIDROverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o PodCIDROverprovisionConfigPtrOutput) ToPodCIDROverprovisionConfigPtrOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o PodCIDROverprovisionConfigPtrOutput) Elem() PodCIDROverprovisionConfigOutput {
+	return o.ApplyT(func(v *PodCIDROverprovisionConfig) PodCIDROverprovisionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PodCIDROverprovisionConfig
+		return ret
+	}).(PodCIDROverprovisionConfigOutput)
+}
+
+// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+func (o PodCIDROverprovisionConfigPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PodCIDROverprovisionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+type PodCIDROverprovisionConfigResponse struct {
+	// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+	Disable bool `pulumi:"disable"`
+}
+
+// [PRIVATE FIELD] Config for pod CIDR size overprovisioning.
+type PodCIDROverprovisionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PodCIDROverprovisionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PodCIDROverprovisionConfigResponse)(nil)).Elem()
+}
+
+func (o PodCIDROverprovisionConfigResponseOutput) ToPodCIDROverprovisionConfigResponseOutput() PodCIDROverprovisionConfigResponseOutput {
+	return o
+}
+
+func (o PodCIDROverprovisionConfigResponseOutput) ToPodCIDROverprovisionConfigResponseOutputWithContext(ctx context.Context) PodCIDROverprovisionConfigResponseOutput {
+	return o
+}
+
+// Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
+func (o PodCIDROverprovisionConfigResponseOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v PodCIDROverprovisionConfigResponse) bool { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // Configuration options for private clusters.
@@ -19624,6 +19882,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPtrInput)(nil)).Elem(), NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyInput)(nil)).Elem(), PlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyPtrInput)(nil)).Elem(), PlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodCIDROverprovisionConfigInput)(nil)).Elem(), PodCIDROverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PodCIDROverprovisionConfigPtrInput)(nil)).Elem(), PodCIDROverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterMasterGlobalAccessConfigInput)(nil)).Elem(), PrivateClusterMasterGlobalAccessConfigArgs{})
@@ -19670,6 +19930,7 @@ func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AdditionalPodRangesConfigResponseOutput{})
 	pulumi.RegisterOutputType(AddonsConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigResponseOutput{})
@@ -19887,6 +20148,9 @@ func init() {
 	pulumi.RegisterOutputType(PlacementPolicyOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PlacementPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PodCIDROverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(PodCIDROverprovisionConfigPtrOutput{})
+	pulumi.RegisterOutputType(PodCIDROverprovisionConfigResponseOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigResponseOutput{})

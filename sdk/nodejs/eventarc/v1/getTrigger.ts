@@ -48,7 +48,7 @@ export interface GetTriggerResult {
      */
     readonly etag: string;
     /**
-     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
     readonly eventDataContentType: string;
     /**

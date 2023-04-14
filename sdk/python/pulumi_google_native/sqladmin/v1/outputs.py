@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'AclEntryResponse',
+    'AdvancedMachineFeaturesResponse',
     'BackupConfigurationResponse',
     'BackupRetentionSettingsResponse',
     'DatabaseFlagsResponse',
@@ -113,6 +114,45 @@ class AclEntryResponse(dict):
         The allowlisted value for the access control list.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AdvancedMachineFeaturesResponse(dict):
+    """
+    Specifies options for controlling advanced machine features.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvancedMachineFeaturesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        """
+        Specifies options for controlling advanced machine features.
+        :param int threads_per_core: The number of threads per physical core.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -1552,6 +1592,8 @@ class SettingsResponse(dict):
             suggest = "activation_policy"
         elif key == "activeDirectoryConfig":
             suggest = "active_directory_config"
+        elif key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
         elif key == "authorizedGaeApplications":
             suggest = "authorized_gae_applications"
         elif key == "availabilityType":
@@ -1615,6 +1657,7 @@ class SettingsResponse(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_config: 'outputs.SqlActiveDirectoryConfigResponse',
+                 advanced_machine_features: 'outputs.AdvancedMachineFeaturesResponse',
                  authorized_gae_applications: Sequence[str],
                  availability_type: str,
                  backup_configuration: 'outputs.BackupConfigurationResponse',
@@ -1646,6 +1689,7 @@ class SettingsResponse(dict):
         Database instance settings.
         :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param 'SqlActiveDirectoryConfigResponse' active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+        :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Specifies advance machine configuration for the instance relevant only for SQL Server.
         :param Sequence[str] authorized_gae_applications: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         :param str availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param 'BackupConfigurationResponse' backup_configuration: The daily backup configuration for the instance.
@@ -1676,6 +1720,7 @@ class SettingsResponse(dict):
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_config", active_directory_config)
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configuration", backup_configuration)
@@ -1719,6 +1764,14 @@ class SettingsResponse(dict):
         Active Directory configuration, relevant only for Cloud SQL for SQL Server.
         """
         return pulumi.get(self, "active_directory_config")
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> 'outputs.AdvancedMachineFeaturesResponse':
+        """
+        Specifies advance machine configuration for the instance relevant only for SQL Server.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="authorizedGaeApplications")

@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Error regarding the state of the Execution resource. For example, this field will have error details if the Execution data is unavailable due to revoked KMS key permissions.
+        /// </summary>
+        public readonly Outputs.StateErrorResponse StateError;
+        /// <summary>
         /// Status tracks the current steps and progress data of this execution.
         /// </summary>
         public readonly Outputs.StatusResponse Status;
@@ -146,6 +150,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
 
             string state,
 
+            Outputs.StateErrorResponse stateError,
+
             Outputs.StatusResponse status,
 
             string workflowRevisionId)
@@ -160,6 +166,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
             Result = result;
             StartTime = startTime;
             State = state;
+            StateError = stateError;
             Status = status;
             WorkflowRevisionId = workflowRevisionId;
         }

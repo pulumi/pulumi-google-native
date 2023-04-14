@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly Outputs.SqlActiveDirectoryConfigResponse ActiveDirectoryConfig;
         /// <summary>
+        /// Specifies advance machine configuration for the instance relevant only for SQL Server.
+        /// </summary>
+        public readonly Outputs.AdvancedMachineFeaturesResponse AdvancedMachineFeatures;
+        /// <summary>
         /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedGaeApplications;
@@ -139,6 +143,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 
             Outputs.SqlActiveDirectoryConfigResponse activeDirectoryConfig,
 
+            Outputs.AdvancedMachineFeaturesResponse advancedMachineFeatures,
+
             ImmutableArray<string> authorizedGaeApplications,
 
             string availabilityType,
@@ -195,6 +201,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         {
             ActivationPolicy = activationPolicy;
             ActiveDirectoryConfig = activeDirectoryConfig;
+            AdvancedMachineFeatures = advancedMachineFeatures;
             AuthorizedGaeApplications = authorizedGaeApplications;
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;

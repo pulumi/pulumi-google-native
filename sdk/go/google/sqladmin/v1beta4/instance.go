@@ -134,8 +134,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// List all maintenance versions applicable on the instance
-	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType *InstanceBackendType `pulumi:"backendType"`
 	// Connection name of the Cloud SQL instance used in connection strings.
@@ -210,8 +208,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// List all maintenance versions applicable on the instance
-	AvailableMaintenanceVersions pulumi.StringArrayInput
 	// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
 	BackendType InstanceBackendTypePtrInput
 	// Connection name of the Cloud SQL instance used in connection strings.

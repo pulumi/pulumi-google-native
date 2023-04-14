@@ -204,6 +204,172 @@ func (o AclEntryResponseArrayOutput) Index(i pulumi.IntInput) AclEntryResponseOu
 	}).(AclEntryResponseOutput)
 }
 
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeatures struct {
+	// The number of threads per physical core.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
+}
+
+// AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesInput` via:
+//
+//	AdvancedMachineFeaturesArgs{...}
+type AdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput
+	ToAdvancedMachineFeaturesOutputWithContext(context.Context) AdvancedMachineFeaturesOutput
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesArgs struct {
+	// The number of threads per physical core.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
+}
+
+func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return i.ToAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput)
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i AdvancedMachineFeaturesArgs) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesOutput).ToAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// AdvancedMachineFeaturesPtrInput is an input type that accepts AdvancedMachineFeaturesArgs, AdvancedMachineFeaturesPtr and AdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `AdvancedMachineFeaturesPtrInput` via:
+//
+//	        AdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput
+	ToAdvancedMachineFeaturesPtrOutputWithContext(context.Context) AdvancedMachineFeaturesPtrOutput
+}
+
+type advancedMachineFeaturesPtrType AdvancedMachineFeaturesArgs
+
+func AdvancedMachineFeaturesPtr(v *AdvancedMachineFeaturesArgs) AdvancedMachineFeaturesPtrInput {
+	return (*advancedMachineFeaturesPtrType)(v)
+}
+
+func (*advancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return i.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *advancedMachineFeaturesPtrType) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutput() AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesOutputWithContext(ctx context.Context) AdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o.ToAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o AdvancedMachineFeaturesOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdvancedMachineFeatures) *AdvancedMachineFeatures {
+		return &v
+	}).(AdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per physical core.
+func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
+}
+
+type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutput() AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) ToAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) AdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesPtrOutput) Elem() AdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) AdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret AdvancedMachineFeatures
+		return ret
+	}).(AdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per physical core.
+func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponse struct {
+	// The number of threads per physical core.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// Specifies options for controlling advanced machine features.
+type AdvancedMachineFeaturesResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvancedMachineFeaturesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvancedMachineFeaturesResponse)(nil)).Elem()
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutput() AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+func (o AdvancedMachineFeaturesResponseOutput) ToAdvancedMachineFeaturesResponseOutputWithContext(ctx context.Context) AdvancedMachineFeaturesResponseOutput {
+	return o
+}
+
+// The number of threads per physical core.
+func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
 // Database instance backup configuration.
 type BackupConfiguration struct {
 	// Backup retention settings.
@@ -4709,6 +4875,8 @@ type Settings struct {
 	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig *SqlActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
+	// Specifies advance machine configuration for the instance relevant only for SQL Server.
+	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
 	//
 	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -4786,6 +4954,8 @@ type SettingsArgs struct {
 	ActivationPolicy SettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
+	// Specifies advance machine configuration for the instance relevant only for SQL Server.
+	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
 	//
 	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -4932,6 +5102,11 @@ func (o SettingsOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 func (o SettingsOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v Settings) *SqlActiveDirectoryConfig { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigPtrOutput)
+}
+
+// Specifies advance machine configuration for the instance relevant only for SQL Server.
+func (o SettingsOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v Settings) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
 }
 
 // The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -5115,6 +5290,16 @@ func (o SettingsPtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOu
 		}
 		return v.ActiveDirectoryConfig
 	}).(SqlActiveDirectoryConfigPtrOutput)
+}
+
+// Specifies advance machine configuration for the instance relevant only for SQL Server.
+func (o SettingsPtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *Settings) *AdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(AdvancedMachineFeaturesPtrOutput)
 }
 
 // The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -5397,6 +5582,8 @@ type SettingsResponse struct {
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigResponse `pulumi:"activeDirectoryConfig"`
+	// Specifies advance machine configuration for the instance relevant only for SQL Server.
+	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
 	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
 	//
 	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -5480,6 +5667,11 @@ func (o SettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 func (o SettingsResponseOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) SqlActiveDirectoryConfigResponse { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigResponseOutput)
+}
+
+// Specifies advance machine configuration for the instance relevant only for SQL Server.
+func (o SettingsResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
 }
 
 // The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
@@ -7499,6 +7691,8 @@ func (o UserPasswordValidationPolicyResponseOutput) Status() PasswordStatusRespo
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryInput)(nil)).Elem(), AclEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclEntryArrayInput)(nil)).Elem(), AclEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AdvancedMachineFeaturesPtrInput)(nil)).Elem(), AdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationInput)(nil)).Elem(), BackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupConfigurationPtrInput)(nil)).Elem(), BackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsInput)(nil)).Elem(), BackupRetentionSettingsArgs{})
@@ -7557,6 +7751,9 @@ func init() {
 	pulumi.RegisterOutputType(AclEntryArrayOutput{})
 	pulumi.RegisterOutputType(AclEntryResponseOutput{})
 	pulumi.RegisterOutputType(AclEntryResponseArrayOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(AdvancedMachineFeaturesResponseOutput{})
 	pulumi.RegisterOutputType(BackupConfigurationOutput{})
 	pulumi.RegisterOutputType(BackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(BackupConfigurationResponseOutput{})

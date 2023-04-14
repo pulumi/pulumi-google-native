@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
-    /// Asynchronously creates linked dataset in BigQuery which makes it possible to use BugQuery to read the logs stored in the bucket. A bucket may currently only contain one link.
+    /// Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Link")]
     public partial class Link : global::Pulumi.CustomResource

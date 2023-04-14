@@ -20,11 +20,47 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// Some settings.
         /// </summary>
         public readonly Outputs.CommonLanguageSettingsResponse Common;
+        /// <summary>
+        /// Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision
+        /// </summary>
+        public readonly ImmutableArray<string> ForcedNamespaceAliases;
+        /// <summary>
+        /// Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however.
+        /// </summary>
+        public readonly ImmutableArray<string> HandwrittenSignatures;
+        /// <summary>
+        /// List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
+        /// </summary>
+        public readonly ImmutableArray<string> IgnoredResources;
+        /// <summary>
+        /// Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> RenamedResources;
+        /// <summary>
+        /// Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> RenamedServices;
 
         [OutputConstructor]
-        private DotnetSettingsResponse(Outputs.CommonLanguageSettingsResponse common)
+        private DotnetSettingsResponse(
+            Outputs.CommonLanguageSettingsResponse common,
+
+            ImmutableArray<string> forcedNamespaceAliases,
+
+            ImmutableArray<string> handwrittenSignatures,
+
+            ImmutableArray<string> ignoredResources,
+
+            ImmutableDictionary<string, string> renamedResources,
+
+            ImmutableDictionary<string, string> renamedServices)
         {
             Common = common;
+            ForcedNamespaceAliases = forcedNamespaceAliases;
+            HandwrittenSignatures = handwrittenSignatures;
+            IgnoredResources = ignoredResources;
+            RenamedResources = renamedResources;
+            RenamedServices = renamedServices;
         }
     }
 }
