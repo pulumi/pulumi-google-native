@@ -30,8 +30,7 @@ class ConnectionProfileArgs:
                  private_connectivity: Optional[pulumi.Input['PrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
@@ -47,7 +46,6 @@ class ConnectionProfileArgs:
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -77,8 +75,6 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "request_id", request_id)
         if static_service_ip_connectivity is not None:
             pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -254,18 +250,6 @@ class ConnectionProfileArgs:
     def static_service_ip_connectivity(self, value: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']]):
         pulumi.set(self, "static_service_ip_connectivity", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the connection profile, but don't create any resources. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class ConnectionProfile(pulumi.CustomResource):
     @overload
@@ -287,7 +271,6 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Use this method to create a connection profile in a project and location.
@@ -308,7 +291,6 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """
         ...
     @overload
@@ -350,7 +332,6 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,7 +360,6 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["static_service_ip_connectivity"] = static_service_ip_connectivity
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -425,7 +405,6 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["static_service_ip_connectivity"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -565,12 +544,4 @@ class ConnectionProfile(pulumi.CustomResource):
         The update time of the resource.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the connection profile, but don't create any resources. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

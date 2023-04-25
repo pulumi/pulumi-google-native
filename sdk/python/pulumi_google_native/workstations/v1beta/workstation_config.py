@@ -31,8 +31,7 @@ class WorkstationConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['PersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 running_timeout: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 running_timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
         :param pulumi.Input[str] workstation_config_id: Required. ID to use for the config.
@@ -47,7 +46,6 @@ class WorkstationConfigArgs:
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['PersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         pulumi.set(__self__, "workstation_config_id", workstation_config_id)
@@ -77,8 +75,6 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "project", project)
         if running_timeout is not None:
             pulumi.set(__self__, "running_timeout", running_timeout)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="workstationClusterId")
@@ -251,18 +247,6 @@ class WorkstationConfigArgs:
     def running_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "running_timeout", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class WorkstationConfig(pulumi.CustomResource):
     @overload
@@ -282,7 +266,6 @@ class WorkstationConfig(pulumi.CustomResource):
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -302,7 +285,6 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         :param pulumi.Input[str] workstation_config_id: Required. ID to use for the config.
         """
         ...
@@ -342,7 +324,6 @@ class WorkstationConfig(pulumi.CustomResource):
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -367,7 +348,6 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
             __props__.__dict__["running_timeout"] = running_timeout
-            __props__.__dict__["validate_only"] = validate_only
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -425,7 +405,6 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["running_timeout"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["workstation_cluster_id"] = None
         __props__.__dict__["workstation_config_id"] = None
         return WorkstationConfig(resource_name, opts=opts, __props__=__props__)
@@ -583,14 +562,6 @@ class WorkstationConfig(pulumi.CustomResource):
         Time when this resource was most recently updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="workstationClusterId")

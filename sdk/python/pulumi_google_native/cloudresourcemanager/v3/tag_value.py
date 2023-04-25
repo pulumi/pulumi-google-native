@@ -18,8 +18,7 @@ class TagValueArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagValue resource.
         :param pulumi.Input[str] short_name: Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -27,7 +26,6 @@ class TagValueArgs:
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-        :param pulumi.Input[bool] validate_only: Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         """
         pulumi.set(__self__, "short_name", short_name)
         if description is not None:
@@ -38,8 +36,6 @@ class TagValueArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="shortName")
@@ -101,18 +97,6 @@ class TagValueArgs:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class TagValue(pulumi.CustomResource):
     @overload
@@ -124,7 +108,6 @@ class TagValue(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.
@@ -136,7 +119,6 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
         :param pulumi.Input[str] short_name: Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-        :param pulumi.Input[bool] validate_only: Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         """
         ...
     @overload
@@ -167,7 +149,6 @@ class TagValue(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -184,7 +165,6 @@ class TagValue(pulumi.CustomResource):
             if short_name is None and not opts.urn:
                 raise TypeError("Missing required property 'short_name'")
             __props__.__dict__["short_name"] = short_name
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["namespaced_name"] = None
             __props__.__dict__["update_time"] = None
@@ -218,7 +198,6 @@ class TagValue(pulumi.CustomResource):
         __props__.__dict__["parent"] = None
         __props__.__dict__["short_name"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return TagValue(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -284,12 +263,4 @@ class TagValue(pulumi.CustomResource):
         Update time.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-        """
-        return pulumi.get(self, "validate_only")
 

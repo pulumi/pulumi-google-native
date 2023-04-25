@@ -25,8 +25,7 @@ class DataAttributeBindingArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 resource: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DataAttributeBinding resource.
         :param pulumi.Input[str] data_attribute_binding_id: Required. DataAttributeBinding identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Location.
@@ -37,7 +36,6 @@ class DataAttributeBindingArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttributeBinding.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]] paths: Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_attribute_binding_id", data_attribute_binding_id)
         if attributes is not None:
@@ -58,8 +56,6 @@ class DataAttributeBindingArgs:
             pulumi.set(__self__, "project", project)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="dataAttributeBindingId")
@@ -175,18 +171,6 @@ class DataAttributeBindingArgs:
     def resource(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class DataAttributeBinding(pulumi.CustomResource):
     @overload
@@ -203,7 +187,6 @@ class DataAttributeBinding(pulumi.CustomResource):
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a DataAttributeBinding resource.
@@ -219,7 +202,6 @@ class DataAttributeBinding(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttributeBinding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]] paths: Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -256,7 +238,6 @@ class DataAttributeBinding(pulumi.CustomResource):
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +259,6 @@ class DataAttributeBinding(pulumi.CustomResource):
             __props__.__dict__["paths"] = paths
             __props__.__dict__["project"] = project
             __props__.__dict__["resource"] = resource
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
@@ -321,7 +301,6 @@ class DataAttributeBinding(pulumi.CustomResource):
         __props__.__dict__["resource"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return DataAttributeBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -429,12 +408,4 @@ class DataAttributeBinding(pulumi.CustomResource):
         The time when the DataAttributeBinding was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

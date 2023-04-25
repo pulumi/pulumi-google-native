@@ -26,7 +26,6 @@ class AssetArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Asset resource.
@@ -36,7 +35,6 @@ class AssetArgs:
         :param pulumi.Input['GoogleCloudDataplexV1AssetDiscoverySpecArgs'] discovery_spec: Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "asset_id", asset_id)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -53,8 +51,6 @@ class AssetArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -158,18 +154,6 @@ class AssetArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
-    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "zone")
@@ -193,7 +177,6 @@ class Asset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -208,7 +191,6 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']] resource_spec: Specification of the resource that is referenced by this asset.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -244,7 +226,6 @@ class Asset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -270,7 +251,6 @@ class Asset(pulumi.CustomResource):
             if resource_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_spec'")
             __props__.__dict__["resource_spec"] = resource_spec
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_status"] = None
@@ -321,7 +301,6 @@ class Asset(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["zone"] = None
         return Asset(resource_name, opts=opts, __props__=__props__)
 
@@ -451,14 +430,6 @@ class Asset(pulumi.CustomResource):
         The time when the asset was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter

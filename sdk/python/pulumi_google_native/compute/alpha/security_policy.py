@@ -31,8 +31,7 @@ class SecurityPolicyArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         The set of arguments for constructing a SecurityPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]] associations: A list of associations that belong to this policy.
@@ -44,7 +43,6 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['SecurityPolicyType'] type: The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
-        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         """
         if adaptive_protection_config is not None:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -76,8 +74,6 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "type", type)
         if user_defined_fields is not None:
             pulumi.set(__self__, "user_defined_fields", user_defined_fields)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="adaptiveProtectionConfig")
@@ -241,18 +237,6 @@ class SecurityPolicyArgs:
     def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyUserDefinedFieldArgs']]]]):
         pulumi.set(self, "user_defined_fields", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, the request will not be committed.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class SecurityPolicy(pulumi.CustomResource):
     @overload
@@ -274,7 +258,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new policy in the specified project using the data included in the request.
@@ -290,7 +273,6 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         :param pulumi.Input['SecurityPolicyType'] type: The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
-        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         """
         ...
     @overload
@@ -331,7 +313,6 @@ class SecurityPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input['SecurityPolicyType']] = None,
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyUserDefinedFieldArgs']]]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,7 +337,6 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type
             __props__.__dict__["user_defined_fields"] = user_defined_fields
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
@@ -414,7 +394,6 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_defined_fields"] = None
-        __props__.__dict__["validate_only"] = None
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -590,12 +569,4 @@ class SecurityPolicy(pulumi.CustomResource):
         Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
         """
         return pulumi.get(self, "user_defined_fields")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, the request will not be committed.
-        """
-        return pulumi.get(self, "validate_only")
 

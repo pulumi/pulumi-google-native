@@ -29,8 +29,7 @@ class ReleaseArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  skaffold_config_path: Optional[pulumi.Input[str]] = None,
                  skaffold_config_uri: Optional[pulumi.Input[str]] = None,
-                 skaffold_version: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 skaffold_version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Release resource.
         :param pulumi.Input[str] release_id: Required. ID of the `Release`.
@@ -44,7 +43,6 @@ class ReleaseArgs:
         :param pulumi.Input[str] skaffold_config_path: Filepath of the Skaffold config inside of the config URI.
         :param pulumi.Input[str] skaffold_config_uri: Cloud Storage URI of tar.gz archive containing Skaffold configuration.
         :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
-        :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
         pulumi.set(__self__, "release_id", release_id)
@@ -72,8 +70,6 @@ class ReleaseArgs:
             pulumi.set(__self__, "skaffold_config_uri", skaffold_config_uri)
         if skaffold_version is not None:
             pulumi.set(__self__, "skaffold_version", skaffold_version)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="deliveryPipelineId")
@@ -234,18 +230,6 @@ class ReleaseArgs:
     def skaffold_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "skaffold_version", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Release(pulumi.CustomResource):
     @overload
@@ -266,7 +250,6 @@ class Release(pulumi.CustomResource):
                  skaffold_config_path: Optional[pulumi.Input[str]] = None,
                  skaffold_config_uri: Optional[pulumi.Input[str]] = None,
                  skaffold_version: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new Release in a given project and location.
@@ -287,7 +270,6 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[str] skaffold_config_path: Filepath of the Skaffold config inside of the config URI.
         :param pulumi.Input[str] skaffold_config_uri: Cloud Storage URI of tar.gz archive containing Skaffold configuration.
         :param pulumi.Input[str] skaffold_version: The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
-        :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         ...
     @overload
@@ -330,7 +312,6 @@ class Release(pulumi.CustomResource):
                  skaffold_config_path: Optional[pulumi.Input[str]] = None,
                  skaffold_config_uri: Optional[pulumi.Input[str]] = None,
                  skaffold_version: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,7 +339,6 @@ class Release(pulumi.CustomResource):
             __props__.__dict__["skaffold_config_path"] = skaffold_config_path
             __props__.__dict__["skaffold_config_uri"] = skaffold_config_uri
             __props__.__dict__["skaffold_version"] = skaffold_version
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["abandoned"] = None
             __props__.__dict__["condition"] = None
             __props__.__dict__["create_time"] = None
@@ -419,7 +399,6 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["target_renders"] = None
         __props__.__dict__["target_snapshots"] = None
         __props__.__dict__["uid"] = None
-        __props__.__dict__["validate_only"] = None
         return Release(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -612,12 +591,4 @@ class Release(pulumi.CustomResource):
         Unique identifier of the `Release`.
         """
         return pulumi.get(self, "uid")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        """
-        return pulumi.get(self, "validate_only")
 

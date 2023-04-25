@@ -28,8 +28,7 @@ class CertificateArgs:
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 subject_mode: Optional[pulumi.Input['CertificateSubjectMode']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 subject_mode: Optional[pulumi.Input['CertificateSubjectMode']] = None):
         """
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
@@ -41,7 +40,6 @@ class CertificateArgs:
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['CertificateSubjectMode'] subject_mode: Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
-        :param pulumi.Input[bool] validate_only: Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
         """
         pulumi.set(__self__, "ca_pool_id", ca_pool_id)
         pulumi.set(__self__, "lifetime", lifetime)
@@ -65,8 +63,6 @@ class CertificateArgs:
             pulumi.set(__self__, "request_id", request_id)
         if subject_mode is not None:
             pulumi.set(__self__, "subject_mode", subject_mode)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="caPoolId")
@@ -203,18 +199,6 @@ class CertificateArgs:
     def subject_mode(self, value: Optional[pulumi.Input['CertificateSubjectMode']]):
         pulumi.set(self, "subject_mode", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Certificate(pulumi.CustomResource):
     @overload
@@ -233,7 +217,6 @@ class Certificate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subject_mode: Optional[pulumi.Input['CertificateSubjectMode']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a new Certificate in a given Project, Location from a particular CaPool.
@@ -252,7 +235,6 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['CertificateSubjectMode'] subject_mode: Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
-        :param pulumi.Input[bool] validate_only: Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
         """
         ...
     @overload
@@ -293,7 +275,6 @@ class Certificate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  subject_mode: Optional[pulumi.Input['CertificateSubjectMode']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,7 +300,6 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subject_mode"] = subject_mode
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["certificate_description"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["issuer_certificate_authority"] = None
@@ -372,7 +352,6 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["revocation_details"] = None
         __props__.__dict__["subject_mode"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -525,12 +504,4 @@ class Certificate(pulumi.CustomResource):
         The time at which this Certificate was updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-        """
-        return pulumi.get(self, "validate_only")
 

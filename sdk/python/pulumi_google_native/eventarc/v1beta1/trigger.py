@@ -19,7 +19,6 @@ class TriggerArgs:
                  destination: pulumi.Input['DestinationArgs'],
                  matching_criteria: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]],
                  trigger_id: pulumi.Input[str],
-                 validate_only: pulumi.Input[bool],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,7 +29,6 @@ class TriggerArgs:
         :param pulumi.Input['DestinationArgs'] destination: Destination specifies where the events should be sent to.
         :param pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]] matching_criteria: Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
-        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -38,7 +36,6 @@ class TriggerArgs:
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "matching_criteria", matching_criteria)
         pulumi.set(__self__, "trigger_id", trigger_id)
-        pulumi.set(__self__, "validate_only", validate_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -85,18 +82,6 @@ class TriggerArgs:
     @trigger_id.setter
     def trigger_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "trigger_id", value)
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Input[bool]:
-        """
-        Required. If set, validate the request and preview the review, but do not actually post it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "validate_only", value)
 
     @property
     @pulumi.getter
@@ -166,7 +151,6 @@ class Trigger(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a new trigger in a particular project and location.
@@ -179,7 +163,6 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
-        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
         """
         ...
     @overload
@@ -213,7 +196,6 @@ class Trigger(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,14 +219,11 @@ class Trigger(pulumi.CustomResource):
             if trigger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_id'")
             __props__.__dict__["trigger_id"] = trigger_id
-            if validate_only is None and not opts.urn:
-                raise TypeError("Missing required property 'validate_only'")
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["transport"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "trigger_id", "validate_only"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "trigger_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Trigger, __self__).__init__(
             'google-native:eventarc/v1beta1:Trigger',
@@ -280,7 +259,6 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["transport"] = None
         __props__.__dict__["trigger_id"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -372,12 +350,4 @@ class Trigger(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[bool]:
-        """
-        Required. If set, validate the request and preview the review, but do not actually post it.
-        """
-        return pulumi.get(self, "validate_only")
 

@@ -30,8 +30,7 @@ class ServiceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
@@ -46,7 +45,6 @@ class ServiceArgs:
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-        :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "template", template)
@@ -74,8 +72,6 @@ class ServiceArgs:
             pulumi.set(__self__, "project", project)
         if traffic is not None:
             pulumi.set(__self__, "traffic", traffic)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -239,18 +235,6 @@ class ServiceArgs:
     def traffic(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]]):
         pulumi.set(self, "traffic", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Service(pulumi.CustomResource):
     @overload
@@ -271,7 +255,6 @@ class Service(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
                  traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new Service in a given project and location.
@@ -290,7 +273,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-        :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         ...
     @overload
@@ -330,7 +312,6 @@ class Service(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
                  traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,7 +339,6 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
             __props__.__dict__["traffic"] = traffic
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
@@ -433,7 +413,6 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["uri"] = None
-        __props__.__dict__["validate_only"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -685,12 +664,4 @@ class Service(pulumi.CustomResource):
         The main URI in which this Service is serving traffic.
         """
         return pulumi.get(self, "uri")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        """
-        return pulumi.get(self, "validate_only")
 

@@ -20,8 +20,7 @@ class DataTaxonomyArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DataTaxonomy resource.
         :param pulumi.Input[str] data_taxonomy_id: Required. DataTaxonomy identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Project.
@@ -29,7 +28,6 @@ class DataTaxonomyArgs:
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataTaxonomy.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_taxonomy_id", data_taxonomy_id)
         if description is not None:
@@ -44,8 +42,6 @@ class DataTaxonomyArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="dataTaxonomyId")
@@ -125,18 +121,6 @@ class DataTaxonomyArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class DataTaxonomy(pulumi.CustomResource):
     @overload
@@ -150,7 +134,6 @@ class DataTaxonomy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a DataTaxonomy resource.
@@ -163,7 +146,6 @@ class DataTaxonomy(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataTaxonomy.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -197,7 +179,6 @@ class DataTaxonomy(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,7 +197,6 @@ class DataTaxonomy(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["attribute_count"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -258,7 +238,6 @@ class DataTaxonomy(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return DataTaxonomy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -350,12 +329,4 @@ class DataTaxonomy(pulumi.CustomResource):
         The time when the DataTaxonomy was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

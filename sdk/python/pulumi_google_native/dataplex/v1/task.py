@@ -27,8 +27,7 @@ class TaskArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  notebook: Optional[pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spark: Optional[pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 spark: Optional[pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] = None):
         """
         The set of arguments for constructing a Task resource.
         :param pulumi.Input['GoogleCloudDataplexV1TaskExecutionSpecArgs'] execution_spec: Spec related to how a task is executed.
@@ -39,7 +38,6 @@ class TaskArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
         :param pulumi.Input['GoogleCloudDataplexV1TaskNotebookTaskConfigArgs'] notebook: Config related to running scheduled Notebooks.
         :param pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs'] spark: Config related to running custom Spark tasks.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "execution_spec", execution_spec)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -59,8 +57,6 @@ class TaskArgs:
             pulumi.set(__self__, "project", project)
         if spark is not None:
             pulumi.set(__self__, "spark", spark)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="executionSpec")
@@ -185,18 +181,6 @@ class TaskArgs:
     def spark(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]):
         pulumi.set(self, "spark", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Task(pulumi.CustomResource):
     @overload
@@ -214,7 +198,6 @@ class Task(pulumi.CustomResource):
                  spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
                  trigger_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a task resource within a lake.
@@ -230,7 +213,6 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] spark: Config related to running custom Spark tasks.
         :param pulumi.Input[str] task_id: Required. Task identifier.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']] trigger_spec: Spec related to how often and when a task should be triggered.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -268,7 +250,6 @@ class Task(pulumi.CustomResource):
                  spark: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']]] = None,
                  task_id: Optional[pulumi.Input[str]] = None,
                  trigger_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,7 +278,6 @@ class Task(pulumi.CustomResource):
             if trigger_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_spec'")
             __props__.__dict__["trigger_spec"] = trigger_spec
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["execution_status"] = None
             __props__.__dict__["name"] = None
@@ -345,7 +325,6 @@ class Task(pulumi.CustomResource):
         __props__.__dict__["trigger_spec"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Task(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -474,12 +453,4 @@ class Task(pulumi.CustomResource):
         The time when the task was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

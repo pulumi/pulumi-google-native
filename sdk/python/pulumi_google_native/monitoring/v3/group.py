@@ -18,15 +18,13 @@ class GroupArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
-        :param pulumi.Input[bool] validate_only: If true, validate this request but do not create the group.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -38,8 +36,6 @@ class GroupArgs:
             pulumi.set(__self__, "parent_name", parent_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="displayName")
@@ -98,18 +94,6 @@ class GroupArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, validate this request but do not create the group.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Group(pulumi.CustomResource):
     @overload
@@ -121,7 +105,6 @@ class Group(pulumi.CustomResource):
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new group.
@@ -133,7 +116,6 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
-        :param pulumi.Input[bool] validate_only: If true, validate this request but do not create the group.
         """
         ...
     @overload
@@ -165,7 +147,6 @@ class Group(pulumi.CustomResource):
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -180,7 +161,6 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["is_cluster"] = is_cluster
             __props__.__dict__["parent_name"] = parent_name
             __props__.__dict__["project"] = project
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -212,7 +192,6 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["parent_name"] = None
         __props__.__dict__["project"] = None
-        __props__.__dict__["validate_only"] = None
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -259,12 +238,4 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, validate this request but do not create the group.
-        """
-        return pulumi.get(self, "validate_only")
 
