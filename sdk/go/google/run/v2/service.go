@@ -77,8 +77,6 @@ type Service struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The main URI in which this Service is serving traffic.
 	Uri pulumi.StringOutput `pulumi:"uri"`
-	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -158,8 +156,6 @@ type serviceArgs struct {
 	Template GoogleCloudRunV2RevisionTemplate `pulumi:"template"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
 	Traffic []GoogleCloudRunV2TrafficTarget `pulumi:"traffic"`
-	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -190,8 +186,6 @@ type ServiceArgs struct {
 	Template GoogleCloudRunV2RevisionTemplateInput
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
 	Traffic GoogleCloudRunV2TrafficTargetArrayInput
-	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -387,11 +381,6 @@ func (o ServiceOutput) UpdateTime() pulumi.StringOutput {
 // The main URI in which this Service is serving traffic.
 func (o ServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
-}
-
-// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-func (o ServiceOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

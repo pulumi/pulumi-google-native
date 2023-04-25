@@ -52,10 +52,8 @@ type WorkstationConfig struct {
 	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time when this resource was most recently updated.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	WorkstationClusterId pulumi.StringOutput  `pulumi:"workstationClusterId"`
+	UpdateTime           pulumi.StringOutput `pulumi:"updateTime"`
+	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 	// Required. ID to use for the config.
 	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
 }
@@ -135,10 +133,8 @@ type workstationConfigArgs struct {
 	PersistentDirectories []PersistentDirectory `pulumi:"persistentDirectories"`
 	Project               *string               `pulumi:"project"`
 	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
-	RunningTimeout *string `pulumi:"runningTimeout"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         *bool  `pulumi:"validateOnly"`
-	WorkstationClusterId string `pulumi:"workstationClusterId"`
+	RunningTimeout       *string `pulumi:"runningTimeout"`
+	WorkstationClusterId string  `pulumi:"workstationClusterId"`
 	// Required. ID to use for the config.
 	WorkstationConfigId string `pulumi:"workstationConfigId"`
 }
@@ -168,9 +164,7 @@ type WorkstationConfigArgs struct {
 	PersistentDirectories PersistentDirectoryArrayInput
 	Project               pulumi.StringPtrInput
 	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
-	RunningTimeout pulumi.StringPtrInput
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         pulumi.BoolPtrInput
+	RunningTimeout       pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringInput
 	// Required. ID to use for the config.
 	WorkstationConfigId pulumi.StringInput
@@ -309,11 +303,6 @@ func (o WorkstationConfigOutput) Uid() pulumi.StringOutput {
 // Time when this resource was most recently updated.
 func (o WorkstationConfigOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// If set, validate the request and preview the review, but do not actually apply it.
-func (o WorkstationConfigOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o WorkstationConfigOutput) WorkstationClusterId() pulumi.StringOutput {

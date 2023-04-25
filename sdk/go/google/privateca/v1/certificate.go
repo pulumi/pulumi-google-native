@@ -55,8 +55,6 @@ type Certificate struct {
 	SubjectMode pulumi.StringOutput `pulumi:"subjectMode"`
 	// The time at which this Certificate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -131,8 +129,6 @@ type certificateArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
 	SubjectMode *CertificateSubjectMode `pulumi:"subjectMode"`
-	// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Certificate resource.
@@ -158,8 +154,6 @@ type CertificateArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
 	SubjectMode CertificateSubjectModePtrInput
-	// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (CertificateArgs) ElementType() reflect.Type {
@@ -294,11 +288,6 @@ func (o CertificateOutput) SubjectMode() pulumi.StringOutput {
 // The time at which this Certificate was updated.
 func (o CertificateOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-func (o CertificateOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

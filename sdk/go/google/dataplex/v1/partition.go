@@ -24,8 +24,6 @@ type Partition struct {
 	// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayOutput `pulumi:"values"`
 	Zone   pulumi.StringOutput      `pulumi:"zone"`
@@ -94,8 +92,6 @@ type partitionArgs struct {
 	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values []string `pulumi:"values"`
 	Zone   *string  `pulumi:"zone"`
@@ -110,8 +106,6 @@ type PartitionArgs struct {
 	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayInput
 	Zone   pulumi.StringPtrInput
@@ -178,11 +172,6 @@ func (o PartitionOutput) Name() pulumi.StringOutput {
 
 func (o PartitionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o PartitionOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.

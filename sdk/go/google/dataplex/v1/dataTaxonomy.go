@@ -38,8 +38,6 @@ type DataTaxonomy struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the DataTaxonomy was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDataTaxonomy registers a new resource with the given unique name, arguments, and options.
@@ -102,8 +100,6 @@ type dataTaxonomyArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a DataTaxonomy resource.
@@ -120,8 +116,6 @@ type DataTaxonomyArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (DataTaxonomyArgs) ElementType() reflect.Type {
@@ -217,11 +211,6 @@ func (o DataTaxonomyOutput) Uid() pulumi.StringOutput {
 // The time when the DataTaxonomy was last updated.
 func (o DataTaxonomyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataTaxonomy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o DataTaxonomyOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DataTaxonomy) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

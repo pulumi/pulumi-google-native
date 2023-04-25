@@ -31,8 +31,6 @@ type TagValue struct {
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewTagValue registers a new resource with the given unique name, arguments, and options.
@@ -87,8 +85,6 @@ type tagValueArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName string `pulumi:"shortName"`
-	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagValue resource.
@@ -103,8 +99,6 @@ type TagValueArgs struct {
 	Parent pulumi.StringPtrInput
 	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringInput
-	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TagValueArgs) ElementType() reflect.Type {
@@ -182,11 +176,6 @@ func (o TagValueOutput) ShortName() pulumi.StringOutput {
 // Update time.
 func (o TagValueOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
-func (o TagValueOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TagValue) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

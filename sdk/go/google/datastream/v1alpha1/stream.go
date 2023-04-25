@@ -48,8 +48,6 @@ type Stream struct {
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
 	// The last update time of the stream.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the stream, but do not create any resources. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -133,8 +131,6 @@ type streamArgs struct {
 	State *StreamStateEnum `pulumi:"state"`
 	// Required. The stream identifier.
 	StreamId string `pulumi:"streamId"`
-	// Optional. Only validate the stream, but do not create any resources. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Stream resource.
@@ -163,8 +159,6 @@ type StreamArgs struct {
 	State StreamStateEnumPtrInput
 	// Required. The stream identifier.
 	StreamId pulumi.StringInput
-	// Optional. Only validate the stream, but do not create any resources. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (StreamArgs) ElementType() reflect.Type {
@@ -285,11 +279,6 @@ func (o StreamOutput) StreamId() pulumi.StringOutput {
 // The last update time of the stream.
 func (o StreamOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the stream, but do not create any resources. The default is false.
-func (o StreamOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

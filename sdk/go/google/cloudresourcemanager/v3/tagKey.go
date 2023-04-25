@@ -35,8 +35,6 @@ type TagKey struct {
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewTagKey registers a new resource with the given unique name, arguments, and options.
@@ -95,8 +93,6 @@ type tagKeyArgs struct {
 	PurposeData map[string]string `pulumi:"purposeData"`
 	// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName string `pulumi:"shortName"`
-	// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagKey resource.
@@ -115,8 +111,6 @@ type TagKeyArgs struct {
 	PurposeData pulumi.StringMapInput
 	// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringInput
-	// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TagKeyArgs) ElementType() reflect.Type {
@@ -204,11 +198,6 @@ func (o TagKeyOutput) ShortName() pulumi.StringOutput {
 // Update time.
 func (o TagKeyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-func (o TagKeyOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TagKey) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

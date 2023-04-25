@@ -35,8 +35,6 @@ type ClientConnectorService struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// [Output only] Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewClientConnectorService registers a new resource with the given unique name, arguments, and options.
@@ -103,8 +101,6 @@ type clientConnectorServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a ClientConnectorService resource.
@@ -123,8 +119,6 @@ type ClientConnectorServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ClientConnectorServiceArgs) ElementType() reflect.Type {
@@ -215,11 +209,6 @@ func (o ClientConnectorServiceOutput) State() pulumi.StringOutput {
 // [Output only] Update time stamp.
 func (o ClientConnectorServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientConnectorService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-func (o ClientConnectorServiceOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ClientConnectorService) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

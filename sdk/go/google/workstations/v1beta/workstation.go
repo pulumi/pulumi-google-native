@@ -40,11 +40,9 @@ type Workstation struct {
 	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time when this resource was most recently updated.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	WorkstationClusterId pulumi.StringOutput  `pulumi:"workstationClusterId"`
-	WorkstationConfigId  pulumi.StringOutput  `pulumi:"workstationConfigId"`
+	UpdateTime           pulumi.StringOutput `pulumi:"updateTime"`
+	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
+	WorkstationConfigId  pulumi.StringOutput `pulumi:"workstationConfigId"`
 	// Required. ID to use for the workstation.
 	WorkstationId pulumi.StringOutput `pulumi:"workstationId"`
 }
@@ -115,12 +113,10 @@ type workstationArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Full name of this resource.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         *bool  `pulumi:"validateOnly"`
-	WorkstationClusterId string `pulumi:"workstationClusterId"`
-	WorkstationConfigId  string `pulumi:"workstationConfigId"`
+	Name                 *string `pulumi:"name"`
+	Project              *string `pulumi:"project"`
+	WorkstationClusterId string  `pulumi:"workstationClusterId"`
+	WorkstationConfigId  string  `pulumi:"workstationConfigId"`
 	// Required. ID to use for the workstation.
 	WorkstationId string `pulumi:"workstationId"`
 }
@@ -137,10 +133,8 @@ type WorkstationArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Full name of this resource.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly         pulumi.BoolPtrInput
+	Name                 pulumi.StringPtrInput
+	Project              pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringInput
 	WorkstationConfigId  pulumi.StringInput
 	// Required. ID to use for the workstation.
@@ -250,11 +244,6 @@ func (o WorkstationOutput) Uid() pulumi.StringOutput {
 // Time when this resource was most recently updated.
 func (o WorkstationOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// If set, validate the request and preview the review, but do not actually apply it.
-func (o WorkstationOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Workstation) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o WorkstationOutput) WorkstationClusterId() pulumi.StringOutput {

@@ -47,8 +47,6 @@ type WorkstationCluster struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time when this resource was most recently updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 }
@@ -119,8 +117,6 @@ type workstationClusterArgs struct {
 	Project              *string               `pulumi:"project"`
 	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 }
@@ -145,8 +141,6 @@ type WorkstationClusterArgs struct {
 	Project              pulumi.StringPtrInput
 	// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringPtrInput
-	// If set, validate the request and preview the review, but do not actually apply it.
-	ValidateOnly pulumi.BoolPtrInput
 	// Required. ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringInput
 }
@@ -269,11 +263,6 @@ func (o WorkstationClusterOutput) Uid() pulumi.StringOutput {
 // Time when this resource was most recently updated.
 func (o WorkstationClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// If set, validate the request and preview the review, but do not actually apply it.
-func (o WorkstationClusterOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkstationCluster) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Required. ID to use for the workstation cluster.
