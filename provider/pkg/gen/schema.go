@@ -461,6 +461,9 @@ func (g *packageGenerator) fullPath(method *discovery.RestMethod, preferPath boo
 
 	queryParams := url.Values{}
 	for param, details := range method.Parameters {
+		if isIgnoredQueryParam(param) {
+			continue
+		}
 		if details.Location != "query" || !isRequired(details) {
 			continue
 		}
@@ -545,6 +548,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
+		if isIgnoredQueryParam(name) {
+			continue
+		}
 		if param.Location != "query" {
 			continue
 		}
@@ -1541,6 +1547,15 @@ func clearDescription(description string) string {
 	description = strings.TrimPrefix(description, "Output only. ")
 	description = strings.TrimSuffix(description, "@OutputOnly")
 	return description
+}
+
+// isIgnoredQueryParam returns true if a query parameter with a given name
+// should be ignored.
+func isIgnoredQueryParam(name string) bool {
+	// "validateOnly" is a special query parameter that allows a dry-run
+	// without actually executing an operation. It's always options and
+	// should not be projected to SDKs. See https://google.aip.dev/163#guidance.
+	return name == "validateOnly"
 }
 
 func rawMessage(v interface{}) schema.RawMessage {
