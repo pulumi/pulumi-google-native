@@ -81,12 +81,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Required. If set, validate the request and preview the review, but do not actually post it.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Trigger resource with the given unique name, arguments, and options.
@@ -115,7 +109,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
                     "location",
                     "project",
                     "triggerId",
-                    "validateOnly",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -192,12 +185,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         /// </summary>
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;
-
-        /// <summary>
-        /// Required. If set, validate the request and preview the review, but do not actually post it.
-        /// </summary>
-        [Input("validateOnly", required: true)]
-        public Input<bool> ValidateOnly { get; set; } = null!;
 
         public TriggerArgs()
         {

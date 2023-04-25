@@ -118,12 +118,6 @@ namespace Pulumi.GoogleNative.Datastream.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -264,12 +258,6 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         [Input("staticServiceIpConnectivity")]
         public Input<Inputs.StaticServiceIpConnectivityArgs>? StaticServiceIpConnectivity { get; set; }
-
-        /// <summary>
-        /// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public ConnectionProfileArgs()
         {

@@ -81,12 +81,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Required. If set, validate the request and preview the review, but do not post it.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Channel resource with the given unique name, arguments, and options.
@@ -115,7 +109,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
                     "channelId",
                     "location",
                     "project",
-                    "validateOnly",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -168,12 +161,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
-
-        /// <summary>
-        /// Required. If set, validate the request and preview the review, but do not post it.
-        /// </summary>
-        [Input("validateOnly", required: true)]
-        public Input<bool> ValidateOnly { get; set; } = null!;
 
         public ChannelArgs()
         {

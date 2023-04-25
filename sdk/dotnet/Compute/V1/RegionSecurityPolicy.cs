@@ -87,12 +87,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -196,12 +190,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.RegionSecurityPolicyType>? Type { get; set; }
-
-        /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public RegionSecurityPolicyArgs()
         {

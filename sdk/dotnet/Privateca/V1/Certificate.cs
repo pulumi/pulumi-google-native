@@ -129,12 +129,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Certificate resource with the given unique name, arguments, and options.
@@ -254,12 +248,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         /// </summary>
         [Input("subjectMode")]
         public Input<Pulumi.GoogleNative.Privateca.V1.CertificateSubjectMode>? SubjectMode { get; set; }
-
-        /// <summary>
-        /// Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public CertificateArgs()
         {

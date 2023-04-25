@@ -51,12 +51,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
-        /// <summary>
-        /// When set to true, the request will be validated but not submitted.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -130,12 +124,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceType>? Type { get; set; }
-
-        /// <summary>
-        /// When set to true, the request will be validated but not submitted.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public InstanceArgs()
         {

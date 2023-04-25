@@ -117,12 +117,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Target resource with the given unique name, arguments, and options.
@@ -275,12 +269,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Input("targetId", required: true)]
         public Input<string> TargetId { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public TargetArgs()
         {

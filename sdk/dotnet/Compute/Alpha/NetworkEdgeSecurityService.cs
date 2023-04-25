@@ -75,12 +75,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a NetworkEdgeSecurityService resource with the given unique name, arguments, and options.
@@ -160,12 +154,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
-
-        /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public NetworkEdgeSecurityServiceArgs()
         {

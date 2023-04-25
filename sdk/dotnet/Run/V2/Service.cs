@@ -201,12 +201,6 @@ namespace Pulumi.GoogleNative.Run.V2
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
@@ -353,12 +347,6 @@ namespace Pulumi.GoogleNative.Run.V2
             get => _traffic ?? (_traffic = new InputList<Inputs.GoogleCloudRunV2TrafficTargetArgs>());
             set => _traffic = value;
         }
-
-        /// <summary>
-        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public ServiceArgs()
         {
