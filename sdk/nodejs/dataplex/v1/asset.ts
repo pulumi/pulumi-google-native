@@ -97,10 +97,6 @@ export class Asset extends pulumi.CustomResource {
      * The time when the asset was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -132,7 +128,6 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryStatus"] = undefined /*out*/;
@@ -160,7 +155,6 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -201,9 +195,5 @@ export interface AssetArgs {
      * Specification of the resource that is referenced by this asset.
      */
     resourceSpec: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1AssetResourceSpecArgs>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     zone?: pulumi.Input<string>;
 }

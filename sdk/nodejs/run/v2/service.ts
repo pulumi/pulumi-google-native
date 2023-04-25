@@ -159,10 +159,6 @@ export class Service extends pulumi.CustomResource {
      * The main URI in which this Service is serving traffic.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
-    /**
-     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -195,7 +191,6 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["traffic"] = args ? args.traffic : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -247,7 +242,6 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project", "serviceId"] };
@@ -310,8 +304,4 @@ export interface ServiceArgs {
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
      */
     traffic?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunV2TrafficTargetArgs>[]>;
-    /**
-     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

@@ -112,10 +112,6 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
      */
     public readonly userDefinedFields!: pulumi.Output<outputs.compute.alpha.SecurityPolicyUserDefinedFieldResponse[]>;
-    /**
-     * If true, the request will not be committed.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -147,7 +143,6 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -181,7 +176,6 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userDefinedFields"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
@@ -237,8 +231,4 @@ export interface RegionSecurityPolicyArgs {
      * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
      */
     userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SecurityPolicyUserDefinedFieldArgs>[]>;
-    /**
-     * If true, the request will not be committed.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

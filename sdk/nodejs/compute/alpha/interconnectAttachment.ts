@@ -198,10 +198,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * If true, the request will not be committed.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
-    /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
      */
     public readonly vlanTag8021q!: pulumi.Output<number>;
@@ -244,7 +240,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["subnetLength"] = args ? args.subnetLength : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
             resourceInputs["cloudRouterIpv6Address"] = undefined /*out*/;
@@ -305,7 +300,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["subnetLength"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["vlanTag8021q"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -409,10 +403,6 @@ export interface InterconnectAttachmentArgs {
      * The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
      */
     type?: pulumi.Input<enums.compute.alpha.InterconnectAttachmentType>;
-    /**
-     * If true, the request will not be committed.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
      */

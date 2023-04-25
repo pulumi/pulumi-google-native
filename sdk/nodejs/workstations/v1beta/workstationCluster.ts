@@ -100,10 +100,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
-    /**
      * Required. ID to use for the workstation cluster.
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
@@ -132,7 +128,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -159,7 +154,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["workstationClusterId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -207,10 +201,6 @@ export interface WorkstationClusterArgs {
      * Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
      */
     subnetwork?: pulumi.Input<string>;
-    /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     /**
      * Required. ID to use for the workstation cluster.
      */

@@ -93,10 +93,6 @@ export class Attribute extends pulumi.CustomResource {
      * The time when the DataAttribute was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Attribute resource with the given unique name, arguments, and options.
@@ -126,7 +122,6 @@ export class Attribute extends pulumi.CustomResource {
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resourceAccessSpec"] = args ? args.resourceAccessSpec : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["attributeCount"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -149,7 +144,6 @@ export class Attribute extends pulumi.CustomResource {
             resourceInputs["resourceAccessSpec"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["dataAttributeId", "dataTaxonomyId", "location", "project"] };
@@ -197,8 +191,4 @@ export interface AttributeArgs {
      * Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
      */
     resourceAccessSpec?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1ResourceAccessSpecArgs>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

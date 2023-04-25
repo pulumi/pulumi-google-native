@@ -56,10 +56,6 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly parentName!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
-    /**
-     * If true, validate this request but do not create the group.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -77,7 +73,6 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["isCluster"] = args ? args.isCluster : undefined;
             resourceInputs["parentName"] = args ? args.parentName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["displayName"] = undefined /*out*/;
@@ -86,7 +81,6 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parentName"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project"] };
@@ -116,8 +110,4 @@ export interface GroupArgs {
      */
     parentName?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * If true, validate this request but do not create the group.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

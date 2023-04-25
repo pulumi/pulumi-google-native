@@ -48,10 +48,6 @@ export class Partition extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
-    /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
      */
     public readonly values!: pulumi.Output<string[]>;
@@ -82,7 +78,6 @@ export class Partition extends pulumi.CustomResource {
             resourceInputs["lakeId"] = args ? args.lakeId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -93,7 +88,6 @@ export class Partition extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["values"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
@@ -119,10 +113,6 @@ export interface PartitionArgs {
      */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
      */

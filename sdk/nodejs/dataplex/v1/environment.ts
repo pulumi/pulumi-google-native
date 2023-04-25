@@ -93,10 +93,6 @@ export class Environment extends pulumi.CustomResource {
      * The time when the environment was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -127,7 +123,6 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sessionSpec"] = args ? args.sessionSpec : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -152,7 +147,6 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["environmentId", "lakeId", "location", "project"] };
@@ -192,8 +186,4 @@ export interface EnvironmentArgs {
      * Optional. Configuration for sessions created for this environment.
      */
     sessionSpec?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1EnvironmentSessionSpecArgs>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

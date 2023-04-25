@@ -81,10 +81,6 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * If set, validate the request and preview the response, but do not actually post it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
-    /**
      * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
      */
     public readonly workerPoolId!: pulumi.Output<string>;
@@ -108,7 +104,6 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privatePoolV1Config"] = args ? args.privatePoolV1Config : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["workerPoolId"] = args ? args.workerPoolId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -130,7 +125,6 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["workerPoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -158,10 +152,6 @@ export interface WorkerPoolArgs {
      */
     privatePoolV1Config?: pulumi.Input<inputs.cloudbuild.v1.PrivatePoolV1ConfigArgs>;
     project?: pulumi.Input<string>;
-    /**
-     * If set, validate the request and preview the response, but do not actually post it.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     /**
      * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
      */

@@ -91,10 +91,6 @@ export class AppConnection extends pulumi.CustomResource {
      * Timestamp when the resource was last modified.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AppConnection resource with the given unique name, arguments, and options.
@@ -124,7 +120,6 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -145,7 +140,6 @@ export class AppConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -196,8 +190,4 @@ export interface AppConnectionArgs {
      * The type of network connectivity used by the AppConnection.
      */
     type: pulumi.Input<enums.beyondcorp.v1alpha.AppConnectionType>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

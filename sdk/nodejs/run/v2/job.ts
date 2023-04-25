@@ -139,10 +139,6 @@ export class Job extends pulumi.CustomResource {
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -172,7 +168,6 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -217,7 +212,6 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["terminalCondition"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["jobId", "location", "project"] };
@@ -268,8 +262,4 @@ export interface JobArgs {
      * The template used to create executions for this Job.
      */
     template: pulumi.Input<inputs.run.v2.GoogleCloudRunV2ExecutionTemplateArgs>;
-    /**
-     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

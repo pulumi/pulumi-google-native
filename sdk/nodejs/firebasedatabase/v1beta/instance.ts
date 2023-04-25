@@ -59,10 +59,6 @@ export class Instance extends pulumi.CustomResource {
      * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     public readonly type!: pulumi.Output<string>;
-    /**
-     * When set to true, the request will be validated but not submitted.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -80,7 +76,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["databaseUrl"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -91,7 +86,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -118,8 +112,4 @@ export interface InstanceArgs {
      * Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     type?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceType>;
-    /**
-     * When set to true, the request will be validated but not submitted.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

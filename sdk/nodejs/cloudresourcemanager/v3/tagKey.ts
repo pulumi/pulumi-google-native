@@ -77,10 +77,6 @@ export class TagKey extends pulumi.CustomResource {
      * Update time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a TagKey resource with the given unique name, arguments, and options.
@@ -103,7 +99,6 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["purpose"] = args ? args.purpose : undefined;
             resourceInputs["purposeData"] = args ? args.purposeData : undefined;
             resourceInputs["shortName"] = args ? args.shortName : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["namespacedName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -118,7 +113,6 @@ export class TagKey extends pulumi.CustomResource {
             resourceInputs["purposeData"] = undefined /*out*/;
             resourceInputs["shortName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagKey.__pulumiType, name, resourceInputs, opts);
@@ -157,8 +151,4 @@ export interface TagKeyArgs {
      * Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     shortName: pulumi.Input<string>;
-    /**
-     * Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }
