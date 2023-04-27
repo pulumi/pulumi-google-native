@@ -81,10 +81,6 @@ export class Content extends pulumi.CustomResource {
      * The time when the content was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Content resource with the given unique name, arguments, and options.
@@ -115,7 +111,6 @@ export class Content extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sqlScript"] = args ? args.sqlScript : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -134,7 +129,6 @@ export class Content extends pulumi.CustomResource {
             resourceInputs["sqlScript"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["lakeId", "location", "project"] };
@@ -174,8 +168,4 @@ export interface ContentArgs {
      * Sql Script related configurations.
      */
     sqlScript?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1ContentSqlScriptArgs>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

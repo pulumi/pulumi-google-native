@@ -50,8 +50,6 @@ type ConnectionProfile struct {
 	StaticServiceIpConnectivity StaticServiceIpConnectivityResponseOutput `pulumi:"staticServiceIpConnectivity"`
 	// The update time of the resource.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -133,8 +131,6 @@ type connectionProfileArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity *StaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
-	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -167,8 +163,6 @@ type ConnectionProfileArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityPtrInput
-	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {
@@ -296,11 +290,6 @@ func (o ConnectionProfileOutput) StaticServiceIpConnectivity() StaticServiceIpCo
 // The update time of the resource.
 func (o ConnectionProfileOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-func (o ConnectionProfileOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

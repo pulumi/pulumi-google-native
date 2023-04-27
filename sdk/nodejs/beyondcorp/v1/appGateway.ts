@@ -91,10 +91,6 @@ export class AppGateway extends pulumi.CustomResource {
      * Server-defined URI for this resource.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AppGateway resource with the given unique name, arguments, and options.
@@ -122,7 +118,6 @@ export class AppGateway extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["allocatedConnections"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -145,7 +140,6 @@ export class AppGateway extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -188,8 +182,4 @@ export interface AppGatewayArgs {
      * The type of network connectivity used by the AppGateway.
      */
     type: pulumi.Input<enums.beyondcorp.v1.AppGatewayType>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

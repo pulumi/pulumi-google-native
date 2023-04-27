@@ -72,12 +72,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Output("rowLayout")]
         public Output<Outputs.RowLayoutResponse> RowLayout { get; private set; } = null!;
 
-        /// <summary>
-        /// If set, validate the request and preview the review, but do not actually save it.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Dashboard resource with the given unique name, arguments, and options.
@@ -195,12 +189,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         [Input("rowLayout")]
         public Input<Inputs.RowLayoutArgs>? RowLayout { get; set; }
-
-        /// <summary>
-        /// If set, validate the request and preview the review, but do not actually save it.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public DashboardArgs()
         {

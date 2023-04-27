@@ -41,12 +41,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Only validate the request, but do not perform mutations. The default is false.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
-        /// <summary>
         /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         /// </summary>
         [Output("values")]
@@ -128,12 +122,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// Optional. Only validate the request, but do not perform mutations. The default is false.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         [Input("values", required: true)]
         private InputList<string>? _values;

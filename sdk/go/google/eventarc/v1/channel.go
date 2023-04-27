@@ -37,8 +37,6 @@ type Channel struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.BoolOutput `pulumi:"validateOnly"`
 }
 
 // NewChannel registers a new resource with the given unique name, arguments, and options.
@@ -51,14 +49,10 @@ func NewChannel(ctx *pulumi.Context,
 	if args.ChannelId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelId'")
 	}
-	if args.ValidateOnly == nil {
-		return nil, errors.New("invalid value for required argument 'ValidateOnly'")
-	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"channelId",
 		"location",
 		"project",
-		"validateOnly",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Channel
@@ -103,8 +97,6 @@ type channelArgs struct {
 	Project *string `pulumi:"project"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	Provider *string `pulumi:"provider"`
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Channel resource.
@@ -119,8 +111,6 @@ type ChannelArgs struct {
 	Project pulumi.StringPtrInput
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	Provider pulumi.StringPtrInput
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.BoolInput
 }
 
 func (ChannelArgs) ElementType() reflect.Type {
@@ -216,11 +206,6 @@ func (o ChannelOutput) Uid() pulumi.StringOutput {
 // The last-modified time.
 func (o ChannelOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Required. If set, validate the request and preview the review, but do not post it.
-func (o ChannelOutput) ValidateOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Channel) pulumi.BoolOutput { return v.ValidateOnly }).(pulumi.BoolOutput)
 }
 
 func init() {

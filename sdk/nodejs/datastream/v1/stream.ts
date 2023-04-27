@@ -100,10 +100,6 @@ export class Stream extends pulumi.CustomResource {
      * The last update time of the stream.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the stream, but don't create any resources. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -141,7 +137,6 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["streamId"] = args ? args.streamId : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -164,7 +159,6 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["streamId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project", "streamId"] };
@@ -223,8 +217,4 @@ export interface StreamArgs {
      * Required. The stream identifier.
      */
     streamId: pulumi.Input<string>;
-    /**
-     * Optional. Only validate the stream, but don't create any resources. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

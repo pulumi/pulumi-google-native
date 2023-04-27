@@ -31,7 +31,6 @@ class EntityArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Entity resource.
@@ -46,7 +45,6 @@ class EntityArgs:
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
         :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
         :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "data_path", data_path)
@@ -68,8 +66,6 @@ class EntityArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -233,18 +229,6 @@ class EntityArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
-    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "zone")
@@ -273,7 +257,6 @@ class Entity(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']]] = None,
                  system: Optional[pulumi.Input['EntitySystem']] = None,
                  type: Optional[pulumi.Input['EntityType']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -293,7 +276,6 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -334,7 +316,6 @@ class Entity(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']]] = None,
                  system: Optional[pulumi.Input['EntitySystem']] = None,
                  type: Optional[pulumi.Input['EntityType']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -375,7 +356,6 @@ class Entity(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["zone"] = zone
             __props__.__dict__["access"] = None
             __props__.__dict__["catalog_entry"] = None
@@ -428,7 +408,6 @@ class Entity(pulumi.CustomResource):
         __props__.__dict__["type"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["zone"] = None
         return Entity(resource_name, opts=opts, __props__=__props__)
 
@@ -582,14 +561,6 @@ class Entity(pulumi.CustomResource):
         The time when the entity was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter

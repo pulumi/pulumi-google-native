@@ -109,10 +109,6 @@ export class Entity extends pulumi.CustomResource {
      * The time when the entity was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -164,7 +160,6 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["system"] = args ? args.system : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["access"] = undefined /*out*/;
             resourceInputs["catalogEntry"] = undefined /*out*/;
@@ -194,7 +189,6 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -255,9 +249,5 @@ export interface EntityArgs {
      * Immutable. The type of entity.
      */
     type: pulumi.Input<enums.dataplex.v1.EntityType>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     zone?: pulumi.Input<string>;
 }

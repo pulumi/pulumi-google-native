@@ -83,10 +83,6 @@ export class Connector extends pulumi.CustomResource {
      * Timestamp when the resource was last modified.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -111,7 +107,6 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["resourceInfo"] = args ? args.resourceInfo : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -130,7 +125,6 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -173,8 +167,4 @@ export interface ConnectorArgs {
      * Optional. Resource info of the connector.
      */
     resourceInfo?: pulumi.Input<inputs.beyondcorp.v1alpha.ResourceInfoArgs>;
-    /**
-     * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

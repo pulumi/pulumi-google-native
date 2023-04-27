@@ -220,12 +220,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
-        /// <summary>
         /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         /// </summary>
         [Output("vlanTag8021q")]
@@ -424,12 +418,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectAttachmentType>? Type { get; set; }
-
-        /// <summary>
-        /// If true, the request will not be committed.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
         /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.

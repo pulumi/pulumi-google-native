@@ -171,12 +171,6 @@ namespace Pulumi.GoogleNative.Run.V2
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
@@ -299,12 +293,6 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Input("template", required: true)]
         public Input<Inputs.GoogleCloudRunV2ExecutionTemplateArgs> Template { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public JobArgs()
         {

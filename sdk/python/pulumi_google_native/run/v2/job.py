@@ -27,8 +27,7 @@ class JobArgs:
                  launch_stage: Optional[pulumi.Input['JobLaunchStage']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] job_id: Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
@@ -40,7 +39,6 @@ class JobArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
         :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
-        :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "template", template)
@@ -62,8 +60,6 @@ class JobArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="jobId")
@@ -191,18 +187,6 @@ class JobArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Job(pulumi.CustomResource):
     @overload
@@ -220,7 +204,6 @@ class Job(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a Job.
@@ -236,7 +219,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']] template: The template used to create executions for this Job.
-        :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         ...
     @overload
@@ -273,7 +255,6 @@ class Job(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -298,7 +279,6 @@ class Job(pulumi.CustomResource):
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["creator"] = None
@@ -366,7 +346,6 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["terminal_condition"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -578,12 +557,4 @@ class Job(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-        """
-        return pulumi.get(self, "validate_only")
 

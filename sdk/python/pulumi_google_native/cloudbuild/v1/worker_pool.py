@@ -22,15 +22,13 @@ class WorkerPoolArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input['PrivatePoolV1ConfigArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Legacy Private Pool configuration.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the response, but do not actually post it.
         """
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if annotations is not None:
@@ -43,8 +41,6 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "private_pool_v1_config", private_pool_v1_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -112,18 +108,6 @@ class WorkerPoolArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set, validate the request and preview the response, but do not actually post it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class WorkerPool(pulumi.CustomResource):
     @overload
@@ -135,7 +119,6 @@ class WorkerPool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -147,7 +130,6 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']] private_pool_v1_config: Legacy Private Pool configuration.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the response, but do not actually post it.
         :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
@@ -180,7 +162,6 @@ class WorkerPool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_pool_v1_config: Optional[pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -196,7 +177,6 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["private_pool_v1_config"] = private_pool_v1_config
             __props__.__dict__["project"] = project
-            __props__.__dict__["validate_only"] = validate_only
             if worker_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pool_id'")
             __props__.__dict__["worker_pool_id"] = worker_pool_id
@@ -243,7 +223,6 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["worker_pool_id"] = None
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
 
@@ -336,14 +315,6 @@ class WorkerPool(pulumi.CustomResource):
         Time at which the request to update the `WorkerPool` was received.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set, validate the request and preview the response, but do not actually post it.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="workerPoolId")

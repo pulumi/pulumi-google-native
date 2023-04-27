@@ -75,12 +75,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a TagKey resource with the given unique name, arguments, and options.
@@ -173,12 +167,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         [Input("shortName", required: true)]
         public Input<string> ShortName { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public TagKeyArgs()
         {

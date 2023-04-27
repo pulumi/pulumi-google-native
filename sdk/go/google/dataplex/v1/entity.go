@@ -53,9 +53,7 @@ type Entity struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the entity was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	Zone         pulumi.StringOutput  `pulumi:"zone"`
+	Zone       pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewEntity registers a new resource with the given unique name, arguments, and options.
@@ -153,9 +151,7 @@ type entityArgs struct {
 	System EntitySystem `pulumi:"system"`
 	// Immutable. The type of entity.
 	Type EntityType `pulumi:"type"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool   `pulumi:"validateOnly"`
-	Zone         *string `pulumi:"zone"`
+	Zone *string    `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Entity resource.
@@ -185,9 +181,7 @@ type EntityArgs struct {
 	System EntitySystemInput
 	// Immutable. The type of entity.
 	Type EntityTypeInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
-	Zone         pulumi.StringPtrInput
+	Zone pulumi.StringPtrInput
 }
 
 func (EntityArgs) ElementType() reflect.Type {
@@ -322,11 +316,6 @@ func (o EntityOutput) Uid() pulumi.StringOutput {
 // The time when the entity was last updated.
 func (o EntityOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o EntityOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Entity) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o EntityOutput) Zone() pulumi.StringOutput {

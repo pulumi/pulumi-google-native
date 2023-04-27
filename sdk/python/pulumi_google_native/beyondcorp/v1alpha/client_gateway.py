@@ -18,14 +18,12 @@ class ClientGatewayArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientGateway resource.
         :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] name: name of resource. The name is ignored during creation.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[bool] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """
         if client_gateway_id is not None:
             pulumi.set(__self__, "client_gateway_id", client_gateway_id)
@@ -37,8 +35,6 @@ class ClientGatewayArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="clientGatewayId")
@@ -94,18 +90,6 @@ class ClientGatewayArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class ClientGateway(pulumi.CustomResource):
     @overload
@@ -117,7 +101,6 @@ class ClientGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new ClientGateway in a given project and location.
@@ -127,7 +110,6 @@ class ClientGateway(pulumi.CustomResource):
         :param pulumi.Input[str] client_gateway_id: Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
         :param pulumi.Input[str] name: name of resource. The name is ignored during creation.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[bool] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """
         ...
     @overload
@@ -158,7 +140,6 @@ class ClientGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -173,7 +154,6 @@ class ClientGateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["client_connector_service"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["state"] = None
@@ -211,7 +191,6 @@ class ClientGateway(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return ClientGateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -279,12 +258,4 @@ class ClientGateway(pulumi.CustomResource):
         [Output only] Update time stamp.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-        """
-        return pulumi.get(self, "validate_only")
 

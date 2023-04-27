@@ -15,7 +15,6 @@ __all__ = ['ChannelArgs', 'Channel']
 class ChannelArgs:
     def __init__(__self__, *,
                  channel_id: pulumi.Input[str],
-                 validate_only: pulumi.Input[bool],
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,13 +23,11 @@ class ChannelArgs:
         """
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
-        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
         pulumi.set(__self__, "channel_id", channel_id)
-        pulumi.set(__self__, "validate_only", validate_only)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if location is not None:
@@ -53,18 +50,6 @@ class ChannelArgs:
     @channel_id.setter
     def channel_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "channel_id", value)
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Input[bool]:
-        """
-        Required. If set, validate the request and preview the review, but do not post it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "validate_only", value)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -132,7 +117,6 @@ class Channel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a new channel in a particular project and location.
@@ -143,7 +127,6 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         """
         ...
     @overload
@@ -175,7 +158,6 @@ class Channel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -193,16 +175,13 @@ class Channel(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["provider"] = provider
-            if validate_only is None and not opts.urn:
-                raise TypeError("Missing required property 'validate_only'")
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["activation_token"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["pubsub_topic"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
-        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["channel_id", "location", "project", "validate_only"])
+        replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["channel_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Channel, __self__).__init__(
             'google-native:eventarc/v1:Channel',
@@ -238,7 +217,6 @@ class Channel(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Channel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -330,12 +308,4 @@ class Channel(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[bool]:
-        """
-        Required. If set, validate the request and preview the review, but do not post it.
-        """
-        return pulumi.get(self, "validate_only")
 

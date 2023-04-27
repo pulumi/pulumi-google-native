@@ -112,12 +112,6 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// If set, validate the request and preview the review, but do not actually apply it.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
-        /// <summary>
         /// Required. ID to use for the workstation cluster.
         /// </summary>
         [Output("workstationClusterId")]
@@ -239,12 +233,6 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
-
-        /// <summary>
-        /// If set, validate the request and preview the review, but do not actually apply it.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
         /// Required. ID to use for the workstation cluster.

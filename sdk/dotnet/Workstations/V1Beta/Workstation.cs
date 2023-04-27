@@ -93,12 +93,6 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// If set, validate the request and preview the review, but do not actually apply it.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
 
@@ -211,12 +205,6 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// If set, validate the request and preview the review, but do not actually apply it.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;

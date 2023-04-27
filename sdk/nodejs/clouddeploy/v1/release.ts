@@ -131,10 +131,6 @@ export class Release extends pulumi.CustomResource {
      * Unique identifier of the `Release`.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Release resource with the given unique name, arguments, and options.
@@ -167,7 +163,6 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["skaffoldConfigPath"] = args ? args.skaffoldConfigPath : undefined;
             resourceInputs["skaffoldConfigUri"] = args ? args.skaffoldConfigUri : undefined;
             resourceInputs["skaffoldVersion"] = args ? args.skaffoldVersion : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["abandoned"] = undefined /*out*/;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -205,7 +200,6 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["targetRenders"] = undefined /*out*/;
             resourceInputs["targetSnapshots"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project", "releaseId"] };
@@ -265,8 +259,4 @@ export interface ReleaseArgs {
      * The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
      */
     skaffoldVersion?: pulumi.Input<string>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

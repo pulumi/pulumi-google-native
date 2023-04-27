@@ -92,10 +92,6 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      * Most recent time at which the pipeline was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DeliveryPipeline resource with the given unique name, arguments, and options.
@@ -122,7 +118,6 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serialPipeline"] = args ? args.serialPipeline : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -143,7 +138,6 @@ export class DeliveryPipeline extends pulumi.CustomResource {
             resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project"] };
@@ -194,8 +188,4 @@ export interface DeliveryPipelineArgs {
      * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
      */
     suspended?: pulumi.Input<boolean>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

@@ -84,10 +84,6 @@ export class Workstation extends pulumi.CustomResource {
      * Time when this resource was most recently updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     public readonly workstationClusterId!: pulumi.Output<string>;
     public readonly workstationConfigId!: pulumi.Output<string>;
     /**
@@ -122,7 +118,6 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
             resourceInputs["workstationId"] = args ? args.workstationId : undefined;
@@ -148,7 +143,6 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["workstationClusterId"] = undefined /*out*/;
             resourceInputs["workstationConfigId"] = undefined /*out*/;
             resourceInputs["workstationId"] = undefined /*out*/;
@@ -186,10 +180,6 @@ export interface WorkstationArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     workstationClusterId: pulumi.Input<string>;
     workstationConfigId: pulumi.Input<string>;
     /**

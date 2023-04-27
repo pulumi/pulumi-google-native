@@ -26,8 +26,7 @@ class DashboardArgs:
                  mosaic_layout: Optional[pulumi.Input['MosaicLayoutArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 row_layout: Optional[pulumi.Input['RowLayoutArgs']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 row_layout: Optional[pulumi.Input['RowLayoutArgs']] = None):
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] display_name: The mutable, human-readable name.
@@ -39,7 +38,6 @@ class DashboardArgs:
         :param pulumi.Input['MosaicLayoutArgs'] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually save it.
         """
         pulumi.set(__self__, "display_name", display_name)
         if column_layout is not None:
@@ -60,8 +58,6 @@ class DashboardArgs:
             pulumi.set(__self__, "project", project)
         if row_layout is not None:
             pulumi.set(__self__, "row_layout", row_layout)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="displayName")
@@ -180,18 +176,6 @@ class DashboardArgs:
     def row_layout(self, value: Optional[pulumi.Input['RowLayoutArgs']]):
         pulumi.set(self, "row_layout", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually save it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Dashboard(pulumi.CustomResource):
     @overload
@@ -208,7 +192,6 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
@@ -224,7 +207,6 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually save it.
         """
         ...
     @overload
@@ -260,7 +242,6 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,7 +263,6 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["row_layout"] = row_layout
-            __props__.__dict__["validate_only"] = validate_only
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Dashboard, __self__).__init__(
@@ -317,7 +297,6 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["row_layout"] = None
-        __props__.__dict__["validate_only"] = None
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -396,12 +375,4 @@ class Dashboard(pulumi.CustomResource):
         The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
         return pulumi.get(self, "row_layout")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually save it.
-        """
-        return pulumi.get(self, "validate_only")
 

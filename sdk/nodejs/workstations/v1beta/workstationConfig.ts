@@ -111,10 +111,6 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * Time when this resource was most recently updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     public readonly workstationClusterId!: pulumi.Output<string>;
     /**
      * Required. ID to use for the config.
@@ -151,7 +147,6 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -182,7 +177,6 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["runningTimeout"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["workstationClusterId"] = undefined /*out*/;
             resourceInputs["workstationConfigId"] = undefined /*out*/;
         }
@@ -243,10 +237,6 @@ export interface WorkstationConfigArgs {
      * How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
      */
     runningTimeout?: pulumi.Input<string>;
-    /**
-     * If set, validate the request and preview the review, but do not actually apply it.
-     */
-    validateOnly?: pulumi.Input<boolean>;
     workstationClusterId: pulumi.Input<string>;
     /**
      * Required. ID to use for the config.

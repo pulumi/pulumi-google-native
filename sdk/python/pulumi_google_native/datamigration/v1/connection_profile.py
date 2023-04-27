@@ -31,8 +31,7 @@ class ConnectionProfileArgs:
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
-                 state: Optional[pulumi.Input['ConnectionProfileState']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 state: Optional[pulumi.Input['ConnectionProfileState']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
@@ -48,7 +47,6 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if alloydb is not None:
@@ -79,8 +77,6 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "skip_validation", skip_validation)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -256,18 +252,6 @@ class ConnectionProfileArgs:
     def state(self, value: Optional[pulumi.Input['ConnectionProfileState']]):
         pulumi.set(self, "state", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class ConnectionProfile(pulumi.CustomResource):
     @overload
@@ -289,7 +273,6 @@ class ConnectionProfile(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new connection profile in a given project and location.
@@ -309,7 +292,6 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
         """
         ...
     @overload
@@ -350,7 +332,6 @@ class ConnectionProfile(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  skip_validation: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,7 +358,6 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["skip_validation"] = skip_validation
             __props__.__dict__["state"] = state
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["update_time"] = None
@@ -423,7 +403,6 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["skip_validation"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -563,12 +542,4 @@ class ConnectionProfile(pulumi.CustomResource):
         The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
-        """
-        return pulumi.get(self, "validate_only")
 

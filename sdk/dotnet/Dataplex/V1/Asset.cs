@@ -109,12 +109,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. Only validate the request, but do not perform mutations. The default is false.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
 
@@ -221,12 +215,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Input("resourceSpec", required: true)]
         public Input<Inputs.GoogleCloudDataplexV1AssetResourceSpecArgs> ResourceSpec { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. Only validate the request, but do not perform mutations. The default is false.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

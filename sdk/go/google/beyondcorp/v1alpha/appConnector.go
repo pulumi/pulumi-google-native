@@ -39,8 +39,6 @@ type AppConnector struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAppConnector registers a new resource with the given unique name, arguments, and options.
@@ -106,8 +104,6 @@ type appConnectorArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Resource info of the connector.
 	ResourceInfo *GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo `pulumi:"resourceInfo"`
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a AppConnector resource.
@@ -128,8 +124,6 @@ type AppConnectorArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Optional. Resource info of the connector.
 	ResourceInfo GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput
-	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (AppConnectorArgs) ElementType() reflect.Type {
@@ -234,11 +228,6 @@ func (o AppConnectorOutput) Uid() pulumi.StringOutput {
 // Timestamp when the resource was last modified.
 func (o AppConnectorOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppConnector) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-func (o AppConnectorOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AppConnector) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -41,7 +41,6 @@ class InterconnectAttachmentArgs:
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
@@ -67,7 +66,6 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
-        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         pulumi.set(__self__, "region", region)
@@ -117,8 +115,6 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "subnet_length", subnet_length)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
         if vlan_tag8021q is not None:
             pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
 
@@ -405,18 +401,6 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, the request will not be committed.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
-    @property
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> Optional[pulumi.Input[int]]:
         """
@@ -458,7 +442,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -488,7 +471,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
-        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         ...
@@ -539,7 +521,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -576,7 +557,6 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["subnet_length"] = subnet_length
             __props__.__dict__["type"] = type
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
             __props__.__dict__["cloud_router_ipv6_address"] = None
@@ -660,7 +640,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["subnet_length"] = None
         __props__.__dict__["type"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["vlan_tag8021q"] = None
         return InterconnectAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -985,14 +964,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         """
         return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, the request will not be committed.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="vlanTag8021q")

@@ -47,9 +47,7 @@ type Asset struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the asset was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	Zone         pulumi.StringOutput  `pulumi:"zone"`
+	Zone       pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
@@ -123,9 +121,7 @@ type assetArgs struct {
 	Project  *string           `pulumi:"project"`
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpec `pulumi:"resourceSpec"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool   `pulumi:"validateOnly"`
-	Zone         *string `pulumi:"zone"`
+	Zone         *string                                `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Asset resource.
@@ -145,8 +141,6 @@ type AssetArgs struct {
 	Project  pulumi.StringPtrInput
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpecInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 	Zone         pulumi.StringPtrInput
 }
 
@@ -267,11 +261,6 @@ func (o AssetOutput) Uid() pulumi.StringOutput {
 // The time when the asset was last updated.
 func (o AssetOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o AssetOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o AssetOutput) Zone() pulumi.StringOutput {

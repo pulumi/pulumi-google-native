@@ -76,10 +76,6 @@ export class Channel extends pulumi.CustomResource {
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Required. If set, validate the request and preview the review, but do not post it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean>;
 
     /**
      * Create a Channel resource with the given unique name, arguments, and options.
@@ -95,16 +91,12 @@ export class Channel extends pulumi.CustomResource {
             if ((!args || args.channelId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'channelId'");
             }
-            if ((!args || args.validateOnly === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'validateOnly'");
-            }
             resourceInputs["channelId"] = args ? args.channelId : undefined;
             resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provider"] = args ? args.provider : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["activationToken"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["pubsubTopic"] = undefined /*out*/;
@@ -124,10 +116,9 @@ export class Channel extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["channelId", "location", "project", "validateOnly"] };
+        const replaceOnChanges = { replaceOnChanges: ["channelId", "location", "project"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Channel.__pulumiType, name, resourceInputs, opts);
     }
@@ -155,8 +146,4 @@ export interface ChannelArgs {
      * The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
      */
     provider?: pulumi.Input<string>;
-    /**
-     * Required. If set, validate the request and preview the review, but do not post it.
-     */
-    validateOnly: pulumi.Input<boolean>;
 }

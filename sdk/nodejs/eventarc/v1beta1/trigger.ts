@@ -79,10 +79,6 @@ export class Trigger extends pulumi.CustomResource {
      * The last-modified time.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Required. If set, validate the request and preview the review, but do not actually post it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -104,9 +100,6 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
-            if ((!args || args.validateOnly === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'validateOnly'");
-            }
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -115,7 +108,6 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["triggerId"] = args ? args.triggerId : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["transport"] = undefined /*out*/;
@@ -133,10 +125,9 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["transport"] = undefined /*out*/;
             resourceInputs["triggerId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const replaceOnChanges = { replaceOnChanges: ["location", "project", "triggerId", "validateOnly"] };
+        const replaceOnChanges = { replaceOnChanges: ["location", "project", "triggerId"] };
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Trigger.__pulumiType, name, resourceInputs, opts);
     }
@@ -172,8 +163,4 @@ export interface TriggerArgs {
      * Required. The user-provided ID to be assigned to the trigger.
      */
     triggerId: pulumi.Input<string>;
-    /**
-     * Required. If set, validate the request and preview the review, but do not actually post it.
-     */
-    validateOnly: pulumi.Input<boolean>;
 }

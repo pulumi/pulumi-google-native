@@ -103,10 +103,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -137,7 +133,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -160,7 +155,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["skipValidation"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["connectionProfileId", "location", "project"] };
@@ -227,8 +221,4 @@ export interface ConnectionProfileArgs {
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
     state?: pulumi.Input<enums.datamigration.v1.ConnectionProfileState>;
-    /**
-     * Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

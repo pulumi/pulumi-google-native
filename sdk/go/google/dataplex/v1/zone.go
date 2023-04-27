@@ -43,8 +43,6 @@ type Zone struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the zone was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -122,8 +120,6 @@ type zoneArgs struct {
 	ResourceSpec GoogleCloudDataplexV1ZoneResourceSpec `pulumi:"resourceSpec"`
 	// Immutable. The type of the zone.
 	Type ZoneType `pulumi:"type"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -145,8 +141,6 @@ type ZoneArgs struct {
 	ResourceSpec GoogleCloudDataplexV1ZoneResourceSpecInput
 	// Immutable. The type of the zone.
 	Type ZoneTypeInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
 	ZoneId pulumi.StringInput
 }
@@ -258,11 +252,6 @@ func (o ZoneOutput) Uid() pulumi.StringOutput {
 // The time when the zone was last updated.
 func (o ZoneOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o ZoneOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Zone) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")

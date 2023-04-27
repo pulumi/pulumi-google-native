@@ -136,10 +136,6 @@ export class Rollout extends pulumi.CustomResource {
      * Unique identifier of the `Rollout`.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Rollout resource with the given unique name, arguments, and options.
@@ -177,7 +173,6 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["rolloutId"] = args ? args.rolloutId : undefined;
             resourceInputs["startingPhaseId"] = args ? args.startingPhaseId : undefined;
             resourceInputs["targetId"] = args ? args.targetId : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["approvalState"] = undefined /*out*/;
             resourceInputs["approveTime"] = undefined /*out*/;
             resourceInputs["controllerRollout"] = undefined /*out*/;
@@ -220,7 +215,6 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["deliveryPipelineId", "location", "project", "releaseId", "rolloutId"] };
@@ -273,8 +267,4 @@ export interface RolloutArgs {
      * The ID of Target to which this `Rollout` is deploying.
      */
     targetId: pulumi.Input<string>;
-    /**
-     * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

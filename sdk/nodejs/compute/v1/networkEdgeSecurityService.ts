@@ -72,10 +72,6 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
      * Server-defined URL for this resource with the resource id.
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
-    /**
-     * If true, the request will not be committed.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NetworkEdgeSecurityService resource with the given unique name, arguments, and options.
@@ -97,7 +93,6 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -115,7 +110,6 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
             resourceInputs["securityPolicy"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project", "region"] };
@@ -146,8 +140,4 @@ export interface NetworkEdgeSecurityServiceArgs {
      * The resource URL for the network edge security service associated with this network edge security service.
      */
     securityPolicy?: pulumi.Input<string>;
-    /**
-     * If true, the request will not be committed.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

@@ -26,8 +26,7 @@ class AttributeArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 resource_access_spec: Optional[pulumi.Input['GoogleCloudDataplexV1ResourceAccessSpecArgs']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 resource_access_spec: Optional[pulumi.Input['GoogleCloudDataplexV1ResourceAccessSpecArgs']] = None):
         """
         The set of arguments for constructing a Attribute resource.
         :param pulumi.Input[str] data_attribute_id: Required. DataAttribute identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the DataTaxonomy.
@@ -38,7 +37,6 @@ class AttributeArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttribute.
         :param pulumi.Input[str] parent_id: Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -> b -> c -> d -> e, depth = 4
         :param pulumi.Input['GoogleCloudDataplexV1ResourceAccessSpecArgs'] resource_access_spec: Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_attribute_id", data_attribute_id)
         pulumi.set(__self__, "data_taxonomy_id", data_taxonomy_id)
@@ -60,8 +58,6 @@ class AttributeArgs:
             pulumi.set(__self__, "project", project)
         if resource_access_spec is not None:
             pulumi.set(__self__, "resource_access_spec", resource_access_spec)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="dataAttributeId")
@@ -186,18 +182,6 @@ class AttributeArgs:
     def resource_access_spec(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1ResourceAccessSpecArgs']]):
         pulumi.set(self, "resource_access_spec", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Attribute(pulumi.CustomResource):
     @overload
@@ -215,7 +199,6 @@ class Attribute(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a DataAttribute resource.
@@ -231,7 +214,6 @@ class Attribute(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttribute.
         :param pulumi.Input[str] parent_id: Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -> b -> c -> d -> e, depth = 4
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']] resource_access_spec: Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -269,7 +251,6 @@ class Attribute(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  resource_access_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ResourceAccessSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -294,7 +275,6 @@ class Attribute(pulumi.CustomResource):
             __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["project"] = project
             __props__.__dict__["resource_access_spec"] = resource_access_spec
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["attribute_count"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -340,7 +320,6 @@ class Attribute(pulumi.CustomResource):
         __props__.__dict__["resource_access_spec"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Attribute(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -461,12 +440,4 @@ class Attribute(pulumi.CustomResource):
         The time when the DataAttribute was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

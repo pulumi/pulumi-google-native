@@ -29,8 +29,7 @@ class StreamArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['StreamState']] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 state: Optional[pulumi.Input['StreamState']] = None):
         """
         The set of arguments for constructing a Stream resource.
         :param pulumi.Input['DestinationConfigArgs'] destination_config: Destination connection profile configuration.
@@ -44,7 +43,6 @@ class StreamArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StreamState'] state: The state of the stream.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
         """
         pulumi.set(__self__, "destination_config", destination_config)
         pulumi.set(__self__, "display_name", display_name)
@@ -68,8 +66,6 @@ class StreamArgs:
             pulumi.set(__self__, "request_id", request_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="destinationConfig")
@@ -221,18 +217,6 @@ class StreamArgs:
     def state(self, value: Optional[pulumi.Input['StreamState']]):
         pulumi.set(self, "state", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the stream, but do not create any resources. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Stream(pulumi.CustomResource):
     @overload
@@ -252,7 +236,6 @@ class Stream(pulumi.CustomResource):
                  source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Use this method to create a stream.
@@ -271,7 +254,6 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SourceConfigArgs']] source_config: Source connection profile configuration.
         :param pulumi.Input['StreamState'] state: The state of the stream.
         :param pulumi.Input[str] stream_id: Required. The stream identifier.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
         """
         ...
     @overload
@@ -311,7 +293,6 @@ class Stream(pulumi.CustomResource):
                  source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,7 +323,6 @@ class Stream(pulumi.CustomResource):
             if stream_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stream_id'")
             __props__.__dict__["stream_id"] = stream_id
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["errors"] = None
             __props__.__dict__["name"] = None
@@ -388,7 +368,6 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["stream_id"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Stream(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -520,12 +499,4 @@ class Stream(pulumi.CustomResource):
         The last update time of the stream.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the stream, but do not create any resources. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

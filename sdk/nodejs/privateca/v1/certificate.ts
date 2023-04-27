@@ -111,10 +111,6 @@ export class Certificate extends pulumi.CustomResource {
      * The time at which this Certificate was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -145,7 +141,6 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["subjectMode"] = args ? args.subjectMode : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["certificateDescription"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
@@ -175,7 +170,6 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["revocationDetails"] = undefined /*out*/;
             resourceInputs["subjectMode"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["caPoolId", "location", "project"] };
@@ -227,8 +221,4 @@ export interface CertificateArgs {
      * Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
      */
     subjectMode?: pulumi.Input<enums.privateca.v1.CertificateSubjectMode>;
-    /**
-     * Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

@@ -56,8 +56,6 @@ type SecurityPolicy struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
 	UserDefinedFields SecurityPolicyUserDefinedFieldResponseArrayOutput `pulumi:"userDefinedFields"`
-	// If true, the request will not be committed.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewSecurityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -127,8 +125,6 @@ type securityPolicyArgs struct {
 	Type *SecurityPolicyType `pulumi:"type"`
 	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
 	UserDefinedFields []SecurityPolicyUserDefinedField `pulumi:"userDefinedFields"`
-	// If true, the request will not be committed.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a SecurityPolicy resource.
@@ -157,8 +153,6 @@ type SecurityPolicyArgs struct {
 	Type SecurityPolicyTypePtrInput
 	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
 	UserDefinedFields SecurityPolicyUserDefinedFieldArrayInput
-	// If true, the request will not be committed.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (SecurityPolicyArgs) ElementType() reflect.Type {
@@ -318,11 +312,6 @@ func (o SecurityPolicyOutput) Type() pulumi.StringOutput {
 // Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff"
 func (o SecurityPolicyOutput) UserDefinedFields() SecurityPolicyUserDefinedFieldResponseArrayOutput {
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyUserDefinedFieldResponseArrayOutput { return v.UserDefinedFields }).(SecurityPolicyUserDefinedFieldResponseArrayOutput)
-}
-
-// If true, the request will not be committed.
-func (o SecurityPolicyOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicy) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

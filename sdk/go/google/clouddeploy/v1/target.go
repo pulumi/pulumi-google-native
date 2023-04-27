@@ -49,8 +49,6 @@ type Target struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Most recent time at which the `Target` was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewTarget registers a new resource with the given unique name, arguments, and options.
@@ -129,8 +127,6 @@ type targetArgs struct {
 	Run *CloudRunLocation `pulumi:"run"`
 	// Required. ID of the `Target`.
 	TargetId string `pulumi:"targetId"`
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Target resource.
@@ -163,8 +159,6 @@ type TargetArgs struct {
 	Run CloudRunLocationPtrInput
 	// Required. ID of the `Target`.
 	TargetId pulumi.StringInput
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TargetArgs) ElementType() reflect.Type {
@@ -290,11 +284,6 @@ func (o TargetOutput) Uid() pulumi.StringOutput {
 // Most recent time at which the `Target` was updated.
 func (o TargetOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-func (o TargetOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Target) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

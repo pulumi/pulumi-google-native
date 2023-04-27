@@ -38,8 +38,6 @@ type WorkerPool struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time at which the request to update the `WorkerPool` was received.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// If set, validate the request and preview the response, but do not actually post it.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
 	WorkerPoolId pulumi.StringOutput `pulumi:"workerPoolId"`
 }
@@ -100,8 +98,6 @@ type workerPoolArgs struct {
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
 	Project             *string              `pulumi:"project"`
-	// If set, validate the request and preview the response, but do not actually post it.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
 	WorkerPoolId string `pulumi:"workerPoolId"`
 }
@@ -116,8 +112,6 @@ type WorkerPoolArgs struct {
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
 	Project             pulumi.StringPtrInput
-	// If set, validate the request and preview the response, but do not actually post it.
-	ValidateOnly pulumi.BoolPtrInput
 	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
 	WorkerPoolId pulumi.StringInput
 }
@@ -215,11 +209,6 @@ func (o WorkerPoolOutput) Uid() pulumi.StringOutput {
 // Time at which the request to update the `WorkerPool` was received.
 func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// If set, validate the request and preview the response, but do not actually post it.
-func (o WorkerPoolOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkerPool) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.

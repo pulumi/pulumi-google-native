@@ -26,8 +26,6 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When set to true, the request will be validated but not submitted.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -82,8 +80,6 @@ type instanceArgs struct {
 	Project *string `pulumi:"project"`
 	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type *InstanceType `pulumi:"type"`
-	// When set to true, the request will be validated but not submitted.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -96,8 +92,6 @@ type InstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 	Type InstanceTypePtrInput
-	// When set to true, the request will be validated but not submitted.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -168,11 +162,6 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// When set to true, the request will be validated but not submitted.
-func (o InstanceOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

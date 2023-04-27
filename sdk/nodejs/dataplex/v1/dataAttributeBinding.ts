@@ -88,10 +88,6 @@ export class DataAttributeBinding extends pulumi.CustomResource {
      * The time when the DataAttributeBinding was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DataAttributeBinding resource with the given unique name, arguments, and options.
@@ -117,7 +113,6 @@ export class DataAttributeBinding extends pulumi.CustomResource {
             resourceInputs["paths"] = args ? args.paths : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resource"] = args ? args.resource : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -137,7 +132,6 @@ export class DataAttributeBinding extends pulumi.CustomResource {
             resourceInputs["resource"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["dataAttributeBindingId", "location", "project"] };
@@ -184,8 +178,4 @@ export interface DataAttributeBindingArgs {
      * Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
      */
     resource?: pulumi.Input<string>;
-    /**
-     * Optional. Only validate the request, but do not perform mutations. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

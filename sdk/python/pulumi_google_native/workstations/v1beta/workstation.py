@@ -23,8 +23,7 @@ class WorkstationArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
@@ -33,7 +32,6 @@ class WorkstationArgs:
         :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         pulumi.set(__self__, "workstation_config_id", workstation_config_id)
@@ -52,8 +50,6 @@ class WorkstationArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="workstationClusterId")
@@ -163,18 +159,6 @@ class WorkstationArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Workstation(pulumi.CustomResource):
     @overload
@@ -188,7 +172,6 @@ class Workstation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  workstation_id: Optional[pulumi.Input[str]] = None,
@@ -203,7 +186,6 @@ class Workstation(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
         """
         ...
@@ -237,7 +219,6 @@ class Workstation(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  workstation_id: Optional[pulumi.Input[str]] = None,
@@ -257,7 +238,6 @@ class Workstation(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            __props__.__dict__["validate_only"] = validate_only
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -312,7 +292,6 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["workstation_cluster_id"] = None
         __props__.__dict__["workstation_config_id"] = None
         __props__.__dict__["workstation_id"] = None
@@ -423,14 +402,6 @@ class Workstation(pulumi.CustomResource):
         Time when this resource was most recently updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="workstationClusterId")

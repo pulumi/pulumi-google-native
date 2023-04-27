@@ -45,8 +45,6 @@ type Trigger struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.BoolOutput `pulumi:"validateOnly"`
 }
 
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
@@ -65,14 +63,10 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.TriggerId == nil {
 		return nil, errors.New("invalid value for required argument 'TriggerId'")
 	}
-	if args.ValidateOnly == nil {
-		return nil, errors.New("invalid value for required argument 'ValidateOnly'")
-	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"location",
 		"project",
 		"triggerId",
-		"validateOnly",
 	})
 	opts = append(opts, replaceOnChanges)
 	var resource Trigger
@@ -127,8 +121,6 @@ type triggerArgs struct {
 	Transport *Transport `pulumi:"transport"`
 	// Required. The user-provided ID to be assigned to the trigger.
 	TriggerId string `pulumi:"triggerId"`
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Trigger resource.
@@ -153,8 +145,6 @@ type TriggerArgs struct {
 	Transport TransportPtrInput
 	// Required. The user-provided ID to be assigned to the trigger.
 	TriggerId pulumi.StringInput
-	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.BoolInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {
@@ -270,11 +260,6 @@ func (o TriggerOutput) Uid() pulumi.StringOutput {
 // The last-modified time.
 func (o TriggerOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Required. If set, validate the request and preview the review, but do not post it.
-func (o TriggerOutput) ValidateOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Trigger) pulumi.BoolOutput { return v.ValidateOnly }).(pulumi.BoolOutput)
 }
 
 func init() {

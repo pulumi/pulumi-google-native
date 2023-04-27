@@ -74,10 +74,6 @@ export class Dashboard extends pulumi.CustomResource {
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
     public readonly rowLayout!: pulumi.Output<outputs.monitoring.v1.RowLayoutResponse>;
-    /**
-     * If set, validate the request and preview the review, but do not actually save it.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -103,7 +99,6 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rowLayout"] = args ? args.rowLayout : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             resourceInputs["columnLayout"] = undefined /*out*/;
             resourceInputs["dashboardFilters"] = undefined /*out*/;
@@ -115,7 +110,6 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["rowLayout"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project"] };
@@ -165,8 +159,4 @@ export interface DashboardArgs {
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
     rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
-    /**
-     * If set, validate the request and preview the review, but do not actually save it.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

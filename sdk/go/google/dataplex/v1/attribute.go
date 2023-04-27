@@ -45,8 +45,6 @@ type Attribute struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the DataAttribute was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAttribute registers a new resource with the given unique name, arguments, and options.
@@ -120,8 +118,6 @@ type attributeArgs struct {
 	Project  *string `pulumi:"project"`
 	// Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
 	ResourceAccessSpec *GoogleCloudDataplexV1ResourceAccessSpec `pulumi:"resourceAccessSpec"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Attribute resource.
@@ -145,8 +141,6 @@ type AttributeArgs struct {
 	Project  pulumi.StringPtrInput
 	// Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
 	ResourceAccessSpec GoogleCloudDataplexV1ResourceAccessSpecPtrInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (AttributeArgs) ElementType() reflect.Type {
@@ -261,11 +255,6 @@ func (o AttributeOutput) Uid() pulumi.StringOutput {
 // The time when the DataAttribute was last updated.
 func (o AttributeOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Attribute) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o AttributeOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Attribute) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

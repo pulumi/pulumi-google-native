@@ -104,10 +104,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The update time of the resource.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
-    /**
-     * Optional. Only validate the connection profile, but don't create any resources. The default is false.
-     */
-    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -141,7 +137,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["staticServiceIpConnectivity"] = args ? args.staticServiceIpConnectivity : undefined;
-            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -164,7 +159,6 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["staticServiceIpConnectivity"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
-            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["connectionProfileId", "location", "project"] };
@@ -231,8 +225,4 @@ export interface ConnectionProfileArgs {
      * Static Service IP connectivity.
      */
     staticServiceIpConnectivity?: pulumi.Input<inputs.datastream.v1.StaticServiceIpConnectivityArgs>;
-    /**
-     * Optional. Only validate the connection profile, but don't create any resources. The default is false.
-     */
-    validateOnly?: pulumi.Input<boolean>;
 }

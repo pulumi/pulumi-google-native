@@ -3,6 +3,11 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Bug fixes:
+
+- Remove `validateOnly` query parameter from SDK properties
+  [#865](https://github.com/pulumi/pulumi-google-native/issues/865)
+
 ## v0.30.0 (2023-04-14)
 Upstream breaking changes:
 - Resource "google-native:sqladmin/v1beta4:Instance" missing input "availableMaintenanceVersions"

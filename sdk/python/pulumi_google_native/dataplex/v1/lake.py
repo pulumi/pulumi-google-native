@@ -22,8 +22,7 @@ class LakeArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input['GoogleCloudDataplexV1LakeMetastoreArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Lake resource.
         :param pulumi.Input[str] lake_id: Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
@@ -31,7 +30,6 @@ class LakeArgs:
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
         :param pulumi.Input['GoogleCloudDataplexV1LakeMetastoreArgs'] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "lake_id", lake_id)
         if description is not None:
@@ -46,8 +44,6 @@ class LakeArgs:
             pulumi.set(__self__, "metastore", metastore)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="lakeId")
@@ -127,18 +123,6 @@ class LakeArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class Lake(pulumi.CustomResource):
     @overload
@@ -152,7 +136,6 @@ class Lake(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a lake resource.
@@ -165,7 +148,6 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
         :param pulumi.Input[str] lake_id: Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
-        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -199,7 +181,6 @@ class Lake(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  metastore: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -218,7 +199,6 @@ class Lake(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["metastore"] = metastore
             __props__.__dict__["project"] = project
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["asset_status"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["metastore_status"] = None
@@ -266,7 +246,6 @@ class Lake(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return Lake(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -382,12 +361,4 @@ class Lake(pulumi.CustomResource):
         The time when the lake was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. Only validate the request, but do not perform mutations. The default is false.
-        """
-        return pulumi.get(self, "validate_only")
 

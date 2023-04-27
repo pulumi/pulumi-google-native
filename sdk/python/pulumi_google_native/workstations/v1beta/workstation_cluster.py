@@ -26,8 +26,7 @@ class WorkstationClusterArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
@@ -39,7 +38,6 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if annotations is not None:
@@ -62,8 +60,6 @@ class WorkstationClusterArgs:
             pulumi.set(__self__, "project", project)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="workstationClusterId")
@@ -191,18 +187,6 @@ class WorkstationClusterArgs:
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class WorkstationCluster(pulumi.CustomResource):
     @overload
@@ -219,7 +203,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -235,7 +218,6 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] subnetwork: Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be created. Must be part of the subnetwork specified for this cluster.
-        :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         """
         ...
@@ -272,7 +254,6 @@ class WorkstationCluster(pulumi.CustomResource):
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -293,7 +274,6 @@ class WorkstationCluster(pulumi.CustomResource):
             __props__.__dict__["private_cluster_config"] = private_cluster_config
             __props__.__dict__["project"] = project
             __props__.__dict__["subnetwork"] = subnetwork
-            __props__.__dict__["validate_only"] = validate_only
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -345,7 +325,6 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         __props__.__dict__["workstation_cluster_id"] = None
         return WorkstationCluster(resource_name, opts=opts, __props__=__props__)
 
@@ -478,14 +457,6 @@ class WorkstationCluster(pulumi.CustomResource):
         Time when this resource was most recently updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If set, validate the request and preview the review, but do not actually apply it.
-        """
-        return pulumi.get(self, "validate_only")
 
     @property
     @pulumi.getter(name="workstationClusterId")

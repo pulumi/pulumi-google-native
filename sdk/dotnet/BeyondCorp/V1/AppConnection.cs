@@ -99,12 +99,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-        /// </summary>
-        [Output("validateOnly")]
-        public Output<bool?> ValidateOnly { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a AppConnection resource with the given unique name, arguments, and options.
@@ -226,12 +220,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         /// </summary>
         [Input("type", required: true)]
         public Input<Pulumi.GoogleNative.BeyondCorp.V1.AppConnectionType> Type { get; set; } = null!;
-
-        /// <summary>
-        /// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-        /// </summary>
-        [Input("validateOnly")]
-        public Input<bool>? ValidateOnly { get; set; }
 
         public AppConnectionArgs()
         {

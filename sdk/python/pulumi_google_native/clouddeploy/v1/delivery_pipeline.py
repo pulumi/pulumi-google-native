@@ -26,8 +26,7 @@ class DeliveryPipelineArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input['SerialPipelineArgs']] = None,
-                 suspended: Optional[pulumi.Input[bool]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None):
+                 suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DeliveryPipeline resource.
         :param pulumi.Input[str] delivery_pipeline_id: Required. ID of the `DeliveryPipeline`.
@@ -39,7 +38,6 @@ class DeliveryPipelineArgs:
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
-        :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
         if annotations is not None:
@@ -62,8 +60,6 @@ class DeliveryPipelineArgs:
             pulumi.set(__self__, "serial_pipeline", serial_pipeline)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
-        if validate_only is not None:
-            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="deliveryPipelineId")
@@ -191,18 +187,6 @@ class DeliveryPipelineArgs:
     def suspended(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "suspended", value)
 
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        """
-        return pulumi.get(self, "validate_only")
-
-    @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "validate_only", value)
-
 
 class DeliveryPipeline(pulumi.CustomResource):
     @overload
@@ -220,7 +204,6 @@ class DeliveryPipeline(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input[pulumi.InputType['SerialPipelineArgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new DeliveryPipeline in a given project and location.
@@ -237,7 +220,6 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
-        :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         ...
     @overload
@@ -275,7 +257,6 @@ class DeliveryPipeline(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input[pulumi.InputType['SerialPipelineArgs']]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
-                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -298,7 +279,6 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["serial_pipeline"] = serial_pipeline
             __props__.__dict__["suspended"] = suspended
-            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["condition"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["uid"] = None
@@ -342,7 +322,6 @@ class DeliveryPipeline(pulumi.CustomResource):
         __props__.__dict__["suspended"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
-        __props__.__dict__["validate_only"] = None
         return DeliveryPipeline(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -458,12 +437,4 @@ class DeliveryPipeline(pulumi.CustomResource):
         Most recent time at which the pipeline was updated.
         """
         return pulumi.get(self, "update_time")
-
-    @property
-    @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-        """
-        return pulumi.get(self, "validate_only")
 

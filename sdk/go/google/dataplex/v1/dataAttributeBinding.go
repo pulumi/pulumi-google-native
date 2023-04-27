@@ -42,8 +42,6 @@ type DataAttributeBinding struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the DataAttributeBinding was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDataAttributeBinding registers a new resource with the given unique name, arguments, and options.
@@ -112,8 +110,6 @@ type dataAttributeBindingArgs struct {
 	Project *string                                         `pulumi:"project"`
 	// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 	Resource *string `pulumi:"resource"`
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a DataAttributeBinding resource.
@@ -136,8 +132,6 @@ type DataAttributeBindingArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
 	Resource pulumi.StringPtrInput
-	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (DataAttributeBindingArgs) ElementType() reflect.Type {
@@ -245,11 +239,6 @@ func (o DataAttributeBindingOutput) Uid() pulumi.StringOutput {
 // The time when the DataAttributeBinding was last updated.
 func (o DataAttributeBindingOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAttributeBinding) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
-}
-
-// Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o DataAttributeBindingOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DataAttributeBinding) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

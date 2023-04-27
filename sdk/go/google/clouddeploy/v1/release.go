@@ -65,8 +65,6 @@ type Release struct {
 	TargetSnapshots TargetResponseArrayOutput `pulumi:"targetSnapshots"`
 	// Unique identifier of the `Release`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewRelease registers a new resource with the given unique name, arguments, and options.
@@ -146,8 +144,6 @@ type releaseArgs struct {
 	SkaffoldConfigUri *string `pulumi:"skaffoldConfigUri"`
 	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion *string `pulumi:"skaffoldVersion"`
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Release resource.
@@ -177,8 +173,6 @@ type ReleaseArgs struct {
 	SkaffoldConfigUri pulumi.StringPtrInput
 	// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
 	SkaffoldVersion pulumi.StringPtrInput
-	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ReleaseArgs) ElementType() reflect.Type {
@@ -338,11 +332,6 @@ func (o ReleaseOutput) TargetSnapshots() TargetResponseArrayOutput {
 // Unique identifier of the `Release`.
 func (o ReleaseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
-}
-
-// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-func (o ReleaseOutput) ValidateOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Release) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {
