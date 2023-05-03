@@ -2168,7 +2168,7 @@ func (o DeployJobResponseOutput) ToDeployJobResponseOutputWithContext(ctx contex
 
 // Deployment job composition.
 type DeploymentJobsResponse struct {
-	// The deploy Job. This is the first job run in the phase.
+	// The deploy Job. This is the deploy job in the phase.
 	DeployJob JobResponse `pulumi:"deployJob"`
 	// The verify Job. Runs after a deploy if the deploy succeeds.
 	VerifyJob JobResponse `pulumi:"verifyJob"`
@@ -2189,7 +2189,7 @@ func (o DeploymentJobsResponseOutput) ToDeploymentJobsResponseOutputWithContext(
 	return o
 }
 
-// The deploy Job. This is the first job run in the phase.
+// The deploy Job. This is the deploy job in the phase.
 func (o DeploymentJobsResponseOutput) DeployJob() JobResponseOutput {
 	return o.ApplyT(func(v DeploymentJobsResponse) JobResponse { return v.DeployJob }).(JobResponseOutput)
 }

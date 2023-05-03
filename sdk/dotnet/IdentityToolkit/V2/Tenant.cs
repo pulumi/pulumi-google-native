@@ -98,6 +98,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The tenant-level reCAPTCHA config.
+        /// </summary>
+        [Output("recaptchaConfig")]
+        public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse> RecaptchaConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configures which regions are enabled for SMS verification code sending.
         /// </summary>
         [Output("smsRegionConfig")]
@@ -226,6 +232,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The tenant-level reCAPTCHA config.
+        /// </summary>
+        [Input("recaptchaConfig")]
+        public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs>? RecaptchaConfig { get; set; }
 
         /// <summary>
         /// Configures which regions are enabled for SMS verification code sending.

@@ -2340,6 +2340,184 @@ func (o FhirConfigResponseOutput) FieldMetadataList() FieldMetadataResponseArray
 	return o.ApplyT(func(v FhirConfigResponse) []FieldMetadataResponse { return v.FieldMetadataList }).(FieldMetadataResponseArrayOutput)
 }
 
+// Contains the configuration for FHIR notifications.
+type FhirNotificationConfig struct {
+	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+	PubsubTopic *string `pulumi:"pubsubTopic"`
+	// Whether to send full FHIR resource to this Pub/Sub topic.
+	SendFullResource *bool `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete *bool `pulumi:"sendPreviousResourceOnDelete"`
+}
+
+// FhirNotificationConfigInput is an input type that accepts FhirNotificationConfigArgs and FhirNotificationConfigOutput values.
+// You can construct a concrete instance of `FhirNotificationConfigInput` via:
+//
+//	FhirNotificationConfigArgs{...}
+type FhirNotificationConfigInput interface {
+	pulumi.Input
+
+	ToFhirNotificationConfigOutput() FhirNotificationConfigOutput
+	ToFhirNotificationConfigOutputWithContext(context.Context) FhirNotificationConfigOutput
+}
+
+// Contains the configuration for FHIR notifications.
+type FhirNotificationConfigArgs struct {
+	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
+	// Whether to send full FHIR resource to this Pub/Sub topic.
+	SendFullResource pulumi.BoolPtrInput `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete pulumi.BoolPtrInput `pulumi:"sendPreviousResourceOnDelete"`
+}
+
+func (FhirNotificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirNotificationConfig)(nil)).Elem()
+}
+
+func (i FhirNotificationConfigArgs) ToFhirNotificationConfigOutput() FhirNotificationConfigOutput {
+	return i.ToFhirNotificationConfigOutputWithContext(context.Background())
+}
+
+func (i FhirNotificationConfigArgs) ToFhirNotificationConfigOutputWithContext(ctx context.Context) FhirNotificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirNotificationConfigOutput)
+}
+
+// FhirNotificationConfigArrayInput is an input type that accepts FhirNotificationConfigArray and FhirNotificationConfigArrayOutput values.
+// You can construct a concrete instance of `FhirNotificationConfigArrayInput` via:
+//
+//	FhirNotificationConfigArray{ FhirNotificationConfigArgs{...} }
+type FhirNotificationConfigArrayInput interface {
+	pulumi.Input
+
+	ToFhirNotificationConfigArrayOutput() FhirNotificationConfigArrayOutput
+	ToFhirNotificationConfigArrayOutputWithContext(context.Context) FhirNotificationConfigArrayOutput
+}
+
+type FhirNotificationConfigArray []FhirNotificationConfigInput
+
+func (FhirNotificationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirNotificationConfig)(nil)).Elem()
+}
+
+func (i FhirNotificationConfigArray) ToFhirNotificationConfigArrayOutput() FhirNotificationConfigArrayOutput {
+	return i.ToFhirNotificationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FhirNotificationConfigArray) ToFhirNotificationConfigArrayOutputWithContext(ctx context.Context) FhirNotificationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirNotificationConfigArrayOutput)
+}
+
+// Contains the configuration for FHIR notifications.
+type FhirNotificationConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirNotificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirNotificationConfig)(nil)).Elem()
+}
+
+func (o FhirNotificationConfigOutput) ToFhirNotificationConfigOutput() FhirNotificationConfigOutput {
+	return o
+}
+
+func (o FhirNotificationConfigOutput) ToFhirNotificationConfigOutputWithContext(ctx context.Context) FhirNotificationConfigOutput {
+	return o
+}
+
+// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+func (o FhirNotificationConfigOutput) PubsubTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirNotificationConfig) *string { return v.PubsubTopic }).(pulumi.StringPtrOutput)
+}
+
+// Whether to send full FHIR resource to this Pub/Sub topic.
+func (o FhirNotificationConfigOutput) SendFullResource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendFullResource }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+func (o FhirNotificationConfigOutput) SendPreviousResourceOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolPtrOutput)
+}
+
+type FhirNotificationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirNotificationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirNotificationConfig)(nil)).Elem()
+}
+
+func (o FhirNotificationConfigArrayOutput) ToFhirNotificationConfigArrayOutput() FhirNotificationConfigArrayOutput {
+	return o
+}
+
+func (o FhirNotificationConfigArrayOutput) ToFhirNotificationConfigArrayOutputWithContext(ctx context.Context) FhirNotificationConfigArrayOutput {
+	return o
+}
+
+func (o FhirNotificationConfigArrayOutput) Index(i pulumi.IntInput) FhirNotificationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirNotificationConfig {
+		return vs[0].([]FhirNotificationConfig)[vs[1].(int)]
+	}).(FhirNotificationConfigOutput)
+}
+
+// Contains the configuration for FHIR notifications.
+type FhirNotificationConfigResponse struct {
+	// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+	PubsubTopic string `pulumi:"pubsubTopic"`
+	// Whether to send full FHIR resource to this Pub/Sub topic.
+	SendFullResource bool `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete bool `pulumi:"sendPreviousResourceOnDelete"`
+}
+
+// Contains the configuration for FHIR notifications.
+type FhirNotificationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FhirNotificationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o FhirNotificationConfigResponseOutput) ToFhirNotificationConfigResponseOutput() FhirNotificationConfigResponseOutput {
+	return o
+}
+
+func (o FhirNotificationConfigResponseOutput) ToFhirNotificationConfigResponseOutputWithContext(ctx context.Context) FhirNotificationConfigResponseOutput {
+	return o
+}
+
+// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+func (o FhirNotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirNotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+// Whether to send full FHIR resource to this Pub/Sub topic.
+func (o FhirNotificationConfigResponseOutput) SendFullResource() pulumi.BoolOutput {
+	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendFullResource }).(pulumi.BoolOutput)
+}
+
+// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+func (o FhirNotificationConfigResponseOutput) SendPreviousResourceOnDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolOutput)
+}
+
+type FhirNotificationConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirNotificationConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o FhirNotificationConfigResponseArrayOutput) ToFhirNotificationConfigResponseArrayOutput() FhirNotificationConfigResponseArrayOutput {
+	return o
+}
+
+func (o FhirNotificationConfigResponseArrayOutput) ToFhirNotificationConfigResponseArrayOutputWithContext(ctx context.Context) FhirNotificationConfigResponseArrayOutput {
+	return o
+}
+
+func (o FhirNotificationConfigResponseArrayOutput) Index(i pulumi.IntInput) FhirNotificationConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirNotificationConfigResponse {
+		return vs[0].([]FhirNotificationConfigResponse)[vs[1].(int)]
+	}).(FhirNotificationConfigResponseOutput)
+}
+
 // A (sub) field of a type.
 type Field struct {
 	// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
@@ -7659,6 +7837,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigInput)(nil)).Elem(), FhirConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirConfigPtrInput)(nil)).Elem(), FhirConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirNotificationConfigInput)(nil)).Elem(), FhirNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirNotificationConfigArrayInput)(nil)).Elem(), FhirNotificationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldMetadataInput)(nil)).Elem(), FieldMetadataArgs{})
@@ -7754,6 +7934,10 @@ func init() {
 	pulumi.RegisterOutputType(FhirConfigOutput{})
 	pulumi.RegisterOutputType(FhirConfigPtrOutput{})
 	pulumi.RegisterOutputType(FhirConfigResponseOutput{})
+	pulumi.RegisterOutputType(FhirNotificationConfigOutput{})
+	pulumi.RegisterOutputType(FhirNotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(FhirNotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(FhirNotificationConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(FieldOutput{})
 	pulumi.RegisterOutputType(FieldArrayOutput{})
 	pulumi.RegisterOutputType(FieldMetadataOutput{})

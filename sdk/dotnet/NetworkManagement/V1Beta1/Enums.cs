@@ -70,11 +70,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
         /// </summary>
         public static EndpointNetworkType NetworkTypeUnspecified { get; } = new EndpointNetworkType("NETWORK_TYPE_UNSPECIFIED");
         /// <summary>
-        /// A network hosted within Google Cloud Platform. To receive more detailed output, specify the URI for the source or destination network.
+        /// A network hosted within Google Cloud. To receive more detailed output, specify the URI for the source or destination network.
         /// </summary>
         public static EndpointNetworkType GcpNetwork { get; } = new EndpointNetworkType("GCP_NETWORK");
         /// <summary>
-        /// A network hosted outside of Google Cloud Platform. This can be an on-premises network, or a network hosted by another cloud provider.
+        /// A network hosted outside of Google Cloud. This can be an on-premises network, or a network hosted by another cloud provider.
         /// </summary>
         public static EndpointNetworkType NonGcpNetwork { get; } = new EndpointNetworkType("NON_GCP_NETWORK");
 

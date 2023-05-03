@@ -30,8 +30,10 @@ type LookupDatabaseResult struct {
 	AppEngineIntegrationMode string `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode string `pulumi:"concurrencyMode"`
-	// The timestamp at which this database was created.
+	// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
 	CreateTime string `pulumi:"createTime"`
+	// State of delete protection for the database.
+	DeleteProtectionState string `pulumi:"deleteProtectionState"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// The key_prefix for this database. This key_prefix is used, in combination with the project id ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
@@ -94,9 +96,14 @@ func (o LookupDatabaseResultOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
 
-// The timestamp at which this database was created.
+// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
 func (o LookupDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// State of delete protection for the database.
+func (o LookupDatabaseResultOutput) DeleteProtectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DeleteProtectionState }).(pulumi.StringOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 {
     /// <summary>
-    /// The priority of this case. If this is set, do not set severity.
+    /// The priority of this case.
     /// </summary>
     [EnumType]
     public readonly struct CasePriority : IEquatable<CasePriority>
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
     }
 
     /// <summary>
-    /// The severity of this case. Deprecated. Use priority instead.
+    /// REMOVED. The severity of this case. Use priority instead.
     /// </summary>
     [EnumType]
     public readonly struct CaseSeverity : IEquatable<CaseSeverity>

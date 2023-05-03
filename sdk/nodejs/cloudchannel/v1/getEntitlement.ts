@@ -32,6 +32,10 @@ export interface GetEntitlementResult {
      */
     readonly associationInfo: outputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoResponse;
     /**
+     * Optional. The billing account resource name that is used to pay for this entitlement.
+     */
+    readonly billingAccount: string;
+    /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
     readonly commitmentSettings: outputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsResponse;

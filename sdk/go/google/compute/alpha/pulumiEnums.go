@@ -7850,6 +7850,8 @@ const (
 	ConfidentialInstanceConfigConfidentialInstanceTypeSev = ConfidentialInstanceConfigConfidentialInstanceType("SEV")
 	// AMD Secure Encrypted Virtualization - Secure Nested Paging.
 	ConfidentialInstanceConfigConfidentialInstanceTypeSevSnp = ConfidentialInstanceConfigConfidentialInstanceType("SEV_SNP")
+	// Intel Trust Domain eXtension.
+	ConfidentialInstanceConfigConfidentialInstanceTypeTdx = ConfidentialInstanceConfigConfidentialInstanceType("TDX")
 )
 
 func (ConfidentialInstanceConfigConfidentialInstanceType) ElementType() reflect.Type {
@@ -13275,6 +13277,7 @@ const (
 	GuestOsFeatureTypeSevCapable               = GuestOsFeatureType("SEV_CAPABLE")
 	GuestOsFeatureTypeSevLiveMigratable        = GuestOsFeatureType("SEV_LIVE_MIGRATABLE")
 	GuestOsFeatureTypeSevSnpCapable            = GuestOsFeatureType("SEV_SNP_CAPABLE")
+	GuestOsFeatureTypeTdxCapable               = GuestOsFeatureType("TDX_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible           = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue     = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
 	GuestOsFeatureTypeWindows                  = GuestOsFeatureType("WINDOWS")
@@ -25646,6 +25649,7 @@ const (
 	RegionCommitmentTypeComputeOptimized     = RegionCommitmentType("COMPUTE_OPTIMIZED")
 	RegionCommitmentTypeComputeOptimizedC2d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C2D")
 	RegionCommitmentTypeComputeOptimizedC3   = RegionCommitmentType("COMPUTE_OPTIMIZED_C3")
+	RegionCommitmentTypeComputeOptimizedC3d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C3D")
 	RegionCommitmentTypeGeneralPurpose       = RegionCommitmentType("GENERAL_PURPOSE")
 	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
@@ -34387,7 +34391,7 @@ func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingProvisioningModelPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility string
 
 const (

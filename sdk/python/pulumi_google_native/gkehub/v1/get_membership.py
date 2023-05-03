@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMembershipResult:
-    def __init__(__self__, authority=None, create_time=None, delete_time=None, description=None, endpoint=None, external_id=None, labels=None, last_connection_time=None, name=None, state=None, unique_id=None, update_time=None):
+    def __init__(__self__, authority=None, create_time=None, delete_time=None, description=None, endpoint=None, external_id=None, labels=None, last_connection_time=None, monitoring_config=None, name=None, state=None, unique_id=None, update_time=None):
         if authority and not isinstance(authority, dict):
             raise TypeError("Expected argument 'authority' to be a dict")
         pulumi.set(__self__, "authority", authority)
@@ -44,6 +44,9 @@ class GetMembershipResult:
         if last_connection_time and not isinstance(last_connection_time, str):
             raise TypeError("Expected argument 'last_connection_time' to be a str")
         pulumi.set(__self__, "last_connection_time", last_connection_time)
+        if monitoring_config and not isinstance(monitoring_config, dict):
+            raise TypeError("Expected argument 'monitoring_config' to be a dict")
+        pulumi.set(__self__, "monitoring_config", monitoring_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -109,7 +112,7 @@ class GetMembershipResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Optional. GCP labels for this membership.
+        Optional. Labels for this membership.
         """
         return pulumi.get(self, "labels")
 
@@ -120,6 +123,14 @@ class GetMembershipResult:
         For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
         """
         return pulumi.get(self, "last_connection_time")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> 'outputs.MonitoringConfigResponse':
+        """
+        Optional. The monitoring config information for this membership.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter
@@ -168,6 +179,7 @@ class AwaitableGetMembershipResult(GetMembershipResult):
             external_id=self.external_id,
             labels=self.labels,
             last_connection_time=self.last_connection_time,
+            monitoring_config=self.monitoring_config,
             name=self.name,
             state=self.state,
             unique_id=self.unique_id,
@@ -197,6 +209,7 @@ def get_membership(location: Optional[str] = None,
         external_id=__ret__.external_id,
         labels=__ret__.labels,
         last_connection_time=__ret__.last_connection_time,
+        monitoring_config=__ret__.monitoring_config,
         name=__ret__.name,
         state=__ret__.state,
         unique_id=__ret__.unique_id,

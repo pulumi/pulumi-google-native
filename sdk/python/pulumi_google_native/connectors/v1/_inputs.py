@@ -116,6 +116,7 @@ class AuditLogConfigArgs:
 class AuthConfigArgs:
     def __init__(__self__, *,
                  additional_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
+                 auth_key: Optional[pulumi.Input[str]] = None,
                  auth_type: Optional[pulumi.Input['AuthConfigAuthType']] = None,
                  oauth2_auth_code_flow: Optional[pulumi.Input['Oauth2AuthCodeFlowArgs']] = None,
                  oauth2_client_credentials: Optional[pulumi.Input['Oauth2ClientCredentialsArgs']] = None,
@@ -125,6 +126,7 @@ class AuthConfigArgs:
         """
         AuthConfig defines details of a authentication type.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] additional_variables: List containing additional auth configs.
+        :param pulumi.Input[str] auth_key: Identifier key for auth config
         :param pulumi.Input['AuthConfigAuthType'] auth_type: The type of authentication configured.
         :param pulumi.Input['Oauth2AuthCodeFlowArgs'] oauth2_auth_code_flow: Oauth2AuthCodeFlow.
         :param pulumi.Input['Oauth2ClientCredentialsArgs'] oauth2_client_credentials: Oauth2ClientCredentials.
@@ -134,6 +136,8 @@ class AuthConfigArgs:
         """
         if additional_variables is not None:
             pulumi.set(__self__, "additional_variables", additional_variables)
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
         if oauth2_auth_code_flow is not None:
@@ -158,6 +162,18 @@ class AuthConfigArgs:
     @additional_variables.setter
     def additional_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]]):
         pulumi.set(self, "additional_variables", value)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier key for auth config
+        """
+        return pulumi.get(self, "auth_key")
+
+    @auth_key.setter
+    def auth_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_key", value)
 
     @property
     @pulumi.getter(name="authType")

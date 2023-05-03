@@ -21,6 +21,8 @@ __all__ = [
     'CommonFleetDefaultMemberConfigSpecArgs',
     'ExprArgs',
     'FleetObservabilityFeatureSpecArgs',
+    'FleetObservabilityLoggingConfigArgs',
+    'FleetObservabilityRoutingConfigArgs',
     'IdentityServiceAuthMethodArgs',
     'IdentityServiceAzureADConfigArgs',
     'IdentityServiceGoogleConfigArgs',
@@ -425,11 +427,90 @@ class ExprArgs:
 
 @pulumi.input_type
 class FleetObservabilityFeatureSpecArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 logging_config: Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']] = None):
         """
         **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        :param pulumi.Input['FleetObservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         """
-        pass
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']]:
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['FleetObservabilityLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+
+@pulumi.input_type
+class FleetObservabilityLoggingConfigArgs:
+    def __init__(__self__, *,
+                 default_config: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']] = None,
+                 fleet_scope_logs_config: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']] = None):
+        """
+        LoggingConfig defines the configuration for different types of logs.
+        :param pulumi.Input['FleetObservabilityRoutingConfigArgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param pulumi.Input['FleetObservabilityRoutingConfigArgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        if default_config is not None:
+            pulumi.set(__self__, "default_config", default_config)
+        if fleet_scope_logs_config is not None:
+            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]:
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        """
+        return pulumi.get(self, "default_config")
+
+    @default_config.setter
+    def default_config(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]):
+        pulumi.set(self, "default_config", value)
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]:
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+    @fleet_scope_logs_config.setter
+    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigArgs']]):
+        pulumi.set(self, "fleet_scope_logs_config", value)
+
+
+@pulumi.input_type
+class FleetObservabilityRoutingConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']] = None):
+        """
+        RoutingConfig configures the behaviour of fleet logging feature.
+        :param pulumi.Input['FleetObservabilityRoutingConfigMode'] mode: mode configures the logs routing mode.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']]:
+        """
+        mode configures the logs routing mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['FleetObservabilityRoutingConfigMode']]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type

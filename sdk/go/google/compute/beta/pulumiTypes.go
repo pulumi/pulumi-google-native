@@ -2111,6 +2111,8 @@ type AttachedDiskInitializeParams struct {
 	ProvisionedIops *string `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2162,6 +2164,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput pulumi.StringPtrInput `pulumi:"provisionedThroughput"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2314,6 +2318,11 @@ func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOu
 // Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 func (o AttachedDiskInitializeParamsOutput) ProvisionedThroughput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedThroughput }).(pulumi.StringPtrOutput)
+}
+
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
 
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -2490,6 +2499,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedThroughput() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaZones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 func (o AttachedDiskInitializeParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) map[string]string {
@@ -2576,6 +2595,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	ProvisionedIops string `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2663,6 +2684,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.Str
 // Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedThroughput() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
+}
+
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsResponseOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
 
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -12860,6 +12886,8 @@ type ExternalVpnGatewayInterface struct {
 	Id *int `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address *string `pulumi:"ipv6Address"`
 }
 
 // ExternalVpnGatewayInterfaceInput is an input type that accepts ExternalVpnGatewayInterfaceArgs and ExternalVpnGatewayInterfaceOutput values.
@@ -12879,6 +12907,8 @@ type ExternalVpnGatewayInterfaceArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 }
 
 func (ExternalVpnGatewayInterfaceArgs) ElementType() reflect.Type {
@@ -12943,6 +12973,11 @@ func (o ExternalVpnGatewayInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalVpnGatewayInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o ExternalVpnGatewayInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
 type ExternalVpnGatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayInterfaceArrayOutput) ElementType() reflect.Type {
@@ -12967,6 +13002,8 @@ func (o ExternalVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) Externa
 type ExternalVpnGatewayInterfaceResponse struct {
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address string `pulumi:"ipv6Address"`
 }
 
 // The interface for the external VPN gateway.
@@ -12987,6 +13024,11 @@ func (o ExternalVpnGatewayInterfaceResponseOutput) ToExternalVpnGatewayInterface
 // IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 func (o ExternalVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o ExternalVpnGatewayInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 type ExternalVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -25934,7 +25976,7 @@ type NetworkAttachmentConnectedEndpointResponse struct {
 	IpAddress string `pulumi:"ipAddress"`
 	// The project id or number of the interface to which the IP was assigned.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
-	// Alias IP ranges from the same subnetwork
+	// Alias IP ranges from the same subnetwork.
 	SecondaryIpCidrRanges []string `pulumi:"secondaryIpCidrRanges"`
 	// The status of a connected endpoint to this network attachment.
 	Status string `pulumi:"status"`
@@ -25967,7 +26009,7 @@ func (o NetworkAttachmentConnectedEndpointResponseOutput) ProjectIdOrNum() pulum
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
 }
 
-// Alias IP ranges from the same subnetwork
+// Alias IP ranges from the same subnetwork.
 func (o NetworkAttachmentConnectedEndpointResponseOutput) SecondaryIpCidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) []string { return v.SecondaryIpCidrRanges }).(pulumi.StringArrayOutput)
 }
@@ -35489,6 +35531,10 @@ type RouterBgpPeer struct {
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd *RouterBgpPeerBfd `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges []RouterBgpPeerCustomLearnedIpRange `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable *RouterBgpPeerEnable `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -35535,6 +35581,10 @@ type RouterBgpPeerArgs struct {
 	AdvertisedRoutePriority pulumi.IntPtrInput `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd RouterBgpPeerBfdPtrInput `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges RouterBgpPeerCustomLearnedIpRangeArrayInput `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority pulumi.IntPtrInput `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable RouterBgpPeerEnablePtrInput `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -35633,6 +35683,16 @@ func (o RouterBgpPeerOutput) AdvertisedRoutePriority() pulumi.IntPtrOutput {
 // BFD configuration for the BGP peering.
 func (o RouterBgpPeerOutput) Bfd() RouterBgpPeerBfdPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerBfd { return v.Bfd }).(RouterBgpPeerBfdPtrOutput)
+}
+
+// A list of user-defined custom learned route IP address ranges for a BGP session.
+func (o RouterBgpPeerOutput) CustomLearnedIpRanges() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []RouterBgpPeerCustomLearnedIpRange { return v.CustomLearnedIpRanges }).(RouterBgpPeerCustomLearnedIpRangeArrayOutput)
+}
+
+// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+func (o RouterBgpPeerOutput) CustomLearnedRoutePriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *int { return v.CustomLearnedRoutePriority }).(pulumi.IntPtrOutput)
 }
 
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
@@ -35951,6 +36011,147 @@ func (o RouterBgpPeerBfdResponseOutput) SessionInitializationMode() pulumi.Strin
 	return o.ApplyT(func(v RouterBgpPeerBfdResponse) string { return v.SessionInitializationMode }).(pulumi.StringOutput)
 }
 
+type RouterBgpPeerCustomLearnedIpRange struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range *string `pulumi:"range"`
+}
+
+// RouterBgpPeerCustomLearnedIpRangeInput is an input type that accepts RouterBgpPeerCustomLearnedIpRangeArgs and RouterBgpPeerCustomLearnedIpRangeOutput values.
+// You can construct a concrete instance of `RouterBgpPeerCustomLearnedIpRangeInput` via:
+//
+//	RouterBgpPeerCustomLearnedIpRangeArgs{...}
+type RouterBgpPeerCustomLearnedIpRangeInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput
+	ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(context.Context) RouterBgpPeerCustomLearnedIpRangeOutput
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArgs struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (RouterBgpPeerCustomLearnedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArgs) ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput {
+	return i.ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArgs) ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerCustomLearnedIpRangeOutput)
+}
+
+// RouterBgpPeerCustomLearnedIpRangeArrayInput is an input type that accepts RouterBgpPeerCustomLearnedIpRangeArray and RouterBgpPeerCustomLearnedIpRangeArrayOutput values.
+// You can construct a concrete instance of `RouterBgpPeerCustomLearnedIpRangeArrayInput` via:
+//
+//	RouterBgpPeerCustomLearnedIpRangeArray{ RouterBgpPeerCustomLearnedIpRangeArgs{...} }
+type RouterBgpPeerCustomLearnedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput
+	ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArray []RouterBgpPeerCustomLearnedIpRangeInput
+
+func (RouterBgpPeerCustomLearnedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArray) ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return i.ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArray) ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerCustomLearnedIpRangeArrayOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerCustomLearnedIpRange) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerCustomLearnedIpRange {
+		return vs[0].([]RouterBgpPeerCustomLearnedIpRange)[vs[1].(int)]
+	}).(RouterBgpPeerCustomLearnedIpRangeOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponse struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range string `pulumi:"range"`
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeResponse)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseOutput() RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return o
+}
+
+// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerCustomLearnedIpRangeResponse) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRangeResponse)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseArrayOutput() RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerCustomLearnedIpRangeResponse {
+		return vs[0].([]RouterBgpPeerCustomLearnedIpRangeResponse)[vs[1].(int)]
+	}).(RouterBgpPeerCustomLearnedIpRangeResponseOutput)
+}
+
 type RouterBgpPeerResponse struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode string `pulumi:"advertiseMode"`
@@ -35962,6 +36163,10 @@ type RouterBgpPeerResponse struct {
 	AdvertisedRoutePriority int `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd RouterBgpPeerBfdResponse `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges []RouterBgpPeerCustomLearnedIpRangeResponse `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable string `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -36025,6 +36230,18 @@ func (o RouterBgpPeerResponseOutput) AdvertisedRoutePriority() pulumi.IntOutput 
 // BFD configuration for the BGP peering.
 func (o RouterBgpPeerResponseOutput) Bfd() RouterBgpPeerBfdResponseOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) RouterBgpPeerBfdResponse { return v.Bfd }).(RouterBgpPeerBfdResponseOutput)
+}
+
+// A list of user-defined custom learned route IP address ranges for a BGP session.
+func (o RouterBgpPeerResponseOutput) CustomLearnedIpRanges() RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []RouterBgpPeerCustomLearnedIpRangeResponse {
+		return v.CustomLearnedIpRanges
+	}).(RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput)
+}
+
+// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+func (o RouterBgpPeerResponseOutput) CustomLearnedRoutePriority() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) int { return v.CustomLearnedRoutePriority }).(pulumi.IntOutput)
 }
 
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
@@ -36562,6 +36779,8 @@ func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) 
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNat struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier *RouterNatAutoNetworkTier `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -36612,6 +36831,8 @@ type RouterNatInput interface {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatArgs struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier RouterNatAutoNetworkTierPtrInput `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps pulumi.StringArrayInput `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -36699,6 +36920,11 @@ func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
 
 func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return o
+}
+
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+func (o RouterNatOutput) AutoNetworkTier() RouterNatAutoNetworkTierPtrOutput {
+	return o.ApplyT(func(v RouterNat) *RouterNatAutoNetworkTier { return v.AutoNetworkTier }).(RouterNatAutoNetworkTierPtrOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
@@ -37004,6 +37230,8 @@ func (o RouterNatLogConfigResponseOutput) Filter() pulumi.StringOutput {
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
 type RouterNatResponse struct {
+	// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+	AutoNetworkTier string `pulumi:"autoNetworkTier"`
 	// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
 	DrainNatIps []string `pulumi:"drainNatIps"`
 	// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config.
@@ -37054,6 +37282,11 @@ func (o RouterNatResponseOutput) ToRouterNatResponseOutput() RouterNatResponseOu
 
 func (o RouterNatResponseOutput) ToRouterNatResponseOutputWithContext(ctx context.Context) RouterNatResponseOutput {
 	return o
+}
+
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+func (o RouterNatResponseOutput) AutoNetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterNatResponse) string { return v.AutoNetworkTier }).(pulumi.StringOutput)
 }
 
 // A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
@@ -39620,11 +39853,11 @@ func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) Lo
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) float64 { return v.LoadThreshold }).(pulumi.Float64Output)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable *bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility `pulumi:"ruleVisibility"`
 }
 
@@ -39639,11 +39872,11 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interfac
 	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrInput `pulumi:"ruleVisibility"`
 }
 
@@ -39700,7 +39933,7 @@ func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
@@ -39725,12 +39958,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToS
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		return v.RuleVisibility
@@ -39761,7 +39994,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool {
 		if v == nil {
@@ -39771,7 +40004,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		if v == nil {
@@ -39781,15 +40014,15 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility string `pulumi:"ruleVisibility"`
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) ElementType() reflect.Type {
@@ -39804,12 +40037,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOut
 	return o
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) RuleVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) string {
 		return v.RuleVisibility
@@ -40576,7 +40809,7 @@ func (o SecurityPolicyDdosProtectionConfigResponseOutput) DdosProtection() pulum
 }
 
 type SecurityPolicyRecaptchaOptionsConfig struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
 }
 
@@ -40592,7 +40825,7 @@ type SecurityPolicyRecaptchaOptionsConfigInput interface {
 }
 
 type SecurityPolicyRecaptchaOptionsConfigArgs struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey pulumi.StringPtrInput `pulumi:"redirectSiteKey"`
 }
 
@@ -40673,7 +40906,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOpt
 	}).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfig) *string { return v.RedirectSiteKey }).(pulumi.StringPtrOutput)
 }
@@ -40702,7 +40935,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) Elem() SecurityPolicyReca
 	}).(SecurityPolicyRecaptchaOptionsConfigOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) *string {
 		if v == nil {
@@ -40713,7 +40946,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.
 }
 
 type SecurityPolicyRecaptchaOptionsConfigResponse struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey string `pulumi:"redirectSiteKey"`
 }
 
@@ -40731,14 +40964,14 @@ func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyReca
 	return o
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -40746,7 +40979,7 @@ type SecurityPolicyRule struct {
 	Direction *SecurityPolicyRuleDirection `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging *bool `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
@@ -40758,7 +40991,7 @@ type SecurityPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
 	RuleNumber *string `pulumi:"ruleNumber"`
@@ -40781,7 +41014,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -40789,7 +41022,7 @@ type SecurityPolicyRuleArgs struct {
 	Direction SecurityPolicyRuleDirectionPtrInput `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
@@ -40801,7 +41034,7 @@ type SecurityPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
 	RuleNumber pulumi.StringPtrInput `pulumi:"ruleNumber"`
@@ -40863,7 +41096,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -40883,7 +41116,7 @@ func (o SecurityPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleHttpHeaderAction { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
 }
@@ -40913,7 +41146,7 @@ func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimit
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRedirectOptions { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
@@ -41279,7 +41512,7 @@ func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) RequestHeadersToAdds()
 type SecurityPolicyRuleMatcher struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr *Expr `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
@@ -41300,7 +41533,7 @@ type SecurityPolicyRuleMatcherInput interface {
 type SecurityPolicyRuleMatcherArgs struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprPtrInput `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
@@ -41389,7 +41622,7 @@ func (o SecurityPolicyRuleMatcherOutput) Config() SecurityPolicyRuleMatcherConfi
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig { return v.Config }).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
 }
@@ -41433,7 +41666,7 @@ func (o SecurityPolicyRuleMatcherPtrOutput) Config() SecurityPolicyRuleMatcherCo
 	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *Expr {
 		if v == nil {
@@ -41831,7 +42064,7 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 type SecurityPolicyRuleMatcherResponse struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprResponse `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr string `pulumi:"versionedExpr"`
@@ -41857,7 +42090,7 @@ func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatc
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherConfigResponse { return v.Config }).(SecurityPolicyRuleMatcherConfigResponseOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
 }
@@ -42441,9 +42674,9 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction *string `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
@@ -42473,9 +42706,9 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
@@ -42594,12 +42827,12 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		return v.ExceedRedirectOptions
@@ -42697,7 +42930,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -42707,7 +42940,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		if v == nil {
@@ -42899,9 +43132,9 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction string `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
@@ -42955,12 +43188,12 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pul
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
 		return v.ExceedRedirectOptions
@@ -43350,7 +43583,7 @@ func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOut
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponse struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -43358,7 +43591,7 @@ type SecurityPolicyRuleResponse struct {
 	Direction string `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging bool `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionResponse `pulumi:"headerAction"`
 	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
 	Kind string `pulumi:"kind"`
@@ -43372,7 +43605,7 @@ type SecurityPolicyRuleResponse struct {
 	Priority int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponse `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"redirectOptions"`
 	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
 	RuleNumber string `pulumi:"ruleNumber"`
@@ -43399,7 +43632,7 @@ func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -43419,7 +43652,7 @@ func (o SecurityPolicyRuleResponseOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) bool { return v.EnableLogging }).(pulumi.BoolOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleHttpHeaderActionResponse { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionResponseOutput)
 }
@@ -43458,7 +43691,7 @@ func (o SecurityPolicyRuleResponseOutput) RateLimitOptions() SecurityPolicyRuleR
 	}).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRedirectOptionsResponse { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsResponseOutput)
 }
@@ -48475,6 +48708,8 @@ type VpnGatewayVpnGatewayInterfaceResponse struct {
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
 	// IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address string `pulumi:"ipv6Address"`
 }
 
 // A VPN gateway interface.
@@ -48500,6 +48735,11 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pu
 // IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o VpnGatewayVpnGatewayInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 type VpnGatewayVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -49014,6 +49254,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerArrayInput)(nil)).Elem(), RouterBgpPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeInput)(nil)).Elem(), RouterBgpPeerCustomLearnedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeArrayInput)(nil)).Elem(), RouterBgpPeerCustomLearnedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyInput)(nil)).Elem(), RouterMd5AuthenticationKeyArgs{})
@@ -49689,6 +49931,10 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerBfdPtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerBfdResponseOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeResponseOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterBgpResponseOutput{})

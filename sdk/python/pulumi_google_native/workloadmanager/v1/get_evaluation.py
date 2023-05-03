@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEvaluationResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, resource_filter=None, resource_status=None, rule_names=None, rule_versions=None, schedule=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -44,6 +44,9 @@ class GetEvaluationResult:
         if rule_versions and not isinstance(rule_versions, list):
             raise TypeError("Expected argument 'rule_versions' to be a list")
         pulumi.set(__self__, "rule_versions", rule_versions)
+        if schedule and not isinstance(schedule, str):
+            raise TypeError("Expected argument 'schedule' to be a str")
+        pulumi.set(__self__, "schedule", schedule)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -113,6 +116,14 @@ class GetEvaluationResult:
         return pulumi.get(self, "rule_versions")
 
     @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -135,6 +146,7 @@ class AwaitableGetEvaluationResult(GetEvaluationResult):
             resource_status=self.resource_status,
             rule_names=self.rule_names,
             rule_versions=self.rule_versions,
+            schedule=self.schedule,
             update_time=self.update_time)
 
 
@@ -161,6 +173,7 @@ def get_evaluation(evaluation_id: Optional[str] = None,
         resource_status=__ret__.resource_status,
         rule_names=__ret__.rule_names,
         rule_versions=__ret__.rule_versions,
+        schedule=__ret__.schedule,
         update_time=__ret__.update_time)
 
 

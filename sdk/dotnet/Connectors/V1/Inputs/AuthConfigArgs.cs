@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         }
 
         /// <summary>
+        /// Identifier key for auth config
+        /// </summary>
+        [Input("authKey")]
+        public Input<string>? AuthKey { get; set; }
+
+        /// <summary>
         /// The type of authentication configured.
         /// </summary>
         [Input("authType")]

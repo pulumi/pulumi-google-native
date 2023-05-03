@@ -49,6 +49,7 @@ class RegionDiskArgs:
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_pool: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['RegionDiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -84,6 +85,7 @@ class RegionDiskArgs:
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        :param pulumi.Input[str] storage_pool: The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
         :param pulumi.Input['RegionDiskStorageType'] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
@@ -154,6 +156,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_storage_object is not None:
             pulumi.set(__self__, "source_storage_object", source_storage_object)
+        if storage_pool is not None:
+            pulumi.set(__self__, "storage_pool", storage_pool)
         if storage_type is not None:
             warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
             pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
@@ -543,6 +547,18 @@ class RegionDiskArgs:
         pulumi.set(self, "source_storage_object", value)
 
     @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        """
+        return pulumi.get(self, "storage_pool")
+
+    @storage_pool.setter
+    def storage_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_pool", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input['RegionDiskStorageType']]:
         """
@@ -616,6 +632,7 @@ class RegionDisk(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_pool: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['RegionDiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -655,6 +672,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        :param pulumi.Input[str] storage_pool: The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
         :param pulumi.Input['RegionDiskStorageType'] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
@@ -715,6 +733,7 @@ class RegionDisk(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_pool: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input['RegionDiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -764,6 +783,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot"] = source_snapshot
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_storage_object"] = source_storage_object
+            __props__.__dict__["storage_pool"] = storage_pool
             if storage_type is not None and not opts.urn:
                 warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
                 pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
@@ -864,6 +884,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["source_snapshot_id"] = None
         __props__.__dict__["source_storage_object"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["storage_pool"] = None
         __props__.__dict__["storage_type"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_licenses"] = None
@@ -1264,6 +1285,14 @@ class RegionDisk(pulumi.CustomResource):
         The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> pulumi.Output[str]:
+        """
+        The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        """
+        return pulumi.get(self, "storage_pool")
 
     @property
     @pulumi.getter(name="storageType")

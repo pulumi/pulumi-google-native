@@ -186,7 +186,7 @@
       }
     }
   },
-  "revision": "20230405",
+  "revision": "20230501",
   "rootUrl": "https://firebasehosting.googleapis.com/",
   "schemas": {
     "CancelOperationRequest": {

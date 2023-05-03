@@ -6389,7 +6389,7 @@ type GoogleCloudDocumentaiV1Document struct {
 	TextChanges []GoogleCloudDocumentaiV1DocumentTextChange `pulumi:"textChanges"`
 	// Styles for the Document.text.
 	TextStyles []GoogleCloudDocumentaiV1DocumentStyle `pulumi:"textStyles"`
-	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 	Uri *string `pulumi:"uri"`
 }
 
@@ -6428,7 +6428,7 @@ type GoogleCloudDocumentaiV1DocumentArgs struct {
 	TextChanges GoogleCloudDocumentaiV1DocumentTextChangeArrayInput `pulumi:"textChanges"`
 	// Styles for the Document.text.
 	TextStyles GoogleCloudDocumentaiV1DocumentStyleArrayInput `pulumi:"textStyles"`
-	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -6569,7 +6569,7 @@ func (o GoogleCloudDocumentaiV1DocumentOutput) TextStyles() GoogleCloudDocumenta
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) []GoogleCloudDocumentaiV1DocumentStyle { return v.TextStyles }).(GoogleCloudDocumentaiV1DocumentStyleArrayOutput)
 }
 
-// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 func (o GoogleCloudDocumentaiV1DocumentOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -6708,7 +6708,7 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) TextStyles() GoogleCloudDocume
 	}).(GoogleCloudDocumentaiV1DocumentStyleArrayOutput)
 }
 
-// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Document) *string {
 		if v == nil {
@@ -11659,6 +11659,8 @@ type GoogleCloudDocumentaiV1DocumentPageToken struct {
 	Layout *GoogleCloudDocumentaiV1DocumentPageLayout `pulumi:"layout"`
 	// The history of this annotation.
 	Provenance *GoogleCloudDocumentaiV1DocumentProvenance `pulumi:"provenance"`
+	// Text style attributes.
+	StyleInfo *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo `pulumi:"styleInfo"`
 }
 
 // GoogleCloudDocumentaiV1DocumentPageTokenInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTokenArgs and GoogleCloudDocumentaiV1DocumentPageTokenOutput values.
@@ -11682,6 +11684,8 @@ type GoogleCloudDocumentaiV1DocumentPageTokenArgs struct {
 	Layout GoogleCloudDocumentaiV1DocumentPageLayoutPtrInput `pulumi:"layout"`
 	// The history of this annotation.
 	Provenance GoogleCloudDocumentaiV1DocumentProvenancePtrInput `pulumi:"provenance"`
+	// Text style attributes.
+	StyleInfo GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput `pulumi:"styleInfo"`
 }
 
 func (GoogleCloudDocumentaiV1DocumentPageTokenArgs) ElementType() reflect.Type {
@@ -11762,6 +11766,13 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenOutput) Provenance() GoogleCloud
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageToken) *GoogleCloudDocumentaiV1DocumentProvenance {
 		return v.Provenance
 	}).(GoogleCloudDocumentaiV1DocumentProvenancePtrOutput)
+}
+
+// Text style attributes.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenOutput) StyleInfo() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageToken) *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
+		return v.StyleInfo
+	}).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput)
 }
 
 type GoogleCloudDocumentaiV1DocumentPageTokenArrayOutput struct{ *pulumi.OutputState }
@@ -11962,6 +11973,8 @@ type GoogleCloudDocumentaiV1DocumentPageTokenResponse struct {
 	Layout GoogleCloudDocumentaiV1DocumentPageLayoutResponse `pulumi:"layout"`
 	// The history of this annotation.
 	Provenance GoogleCloudDocumentaiV1DocumentProvenanceResponse `pulumi:"provenance"`
+	// Text style attributes.
+	StyleInfo GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse `pulumi:"styleInfo"`
 }
 
 // A detected token.
@@ -12007,6 +12020,13 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput) Provenance() Goo
 	}).(GoogleCloudDocumentaiV1DocumentProvenanceResponseOutput)
 }
 
+// Text style attributes.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput) StyleInfo() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenResponse) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse {
+		return v.StyleInfo
+	}).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput)
+}
+
 type GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) ElementType() reflect.Type {
@@ -12025,6 +12045,540 @@ func (o GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDocumentaiV1DocumentPageTokenResponse {
 		return vs[0].([]GoogleCloudDocumentaiV1DocumentPageTokenResponse)[vs[1].(int)]
 	}).(GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput)
+}
+
+// Font and other text style attributes.
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo struct {
+	// Color of the background.
+	BackgroundColor *GoogleTypeColor `pulumi:"backgroundColor"`
+	// Whether the text is bold (equivalent to font_weight is at least `700`).
+	Bold *bool `pulumi:"bold"`
+	// Font size in points (`1` point is `¹⁄₇₂` inches).
+	FontSize *int `pulumi:"fontSize"`
+	// Name or style of the font.
+	FontType *string `pulumi:"fontType"`
+	// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+	FontWeight *int `pulumi:"fontWeight"`
+	// Whether the text is handwritten.
+	Handwritten *bool `pulumi:"handwritten"`
+	// Whether the text is italic.
+	Italic *bool `pulumi:"italic"`
+	// Letter spacing in points.
+	LetterSpacing *float64 `pulumi:"letterSpacing"`
+	// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+	PixelFontSize *float64 `pulumi:"pixelFontSize"`
+	// Whether the text is in small caps.
+	Smallcaps *bool `pulumi:"smallcaps"`
+	// Whether the text is strikethrough.
+	Strikeout *bool `pulumi:"strikeout"`
+	// Whether the text is a subscript.
+	Subscript *bool `pulumi:"subscript"`
+	// Whether the text is a superscript.
+	Superscript *bool `pulumi:"superscript"`
+	// Color of the text.
+	TextColor *GoogleTypeColor `pulumi:"textColor"`
+	// Whether the text is underlined.
+	Underlined *bool `pulumi:"underlined"`
+}
+
+// GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs and GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoInput` via:
+//
+//	GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs{...}
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput
+	ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutputWithContext(context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput
+}
+
+// Font and other text style attributes.
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs struct {
+	// Color of the background.
+	BackgroundColor GoogleTypeColorPtrInput `pulumi:"backgroundColor"`
+	// Whether the text is bold (equivalent to font_weight is at least `700`).
+	Bold pulumi.BoolPtrInput `pulumi:"bold"`
+	// Font size in points (`1` point is `¹⁄₇₂` inches).
+	FontSize pulumi.IntPtrInput `pulumi:"fontSize"`
+	// Name or style of the font.
+	FontType pulumi.StringPtrInput `pulumi:"fontType"`
+	// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+	FontWeight pulumi.IntPtrInput `pulumi:"fontWeight"`
+	// Whether the text is handwritten.
+	Handwritten pulumi.BoolPtrInput `pulumi:"handwritten"`
+	// Whether the text is italic.
+	Italic pulumi.BoolPtrInput `pulumi:"italic"`
+	// Letter spacing in points.
+	LetterSpacing pulumi.Float64PtrInput `pulumi:"letterSpacing"`
+	// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+	PixelFontSize pulumi.Float64PtrInput `pulumi:"pixelFontSize"`
+	// Whether the text is in small caps.
+	Smallcaps pulumi.BoolPtrInput `pulumi:"smallcaps"`
+	// Whether the text is strikethrough.
+	Strikeout pulumi.BoolPtrInput `pulumi:"strikeout"`
+	// Whether the text is a subscript.
+	Subscript pulumi.BoolPtrInput `pulumi:"subscript"`
+	// Whether the text is a superscript.
+	Superscript pulumi.BoolPtrInput `pulumi:"superscript"`
+	// Color of the text.
+	TextColor GoogleTypeColorPtrInput `pulumi:"textColor"`
+	// Whether the text is underlined.
+	Underlined pulumi.BoolPtrInput `pulumi:"underlined"`
+}
+
+func (GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
+	return i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput)
+}
+
+func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput).ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput is an input type that accepts GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs, GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtr and GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput` via:
+//
+//	        GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput
+	ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput
+}
+
+type googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs
+
+func GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtr(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput {
+	return (*googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType)(v)
+}
+
+func (*googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo)(nil)).Elem()
+}
+
+func (i *googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return i.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrType) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput)
+}
+
+// Font and other text style attributes.
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
+	return o
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
+	return o
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return o.ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
+		return &v
+	}).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput)
+}
+
+// Color of the background.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) BackgroundColor() GoogleTypeColorPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleTypeColor { return v.BackgroundColor }).(GoogleTypeColorPtrOutput)
+}
+
+// Whether the text is bold (equivalent to font_weight is at least `700`).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Bold }).(pulumi.BoolPtrOutput)
+}
+
+// Font size in points (`1` point is `¹⁄₇₂` inches).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) FontSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *int { return v.FontSize }).(pulumi.IntPtrOutput)
+}
+
+// Name or style of the font.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) FontType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *string { return v.FontType }).(pulumi.StringPtrOutput)
+}
+
+// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) FontWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *int { return v.FontWeight }).(pulumi.IntPtrOutput)
+}
+
+// Whether the text is handwritten.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Handwritten() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Handwritten }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is italic.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Italic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Italic }).(pulumi.BoolPtrOutput)
+}
+
+// Letter spacing in points.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) LetterSpacing() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *float64 { return v.LetterSpacing }).(pulumi.Float64PtrOutput)
+}
+
+// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) PixelFontSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *float64 { return v.PixelFontSize }).(pulumi.Float64PtrOutput)
+}
+
+// Whether the text is in small caps.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Smallcaps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Smallcaps }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is strikethrough.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Strikeout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Strikeout }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is a subscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Subscript() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Subscript }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is a superscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Superscript() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Superscript }).(pulumi.BoolPtrOutput)
+}
+
+// Color of the text.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) TextColor() GoogleTypeColorPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleTypeColor { return v.TextColor }).(GoogleTypeColorPtrOutput)
+}
+
+// Whether the text is underlined.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput) Underlined() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool { return v.Underlined }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Elem() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo
+		return ret
+	}).(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput)
+}
+
+// Color of the background.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) BackgroundColor() GoogleTypeColorPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleTypeColor {
+		if v == nil {
+			return nil
+		}
+		return v.BackgroundColor
+	}).(GoogleTypeColorPtrOutput)
+}
+
+// Whether the text is bold (equivalent to font_weight is at least `700`).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Bold() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bold
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Font size in points (`1` point is `¹⁄₇₂` inches).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) FontSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FontSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Name or style of the font.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) FontType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FontType
+	}).(pulumi.StringPtrOutput)
+}
+
+// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) FontWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FontWeight
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the text is handwritten.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Handwritten() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Handwritten
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is italic.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Italic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Italic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Letter spacing in points.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) LetterSpacing() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LetterSpacing
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) PixelFontSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PixelFontSize
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Whether the text is in small caps.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Smallcaps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Smallcaps
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is strikethrough.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Strikeout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Strikeout
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is a subscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Subscript() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Subscript
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the text is a superscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Superscript() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Superscript
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Color of the text.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) TextColor() GoogleTypeColorPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *GoogleTypeColor {
+		if v == nil {
+			return nil
+		}
+		return v.TextColor
+	}).(GoogleTypeColorPtrOutput)
+}
+
+// Whether the text is underlined.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput) Underlined() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Underlined
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Font and other text style attributes.
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse struct {
+	// Color of the background.
+	BackgroundColor GoogleTypeColorResponse `pulumi:"backgroundColor"`
+	// Whether the text is bold (equivalent to font_weight is at least `700`).
+	Bold bool `pulumi:"bold"`
+	// Font size in points (`1` point is `¹⁄₇₂` inches).
+	FontSize int `pulumi:"fontSize"`
+	// Name or style of the font.
+	FontType string `pulumi:"fontType"`
+	// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+	FontWeight int `pulumi:"fontWeight"`
+	// Whether the text is handwritten.
+	Handwritten bool `pulumi:"handwritten"`
+	// Whether the text is italic.
+	Italic bool `pulumi:"italic"`
+	// Letter spacing in points.
+	LetterSpacing float64 `pulumi:"letterSpacing"`
+	// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+	PixelFontSize float64 `pulumi:"pixelFontSize"`
+	// Whether the text is in small caps.
+	Smallcaps bool `pulumi:"smallcaps"`
+	// Whether the text is strikethrough.
+	Strikeout bool `pulumi:"strikeout"`
+	// Whether the text is a subscript.
+	Subscript bool `pulumi:"subscript"`
+	// Whether the text is a superscript.
+	Superscript bool `pulumi:"superscript"`
+	// Color of the text.
+	TextColor GoogleTypeColorResponse `pulumi:"textColor"`
+	// Whether the text is underlined.
+	Underlined bool `pulumi:"underlined"`
+}
+
+// Font and other text style attributes.
+type GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput() GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) ToGoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput {
+	return o
+}
+
+// Color of the background.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) BackgroundColor() GoogleTypeColorResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) GoogleTypeColorResponse {
+		return v.BackgroundColor
+	}).(GoogleTypeColorResponseOutput)
+}
+
+// Whether the text is bold (equivalent to font_weight is at least `700`).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Bold() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Bold }).(pulumi.BoolOutput)
+}
+
+// Font size in points (`1` point is `¹⁄₇₂` inches).
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) FontSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) int { return v.FontSize }).(pulumi.IntOutput)
+}
+
+// Name or style of the font.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) FontType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) string { return v.FontType }).(pulumi.StringOutput)
+}
+
+// TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) FontWeight() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) int { return v.FontWeight }).(pulumi.IntOutput)
+}
+
+// Whether the text is handwritten.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Handwritten() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Handwritten }).(pulumi.BoolOutput)
+}
+
+// Whether the text is italic.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Italic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Italic }).(pulumi.BoolOutput)
+}
+
+// Letter spacing in points.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) LetterSpacing() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) float64 { return v.LetterSpacing }).(pulumi.Float64Output)
+}
+
+// Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) PixelFontSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) float64 { return v.PixelFontSize }).(pulumi.Float64Output)
+}
+
+// Whether the text is in small caps.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Smallcaps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Smallcaps }).(pulumi.BoolOutput)
+}
+
+// Whether the text is strikethrough.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Strikeout() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Strikeout }).(pulumi.BoolOutput)
+}
+
+// Whether the text is a subscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Subscript() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Subscript }).(pulumi.BoolOutput)
+}
+
+// Whether the text is a superscript.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Superscript() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Superscript }).(pulumi.BoolOutput)
+}
+
+// Color of the text.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) TextColor() GoogleTypeColorResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) GoogleTypeColorResponse {
+		return v.TextColor
+	}).(GoogleTypeColorResponseOutput)
+}
+
+// Whether the text is underlined.
+func (o GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput) Underlined() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse) bool { return v.Underlined }).(pulumi.BoolOutput)
 }
 
 // Detected non-text visual elements e.g. checkbox, signature etc. on the page.
@@ -12716,7 +13270,7 @@ type GoogleCloudDocumentaiV1DocumentResponse struct {
 	TextChanges []GoogleCloudDocumentaiV1DocumentTextChangeResponse `pulumi:"textChanges"`
 	// Styles for the Document.text.
 	TextStyles []GoogleCloudDocumentaiV1DocumentStyleResponse `pulumi:"textStyles"`
-	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 	Uri string `pulumi:"uri"`
 }
 
@@ -12804,7 +13358,7 @@ func (o GoogleCloudDocumentaiV1DocumentResponseOutput) TextStyles() GoogleCloudD
 	}).(GoogleCloudDocumentaiV1DocumentStyleResponseArrayOutput)
 }
 
-// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
 func (o GoogleCloudDocumentaiV1DocumentResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -17842,6 +18396,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenArrayInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakPtrInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageVisualElementInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageVisualElementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageVisualElementArrayInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageVisualElementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentProvenanceInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentProvenanceArgs{})
@@ -18094,6 +18650,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageVisualElementOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageVisualElementArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageVisualElementResponseOutput{})

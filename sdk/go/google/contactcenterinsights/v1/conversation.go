@@ -36,7 +36,9 @@ type Conversation struct {
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// The conversation's latest analysis, if one exists.
 	LatestAnalysis GoogleCloudContactcenterinsightsV1AnalysisResponseOutput `pulumi:"latestAnalysis"`
-	Location       pulumi.StringOutput                                      `pulumi:"location"`
+	// Latest summary of the conversation.
+	LatestSummary GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput `pulumi:"latestSummary"`
+	Location      pulumi.StringOutput                                                                     `pulumi:"location"`
 	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium pulumi.StringOutput `pulumi:"medium"`
 	// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
@@ -256,6 +258,13 @@ func (o ConversationOutput) LatestAnalysis() GoogleCloudContactcenterinsightsV1A
 	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1AnalysisResponseOutput {
 		return v.LatestAnalysis
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
+}
+
+// Latest summary of the conversation.
+func (o ConversationOutput) LatestSummary() GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput {
+		return v.LatestSummary
+	}).(GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput)
 }
 
 func (o ConversationOutput) Location() pulumi.StringOutput {

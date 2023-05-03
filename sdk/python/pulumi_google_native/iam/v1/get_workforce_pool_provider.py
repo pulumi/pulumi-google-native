@@ -76,7 +76,7 @@ class GetWorkforcePoolProviderResult:
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+        Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         """
         return pulumi.get(self, "disabled")
 

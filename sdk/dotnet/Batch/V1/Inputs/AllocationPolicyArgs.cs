@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<Inputs.NetworkPolicyArgs>? Network { get; set; }
 
         /// <summary>
+        /// The placement policy.
+        /// </summary>
+        [Input("placement")]
+        public Input<Inputs.PlacementPolicyArgs>? Placement { get; set; }
+
+        /// <summary>
         /// Service account that VMs will run as.
         /// </summary>
         [Input("serviceAccount")]

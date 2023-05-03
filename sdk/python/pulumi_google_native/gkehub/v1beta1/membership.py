@@ -25,6 +25,7 @@ class MembershipArgs:
                  infrastructure_type: Optional[pulumi.Input['MembershipInfrastructureType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input['MonitoringConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None):
         """
@@ -36,6 +37,7 @@ class MembershipArgs:
         :param pulumi.Input[str] external_id: Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
         :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
+        :param pulumi.Input['MonitoringConfigArgs'] monitoring_config: Optional. The monitoring config information for this membership.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "membership_id", membership_id)
@@ -53,6 +55,8 @@ class MembershipArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if monitoring_config is not None:
+            pulumi.set(__self__, "monitoring_config", monitoring_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -152,6 +156,18 @@ class MembershipArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> Optional[pulumi.Input['MonitoringConfigArgs']]:
+        """
+        Optional. The monitoring config information for this membership.
+        """
+        return pulumi.get(self, "monitoring_config")
+
+    @monitoring_config.setter
+    def monitoring_config(self, value: Optional[pulumi.Input['MonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -186,6 +202,7 @@ class Membership(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -202,6 +219,7 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input['MembershipInfrastructureType'] infrastructure_type: Optional. The infrastructure type this Membership is running on.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         :param pulumi.Input[str] membership_id: Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        :param pulumi.Input[pulumi.InputType['MonitoringConfigArgs']] monitoring_config: Optional. The monitoring config information for this membership.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
@@ -237,6 +255,7 @@ class Membership(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['MonitoringConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -258,6 +277,7 @@ class Membership(pulumi.CustomResource):
             if membership_id is None and not opts.urn:
                 raise TypeError("Missing required property 'membership_id'")
             __props__.__dict__["membership_id"] = membership_id
+            __props__.__dict__["monitoring_config"] = monitoring_config
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["create_time"] = None
@@ -302,6 +322,7 @@ class Membership(pulumi.CustomResource):
         __props__.__dict__["last_connection_time"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["membership_id"] = None
+        __props__.__dict__["monitoring_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -394,6 +415,14 @@ class Membership(pulumi.CustomResource):
         Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
         """
         return pulumi.get(self, "membership_id")
+
+    @property
+    @pulumi.getter(name="monitoringConfig")
+    def monitoring_config(self) -> pulumi.Output['outputs.MonitoringConfigResponse']:
+        """
+        Optional. The monitoring config information for this membership.
+        """
+        return pulumi.get(self, "monitoring_config")
 
     @property
     @pulumi.getter

@@ -100,11 +100,11 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The priority of this case. If this is set, do not set severity.
+        /// The priority of this case.
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// The severity of this case. Deprecated. Use priority instead.
+        /// REMOVED. The severity of this case. Use priority instead.
         /// </summary>
         public readonly string Severity;
         /// <summary>

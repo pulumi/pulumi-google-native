@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         [Input("issuerUri", required: true)]
         public Input<string> IssuerUri { get; set; } = null!;
 
+        /// <summary>
+        /// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        /// </summary>
+        [Input("webSsoConfig", required: true)]
+        public Input<Inputs.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigArgs> WebSsoConfig { get; set; } = null!;
+
         public GoogleIamAdminV1WorkforcePoolProviderOidcArgs()
         {
         }

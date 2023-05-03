@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

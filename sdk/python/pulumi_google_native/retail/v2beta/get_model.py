@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetModelResult:
-    def __init__(__self__, create_time=None, data_state=None, display_name=None, filtering_option=None, last_tune_time=None, name=None, optimization_objective=None, periodic_tuning_state=None, serving_config_lists=None, serving_state=None, training_state=None, tuning_operation=None, type=None, update_time=None):
+    def __init__(__self__, create_time=None, data_state=None, display_name=None, filtering_option=None, last_tune_time=None, model_features_config=None, name=None, optimization_objective=None, periodic_tuning_state=None, serving_config_lists=None, serving_state=None, training_state=None, tuning_operation=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -35,6 +35,9 @@ class GetModelResult:
         if last_tune_time and not isinstance(last_tune_time, str):
             raise TypeError("Expected argument 'last_tune_time' to be a str")
         pulumi.set(__self__, "last_tune_time", last_tune_time)
+        if model_features_config and not isinstance(model_features_config, dict):
+            raise TypeError("Expected argument 'model_features_config' to be a dict")
+        pulumi.set(__self__, "model_features_config", model_features_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -102,6 +105,14 @@ class GetModelResult:
         The timestamp when the latest successful tune finished.
         """
         return pulumi.get(self, "last_tune_time")
+
+    @property
+    @pulumi.getter(name="modelFeaturesConfig")
+    def model_features_config(self) -> 'outputs.GoogleCloudRetailV2betaModelModelFeaturesConfigResponse':
+        """
+        Optional. Additional model features config.
+        """
+        return pulumi.get(self, "model_features_config")
 
     @property
     @pulumi.getter
@@ -187,6 +198,7 @@ class AwaitableGetModelResult(GetModelResult):
             display_name=self.display_name,
             filtering_option=self.filtering_option,
             last_tune_time=self.last_tune_time,
+            model_features_config=self.model_features_config,
             name=self.name,
             optimization_objective=self.optimization_objective,
             periodic_tuning_state=self.periodic_tuning_state,
@@ -220,6 +232,7 @@ def get_model(catalog_id: Optional[str] = None,
         display_name=__ret__.display_name,
         filtering_option=__ret__.filtering_option,
         last_tune_time=__ret__.last_tune_time,
+        model_features_config=__ret__.model_features_config,
         name=__ret__.name,
         optimization_objective=__ret__.optimization_objective,
         periodic_tuning_state=__ret__.periodic_tuning_state,

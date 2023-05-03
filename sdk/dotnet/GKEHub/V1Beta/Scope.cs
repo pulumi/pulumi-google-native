@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
     public partial class Scope : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If true, all Memberships in the Fleet bind to this Scope.
+        /// </summary>
+        [Output("allMemberships")]
+        public Output<bool> AllMemberships { get; private set; } = null!;
+
+        /// <summary>
         /// When the scope was created.
         /// </summary>
         [Output("createTime")]
@@ -115,6 +121,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
 
     public sealed class ScopeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If true, all Memberships in the Fleet bind to this Scope.
+        /// </summary>
+        [Input("allMemberships")]
+        public Input<bool>? AllMemberships { get; set; }
+
         [Input("location")]
         public Input<string>? Location { get; set; }
 

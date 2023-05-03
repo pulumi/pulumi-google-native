@@ -19,6 +19,7 @@ __all__ = [
     'Condition',
     'ExprResponse',
     'GoogleIamAdminV1WorkforcePoolProviderOidcResponse',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse',
     'GoogleIamAdminV1WorkforcePoolProviderSamlResponse',
     'KeyDataResponse',
     'OidcResponse',
@@ -322,6 +323,8 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
             suggest = "client_id"
         elif key == "issuerUri":
             suggest = "issuer_uri"
+        elif key == "webSsoConfig":
+            suggest = "web_sso_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleIamAdminV1WorkforcePoolProviderOidcResponse. Access the value via the '{suggest}' property getter instead.")
@@ -336,14 +339,17 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
 
     def __init__(__self__, *,
                  client_id: str,
-                 issuer_uri: str):
+                 issuer_uri: str,
+                 web_sso_config: 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse'):
         """
         Represents an OpenId Connect 1.0 identity provider.
         :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        :param 'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse' web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
+        pulumi.set(__self__, "web_sso_config", web_sso_config)
 
     @property
     @pulumi.getter(name="clientId")
@@ -360,6 +366,66 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse(dict):
         The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         """
         return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="webSsoConfig")
+    def web_sso_config(self) -> 'outputs.GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse':
+        """
+        Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        """
+        return pulumi.get(self, "web_sso_config")
+
+
+@pulumi.output_type
+class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse(dict):
+    """
+    Configuration for web single sign-on for the OIDC provider.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assertionClaimsBehavior":
+            suggest = "assertion_claims_behavior"
+        elif key == "responseType":
+            suggest = "response_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assertion_claims_behavior: str,
+                 response_type: str):
+        """
+        Configuration for web single sign-on for the OIDC provider.
+        :param str assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+        :param str response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        """
+        pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
+        pulumi.set(__self__, "response_type", response_type)
+
+    @property
+    @pulumi.getter(name="assertionClaimsBehavior")
+    def assertion_claims_behavior(self) -> str:
+        """
+        The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+        """
+        return pulumi.get(self, "assertion_claims_behavior")
+
+    @property
+    @pulumi.getter(name="responseType")
+    def response_type(self) -> str:
+        """
+        The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        """
+        return pulumi.get(self, "response_type")
 
 
 @pulumi.output_type
@@ -437,7 +503,7 @@ class KeyDataResponse(dict):
         Represents a public key data along with its format.
         :param str format: The format of the key.
         :param str key: The key data. The format of the key is represented by the format field.
-        :param str key_spec: Immutable. The specifications for the key.
+        :param str key_spec: The specifications for the key.
         :param str not_after_time: Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
         :param str not_before_time: Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
         """
@@ -467,7 +533,7 @@ class KeyDataResponse(dict):
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> str:
         """
-        Immutable. The specifications for the key.
+        The specifications for the key.
         """
         return pulumi.get(self, "key_spec")
 

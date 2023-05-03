@@ -81,6 +81,10 @@ export class Conversation extends pulumi.CustomResource {
      * The conversation's latest analysis, if one exists.
      */
     public /*out*/ readonly latestAnalysis!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResponse>;
+    /**
+     * Latest summary of the conversation.
+     */
+    public /*out*/ readonly latestSummary!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
@@ -149,6 +153,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["dialogflowIntents"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["latestAnalysis"] = undefined /*out*/;
+            resourceInputs["latestSummary"] = undefined /*out*/;
             resourceInputs["runtimeAnnotations"] = undefined /*out*/;
             resourceInputs["transcript"] = undefined /*out*/;
             resourceInputs["turnCount"] = undefined /*out*/;
@@ -165,6 +170,7 @@ export class Conversation extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["latestAnalysis"] = undefined /*out*/;
+            resourceInputs["latestSummary"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["medium"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

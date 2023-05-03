@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, max_retention_days=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, max_retention_days=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_for_recovery_checkpoint=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -95,6 +95,9 @@ class GetSnapshotResult:
         if source_disk_encryption_key and not isinstance(source_disk_encryption_key, dict):
             raise TypeError("Expected argument 'source_disk_encryption_key' to be a dict")
         pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+        if source_disk_for_recovery_checkpoint and not isinstance(source_disk_for_recovery_checkpoint, str):
+            raise TypeError("Expected argument 'source_disk_for_recovery_checkpoint' to be a str")
+        pulumi.set(__self__, "source_disk_for_recovery_checkpoint", source_disk_for_recovery_checkpoint)
         if source_disk_id and not isinstance(source_disk_id, str):
             raise TypeError("Expected argument 'source_disk_id' to be a str")
         pulumi.set(__self__, "source_disk_id", source_disk_id)
@@ -327,6 +330,14 @@ class GetSnapshotResult:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @property
+    @pulumi.getter(name="sourceDiskForRecoveryCheckpoint")
+    def source_disk_for_recovery_checkpoint(self) -> str:
+        """
+        The source disk whose recovery checkpoint will be used to create this snapshot.
+        """
+        return pulumi.get(self, "source_disk_for_recovery_checkpoint")
+
+    @property
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> str:
         """
@@ -438,6 +449,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             snapshot_type=self.snapshot_type,
             source_disk=self.source_disk,
             source_disk_encryption_key=self.source_disk_encryption_key,
+            source_disk_for_recovery_checkpoint=self.source_disk_for_recovery_checkpoint,
             source_disk_id=self.source_disk_id,
             source_instant_snapshot=self.source_instant_snapshot,
             source_instant_snapshot_id=self.source_instant_snapshot_id,
@@ -488,6 +500,7 @@ def get_snapshot(project: Optional[str] = None,
         snapshot_type=__ret__.snapshot_type,
         source_disk=__ret__.source_disk,
         source_disk_encryption_key=__ret__.source_disk_encryption_key,
+        source_disk_for_recovery_checkpoint=__ret__.source_disk_for_recovery_checkpoint,
         source_disk_id=__ret__.source_disk_id,
         source_instant_snapshot=__ret__.source_instant_snapshot,
         source_instant_snapshot_id=__ret__.source_instant_snapshot_id,

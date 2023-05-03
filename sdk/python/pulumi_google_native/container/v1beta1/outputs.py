@@ -49,6 +49,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigResponse',
     'GcfsConfigResponse',
     'GcpFilestoreCsiDriverConfigResponse',
+    'GcsFuseCsiDriverConfigResponse',
     'GkeBackupAgentConfigResponse',
     'HorizontalPodAutoscalingResponse',
     'HttpLoadBalancingResponse',
@@ -220,11 +221,38 @@ class AdditionalPodRangesConfigResponse(dict):
     """
     AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podRangeNames":
+            suggest = "pod_range_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdditionalPodRangesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdditionalPodRangesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdditionalPodRangesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_range_names: Sequence[str]):
         """
         AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+        :param Sequence[str] pod_range_names: Name for pod secondary ipv4 range which has the actual range defined ahead.
         """
-        pass
+        pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeNames")
+    def pod_range_names(self) -> Sequence[str]:
+        """
+        Name for pod secondary ipv4 range which has the actual range defined ahead.
+        """
+        return pulumi.get(self, "pod_range_names")
 
 
 @pulumi.output_type
@@ -245,6 +273,8 @@ class AddonsConfigResponse(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gcsFuseCsiDriverConfig":
+            suggest = "gcs_fuse_csi_driver_config"
         elif key == "gkeBackupAgentConfig":
             suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
@@ -277,6 +307,7 @@ class AddonsConfigResponse(dict):
                  dns_cache_config: 'outputs.DnsCacheConfigResponse',
                  gce_persistent_disk_csi_driver_config: 'outputs.GcePersistentDiskCsiDriverConfigResponse',
                  gcp_filestore_csi_driver_config: 'outputs.GcpFilestoreCsiDriverConfigResponse',
+                 gcs_fuse_csi_driver_config: 'outputs.GcsFuseCsiDriverConfigResponse',
                  gke_backup_agent_config: 'outputs.GkeBackupAgentConfigResponse',
                  horizontal_pod_autoscaling: 'outputs.HorizontalPodAutoscalingResponse',
                  http_load_balancing: 'outputs.HttpLoadBalancingResponse',
@@ -291,6 +322,7 @@ class AddonsConfigResponse(dict):
         :param 'DnsCacheConfigResponse' dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param 'GcePersistentDiskCsiDriverConfigResponse' gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param 'GcpFilestoreCsiDriverConfigResponse' gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param 'GcsFuseCsiDriverConfigResponse' gcs_fuse_csi_driver_config: Configuration for the Cloud Storage Fuse CSI driver.
         :param 'GkeBackupAgentConfigResponse' gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param 'HorizontalPodAutoscalingResponse' horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param 'HttpLoadBalancingResponse' http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -304,6 +336,7 @@ class AddonsConfigResponse(dict):
         pulumi.set(__self__, "dns_cache_config", dns_cache_config)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         pulumi.set(__self__, "http_load_balancing", http_load_balancing)
@@ -351,6 +384,14 @@ class AddonsConfigResponse(dict):
         Configuration for the GCP Filestore CSI driver.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gcsFuseCsiDriverConfig")
+    def gcs_fuse_csi_driver_config(self) -> 'outputs.GcsFuseCsiDriverConfigResponse':
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        """
+        return pulumi.get(self, "gcs_fuse_csi_driver_config")
 
     @property
     @pulumi.getter(name="gkeBackupAgentConfig")
@@ -1472,7 +1513,7 @@ class DatabaseEncryptionResponse(dict):
         """
         Configuration of etcd encryption.
         :param str key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-        :param str state: Denotes the state of etcd encryption.
+        :param str state: The desired state of etcd encryption.
         """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "state", state)
@@ -1489,7 +1530,7 @@ class DatabaseEncryptionResponse(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        Denotes the state of etcd encryption.
+        The desired state of etcd encryption.
         """
         return pulumi.get(self, "state")
 
@@ -1874,6 +1915,28 @@ class GcpFilestoreCsiDriverConfigResponse(dict):
     def enabled(self) -> bool:
         """
         Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GcsFuseCsiDriverConfigResponse(dict):
+    """
+    Configuration for the Cloud Storage Fuse CSI driver.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        :param bool enabled: Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
         """
         return pulumi.get(self, "enabled")
 

@@ -58,11 +58,15 @@ export interface GetWorkstationConfigResult {
      */
     readonly displayName: string;
     /**
-     * Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+     * Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+     */
+    readonly enableAuditAgent: boolean;
+    /**
+     * Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
      */
     readonly encryptionKey: outputs.workstations.v1beta.CustomerEncryptionKeyResponse;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
     /**
@@ -85,6 +89,10 @@ export interface GetWorkstationConfigResult {
      * Directories to persist across workstation sessions.
      */
     readonly persistentDirectories: outputs.workstations.v1beta.PersistentDirectoryResponse[];
+    /**
+     * Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+     */
+    readonly readinessChecks: outputs.workstations.v1beta.ReadinessCheckResponse[];
     /**
      * Indicates whether this resource is currently being updated to match its intended state.
      */

@@ -465,23 +465,23 @@ func (o GoogleCloudRunV2ConditionResponseArrayOutput) Index(i pulumi.IntInput) G
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type GoogleCloudRunV2Container struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image string `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe *GoogleCloudRunV2Probe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []GoogleCloudRunV2ContainerPort `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container.
 	Resources *GoogleCloudRunV2ResourceRequirements `pulumi:"resources"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbe *GoogleCloudRunV2Probe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GoogleCloudRunV2VolumeMount `pulumi:"volumeMounts"`
@@ -502,23 +502,23 @@ type GoogleCloudRunV2ContainerInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image pulumi.StringInput `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe GoogleCloudRunV2ProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports GoogleCloudRunV2ContainerPortArrayInput `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container.
 	Resources GoogleCloudRunV2ResourceRequirementsPtrInput `pulumi:"resources"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbe GoogleCloudRunV2ProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts GoogleCloudRunV2VolumeMountArrayInput `pulumi:"volumeMounts"`
@@ -578,12 +578,12 @@ func (o GoogleCloudRunV2ContainerOutput) ToGoogleCloudRunV2ContainerOutputWithCo
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 func (o GoogleCloudRunV2ContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 func (o GoogleCloudRunV2ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -593,12 +593,12 @@ func (o GoogleCloudRunV2ContainerOutput) Env() GoogleCloudRunV2EnvVarArrayOutput
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []GoogleCloudRunV2EnvVar { return v.Env }).(GoogleCloudRunV2EnvVarArrayOutput)
 }
 
-// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 func (o GoogleCloudRunV2ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
 func (o GoogleCloudRunV2ContainerOutput) LivenessProbe() GoogleCloudRunV2ProbePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *GoogleCloudRunV2Probe { return v.LivenessProbe }).(GoogleCloudRunV2ProbePtrOutput)
 }
@@ -613,12 +613,12 @@ func (o GoogleCloudRunV2ContainerOutput) Ports() GoogleCloudRunV2ContainerPortAr
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []GoogleCloudRunV2ContainerPort { return v.Ports }).(GoogleCloudRunV2ContainerPortArrayOutput)
 }
 
-// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resource requirements by this container.
 func (o GoogleCloudRunV2ContainerOutput) Resources() GoogleCloudRunV2ResourceRequirementsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *GoogleCloudRunV2ResourceRequirements { return v.Resources }).(GoogleCloudRunV2ResourceRequirementsPtrOutput)
 }
 
-// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 func (o GoogleCloudRunV2ContainerOutput) StartupProbe() GoogleCloudRunV2ProbePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *GoogleCloudRunV2Probe { return v.StartupProbe }).(GoogleCloudRunV2ProbePtrOutput)
 }
@@ -817,23 +817,23 @@ func (o GoogleCloudRunV2ContainerPortResponseArrayOutput) Index(i pulumi.IntInpu
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type GoogleCloudRunV2ContainerResponse struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image string `pulumi:"image"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe GoogleCloudRunV2ProbeResponse `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []GoogleCloudRunV2ContainerPortResponse `pulumi:"ports"`
-	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resource requirements by this container.
 	Resources GoogleCloudRunV2ResourceRequirementsResponse `pulumi:"resources"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbe GoogleCloudRunV2ProbeResponse `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	VolumeMounts []GoogleCloudRunV2VolumeMountResponse `pulumi:"volumeMounts"`
@@ -856,12 +856,12 @@ func (o GoogleCloudRunV2ContainerResponseOutput) ToGoogleCloudRunV2ContainerResp
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
 func (o GoogleCloudRunV2ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 func (o GoogleCloudRunV2ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -871,12 +871,12 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Env() GoogleCloudRunV2EnvVarRes
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []GoogleCloudRunV2EnvVarResponse { return v.Env }).(GoogleCloudRunV2EnvVarResponseArrayOutput)
 }
 
-// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 func (o GoogleCloudRunV2ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
 func (o GoogleCloudRunV2ContainerResponseOutput) LivenessProbe() GoogleCloudRunV2ProbeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) GoogleCloudRunV2ProbeResponse { return v.LivenessProbe }).(GoogleCloudRunV2ProbeResponseOutput)
 }
@@ -891,14 +891,14 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Ports() GoogleCloudRunV2Contain
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []GoogleCloudRunV2ContainerPortResponse { return v.Ports }).(GoogleCloudRunV2ContainerPortResponseArrayOutput)
 }
 
-// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resource requirements by this container.
 func (o GoogleCloudRunV2ContainerResponseOutput) Resources() GoogleCloudRunV2ResourceRequirementsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) GoogleCloudRunV2ResourceRequirementsResponse {
 		return v.Resources
 	}).(GoogleCloudRunV2ResourceRequirementsResponseOutput)
 }
 
-// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 func (o GoogleCloudRunV2ContainerResponseOutput) StartupProbe() GoogleCloudRunV2ProbeResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) GoogleCloudRunV2ProbeResponse { return v.StartupProbe }).(GoogleCloudRunV2ProbeResponseOutput)
 }
@@ -1321,9 +1321,9 @@ func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) Name() pulumi.StringOu
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplate struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
@@ -1346,9 +1346,9 @@ type GoogleCloudRunV2ExecutionTemplateInput interface {
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplateArgs struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
@@ -1385,12 +1385,12 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemp
 	return o
 }
 
-// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GoogleCloudRunV2ExecutionTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1412,9 +1412,9 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) Template() GoogleCloudRunV2Task
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplateResponse struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism int `pulumi:"parallelism"`
@@ -1439,12 +1439,12 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2Execu
 	return o
 }
 
-// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2048,13 +2048,13 @@ type GoogleCloudRunV2Probe struct {
 	Grpc *GoogleCloudRunV2GRPCAction `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet *GoogleCloudRunV2HTTPGetAction `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket *GoogleCloudRunV2TCPSocketAction `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -2077,13 +2077,13 @@ type GoogleCloudRunV2ProbeArgs struct {
 	Grpc GoogleCloudRunV2GRPCActionPtrInput `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionPtrInput `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -2180,7 +2180,7 @@ func (o GoogleCloudRunV2ProbeOutput) HttpGet() GoogleCloudRunV2HTTPGetActionPtrO
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2HTTPGetAction { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o GoogleCloudRunV2ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
@@ -2195,7 +2195,7 @@ func (o GoogleCloudRunV2ProbeOutput) TcpSocket() GoogleCloudRunV2TCPSocketAction
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2TCPSocketAction { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o GoogleCloudRunV2ProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -2254,7 +2254,7 @@ func (o GoogleCloudRunV2ProbePtrOutput) HttpGet() GoogleCloudRunV2HTTPGetActionP
 	}).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o GoogleCloudRunV2ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *int {
 		if v == nil {
@@ -2284,7 +2284,7 @@ func (o GoogleCloudRunV2ProbePtrOutput) TcpSocket() GoogleCloudRunV2TCPSocketAct
 	}).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o GoogleCloudRunV2ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *int {
 		if v == nil {
@@ -2302,13 +2302,13 @@ type GoogleCloudRunV2ProbeResponse struct {
 	Grpc GoogleCloudRunV2GRPCActionResponse `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionResponse `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
 	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionResponse `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
@@ -2342,7 +2342,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) HttpGet() GoogleCloudRunV2HTTPGetAc
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2HTTPGetActionResponse { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionResponseOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o GoogleCloudRunV2ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
@@ -2357,7 +2357,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) TcpSocket() GoogleCloudRunV2TCPSock
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2TCPSocketActionResponse { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionResponseOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o GoogleCloudRunV2ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -2366,8 +2366,10 @@ func (o GoogleCloudRunV2ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 type GoogleCloudRunV2ResourceRequirements struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
 }
 
 // GoogleCloudRunV2ResourceRequirementsInput is an input type that accepts GoogleCloudRunV2ResourceRequirementsArgs and GoogleCloudRunV2ResourceRequirementsOutput values.
@@ -2385,8 +2387,10 @@ type GoogleCloudRunV2ResourceRequirementsInput interface {
 type GoogleCloudRunV2ResourceRequirementsArgs struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
 }
 
 func (GoogleCloudRunV2ResourceRequirementsArgs) ElementType() reflect.Type {
@@ -2472,9 +2476,14 @@ func (o GoogleCloudRunV2ResourceRequirementsOutput) CpuIdle() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+func (o GoogleCloudRunV2ResourceRequirementsOutput) StartupCpuBoost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) *bool { return v.StartupCpuBoost }).(pulumi.BoolPtrOutput)
 }
 
 type GoogleCloudRunV2ResourceRequirementsPtrOutput struct{ *pulumi.OutputState }
@@ -2511,7 +2520,7 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) CpuIdle() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2ResourceRequirements) map[string]string {
 		if v == nil {
@@ -2521,12 +2530,24 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Limits() pulumi.StringMap
 	}).(pulumi.StringMapOutput)
 }
 
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) StartupCpuBoost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2ResourceRequirements) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StartupCpuBoost
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirementsResponse struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost bool `pulumi:"startupCpuBoost"`
 }
 
 // ResourceRequirements describes the compute resource requirements.
@@ -2549,9 +2570,14 @@ func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) CpuIdle() pulumi.Boo
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only ´memory´ and 'cpu' are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) StartupCpuBoost() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) bool { return v.StartupCpuBoost }).(pulumi.BoolOutput)
 }
 
 // Settings for revision-level scaling settings.
@@ -2748,7 +2774,7 @@ func (o GoogleCloudRunV2RevisionScalingResponseOutput) MinInstanceCount() pulumi
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplate struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2Container `pulumi:"containers"`
@@ -2756,7 +2782,7 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment *GoogleCloudRunV2RevisionTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
@@ -2766,6 +2792,8 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	Scaling *GoogleCloudRunV2RevisionScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Enable session affinity.
+	SessionAffinity *bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout *string `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
@@ -2787,7 +2815,7 @@ type GoogleCloudRunV2RevisionTemplateInput interface {
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplateArgs struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers GoogleCloudRunV2ContainerArrayInput `pulumi:"containers"`
@@ -2795,7 +2823,7 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
@@ -2805,6 +2833,8 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	Scaling GoogleCloudRunV2RevisionScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Enable session affinity.
+	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
@@ -2840,7 +2870,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ToGoogleCloudRunV2RevisionTempla
 	return o
 }
 
-// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2862,7 +2892,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ExecutionEnvironment() GoogleClo
 	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2887,6 +2917,11 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ServiceAccount() pulumi.StringPt
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Enable session affinity.
+func (o GoogleCloudRunV2RevisionTemplateOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
+}
+
 // Max allowed time for an instance to respond to a request.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *string { return v.Timeout }).(pulumi.StringPtrOutput)
@@ -2904,7 +2939,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) VpcAccess() GoogleCloudRunV2VpcA
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplateResponse struct {
-	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2ContainerResponse `pulumi:"containers"`
@@ -2912,7 +2947,7 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
@@ -2922,6 +2957,8 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	Scaling GoogleCloudRunV2RevisionScalingResponse `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Enable session affinity.
+	SessionAffinity bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	Timeout string `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
@@ -2945,7 +2982,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ToGoogleCloudRunV2Revisi
 	return o
 }
 
-// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2967,7 +3004,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ExecutionEnvironment() p
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
-// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2992,6 +3029,11 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Scaling() GoogleCloudRun
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Enable session affinity.
+func (o GoogleCloudRunV2RevisionTemplateResponseOutput) SessionAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) bool { return v.SessionAffinity }).(pulumi.BoolOutput)
 }
 
 // Max allowed time for an instance to respond to a request.
@@ -4234,7 +4276,7 @@ type GoogleCloudRunV2Volume struct {
 	CloudSqlInstance *GoogleCloudRunV2CloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name string `pulumi:"name"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume.
 	Secret *GoogleCloudRunV2SecretVolumeSource `pulumi:"secret"`
 }
 
@@ -4255,7 +4297,7 @@ type GoogleCloudRunV2VolumeArgs struct {
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume.
 	Secret GoogleCloudRunV2SecretVolumeSourcePtrInput `pulumi:"secret"`
 }
 
@@ -4321,7 +4363,7 @@ func (o GoogleCloudRunV2VolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Volume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Secret represents a secret that should populate this volume.
 func (o GoogleCloudRunV2VolumeOutput) Secret() GoogleCloudRunV2SecretVolumeSourcePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2SecretVolumeSource { return v.Secret }).(GoogleCloudRunV2SecretVolumeSourcePtrOutput)
 }
@@ -4514,7 +4556,7 @@ type GoogleCloudRunV2VolumeResponse struct {
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstanceResponse `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name string `pulumi:"name"`
-	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Secret represents a secret that should populate this volume.
 	Secret GoogleCloudRunV2SecretVolumeSourceResponse `pulumi:"secret"`
 }
 
@@ -4545,7 +4587,7 @@ func (o GoogleCloudRunV2VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Secret represents a secret that should populate this volume.
 func (o GoogleCloudRunV2VolumeResponseOutput) Secret() GoogleCloudRunV2SecretVolumeSourceResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2SecretVolumeSourceResponse { return v.Secret }).(GoogleCloudRunV2SecretVolumeSourceResponseOutput)
 }

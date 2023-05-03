@@ -45,6 +45,11 @@ export type ClientTlsPolicyIamPolicy = import("./clientTlsPolicyIamPolicy").Clie
 export const ClientTlsPolicyIamPolicy: typeof import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ClientTlsPolicyIamPolicy"], () => require("./clientTlsPolicyIamPolicy"));
 
+export { GatewaySecurityPolicyArgs } from "./gatewaySecurityPolicy";
+export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
+export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
+utilities.lazyLoad(exports, ["GatewaySecurityPolicy"], () => require("./gatewaySecurityPolicy"));
+
 export { GetAuthorizationPolicyArgs, GetAuthorizationPolicyResult, GetAuthorizationPolicyOutputArgs } from "./getAuthorizationPolicy";
 export const getAuthorizationPolicy: typeof import("./getAuthorizationPolicy").getAuthorizationPolicy = null as any;
 export const getAuthorizationPolicyOutput: typeof import("./getAuthorizationPolicy").getAuthorizationPolicyOutput = null as any;
@@ -65,6 +70,16 @@ export const getClientTlsPolicyIamPolicy: typeof import("./getClientTlsPolicyIam
 export const getClientTlsPolicyIamPolicyOutput: typeof import("./getClientTlsPolicyIamPolicy").getClientTlsPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getClientTlsPolicyIamPolicy","getClientTlsPolicyIamPolicyOutput"], () => require("./getClientTlsPolicyIamPolicy"));
 
+export { GetGatewaySecurityPolicyArgs, GetGatewaySecurityPolicyResult, GetGatewaySecurityPolicyOutputArgs } from "./getGatewaySecurityPolicy";
+export const getGatewaySecurityPolicy: typeof import("./getGatewaySecurityPolicy").getGatewaySecurityPolicy = null as any;
+export const getGatewaySecurityPolicyOutput: typeof import("./getGatewaySecurityPolicy").getGatewaySecurityPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewaySecurityPolicy","getGatewaySecurityPolicyOutput"], () => require("./getGatewaySecurityPolicy"));
+
+export { GetRuleArgs, GetRuleResult, GetRuleOutputArgs } from "./getRule";
+export const getRule: typeof import("./getRule").getRule = null as any;
+export const getRuleOutput: typeof import("./getRule").getRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getRule","getRuleOutput"], () => require("./getRule"));
+
 export { GetServerTlsPolicyArgs, GetServerTlsPolicyResult, GetServerTlsPolicyOutputArgs } from "./getServerTlsPolicy";
 export const getServerTlsPolicy: typeof import("./getServerTlsPolicy").getServerTlsPolicy = null as any;
 export const getServerTlsPolicyOutput: typeof import("./getServerTlsPolicy").getServerTlsPolicyOutput = null as any;
@@ -74,6 +89,21 @@ export { GetServerTlsPolicyIamPolicyArgs, GetServerTlsPolicyIamPolicyResult, Get
 export const getServerTlsPolicyIamPolicy: typeof import("./getServerTlsPolicyIamPolicy").getServerTlsPolicyIamPolicy = null as any;
 export const getServerTlsPolicyIamPolicyOutput: typeof import("./getServerTlsPolicyIamPolicy").getServerTlsPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getServerTlsPolicyIamPolicy","getServerTlsPolicyIamPolicyOutput"], () => require("./getServerTlsPolicyIamPolicy"));
+
+export { GetTlsInspectionPolicyArgs, GetTlsInspectionPolicyResult, GetTlsInspectionPolicyOutputArgs } from "./getTlsInspectionPolicy";
+export const getTlsInspectionPolicy: typeof import("./getTlsInspectionPolicy").getTlsInspectionPolicy = null as any;
+export const getTlsInspectionPolicyOutput: typeof import("./getTlsInspectionPolicy").getTlsInspectionPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTlsInspectionPolicy","getTlsInspectionPolicyOutput"], () => require("./getTlsInspectionPolicy"));
+
+export { GetUrlListArgs, GetUrlListResult, GetUrlListOutputArgs } from "./getUrlList";
+export const getUrlList: typeof import("./getUrlList").getUrlList = null as any;
+export const getUrlListOutput: typeof import("./getUrlList").getUrlListOutput = null as any;
+utilities.lazyLoad(exports, ["getUrlList","getUrlListOutput"], () => require("./getUrlList"));
+
+export { RuleArgs } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
 
 export { ServerTlsPolicyArgs } from "./serverTlsPolicy";
 export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
@@ -94,6 +124,16 @@ export { ServerTlsPolicyIamPolicyArgs } from "./serverTlsPolicyIamPolicy";
 export type ServerTlsPolicyIamPolicy = import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy;
 export const ServerTlsPolicyIamPolicy: typeof import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ServerTlsPolicyIamPolicy"], () => require("./serverTlsPolicyIamPolicy"));
+
+export { TlsInspectionPolicyArgs } from "./tlsInspectionPolicy";
+export type TlsInspectionPolicy = import("./tlsInspectionPolicy").TlsInspectionPolicy;
+export const TlsInspectionPolicy: typeof import("./tlsInspectionPolicy").TlsInspectionPolicy = null as any;
+utilities.lazyLoad(exports, ["TlsInspectionPolicy"], () => require("./tlsInspectionPolicy"));
+
+export { UrlListArgs } from "./urlList";
+export type UrlList = import("./urlList").UrlList;
+export const UrlList: typeof import("./urlList").UrlList = null as any;
+utilities.lazyLoad(exports, ["UrlList"], () => require("./urlList"));
 
 
 // Export enums:
@@ -119,6 +159,10 @@ const _module = {
                 return new ClientTlsPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy":
                 return new ClientTlsPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:GatewaySecurityPolicy":
+                return new GatewaySecurityPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:Rule":
+                return new Rule(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicy":
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicyIamBinding":
@@ -127,6 +171,10 @@ const _module = {
                 return new ServerTlsPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy":
                 return new ServerTlsPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:TlsInspectionPolicy":
+                return new TlsInspectionPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:UrlList":
+                return new UrlList(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

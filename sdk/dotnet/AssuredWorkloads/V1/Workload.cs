@@ -135,6 +135,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         [Output("saaEnrollmentResponse")]
         public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse> SaaEnrollmentResponse { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// </summary>
+        [Output("violationNotificationsEnabled")]
+        public Output<bool> ViolationNotificationsEnabled { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Workload resource with the given unique name, arguments, and options.
@@ -280,6 +286,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             get => _resourceSettings ?? (_resourceSettings = new InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>());
             set => _resourceSettings = value;
         }
+
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// </summary>
+        [Input("violationNotificationsEnabled")]
+        public Input<bool>? ViolationNotificationsEnabled { get; set; }
 
         public WorkloadArgs()
         {

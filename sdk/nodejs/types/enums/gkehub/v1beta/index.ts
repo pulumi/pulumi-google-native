@@ -26,6 +26,26 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const FleetObservabilityRoutingConfigMode = {
+    /**
+     * If UNSPECIFIED, fleet logging feature is disabled.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * logs will be copied to the destination project.
+     */
+    Copy: "COPY",
+    /**
+     * logs will be moved to the destination project.
+     */
+    Move: "MOVE",
+} as const;
+
+/**
+ * mode configures the logs routing mode.
+ */
+export type FleetObservabilityRoutingConfigMode = (typeof FleetObservabilityRoutingConfigMode)[keyof typeof FleetObservabilityRoutingConfigMode];
+
 export const MultiClusterIngressFeatureSpecBilling = {
     /**
      * Unknown

@@ -22,6 +22,22 @@ export const ConversationMedium = {
  */
 export type ConversationMedium = (typeof ConversationMedium)[keyof typeof ConversationMedium];
 
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel = {
+    /**
+     * Unspecified summarization model.
+     */
+    SummarizationModelUnspecified: "SUMMARIZATION_MODEL_UNSPECIFIED",
+    /**
+     * The Insights baseline model.
+     */
+    BaselineModel: "BASELINE_MODEL",
+} as const;
+
+/**
+ * Default summarization model to be used.
+ */
+export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel = (typeof GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel)[keyof typeof GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel];
+
 export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium = {
     /**
      * Default value, if unspecified will default to PHONE_CALL.

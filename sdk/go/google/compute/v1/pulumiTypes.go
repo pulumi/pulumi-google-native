@@ -1801,6 +1801,8 @@ type AttachedDiskInitializeParams struct {
 	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -1846,6 +1848,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	OnUpdateAction AttachedDiskInitializeParamsOnUpdateActionPtrInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -1983,6 +1987,11 @@ func (o AttachedDiskInitializeParamsOutput) OnUpdateAction() AttachedDiskInitial
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedIops }).(pulumi.StringPtrOutput)
+}
+
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
 
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -2129,6 +2138,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaZones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 func (o AttachedDiskInitializeParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) map[string]string {
@@ -2209,6 +2228,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	OnUpdateAction string `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2281,6 +2302,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) OnUpdateAction() pulumi.Stri
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+func (o AttachedDiskInitializeParamsResponseOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
 
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -10293,6 +10319,188 @@ func (o DeprecationStatusResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v DeprecationStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+type DiskAsyncReplication struct {
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk *string `pulumi:"disk"`
+}
+
+// DiskAsyncReplicationInput is an input type that accepts DiskAsyncReplicationArgs and DiskAsyncReplicationOutput values.
+// You can construct a concrete instance of `DiskAsyncReplicationInput` via:
+//
+//	DiskAsyncReplicationArgs{...}
+type DiskAsyncReplicationInput interface {
+	pulumi.Input
+
+	ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput
+	ToDiskAsyncReplicationOutputWithContext(context.Context) DiskAsyncReplicationOutput
+}
+
+type DiskAsyncReplicationArgs struct {
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk pulumi.StringPtrInput `pulumi:"disk"`
+}
+
+func (DiskAsyncReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
+	return i.ToDiskAsyncReplicationOutputWithContext(context.Background())
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput)
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput).ToDiskAsyncReplicationPtrOutputWithContext(ctx)
+}
+
+// DiskAsyncReplicationPtrInput is an input type that accepts DiskAsyncReplicationArgs, DiskAsyncReplicationPtr and DiskAsyncReplicationPtrOutput values.
+// You can construct a concrete instance of `DiskAsyncReplicationPtrInput` via:
+//
+//	        DiskAsyncReplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskAsyncReplicationPtrInput interface {
+	pulumi.Input
+
+	ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput
+	ToDiskAsyncReplicationPtrOutputWithContext(context.Context) DiskAsyncReplicationPtrOutput
+}
+
+type diskAsyncReplicationPtrType DiskAsyncReplicationArgs
+
+func DiskAsyncReplicationPtr(v *DiskAsyncReplicationArgs) DiskAsyncReplicationPtrInput {
+	return (*diskAsyncReplicationPtrType)(v)
+}
+
+func (*diskAsyncReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
+}
+
+func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationPtrOutput)
+}
+
+type DiskAsyncReplicationOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return o.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskAsyncReplication) *DiskAsyncReplication {
+		return &v
+	}).(DiskAsyncReplicationPtrOutput)
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationOutput) Disk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskAsyncReplication) *string { return v.Disk }).(pulumi.StringPtrOutput)
+}
+
+type DiskAsyncReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationPtrOutput) Elem() DiskAsyncReplicationOutput {
+	return o.ApplyT(func(v *DiskAsyncReplication) DiskAsyncReplication {
+		if v != nil {
+			return *v
+		}
+		var ret DiskAsyncReplication
+		return ret
+	}).(DiskAsyncReplicationOutput)
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationPtrOutput) Disk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskAsyncReplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskAsyncReplicationResponse struct {
+	// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+	ConsistencyGroupPolicy string `pulumi:"consistencyGroupPolicy"`
+	// ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+	ConsistencyGroupPolicyId string `pulumi:"consistencyGroupPolicyId"`
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk string `pulumi:"disk"`
+	// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+	DiskId string `pulumi:"diskId"`
+}
+
+type DiskAsyncReplicationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplicationResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutput() DiskAsyncReplicationResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutputWithContext(ctx context.Context) DiskAsyncReplicationResponseOutput {
+	return o
+}
+
+// URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+func (o DiskAsyncReplicationResponseOutput) ConsistencyGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.ConsistencyGroupPolicy }).(pulumi.StringOutput)
+}
+
+// ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+func (o DiskAsyncReplicationResponseOutput) ConsistencyGroupPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.ConsistencyGroupPolicyId }).(pulumi.StringOutput)
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationResponseOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+func (o DiskAsyncReplicationResponseOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
 // A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
 type DiskInstantiationConfig struct {
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -10651,6 +10859,59 @@ func (o DiskParamsResponseOutput) ToDiskParamsResponseOutputWithContext(ctx cont
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 func (o DiskParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DiskParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type DiskResourceStatusAsyncReplicationStatusResponse struct {
+	State string `pulumi:"state"`
+}
+
+type DiskResourceStatusAsyncReplicationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusAsyncReplicationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutput() DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type DiskResourceStatusResponse struct {
+	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
+	// Key: disk, value: AsyncReplicationStatus message
+	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
+}
+
+type DiskResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResourceStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutput() DiskResourceStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) DiskResourceStatusAsyncReplicationStatusResponse {
+		return v.AsyncPrimaryDisk
+	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+}
+
+// Key: disk, value: AsyncReplicationStatus message
+func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
 }
 
 // A set of Display Device options
@@ -23746,7 +24007,7 @@ type NetworkAttachmentConnectedEndpointResponse struct {
 	IpAddress string `pulumi:"ipAddress"`
 	// The project id or number of the interface to which the IP was assigned.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
-	// Alias IP ranges from the same subnetwork
+	// Alias IP ranges from the same subnetwork.
 	SecondaryIpCidrRanges []string `pulumi:"secondaryIpCidrRanges"`
 	// The status of a connected endpoint to this network attachment.
 	Status string `pulumi:"status"`
@@ -23779,7 +24040,7 @@ func (o NetworkAttachmentConnectedEndpointResponseOutput) ProjectIdOrNum() pulum
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
 }
 
-// Alias IP ranges from the same subnetwork
+// Alias IP ranges from the same subnetwork.
 func (o NetworkAttachmentConnectedEndpointResponseOutput) SecondaryIpCidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) []string { return v.SecondaryIpCidrRanges }).(pulumi.StringArrayOutput)
 }
@@ -36129,11 +36390,11 @@ func (o SecurityPolicyAdaptiveProtectionConfigPtrOutput) Layer7DdosDefenseConfig
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable *bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility `pulumi:"ruleVisibility"`
 }
 
@@ -36148,11 +36409,11 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interfac
 	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrInput `pulumi:"ruleVisibility"`
 }
 
@@ -36209,7 +36470,7 @@ func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
@@ -36234,12 +36495,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToS
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		return v.RuleVisibility
@@ -36270,7 +36531,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool {
 		if v == nil {
@@ -36280,7 +36541,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		if v == nil {
@@ -36290,15 +36551,15 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility string `pulumi:"ruleVisibility"`
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) ElementType() reflect.Type {
@@ -36313,12 +36574,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOut
 	return o
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) RuleVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) string {
 		return v.RuleVisibility
@@ -36881,7 +37142,7 @@ func (o SecurityPolicyDdosProtectionConfigResponseOutput) DdosProtection() pulum
 }
 
 type SecurityPolicyRecaptchaOptionsConfig struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
 }
 
@@ -36897,7 +37158,7 @@ type SecurityPolicyRecaptchaOptionsConfigInput interface {
 }
 
 type SecurityPolicyRecaptchaOptionsConfigArgs struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey pulumi.StringPtrInput `pulumi:"redirectSiteKey"`
 }
 
@@ -36978,7 +37239,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOpt
 	}).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfig) *string { return v.RedirectSiteKey }).(pulumi.StringPtrOutput)
 }
@@ -37007,7 +37268,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) Elem() SecurityPolicyReca
 	}).(SecurityPolicyRecaptchaOptionsConfigOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) *string {
 		if v == nil {
@@ -37018,7 +37279,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.
 }
 
 type SecurityPolicyRecaptchaOptionsConfigResponse struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey string `pulumi:"redirectSiteKey"`
 }
 
@@ -37036,18 +37297,18 @@ func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyReca
 	return o
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
@@ -37059,7 +37320,7 @@ type SecurityPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 }
 
@@ -37076,11 +37337,11 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
@@ -37092,7 +37353,7 @@ type SecurityPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
 }
 
@@ -37148,7 +37409,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -37158,7 +37419,7 @@ func (o SecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleHttpHeaderAction { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
 }
@@ -37188,7 +37449,7 @@ func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimit
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRedirectOptions { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
@@ -37539,7 +37800,7 @@ func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) RequestHeadersToAdds()
 type SecurityPolicyRuleMatcher struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr *Expr `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
@@ -37560,7 +37821,7 @@ type SecurityPolicyRuleMatcherInput interface {
 type SecurityPolicyRuleMatcherArgs struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprPtrInput `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
@@ -37649,7 +37910,7 @@ func (o SecurityPolicyRuleMatcherOutput) Config() SecurityPolicyRuleMatcherConfi
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig { return v.Config }).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
 }
@@ -37693,7 +37954,7 @@ func (o SecurityPolicyRuleMatcherPtrOutput) Config() SecurityPolicyRuleMatcherCo
 	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *Expr {
 		if v == nil {
@@ -37878,7 +38139,7 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 type SecurityPolicyRuleMatcherResponse struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprResponse `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr string `pulumi:"versionedExpr"`
@@ -37904,7 +38165,7 @@ func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatc
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherConfigResponse { return v.Config }).(SecurityPolicyRuleMatcherConfigResponseOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
 }
@@ -38484,11 +38745,13 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	ConformAction *string `pulumi:"conformAction"`
 	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction *string `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
@@ -38514,11 +38777,13 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
 	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
@@ -38625,17 +38890,24 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyR
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
+}
+
 // Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		return v.ExceedRedirectOptions
@@ -38713,6 +38985,16 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPoli
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput)
 }
 
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
+}
+
 // Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
@@ -38723,7 +39005,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -38733,7 +39015,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		if v == nil {
@@ -38753,6 +39035,165 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() Securi
 	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
 }
 
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKeyType *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType `pulumi:"enforceOnKeyType"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{...}
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKeyType SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrInput `pulumi:"enforceOnKeyType"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
+}
+
+// SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{ SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{...} }
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput
+	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType {
+		return v.EnforceOnKeyType
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
+		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)[vs[1].(int)]
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
+}
+
 type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
 	BanDurationSec int `pulumi:"banDurationSec"`
@@ -38762,11 +39203,13 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	ConformAction string `pulumi:"conformAction"`
 	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction string `pulumi:"exceedAction"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
@@ -38808,17 +39251,24 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
 
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
+}
+
 // Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
 		return v.ExceedRedirectOptions
@@ -39208,11 +39658,11 @@ func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOut
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponse struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionResponse `pulumi:"headerAction"`
 	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
 	Kind string `pulumi:"kind"`
@@ -39226,7 +39676,7 @@ type SecurityPolicyRuleResponse struct {
 	Priority int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponse `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"redirectOptions"`
 }
 
@@ -39245,7 +39695,7 @@ func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -39255,7 +39705,7 @@ func (o SecurityPolicyRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleHttpHeaderActionResponse { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionResponseOutput)
 }
@@ -39294,7 +39744,7 @@ func (o SecurityPolicyRuleResponseOutput) RateLimitOptions() SecurityPolicyRuleR
 	}).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRedirectOptionsResponse { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsResponseOutput)
 }
@@ -44002,6 +44452,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusInput)(nil)).Elem(), DeprecationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusPtrInput)(nil)).Elem(), DeprecationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationPtrInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsInput)(nil)).Elem(), DiskParamsArgs{})
@@ -44257,6 +44709,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
@@ -44456,6 +44910,9 @@ func init() {
 	pulumi.RegisterOutputType(DeprecationStatusOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusPtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseOutput{})
@@ -44463,6 +44920,8 @@ func init() {
 	pulumi.RegisterOutputType(DiskParamsOutput{})
 	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
 	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceResponseOutput{})
@@ -44916,6 +45375,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput{})

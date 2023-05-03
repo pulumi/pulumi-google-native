@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The priority of this case. If this is set, do not set severity.
+// The priority of this case.
 type CasePriority string
 
 const (
@@ -185,7 +185,7 @@ func (in *casePriorityPtr) ToCasePriorityPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CasePriorityPtrOutput)
 }
 
-// The severity of this case. Deprecated. Use priority instead.
+// REMOVED. The severity of this case. Use priority instead.
 type CaseSeverity string
 
 const (

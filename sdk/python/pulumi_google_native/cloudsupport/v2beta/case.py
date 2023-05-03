@@ -42,8 +42,8 @@ class CaseArgs:
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] language_code: The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
         :param pulumi.Input[str] name: The resource name for the case.
-        :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
-        :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
+        :param pulumi.Input['CasePriority'] priority: The priority of this case.
+        :param pulumi.Input['CaseSeverity'] severity: REMOVED. The severity of this case. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
         :param pulumi.Input[str] time_zone: The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
@@ -68,9 +68,6 @@ class CaseArgs:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if severity is not None:
-            warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
-            pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
         if subscriber_email_addresses is not None:
@@ -198,7 +195,7 @@ class CaseArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input['CasePriority']]:
         """
-        The priority of this case. If this is set, do not set severity.
+        The priority of this case.
         """
         return pulumi.get(self, "priority")
 
@@ -210,7 +207,7 @@ class CaseArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input['CaseSeverity']]:
         """
-        The severity of this case. Deprecated. Use priority instead.
+        REMOVED. The severity of this case. Use priority instead.
         """
         return pulumi.get(self, "severity")
 
@@ -277,7 +274,7 @@ class Case(pulumi.CustomResource):
                  v2betum_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
+        Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -291,8 +288,8 @@ class Case(pulumi.CustomResource):
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] language_code: The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
         :param pulumi.Input[str] name: The resource name for the case.
-        :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
-        :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
+        :param pulumi.Input['CasePriority'] priority: The priority of this case.
+        :param pulumi.Input['CaseSeverity'] severity: REMOVED. The severity of this case. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
         :param pulumi.Input[str] time_zone: The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
@@ -304,7 +301,7 @@ class Case(pulumi.CustomResource):
                  args: CaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
+        Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -356,9 +353,6 @@ class Case(pulumi.CustomResource):
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
-            if severity is not None and not opts.urn:
-                warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
-                pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
             __props__.__dict__["severity"] = severity
             __props__.__dict__["subscriber_email_addresses"] = subscriber_email_addresses
             __props__.__dict__["test_case"] = test_case
@@ -492,7 +486,7 @@ class Case(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[str]:
         """
-        The priority of this case. If this is set, do not set severity.
+        The priority of this case.
         """
         return pulumi.get(self, "priority")
 
@@ -500,7 +494,7 @@ class Case(pulumi.CustomResource):
     @pulumi.getter
     def severity(self) -> pulumi.Output[str]:
         """
-        The severity of this case. Deprecated. Use priority instead.
+        REMOVED. The severity of this case. Use priority instead.
         """
         return pulumi.get(self, "severity")
 

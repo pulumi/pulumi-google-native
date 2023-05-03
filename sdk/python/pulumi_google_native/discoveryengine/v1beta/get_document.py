@@ -39,7 +39,7 @@ class GetDocumentResult:
     @pulumi.getter(name="jsonData")
     def json_data(self) -> str:
         """
-        The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -71,7 +71,7 @@ class GetDocumentResult:
     @pulumi.getter(name="structData")
     def struct_data(self) -> Mapping[str, str]:
         """
-        The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 

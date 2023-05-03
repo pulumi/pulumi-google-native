@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, ack_deadline_seconds=None, bigquery_config=None, dead_letter_policy=None, detached=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_config=None, cloud_storage_config=None, dead_letter_policy=None, detached=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policy=None, filter=None, labels=None, message_retention_duration=None, name=None, push_config=None, retain_acked_messages=None, retry_policy=None, state=None, topic=None, topic_message_retention_duration=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
         if bigquery_config and not isinstance(bigquery_config, dict):
             raise TypeError("Expected argument 'bigquery_config' to be a dict")
         pulumi.set(__self__, "bigquery_config", bigquery_config)
+        if cloud_storage_config and not isinstance(cloud_storage_config, dict):
+            raise TypeError("Expected argument 'cloud_storage_config' to be a dict")
+        pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy and not isinstance(dead_letter_policy, dict):
             raise TypeError("Expected argument 'dead_letter_policy' to be a dict")
         pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
@@ -87,6 +90,14 @@ class GetSubscriptionResult:
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
         """
         return pulumi.get(self, "bigquery_config")
+
+    @property
+    @pulumi.getter(name="cloudStorageConfig")
+    def cloud_storage_config(self) -> 'outputs.CloudStorageConfigResponse':
+        """
+        If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        """
+        return pulumi.get(self, "cloud_storage_config")
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
@@ -217,6 +228,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
         return GetSubscriptionResult(
             ack_deadline_seconds=self.ack_deadline_seconds,
             bigquery_config=self.bigquery_config,
+            cloud_storage_config=self.cloud_storage_config,
             dead_letter_policy=self.dead_letter_policy,
             detached=self.detached,
             enable_exactly_once_delivery=self.enable_exactly_once_delivery,
@@ -249,6 +261,7 @@ def get_subscription(project: Optional[str] = None,
     return AwaitableGetSubscriptionResult(
         ack_deadline_seconds=__ret__.ack_deadline_seconds,
         bigquery_config=__ret__.bigquery_config,
+        cloud_storage_config=__ret__.cloud_storage_config,
         dead_letter_policy=__ret__.dead_letter_policy,
         detached=__ret__.detached,
         enable_exactly_once_delivery=__ret__.enable_exactly_once_delivery,

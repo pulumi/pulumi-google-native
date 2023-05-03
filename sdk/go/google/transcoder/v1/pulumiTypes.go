@@ -4666,13 +4666,13 @@ func (o H265CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }
 
-// Overlaid jpeg image.
+// Overlaid image.
 type Image struct {
 	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha *float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution *NormalizedCoordinate `pulumi:"resolution"`
-	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 	Uri string `pulumi:"uri"`
 }
 
@@ -4687,13 +4687,13 @@ type ImageInput interface {
 	ToImageOutputWithContext(context.Context) ImageOutput
 }
 
-// Overlaid jpeg image.
+// Overlaid image.
 type ImageArgs struct {
 	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha pulumi.Float64PtrInput `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinatePtrInput `pulumi:"resolution"`
-	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -4750,7 +4750,7 @@ func (i *imagePtrType) ToImagePtrOutputWithContext(ctx context.Context) ImagePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ImagePtrOutput)
 }
 
-// Overlaid jpeg image.
+// Overlaid image.
 type ImageOutput struct{ *pulumi.OutputState }
 
 func (ImageOutput) ElementType() reflect.Type {
@@ -4785,7 +4785,7 @@ func (o ImageOutput) Resolution() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v Image) *NormalizedCoordinate { return v.Resolution }).(NormalizedCoordinatePtrOutput)
 }
 
-// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 func (o ImageOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v Image) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -4834,7 +4834,7 @@ func (o ImagePtrOutput) Resolution() NormalizedCoordinatePtrOutput {
 	}).(NormalizedCoordinatePtrOutput)
 }
 
-// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 func (o ImagePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) *string {
 		if v == nil {
@@ -4844,17 +4844,17 @@ func (o ImagePtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Overlaid jpeg image.
+// Overlaid image.
 type ImageResponse struct {
 	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinateResponse `pulumi:"resolution"`
-	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 	Uri string `pulumi:"uri"`
 }
 
-// Overlaid jpeg image.
+// Overlaid image.
 type ImageResponseOutput struct{ *pulumi.OutputState }
 
 func (ImageResponseOutput) ElementType() reflect.Type {
@@ -4879,7 +4879,7 @@ func (o ImageResponseOutput) Resolution() NormalizedCoordinateResponseOutput {
 	return o.ApplyT(func(v ImageResponse) NormalizedCoordinateResponse { return v.Resolution }).(NormalizedCoordinateResponseOutput)
 }
 
-// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
 func (o ImageResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5468,7 +5468,7 @@ type Manifest struct {
 	FileName *string `pulumi:"fileName"`
 	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams []string `pulumi:"muxStreams"`
-	// Type of the manifest, can be `HLS` or `DASH`.
+	// Type of the manifest.
 	Type ManifestType `pulumi:"type"`
 }
 
@@ -5489,7 +5489,7 @@ type ManifestArgs struct {
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
 	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
-	// Type of the manifest, can be `HLS` or `DASH`.
+	// Type of the manifest.
 	Type ManifestTypeInput `pulumi:"type"`
 }
 
@@ -5555,7 +5555,7 @@ func (o ManifestOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Manifest) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
 
-// Type of the manifest, can be `HLS` or `DASH`.
+// Type of the manifest.
 func (o ManifestOutput) Type() ManifestTypeOutput {
 	return o.ApplyT(func(v Manifest) ManifestType { return v.Type }).(ManifestTypeOutput)
 }
@@ -5586,7 +5586,7 @@ type ManifestResponse struct {
 	FileName string `pulumi:"fileName"`
 	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams []string `pulumi:"muxStreams"`
-	// Type of the manifest, can be `HLS` or `DASH`.
+	// Type of the manifest.
 	Type string `pulumi:"type"`
 }
 
@@ -5615,7 +5615,7 @@ func (o ManifestResponseOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManifestResponse) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
 
-// Type of the manifest, can be `HLS` or `DASH`.
+// Type of the manifest.
 func (o ManifestResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManifestResponse) string { return v.Type }).(pulumi.StringOutput)
 }

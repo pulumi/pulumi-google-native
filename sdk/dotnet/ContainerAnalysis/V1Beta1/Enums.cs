@@ -1318,6 +1318,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         /// A SHA-256 hash.
         /// </summary>
         public static HashType Sha256 { get; } = new HashType("SHA256");
+        /// <summary>
+        /// Dirhash of a Go module's source code which is then hex-encoded. See b/244466565 and https://github.com/in-toto/attestation/pull/108.
+        /// </summary>
+        public static HashType GoModuleH1 { get; } = new HashType("GO_MODULE_H1");
+        /// <summary>
+        /// A SHA-512 hash.
+        /// </summary>
+        public static HashType Sha512 { get; } = new HashType("SHA512");
 
         public static bool operator ==(HashType left, HashType right) => left.Equals(right);
         public static bool operator !=(HashType left, HashType right) => !left.Equals(right);

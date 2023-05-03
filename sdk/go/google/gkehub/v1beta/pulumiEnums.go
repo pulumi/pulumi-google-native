@@ -181,6 +181,175 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// mode configures the logs routing mode.
+type FleetObservabilityRoutingConfigMode string
+
+const (
+	// If UNSPECIFIED, fleet logging feature is disabled.
+	FleetObservabilityRoutingConfigModeModeUnspecified = FleetObservabilityRoutingConfigMode("MODE_UNSPECIFIED")
+	// logs will be copied to the destination project.
+	FleetObservabilityRoutingConfigModeCopy = FleetObservabilityRoutingConfigMode("COPY")
+	// logs will be moved to the destination project.
+	FleetObservabilityRoutingConfigModeMove = FleetObservabilityRoutingConfigMode("MOVE")
+)
+
+func (FleetObservabilityRoutingConfigMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfigMode)(nil)).Elem()
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToFleetObservabilityRoutingConfigModeOutput() FleetObservabilityRoutingConfigModeOutput {
+	return pulumi.ToOutput(e).(FleetObservabilityRoutingConfigModeOutput)
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToFleetObservabilityRoutingConfigModeOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FleetObservabilityRoutingConfigModeOutput)
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToFleetObservabilityRoutingConfigModePtrOutput() FleetObservabilityRoutingConfigModePtrOutput {
+	return e.ToFleetObservabilityRoutingConfigModePtrOutputWithContext(context.Background())
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
+	return FleetObservabilityRoutingConfigMode(e).ToFleetObservabilityRoutingConfigModeOutputWithContext(ctx).ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx)
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FleetObservabilityRoutingConfigMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FleetObservabilityRoutingConfigModeOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfigMode)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingConfigModeOutput() FleetObservabilityRoutingConfigModeOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingConfigModeOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModeOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingConfigModePtrOutput() FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ToFleetObservabilityRoutingConfigModePtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityRoutingConfigMode) *FleetObservabilityRoutingConfigMode {
+		return &v
+	}).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FleetObservabilityRoutingConfigMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FleetObservabilityRoutingConfigMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FleetObservabilityRoutingConfigModePtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityRoutingConfigMode)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutingConfigModePtrOutput() FleetObservabilityRoutingConfigModePtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) Elem() FleetObservabilityRoutingConfigModeOutput {
+	return o.ApplyT(func(v *FleetObservabilityRoutingConfigMode) FleetObservabilityRoutingConfigMode {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityRoutingConfigMode
+		return ret
+	}).(FleetObservabilityRoutingConfigModeOutput)
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FleetObservabilityRoutingConfigMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FleetObservabilityRoutingConfigModeInput is an input type that accepts FleetObservabilityRoutingConfigModeArgs and FleetObservabilityRoutingConfigModeOutput values.
+// You can construct a concrete instance of `FleetObservabilityRoutingConfigModeInput` via:
+//
+//	FleetObservabilityRoutingConfigModeArgs{...}
+type FleetObservabilityRoutingConfigModeInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigModeOutput() FleetObservabilityRoutingConfigModeOutput
+	ToFleetObservabilityRoutingConfigModeOutputWithContext(context.Context) FleetObservabilityRoutingConfigModeOutput
+}
+
+var fleetObservabilityRoutingConfigModePtrType = reflect.TypeOf((**FleetObservabilityRoutingConfigMode)(nil)).Elem()
+
+type FleetObservabilityRoutingConfigModePtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigModePtrOutput() FleetObservabilityRoutingConfigModePtrOutput
+	ToFleetObservabilityRoutingConfigModePtrOutputWithContext(context.Context) FleetObservabilityRoutingConfigModePtrOutput
+}
+
+type fleetObservabilityRoutingConfigModePtr string
+
+func FleetObservabilityRoutingConfigModePtr(v string) FleetObservabilityRoutingConfigModePtrInput {
+	return (*fleetObservabilityRoutingConfigModePtr)(&v)
+}
+
+func (*fleetObservabilityRoutingConfigModePtr) ElementType() reflect.Type {
+	return fleetObservabilityRoutingConfigModePtrType
+}
+
+func (in *fleetObservabilityRoutingConfigModePtr) ToFleetObservabilityRoutingConfigModePtrOutput() FleetObservabilityRoutingConfigModePtrOutput {
+	return pulumi.ToOutput(in).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+func (in *fleetObservabilityRoutingConfigModePtr) ToFleetObservabilityRoutingConfigModePtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
 // Deprecated: This field will be ignored and should not be set. Customer's billing structure.
 type MultiClusterIngressFeatureSpecBilling string
 
@@ -524,12 +693,16 @@ func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutputWithContext(ctx co
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigModeInput)(nil)).Elem(), FleetObservabilityRoutingConfigMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigModePtrInput)(nil)).Elem(), FleetObservabilityRoutingConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRoleInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRolePtrInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigModeOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigModePtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingPtrOutput{})
 	pulumi.RegisterOutputType(RolePredefinedRoleOutput{})

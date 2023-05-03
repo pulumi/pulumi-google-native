@@ -21,9 +21,12 @@ class OrganizationArgs:
                  parent: pulumi.Input[str],
                  runtime_type: pulumi.Input['OrganizationRuntimeType'],
                  addons_config: Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -37,9 +40,12 @@ class OrganizationArgs:
         :param pulumi.Input[str] parent: Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
@@ -56,12 +62,18 @@ class OrganizationArgs:
         pulumi.set(__self__, "runtime_type", runtime_type)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
+        if api_consumer_data_encryption_key_name is not None:
+            pulumi.set(__self__, "api_consumer_data_encryption_key_name", api_consumer_data_encryption_key_name)
+        if api_consumer_data_location is not None:
+            pulumi.set(__self__, "api_consumer_data_location", api_consumer_data_location)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if billing_type is not None:
             pulumi.set(__self__, "billing_type", billing_type)
+        if control_plane_encryption_key_name is not None:
+            pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
         if customer_name is not None:
             pulumi.set(__self__, "customer_name", customer_name)
         if description is not None:
@@ -126,6 +138,30 @@ class OrganizationArgs:
         pulumi.set(self, "addons_config", value)
 
     @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @api_consumer_data_encryption_key_name.setter
+    def api_consumer_data_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_encryption_key_name", value)
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
+
+    @api_consumer_data_location.setter
+    def api_consumer_data_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_consumer_data_location", value)
+
+    @property
     @pulumi.getter
     def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -160,6 +196,18 @@ class OrganizationArgs:
     @billing_type.setter
     def billing_type(self, value: Optional[pulumi.Input['OrganizationBillingType']]):
         pulumi.set(self, "billing_type", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
+
+    @control_plane_encryption_key_name.setter
+    def control_plane_encryption_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_encryption_key_name", value)
 
     @property
     @pulumi.getter(name="customerName")
@@ -253,9 +301,12 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -274,9 +325,12 @@ class Organization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[str] analytics_region: DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] api_consumer_data_encryption_key_name: Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        :param pulumi.Input[str] api_consumer_data_location: This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
+        :param pulumi.Input[str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
@@ -314,9 +368,12 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[str]] = None,
+                 api_consumer_data_location: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
+                 control_plane_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -342,9 +399,12 @@ class Organization(pulumi.CustomResource):
                 warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
                 pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
             __props__.__dict__["analytics_region"] = analytics_region
+            __props__.__dict__["api_consumer_data_encryption_key_name"] = api_consumer_data_encryption_key_name
+            __props__.__dict__["api_consumer_data_location"] = api_consumer_data_location
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["billing_type"] = billing_type
+            __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -394,11 +454,14 @@ class Organization(pulumi.CustomResource):
 
         __props__.__dict__["addons_config"] = None
         __props__.__dict__["analytics_region"] = None
+        __props__.__dict__["api_consumer_data_encryption_key_name"] = None
+        __props__.__dict__["api_consumer_data_location"] = None
         __props__.__dict__["apigee_project_id"] = None
         __props__.__dict__["attributes"] = None
         __props__.__dict__["authorized_network"] = None
         __props__.__dict__["billing_type"] = None
         __props__.__dict__["ca_certificate"] = None
+        __props__.__dict__["control_plane_encryption_key_name"] = None
         __props__.__dict__["created_at"] = None
         __props__.__dict__["customer_name"] = None
         __props__.__dict__["description"] = None
@@ -433,6 +496,22 @@ class Organization(pulumi.CustomResource):
         DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
+
+    @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> pulumi.Output[str]:
+        """
+        Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> pulumi.Output[str]:
+        """
+        This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
 
     @property
     @pulumi.getter(name="apigeeProjectId")
@@ -473,6 +552,14 @@ class Organization(pulumi.CustomResource):
         Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> pulumi.Output[str]:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
 
     @property
     @pulumi.getter(name="createdAt")

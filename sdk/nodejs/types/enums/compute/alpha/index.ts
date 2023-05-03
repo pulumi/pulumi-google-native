@@ -1005,6 +1005,10 @@ export const ConfidentialInstanceConfigConfidentialInstanceType = {
      * AMD Secure Encrypted Virtualization - Secure Nested Paging.
      */
     SevSnp: "SEV_SNP",
+    /**
+     * Intel Trust Domain eXtension.
+     */
+    Tdx: "TDX",
 } as const;
 
 /**
@@ -1612,6 +1616,7 @@ export const GuestOsFeatureType = {
     SevCapable: "SEV_CAPABLE",
     SevLiveMigratable: "SEV_LIVE_MIGRATABLE",
     SevSnpCapable: "SEV_SNP_CAPABLE",
+    TdxCapable: "TDX_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
     VirtioScsiMultiqueue: "VIRTIO_SCSI_MULTIQUEUE",
     Windows: "WINDOWS",
@@ -2971,6 +2976,7 @@ export const RegionCommitmentType = {
     ComputeOptimized: "COMPUTE_OPTIMIZED",
     ComputeOptimizedC2d: "COMPUTE_OPTIMIZED_C2D",
     ComputeOptimizedC3: "COMPUTE_OPTIMIZED_C3",
+    ComputeOptimizedC3d: "COMPUTE_OPTIMIZED_C3D",
     GeneralPurpose: "GENERAL_PURPOSE",
     GeneralPurposeE2: "GENERAL_PURPOSE_E2",
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
@@ -3808,7 +3814,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVi
 } as const;
 
 /**
- * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+ * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
  */
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility = (typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility)[keyof typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility];
 

@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType',
     'WorkloadComplianceRegime',
@@ -40,6 +41,28 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvis
     TIMEOUT_ERROR = "TIMEOUT_ERROR"
     """
     Resource wasn't provisioned in the required 7 day time period
+    """
+
+
+class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping(str, Enum):
+    """
+    Detailed error message if Ekm provisioning fails
+    """
+    EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED = "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED"
+    """
+    Error is unspecified.
+    """
+    INVALID_SERVICE_ACCOUNT = "INVALID_SERVICE_ACCOUNT"
+    """
+    Service account is used is invalid.
+    """
+    MISSING_METRICS_SCOPE_ADMIN_PERMISSION = "MISSING_METRICS_SCOPE_ADMIN_PERMISSION"
+    """
+    Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+    """
+    MISSING_EKM_CONNECTION_ADMIN_PERMISSION = "MISSING_EKM_CONNECTION_ADMIN_PERMISSION"
+    """
+    Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
     """
 
 
@@ -173,4 +196,12 @@ class WorkloadPartner(str, Enum):
     SOVEREIGN_CONTROLS_BY_T_SYSTEMS = "SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
     """
     Enum representing T_SYSTEM (TSI) partner.
+    """
+    SOVEREIGN_CONTROLS_BY_SIA_MINSAIT = "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
+    """
+    Enum representing SIA_MINSAIT (Indra) partner.
+    """
+    SOVEREIGN_CONTROLS_BY_PSN = "SOVEREIGN_CONTROLS_BY_PSN"
+    """
+    Enum representing PSN (TIM) partner.
     """

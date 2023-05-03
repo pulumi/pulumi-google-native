@@ -483,6 +483,10 @@ class PublishingOrganization(str, Enum):
     """
     Street View Org.
     """
+    SHOPPING = "SHOPPING"
+    """
+    Shopping Org.
+    """
 
 
 class RolloutStatus(str, Enum):

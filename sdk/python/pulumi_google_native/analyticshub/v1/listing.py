@@ -30,8 +30,7 @@ class ListingArgs:
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input['PublisherArgs']] = None,
-                 request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input['RestrictedExportConfigArgs']] = None):
+                 request_access: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Listing resource.
         :param pulumi.Input['BigQueryDatasetSourceArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
@@ -45,7 +44,6 @@ class ListingArgs:
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
         :param pulumi.Input['PublisherArgs'] publisher: Optional. Details of the publisher who owns the listing and who can share the source data.
         :param pulumi.Input[str] request_access: Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
-        :param pulumi.Input['RestrictedExportConfigArgs'] restricted_export_config: Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
         """
         pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
@@ -71,8 +69,6 @@ class ListingArgs:
             pulumi.set(__self__, "publisher", publisher)
         if request_access is not None:
             pulumi.set(__self__, "request_access", request_access)
-        if restricted_export_config is not None:
-            pulumi.set(__self__, "restricted_export_config", restricted_export_config)
 
     @property
     @pulumi.getter(name="bigqueryDataset")
@@ -233,18 +229,6 @@ class ListingArgs:
     def request_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_access", value)
 
-    @property
-    @pulumi.getter(name="restrictedExportConfig")
-    def restricted_export_config(self) -> Optional[pulumi.Input['RestrictedExportConfigArgs']]:
-        """
-        Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        """
-        return pulumi.get(self, "restricted_export_config")
-
-    @restricted_export_config.setter
-    def restricted_export_config(self, value: Optional[pulumi.Input['RestrictedExportConfigArgs']]):
-        pulumi.set(self, "restricted_export_config", value)
-
 
 class Listing(pulumi.CustomResource):
     @overload
@@ -265,7 +249,6 @@ class Listing(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input[pulumi.InputType['PublisherArgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a new listing.
@@ -284,7 +267,6 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] primary_contact: Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
         :param pulumi.Input[pulumi.InputType['PublisherArgs']] publisher: Optional. Details of the publisher who owns the listing and who can share the source data.
         :param pulumi.Input[str] request_access: Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
-        :param pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']] restricted_export_config: Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
         """
         ...
     @overload
@@ -325,7 +307,6 @@ class Listing(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input[pulumi.InputType['PublisherArgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
-                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['RestrictedExportConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -357,7 +338,6 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["publisher"] = publisher
             __props__.__dict__["request_access"] = request_access
-            __props__.__dict__["restricted_export_config"] = restricted_export_config
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["data_exchange_id", "listing_id", "location", "project"])
@@ -399,7 +379,6 @@ class Listing(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["publisher"] = None
         __props__.__dict__["request_access"] = None
-        __props__.__dict__["restricted_export_config"] = None
         __props__.__dict__["state"] = None
         return Listing(resource_name, opts=opts, __props__=__props__)
 
@@ -513,14 +492,6 @@ class Listing(pulumi.CustomResource):
         Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
         """
         return pulumi.get(self, "request_access")
-
-    @property
-    @pulumi.getter(name="restrictedExportConfig")
-    def restricted_export_config(self) -> pulumi.Output['outputs.RestrictedExportConfigResponse']:
-        """
-        Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        """
-        return pulumi.get(self, "restricted_export_config")
 
     @property
     @pulumi.getter

@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     public sealed class GetScopeResult
     {
         /// <summary>
+        /// If true, all Memberships in the Fleet bind to this Scope.
+        /// </summary>
+        public readonly bool AllMemberships;
+        /// <summary>
         /// When the scope was created.
         /// </summary>
         public readonly string CreateTime;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
         [OutputConstructor]
         private GetScopeResult(
+            bool allMemberships,
+
             string createTime,
 
             string deleteTime,
@@ -102,6 +108,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
             string updateTime)
         {
+            AllMemberships = allMemberships;
             CreateTime = createTime;
             DeleteTime = deleteTime;
             Name = name;

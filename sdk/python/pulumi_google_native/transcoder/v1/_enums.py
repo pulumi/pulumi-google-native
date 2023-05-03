@@ -49,7 +49,7 @@ class JobMode(str, Enum):
 
 class ManifestType(str, Enum):
     """
-    Required. Type of the manifest, can be `HLS` or `DASH`.
+    Required. Type of the manifest.
     """
     MANIFEST_TYPE_UNSPECIFIED = "MANIFEST_TYPE_UNSPECIFIED"
     """
@@ -57,9 +57,9 @@ class ManifestType(str, Enum):
     """
     HLS = "HLS"
     """
-    Create `HLS` manifest. The corresponding file extension is `.m3u8`.
+    Create an HLS manifest. The corresponding file extension is `.m3u8`.
     """
     DASH = "DASH"
     """
-    Create `DASH` manifest. The corresponding file extension is `.mpd`.
+    Create an MPEG-DASH manifest. The corresponding file extension is `.mpd`.
     """

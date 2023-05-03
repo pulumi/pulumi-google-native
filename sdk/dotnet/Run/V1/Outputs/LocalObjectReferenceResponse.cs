@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class LocalObjectReferenceResponse
     {
         /// <summary>
-        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        /// Name of the referent.
         /// </summary>
         public readonly string Name;
 

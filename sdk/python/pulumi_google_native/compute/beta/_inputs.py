@@ -165,6 +165,7 @@ __all__ = [
     'RolloutPolicyArgs',
     'RouterAdvertisedIpRangeArgs',
     'RouterBgpPeerBfdArgs',
+    'RouterBgpPeerCustomLearnedIpRangeArgs',
     'RouterBgpPeerArgs',
     'RouterBgpArgs',
     'RouterInterfaceArgs',
@@ -817,6 +818,7 @@ class AttachedDiskInitializeParamsArgs:
                  on_update_action: Optional[pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction']] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  provisioned_throughput: Optional[pulumi.Input[str]] = None,
+                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -837,6 +839,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction'] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[str] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -868,6 +871,8 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if replica_zones is not None:
+            pulumi.set(__self__, "replica_zones", replica_zones)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
@@ -1024,6 +1029,18 @@ class AttachedDiskInitializeParamsArgs:
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        """
+        return pulumi.get(self, "replica_zones")
+
+    @replica_zones.setter
+    def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "replica_zones", value)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -4186,16 +4203,20 @@ class ExprArgs:
 class ExternalVpnGatewayInterfaceArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[int]] = None,
-                 ip_address: Optional[pulumi.Input[str]] = None):
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None):
         """
         The interface for the external VPN gateway.
         :param pulumi.Input[int] id: The numeric ID of this interface. The allowed input values for this id for different redundancy types of external VPN gateway: - SINGLE_IP_INTERNALLY_REDUNDANT - 0 - TWO_IPS_REDUNDANCY - 0, 1 - FOUR_IPS_REDUNDANCY - 0, 1, 2, 3 
         :param pulumi.Input[str] ip_address: IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
+        :param pulumi.Input[str] ipv6_address: IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @property
     @pulumi.getter
@@ -4220,6 +4241,18 @@ class ExternalVpnGatewayInterfaceArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
 
 @pulumi.input_type
@@ -10527,6 +10560,29 @@ class RouterBgpPeerBfdArgs:
 
 
 @pulumi.input_type
+class RouterBgpPeerCustomLearnedIpRangeArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] range: The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "range", value)
+
+
+@pulumi.input_type
 class RouterBgpPeerArgs:
     def __init__(__self__, *,
                  advertise_mode: Optional[pulumi.Input['RouterBgpPeerAdvertiseMode']] = None,
@@ -10534,6 +10590,8 @@ class RouterBgpPeerArgs:
                  advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
                  bfd: Optional[pulumi.Input['RouterBgpPeerBfdArgs']] = None,
+                 custom_learned_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerCustomLearnedIpRangeArgs']]]] = None,
+                 custom_learned_route_priority: Optional[pulumi.Input[int]] = None,
                  enable: Optional[pulumi.Input['RouterBgpPeerEnable']] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface_name: Optional[pulumi.Input[str]] = None,
@@ -10551,6 +10609,8 @@ class RouterBgpPeerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
         :param pulumi.Input['RouterBgpPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerCustomLearnedIpRangeArgs']]] custom_learned_ip_ranges: A list of user-defined custom learned route IP address ranges for a BGP session.
+        :param pulumi.Input[int] custom_learned_route_priority: The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
         :param pulumi.Input['RouterBgpPeerEnable'] enable: The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         :param pulumi.Input[bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
         :param pulumi.Input[str] interface_name: Name of the interface the BGP peer is associated with.
@@ -10573,6 +10633,10 @@ class RouterBgpPeerArgs:
             pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
         if bfd is not None:
             pulumi.set(__self__, "bfd", bfd)
+        if custom_learned_ip_ranges is not None:
+            pulumi.set(__self__, "custom_learned_ip_ranges", custom_learned_ip_ranges)
+        if custom_learned_route_priority is not None:
+            pulumi.set(__self__, "custom_learned_route_priority", custom_learned_route_priority)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if enable_ipv6 is not None:
@@ -10655,6 +10719,30 @@ class RouterBgpPeerArgs:
     @bfd.setter
     def bfd(self, value: Optional[pulumi.Input['RouterBgpPeerBfdArgs']]):
         pulumi.set(self, "bfd", value)
+
+    @property
+    @pulumi.getter(name="customLearnedIpRanges")
+    def custom_learned_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerCustomLearnedIpRangeArgs']]]]:
+        """
+        A list of user-defined custom learned route IP address ranges for a BGP session.
+        """
+        return pulumi.get(self, "custom_learned_ip_ranges")
+
+    @custom_learned_ip_ranges.setter
+    def custom_learned_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerCustomLearnedIpRangeArgs']]]]):
+        pulumi.set(self, "custom_learned_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="customLearnedRoutePriority")
+    def custom_learned_route_priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+        """
+        return pulumi.get(self, "custom_learned_route_priority")
+
+    @custom_learned_route_priority.setter
+    def custom_learned_route_priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "custom_learned_route_priority", value)
 
     @property
     @pulumi.getter
@@ -11243,6 +11331,7 @@ class RouterNatSubnetworkToNatArgs:
 @pulumi.input_type
 class RouterNatArgs:
     def __init__(__self__, *,
+                 auto_network_tier: Optional[pulumi.Input['RouterNatAutoNetworkTier']] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dynamic_port_allocation: Optional[pulumi.Input[bool]] = None,
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
@@ -11263,6 +11352,7 @@ class RouterNatArgs:
                  udp_idle_timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
+        :param pulumi.Input['RouterNatAutoNetworkTier'] auto_network_tier: The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatEndpointTypesItem']]] endpoint_types: List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
@@ -11281,6 +11371,8 @@ class RouterNatArgs:
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
+        if auto_network_tier is not None:
+            pulumi.set(__self__, "auto_network_tier", auto_network_tier)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -11317,6 +11409,18 @@ class RouterNatArgs:
             pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
         if udp_idle_timeout_sec is not None:
             pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @property
+    @pulumi.getter(name="autoNetworkTier")
+    def auto_network_tier(self) -> Optional[pulumi.Input['RouterNatAutoNetworkTier']]:
+        """
+        The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+        """
+        return pulumi.get(self, "auto_network_tier")
+
+    @auto_network_tier.setter
+    def auto_network_tier(self, value: Optional[pulumi.Input['RouterNatAutoNetworkTier']]):
+        pulumi.set(self, "auto_network_tier", value)
 
     @property
     @pulumi.getter(name="drainNatIps")
@@ -12113,9 +12217,9 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
                  enable: Optional[pulumi.Input[bool]] = None,
                  rule_visibility: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility']] = None):
         """
-        Configuration options for L7 DDoS detection.
-        :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection.
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility'] rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility'] rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -12126,7 +12230,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to true, enables CAAP for L7 DDoS detection.
+        If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "enable")
 
@@ -12138,7 +12242,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter(name="ruleVisibility")
     def rule_visibility(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility']]:
         """
-        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "rule_visibility")
 
@@ -12330,7 +12434,7 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     def __init__(__self__, *,
                  redirect_site_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] redirect_site_key: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        :param pulumi.Input[str] redirect_site_key: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         if redirect_site_key is not None:
             pulumi.set(__self__, "redirect_site_key", redirect_site_key)
@@ -12339,7 +12443,7 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     @pulumi.getter(name="redirectSiteKey")
     def redirect_site_key(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "redirect_site_key")
 
@@ -12513,7 +12617,7 @@ class SecurityPolicyRuleMatcherArgs:
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input['SecurityPolicyRuleMatcherConfigArgs'] config: The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-        :param pulumi.Input['ExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        :param pulumi.Input['ExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         :param pulumi.Input['SecurityPolicyRuleMatcherVersionedExpr'] versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         """
         if config is not None:
@@ -12539,7 +12643,7 @@ class SecurityPolicyRuleMatcherArgs:
     @pulumi.getter
     def expr(self) -> Optional[pulumi.Input['ExprArgs']]:
         """
-        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         """
         return pulumi.get(self, "expr")
 
@@ -12822,8 +12926,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
         if ban_duration_sec is not None:
@@ -12921,7 +13025,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -12933,7 +13037,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
         """
-        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "exceed_redirect_options")
 
@@ -13012,17 +13116,17 @@ class SecurityPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['SecurityPolicyRuleDirection'] direction: The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
-        :param pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers.
+        :param pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param pulumi.Input[str] rule_number: Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -13060,7 +13164,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         """
         return pulumi.get(self, "action")
 
@@ -13108,7 +13212,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="headerAction")
     def header_action(self) -> Optional[pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs']]:
         """
-        Optional, additional actions that are performed on headers.
+        Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "header_action")
 
@@ -13180,7 +13284,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="redirectOptions")
     def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
         """
-        Parameters defining the redirect action. Cannot be specified for any other actions.
+        Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "redirect_options")
 

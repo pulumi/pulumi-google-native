@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
     public sealed class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse
     {
         /// <summary>
-        /// A list of phase match rules that are included in this group.
+        /// A list of phrase match rules that are included in this group.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse> PhraseMatchRules;
         /// <summary>

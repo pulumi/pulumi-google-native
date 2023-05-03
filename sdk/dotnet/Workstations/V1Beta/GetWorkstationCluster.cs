@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.StatusResponse> Conditions;
         /// <summary>
+        /// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        /// </summary>
+        public readonly string ControlPlaneIp;
+        /// <summary>
         /// Time when this resource was created.
         /// </summary>
         public readonly string CreateTime;
@@ -88,7 +92,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
             ImmutableArray<Outputs.StatusResponse> conditions,
 
+            string controlPlaneIp,
+
             string createTime,
 
             bool degraded,
@@ -158,6 +164,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         {
             Annotations = annotations;
             Conditions = conditions;
+            ControlPlaneIp = controlPlaneIp;
             CreateTime = createTime;
             Degraded = degraded;
             DeleteTime = deleteTime;

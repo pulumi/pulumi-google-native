@@ -448,11 +448,26 @@ class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
 
 @pulumi.input_type
 class GoogleCloudDataplexV1DataProfileSpecArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataProfileScan related setting.
+        :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
-        pass
+        if sampling_percent is not None:
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        """
+        return pulumi.get(self, "sampling_percent")
+
+    @sampling_percent.setter
+    def sampling_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_percent", value)
 
 
 @pulumi.input_type
@@ -620,6 +635,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
         Evaluates whether the column aggregate statistic lies between a specified range.
         :param pulumi.Input[str] max_value: The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         :param pulumi.Input[str] min_value: The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic'] statistic: The aggregate metric to evaluate.
         :param pulumi.Input[bool] strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
         :param pulumi.Input[bool] strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
@@ -661,6 +677,9 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
     @property
     @pulumi.getter
     def statistic(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic']]:
+        """
+        The aggregate metric to evaluate.
+        """
         return pulumi.get(self, "statistic")
 
     @statistic.setter
@@ -927,13 +946,17 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
 @pulumi.input_type
 class GoogleCloudDataplexV1DataQualitySpecArgs:
     def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]] = None,
+                 sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataQualityScan related setting.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if sampling_percent is not None:
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
 
     @property
     @pulumi.getter
@@ -946,6 +969,18 @@ class GoogleCloudDataplexV1DataQualitySpecArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        """
+        return pulumi.get(self, "sampling_percent")
+
+    @sampling_percent.setter
+    def sampling_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_percent", value)
 
 
 @pulumi.input_type

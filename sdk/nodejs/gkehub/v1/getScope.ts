@@ -28,6 +28,10 @@ export interface GetScopeArgs {
 
 export interface GetScopeResult {
     /**
+     * If true, all Memberships in the Fleet bind to this Scope.
+     */
+    readonly allMemberships: boolean;
+    /**
      * When the scope was created.
      */
     readonly createTime: string;

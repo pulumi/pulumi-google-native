@@ -65,6 +65,8 @@ type LookupWorkloadResult struct {
 	Resources []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse `pulumi:"resources"`
 	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
 	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse `pulumi:"saaEnrollmentResponse"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	ViolationNotificationsEnabled bool `pulumi:"violationNotificationsEnabled"`
 }
 
 func LookupWorkloadOutput(ctx *pulumi.Context, args LookupWorkloadOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadResultOutput {
@@ -206,6 +208,11 @@ func (o LookupWorkloadResultOutput) SaaEnrollmentResponse() GoogleCloudAssuredwo
 	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse {
 		return v.SaaEnrollmentResponse
 	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+func (o LookupWorkloadResultOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) bool { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

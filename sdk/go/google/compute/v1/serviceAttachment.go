@@ -44,7 +44,9 @@ type ServiceAttachment struct {
 	Project                pulumi.StringOutput `pulumi:"project"`
 	// An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId Uint128ResponseOutput `pulumi:"pscServiceAttachmentId"`
-	Region                 pulumi.StringOutput   `pulumi:"region"`
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	ReconcileConnections pulumi.BoolOutput   `pulumi:"reconcileConnections"`
+	Region               pulumi.StringOutput `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
@@ -119,7 +121,9 @@ type serviceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
 	Project                *string `pulumi:"project"`
-	Region                 string  `pulumi:"region"`
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	ReconcileConnections *bool  `pulumi:"reconcileConnections"`
+	Region               string `pulumi:"region"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// The URL of a service serving the endpoint identified by this service attachment.
@@ -147,7 +151,9 @@ type ServiceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
 	Project                pulumi.StringPtrInput
-	Region                 pulumi.StringInput
+	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+	ReconcileConnections pulumi.BoolPtrInput
+	Region               pulumi.StringInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
@@ -267,6 +273,11 @@ func (o ServiceAttachmentOutput) Project() pulumi.StringOutput {
 // An 128-bit global unique ID of the PSC service attachment.
 func (o ServiceAttachmentOutput) PscServiceAttachmentId() Uint128ResponseOutput {
 	return o.ApplyT(func(v *ServiceAttachment) Uint128ResponseOutput { return v.PscServiceAttachmentId }).(Uint128ResponseOutput)
+}
+
+// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+func (o ServiceAttachmentOutput) ReconcileConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.ReconcileConnections }).(pulumi.BoolOutput)
 }
 
 func (o ServiceAttachmentOutput) Region() pulumi.StringOutput {

@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'DatabaseAppEngineIntegrationMode',
     'DatabaseConcurrencyMode',
+    'DatabaseDeleteProtectionState',
     'DatabaseType',
     'GoogleFirestoreAdminV1IndexFieldArrayConfig',
     'GoogleFirestoreAdminV1IndexFieldOrder',
@@ -52,6 +53,24 @@ class DatabaseConcurrencyMode(str, Enum):
     OPTIMISTIC_WITH_ENTITY_GROUPS = "OPTIMISTIC_WITH_ENTITY_GROUPS"
     """
     Use optimistic concurrency control with entity groups by default. This is the only available mode for Cloud Datastore. This mode is also available for Cloud Firestore with Datastore Mode but is not recommended.
+    """
+
+
+class DatabaseDeleteProtectionState(str, Enum):
+    """
+    State of delete protection for the database.
+    """
+    DELETE_PROTECTION_STATE_UNSPECIFIED = "DELETE_PROTECTION_STATE_UNSPECIFIED"
+    """
+    The default value. Delete protection type is not specified
+    """
+    DELETE_PROTECTION_DISABLED = "DELETE_PROTECTION_DISABLED"
+    """
+    Delete protection is disabled
+    """
+    DELETE_PROTECTION_ENABLED = "DELETE_PROTECTION_ENABLED"
+    """
+    Delete protection is enabled
     """
 
 

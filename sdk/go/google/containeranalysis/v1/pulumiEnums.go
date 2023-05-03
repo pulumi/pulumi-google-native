@@ -360,6 +360,7 @@ const (
 	CVSSAttackComplexityAttackComplexityUnspecified = CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED")
 	CVSSAttackComplexityAttackComplexityLow         = CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW")
 	CVSSAttackComplexityAttackComplexityHigh        = CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH")
+	CVSSAttackComplexityAttackComplexityMedium      = CVSSAttackComplexity("ATTACK_COMPLEXITY_MEDIUM")
 )
 
 func (CVSSAttackComplexity) ElementType() reflect.Type {
@@ -860,6 +861,8 @@ const (
 	CVSSAvailabilityImpactImpactHigh        = CVSSAvailabilityImpact("IMPACT_HIGH")
 	CVSSAvailabilityImpactImpactLow         = CVSSAvailabilityImpact("IMPACT_LOW")
 	CVSSAvailabilityImpactImpactNone        = CVSSAvailabilityImpact("IMPACT_NONE")
+	CVSSAvailabilityImpactImpactPartial     = CVSSAvailabilityImpact("IMPACT_PARTIAL")
+	CVSSAvailabilityImpactImpactComplete    = CVSSAvailabilityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSAvailabilityImpact) ElementType() reflect.Type {
@@ -1026,6 +1029,8 @@ const (
 	CVSSConfidentialityImpactImpactHigh        = CVSSConfidentialityImpact("IMPACT_HIGH")
 	CVSSConfidentialityImpactImpactLow         = CVSSConfidentialityImpact("IMPACT_LOW")
 	CVSSConfidentialityImpactImpactNone        = CVSSConfidentialityImpact("IMPACT_NONE")
+	CVSSConfidentialityImpactImpactPartial     = CVSSConfidentialityImpact("IMPACT_PARTIAL")
+	CVSSConfidentialityImpactImpactComplete    = CVSSConfidentialityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSConfidentialityImpact) ElementType() reflect.Type {
@@ -1192,6 +1197,8 @@ const (
 	CVSSIntegrityImpactImpactHigh        = CVSSIntegrityImpact("IMPACT_HIGH")
 	CVSSIntegrityImpactImpactLow         = CVSSIntegrityImpact("IMPACT_LOW")
 	CVSSIntegrityImpactImpactNone        = CVSSIntegrityImpact("IMPACT_NONE")
+	CVSSIntegrityImpactImpactPartial     = CVSSIntegrityImpact("IMPACT_PARTIAL")
+	CVSSIntegrityImpactImpactComplete    = CVSSIntegrityImpact("IMPACT_COMPLETE")
 )
 
 func (CVSSIntegrityImpact) ElementType() reflect.Type {

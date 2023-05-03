@@ -16,6 +16,8 @@ import (
 type Scope struct {
 	pulumi.CustomResourceState
 
+	// If true, all Memberships in the Fleet bind to this Scope.
+	AllMemberships pulumi.BoolOutput `pulumi:"allMemberships"`
 	// When the scope was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// When the scope was deleted.
@@ -82,7 +84,9 @@ func (ScopeState) ElementType() reflect.Type {
 }
 
 type scopeArgs struct {
-	Location *string `pulumi:"location"`
+	// If true, all Memberships in the Fleet bind to this Scope.
+	AllMemberships *bool   `pulumi:"allMemberships"`
+	Location       *string `pulumi:"location"`
 	// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -92,7 +96,9 @@ type scopeArgs struct {
 
 // The set of arguments for constructing a Scope resource.
 type ScopeArgs struct {
-	Location pulumi.StringPtrInput
+	// If true, all Memberships in the Fleet bind to this Scope.
+	AllMemberships pulumi.BoolPtrInput
+	Location       pulumi.StringPtrInput
 	// The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -135,6 +141,11 @@ func (o ScopeOutput) ToScopeOutput() ScopeOutput {
 
 func (o ScopeOutput) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return o
+}
+
+// If true, all Memberships in the Fleet bind to this Scope.
+func (o ScopeOutput) AllMemberships() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Scope) pulumi.BoolOutput { return v.AllMemberships }).(pulumi.BoolOutput)
 }
 
 // When the scope was created.

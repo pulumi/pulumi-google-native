@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.DataLineage.V1
 {
     /// <summary>
-    /// Type of the source.
+    /// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudDatacatalogLineageV1OriginSourceType : IEquatable<GoogleCloudDatacatalogLineageV1OriginSourceType>

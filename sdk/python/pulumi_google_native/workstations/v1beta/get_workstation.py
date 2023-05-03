@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationResult:
-    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, host=None, labels=None, name=None, reconciling=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, env=None, etag=None, host=None, labels=None, name=None, reconciling=None, state=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -31,6 +31,9 @@ class GetWorkstationResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if env and not isinstance(env, dict):
+            raise TypeError("Expected argument 'env' to be a dict")
+        pulumi.set(__self__, "env", env)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -90,9 +93,17 @@ class GetWorkstationResult:
 
     @property
     @pulumi.getter
+    def env(self) -> Mapping[str, str]:
+        """
+        Environment variables passed to the workstation container's entrypoint.
+        """
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter
     def etag(self) -> str:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -163,6 +174,7 @@ class AwaitableGetWorkstationResult(GetWorkstationResult):
             create_time=self.create_time,
             delete_time=self.delete_time,
             display_name=self.display_name,
+            env=self.env,
             etag=self.etag,
             host=self.host,
             labels=self.labels,
@@ -196,6 +208,7 @@ def get_workstation(location: Optional[str] = None,
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
         display_name=__ret__.display_name,
+        env=__ret__.env,
         etag=__ret__.etag,
         host=__ret__.host,
         labels=__ret__.labels,

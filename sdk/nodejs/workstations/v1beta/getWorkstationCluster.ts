@@ -36,6 +36,10 @@ export interface GetWorkstationClusterResult {
      */
     readonly conditions: outputs.workstations.v1beta.StatusResponse[];
     /**
+     * The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     */
+    readonly controlPlaneIp: string;
+    /**
      * Time when this resource was created.
      */
     readonly createTime: string;
@@ -52,7 +56,7 @@ export interface GetWorkstationClusterResult {
      */
     readonly displayName: string;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
     /**

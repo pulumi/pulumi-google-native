@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Speech.V1
         [Output("items")]
         public Output<ImmutableArray<Outputs.ClassItemResponse>> Items { get; private set; } = null!;
 
+        /// <summary>
+        /// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        /// </summary>
+        [Output("kmsKeyVersionName")]
+        public Output<string> KmsKeyVersionName { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

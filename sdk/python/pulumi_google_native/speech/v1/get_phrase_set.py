@@ -19,10 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetPhraseSetResult:
-    def __init__(__self__, boost=None, name=None, phrases=None):
+    def __init__(__self__, boost=None, kms_key_name=None, kms_key_version_name=None, name=None, phrases=None):
         if boost and not isinstance(boost, float):
             raise TypeError("Expected argument 'boost' to be a float")
         pulumi.set(__self__, "boost", boost)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name and not isinstance(kms_key_version_name, str):
+            raise TypeError("Expected argument 'kms_key_version_name' to be a str")
+        pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -37,6 +43,22 @@ class GetPhraseSetResult:
         Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
         """
         return pulumi.get(self, "boost")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> str:
+        """
+        The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        """
+        return pulumi.get(self, "kms_key_version_name")
 
     @property
     @pulumi.getter
@@ -62,6 +84,8 @@ class AwaitableGetPhraseSetResult(GetPhraseSetResult):
             yield self
         return GetPhraseSetResult(
             boost=self.boost,
+            kms_key_name=self.kms_key_name,
+            kms_key_version_name=self.kms_key_version_name,
             name=self.name,
             phrases=self.phrases)
 
@@ -82,6 +106,8 @@ def get_phrase_set(location: Optional[str] = None,
 
     return AwaitableGetPhraseSetResult(
         boost=__ret__.boost,
+        kms_key_name=__ret__.kms_key_name,
+        kms_key_version_name=__ret__.kms_key_version_name,
         name=__ret__.name,
         phrases=__ret__.phrases)
 

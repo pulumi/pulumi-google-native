@@ -94,6 +94,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * An 128-bit global unique ID of the PSC service attachment.
      */
     public /*out*/ readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.beta.Uint128Response>;
+    /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+     */
+    public readonly reconcileConnections!: pulumi.Output<boolean>;
     public readonly region!: pulumi.Output<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -132,6 +136,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
             resourceInputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
@@ -157,6 +162,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["producerForwardingRule"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["pscServiceAttachmentId"] = undefined /*out*/;
+            resourceInputs["reconcileConnections"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -210,6 +216,10 @@ export interface ServiceAttachmentArgs {
      */
     producerForwardingRule?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+     */
+    reconcileConnections?: pulumi.Input<boolean>;
     region: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

@@ -77,6 +77,12 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         public Output<string> SourceId { get; private set; } = null!;
 
         /// <summary>
+        /// The state of the source.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
         /// Data source type.
         /// </summary>
         [Output("type")]

@@ -28,6 +28,10 @@ export const RepositoryFormat = {
      */
     Yum: "YUM",
     /**
+     * GooGet package format.
+     */
+    Googet: "GOOGET",
+    /**
      * Python package format.
      */
     Python: "PYTHON",

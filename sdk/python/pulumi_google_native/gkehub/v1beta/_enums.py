@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'FleetObservabilityRoutingConfigMode',
     'MultiClusterIngressFeatureSpecBilling',
     'RolePredefinedRole',
 ]
@@ -30,6 +31,24 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class FleetObservabilityRoutingConfigMode(str, Enum):
+    """
+    mode configures the logs routing mode.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    If UNSPECIFIED, fleet logging feature is disabled.
+    """
+    COPY = "COPY"
+    """
+    logs will be copied to the destination project.
+    """
+    MOVE = "MOVE"
+    """
+    logs will be moved to the destination project.
     """
 
 

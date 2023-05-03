@@ -58,13 +58,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        /// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// </summary>
+        [Output("enableAuditAgent")]
+        public Output<bool> EnableAuditAgent { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         /// </summary>
         [Output("encryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -106,6 +112,12 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        /// </summary>
+        [Output("readinessChecks")]
+        public Output<ImmutableArray<Outputs.ReadinessCheckResponse>> ReadinessChecks { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether this resource is currently being updated to match its intended state.
         /// </summary>
         [Output("reconciling")]
@@ -133,7 +145,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> WorkstationClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. ID to use for the config.
+        /// Required. ID to use for the workstation configuration.
         /// </summary>
         [Output("workstationConfigId")]
         public Output<string> WorkstationConfigId { get; private set; } = null!;
@@ -215,13 +227,19 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        /// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// </summary>
+        [Input("enableAuditAgent")]
+        public Input<bool>? EnableAuditAgent { get; set; }
+
+        /// <summary>
+        /// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         /// </summary>
         [Input("encryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -274,6 +292,18 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("readinessChecks")]
+        private InputList<Inputs.ReadinessCheckArgs>? _readinessChecks;
+
+        /// <summary>
+        /// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        /// </summary>
+        public InputList<Inputs.ReadinessCheckArgs> ReadinessChecks
+        {
+            get => _readinessChecks ?? (_readinessChecks = new InputList<Inputs.ReadinessCheckArgs>());
+            set => _readinessChecks = value;
+        }
+
         /// <summary>
         /// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         /// </summary>
@@ -284,7 +314,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Input<string> WorkstationClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Required. ID to use for the config.
+        /// Required. ID to use for the workstation configuration.
         /// </summary>
         [Input("workstationConfigId", required: true)]
         public Input<string> WorkstationConfigId { get; set; } = null!;

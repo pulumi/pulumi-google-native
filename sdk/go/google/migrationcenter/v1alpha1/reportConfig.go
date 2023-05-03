@@ -43,6 +43,9 @@ func NewReportConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GroupPreferencesetAssignments == nil {
+		return nil, errors.New("invalid value for required argument 'GroupPreferencesetAssignments'")
+	}
 	if args.ReportConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ReportConfigId'")
 	}

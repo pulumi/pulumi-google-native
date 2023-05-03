@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// Secret represents a secret that should populate this volume.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2SecretVolumeSourceResponse Secret;
 

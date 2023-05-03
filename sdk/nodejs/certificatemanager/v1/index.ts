@@ -55,6 +55,16 @@ export const getDnsAuthorization: typeof import("./getDnsAuthorization").getDnsA
 export const getDnsAuthorizationOutput: typeof import("./getDnsAuthorization").getDnsAuthorizationOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsAuthorization","getDnsAuthorizationOutput"], () => require("./getDnsAuthorization"));
 
+export { GetTrustConfigArgs, GetTrustConfigResult, GetTrustConfigOutputArgs } from "./getTrustConfig";
+export const getTrustConfig: typeof import("./getTrustConfig").getTrustConfig = null as any;
+export const getTrustConfigOutput: typeof import("./getTrustConfig").getTrustConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getTrustConfig","getTrustConfigOutput"], () => require("./getTrustConfig"));
+
+export { TrustConfigArgs } from "./trustConfig";
+export type TrustConfig = import("./trustConfig").TrustConfig;
+export const TrustConfig: typeof import("./trustConfig").TrustConfig = null as any;
+utilities.lazyLoad(exports, ["TrustConfig"], () => require("./trustConfig"));
+
 
 // Export enums:
 export * from "../../types/enums/certificatemanager/v1";
@@ -73,6 +83,8 @@ const _module = {
                 return new CertificateMapEntry(name, <any>undefined, { urn })
             case "google-native:certificatemanager/v1:DnsAuthorization":
                 return new DnsAuthorization(name, <any>undefined, { urn })
+            case "google-native:certificatemanager/v1:TrustConfig":
+                return new TrustConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

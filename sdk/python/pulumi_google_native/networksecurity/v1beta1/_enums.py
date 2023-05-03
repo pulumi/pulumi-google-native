@@ -8,6 +8,7 @@ __all__ = [
     'AddressGroupType',
     'AuthorizationPolicyAction',
     'GoogleIamV1AuditLogConfigLogType',
+    'MTLSPolicyClientValidationMode',
     'OrganizationAddressGroupType',
     'RuleBasicProfile',
 ]
@@ -68,6 +69,24 @@ class GoogleIamV1AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class MTLSPolicyClientValidationMode(str, Enum):
+    """
+    When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+    """
+    CLIENT_VALIDATION_MODE_UNSPECIFIED = "CLIENT_VALIDATION_MODE_UNSPECIFIED"
+    """
+    Not allowed.
+    """
+    ALLOW_INVALID_OR_MISSING_CLIENT_CERT = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
+    """
+    Allow connection even if certificate chain validation of the client certificate failed or no client certificate was presented. The proof of possession of the private key is always checked if client certificate was presented. This mode requires the backend to implement processing of data extracted from a client certificate to authenticate the peer, or to reject connections if the client certificate fingerprint is missing.
+    """
+    REJECT_INVALID = "REJECT_INVALID"
+    """
+    Require a client certificate and allow connection to the backend only if validation of the client certificate passed. If set, requires a reference to non-empty TrustConfig specified in `client_validation_trust_config`.
     """
 
 

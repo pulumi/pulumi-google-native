@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Output<string> NamespacedName { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        /// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        /// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

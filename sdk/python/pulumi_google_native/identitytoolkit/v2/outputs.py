@@ -27,6 +27,9 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse',
     'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse',
@@ -796,6 +799,167 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse(dict):
         TOTP MFA provider config for this project.
         """
         return pulumi.get(self, "totp_provider_config")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse(dict):
+    """
+    The reCAPTCHA Enterprise integration config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailPasswordEnforcementState":
+            suggest = "email_password_enforcement_state"
+        elif key == "managedRules":
+            suggest = "managed_rules"
+        elif key == "recaptchaKeys":
+            suggest = "recaptcha_keys"
+        elif key == "useAccountDefender":
+            suggest = "use_account_defender"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_password_enforcement_state: str,
+                 managed_rules: Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse'],
+                 recaptcha_keys: Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse'],
+                 use_account_defender: bool):
+        """
+        The reCAPTCHA Enterprise integration config.
+        :param str email_password_enforcement_state: The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+        :param Sequence['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse'] managed_rules: The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+        :param Sequence['GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse'] recaptcha_keys: The reCAPTCHA keys.
+        :param bool use_account_defender: Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+        """
+        pulumi.set(__self__, "email_password_enforcement_state", email_password_enforcement_state)
+        pulumi.set(__self__, "managed_rules", managed_rules)
+        pulumi.set(__self__, "recaptcha_keys", recaptcha_keys)
+        pulumi.set(__self__, "use_account_defender", use_account_defender)
+
+    @property
+    @pulumi.getter(name="emailPasswordEnforcementState")
+    def email_password_enforcement_state(self) -> str:
+        """
+        The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+        """
+        return pulumi.get(self, "email_password_enforcement_state")
+
+    @property
+    @pulumi.getter(name="managedRules")
+    def managed_rules(self) -> Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse']:
+        """
+        The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+        """
+        return pulumi.get(self, "managed_rules")
+
+    @property
+    @pulumi.getter(name="recaptchaKeys")
+    def recaptcha_keys(self) -> Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse']:
+        """
+        The reCAPTCHA keys.
+        """
+        return pulumi.get(self, "recaptcha_keys")
+
+    @property
+    @pulumi.getter(name="useAccountDefender")
+    def use_account_defender(self) -> bool:
+        """
+        Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_account_defender")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse(dict):
+    """
+    The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 type: str):
+        """
+        The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
+        :param str key: The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
+        :param str type: The client's platform type.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The client's platform type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse(dict):
+    """
+    The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endScore":
+            suggest = "end_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 end_score: float):
+        """
+        The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+        :param str action: The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+        :param float end_score: The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "end_score", end_score)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="endScore")
+    def end_score(self) -> float:
+        """
+        The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+        """
+        return pulumi.get(self, "end_score")
 
 
 @pulumi.output_type

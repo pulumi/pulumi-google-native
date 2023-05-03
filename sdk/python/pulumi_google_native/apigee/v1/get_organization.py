@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationResult:
-    def __init__(__self__, addons_config=None, analytics_region=None, apigee_project_id=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
+    def __init__(__self__, addons_config=None, analytics_region=None, api_consumer_data_encryption_key_name=None, api_consumer_data_location=None, apigee_project_id=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, control_plane_encryption_key_name=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -30,6 +30,12 @@ class GetOrganizationResult:
             pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
 
         pulumi.set(__self__, "analytics_region", analytics_region)
+        if api_consumer_data_encryption_key_name and not isinstance(api_consumer_data_encryption_key_name, str):
+            raise TypeError("Expected argument 'api_consumer_data_encryption_key_name' to be a str")
+        pulumi.set(__self__, "api_consumer_data_encryption_key_name", api_consumer_data_encryption_key_name)
+        if api_consumer_data_location and not isinstance(api_consumer_data_location, str):
+            raise TypeError("Expected argument 'api_consumer_data_location' to be a str")
+        pulumi.set(__self__, "api_consumer_data_location", api_consumer_data_location)
         if apigee_project_id and not isinstance(apigee_project_id, str):
             raise TypeError("Expected argument 'apigee_project_id' to be a str")
         pulumi.set(__self__, "apigee_project_id", apigee_project_id)
@@ -45,6 +51,9 @@ class GetOrganizationResult:
         if ca_certificate and not isinstance(ca_certificate, str):
             raise TypeError("Expected argument 'ca_certificate' to be a str")
         pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if control_plane_encryption_key_name and not isinstance(control_plane_encryption_key_name, str):
+            raise TypeError("Expected argument 'control_plane_encryption_key_name' to be a str")
+        pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -115,6 +124,22 @@ class GetOrganizationResult:
         return pulumi.get(self, "analytics_region")
 
     @property
+    @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
+    def api_consumer_data_encryption_key_name(self) -> str:
+        """
+        Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "api_consumer_data_encryption_key_name")
+
+    @property
+    @pulumi.getter(name="apiConsumerDataLocation")
+    def api_consumer_data_location(self) -> str:
+        """
+        This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        """
+        return pulumi.get(self, "api_consumer_data_location")
+
+    @property
     @pulumi.getter(name="apigeeProjectId")
     def apigee_project_id(self) -> str:
         """
@@ -153,6 +178,14 @@ class GetOrganizationResult:
         Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="controlPlaneEncryptionKeyName")
+    def control_plane_encryption_key_name(self) -> str:
+        """
+        Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        """
+        return pulumi.get(self, "control_plane_encryption_key_name")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -291,11 +324,14 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
         return GetOrganizationResult(
             addons_config=self.addons_config,
             analytics_region=self.analytics_region,
+            api_consumer_data_encryption_key_name=self.api_consumer_data_encryption_key_name,
+            api_consumer_data_location=self.api_consumer_data_location,
             apigee_project_id=self.apigee_project_id,
             attributes=self.attributes,
             authorized_network=self.authorized_network,
             billing_type=self.billing_type,
             ca_certificate=self.ca_certificate,
+            control_plane_encryption_key_name=self.control_plane_encryption_key_name,
             created_at=self.created_at,
             customer_name=self.customer_name,
             description=self.description,
@@ -327,11 +363,14 @@ def get_organization(organization_id: Optional[str] = None,
     return AwaitableGetOrganizationResult(
         addons_config=__ret__.addons_config,
         analytics_region=__ret__.analytics_region,
+        api_consumer_data_encryption_key_name=__ret__.api_consumer_data_encryption_key_name,
+        api_consumer_data_location=__ret__.api_consumer_data_location,
         apigee_project_id=__ret__.apigee_project_id,
         attributes=__ret__.attributes,
         authorized_network=__ret__.authorized_network,
         billing_type=__ret__.billing_type,
         ca_certificate=__ret__.ca_certificate,
+        control_plane_encryption_key_name=__ret__.control_plane_encryption_key_name,
         created_at=__ret__.created_at,
         customer_name=__ret__.customer_name,
         description=__ret__.description,

@@ -32,6 +32,14 @@ export interface GetPhraseSetResult {
      */
     readonly boost: number;
     /**
+     * The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    readonly kmsKeyName: string;
+    /**
+     * The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+     */
+    readonly kmsKeyVersionName: string;
+    /**
      * The resource name of the phrase set.
      */
     readonly name: string;

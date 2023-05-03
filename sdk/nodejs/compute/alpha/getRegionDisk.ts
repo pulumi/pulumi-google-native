@@ -222,6 +222,10 @@ export interface GetRegionDiskResult {
      */
     readonly status: string;
     /**
+     * The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+     */
+    readonly storagePool: string;
+    /**
      * [Deprecated] Storage type of the persistent disk.
      *
      * @deprecated [Deprecated] Storage type of the persistent disk.

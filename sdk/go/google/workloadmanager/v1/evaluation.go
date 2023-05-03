@@ -39,6 +39,8 @@ type Evaluation struct {
 	RuleNames pulumi.StringArrayOutput `pulumi:"ruleNames"`
 	// [Output only] The updated rule ids if exist.
 	RuleVersions pulumi.StringArrayOutput `pulumi:"ruleVersions"`
+	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// [Output only] Update time stamp
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -107,6 +109,8 @@ type evaluationArgs struct {
 	ResourceFilter *ResourceFilter `pulumi:"resourceFilter"`
 	// the name of the rule
 	RuleNames []string `pulumi:"ruleNames"`
+	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	Schedule *string `pulumi:"schedule"`
 }
 
 // The set of arguments for constructing a Evaluation resource.
@@ -127,6 +131,8 @@ type EvaluationArgs struct {
 	ResourceFilter ResourceFilterPtrInput
 	// the name of the rule
 	RuleNames pulumi.StringArrayInput
+	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	Schedule pulumi.StringPtrInput
 }
 
 func (EvaluationArgs) ElementType() reflect.Type {
@@ -222,6 +228,11 @@ func (o EvaluationOutput) RuleNames() pulumi.StringArrayOutput {
 // [Output only] The updated rule ids if exist.
 func (o EvaluationOutput) RuleVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringArrayOutput { return v.RuleVersions }).(pulumi.StringArrayOutput)
+}
+
+// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+func (o EvaluationOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }
 
 // [Output only] Update time stamp

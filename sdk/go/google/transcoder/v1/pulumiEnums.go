@@ -348,15 +348,15 @@ func (in *jobModePtr) ToJobModePtrOutputWithContext(ctx context.Context) JobMode
 	return pulumi.ToOutputWithContext(ctx, in).(JobModePtrOutput)
 }
 
-// Required. Type of the manifest, can be `HLS` or `DASH`.
+// Required. Type of the manifest.
 type ManifestType string
 
 const (
 	// The manifest type is not specified.
 	ManifestTypeManifestTypeUnspecified = ManifestType("MANIFEST_TYPE_UNSPECIFIED")
-	// Create `HLS` manifest. The corresponding file extension is `.m3u8`.
+	// Create an HLS manifest. The corresponding file extension is `.m3u8`.
 	ManifestTypeHls = ManifestType("HLS")
-	// Create `DASH` manifest. The corresponding file extension is `.mpd`.
+	// Create an MPEG-DASH manifest. The corresponding file extension is `.mpd`.
 	ManifestTypeDash = ManifestType("DASH")
 )
 

@@ -30,6 +30,7 @@ class SnapshotArgs:
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -46,6 +47,7 @@ class SnapshotArgs:
         :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_disk_for_recovery_checkpoint: The source disk whose recovery checkpoint will be used to create this snapshot.
         :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
@@ -75,6 +77,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+        if source_disk_for_recovery_checkpoint is not None:
+            pulumi.set(__self__, "source_disk_for_recovery_checkpoint", source_disk_for_recovery_checkpoint)
         if source_instant_snapshot is not None:
             pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if storage_locations is not None:
@@ -234,6 +238,18 @@ class SnapshotArgs:
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="sourceDiskForRecoveryCheckpoint")
+    def source_disk_for_recovery_checkpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source disk whose recovery checkpoint will be used to create this snapshot.
+        """
+        return pulumi.get(self, "source_disk_for_recovery_checkpoint")
+
+    @source_disk_for_recovery_checkpoint.setter
+    def source_disk_for_recovery_checkpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_disk_for_recovery_checkpoint", value)
+
+    @property
     @pulumi.getter(name="sourceInstantSnapshot")
     def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
@@ -276,6 +292,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -296,6 +313,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_disk_for_recovery_checkpoint: The source disk whose recovery checkpoint will be used to create this snapshot.
         :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
@@ -336,6 +354,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_disk_for_recovery_checkpoint: Optional[pulumi.Input[str]] = None,
                  source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -360,6 +379,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["snapshot_type"] = snapshot_type
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
+            __props__.__dict__["source_disk_for_recovery_checkpoint"] = source_disk_for_recovery_checkpoint
             __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["architecture"] = None
@@ -435,6 +455,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["snapshot_type"] = None
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_encryption_key"] = None
+        __props__.__dict__["source_disk_for_recovery_checkpoint"] = None
         __props__.__dict__["source_disk_id"] = None
         __props__.__dict__["source_instant_snapshot"] = None
         __props__.__dict__["source_instant_snapshot_id"] = None
@@ -659,6 +680,14 @@ class Snapshot(pulumi.CustomResource):
         The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         """
         return pulumi.get(self, "source_disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceDiskForRecoveryCheckpoint")
+    def source_disk_for_recovery_checkpoint(self) -> pulumi.Output[str]:
+        """
+        The source disk whose recovery checkpoint will be used to create this snapshot.
+        """
+        return pulumi.get(self, "source_disk_for_recovery_checkpoint")
 
     @property
     @pulumi.getter(name="sourceDiskId")

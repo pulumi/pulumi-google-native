@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string RepoType;
         /// <summary>
+        /// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        /// </summary>
+        public readonly string Repository;
+        /// <summary>
         /// The URI of the repo. Either uri or repository can be specified and is required.
         /// </summary>
         public readonly string Uri;
@@ -47,12 +51,15 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string repoType,
 
+            string repository,
+
             string uri)
         {
             BitbucketServerConfig = bitbucketServerConfig;
             GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;
+            Repository = repository;
             Uri = uri;
         }
     }

@@ -18,6 +18,7 @@ class DatabaseArgs:
                  database_id: pulumi.Input[str],
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
+                 delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
+        :param pulumi.Input['DatabaseDeleteProtectionState'] delete_protection_state: State of delete protection for the database.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The resource name of the Database. Format: `projects/{project}/databases/{database}`
@@ -38,6 +40,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
+        if delete_protection_state is not None:
+            pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if location is not None:
@@ -84,6 +88,18 @@ class DatabaseArgs:
     @concurrency_mode.setter
     def concurrency_mode(self, value: Optional[pulumi.Input['DatabaseConcurrencyMode']]):
         pulumi.set(self, "concurrency_mode", value)
+
+    @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> Optional[pulumi.Input['DatabaseDeleteProtectionState']]:
+        """
+        State of delete protection for the database.
+        """
+        return pulumi.get(self, "delete_protection_state")
+
+    @delete_protection_state.setter
+    def delete_protection_state(self, value: Optional[pulumi.Input['DatabaseDeleteProtectionState']]):
+        pulumi.set(self, "delete_protection_state", value)
 
     @property
     @pulumi.getter
@@ -151,6 +167,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -165,6 +182,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
         :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
+        :param pulumi.Input['DatabaseDeleteProtectionState'] delete_protection_state: State of delete protection for the database.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The resource name of the Database. Format: `projects/{project}/databases/{database}`
@@ -197,6 +215,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input['DatabaseAppEngineIntegrationMode']] = None,
                  concurrency_mode: Optional[pulumi.Input['DatabaseConcurrencyMode']] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input['DatabaseDeleteProtectionState']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,6 +235,7 @@ class Database(pulumi.CustomResource):
             if database_id is None and not opts.urn:
                 raise TypeError("Missing required property 'database_id'")
             __props__.__dict__["database_id"] = database_id
+            __props__.__dict__["delete_protection_state"] = delete_protection_state
             __props__.__dict__["etag"] = etag
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -253,6 +273,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["concurrency_mode"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["database_id"] = None
+        __props__.__dict__["delete_protection_state"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["key_prefix"] = None
         __props__.__dict__["location"] = None
@@ -283,7 +304,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp at which this database was created.
+        The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
         """
         return pulumi.get(self, "create_time")
 
@@ -294,6 +315,14 @@ class Database(pulumi.CustomResource):
         Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         """
         return pulumi.get(self, "database_id")
+
+    @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> pulumi.Output[str]:
+        """
+        State of delete protection for the database.
+        """
+        return pulumi.get(self, "delete_protection_state")
 
     @property
     @pulumi.getter

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// </summary>
     public sealed class GoogleCloudDataplexV1DataProfileSpecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        /// </summary>
+        [Input("samplingPercent")]
+        public Input<double>? SamplingPercent { get; set; }
+
         public GoogleCloudDataplexV1DataProfileSpecArgs()
         {
         }

@@ -92,4 +92,86 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+    /// </summary>
+    [EnumType]
+    public readonly struct MTLSPolicyClientValidationMode : IEquatable<MTLSPolicyClientValidationMode>
+    {
+        private readonly string _value;
+
+        private MTLSPolicyClientValidationMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not allowed.
+        /// </summary>
+        public static MTLSPolicyClientValidationMode ClientValidationModeUnspecified { get; } = new MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Allow connection even if certificate chain validation of the client certificate failed or no client certificate was presented. The proof of possession of the private key is always checked if client certificate was presented. This mode requires the backend to implement processing of data extracted from a client certificate to authenticate the peer, or to reject connections if the client certificate fingerprint is missing.
+        /// </summary>
+        public static MTLSPolicyClientValidationMode AllowInvalidOrMissingClientCert { get; } = new MTLSPolicyClientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT");
+        /// <summary>
+        /// Require a client certificate and allow connection to the backend only if validation of the client certificate passed. If set, requires a reference to non-empty TrustConfig specified in `client_validation_trust_config`.
+        /// </summary>
+        public static MTLSPolicyClientValidationMode RejectInvalid { get; } = new MTLSPolicyClientValidationMode("REJECT_INVALID");
+
+        public static bool operator ==(MTLSPolicyClientValidationMode left, MTLSPolicyClientValidationMode right) => left.Equals(right);
+        public static bool operator !=(MTLSPolicyClientValidationMode left, MTLSPolicyClientValidationMode right) => !left.Equals(right);
+
+        public static explicit operator string(MTLSPolicyClientValidationMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MTLSPolicyClientValidationMode other && Equals(other);
+        public bool Equals(MTLSPolicyClientValidationMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. Profile which tells what the primitive action should be.
+    /// </summary>
+    [EnumType]
+    public readonly struct RuleBasicProfile : IEquatable<RuleBasicProfile>
+    {
+        private readonly string _value;
+
+        private RuleBasicProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If there is not a mentioned action for the target.
+        /// </summary>
+        public static RuleBasicProfile BasicProfileUnspecified { get; } = new RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// Allow the matched traffic.
+        /// </summary>
+        public static RuleBasicProfile Allow { get; } = new RuleBasicProfile("ALLOW");
+        /// <summary>
+        /// Deny the matched traffic.
+        /// </summary>
+        public static RuleBasicProfile Deny { get; } = new RuleBasicProfile("DENY");
+
+        public static bool operator ==(RuleBasicProfile left, RuleBasicProfile right) => left.Equals(right);
+        public static bool operator !=(RuleBasicProfile left, RuleBasicProfile right) => !left.Equals(right);
+
+        public static explicit operator string(RuleBasicProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RuleBasicProfile other && Equals(other);
+        public bool Equals(RuleBasicProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -45,3 +45,43 @@ export const GoogleIamV1AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type GoogleIamV1AuditLogConfigLogType = (typeof GoogleIamV1AuditLogConfigLogType)[keyof typeof GoogleIamV1AuditLogConfigLogType];
+
+export const MTLSPolicyClientValidationMode = {
+    /**
+     * Not allowed.
+     */
+    ClientValidationModeUnspecified: "CLIENT_VALIDATION_MODE_UNSPECIFIED",
+    /**
+     * Allow connection even if certificate chain validation of the client certificate failed or no client certificate was presented. The proof of possession of the private key is always checked if client certificate was presented. This mode requires the backend to implement processing of data extracted from a client certificate to authenticate the peer, or to reject connections if the client certificate fingerprint is missing.
+     */
+    AllowInvalidOrMissingClientCert: "ALLOW_INVALID_OR_MISSING_CLIENT_CERT",
+    /**
+     * Require a client certificate and allow connection to the backend only if validation of the client certificate passed. If set, requires a reference to non-empty TrustConfig specified in `client_validation_trust_config`.
+     */
+    RejectInvalid: "REJECT_INVALID",
+} as const;
+
+/**
+ * When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+ */
+export type MTLSPolicyClientValidationMode = (typeof MTLSPolicyClientValidationMode)[keyof typeof MTLSPolicyClientValidationMode];
+
+export const RuleBasicProfile = {
+    /**
+     * If there is not a mentioned action for the target.
+     */
+    BasicProfileUnspecified: "BASIC_PROFILE_UNSPECIFIED",
+    /**
+     * Allow the matched traffic.
+     */
+    Allow: "ALLOW",
+    /**
+     * Deny the matched traffic.
+     */
+    Deny: "DENY",
+} as const;
+
+/**
+ * Required. Profile which tells what the primitive action should be.
+ */
+export type RuleBasicProfile = (typeof RuleBasicProfile)[keyof typeof RuleBasicProfile];

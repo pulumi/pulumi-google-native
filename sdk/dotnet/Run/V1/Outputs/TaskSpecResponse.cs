@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string TimeoutSeconds;
         /// <summary>
-        /// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        /// Optional. List of volumes that can be mounted by containers belonging to the task.
         /// </summary>
         public readonly ImmutableArray<Outputs.VolumeResponse> Volumes;
 

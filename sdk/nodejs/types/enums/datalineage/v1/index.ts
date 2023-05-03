@@ -34,7 +34,7 @@ export const GoogleCloudDatacatalogLineageV1OriginSourceType = {
 } as const;
 
 /**
- * Type of the source.
+ * Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
  */
 export type GoogleCloudDatacatalogLineageV1OriginSourceType = (typeof GoogleCloudDatacatalogLineageV1OriginSourceType)[keyof typeof GoogleCloudDatacatalogLineageV1OriginSourceType];
 

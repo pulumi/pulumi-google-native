@@ -22,6 +22,7 @@ class WorkstationConfigArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input['ContainerArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input['HostArgs']] = None,
@@ -31,20 +32,23 @@ class WorkstationConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['PersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input['ReadinessCheckArgs']]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
-        :param pulumi.Input[str] workstation_config_id: Required. ID to use for the config.
+        :param pulumi.Input[str] workstation_config_id: Required. ID to use for the workstation configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input['ContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input['HostArgs'] host: Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['PersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input['ReadinessCheckArgs']]] readiness_checks: Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
@@ -55,6 +59,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "container", container)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enable_audit_agent is not None:
+            pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key is not None:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if etag is not None:
@@ -73,6 +79,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if readiness_checks is not None:
+            pulumi.set(__self__, "readiness_checks", readiness_checks)
         if running_timeout is not None:
             pulumi.set(__self__, "running_timeout", running_timeout)
 
@@ -89,7 +97,7 @@ class WorkstationConfigArgs:
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Input[str]:
         """
-        Required. ID to use for the config.
+        Required. ID to use for the workstation configuration.
         """
         return pulumi.get(self, "workstation_config_id")
 
@@ -134,10 +142,22 @@ class WorkstationConfigArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @enable_audit_agent.setter
+    def enable_audit_agent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audit_agent", value)
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -149,7 +169,7 @@ class WorkstationConfigArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -236,6 +256,18 @@ class WorkstationConfigArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadinessCheckArgs']]]]:
+        """
+        Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        """
+        return pulumi.get(self, "readiness_checks")
+
+    @readiness_checks.setter
+    def readiness_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadinessCheckArgs']]]]):
+        pulumi.set(self, "readiness_checks", value)
+
+    @property
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,6 +288,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
@@ -265,6 +298,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
@@ -277,15 +311,17 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[pulumi.InputType['ContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[bool] enable_audit_agent: Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['HostArgs']] host: Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]] readiness_checks: Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
-        :param pulumi.Input[str] workstation_config_id: Required. ID to use for the config.
+        :param pulumi.Input[str] workstation_config_id: Required. ID to use for the workstation configuration.
         """
         ...
     @overload
@@ -314,6 +350,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['ContainerArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['HostArgs']]] = None,
@@ -323,6 +360,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReadinessCheckArgs']]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
@@ -338,6 +376,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_audit_agent"] = enable_audit_agent
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["etag"] = etag
             __props__.__dict__["host"] = host
@@ -347,6 +386,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
+            __props__.__dict__["readiness_checks"] = readiness_checks
             __props__.__dict__["running_timeout"] = running_timeout
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
@@ -392,6 +432,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["degraded"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["enable_audit_agent"] = None
         __props__.__dict__["encryption_key"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["host"] = None
@@ -401,6 +442,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["persistent_directories"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["readiness_checks"] = None
         __props__.__dict__["reconciling"] = None
         __props__.__dict__["running_timeout"] = None
         __props__.__dict__["uid"] = None
@@ -466,10 +508,18 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
-        Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -477,7 +527,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -532,6 +582,14 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> pulumi.Output[Sequence['outputs.ReadinessCheckResponse']]:
+        """
+        Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        """
+        return pulumi.get(self, "readiness_checks")
+
+    @property
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
@@ -572,7 +630,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Output[str]:
         """
-        Required. ID to use for the config.
+        Required. ID to use for the workstation configuration.
         """
         return pulumi.get(self, "workstation_config_id")
 

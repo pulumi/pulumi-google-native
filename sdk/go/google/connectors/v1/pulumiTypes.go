@@ -338,6 +338,8 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type AuthConfig struct {
 	// List containing additional auth configs.
 	AdditionalVariables []ConfigVariable `pulumi:"additionalVariables"`
+	// Identifier key for auth config
+	AuthKey *string `pulumi:"authKey"`
 	// The type of authentication configured.
 	AuthType *AuthConfigAuthType `pulumi:"authType"`
 	// Oauth2AuthCodeFlow.
@@ -367,6 +369,8 @@ type AuthConfigInput interface {
 type AuthConfigArgs struct {
 	// List containing additional auth configs.
 	AdditionalVariables ConfigVariableArrayInput `pulumi:"additionalVariables"`
+	// Identifier key for auth config
+	AuthKey pulumi.StringPtrInput `pulumi:"authKey"`
 	// The type of authentication configured.
 	AuthType AuthConfigAuthTypePtrInput `pulumi:"authType"`
 	// Oauth2AuthCodeFlow.
@@ -464,6 +468,11 @@ func (o AuthConfigOutput) AdditionalVariables() ConfigVariableArrayOutput {
 	return o.ApplyT(func(v AuthConfig) []ConfigVariable { return v.AdditionalVariables }).(ConfigVariableArrayOutput)
 }
 
+// Identifier key for auth config
+func (o AuthConfigOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthConfig) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
 // The type of authentication configured.
 func (o AuthConfigOutput) AuthType() AuthConfigAuthTypePtrOutput {
 	return o.ApplyT(func(v AuthConfig) *AuthConfigAuthType { return v.AuthType }).(AuthConfigAuthTypePtrOutput)
@@ -526,6 +535,16 @@ func (o AuthConfigPtrOutput) AdditionalVariables() ConfigVariableArrayOutput {
 		}
 		return v.AdditionalVariables
 	}).(ConfigVariableArrayOutput)
+}
+
+// Identifier key for auth config
+func (o AuthConfigPtrOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of authentication configured.
@@ -592,6 +611,8 @@ func (o AuthConfigPtrOutput) UserPassword() UserPasswordPtrOutput {
 type AuthConfigResponse struct {
 	// List containing additional auth configs.
 	AdditionalVariables []ConfigVariableResponse `pulumi:"additionalVariables"`
+	// Identifier key for auth config
+	AuthKey string `pulumi:"authKey"`
 	// The type of authentication configured.
 	AuthType string `pulumi:"authType"`
 	// Oauth2AuthCodeFlow.
@@ -624,6 +645,11 @@ func (o AuthConfigResponseOutput) ToAuthConfigResponseOutputWithContext(ctx cont
 // List containing additional auth configs.
 func (o AuthConfigResponseOutput) AdditionalVariables() ConfigVariableResponseArrayOutput {
 	return o.ApplyT(func(v AuthConfigResponse) []ConfigVariableResponse { return v.AdditionalVariables }).(ConfigVariableResponseArrayOutput)
+}
+
+// Identifier key for auth config
+func (o AuthConfigResponseOutput) AuthKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthConfigResponse) string { return v.AuthKey }).(pulumi.StringOutput)
 }
 
 // The type of authentication configured.

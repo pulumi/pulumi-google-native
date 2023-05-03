@@ -840,7 +840,7 @@ class DeploymentJobsResponse(dict):
                  verify_job: 'outputs.JobResponse'):
         """
         Deployment job composition.
-        :param 'JobResponse' deploy_job: The deploy Job. This is the first job run in the phase.
+        :param 'JobResponse' deploy_job: The deploy Job. This is the deploy job in the phase.
         :param 'JobResponse' verify_job: The verify Job. Runs after a deploy if the deploy succeeds.
         """
         pulumi.set(__self__, "deploy_job", deploy_job)
@@ -850,7 +850,7 @@ class DeploymentJobsResponse(dict):
     @pulumi.getter(name="deployJob")
     def deploy_job(self) -> 'outputs.JobResponse':
         """
-        The deploy Job. This is the first job run in the phase.
+        The deploy Job. This is the deploy job in the phase.
         """
         return pulumi.get(self, "deploy_job")
 

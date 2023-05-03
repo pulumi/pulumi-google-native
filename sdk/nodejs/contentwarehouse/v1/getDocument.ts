@@ -52,6 +52,10 @@ export interface GetDocumentResult {
      */
     readonly displayUri: string;
     /**
+     * If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+     */
+    readonly dispositionTime: string;
+    /**
      * The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
      */
     readonly documentSchemaName: string;

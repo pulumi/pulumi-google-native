@@ -46,7 +46,7 @@ export interface GetReleaseConfigResult {
      */
     readonly name: string;
     /**
-     * Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+     * Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
      */
     readonly recentScheduledReleaseRecords: outputs.dataform.v1beta1.ScheduledReleaseRecordResponse[];
     /**

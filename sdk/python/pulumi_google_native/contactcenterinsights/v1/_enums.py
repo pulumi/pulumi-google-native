@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'ConversationMedium',
+    'GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel',
     'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium',
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType',
     'PhraseMatcherRoleMatch',
@@ -28,6 +29,20 @@ class ConversationMedium(str, Enum):
     CHAT = "CHAT"
     """
     The format for conversations that took place over chat.
+    """
+
+
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel(str, Enum):
+    """
+    Default summarization model to be used.
+    """
+    SUMMARIZATION_MODEL_UNSPECIFIED = "SUMMARIZATION_MODEL_UNSPECIFIED"
+    """
+    Unspecified summarization model.
+    """
+    BASELINE_MODEL = "BASELINE_MODEL"
+    """
+    The Insights baseline model.
     """
 
 

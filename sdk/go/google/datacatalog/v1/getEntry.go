@@ -48,7 +48,7 @@ type LookupEntryResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecResponse `pulumi:"filesetSpec"`
-	// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 	// Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
 	GcsFilesetSpec GoogleCloudDatacatalogV1GcsFilesetSpecResponse `pulumi:"gcsFilesetSpec"`
@@ -182,7 +182,7 @@ func (o LookupEntryResultOutput) FilesetSpec() GoogleCloudDatacatalogV1FilesetSp
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1FilesetSpecResponse { return v.FilesetSpec }).(GoogleCloudDatacatalogV1FilesetSpecResponseOutput)
 }
 
-// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation, and read-only later. Can be used for search and lookup of the entries.
 func (o LookupEntryResultOutput) FullyQualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
 }

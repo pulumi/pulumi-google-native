@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// The list of rules to evaluate against a data source. At least one rule is required.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResponse> Rules;
+        /// <summary>
+        /// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        /// </summary>
+        public readonly double SamplingPercent;
 
         [OutputConstructor]
-        private GoogleCloudDataplexV1DataQualitySpecResponse(ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResponse> rules)
+        private GoogleCloudDataplexV1DataQualitySpecResponse(
+            ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResponse> rules,
+
+            double samplingPercent)
         {
             Rules = rules;
+            SamplingPercent = samplingPercent;
         }
     }
 }

@@ -16,6 +16,7 @@ class TargetVpnGatewayArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -23,6 +24,7 @@ class TargetVpnGatewayArgs:
         """
         The set of arguments for constructing a TargetVpnGateway resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -30,6 +32,8 @@ class TargetVpnGatewayArgs:
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -59,6 +63,18 @@ class TargetVpnGatewayArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -112,6 +128,7 @@ class TargetVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -124,6 +141,7 @@ class TargetVpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -153,6 +171,7 @@ class TargetVpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -168,6 +187,7 @@ class TargetVpnGateway(pulumi.CustomResource):
             __props__ = TargetVpnGatewayArgs.__new__(TargetVpnGatewayArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
@@ -178,6 +198,7 @@ class TargetVpnGateway(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["forwarding_rules"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tunnels"] = None
@@ -209,6 +230,8 @@ class TargetVpnGateway(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["forwarding_rules"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["label_fingerprint"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["project"] = None
@@ -250,6 +273,22 @@ class TargetVpnGateway(pulumi.CustomResource):
         Type of resource. Always compute#targetVpnGateway for target VPN gateways.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this TargetVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a TargetVpnGateway.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

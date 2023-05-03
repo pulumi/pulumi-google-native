@@ -119,43 +119,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     }
 
     /// <summary>
-    /// Required. Immutable. The transport protocol used between the client and the server.
-    /// </summary>
-    [EnumType]
-    public readonly struct ConfigTransportProtocol : IEquatable<ConfigTransportProtocol>
-    {
-        private readonly string _value;
-
-        private ConfigTransportProtocol(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Default value. This value is unused.
-        /// </summary>
-        public static ConfigTransportProtocol TransportProtocolUnspecified { get; } = new ConfigTransportProtocol("TRANSPORT_PROTOCOL_UNSPECIFIED");
-        /// <summary>
-        /// TCP protocol.
-        /// </summary>
-        public static ConfigTransportProtocol Tcp { get; } = new ConfigTransportProtocol("TCP");
-
-        public static bool operator ==(ConfigTransportProtocol left, ConfigTransportProtocol right) => left.Equals(right);
-        public static bool operator !=(ConfigTransportProtocol left, ConfigTransportProtocol right) => !left.Equals(right);
-
-        public static explicit operator string(ConfigTransportProtocol value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ConfigTransportProtocol other && Equals(other);
-        public bool Equals(ConfigTransportProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// Required. The type of hosting used by the gateway.
     /// </summary>
     [EnumType]

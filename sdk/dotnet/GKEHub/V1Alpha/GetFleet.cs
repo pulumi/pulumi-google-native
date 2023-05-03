@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
+        /// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
         /// </summary>
         public readonly string Name;
         /// <summary>

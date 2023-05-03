@@ -65,6 +65,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string ProvisionedThroughput;
         /// <summary>
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaZones;
+        /// <summary>
         /// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT &amp; PATCH) when empty.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceManagerTags;
@@ -115,6 +119,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string provisionedThroughput,
 
+            ImmutableArray<string> replicaZones,
+
             ImmutableDictionary<string, string> resourceManagerTags,
 
             ImmutableArray<string> resourcePolicies,
@@ -139,6 +145,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             OnUpdateAction = onUpdateAction;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            ReplicaZones = replicaZones;
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             SourceImage = sourceImage;

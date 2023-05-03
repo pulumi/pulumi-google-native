@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
+        /// The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
         /// </summary>
         [Output("namespacedName")]
         public Output<string> NamespacedName { get; private set; } = null!;

@@ -166,7 +166,6 @@ class BindingArgs:
 @pulumi.input_type
 class BuildConfigArgs:
     def __init__(__self__, *,
-                 buildpack_stack: Optional[pulumi.Input[str]] = None,
                  docker_registry: Optional[pulumi.Input['BuildConfigDockerRegistry']] = None,
                  docker_repository: Optional[pulumi.Input[str]] = None,
                  entry_point: Optional[pulumi.Input[str]] = None,
@@ -176,8 +175,7 @@ class BuildConfigArgs:
                  worker_pool: Optional[pulumi.Input[str]] = None):
         """
         Describes the Build step of the function that builds a container from the given source.
-        :param pulumi.Input[str] buildpack_stack: Specifies one of the Google provided buildpack stacks.
-        :param pulumi.Input['BuildConfigDockerRegistry'] docker_registry: Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        :param pulumi.Input['BuildConfigDockerRegistry'] docker_registry: Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         :param pulumi.Input[str] docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
         :param pulumi.Input[str] entry_point: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function
@@ -185,8 +183,6 @@ class BuildConfigArgs:
         :param pulumi.Input['SourceArgs'] source: The location of the function source code.
         :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers Builder (roles/cloudbuild.customworkers.builder) in the project.
         """
-        if buildpack_stack is not None:
-            pulumi.set(__self__, "buildpack_stack", buildpack_stack)
         if docker_registry is not None:
             pulumi.set(__self__, "docker_registry", docker_registry)
         if docker_repository is not None:
@@ -203,22 +199,10 @@ class BuildConfigArgs:
             pulumi.set(__self__, "worker_pool", worker_pool)
 
     @property
-    @pulumi.getter(name="buildpackStack")
-    def buildpack_stack(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies one of the Google provided buildpack stacks.
-        """
-        return pulumi.get(self, "buildpack_stack")
-
-    @buildpack_stack.setter
-    def buildpack_stack(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "buildpack_stack", value)
-
-    @property
     @pulumi.getter(name="dockerRegistry")
     def docker_registry(self) -> Optional[pulumi.Input['BuildConfigDockerRegistry']]:
         """
-        Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         """
         return pulumi.get(self, "docker_registry")
 
@@ -867,14 +851,14 @@ class ServiceConfigArgs:
                  vpc_connector: Optional[pulumi.Input[str]] = None,
                  vpc_connector_egress_settings: Optional[pulumi.Input['ServiceConfigVpcConnectorEgressSettings']] = None):
         """
-        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
+        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
         :param pulumi.Input[bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
-        :param pulumi.Input[str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        :param pulumi.Input[str] available_cpu: [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         :param pulumi.Input[str] available_memory: The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input['ServiceConfigIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param pulumi.Input[int] max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
-        :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        :param pulumi.Input[int] max_instance_request_concurrency: [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
@@ -931,7 +915,7 @@ class ServiceConfigArgs:
     @pulumi.getter(name="availableCpu")
     def available_cpu(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         """
         return pulumi.get(self, "available_cpu")
 
@@ -991,7 +975,7 @@ class ServiceConfigArgs:
     @pulumi.getter(name="maxInstanceRequestConcurrency")
     def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
-        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 

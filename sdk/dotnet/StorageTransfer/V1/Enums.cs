@@ -273,7 +273,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static MetadataOptionsStorageClass StorageClassDestinationBucketDefault { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT");
         /// <summary>
-        /// Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.
+        /// Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets. REGIONAL and MULTI_REGIONAL storage classes will be mapped to STANDARD to ensure they can be written to the destination bucket.
         /// </summary>
         public static MetadataOptionsStorageClass StorageClassPreserve { get; } = new MetadataOptionsStorageClass("STORAGE_CLASS_PRESERVE");
         /// <summary>

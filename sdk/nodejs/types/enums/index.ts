@@ -67,6 +67,7 @@ import * as gameservices from "./gameservices";
 import * as genomics from "./genomics";
 import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
+import * as gkeonprem from "./gkeonprem";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as identitytoolkit from "./identitytoolkit";
@@ -179,6 +180,7 @@ export {
     genomics,
     gkebackup,
     gkehub,
+    gkeonprem,
     healthcare,
     iam,
     identitytoolkit,

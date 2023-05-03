@@ -105,6 +105,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("provisionedThroughput")]
         public Input<string>? ProvisionedThroughput { get; set; }
 
+        [Input("replicaZones")]
+        private InputList<string>? _replicaZones;
+
+        /// <summary>
+        /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        /// </summary>
+        public InputList<string> ReplicaZones
+        {
+            get => _replicaZones ?? (_replicaZones = new InputList<string>());
+            set => _replicaZones = value;
+        }
+
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
 

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetScopeResult:
-    def __init__(__self__, create_time=None, delete_time=None, name=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, all_memberships=None, create_time=None, delete_time=None, name=None, state=None, uid=None, update_time=None):
+        if all_memberships and not isinstance(all_memberships, bool):
+            raise TypeError("Expected argument 'all_memberships' to be a bool")
+        pulumi.set(__self__, "all_memberships", all_memberships)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +41,14 @@ class GetScopeResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="allMemberships")
+    def all_memberships(self) -> bool:
+        """
+        If true, all Memberships in the Fleet bind to this Scope.
+        """
+        return pulumi.get(self, "all_memberships")
 
     @property
     @pulumi.getter(name="createTime")
@@ -94,6 +105,7 @@ class AwaitableGetScopeResult(GetScopeResult):
         if False:
             yield self
         return GetScopeResult(
+            all_memberships=self.all_memberships,
             create_time=self.create_time,
             delete_time=self.delete_time,
             name=self.name,
@@ -117,6 +129,7 @@ def get_scope(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1beta:getScope', __args__, opts=opts, typ=GetScopeResult).value
 
     return AwaitableGetScopeResult(
+        all_memberships=__ret__.all_memberships,
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
         name=__ret__.name,

@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// The state of the source.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
         /// Data source type.
         /// </summary>
         public readonly string Type;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
 
             int priority,
 
+            string state,
+
             string type,
 
             string updateTime)
@@ -127,6 +133,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
             Name = name;
             PendingFrameCount = pendingFrameCount;
             Priority = priority;
+            State = state;
             Type = type;
             UpdateTime = updateTime;
         }

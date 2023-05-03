@@ -4659,6 +4659,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
+        public static RegionCommitmentType GraphicsOptimized { get; } = new RegionCommitmentType("GRAPHICS_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
@@ -5945,7 +5946,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility : IEquatable<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>
@@ -6171,6 +6172,43 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKey other && Equals(other);
         public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKey other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType All { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP");
+
+        public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other && Equals(other);
+        public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

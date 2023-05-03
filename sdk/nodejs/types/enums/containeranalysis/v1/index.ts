@@ -58,6 +58,7 @@ export const CVSSAttackComplexity = {
     AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
     AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",
     AttackComplexityHigh: "ATTACK_COMPLEXITY_HIGH",
+    AttackComplexityMedium: "ATTACK_COMPLEXITY_MEDIUM",
 } as const;
 
 export type CVSSAttackComplexity = (typeof CVSSAttackComplexity)[keyof typeof CVSSAttackComplexity];
@@ -89,6 +90,8 @@ export const CVSSAvailabilityImpact = {
     ImpactHigh: "IMPACT_HIGH",
     ImpactLow: "IMPACT_LOW",
     ImpactNone: "IMPACT_NONE",
+    ImpactPartial: "IMPACT_PARTIAL",
+    ImpactComplete: "IMPACT_COMPLETE",
 } as const;
 
 export type CVSSAvailabilityImpact = (typeof CVSSAvailabilityImpact)[keyof typeof CVSSAvailabilityImpact];
@@ -98,6 +101,8 @@ export const CVSSConfidentialityImpact = {
     ImpactHigh: "IMPACT_HIGH",
     ImpactLow: "IMPACT_LOW",
     ImpactNone: "IMPACT_NONE",
+    ImpactPartial: "IMPACT_PARTIAL",
+    ImpactComplete: "IMPACT_COMPLETE",
 } as const;
 
 export type CVSSConfidentialityImpact = (typeof CVSSConfidentialityImpact)[keyof typeof CVSSConfidentialityImpact];
@@ -107,6 +112,8 @@ export const CVSSIntegrityImpact = {
     ImpactHigh: "IMPACT_HIGH",
     ImpactLow: "IMPACT_LOW",
     ImpactNone: "IMPACT_NONE",
+    ImpactPartial: "IMPACT_PARTIAL",
+    ImpactComplete: "IMPACT_COMPLETE",
 } as const;
 
 export type CVSSIntegrityImpact = (typeof CVSSIntegrityImpact)[keyof typeof CVSSIntegrityImpact];

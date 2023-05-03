@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:securitycenter/v1:CustomModule":
+		r = &CustomModule{}
 	case "google-native:securitycenter/v1:FolderBigQueryExport":
 		r = &FolderBigQueryExport{}
+	case "google-native:securitycenter/v1:FolderCustomModule":
+		r = &FolderCustomModule{}
 	case "google-native:securitycenter/v1:FolderNotificationConfig":
 		r = &FolderNotificationConfig{}
 	case "google-native:securitycenter/v1:MuteConfig":
@@ -31,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationConfig{}
 	case "google-native:securitycenter/v1:OrganizationBigQueryExport":
 		r = &OrganizationBigQueryExport{}
+	case "google-native:securitycenter/v1:OrganizationCustomModule":
+		r = &OrganizationCustomModule{}
 	case "google-native:securitycenter/v1:OrganizationMuteConfig":
 		r = &OrganizationMuteConfig{}
 	case "google-native:securitycenter/v1:OrganizationNotificationConfig":

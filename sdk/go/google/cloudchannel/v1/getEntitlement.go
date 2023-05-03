@@ -29,6 +29,8 @@ type LookupEntitlementArgs struct {
 type LookupEntitlementResult struct {
 	// Association information to other entitlements.
 	AssociationInfo GoogleCloudChannelV1AssociationInfoResponse `pulumi:"associationInfo"`
+	// Optional. The billing account resource name that is used to pay for this entitlement.
+	BillingAccount string `pulumi:"billingAccount"`
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsResponse `pulumi:"commitmentSettings"`
 	// The time at which the entitlement is created.
@@ -93,6 +95,11 @@ func (o LookupEntitlementResultOutput) ToLookupEntitlementResultOutputWithContex
 // Association information to other entitlements.
 func (o LookupEntitlementResultOutput) AssociationInfo() GoogleCloudChannelV1AssociationInfoResponseOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) GoogleCloudChannelV1AssociationInfoResponse { return v.AssociationInfo }).(GoogleCloudChannelV1AssociationInfoResponseOutput)
+}
+
+// Optional. The billing account resource name that is used to pay for this entitlement.
+func (o LookupEntitlementResultOutput) BillingAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntitlementResult) string { return v.BillingAccount }).(pulumi.StringOutput)
 }
 
 // Commitment settings for a commitment-based Offer. Required for commitment based offers.

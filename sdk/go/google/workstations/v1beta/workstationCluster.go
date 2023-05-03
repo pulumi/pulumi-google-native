@@ -19,6 +19,8 @@ type WorkstationCluster struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Status conditions describing the current resource state.
 	Conditions StatusResponseArrayOutput `pulumi:"conditions"`
+	// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	ControlPlaneIp pulumi.StringOutput `pulumi:"controlPlaneIp"`
 	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
@@ -27,7 +29,7 @@ type WorkstationCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
@@ -103,7 +105,7 @@ type workstationClusterArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels   map[string]string `pulumi:"labels"`
@@ -127,7 +129,7 @@ type WorkstationClusterArgs struct {
 	Annotations pulumi.StringMapInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapInput
@@ -192,6 +194,11 @@ func (o WorkstationClusterOutput) Conditions() StatusResponseArrayOutput {
 	return o.ApplyT(func(v *WorkstationCluster) StatusResponseArrayOutput { return v.Conditions }).(StatusResponseArrayOutput)
 }
 
+// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+func (o WorkstationClusterOutput) ControlPlaneIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.ControlPlaneIp }).(pulumi.StringOutput)
+}
+
 // Time when this resource was created.
 func (o WorkstationClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -212,7 +219,7 @@ func (o WorkstationClusterOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

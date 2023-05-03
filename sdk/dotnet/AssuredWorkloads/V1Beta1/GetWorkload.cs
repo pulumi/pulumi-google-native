@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> CompliantButDisallowedServices;
         /// <summary>
+        /// Controls associated with the customer workload
+        /// </summary>
+        public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse Controls;
+        /// <summary>
         /// Immutable. The Workload creation timestamp.
         /// </summary>
         public readonly string CreateTime;
@@ -151,6 +155,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse SaaEnrollmentResponse;
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        /// </summary>
+        public readonly bool ViolationNotificationsEnabled;
 
         [OutputConstructor]
         private GetWorkloadResult(
@@ -163,6 +171,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse complianceStatus,
 
             ImmutableArray<string> compliantButDisallowedServices,
+
+            Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse controls,
 
             string createTime,
 
@@ -196,13 +206,16 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse> resources,
 
-            Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse)
+            Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse,
+
+            bool violationNotificationsEnabled)
         {
             BillingAccount = billingAccount;
             CjisSettings = cjisSettings;
             ComplianceRegime = complianceRegime;
             ComplianceStatus = complianceStatus;
             CompliantButDisallowedServices = compliantButDisallowedServices;
+            Controls = controls;
             CreateTime = createTime;
             DisplayName = displayName;
             EkmProvisioningResponse = ekmProvisioningResponse;
@@ -220,6 +233,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             ResourceSettings = resourceSettings;
             Resources = resources;
             SaaEnrollmentResponse = saaEnrollmentResponse;
+            ViolationNotificationsEnabled = violationNotificationsEnabled;
         }
     }
 }

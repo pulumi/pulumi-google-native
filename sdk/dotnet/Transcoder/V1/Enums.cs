@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     }
 
     /// <summary>
-    /// Required. Type of the manifest, can be `HLS` or `DASH`.
+    /// Required. Type of the manifest.
     /// </summary>
     [EnumType]
     public readonly struct ManifestType : IEquatable<ManifestType>
@@ -107,11 +107,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public static ManifestType ManifestTypeUnspecified { get; } = new ManifestType("MANIFEST_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Create `HLS` manifest. The corresponding file extension is `.m3u8`.
+        /// Create an HLS manifest. The corresponding file extension is `.m3u8`.
         /// </summary>
         public static ManifestType Hls { get; } = new ManifestType("HLS");
         /// <summary>
-        /// Create `DASH` manifest. The corresponding file extension is `.mpd`.
+        /// Create an MPEG-DASH manifest. The corresponding file extension is `.mpd`.
         /// </summary>
         public static ManifestType Dash { get; } = new ManifestType("DASH");
 

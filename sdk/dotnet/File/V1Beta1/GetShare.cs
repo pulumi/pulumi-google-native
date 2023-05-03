@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public sealed class GetShareResult
     {
         /// <summary>
+        /// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        /// </summary>
+        public readonly string Backup;
+        /// <summary>
         /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         public readonly string CapacityGb;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
         [OutputConstructor]
         private GetShareResult(
+            string backup,
+
             string capacityGb,
 
             string createTime,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string state)
         {
+            Backup = backup;
             CapacityGb = capacityGb;
             CreateTime = createTime;
             Description = description;

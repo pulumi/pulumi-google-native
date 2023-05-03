@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         [Input("provenance")]
         public Input<Inputs.GoogleCloudDocumentaiV1DocumentProvenanceArgs>? Provenance { get; set; }
 
+        /// <summary>
+        /// Text style attributes.
+        /// </summary>
+        [Input("styleInfo")]
+        public Input<Inputs.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs>? StyleInfo { get; set; }
+
         public GoogleCloudDocumentaiV1DocumentPageTokenArgs()
         {
         }

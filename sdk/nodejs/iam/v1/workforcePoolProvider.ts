@@ -51,7 +51,7 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+     * Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -151,7 +151,7 @@ export interface WorkforcePoolProviderArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+     * Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
      */
     disabled?: pulumi.Input<boolean>;
     /**

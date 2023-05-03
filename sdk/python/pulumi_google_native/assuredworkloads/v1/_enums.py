@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain',
+    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping',
     'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType',
     'WorkloadComplianceRegime',
@@ -43,6 +44,28 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisionin
     """
 
 
+class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping(str, Enum):
+    """
+    Detailed error message if Ekm provisioning fails
+    """
+    EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED = "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED"
+    """
+    Error is unspecified.
+    """
+    INVALID_SERVICE_ACCOUNT = "INVALID_SERVICE_ACCOUNT"
+    """
+    Service account is used is invalid.
+    """
+    MISSING_METRICS_SCOPE_ADMIN_PERMISSION = "MISSING_METRICS_SCOPE_ADMIN_PERMISSION"
+    """
+    Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+    """
+    MISSING_EKM_CONNECTION_ADMIN_PERMISSION = "MISSING_EKM_CONNECTION_ADMIN_PERMISSION"
+    """
+    Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
+    """
+
+
 class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState(str, Enum):
     """
     Indicates Ekm enrollment Provisioning of a given workload.
@@ -67,7 +90,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisionin
 
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enum):
     """
-    Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+    Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
     """
     RESOURCE_TYPE_UNSPECIFIED = "RESOURCE_TYPE_UNSPECIFIED"
     """
@@ -75,7 +98,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(str, Enu
     """
     CONSUMER_PROJECT = "CONSUMER_PROJECT"
     """
-    Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
+    Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
     """
     CONSUMER_FOLDER = "CONSUMER_FOLDER"
     """
@@ -145,11 +168,11 @@ class WorkloadComplianceRegime(str, Enum):
     """
     ASSURED_WORKLOADS_FOR_PARTNERS = "ASSURED_WORKLOADS_FOR_PARTNERS"
     """
-    Assured Workloads for Partners;
+    Assured Workloads for Partners
     """
     ISR_REGIONS = "ISR_REGIONS"
     """
-    Assured Workloads for Israel
+    Assured Workloads for Israel Regions
     """
     ISR_REGIONS_AND_SUPPORT = "ISR_REGIONS_AND_SUPPORT"
     """
@@ -173,4 +196,12 @@ class WorkloadPartner(str, Enum):
     SOVEREIGN_CONTROLS_BY_T_SYSTEMS = "SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
     """
     Enum representing T_SYSTEM (TSI) partner.
+    """
+    SOVEREIGN_CONTROLS_BY_SIA_MINSAIT = "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT"
+    """
+    Enum representing SIA_MINSAIT (Indra) partner.
+    """
+    SOVEREIGN_CONTROLS_BY_PSN = "SOVEREIGN_CONTROLS_BY_PSN"
+    """
+    Enum representing PSN (TIM) partner.
     """

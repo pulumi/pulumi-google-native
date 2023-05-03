@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, etag=None, key_prefix=None, location=None, name=None, type=None, uid=None, update_time=None):
+    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, delete_protection_state=None, etag=None, key_prefix=None, location=None, name=None, type=None, uid=None, update_time=None):
         if app_engine_integration_mode and not isinstance(app_engine_integration_mode, str):
             raise TypeError("Expected argument 'app_engine_integration_mode' to be a str")
         pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
@@ -28,6 +28,9 @@ class GetDatabaseResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if delete_protection_state and not isinstance(delete_protection_state, str):
+            raise TypeError("Expected argument 'delete_protection_state' to be a str")
+        pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -70,9 +73,17 @@ class GetDatabaseResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp at which this database was created.
+        The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> str:
+        """
+        State of delete protection for the database.
+        """
+        return pulumi.get(self, "delete_protection_state")
 
     @property
     @pulumi.getter
@@ -140,6 +151,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             app_engine_integration_mode=self.app_engine_integration_mode,
             concurrency_mode=self.concurrency_mode,
             create_time=self.create_time,
+            delete_protection_state=self.delete_protection_state,
             etag=self.etag,
             key_prefix=self.key_prefix,
             location=self.location,
@@ -165,6 +177,7 @@ def get_database(database_id: Optional[str] = None,
         app_engine_integration_mode=__ret__.app_engine_integration_mode,
         concurrency_mode=__ret__.concurrency_mode,
         create_time=__ret__.create_time,
+        delete_protection_state=__ret__.delete_protection_state,
         etag=__ret__.etag,
         key_prefix=__ret__.key_prefix,
         location=__ret__.location,

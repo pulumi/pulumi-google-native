@@ -1645,8 +1645,8 @@ class ImageArgs:
                  alpha: Optional[pulumi.Input[float]] = None,
                  resolution: Optional[pulumi.Input['NormalizedCoordinateArgs']] = None):
         """
-        Overlaid jpeg image.
-        :param pulumi.Input[str] uri: URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        Overlaid image.
+        :param pulumi.Input[str] uri: URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         :param pulumi.Input[float] alpha: Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
         :param pulumi.Input['NormalizedCoordinateArgs'] resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
         """
@@ -1660,7 +1660,7 @@ class ImageArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         """
         return pulumi.get(self, "uri")
 
@@ -1926,7 +1926,7 @@ class ManifestArgs:
         """
         Manifest configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mux_streams: List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        :param pulumi.Input['ManifestType'] type: Type of the manifest, can be `HLS` or `DASH`.
+        :param pulumi.Input['ManifestType'] type: Type of the manifest.
         :param pulumi.Input[str] file_name: The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
         """
         pulumi.set(__self__, "mux_streams", mux_streams)
@@ -1950,7 +1950,7 @@ class ManifestArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input['ManifestType']:
         """
-        Type of the manifest, can be `HLS` or `DASH`.
+        Type of the manifest.
         """
         return pulumi.get(self, "type")
 

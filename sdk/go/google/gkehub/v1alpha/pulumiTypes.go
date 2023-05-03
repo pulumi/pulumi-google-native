@@ -566,7 +566,7 @@ func (o AppDevExperienceFeatureStateResponseOutput) NetworkingInstallSucceeded()
 
 // ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
 type ApplianceCluster struct {
-	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -583,7 +583,7 @@ type ApplianceClusterInput interface {
 
 // ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
 type ApplianceClusterArgs struct {
-	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -665,7 +665,7 @@ func (o ApplianceClusterOutput) ToApplianceClusterPtrOutputWithContext(ctx conte
 	}).(ApplianceClusterPtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 func (o ApplianceClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplianceCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -694,7 +694,7 @@ func (o ApplianceClusterPtrOutput) Elem() ApplianceClusterOutput {
 	}).(ApplianceClusterOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 func (o ApplianceClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplianceCluster) *string {
 		if v == nil {
@@ -706,7 +706,7 @@ func (o ApplianceClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 
 // ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
 type ApplianceClusterResponse struct {
-	// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+	// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -725,7 +725,7 @@ func (o ApplianceClusterResponseOutput) ToApplianceClusterResponseOutputWithCont
 	return o
 }
 
-// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
 func (o ApplianceClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplianceClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -2117,7 +2117,7 @@ func (o CommonFleetDefaultMemberConfigSpecResponseOutput) Identityservice() Iden
 
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeCluster struct {
-	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -2134,7 +2134,7 @@ type EdgeClusterInput interface {
 
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeClusterArgs struct {
-	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -2216,7 +2216,7 @@ func (o EdgeClusterOutput) ToEdgeClusterPtrOutputWithContext(ctx context.Context
 	}).(EdgeClusterPtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 func (o EdgeClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -2245,7 +2245,7 @@ func (o EdgeClusterPtrOutput) Elem() EdgeClusterOutput {
 	}).(EdgeClusterOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 func (o EdgeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCluster) *string {
 		if v == nil {
@@ -2257,7 +2257,7 @@ func (o EdgeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeClusterResponse struct {
-	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -2276,7 +2276,7 @@ func (o EdgeClusterResponseOutput) ToEdgeClusterResponseOutputWithContext(ctx co
 	return o
 }
 
-// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 func (o EdgeClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -2811,6 +2811,8 @@ func (o FleetLifecycleStateResponseOutput) Code() pulumi.StringOutput {
 
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpec struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig *FleetObservabilityLoggingConfig `pulumi:"loggingConfig"`
 }
 
 // FleetObservabilityFeatureSpecInput is an input type that accepts FleetObservabilityFeatureSpecArgs and FleetObservabilityFeatureSpecOutput values.
@@ -2826,6 +2828,8 @@ type FleetObservabilityFeatureSpecInput interface {
 
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpecArgs struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig FleetObservabilityLoggingConfigPtrInput `pulumi:"loggingConfig"`
 }
 
 func (FleetObservabilityFeatureSpecArgs) ElementType() reflect.Type {
@@ -2906,6 +2910,11 @@ func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecPtrO
 	}).(FleetObservabilityFeatureSpecPtrOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecOutput) LoggingConfig() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityFeatureSpec) *FleetObservabilityLoggingConfig { return v.LoggingConfig }).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
 type FleetObservabilityFeatureSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (FleetObservabilityFeatureSpecPtrOutput) ElementType() reflect.Type {
@@ -2930,8 +2939,20 @@ func (o FleetObservabilityFeatureSpecPtrOutput) Elem() FleetObservabilityFeature
 	}).(FleetObservabilityFeatureSpecOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecPtrOutput) LoggingConfig() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityFeatureSpec) *FleetObservabilityLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpecResponse struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig FleetObservabilityLoggingConfigResponse `pulumi:"loggingConfig"`
 }
 
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
@@ -2947,6 +2968,13 @@ func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeature
 
 func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeatureSpecResponseOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecResponseOutput {
 	return o
+}
+
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecResponseOutput) LoggingConfig() FleetObservabilityLoggingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityFeatureSpecResponse) FleetObservabilityLoggingConfigResponse {
+		return v.LoggingConfig
+	}).(FleetObservabilityLoggingConfigResponseOutput)
 }
 
 // **FleetObservability**: An empty state left as an example Hub-wide Feature state.
@@ -2968,9 +2996,373 @@ func (o FleetObservabilityFeatureStateResponseOutput) ToFleetObservabilityFeatur
 	return o
 }
 
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfig struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig *FleetObservabilityRoutingConfig `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig *FleetObservabilityRoutingConfig `pulumi:"fleetScopeLogsConfig"`
+}
+
+// FleetObservabilityLoggingConfigInput is an input type that accepts FleetObservabilityLoggingConfigArgs and FleetObservabilityLoggingConfigOutput values.
+// You can construct a concrete instance of `FleetObservabilityLoggingConfigInput` via:
+//
+//	FleetObservabilityLoggingConfigArgs{...}
+type FleetObservabilityLoggingConfigInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput
+	ToFleetObservabilityLoggingConfigOutputWithContext(context.Context) FleetObservabilityLoggingConfigOutput
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigArgs struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig FleetObservabilityRoutingConfigPtrInput `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig FleetObservabilityRoutingConfigPtrInput `pulumi:"fleetScopeLogsConfig"`
+}
+
+func (FleetObservabilityLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput {
+	return i.ToFleetObservabilityLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigOutput)
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return i.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigOutput).ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityLoggingConfigPtrInput is an input type that accepts FleetObservabilityLoggingConfigArgs, FleetObservabilityLoggingConfigPtr and FleetObservabilityLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityLoggingConfigPtrInput` via:
+//
+//	        FleetObservabilityLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput
+	ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Context) FleetObservabilityLoggingConfigPtrOutput
+}
+
+type fleetObservabilityLoggingConfigPtrType FleetObservabilityLoggingConfigArgs
+
+func FleetObservabilityLoggingConfigPtr(v *FleetObservabilityLoggingConfigArgs) FleetObservabilityLoggingConfigPtrInput {
+	return (*fleetObservabilityLoggingConfigPtrType)(v)
+}
+
+func (*fleetObservabilityLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i *fleetObservabilityLoggingConfigPtrType) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return i.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityLoggingConfigPtrType) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityLoggingConfig) *FleetObservabilityLoggingConfig {
+		return &v
+	}).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigOutput) DefaultConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig { return v.DefaultConfig }).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+type FleetObservabilityLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) Elem() FleetObservabilityLoggingConfigOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) FleetObservabilityLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityLoggingConfig
+		return ret
+	}).(FleetObservabilityLoggingConfigOutput)
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigPtrOutput) DefaultConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigPtrOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigResponse struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig FleetObservabilityRoutingConfigResponse `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig FleetObservabilityRoutingConfigResponse `pulumi:"fleetScopeLogsConfig"`
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigResponseOutput) ToFleetObservabilityLoggingConfigResponseOutput() FleetObservabilityLoggingConfigResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigResponseOutput) ToFleetObservabilityLoggingConfigResponseOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigResponseOutput {
+	return o
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigResponseOutput) DefaultConfig() FleetObservabilityRoutingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfigResponse) FleetObservabilityRoutingConfigResponse {
+		return v.DefaultConfig
+	}).(FleetObservabilityRoutingConfigResponseOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigResponseOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfigResponse) FleetObservabilityRoutingConfigResponse {
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigResponseOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfig struct {
+	// mode configures the logs routing mode.
+	Mode *FleetObservabilityRoutingConfigMode `pulumi:"mode"`
+}
+
+// FleetObservabilityRoutingConfigInput is an input type that accepts FleetObservabilityRoutingConfigArgs and FleetObservabilityRoutingConfigOutput values.
+// You can construct a concrete instance of `FleetObservabilityRoutingConfigInput` via:
+//
+//	FleetObservabilityRoutingConfigArgs{...}
+type FleetObservabilityRoutingConfigInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput
+	ToFleetObservabilityRoutingConfigOutputWithContext(context.Context) FleetObservabilityRoutingConfigOutput
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigArgs struct {
+	// mode configures the logs routing mode.
+	Mode FleetObservabilityRoutingConfigModePtrInput `pulumi:"mode"`
+}
+
+func (FleetObservabilityRoutingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput {
+	return i.ToFleetObservabilityRoutingConfigOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigOutput)
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return i.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigOutput).ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityRoutingConfigPtrInput is an input type that accepts FleetObservabilityRoutingConfigArgs, FleetObservabilityRoutingConfigPtr and FleetObservabilityRoutingConfigPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityRoutingConfigPtrInput` via:
+//
+//	        FleetObservabilityRoutingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityRoutingConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput
+	ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Context) FleetObservabilityRoutingConfigPtrOutput
+}
+
+type fleetObservabilityRoutingConfigPtrType FleetObservabilityRoutingConfigArgs
+
+func FleetObservabilityRoutingConfigPtr(v *FleetObservabilityRoutingConfigArgs) FleetObservabilityRoutingConfigPtrInput {
+	return (*fleetObservabilityRoutingConfigPtrType)(v)
+}
+
+func (*fleetObservabilityRoutingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (i *fleetObservabilityRoutingConfigPtrType) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return i.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityRoutingConfigPtrType) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfig {
+		return &v
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigOutput) Mode() FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ApplyT(func(v FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfigMode { return v.Mode }).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+type FleetObservabilityRoutingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) Elem() FleetObservabilityRoutingConfigOutput {
+	return o.ApplyT(func(v *FleetObservabilityRoutingConfig) FleetObservabilityRoutingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityRoutingConfig
+		return ret
+	}).(FleetObservabilityRoutingConfigOutput)
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigPtrOutput) Mode() FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfigMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigResponse struct {
+	// mode configures the logs routing mode.
+	Mode string `pulumi:"mode"`
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfigResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigResponseOutput) ToFleetObservabilityRoutingConfigResponseOutput() FleetObservabilityRoutingConfigResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigResponseOutput) ToFleetObservabilityRoutingConfigResponseOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigResponseOutput {
+	return o
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetObservabilityRoutingConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 // GkeCluster contains information specific to GKE clusters.
 type GkeCluster struct {
-	// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+	// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -2987,7 +3379,7 @@ type GkeClusterInput interface {
 
 // GkeCluster contains information specific to GKE clusters.
 type GkeClusterArgs struct {
-	// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+	// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -3069,7 +3461,7 @@ func (o GkeClusterOutput) ToGkeClusterPtrOutputWithContext(ctx context.Context) 
 	}).(GkeClusterPtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -3098,7 +3490,7 @@ func (o GkeClusterPtrOutput) Elem() GkeClusterOutput {
 	}).(GkeClusterOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GkeCluster) *string {
 		if v == nil {
@@ -3112,7 +3504,7 @@ func (o GkeClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 type GkeClusterResponse struct {
 	// If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
 	ClusterMissing bool `pulumi:"clusterMissing"`
-	// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+	// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -3136,7 +3528,7 @@ func (o GkeClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -5216,9 +5608,279 @@ func (o MembershipStateResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipStateResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+type MonitoringConfig struct {
+	// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+	Cluster *string `pulumi:"cluster"`
+	// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+	ClusterHash *string `pulumi:"clusterHash"`
+	// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+	KubernetesMetricsPrefix *string `pulumi:"kubernetesMetricsPrefix"`
+	// Immutable. Location used to report Metrics
+	Location *string `pulumi:"location"`
+	// Immutable. Project used to report Metrics
+	Project *string `pulumi:"project"`
+}
+
+// MonitoringConfigInput is an input type that accepts MonitoringConfigArgs and MonitoringConfigOutput values.
+// You can construct a concrete instance of `MonitoringConfigInput` via:
+//
+//	MonitoringConfigArgs{...}
+type MonitoringConfigInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigOutput() MonitoringConfigOutput
+	ToMonitoringConfigOutputWithContext(context.Context) MonitoringConfigOutput
+}
+
+// This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+type MonitoringConfigArgs struct {
+	// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+	ClusterHash pulumi.StringPtrInput `pulumi:"clusterHash"`
+	// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+	KubernetesMetricsPrefix pulumi.StringPtrInput `pulumi:"kubernetesMetricsPrefix"`
+	// Immutable. Location used to report Metrics
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Immutable. Project used to report Metrics
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (MonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfig)(nil)).Elem()
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigOutput() MonitoringConfigOutput {
+	return i.ToMonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigOutputWithContext(ctx context.Context) MonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput)
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return i.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringConfigArgs) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput).ToMonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// MonitoringConfigPtrInput is an input type that accepts MonitoringConfigArgs, MonitoringConfigPtr and MonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `MonitoringConfigPtrInput` via:
+//
+//	        MonitoringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput
+	ToMonitoringConfigPtrOutputWithContext(context.Context) MonitoringConfigPtrOutput
+}
+
+type monitoringConfigPtrType MonitoringConfigArgs
+
+func MonitoringConfigPtr(v *MonitoringConfigArgs) MonitoringConfigPtrInput {
+	return (*monitoringConfigPtrType)(v)
+}
+
+func (*monitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfig)(nil)).Elem()
+}
+
+func (i *monitoringConfigPtrType) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return i.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringConfigPtrType) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigPtrOutput)
+}
+
+// This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+type MonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfig)(nil)).Elem()
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigOutput() MonitoringConfigOutput {
+	return o
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigOutputWithContext(ctx context.Context) MonitoringConfigOutput {
+	return o
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return o.ToMonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringConfigOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringConfig) *MonitoringConfig {
+		return &v
+	}).(MonitoringConfigPtrOutput)
+}
+
+// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+func (o MonitoringConfigOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+func (o MonitoringConfigOutput) ClusterHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *string { return v.ClusterHash }).(pulumi.StringPtrOutput)
+}
+
+// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+func (o MonitoringConfigOutput) KubernetesMetricsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *string { return v.KubernetesMetricsPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Location used to report Metrics
+func (o MonitoringConfigOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Project used to report Metrics
+func (o MonitoringConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type MonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringConfig)(nil)).Elem()
+}
+
+func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutput() MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringConfigPtrOutput) ToMonitoringConfigPtrOutputWithContext(ctx context.Context) MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o MonitoringConfigPtrOutput) Elem() MonitoringConfigOutput {
+	return o.ApplyT(func(v *MonitoringConfig) MonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringConfig
+		return ret
+	}).(MonitoringConfigOutput)
+}
+
+// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+func (o MonitoringConfigPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+func (o MonitoringConfigPtrOutput) ClusterHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterHash
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+func (o MonitoringConfigPtrOutput) KubernetesMetricsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesMetricsPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Location used to report Metrics
+func (o MonitoringConfigPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Project used to report Metrics
+func (o MonitoringConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+type MonitoringConfigResponse struct {
+	// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+	Cluster string `pulumi:"cluster"`
+	// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+	ClusterHash string `pulumi:"clusterHash"`
+	// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+	KubernetesMetricsPrefix string `pulumi:"kubernetesMetricsPrefix"`
+	// Immutable. Location used to report Metrics
+	Location string `pulumi:"location"`
+	// Immutable. Project used to report Metrics
+	Project string `pulumi:"project"`
+}
+
+// This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+type MonitoringConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutput() MonitoringConfigResponseOutput {
+	return o
+}
+
+func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutputWithContext(ctx context.Context) MonitoringConfigResponseOutput {
+	return o
+}
+
+// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+func (o MonitoringConfigResponseOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+func (o MonitoringConfigResponseOutput) ClusterHash() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.ClusterHash }).(pulumi.StringOutput)
+}
+
+// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+func (o MonitoringConfigResponseOutput) KubernetesMetricsPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.KubernetesMetricsPrefix }).(pulumi.StringOutput)
+}
+
+// Immutable. Location used to report Metrics
+func (o MonitoringConfigResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Immutable. Project used to report Metrics
+func (o MonitoringConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
 // MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 type MultiCloudCluster struct {
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -5235,7 +5897,7 @@ type MultiCloudClusterInput interface {
 
 // MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 type MultiCloudClusterArgs struct {
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -5317,7 +5979,7 @@ func (o MultiCloudClusterOutput) ToMultiCloudClusterPtrOutputWithContext(ctx con
 	}).(MultiCloudClusterPtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MultiCloudCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -5346,7 +6008,7 @@ func (o MultiCloudClusterPtrOutput) Elem() MultiCloudClusterOutput {
 	}).(MultiCloudClusterOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultiCloudCluster) *string {
 		if v == nil {
@@ -5360,7 +6022,7 @@ func (o MultiCloudClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 type MultiCloudClusterResponse struct {
 	// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
 	ClusterMissing bool `pulumi:"clusterMissing"`
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -5384,7 +6046,7 @@ func (o MultiCloudClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 	return o.ApplyT(func(v MultiCloudClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MultiCloudClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -5625,7 +6287,7 @@ type OnPremCluster struct {
 	AdminCluster *bool `pulumi:"adminCluster"`
 	// Immutable. The on prem cluster's type.
 	ClusterType *OnPremClusterClusterType `pulumi:"clusterType"`
-	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -5646,7 +6308,7 @@ type OnPremClusterArgs struct {
 	AdminCluster pulumi.BoolPtrInput `pulumi:"adminCluster"`
 	// Immutable. The on prem cluster's type.
 	ClusterType OnPremClusterClusterTypePtrInput `pulumi:"clusterType"`
-	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -5738,7 +6400,7 @@ func (o OnPremClusterOutput) ClusterType() OnPremClusterClusterTypePtrOutput {
 	return o.ApplyT(func(v OnPremCluster) *OnPremClusterClusterType { return v.ClusterType }).(OnPremClusterClusterTypePtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 func (o OnPremClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnPremCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -5787,7 +6449,7 @@ func (o OnPremClusterPtrOutput) ClusterType() OnPremClusterClusterTypePtrOutput 
 	}).(OnPremClusterClusterTypePtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 func (o OnPremClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnPremCluster) *string {
 		if v == nil {
@@ -5805,7 +6467,7 @@ type OnPremClusterResponse struct {
 	ClusterMissing bool `pulumi:"clusterMissing"`
 	// Immutable. The on prem cluster's type.
 	ClusterType string `pulumi:"clusterType"`
-	// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+	// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -5839,7 +6501,7 @@ func (o OnPremClusterResponseOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremClusterResponse) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
 func (o OnPremClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -6482,6 +7144,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecPtrInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigPtrInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigPtrInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAuthMethodInput)(nil)).Elem(), IdentityServiceAuthMethodArgs{})
@@ -6500,6 +7166,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecInput)(nil)).Elem(), MembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecPtrInput)(nil)).Elem(), MembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigInput)(nil)).Elem(), MonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigPtrInput)(nil)).Elem(), MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterInput)(nil)).Elem(), MultiCloudClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiCloudClusterPtrInput)(nil)).Elem(), MultiCloudClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecInput)(nil)).Elem(), MultiClusterIngressFeatureSpecArgs{})
@@ -6563,6 +7231,12 @@ func init() {
 	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
@@ -6594,6 +7268,9 @@ func init() {
 	pulumi.RegisterOutputType(MembershipSpecPtrOutput{})
 	pulumi.RegisterOutputType(MembershipSpecResponseOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringConfigResponseOutput{})
 	pulumi.RegisterOutputType(MultiCloudClusterOutput{})
 	pulumi.RegisterOutputType(MultiCloudClusterPtrOutput{})
 	pulumi.RegisterOutputType(MultiCloudClusterResponseOutput{})

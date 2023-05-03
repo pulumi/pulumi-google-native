@@ -43,8 +43,6 @@ type Listing struct {
 	Publisher PublisherResponseOutput `pulumi:"publisher"`
 	// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 	RequestAccess pulumi.StringOutput `pulumi:"requestAccess"`
-	// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	RestrictedExportConfig RestrictedExportConfigResponseOutput `pulumi:"restrictedExportConfig"`
 	// Current state of the listing.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -132,8 +130,6 @@ type listingArgs struct {
 	Publisher *Publisher `pulumi:"publisher"`
 	// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 	RequestAccess *string `pulumi:"requestAccess"`
-	// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	RestrictedExportConfig *RestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
 // The set of arguments for constructing a Listing resource.
@@ -163,8 +159,6 @@ type ListingArgs struct {
 	Publisher PublisherPtrInput
 	// Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 	RequestAccess pulumi.StringPtrInput
-	// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-	RestrictedExportConfig RestrictedExportConfigPtrInput
 }
 
 func (ListingArgs) ElementType() reflect.Type {
@@ -274,11 +268,6 @@ func (o ListingOutput) Publisher() PublisherResponseOutput {
 // Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
 func (o ListingOutput) RequestAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringOutput { return v.RequestAccess }).(pulumi.StringOutput)
-}
-
-// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-func (o ListingOutput) RestrictedExportConfig() RestrictedExportConfigResponseOutput {
-	return o.ApplyT(func(v *Listing) RestrictedExportConfigResponseOutput { return v.RestrictedExportConfig }).(RestrictedExportConfigResponseOutput)
 }
 
 // Current state of the listing.

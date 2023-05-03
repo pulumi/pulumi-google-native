@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None, violation_notifications_enabled=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -78,6 +78,9 @@ class GetWorkloadResult:
         if saa_enrollment_response and not isinstance(saa_enrollment_response, dict):
             raise TypeError("Expected argument 'saa_enrollment_response' to be a dict")
         pulumi.set(__self__, "saa_enrollment_response", saa_enrollment_response)
+        if violation_notifications_enabled and not isinstance(violation_notifications_enabled, bool):
+            raise TypeError("Expected argument 'violation_notifications_enabled' to be a bool")
+        pulumi.set(__self__, "violation_notifications_enabled", violation_notifications_enabled)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -223,6 +226,14 @@ class GetWorkloadResult:
         """
         return pulumi.get(self, "saa_enrollment_response")
 
+    @property
+    @pulumi.getter(name="violationNotificationsEnabled")
+    def violation_notifications_enabled(self) -> bool:
+        """
+        Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        """
+        return pulumi.get(self, "violation_notifications_enabled")
+
 
 class AwaitableGetWorkloadResult(GetWorkloadResult):
     # pylint: disable=using-constant-test
@@ -247,7 +258,8 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             provisioned_resources_parent=self.provisioned_resources_parent,
             resource_settings=self.resource_settings,
             resources=self.resources,
-            saa_enrollment_response=self.saa_enrollment_response)
+            saa_enrollment_response=self.saa_enrollment_response,
+            violation_notifications_enabled=self.violation_notifications_enabled)
 
 
 def get_workload(location: Optional[str] = None,
@@ -282,7 +294,8 @@ def get_workload(location: Optional[str] = None,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,
         resource_settings=__ret__.resource_settings,
         resources=__ret__.resources,
-        saa_enrollment_response=__ret__.saa_enrollment_response)
+        saa_enrollment_response=__ret__.saa_enrollment_response,
+        violation_notifications_enabled=__ret__.violation_notifications_enabled)
 
 
 @_utilities.lift_output_func(get_workload)

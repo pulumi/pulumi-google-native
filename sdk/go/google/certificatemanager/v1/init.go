@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CertificateMapEntry{}
 	case "google-native:certificatemanager/v1:DnsAuthorization":
 		r = &DnsAuthorization{}
+	case "google-native:certificatemanager/v1:TrustConfig":
+		r = &TrustConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

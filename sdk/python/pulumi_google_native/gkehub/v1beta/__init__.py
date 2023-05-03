@@ -11,9 +11,11 @@ from .feature import *
 from .feature_iam_binding import *
 from .feature_iam_member import *
 from .feature_iam_policy import *
+from .fleet import *
 from .get_binding import *
 from .get_feature import *
 from .get_feature_iam_policy import *
+from .get_fleet import *
 from .get_membership_iam_policy import *
 from .get_namespace import *
 from .get_rbacrolebinding import *

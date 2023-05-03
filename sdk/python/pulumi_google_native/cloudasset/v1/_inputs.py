@@ -316,6 +316,7 @@ class OptionsArgs:
                  expand_groups: Optional[pulumi.Input[bool]] = None,
                  expand_resources: Optional[pulumi.Input[bool]] = None,
                  expand_roles: Optional[pulumi.Input[bool]] = None,
+                 include_deny_policy_analysis: Optional[pulumi.Input[bool]] = None,
                  output_group_edges: Optional[pulumi.Input[bool]] = None,
                  output_resource_edges: Optional[pulumi.Input[bool]] = None):
         """
@@ -324,6 +325,7 @@ class OptionsArgs:
         :param pulumi.Input[bool] expand_groups: Optional. If true, the identities section of the result will expand any Google groups appearing in an IAM policy binding. If IamPolicyAnalysisQuery.identity_selector is specified, the identity in the result will be determined by the selector, and this flag is not allowed to set. If true, the default max expansion per group is 1000 for AssetService.AnalyzeIamPolicy][]. Default is false.
         :param pulumi.Input[bool] expand_resources: Optional. If true and IamPolicyAnalysisQuery.resource_selector is not specified, the resource section of the result will expand any resource attached to an IAM policy to include resources lower in the resource hierarchy. For example, if the request analyzes for which resources user A has permission P, and the results include an IAM policy with P on a Google Cloud folder, the results will also include resources in that folder with permission P. If true and IamPolicyAnalysisQuery.resource_selector is specified, the resource section of the result will expand the specified resource to include resources lower in the resource hierarchy. Only project or lower resources are supported. Folder and organization resources cannot be used together with this option. For example, if the request analyzes for which users have permission P on a Google Cloud project with this option enabled, the results will include all users who have permission P on that project or any lower resource. If true, the default max expansion per resource is 1000 for AssetService.AnalyzeIamPolicy][] and 100000 for AssetService.AnalyzeIamPolicyLongrunning][]. Default is false.
         :param pulumi.Input[bool] expand_roles: Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
+        :param pulumi.Input[bool] include_deny_policy_analysis: Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
         :param pulumi.Input[bool] output_group_edges: Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
         :param pulumi.Input[bool] output_resource_edges: Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
         """
@@ -335,6 +337,8 @@ class OptionsArgs:
             pulumi.set(__self__, "expand_resources", expand_resources)
         if expand_roles is not None:
             pulumi.set(__self__, "expand_roles", expand_roles)
+        if include_deny_policy_analysis is not None:
+            pulumi.set(__self__, "include_deny_policy_analysis", include_deny_policy_analysis)
         if output_group_edges is not None:
             pulumi.set(__self__, "output_group_edges", output_group_edges)
         if output_resource_edges is not None:
@@ -387,6 +391,18 @@ class OptionsArgs:
     @expand_roles.setter
     def expand_roles(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "expand_roles", value)
+
+    @property
+    @pulumi.getter(name="includeDenyPolicyAnalysis")
+    def include_deny_policy_analysis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+        """
+        return pulumi.get(self, "include_deny_policy_analysis")
+
+    @include_deny_policy_analysis.setter
+    def include_deny_policy_analysis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_deny_policy_analysis", value)
 
     @property
     @pulumi.getter(name="outputGroupEdges")

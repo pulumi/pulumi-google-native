@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse ArticleSuggestion;
         /// <summary>
+        /// Conversation summarization suggestion data.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse ConversationSummarizationSuggestion;
+        /// <summary>
         /// The time at which this annotation was created.
         /// </summary>
         public readonly string CreateTime;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
             Outputs.GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse articleSuggestion,
 
+            Outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse conversationSummarizationSuggestion,
+
             string createTime,
 
             Outputs.GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse dialogflowInteraction,
@@ -82,6 +88,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
             AnnotationId = annotationId;
             AnswerFeedback = answerFeedback;
             ArticleSuggestion = articleSuggestion;
+            ConversationSummarizationSuggestion = conversationSummarizationSuggestion;
             CreateTime = createTime;
             DialogflowInteraction = dialogflowInteraction;
             EndBoundary = endBoundary;

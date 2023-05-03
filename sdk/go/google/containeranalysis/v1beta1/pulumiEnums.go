@@ -4988,6 +4988,10 @@ const (
 	HashTypeHashTypeUnspecified = HashType("HASH_TYPE_UNSPECIFIED")
 	// A SHA-256 hash.
 	HashTypeSha256 = HashType("SHA256")
+	// Dirhash of a Go module's source code which is then hex-encoded. See b/244466565 and https://github.com/in-toto/attestation/pull/108.
+	HashTypeGoModuleH1 = HashType("GO_MODULE_H1")
+	// A SHA-512 hash.
+	HashTypeSha512 = HashType("SHA512")
 )
 
 func (HashType) ElementType() reflect.Type {

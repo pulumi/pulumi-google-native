@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+        /// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
         /// </summary>
         public readonly ImmutableArray<Outputs.ScheduledExecutionRecordResponse> RecentScheduledExecutionRecords;
         /// <summary>

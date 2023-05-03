@@ -1020,6 +1020,7 @@ func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToGoogleCloudDataplexV
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput)
 }
 
+// The aggregate metric to evaluate.
 type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic string
 
 const (

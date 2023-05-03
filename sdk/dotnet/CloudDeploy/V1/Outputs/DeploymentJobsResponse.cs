@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class DeploymentJobsResponse
     {
         /// <summary>
-        /// The deploy Job. This is the first job run in the phase.
+        /// The deploy Job. This is the deploy job in the phase.
         /// </summary>
         public readonly Outputs.JobResponse DeployJob;
         /// <summary>

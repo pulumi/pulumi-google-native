@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1.Inputs
         /// <summary>
         /// Detailed error message if Ekm provisioning fails
         /// </summary>
-        [Input("ekmProvisioningErrorMessage")]
-        public Input<string>? EkmProvisioningErrorMessage { get; set; }
+        [Input("ekmProvisioningErrorMapping")]
+        public Input<Pulumi.GoogleNative.AssuredWorkloads.V1Beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping>? EkmProvisioningErrorMapping { get; set; }
 
         /// <summary>
         /// Indicates Ekm enrollment Provisioning of a given workload.

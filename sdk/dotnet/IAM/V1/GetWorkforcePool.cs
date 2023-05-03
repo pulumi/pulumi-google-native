@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        /// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>

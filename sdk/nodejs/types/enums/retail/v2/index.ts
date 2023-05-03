@@ -36,6 +36,26 @@ export const ControlSolutionTypesItem = {
 
 export type ControlSolutionTypesItem = (typeof ControlSolutionTypesItem)[keyof typeof ControlSolutionTypesItem];
 
+export const GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType = {
+    /**
+     * Unspecified default value, should never be explicitly set. Defaults to MULTIPLE_CONTEXT_PRODUCTS.
+     */
+    ContextProductsTypeUnspecified: "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED",
+    /**
+     * Use only a single product as context for the recommendation. Typically used on pages like add-to-cart or product details.
+     */
+    SingleContextProduct: "SINGLE_CONTEXT_PRODUCT",
+    /**
+     * Use one or multiple products as context for the recommendation. Typically used on shopping cart pages.
+     */
+    MultipleContextProducts: "MULTIPLE_CONTEXT_PRODUCTS",
+} as const;
+
+/**
+ * Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+ */
+export type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType = (typeof GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType)[keyof typeof GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType];
+
 export const GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode = {
     /**
      * Default value.

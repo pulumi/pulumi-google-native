@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetShareResult:
-    def __init__(__self__, capacity_gb=None, create_time=None, description=None, labels=None, mount_name=None, name=None, nfs_export_options=None, state=None):
+    def __init__(__self__, backup=None, capacity_gb=None, create_time=None, description=None, labels=None, mount_name=None, name=None, nfs_export_options=None, state=None):
+        if backup and not isinstance(backup, str):
+            raise TypeError("Expected argument 'backup' to be a str")
+        pulumi.set(__self__, "backup", backup)
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -44,6 +47,14 @@ class GetShareResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> str:
+        """
+        Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        """
+        return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -116,6 +127,7 @@ class AwaitableGetShareResult(GetShareResult):
         if False:
             yield self
         return GetShareResult(
+            backup=self.backup,
             capacity_gb=self.capacity_gb,
             create_time=self.create_time,
             description=self.description,
@@ -143,6 +155,7 @@ def get_share(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1beta1:getShare', __args__, opts=opts, typ=GetShareResult).value
 
     return AwaitableGetShareResult(
+        backup=__ret__.backup,
         capacity_gb=__ret__.capacity_gb,
         create_time=__ret__.create_time,
         description=__ret__.description,

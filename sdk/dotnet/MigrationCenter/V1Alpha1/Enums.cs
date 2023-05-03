@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
     }
 
     /// <summary>
-    /// The payload format.
+    /// Required. The payload format.
     /// </summary>
     [EnumType]
     public readonly struct ImportDataFileFormat : IEquatable<ImportDataFileFormat>

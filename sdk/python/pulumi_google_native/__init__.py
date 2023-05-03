@@ -167,6 +167,8 @@ if typing.TYPE_CHECKING:
     gkebackup = __gkebackup
     import pulumi_google_native.gkehub as __gkehub
     gkehub = __gkehub
+    import pulumi_google_native.gkeonprem as __gkeonprem
+    gkeonprem = __gkeonprem
     import pulumi_google_native.healthcare as __healthcare
     healthcare = __healthcare
     import pulumi_google_native.iam as __iam
@@ -359,6 +361,7 @@ else:
     genomics = _utilities.lazy_import('pulumi_google_native.genomics')
     gkebackup = _utilities.lazy_import('pulumi_google_native.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_google_native.gkehub')
+    gkeonprem = _utilities.lazy_import('pulumi_google_native.gkeonprem')
     healthcare = _utilities.lazy_import('pulumi_google_native.healthcare')
     iam = _utilities.lazy_import('pulumi_google_native.iam')
     iap = _utilities.lazy_import('pulumi_google_native.iap')
@@ -732,11 +735,9 @@ _utilities.register(
    "google-native:beyondcorp/v1:AppGatewayIamBinding": "AppGatewayIamBinding",
    "google-native:beyondcorp/v1:AppGatewayIamMember": "AppGatewayIamMember",
    "google-native:beyondcorp/v1:AppGatewayIamPolicy": "AppGatewayIamPolicy",
-   "google-native:beyondcorp/v1:ClientConnectorService": "ClientConnectorService",
    "google-native:beyondcorp/v1:ClientConnectorServiceIamBinding": "ClientConnectorServiceIamBinding",
    "google-native:beyondcorp/v1:ClientConnectorServiceIamMember": "ClientConnectorServiceIamMember",
    "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
-   "google-native:beyondcorp/v1:ClientGateway": "ClientGateway",
    "google-native:beyondcorp/v1:ClientGatewayIamBinding": "ClientGatewayIamBinding",
    "google-native:beyondcorp/v1:ClientGatewayIamMember": "ClientGatewayIamMember",
    "google-native:beyondcorp/v1:ClientGatewayIamPolicy": "ClientGatewayIamPolicy"
@@ -912,7 +913,8 @@ _utilities.register(
    "google-native:certificatemanager/v1:CertificateIssuanceConfig": "CertificateIssuanceConfig",
    "google-native:certificatemanager/v1:CertificateMap": "CertificateMap",
    "google-native:certificatemanager/v1:CertificateMapEntry": "CertificateMapEntry",
-   "google-native:certificatemanager/v1:DnsAuthorization": "DnsAuthorization"
+   "google-native:certificatemanager/v1:DnsAuthorization": "DnsAuthorization",
+   "google-native:certificatemanager/v1:TrustConfig": "TrustConfig"
   }
  },
  {
@@ -1685,6 +1687,7 @@ _utilities.register(
    "google-native:compute/v1:RegionHealthCheck": "RegionHealthCheck",
    "google-native:compute/v1:RegionHealthCheckService": "RegionHealthCheckService",
    "google-native:compute/v1:RegionInstanceGroupManager": "RegionInstanceGroupManager",
+   "google-native:compute/v1:RegionInstanceTemplate": "RegionInstanceTemplate",
    "google-native:compute/v1:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
    "google-native:compute/v1:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/v1:RegionNetworkFirewallPolicyIamBinding": "RegionNetworkFirewallPolicyIamBinding",
@@ -2668,6 +2671,7 @@ _utilities.register(
    "google-native:gkehub/v1beta:FeatureIamBinding": "FeatureIamBinding",
    "google-native:gkehub/v1beta:FeatureIamMember": "FeatureIamMember",
    "google-native:gkehub/v1beta:FeatureIamPolicy": "FeatureIamPolicy",
+   "google-native:gkehub/v1beta:Fleet": "Fleet",
    "google-native:gkehub/v1beta:MembershipIamBinding": "MembershipIamBinding",
    "google-native:gkehub/v1beta:MembershipIamMember": "MembershipIamMember",
    "google-native:gkehub/v1beta:MembershipIamPolicy": "MembershipIamPolicy",
@@ -2685,6 +2689,36 @@ _utilities.register(
    "google-native:gkehub/v1beta1:MembershipIamBinding": "MembershipIamBinding",
    "google-native:gkehub/v1beta1:MembershipIamMember": "MembershipIamMember",
    "google-native:gkehub/v1beta1:MembershipIamPolicy": "MembershipIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "gkeonprem/v1",
+  "fqn": "pulumi_google_native.gkeonprem.v1",
+  "classes": {
+   "google-native:gkeonprem/v1:BareMetalAdminCluster": "BareMetalAdminCluster",
+   "google-native:gkeonprem/v1:BareMetalAdminClusterIamBinding": "BareMetalAdminClusterIamBinding",
+   "google-native:gkeonprem/v1:BareMetalAdminClusterIamMember": "BareMetalAdminClusterIamMember",
+   "google-native:gkeonprem/v1:BareMetalAdminClusterIamPolicy": "BareMetalAdminClusterIamPolicy",
+   "google-native:gkeonprem/v1:BareMetalCluster": "BareMetalCluster",
+   "google-native:gkeonprem/v1:BareMetalClusterBareMetalNodePoolIamBinding": "BareMetalClusterBareMetalNodePoolIamBinding",
+   "google-native:gkeonprem/v1:BareMetalClusterBareMetalNodePoolIamMember": "BareMetalClusterBareMetalNodePoolIamMember",
+   "google-native:gkeonprem/v1:BareMetalClusterBareMetalNodePoolIamPolicy": "BareMetalClusterBareMetalNodePoolIamPolicy",
+   "google-native:gkeonprem/v1:BareMetalClusterIamBinding": "BareMetalClusterIamBinding",
+   "google-native:gkeonprem/v1:BareMetalClusterIamMember": "BareMetalClusterIamMember",
+   "google-native:gkeonprem/v1:BareMetalClusterIamPolicy": "BareMetalClusterIamPolicy",
+   "google-native:gkeonprem/v1:BareMetalNodePool": "BareMetalNodePool",
+   "google-native:gkeonprem/v1:VmwareAdminClusterIamBinding": "VmwareAdminClusterIamBinding",
+   "google-native:gkeonprem/v1:VmwareAdminClusterIamMember": "VmwareAdminClusterIamMember",
+   "google-native:gkeonprem/v1:VmwareAdminClusterIamPolicy": "VmwareAdminClusterIamPolicy",
+   "google-native:gkeonprem/v1:VmwareCluster": "VmwareCluster",
+   "google-native:gkeonprem/v1:VmwareClusterIamBinding": "VmwareClusterIamBinding",
+   "google-native:gkeonprem/v1:VmwareClusterIamMember": "VmwareClusterIamMember",
+   "google-native:gkeonprem/v1:VmwareClusterIamPolicy": "VmwareClusterIamPolicy",
+   "google-native:gkeonprem/v1:VmwareClusterVmwareNodePoolIamBinding": "VmwareClusterVmwareNodePoolIamBinding",
+   "google-native:gkeonprem/v1:VmwareClusterVmwareNodePoolIamMember": "VmwareClusterVmwareNodePoolIamMember",
+   "google-native:gkeonprem/v1:VmwareClusterVmwareNodePoolIamPolicy": "VmwareClusterVmwareNodePoolIamPolicy",
+   "google-native:gkeonprem/v1:VmwareNodePool": "VmwareNodePool"
   }
  },
  {
@@ -3169,10 +3203,14 @@ _utilities.register(
    "google-native:networksecurity/v1:ClientTlsPolicyIamBinding": "ClientTlsPolicyIamBinding",
    "google-native:networksecurity/v1:ClientTlsPolicyIamMember": "ClientTlsPolicyIamMember",
    "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy": "ClientTlsPolicyIamPolicy",
+   "google-native:networksecurity/v1:GatewaySecurityPolicy": "GatewaySecurityPolicy",
+   "google-native:networksecurity/v1:Rule": "Rule",
    "google-native:networksecurity/v1:ServerTlsPolicy": "ServerTlsPolicy",
    "google-native:networksecurity/v1:ServerTlsPolicyIamBinding": "ServerTlsPolicyIamBinding",
    "google-native:networksecurity/v1:ServerTlsPolicyIamMember": "ServerTlsPolicyIamMember",
-   "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy"
+   "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy",
+   "google-native:networksecurity/v1:TlsInspectionPolicy": "TlsInspectionPolicy",
+   "google-native:networksecurity/v1:UrlList": "UrlList"
   }
  },
  {
@@ -3231,21 +3269,6 @@ _utilities.register(
    "google-native:networkservices/v1:MeshIamBinding": "MeshIamBinding",
    "google-native:networkservices/v1:MeshIamMember": "MeshIamMember",
    "google-native:networkservices/v1:MeshIamPolicy": "MeshIamPolicy",
-   "google-native:networkservices/v1:MulticastConsumerAssociationIamBinding": "MulticastConsumerAssociationIamBinding",
-   "google-native:networkservices/v1:MulticastConsumerAssociationIamMember": "MulticastConsumerAssociationIamMember",
-   "google-native:networkservices/v1:MulticastConsumerAssociationIamPolicy": "MulticastConsumerAssociationIamPolicy",
-   "google-native:networkservices/v1:MulticastDomainActivationIamBinding": "MulticastDomainActivationIamBinding",
-   "google-native:networkservices/v1:MulticastDomainActivationIamMember": "MulticastDomainActivationIamMember",
-   "google-native:networkservices/v1:MulticastDomainActivationIamPolicy": "MulticastDomainActivationIamPolicy",
-   "google-native:networkservices/v1:MulticastDomainIamBinding": "MulticastDomainIamBinding",
-   "google-native:networkservices/v1:MulticastDomainIamMember": "MulticastDomainIamMember",
-   "google-native:networkservices/v1:MulticastDomainIamPolicy": "MulticastDomainIamPolicy",
-   "google-native:networkservices/v1:MulticastGroupDefinitionIamBinding": "MulticastGroupDefinitionIamBinding",
-   "google-native:networkservices/v1:MulticastGroupDefinitionIamMember": "MulticastGroupDefinitionIamMember",
-   "google-native:networkservices/v1:MulticastGroupDefinitionIamPolicy": "MulticastGroupDefinitionIamPolicy",
-   "google-native:networkservices/v1:MulticastGroupIamBinding": "MulticastGroupIamBinding",
-   "google-native:networkservices/v1:MulticastGroupIamMember": "MulticastGroupIamMember",
-   "google-native:networkservices/v1:MulticastGroupIamPolicy": "MulticastGroupIamPolicy",
    "google-native:networkservices/v1:ServiceBinding": "ServiceBinding",
    "google-native:networkservices/v1:ServiceBindingIamBinding": "ServiceBindingIamBinding",
    "google-native:networkservices/v1:ServiceBindingIamMember": "ServiceBindingIamMember",
@@ -3628,11 +3651,14 @@ _utilities.register(
   "mod": "securitycenter/v1",
   "fqn": "pulumi_google_native.securitycenter.v1",
   "classes": {
+   "google-native:securitycenter/v1:CustomModule": "CustomModule",
    "google-native:securitycenter/v1:FolderBigQueryExport": "FolderBigQueryExport",
+   "google-native:securitycenter/v1:FolderCustomModule": "FolderCustomModule",
    "google-native:securitycenter/v1:FolderNotificationConfig": "FolderNotificationConfig",
    "google-native:securitycenter/v1:MuteConfig": "MuteConfig",
    "google-native:securitycenter/v1:NotificationConfig": "NotificationConfig",
    "google-native:securitycenter/v1:OrganizationBigQueryExport": "OrganizationBigQueryExport",
+   "google-native:securitycenter/v1:OrganizationCustomModule": "OrganizationCustomModule",
    "google-native:securitycenter/v1:OrganizationMuteConfig": "OrganizationMuteConfig",
    "google-native:securitycenter/v1:OrganizationNotificationConfig": "OrganizationNotificationConfig",
    "google-native:securitycenter/v1:OrganizationSourceIamBinding": "OrganizationSourceIamBinding",

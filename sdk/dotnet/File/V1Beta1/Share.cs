@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public partial class Share : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        /// </summary>
+        [Output("backup")]
+        public Output<string> Backup { get; private set; } = null!;
+
+        /// <summary>
         /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         [Output("capacityGb")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
     public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        /// </summary>
+        [Input("backup")]
+        public Input<string>? Backup { get; set; }
+
         /// <summary>
         /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>

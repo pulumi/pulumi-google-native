@@ -5366,7 +5366,7 @@ func (o GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArrayOutpu
 
 // Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
 type GoogleCloudDialogflowCxV3GcsDestination struct {
-	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 	Uri string `pulumi:"uri"`
 }
 
@@ -5383,7 +5383,7 @@ type GoogleCloudDialogflowCxV3GcsDestinationInput interface {
 
 // Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
 type GoogleCloudDialogflowCxV3GcsDestinationArgs struct {
-	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -5465,7 +5465,7 @@ func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) ToGoogleCloudDialogflowCx
 	}).(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput)
 }
 
-// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3GcsDestination) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5494,7 +5494,7 @@ func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) Elem() GoogleCloudDial
 	}).(GoogleCloudDialogflowCxV3GcsDestinationOutput)
 }
 
-// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3GcsDestination) *string {
 		if v == nil {
@@ -5506,7 +5506,7 @@ func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) Uri() pulumi.StringPtr
 
 // Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
 type GoogleCloudDialogflowCxV3GcsDestinationResponse struct {
-	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 	Uri string `pulumi:"uri"`
 }
 
@@ -5525,7 +5525,7 @@ func (o GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) ToGoogleCloudDial
 	return o
 }
 
-// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
 func (o GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3GcsDestinationResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5856,7 +5856,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigResponseOutput) SingleUtterance
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfigResponse) bool { return v.SingleUtterance }).(pulumi.BoolOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3Intent struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
@@ -5887,7 +5887,7 @@ type GoogleCloudDialogflowCxV3IntentInput interface {
 	ToGoogleCloudDialogflowCxV3IntentOutputWithContext(context.Context) GoogleCloudDialogflowCxV3IntentOutput
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3IntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -5960,7 +5960,7 @@ func (i *googleCloudDialogflowCxV3IntentPtrType) ToGoogleCloudDialogflowCxV3Inte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3IntentPtrOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3IntentOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3IntentOutput) ElementType() reflect.Type {
@@ -6486,7 +6486,7 @@ func (o GoogleCloudDialogflowCxV3IntentParameterResponseArrayOutput) Index(i pul
 	}).(GoogleCloudDialogflowCxV3IntentParameterResponseOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3IntentResponse struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description string `pulumi:"description"`
@@ -6506,7 +6506,7 @@ type GoogleCloudDialogflowCxV3IntentResponse struct {
 	TrainingPhrases []GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse `pulumi:"trainingPhrases"`
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3IntentResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3IntentResponseOutput) ElementType() reflect.Type {
@@ -7445,7 +7445,7 @@ func (o GoogleCloudDialogflowCxV3PageResponseOutput) TransitionRoutes() GoogleCl
 	}).(GoogleCloudDialogflowCxV3TransitionRouteResponseArrayOutput)
 }
 
-// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered.
+// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 type GoogleCloudDialogflowCxV3QueryInput struct {
 	// The natural language speech audio to be processed.
 	Audio *GoogleCloudDialogflowCxV3AudioInput `pulumi:"audio"`
@@ -7472,7 +7472,7 @@ type GoogleCloudDialogflowCxV3QueryInputInput interface {
 	ToGoogleCloudDialogflowCxV3QueryInputOutputWithContext(context.Context) GoogleCloudDialogflowCxV3QueryInputOutput
 }
 
-// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered.
+// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 type GoogleCloudDialogflowCxV3QueryInputArgs struct {
 	// The natural language speech audio to be processed.
 	Audio GoogleCloudDialogflowCxV3AudioInputPtrInput `pulumi:"audio"`
@@ -7541,7 +7541,7 @@ func (i *googleCloudDialogflowCxV3QueryInputPtrType) ToGoogleCloudDialogflowCxV3
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3QueryInputPtrOutput)
 }
 
-// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered.
+// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 type GoogleCloudDialogflowCxV3QueryInputOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3QueryInputOutput) ElementType() reflect.Type {
@@ -7680,7 +7680,7 @@ func (o GoogleCloudDialogflowCxV3QueryInputPtrOutput) Text() GoogleCloudDialogfl
 	}).(GoogleCloudDialogflowCxV3TextInputPtrOutput)
 }
 
-// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered.
+// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 type GoogleCloudDialogflowCxV3QueryInputResponse struct {
 	// The natural language speech audio to be processed.
 	Audio GoogleCloudDialogflowCxV3AudioInputResponse `pulumi:"audio"`
@@ -7696,7 +7696,7 @@ type GoogleCloudDialogflowCxV3QueryInputResponse struct {
 	Text GoogleCloudDialogflowCxV3TextInputResponse `pulumi:"text"`
 }
 
-// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered.
+// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
 type GoogleCloudDialogflowCxV3QueryInputResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3QueryInputResponseOutput) ElementType() reflect.Type {
@@ -11360,9 +11360,9 @@ func (o GoogleCloudDialogflowCxV3TextInputResponseOutput) Text() pulumi.StringOu
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextInputResponse) string { return v.Text }).(pulumi.StringOutput)
 }
 
-// Settings related to speech generating.
+// Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettings struct {
-	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
 }
 
@@ -11377,9 +11377,9 @@ type GoogleCloudDialogflowCxV3TextToSpeechSettingsInput interface {
 	ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput
 }
 
-// Settings related to speech generating.
+// Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs struct {
-	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
 }
 
@@ -11436,7 +11436,7 @@ func (i *googleCloudDialogflowCxV3TextToSpeechSettingsPtrType) ToGoogleCloudDial
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput)
 }
 
-// Settings related to speech generating.
+// Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ElementType() reflect.Type {
@@ -11461,7 +11461,7 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialog
 	}).(GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput)
 }
 
-// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]string {
 		return v.SynthesizeSpeechConfigs
@@ -11492,7 +11492,7 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) Elem() GoogleClo
 	}).(GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput)
 }
 
-// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]string {
 		if v == nil {
@@ -11502,13 +11502,13 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) SynthesizeSpeech
 	}).(pulumi.StringMapOutput)
 }
 
-// Settings related to speech generating.
+// Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse struct {
-	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
 }
 
-// Settings related to speech generating.
+// Settings related to speech synthesizing.
 type GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ElementType() reflect.Type {
@@ -11523,7 +11523,7 @@ func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ToGoogleClo
 	return o
 }
 
-// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+// Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
 func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse) map[string]string {
 		return v.SynthesizeSpeechConfigs

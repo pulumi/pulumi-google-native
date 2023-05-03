@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
-    /// Inserts a resource containing information about a database inside a Cloud SQL instance.
+    /// Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:Database")]
     public partial class Database : global::Pulumi.CustomResource

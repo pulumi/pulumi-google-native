@@ -42,9 +42,9 @@ type LookupFhirStoreResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 	Name string `pulumi:"name"`
-	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	//
-	// Deprecated: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+	// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
 	// Specifies where and whether to send notifications upon changes to a Fhir store.
 	NotificationConfigs []FhirNotificationConfigResponse `pulumi:"notificationConfigs"`
@@ -131,9 +131,9 @@ func (o LookupFhirStoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 //
-// Deprecated: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 func (o LookupFhirStoreResultOutput) NotificationConfig() NotificationConfigResponseOutput {
 	return o.ApplyT(func(v LookupFhirStoreResult) NotificationConfigResponse { return v.NotificationConfig }).(NotificationConfigResponseOutput)
 }

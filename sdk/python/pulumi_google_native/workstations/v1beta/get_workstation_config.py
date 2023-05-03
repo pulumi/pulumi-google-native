@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationConfigResult:
-    def __init__(__self__, annotations=None, conditions=None, container=None, create_time=None, degraded=None, delete_time=None, display_name=None, encryption_key=None, etag=None, host=None, idle_timeout=None, labels=None, name=None, persistent_directories=None, reconciling=None, running_timeout=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, conditions=None, container=None, create_time=None, degraded=None, delete_time=None, display_name=None, enable_audit_agent=None, encryption_key=None, etag=None, host=None, idle_timeout=None, labels=None, name=None, persistent_directories=None, readiness_checks=None, reconciling=None, running_timeout=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -41,6 +41,9 @@ class GetWorkstationConfigResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if enable_audit_agent and not isinstance(enable_audit_agent, bool):
+            raise TypeError("Expected argument 'enable_audit_agent' to be a bool")
+        pulumi.set(__self__, "enable_audit_agent", enable_audit_agent)
         if encryption_key and not isinstance(encryption_key, dict):
             raise TypeError("Expected argument 'encryption_key' to be a dict")
         pulumi.set(__self__, "encryption_key", encryption_key)
@@ -62,6 +65,9 @@ class GetWorkstationConfigResult:
         if persistent_directories and not isinstance(persistent_directories, list):
             raise TypeError("Expected argument 'persistent_directories' to be a list")
         pulumi.set(__self__, "persistent_directories", persistent_directories)
+        if readiness_checks and not isinstance(readiness_checks, list):
+            raise TypeError("Expected argument 'readiness_checks' to be a list")
+        pulumi.set(__self__, "readiness_checks", readiness_checks)
         if reconciling and not isinstance(reconciling, bool):
             raise TypeError("Expected argument 'reconciling' to be a bool")
         pulumi.set(__self__, "reconciling", reconciling)
@@ -132,10 +138,18 @@ class GetWorkstationConfigResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="enableAuditAgent")
+    def enable_audit_agent(self) -> bool:
+        """
+        Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        """
+        return pulumi.get(self, "enable_audit_agent")
+
+    @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
         """
-        Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -143,7 +157,7 @@ class GetWorkstationConfigResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -186,6 +200,14 @@ class GetWorkstationConfigResult:
         Directories to persist across workstation sessions.
         """
         return pulumi.get(self, "persistent_directories")
+
+    @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> Sequence['outputs.ReadinessCheckResponse']:
+        """
+        Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+        """
+        return pulumi.get(self, "readiness_checks")
 
     @property
     @pulumi.getter
@@ -233,6 +255,7 @@ class AwaitableGetWorkstationConfigResult(GetWorkstationConfigResult):
             degraded=self.degraded,
             delete_time=self.delete_time,
             display_name=self.display_name,
+            enable_audit_agent=self.enable_audit_agent,
             encryption_key=self.encryption_key,
             etag=self.etag,
             host=self.host,
@@ -240,6 +263,7 @@ class AwaitableGetWorkstationConfigResult(GetWorkstationConfigResult):
             labels=self.labels,
             name=self.name,
             persistent_directories=self.persistent_directories,
+            readiness_checks=self.readiness_checks,
             reconciling=self.reconciling,
             running_timeout=self.running_timeout,
             uid=self.uid,
@@ -270,6 +294,7 @@ def get_workstation_config(location: Optional[str] = None,
         degraded=__ret__.degraded,
         delete_time=__ret__.delete_time,
         display_name=__ret__.display_name,
+        enable_audit_agent=__ret__.enable_audit_agent,
         encryption_key=__ret__.encryption_key,
         etag=__ret__.etag,
         host=__ret__.host,
@@ -277,6 +302,7 @@ def get_workstation_config(location: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         persistent_directories=__ret__.persistent_directories,
+        readiness_checks=__ret__.readiness_checks,
         reconciling=__ret__.reconciling,
         running_timeout=__ret__.running_timeout,
         uid=__ret__.uid,

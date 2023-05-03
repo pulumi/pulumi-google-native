@@ -2215,6 +2215,8 @@ func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ScannedData() Goog
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpec struct {
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent *float64 `pulumi:"samplingPercent"`
 }
 
 // GoogleCloudDataplexV1DataProfileSpecInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecArgs and GoogleCloudDataplexV1DataProfileSpecOutput values.
@@ -2230,6 +2232,8 @@ type GoogleCloudDataplexV1DataProfileSpecInput interface {
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecArgs struct {
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
 }
 
 func (GoogleCloudDataplexV1DataProfileSpecArgs) ElementType() reflect.Type {
@@ -2310,6 +2314,11 @@ func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataP
 	}).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
 }
 
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
+}
+
 type GoogleCloudDataplexV1DataProfileSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataProfileSpecPtrOutput) ElementType() reflect.Type {
@@ -2334,8 +2343,20 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) Elem() GoogleCloudDataple
 	}).(GoogleCloudDataplexV1DataProfileSpecOutput)
 }
 
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecResponse struct {
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent float64 `pulumi:"samplingPercent"`
 }
 
 // DataProfileScan related setting.
@@ -2351,6 +2372,11 @@ func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecResponseOutput {
 	return o
+}
+
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) SamplingPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) float64 { return v.SamplingPercent }).(pulumi.Float64Output)
 }
 
 // DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
@@ -3792,7 +3818,8 @@ type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation struct {
 	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue *string `pulumi:"maxValue"`
 	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-	MinValue  *string                                                                 `pulumi:"minValue"`
+	MinValue *string `pulumi:"minValue"`
+	// The aggregate metric to evaluate.
 	Statistic *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic `pulumi:"statistic"`
 	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
@@ -3816,7 +3843,8 @@ type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs struct {
 	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
 	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-	MinValue  pulumi.StringPtrInput                                                          `pulumi:"minValue"`
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// The aggregate metric to evaluate.
 	Statistic GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput `pulumi:"statistic"`
 	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
@@ -3912,6 +3940,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) Min
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
 }
 
+// The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
 		return v.Statistic
@@ -3972,6 +4001,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
 		if v == nil {
@@ -4006,7 +4036,8 @@ type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse struc
 	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
 	MaxValue string `pulumi:"maxValue"`
 	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
-	MinValue  string `pulumi:"minValue"`
+	MinValue string `pulumi:"minValue"`
+	// The aggregate metric to evaluate.
 	Statistic string `pulumi:"statistic"`
 	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
 	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
@@ -4043,6 +4074,7 @@ func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOut
 	}).(pulumi.StringOutput)
 }
 
+// The aggregate metric to evaluate.
 func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) Statistic() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
 		return v.Statistic
@@ -4375,6 +4407,8 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput)
 type GoogleCloudDataplexV1DataQualitySpec struct {
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules []GoogleCloudDataplexV1DataQualityRule `pulumi:"rules"`
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent *float64 `pulumi:"samplingPercent"`
 }
 
 // GoogleCloudDataplexV1DataQualitySpecInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecArgs and GoogleCloudDataplexV1DataQualitySpecOutput values.
@@ -4392,6 +4426,8 @@ type GoogleCloudDataplexV1DataQualitySpecInput interface {
 type GoogleCloudDataplexV1DataQualitySpecArgs struct {
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules GoogleCloudDataplexV1DataQualityRuleArrayInput `pulumi:"rules"`
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
 }
 
 func (GoogleCloudDataplexV1DataQualitySpecArgs) ElementType() reflect.Type {
@@ -4477,6 +4513,11 @@ func (o GoogleCloudDataplexV1DataQualitySpecOutput) Rules() GoogleCloudDataplexV
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) []GoogleCloudDataplexV1DataQualityRule { return v.Rules }).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
 }
 
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
+}
+
 type GoogleCloudDataplexV1DataQualitySpecPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataQualitySpecPtrOutput) ElementType() reflect.Type {
@@ -4511,10 +4552,22 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Rules() GoogleCloudDatapl
 	}).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
 }
 
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecResponse struct {
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules []GoogleCloudDataplexV1DataQualityRuleResponse `pulumi:"rules"`
+	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+	SamplingPercent float64 `pulumi:"samplingPercent"`
 }
 
 // DataQualityScan related setting.
@@ -4537,6 +4590,11 @@ func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) Rules() GoogleCloudD
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecResponse) []GoogleCloudDataplexV1DataQualityRuleResponse {
 		return v.Rules
 	}).(GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput)
+}
+
+// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) SamplingPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecResponse) float64 { return v.SamplingPercent }).(pulumi.Float64Output)
 }
 
 // DataScan execution settings.

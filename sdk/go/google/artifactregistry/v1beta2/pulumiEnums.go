@@ -195,6 +195,8 @@ const (
 	RepositoryFormatApt = RepositoryFormat("APT")
 	// YUM package format.
 	RepositoryFormatYum = RepositoryFormat("YUM")
+	// GooGet package format.
+	RepositoryFormatGooget = RepositoryFormat("GOOGET")
 	// Python package format.
 	RepositoryFormatPython = RepositoryFormat("PYTHON")
 )

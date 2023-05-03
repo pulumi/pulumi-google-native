@@ -127,6 +127,10 @@ export const BuildOptionsSourceProvenanceHashItem = {
      * Use a md5 hash.
      */
     Md5: "MD5",
+    /**
+     * Use a sha512 hash.
+     */
+    Sha512: "SHA512",
 } as const;
 
 export type BuildOptionsSourceProvenanceHashItem = (typeof BuildOptionsSourceProvenanceHashItem)[keyof typeof BuildOptionsSourceProvenanceHashItem];

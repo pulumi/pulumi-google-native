@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Outputs
     [OutputType]
     public sealed class FleetObservabilityFeatureSpecResponse
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        /// </summary>
+        public readonly Outputs.FleetObservabilityLoggingConfigResponse LoggingConfig;
+
         [OutputConstructor]
-        private FleetObservabilityFeatureSpecResponse()
+        private FleetObservabilityFeatureSpecResponse(Outputs.FleetObservabilityLoggingConfigResponse loggingConfig)
         {
+            LoggingConfig = loggingConfig;
         }
     }
 }

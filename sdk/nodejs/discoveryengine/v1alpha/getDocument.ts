@@ -31,7 +31,7 @@ export interface GetDocumentArgs {
 
 export interface GetDocumentResult {
     /**
-     * The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     readonly jsonData: string;
     /**
@@ -47,7 +47,7 @@ export interface GetDocumentResult {
      */
     readonly schemaId: string;
     /**
-     * The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     readonly structData: {[key: string]: string};
 }

@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.NetworkPolicyResponse Network;
         /// <summary>
+        /// The placement policy.
+        /// </summary>
+        public readonly Outputs.PlacementPolicyResponse Placement;
+        /// <summary>
         /// Service account that VMs will run as.
         /// </summary>
         public readonly Outputs.ServiceAccountResponse ServiceAccount;
@@ -47,12 +51,15 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             Outputs.NetworkPolicyResponse network,
 
+            Outputs.PlacementPolicyResponse placement,
+
             Outputs.ServiceAccountResponse serviceAccount)
         {
             Instances = instances;
             Labels = labels;
             Location = location;
             Network = network;
+            Placement = placement;
             ServiceAccount = serviceAccount;
         }
     }

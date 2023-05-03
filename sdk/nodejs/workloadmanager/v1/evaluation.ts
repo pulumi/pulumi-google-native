@@ -82,6 +82,10 @@ export class Evaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleVersions!: pulumi.Output<string[]>;
     /**
+     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     */
+    public readonly schedule!: pulumi.Output<string>;
+    /**
      * [Output only] Update time stamp
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -109,6 +113,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["resourceFilter"] = args ? args.resourceFilter : undefined;
             resourceInputs["ruleNames"] = args ? args.ruleNames : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["ruleVersions"] = undefined /*out*/;
@@ -126,6 +131,7 @@ export class Evaluation extends pulumi.CustomResource {
             resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["ruleNames"] = undefined /*out*/;
             resourceInputs["ruleVersions"] = undefined /*out*/;
+            resourceInputs["schedule"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -169,4 +175,8 @@ export interface EvaluationArgs {
      * the name of the rule
      */
     ruleNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     */
+    schedule?: pulumi.Input<string>;
 }

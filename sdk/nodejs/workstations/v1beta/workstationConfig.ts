@@ -66,11 +66,15 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+     * Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+     */
+    public readonly enableAuditAgent!: pulumi.Output<boolean>;
+    /**
+     * Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
      */
     public readonly encryptionKey!: pulumi.Output<outputs.workstations.v1beta.CustomerEncryptionKeyResponse>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -96,6 +100,10 @@ export class WorkstationConfig extends pulumi.CustomResource {
     public readonly persistentDirectories!: pulumi.Output<outputs.workstations.v1beta.PersistentDirectoryResponse[]>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+     */
+    public readonly readinessChecks!: pulumi.Output<outputs.workstations.v1beta.ReadinessCheckResponse[]>;
+    /**
      * Indicates whether this resource is currently being updated to match its intended state.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
@@ -113,7 +121,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     public readonly workstationClusterId!: pulumi.Output<string>;
     /**
-     * Required. ID to use for the config.
+     * Required. ID to use for the workstation configuration.
      */
     public readonly workstationConfigId!: pulumi.Output<string>;
 
@@ -137,6 +145,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["container"] = args ? args.container : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enableAuditAgent"] = args ? args.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
@@ -146,6 +155,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["readinessChecks"] = args ? args.readinessChecks : undefined;
             resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
@@ -164,6 +174,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["enableAuditAgent"] = undefined /*out*/;
             resourceInputs["encryptionKey"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
@@ -173,6 +184,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["persistentDirectories"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["readinessChecks"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["runningTimeout"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -204,11 +216,15 @@ export interface WorkstationConfigArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+     * Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+     */
+    enableAuditAgent?: pulumi.Input<boolean>;
+    /**
+     * Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
      */
     encryptionKey?: pulumi.Input<inputs.workstations.v1beta.CustomerEncryptionKeyArgs>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -234,12 +250,16 @@ export interface WorkstationConfigArgs {
     persistentDirectories?: pulumi.Input<pulumi.Input<inputs.workstations.v1beta.PersistentDirectoryArgs>[]>;
     project?: pulumi.Input<string>;
     /**
+     * Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+     */
+    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.v1beta.ReadinessCheckArgs>[]>;
+    /**
      * How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
      */
     runningTimeout?: pulumi.Input<string>;
     workstationClusterId: pulumi.Input<string>;
     /**
-     * Required. ID to use for the config.
+     * Required. ID to use for the workstation configuration.
      */
     workstationConfigId: pulumi.Input<string>;
 }

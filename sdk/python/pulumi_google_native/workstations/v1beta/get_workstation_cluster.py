@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkstationClusterResult:
-    def __init__(__self__, annotations=None, conditions=None, create_time=None, degraded=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, conditions=None, control_plane_ip=None, create_time=None, degraded=None, delete_time=None, display_name=None, etag=None, labels=None, name=None, network=None, private_cluster_config=None, reconciling=None, subnetwork=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if conditions and not isinstance(conditions, list):
             raise TypeError("Expected argument 'conditions' to be a list")
         pulumi.set(__self__, "conditions", conditions)
+        if control_plane_ip and not isinstance(control_plane_ip, str):
+            raise TypeError("Expected argument 'control_plane_ip' to be a str")
+        pulumi.set(__self__, "control_plane_ip", control_plane_ip)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -83,6 +86,14 @@ class GetWorkstationClusterResult:
         return pulumi.get(self, "conditions")
 
     @property
+    @pulumi.getter(name="controlPlaneIp")
+    def control_plane_ip(self) -> str:
+        """
+        The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        """
+        return pulumi.get(self, "control_plane_ip")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
@@ -118,7 +129,7 @@ class GetWorkstationClusterResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -195,6 +206,7 @@ class AwaitableGetWorkstationClusterResult(GetWorkstationClusterResult):
         return GetWorkstationClusterResult(
             annotations=self.annotations,
             conditions=self.conditions,
+            control_plane_ip=self.control_plane_ip,
             create_time=self.create_time,
             degraded=self.degraded,
             delete_time=self.delete_time,
@@ -227,6 +239,7 @@ def get_workstation_cluster(location: Optional[str] = None,
     return AwaitableGetWorkstationClusterResult(
         annotations=__ret__.annotations,
         conditions=__ret__.conditions,
+        control_plane_ip=__ret__.control_plane_ip,
         create_time=__ret__.create_time,
         degraded=__ret__.degraded,
         delete_time=__ret__.delete_time,

@@ -29,6 +29,10 @@ type LookupRegionDiskArgs struct {
 type LookupRegionDiskResult struct {
 	// The architecture of the disk. Valid values are ARM64 or X86_64.
 	Architecture string `pulumi:"architecture"`
+	// Disk asynchronously replicated into this disk.
+	AsyncPrimaryDisk DiskAsyncReplicationResponse `pulumi:"asyncPrimaryDisk"`
+	// A list of disks this disk is asynchronously replicated to.
+	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -69,12 +73,18 @@ type LookupRegionDiskResult struct {
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Status information for the disk resource.
+	ResourceStatus DiskResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
 	SizeGb string `pulumi:"sizeGb"`
+	// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+	SourceConsistencyGroupPolicy string `pulumi:"sourceConsistencyGroupPolicy"`
+	// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+	SourceConsistencyGroupPolicyId string `pulumi:"sourceConsistencyGroupPolicyId"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
@@ -143,6 +153,16 @@ func (o LookupRegionDiskResultOutput) ToLookupRegionDiskResultOutputWithContext(
 // The architecture of the disk. Valid values are ARM64 or X86_64.
 func (o LookupRegionDiskResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// Disk asynchronously replicated into this disk.
+func (o LookupRegionDiskResultOutput) AsyncPrimaryDisk() DiskAsyncReplicationResponseOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) DiskAsyncReplicationResponse { return v.AsyncPrimaryDisk }).(DiskAsyncReplicationResponseOutput)
+}
+
+// A list of disks this disk is asynchronously replicated to.
+func (o LookupRegionDiskResultOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -245,6 +265,11 @@ func (o LookupRegionDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupRegionDiskResult) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
 
+// Status information for the disk resource.
+func (o LookupRegionDiskResultOutput) ResourceStatus() DiskResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) DiskResourceStatusResponse { return v.ResourceStatus }).(DiskResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o LookupRegionDiskResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -258,6 +283,16 @@ func (o LookupRegionDiskResultOutput) SelfLink() pulumi.StringOutput {
 // Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
 func (o LookupRegionDiskResultOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SizeGb }).(pulumi.StringOutput)
+}
+
+// URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+func (o LookupRegionDiskResultOutput) SourceConsistencyGroupPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceConsistencyGroupPolicy }).(pulumi.StringOutput)
+}
+
+// ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+func (o LookupRegionDiskResultOutput) SourceConsistencyGroupPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceConsistencyGroupPolicyId }).(pulumi.StringOutput)
 }
 
 // The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk

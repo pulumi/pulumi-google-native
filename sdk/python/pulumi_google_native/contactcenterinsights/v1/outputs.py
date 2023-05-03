@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1AnalysisResultResponse',
     'GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse',
     'GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse',
+    'GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse',
     'GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse',
     'GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse',
     'GoogleCloudContactcenterinsightsV1CallAnnotationResponse',
@@ -24,6 +25,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse',
     'GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse',
     'GoogleCloudContactcenterinsightsV1ConversationParticipantResponse',
+    'GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse',
     'GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse',
@@ -368,6 +370,10 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
             suggest = "run_sentiment_annotator"
         elif key == "runSilenceAnnotator":
             suggest = "run_silence_annotator"
+        elif key == "runSummarizationAnnotator":
+            suggest = "run_summarization_annotator"
+        elif key == "summarizationConfig":
+            suggest = "summarization_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse. Access the value via the '{suggest}' property getter instead.")
@@ -389,7 +395,9 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
                  run_issue_model_annotator: bool,
                  run_phrase_matcher_annotator: bool,
                  run_sentiment_annotator: bool,
-                 run_silence_annotator: bool):
+                 run_silence_annotator: bool,
+                 run_summarization_annotator: bool,
+                 summarization_config: 'outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse'):
         """
         Selector of all available annotators and phrase matchers to run.
         :param Sequence[str] issue_models: The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
@@ -401,6 +409,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
         :param bool run_phrase_matcher_annotator: Whether to run the active phrase matcher annotator(s).
         :param bool run_sentiment_annotator: Whether to run the sentiment annotator.
         :param bool run_silence_annotator: Whether to run the silence annotator.
+        :param bool run_summarization_annotator: Whether to run the summarization annotator.
+        :param 'GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse' summarization_config: Configuration for the summarization annotator.
         """
         pulumi.set(__self__, "issue_models", issue_models)
         pulumi.set(__self__, "phrase_matchers", phrase_matchers)
@@ -411,6 +421,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
         pulumi.set(__self__, "run_phrase_matcher_annotator", run_phrase_matcher_annotator)
         pulumi.set(__self__, "run_sentiment_annotator", run_sentiment_annotator)
         pulumi.set(__self__, "run_silence_annotator", run_silence_annotator)
+        pulumi.set(__self__, "run_summarization_annotator", run_summarization_annotator)
+        pulumi.set(__self__, "summarization_config", summarization_config)
 
     @property
     @pulumi.getter(name="issueModels")
@@ -483,6 +495,74 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
         Whether to run the silence annotator.
         """
         return pulumi.get(self, "run_silence_annotator")
+
+    @property
+    @pulumi.getter(name="runSummarizationAnnotator")
+    def run_summarization_annotator(self) -> bool:
+        """
+        Whether to run the summarization annotator.
+        """
+        return pulumi.get(self, "run_summarization_annotator")
+
+    @property
+    @pulumi.getter(name="summarizationConfig")
+    def summarization_config(self) -> 'outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse':
+        """
+        Configuration for the summarization annotator.
+        """
+        return pulumi.get(self, "summarization_config")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse(dict):
+    """
+    Configuration for summarization.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationProfile":
+            suggest = "conversation_profile"
+        elif key == "summarizationModel":
+            suggest = "summarization_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conversation_profile: str,
+                 summarization_model: str):
+        """
+        Configuration for summarization.
+        :param str conversation_profile: Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        :param str summarization_model: Default summarization model to be used.
+        """
+        pulumi.set(__self__, "conversation_profile", conversation_profile)
+        pulumi.set(__self__, "summarization_model", summarization_model)
+
+    @property
+    @pulumi.getter(name="conversationProfile")
+    def conversation_profile(self) -> str:
+        """
+        Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        """
+        return pulumi.get(self, "conversation_profile")
+
+    @property
+    @pulumi.getter(name="summarizationModel")
+    def summarization_model(self) -> str:
+        """
+        Default summarization model to be used.
+        """
+        return pulumi.get(self, "summarization_model")
 
 
 @pulumi.output_type
@@ -1054,6 +1134,104 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
         A user-specified ID representing the participant.
         """
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse(dict):
+    """
+    Conversation summarization suggestion data.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "answerRecord":
+            suggest = "answer_record"
+        elif key == "conversationModel":
+            suggest = "conversation_model"
+        elif key == "textSections":
+            suggest = "text_sections"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 answer_record: str,
+                 confidence: float,
+                 conversation_model: str,
+                 metadata: Mapping[str, str],
+                 text: str,
+                 text_sections: Mapping[str, str]):
+        """
+        Conversation summarization suggestion data.
+        :param str answer_record: The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        :param float confidence: The confidence score of the summarization.
+        :param str conversation_model: The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model}
+        :param Mapping[str, str] metadata: A map that contains metadata about the summarization and the document from which it originates.
+        :param str text: The summarization content that is concatenated into one string.
+        :param Mapping[str, str] text_sections: The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.
+        """
+        pulumi.set(__self__, "answer_record", answer_record)
+        pulumi.set(__self__, "confidence", confidence)
+        pulumi.set(__self__, "conversation_model", conversation_model)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "text_sections", text_sections)
+
+    @property
+    @pulumi.getter(name="answerRecord")
+    def answer_record(self) -> str:
+        """
+        The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        """
+        return pulumi.get(self, "answer_record")
+
+    @property
+    @pulumi.getter
+    def confidence(self) -> float:
+        """
+        The confidence score of the summarization.
+        """
+        return pulumi.get(self, "confidence")
+
+    @property
+    @pulumi.getter(name="conversationModel")
+    def conversation_model(self) -> str:
+        """
+        The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model}
+        """
+        return pulumi.get(self, "conversation_model")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        A map that contains metadata about the summarization and the document from which it originates.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        The summarization content that is concatenated into one string.
+        """
+        return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter(name="textSections")
+    def text_sections(self) -> Mapping[str, str]:
+        """
+        The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.
+        """
+        return pulumi.get(self, "text_sections")
 
 
 @pulumi.output_type
@@ -2150,7 +2328,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse(dict):
                  type: str):
         """
         A message representing a rule in the phrase matcher.
-        :param Sequence['GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse'] phrase_match_rules: A list of phase match rules that are included in this group.
+        :param Sequence['GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse'] phrase_match_rules: A list of phrase match rules that are included in this group.
         :param str type: The type of this phrase match rule group.
         """
         pulumi.set(__self__, "phrase_match_rules", phrase_match_rules)
@@ -2160,7 +2338,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse(dict):
     @pulumi.getter(name="phraseMatchRules")
     def phrase_match_rules(self) -> Sequence['outputs.GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse']:
         """
-        A list of phase match rules that are included in this group.
+        A list of phrase match rules that are included in this group.
         """
         return pulumi.get(self, "phrase_match_rules")
 
@@ -2231,6 +2409,8 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(dict):
             suggest = "answer_feedback"
         elif key == "articleSuggestion":
             suggest = "article_suggestion"
+        elif key == "conversationSummarizationSuggestion":
+            suggest = "conversation_summarization_suggestion"
         elif key == "createTime":
             suggest = "create_time"
         elif key == "dialogflowInteraction":
@@ -2261,6 +2441,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(dict):
                  annotation_id: str,
                  answer_feedback: 'outputs.GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse',
                  article_suggestion: 'outputs.GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse',
+                 conversation_summarization_suggestion: 'outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse',
                  create_time: str,
                  dialogflow_interaction: 'outputs.GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse',
                  end_boundary: 'outputs.GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse',
@@ -2273,6 +2454,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(dict):
         :param str annotation_id: The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation}
         :param 'GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse' answer_feedback: The feedback that the customer has about the answer in `data`.
         :param 'GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse' article_suggestion: Agent Assist Article Suggestion data.
+        :param 'GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse' conversation_summarization_suggestion: Conversation summarization suggestion data.
         :param str create_time: The time at which this annotation was created.
         :param 'GoogleCloudContactcenterinsightsV1DialogflowInteractionDataResponse' dialogflow_interaction: Dialogflow interaction data.
         :param 'GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse' end_boundary: The boundary in the conversation where the annotation ends, inclusive.
@@ -2284,6 +2466,7 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(dict):
         pulumi.set(__self__, "annotation_id", annotation_id)
         pulumi.set(__self__, "answer_feedback", answer_feedback)
         pulumi.set(__self__, "article_suggestion", article_suggestion)
+        pulumi.set(__self__, "conversation_summarization_suggestion", conversation_summarization_suggestion)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "dialogflow_interaction", dialogflow_interaction)
         pulumi.set(__self__, "end_boundary", end_boundary)
@@ -2315,6 +2498,14 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse(dict):
         Agent Assist Article Suggestion data.
         """
         return pulumi.get(self, "article_suggestion")
+
+    @property
+    @pulumi.getter(name="conversationSummarizationSuggestion")
+    def conversation_summarization_suggestion(self) -> 'outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse':
+        """
+        Conversation summarization suggestion data.
+        """
+        return pulumi.get(self, "conversation_summarization_suggestion")
 
     @property
     @pulumi.getter(name="createTime")

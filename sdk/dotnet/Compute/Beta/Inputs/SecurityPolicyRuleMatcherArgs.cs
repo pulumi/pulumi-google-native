@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.SecurityPolicyRuleMatcherConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         /// </summary>
         [Input("expr")]
         public Input<Inputs.ExprArgs>? Expr { get; set; }

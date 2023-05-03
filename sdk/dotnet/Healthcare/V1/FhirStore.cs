@@ -71,10 +71,16 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies where and whether to send notifications upon changes to a FHIR store.
+        /// </summary>
+        [Output("notificationConfigs")]
+        public Output<ImmutableArray<Outputs.FhirNotificationConfigResponse>> NotificationConfigs { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -203,10 +209,22 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }
+
+        [Input("notificationConfigs")]
+        private InputList<Inputs.FhirNotificationConfigArgs>? _notificationConfigs;
+
+        /// <summary>
+        /// Specifies where and whether to send notifications upon changes to a FHIR store.
+        /// </summary>
+        public InputList<Inputs.FhirNotificationConfigArgs> NotificationConfigs
+        {
+            get => _notificationConfigs ?? (_notificationConfigs = new InputList<Inputs.FhirNotificationConfigArgs>());
+            set => _notificationConfigs = value;
+        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

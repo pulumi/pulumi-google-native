@@ -431,25 +431,57 @@ class HttpHeaderMatchArgs:
 @pulumi.input_type
 class MTLSPolicyArgs:
     def __init__(__self__, *,
-                 client_validation_ca: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]] = None):
+                 client_validation_ca: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]] = None,
+                 client_validation_mode: Optional[pulumi.Input['MTLSPolicyClientValidationMode']] = None,
+                 client_validation_trust_config: Optional[pulumi.Input[str]] = None):
         """
         Specification of the MTLSPolicy.
-        :param pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]] client_validation_ca:  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]] client_validation_ca: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param pulumi.Input['MTLSPolicyClientValidationMode'] client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        :param pulumi.Input[str] client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
         """
         if client_validation_ca is not None:
             pulumi.set(__self__, "client_validation_ca", client_validation_ca)
+        if client_validation_mode is not None:
+            pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        if client_validation_trust_config is not None:
+            pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
 
     @property
     @pulumi.getter(name="clientValidationCa")
     def client_validation_ca(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]]:
         """
-         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
         return pulumi.get(self, "client_validation_ca")
 
     @client_validation_ca.setter
     def client_validation_ca(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]]):
         pulumi.set(self, "client_validation_ca", value)
+
+    @property
+    @pulumi.getter(name="clientValidationMode")
+    def client_validation_mode(self) -> Optional[pulumi.Input['MTLSPolicyClientValidationMode']]:
+        """
+        When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        """
+        return pulumi.get(self, "client_validation_mode")
+
+    @client_validation_mode.setter
+    def client_validation_mode(self, value: Optional[pulumi.Input['MTLSPolicyClientValidationMode']]):
+        pulumi.set(self, "client_validation_mode", value)
+
+    @property
+    @pulumi.getter(name="clientValidationTrustConfig")
+    def client_validation_trust_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        return pulumi.get(self, "client_validation_trust_config")
+
+    @client_validation_trust_config.setter
+    def client_validation_trust_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_validation_trust_config", value)
 
 
 @pulumi.input_type

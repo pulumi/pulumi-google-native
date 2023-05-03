@@ -428,6 +428,152 @@ func (o GclbTargetResponseArrayOutput) Index(i pulumi.IntInput) GclbTargetRespon
 	}).(GclbTargetResponseOutput)
 }
 
+// Defines an intermediate CA.
+type IntermediateCA struct {
+	// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate *string `pulumi:"pemCertificate"`
+}
+
+// IntermediateCAInput is an input type that accepts IntermediateCAArgs and IntermediateCAOutput values.
+// You can construct a concrete instance of `IntermediateCAInput` via:
+//
+//	IntermediateCAArgs{...}
+type IntermediateCAInput interface {
+	pulumi.Input
+
+	ToIntermediateCAOutput() IntermediateCAOutput
+	ToIntermediateCAOutputWithContext(context.Context) IntermediateCAOutput
+}
+
+// Defines an intermediate CA.
+type IntermediateCAArgs struct {
+	// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
+}
+
+func (IntermediateCAArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntermediateCA)(nil)).Elem()
+}
+
+func (i IntermediateCAArgs) ToIntermediateCAOutput() IntermediateCAOutput {
+	return i.ToIntermediateCAOutputWithContext(context.Background())
+}
+
+func (i IntermediateCAArgs) ToIntermediateCAOutputWithContext(ctx context.Context) IntermediateCAOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntermediateCAOutput)
+}
+
+// IntermediateCAArrayInput is an input type that accepts IntermediateCAArray and IntermediateCAArrayOutput values.
+// You can construct a concrete instance of `IntermediateCAArrayInput` via:
+//
+//	IntermediateCAArray{ IntermediateCAArgs{...} }
+type IntermediateCAArrayInput interface {
+	pulumi.Input
+
+	ToIntermediateCAArrayOutput() IntermediateCAArrayOutput
+	ToIntermediateCAArrayOutputWithContext(context.Context) IntermediateCAArrayOutput
+}
+
+type IntermediateCAArray []IntermediateCAInput
+
+func (IntermediateCAArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntermediateCA)(nil)).Elem()
+}
+
+func (i IntermediateCAArray) ToIntermediateCAArrayOutput() IntermediateCAArrayOutput {
+	return i.ToIntermediateCAArrayOutputWithContext(context.Background())
+}
+
+func (i IntermediateCAArray) ToIntermediateCAArrayOutputWithContext(ctx context.Context) IntermediateCAArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntermediateCAArrayOutput)
+}
+
+// Defines an intermediate CA.
+type IntermediateCAOutput struct{ *pulumi.OutputState }
+
+func (IntermediateCAOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntermediateCA)(nil)).Elem()
+}
+
+func (o IntermediateCAOutput) ToIntermediateCAOutput() IntermediateCAOutput {
+	return o
+}
+
+func (o IntermediateCAOutput) ToIntermediateCAOutputWithContext(ctx context.Context) IntermediateCAOutput {
+	return o
+}
+
+// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+func (o IntermediateCAOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntermediateCA) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
+}
+
+type IntermediateCAArrayOutput struct{ *pulumi.OutputState }
+
+func (IntermediateCAArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntermediateCA)(nil)).Elem()
+}
+
+func (o IntermediateCAArrayOutput) ToIntermediateCAArrayOutput() IntermediateCAArrayOutput {
+	return o
+}
+
+func (o IntermediateCAArrayOutput) ToIntermediateCAArrayOutputWithContext(ctx context.Context) IntermediateCAArrayOutput {
+	return o
+}
+
+func (o IntermediateCAArrayOutput) Index(i pulumi.IntInput) IntermediateCAOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntermediateCA {
+		return vs[0].([]IntermediateCA)[vs[1].(int)]
+	}).(IntermediateCAOutput)
+}
+
+// Defines an intermediate CA.
+type IntermediateCAResponse struct {
+	// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// Defines an intermediate CA.
+type IntermediateCAResponseOutput struct{ *pulumi.OutputState }
+
+func (IntermediateCAResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntermediateCAResponse)(nil)).Elem()
+}
+
+func (o IntermediateCAResponseOutput) ToIntermediateCAResponseOutput() IntermediateCAResponseOutput {
+	return o
+}
+
+func (o IntermediateCAResponseOutput) ToIntermediateCAResponseOutputWithContext(ctx context.Context) IntermediateCAResponseOutput {
+	return o
+}
+
+// PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+func (o IntermediateCAResponseOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v IntermediateCAResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type IntermediateCAResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IntermediateCAResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntermediateCAResponse)(nil)).Elem()
+}
+
+func (o IntermediateCAResponseArrayOutput) ToIntermediateCAResponseArrayOutput() IntermediateCAResponseArrayOutput {
+	return o
+}
+
+func (o IntermediateCAResponseArrayOutput) ToIntermediateCAResponseArrayOutputWithContext(ctx context.Context) IntermediateCAResponseArrayOutput {
+	return o
+}
+
+func (o IntermediateCAResponseArrayOutput) Index(i pulumi.IntInput) IntermediateCAResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntermediateCAResponse {
+		return vs[0].([]IntermediateCAResponse)[vs[1].(int)]
+	}).(IntermediateCAResponseOutput)
+}
+
 // Defines IP configuration where this Certificate Map is serving.
 type IpConfigResponse struct {
 	// An external IP address.
@@ -947,14 +1093,328 @@ func (o SelfManagedCertificateResponseOutput) PemPrivateKey() pulumi.StringOutpu
 	return o.ApplyT(func(v SelfManagedCertificateResponse) string { return v.PemPrivateKey }).(pulumi.StringOutput)
 }
 
+// Defines a trust anchor.
+type TrustAnchor struct {
+	// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate *string `pulumi:"pemCertificate"`
+}
+
+// TrustAnchorInput is an input type that accepts TrustAnchorArgs and TrustAnchorOutput values.
+// You can construct a concrete instance of `TrustAnchorInput` via:
+//
+//	TrustAnchorArgs{...}
+type TrustAnchorInput interface {
+	pulumi.Input
+
+	ToTrustAnchorOutput() TrustAnchorOutput
+	ToTrustAnchorOutputWithContext(context.Context) TrustAnchorOutput
+}
+
+// Defines a trust anchor.
+type TrustAnchorArgs struct {
+	// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
+}
+
+func (TrustAnchorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustAnchor)(nil)).Elem()
+}
+
+func (i TrustAnchorArgs) ToTrustAnchorOutput() TrustAnchorOutput {
+	return i.ToTrustAnchorOutputWithContext(context.Background())
+}
+
+func (i TrustAnchorArgs) ToTrustAnchorOutputWithContext(ctx context.Context) TrustAnchorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustAnchorOutput)
+}
+
+// TrustAnchorArrayInput is an input type that accepts TrustAnchorArray and TrustAnchorArrayOutput values.
+// You can construct a concrete instance of `TrustAnchorArrayInput` via:
+//
+//	TrustAnchorArray{ TrustAnchorArgs{...} }
+type TrustAnchorArrayInput interface {
+	pulumi.Input
+
+	ToTrustAnchorArrayOutput() TrustAnchorArrayOutput
+	ToTrustAnchorArrayOutputWithContext(context.Context) TrustAnchorArrayOutput
+}
+
+type TrustAnchorArray []TrustAnchorInput
+
+func (TrustAnchorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustAnchor)(nil)).Elem()
+}
+
+func (i TrustAnchorArray) ToTrustAnchorArrayOutput() TrustAnchorArrayOutput {
+	return i.ToTrustAnchorArrayOutputWithContext(context.Background())
+}
+
+func (i TrustAnchorArray) ToTrustAnchorArrayOutputWithContext(ctx context.Context) TrustAnchorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustAnchorArrayOutput)
+}
+
+// Defines a trust anchor.
+type TrustAnchorOutput struct{ *pulumi.OutputState }
+
+func (TrustAnchorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustAnchor)(nil)).Elem()
+}
+
+func (o TrustAnchorOutput) ToTrustAnchorOutput() TrustAnchorOutput {
+	return o
+}
+
+func (o TrustAnchorOutput) ToTrustAnchorOutputWithContext(ctx context.Context) TrustAnchorOutput {
+	return o
+}
+
+// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+func (o TrustAnchorOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrustAnchor) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
+}
+
+type TrustAnchorArrayOutput struct{ *pulumi.OutputState }
+
+func (TrustAnchorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustAnchor)(nil)).Elem()
+}
+
+func (o TrustAnchorArrayOutput) ToTrustAnchorArrayOutput() TrustAnchorArrayOutput {
+	return o
+}
+
+func (o TrustAnchorArrayOutput) ToTrustAnchorArrayOutputWithContext(ctx context.Context) TrustAnchorArrayOutput {
+	return o
+}
+
+func (o TrustAnchorArrayOutput) Index(i pulumi.IntInput) TrustAnchorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustAnchor {
+		return vs[0].([]TrustAnchor)[vs[1].(int)]
+	}).(TrustAnchorOutput)
+}
+
+// Defines a trust anchor.
+type TrustAnchorResponse struct {
+	// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// Defines a trust anchor.
+type TrustAnchorResponseOutput struct{ *pulumi.OutputState }
+
+func (TrustAnchorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustAnchorResponse)(nil)).Elem()
+}
+
+func (o TrustAnchorResponseOutput) ToTrustAnchorResponseOutput() TrustAnchorResponseOutput {
+	return o
+}
+
+func (o TrustAnchorResponseOutput) ToTrustAnchorResponseOutputWithContext(ctx context.Context) TrustAnchorResponseOutput {
+	return o
+}
+
+// PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+func (o TrustAnchorResponseOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustAnchorResponse) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type TrustAnchorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrustAnchorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustAnchorResponse)(nil)).Elem()
+}
+
+func (o TrustAnchorResponseArrayOutput) ToTrustAnchorResponseArrayOutput() TrustAnchorResponseArrayOutput {
+	return o
+}
+
+func (o TrustAnchorResponseArrayOutput) ToTrustAnchorResponseArrayOutputWithContext(ctx context.Context) TrustAnchorResponseArrayOutput {
+	return o
+}
+
+func (o TrustAnchorResponseArrayOutput) Index(i pulumi.IntInput) TrustAnchorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustAnchorResponse {
+		return vs[0].([]TrustAnchorResponse)[vs[1].(int)]
+	}).(TrustAnchorResponseOutput)
+}
+
+// Defines a trust store.
+type TrustStore struct {
+	// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+	IntermediateCas []IntermediateCA `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation against a given TrustStore.
+	TrustAnchors []TrustAnchor `pulumi:"trustAnchors"`
+}
+
+// TrustStoreInput is an input type that accepts TrustStoreArgs and TrustStoreOutput values.
+// You can construct a concrete instance of `TrustStoreInput` via:
+//
+//	TrustStoreArgs{...}
+type TrustStoreInput interface {
+	pulumi.Input
+
+	ToTrustStoreOutput() TrustStoreOutput
+	ToTrustStoreOutputWithContext(context.Context) TrustStoreOutput
+}
+
+// Defines a trust store.
+type TrustStoreArgs struct {
+	// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+	IntermediateCas IntermediateCAArrayInput `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation against a given TrustStore.
+	TrustAnchors TrustAnchorArrayInput `pulumi:"trustAnchors"`
+}
+
+func (TrustStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustStore)(nil)).Elem()
+}
+
+func (i TrustStoreArgs) ToTrustStoreOutput() TrustStoreOutput {
+	return i.ToTrustStoreOutputWithContext(context.Background())
+}
+
+func (i TrustStoreArgs) ToTrustStoreOutputWithContext(ctx context.Context) TrustStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustStoreOutput)
+}
+
+// TrustStoreArrayInput is an input type that accepts TrustStoreArray and TrustStoreArrayOutput values.
+// You can construct a concrete instance of `TrustStoreArrayInput` via:
+//
+//	TrustStoreArray{ TrustStoreArgs{...} }
+type TrustStoreArrayInput interface {
+	pulumi.Input
+
+	ToTrustStoreArrayOutput() TrustStoreArrayOutput
+	ToTrustStoreArrayOutputWithContext(context.Context) TrustStoreArrayOutput
+}
+
+type TrustStoreArray []TrustStoreInput
+
+func (TrustStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustStore)(nil)).Elem()
+}
+
+func (i TrustStoreArray) ToTrustStoreArrayOutput() TrustStoreArrayOutput {
+	return i.ToTrustStoreArrayOutputWithContext(context.Background())
+}
+
+func (i TrustStoreArray) ToTrustStoreArrayOutputWithContext(ctx context.Context) TrustStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustStoreArrayOutput)
+}
+
+// Defines a trust store.
+type TrustStoreOutput struct{ *pulumi.OutputState }
+
+func (TrustStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustStore)(nil)).Elem()
+}
+
+func (o TrustStoreOutput) ToTrustStoreOutput() TrustStoreOutput {
+	return o
+}
+
+func (o TrustStoreOutput) ToTrustStoreOutputWithContext(ctx context.Context) TrustStoreOutput {
+	return o
+}
+
+// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+func (o TrustStoreOutput) IntermediateCas() IntermediateCAArrayOutput {
+	return o.ApplyT(func(v TrustStore) []IntermediateCA { return v.IntermediateCas }).(IntermediateCAArrayOutput)
+}
+
+// List of Trust Anchors to be used while performing validation against a given TrustStore.
+func (o TrustStoreOutput) TrustAnchors() TrustAnchorArrayOutput {
+	return o.ApplyT(func(v TrustStore) []TrustAnchor { return v.TrustAnchors }).(TrustAnchorArrayOutput)
+}
+
+type TrustStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (TrustStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustStore)(nil)).Elem()
+}
+
+func (o TrustStoreArrayOutput) ToTrustStoreArrayOutput() TrustStoreArrayOutput {
+	return o
+}
+
+func (o TrustStoreArrayOutput) ToTrustStoreArrayOutputWithContext(ctx context.Context) TrustStoreArrayOutput {
+	return o
+}
+
+func (o TrustStoreArrayOutput) Index(i pulumi.IntInput) TrustStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustStore {
+		return vs[0].([]TrustStore)[vs[1].(int)]
+	}).(TrustStoreOutput)
+}
+
+// Defines a trust store.
+type TrustStoreResponse struct {
+	// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+	IntermediateCas []IntermediateCAResponse `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation against a given TrustStore.
+	TrustAnchors []TrustAnchorResponse `pulumi:"trustAnchors"`
+}
+
+// Defines a trust store.
+type TrustStoreResponseOutput struct{ *pulumi.OutputState }
+
+func (TrustStoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustStoreResponse)(nil)).Elem()
+}
+
+func (o TrustStoreResponseOutput) ToTrustStoreResponseOutput() TrustStoreResponseOutput {
+	return o
+}
+
+func (o TrustStoreResponseOutput) ToTrustStoreResponseOutputWithContext(ctx context.Context) TrustStoreResponseOutput {
+	return o
+}
+
+// Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+func (o TrustStoreResponseOutput) IntermediateCas() IntermediateCAResponseArrayOutput {
+	return o.ApplyT(func(v TrustStoreResponse) []IntermediateCAResponse { return v.IntermediateCas }).(IntermediateCAResponseArrayOutput)
+}
+
+// List of Trust Anchors to be used while performing validation against a given TrustStore.
+func (o TrustStoreResponseOutput) TrustAnchors() TrustAnchorResponseArrayOutput {
+	return o.ApplyT(func(v TrustStoreResponse) []TrustAnchorResponse { return v.TrustAnchors }).(TrustAnchorResponseArrayOutput)
+}
+
+type TrustStoreResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrustStoreResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustStoreResponse)(nil)).Elem()
+}
+
+func (o TrustStoreResponseArrayOutput) ToTrustStoreResponseArrayOutput() TrustStoreResponseArrayOutput {
+	return o
+}
+
+func (o TrustStoreResponseArrayOutput) ToTrustStoreResponseArrayOutputWithContext(ctx context.Context) TrustStoreResponseArrayOutput {
+	return o
+}
+
+func (o TrustStoreResponseArrayOutput) Index(i pulumi.IntInput) TrustStoreResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustStoreResponse {
+		return vs[0].([]TrustStoreResponse)[vs[1].(int)]
+	}).(TrustStoreResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityConfigInput)(nil)).Elem(), CertificateAuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityServiceConfigPtrInput)(nil)).Elem(), CertificateAuthorityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntermediateCAInput)(nil)).Elem(), IntermediateCAArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntermediateCAArrayInput)(nil)).Elem(), IntermediateCAArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificateInput)(nil)).Elem(), ManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificatePtrInput)(nil)).Elem(), ManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificateInput)(nil)).Elem(), SelfManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificatePtrInput)(nil)).Elem(), SelfManagedCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustAnchorInput)(nil)).Elem(), TrustAnchorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustAnchorArrayInput)(nil)).Elem(), TrustAnchorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustStoreInput)(nil)).Elem(), TrustStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrustStoreArrayInput)(nil)).Elem(), TrustStoreArray{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateAuthorityConfigOutput{})
@@ -965,6 +1425,10 @@ func init() {
 	pulumi.RegisterOutputType(DnsResourceRecordResponseOutput{})
 	pulumi.RegisterOutputType(GclbTargetResponseOutput{})
 	pulumi.RegisterOutputType(GclbTargetResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntermediateCAOutput{})
+	pulumi.RegisterOutputType(IntermediateCAArrayOutput{})
+	pulumi.RegisterOutputType(IntermediateCAResponseOutput{})
+	pulumi.RegisterOutputType(IntermediateCAResponseArrayOutput{})
 	pulumi.RegisterOutputType(IpConfigResponseOutput{})
 	pulumi.RegisterOutputType(IpConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateOutput{})
@@ -974,4 +1438,12 @@ func init() {
 	pulumi.RegisterOutputType(SelfManagedCertificateOutput{})
 	pulumi.RegisterOutputType(SelfManagedCertificatePtrOutput{})
 	pulumi.RegisterOutputType(SelfManagedCertificateResponseOutput{})
+	pulumi.RegisterOutputType(TrustAnchorOutput{})
+	pulumi.RegisterOutputType(TrustAnchorArrayOutput{})
+	pulumi.RegisterOutputType(TrustAnchorResponseOutput{})
+	pulumi.RegisterOutputType(TrustAnchorResponseArrayOutput{})
+	pulumi.RegisterOutputType(TrustStoreOutput{})
+	pulumi.RegisterOutputType(TrustStoreArrayOutput{})
+	pulumi.RegisterOutputType(TrustStoreResponseOutput{})
+	pulumi.RegisterOutputType(TrustStoreResponseArrayOutput{})
 }

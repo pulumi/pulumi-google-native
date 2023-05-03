@@ -19,10 +19,12 @@ type Database struct {
 	AppEngineIntegrationMode pulumi.StringOutput `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
-	// The timestamp at which this database was created.
+	// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
+	// State of delete protection for the database.
+	DeleteProtectionState pulumi.StringOutput `pulumi:"deleteProtectionState"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The key_prefix for this database. This key_prefix is used, in combination with the project id ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
@@ -93,6 +95,8 @@ type databaseArgs struct {
 	ConcurrencyMode *DatabaseConcurrencyMode `pulumi:"concurrencyMode"`
 	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId string `pulumi:"databaseId"`
+	// State of delete protection for the database.
+	DeleteProtectionState *DatabaseDeleteProtectionState `pulumi:"deleteProtectionState"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
@@ -112,6 +116,8 @@ type DatabaseArgs struct {
 	ConcurrencyMode DatabaseConcurrencyModePtrInput
 	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId pulumi.StringInput
+	// State of delete protection for the database.
+	DeleteProtectionState DatabaseDeleteProtectionStatePtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
@@ -170,7 +176,7 @@ func (o DatabaseOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
 
-// The timestamp at which this database was created.
+// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
 func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -178,6 +184,11 @@ func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 // Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 func (o DatabaseOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// State of delete protection for the database.
+func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteProtectionState }).(pulumi.StringOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

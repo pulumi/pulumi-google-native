@@ -486,6 +486,10 @@ export const PublishingOrganization = {
      * Street View Org.
      */
     StreetView: "STREET_VIEW",
+    /**
+     * Shopping Org.
+     */
+    Shopping: "SHOPPING",
 } as const;
 
 /**

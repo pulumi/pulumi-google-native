@@ -92,7 +92,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Environment variables passed to the workstation container's entrypoint.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Env;
+        /// <summary>
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
 
             string displayName,
 
+            ImmutableDictionary<string, string> env,
+
             string etag,
 
             string host,
@@ -154,6 +160,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
             CreateTime = createTime;
             DeleteTime = deleteTime;
             DisplayName = displayName;
+            Env = env;
             Etag = etag;
             Host = host;
             Labels = labels;

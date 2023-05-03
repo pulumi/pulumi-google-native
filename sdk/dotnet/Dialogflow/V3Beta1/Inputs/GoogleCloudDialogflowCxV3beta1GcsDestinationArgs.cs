@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1GcsDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        /// The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

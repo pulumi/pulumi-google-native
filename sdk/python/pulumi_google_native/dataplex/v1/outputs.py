@@ -1380,11 +1380,38 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
     """
     DataProfileScan related setting.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingPercent":
+            suggest = "sampling_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataProfileSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataProfileSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sampling_percent: float):
         """
         DataProfileScan related setting.
+        :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
-        pass
+        pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> float:
+        """
+        Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        """
+        return pulumi.get(self, "sampling_percent")
 
 
 @pulumi.output_type
@@ -1994,6 +2021,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
         Evaluates whether the column aggregate statistic lies between a specified range.
         :param str max_value: The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         :param str min_value: The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param str statistic: The aggregate metric to evaluate.
         :param bool strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
         :param bool strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
         """
@@ -2022,6 +2050,9 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse(dict
     @property
     @pulumi.getter
     def statistic(self) -> str:
+        """
+        The aggregate metric to evaluate.
+        """
         return pulumi.get(self, "statistic")
 
     @property
@@ -2097,13 +2128,33 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
     """
     DataQualityScan related setting.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingPercent":
+            suggest = "sampling_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDataplexV1DataQualitySpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDataplexV1DataQualitySpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResponse']):
+                 rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResponse'],
+                 sampling_percent: float):
         """
         DataQualityScan related setting.
         :param Sequence['GoogleCloudDataplexV1DataQualityRuleResponse'] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
         pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "sampling_percent", sampling_percent)
 
     @property
     @pulumi.getter
@@ -2112,6 +2163,14 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
         The list of rules to evaluate against a data source. At least one rule is required.
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> float:
+        """
+        Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
+        """
+        return pulumi.get(self, "sampling_percent")
 
 
 @pulumi.output_type

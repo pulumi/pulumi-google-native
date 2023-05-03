@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.MavenArtifactResponse> MavenArtifacts;
         /// <summary>
+        /// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NpmPackageResponse> NpmPackages;
+        /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         /// </summary>
         public readonly Outputs.ArtifactObjectsResponse Objects;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<Outputs.MavenArtifactResponse> mavenArtifacts,
 
+            ImmutableArray<Outputs.NpmPackageResponse> npmPackages,
+
             Outputs.ArtifactObjectsResponse objects,
 
             ImmutableArray<Outputs.PythonPackageResponse> pythonPackages)
         {
             Images = images;
             MavenArtifacts = mavenArtifacts;
+            NpmPackages = npmPackages;
             Objects = objects;
             PythonPackages = pythonPackages;
         }

@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// </summary>
         public readonly string DisplayUri;
         /// <summary>
+        /// If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+        /// </summary>
+        public readonly string DispositionTime;
+        /// <summary>
         /// The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
         /// </summary>
         public readonly string DocumentSchemaName;
@@ -154,6 +158,8 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
 
             string displayUri,
 
+            string dispositionTime,
+
             string documentSchemaName,
 
             string inlineRawDocument,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
             Creator = creator;
             DisplayName = displayName;
             DisplayUri = displayUri;
+            DispositionTime = dispositionTime;
             DocumentSchemaName = documentSchemaName;
             InlineRawDocument = inlineRawDocument;
             Name = name;

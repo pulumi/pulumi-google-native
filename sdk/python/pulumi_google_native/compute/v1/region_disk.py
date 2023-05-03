@@ -19,6 +19,7 @@ class RegionDiskArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
+                 async_primary_disk: Optional[pulumi.Input['DiskAsyncReplicationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
@@ -46,6 +47,7 @@ class RegionDiskArgs:
         """
         The set of arguments for constructing a RegionDisk resource.
         :param pulumi.Input['RegionDiskArchitecture'] architecture: The architecture of the disk. Valid values are ARM64 or X86_64.
+        :param pulumi.Input['DiskAsyncReplicationArgs'] async_primary_disk: Disk asynchronously replicated into this disk.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -73,6 +75,8 @@ class RegionDiskArgs:
         pulumi.set(__self__, "region", region)
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
+        if async_primary_disk is not None:
+            pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -142,6 +146,18 @@ class RegionDiskArgs:
     @architecture.setter
     def architecture(self, value: Optional[pulumi.Input['RegionDiskArchitecture']]):
         pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncReplicationArgs']]:
+        """
+        Disk asynchronously replicated into this disk.
+        """
+        return pulumi.get(self, "async_primary_disk")
+
+    @async_primary_disk.setter
+    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncReplicationArgs']]):
+        pulumi.set(self, "async_primary_disk", value)
 
     @property
     @pulumi.getter
@@ -435,6 +451,7 @@ class RegionDisk(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -467,6 +484,7 @@ class RegionDisk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['RegionDiskArchitecture'] architecture: The architecture of the disk. Valid values are ARM64 or X86_64.
+        :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']] async_primary_disk: Disk asynchronously replicated into this disk.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -516,6 +534,7 @@ class RegionDisk(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  architecture: Optional[pulumi.Input['RegionDiskArchitecture']] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncReplicationArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
@@ -551,6 +570,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
             __props__.__dict__["architecture"] = architecture
+            __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["guest_os_features"] = guest_os_features
@@ -578,13 +598,17 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_storage_object"] = source_storage_object
             __props__.__dict__["type"] = type
+            __props__.__dict__["async_secondary_disks"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
+            __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["source_consistency_group_policy"] = None
+            __props__.__dict__["source_consistency_group_policy_id"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
@@ -616,6 +640,8 @@ class RegionDisk(pulumi.CustomResource):
         __props__ = RegionDiskArgs.__new__(RegionDiskArgs)
 
         __props__.__dict__["architecture"] = None
+        __props__.__dict__["async_primary_disk"] = None
+        __props__.__dict__["async_secondary_disks"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_encryption_key"] = None
@@ -638,9 +664,12 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["replica_zones"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_policies"] = None
+        __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["size_gb"] = None
+        __props__.__dict__["source_consistency_group_policy"] = None
+        __props__.__dict__["source_consistency_group_policy_id"] = None
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_id"] = None
         __props__.__dict__["source_image"] = None
@@ -663,6 +692,22 @@ class RegionDisk(pulumi.CustomResource):
         The architecture of the disk. Valid values are ARM64 or X86_64.
         """
         return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> pulumi.Output['outputs.DiskAsyncReplicationResponse']:
+        """
+        Disk asynchronously replicated into this disk.
+        """
+        return pulumi.get(self, "async_primary_disk")
+
+    @property
+    @pulumi.getter(name="asyncSecondaryDisks")
+    def async_secondary_disks(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A list of disks this disk is asynchronously replicated to.
+        """
+        return pulumi.get(self, "async_secondary_disks")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -835,6 +880,14 @@ class RegionDisk(pulumi.CustomResource):
         return pulumi.get(self, "resource_policies")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.DiskResourceStatusResponse']:
+        """
+        Status information for the disk resource.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
@@ -857,6 +910,22 @@ class RegionDisk(pulumi.CustomResource):
         Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         """
         return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="sourceConsistencyGroupPolicy")
+    def source_consistency_group_policy(self) -> pulumi.Output[str]:
+        """
+        URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        """
+        return pulumi.get(self, "source_consistency_group_policy")
+
+    @property
+    @pulumi.getter(name="sourceConsistencyGroupPolicyId")
+    def source_consistency_group_policy_id(self) -> pulumi.Output[str]:
+        """
+        ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        """
+        return pulumi.get(self, "source_consistency_group_policy_id")
 
     @property
     @pulumi.getter(name="sourceDisk")

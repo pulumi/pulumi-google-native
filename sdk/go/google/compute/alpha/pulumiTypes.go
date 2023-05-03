@@ -2769,6 +2769,8 @@ type AttachedDiskInitializeParams struct {
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool *string `pulumi:"storagePool"`
 }
 
 // AttachedDiskInitializeParamsInput is an input type that accepts AttachedDiskInitializeParamsArgs and AttachedDiskInitializeParamsOutput values.
@@ -2830,6 +2832,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool pulumi.StringPtrInput `pulumi:"storagePool"`
 }
 
 func (AttachedDiskInitializeParamsArgs) ElementType() reflect.Type {
@@ -3022,6 +3026,11 @@ func (o AttachedDiskInitializeParamsOutput) SourceSnapshot() pulumi.StringPtrOut
 // The customer-supplied encryption key of the source snapshot.
 func (o AttachedDiskInitializeParamsOutput) SourceSnapshotEncryptionKey() CustomerEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *CustomerEncryptionKey { return v.SourceSnapshotEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.StoragePool }).(pulumi.StringPtrOutput)
 }
 
 type AttachedDiskInitializeParamsPtrOutput struct{ *pulumi.OutputState }
@@ -3270,6 +3279,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) SourceSnapshotEncryptionKey() Cus
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsPtrOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePool
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsResponse struct {
 	// The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -3318,6 +3337,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceSnapshotEncryptionKey"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool string `pulumi:"storagePool"`
 }
 
 // [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
@@ -3449,6 +3470,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceSnapshotEncryptionKey(
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) CustomerEncryptionKeyResponse {
 		return v.SourceSnapshotEncryptionKey
 	}).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o AttachedDiskInitializeParamsResponseOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // An instance-attached disk resource.
@@ -9915,10 +9941,6 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type BulkInsertInstanceResource struct {
 	// The maximum number of instances to create.
 	Count *string `pulumi:"count"`
-	// DEPRECATED: Please use instance_properties instead.
-	//
-	// Deprecated: DEPRECATED: Please use instance_properties instead.
-	Instance *InstanceType `pulumi:"instance"`
 	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
 	InstanceProperties *InstanceProperties `pulumi:"instanceProperties"`
 	// Policy for chosing target zone. For more information, see Create VMs in bulk .
@@ -9948,10 +9970,6 @@ type BulkInsertInstanceResourceInput interface {
 type BulkInsertInstanceResourceArgs struct {
 	// The maximum number of instances to create.
 	Count pulumi.StringPtrInput `pulumi:"count"`
-	// DEPRECATED: Please use instance_properties instead.
-	//
-	// Deprecated: DEPRECATED: Please use instance_properties instead.
-	Instance InstanceTypePtrInput `pulumi:"instance"`
 	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
 	InstanceProperties InstancePropertiesPtrInput `pulumi:"instanceProperties"`
 	// Policy for chosing target zone. For more information, see Create VMs in bulk .
@@ -10049,13 +10067,6 @@ func (o BulkInsertInstanceResourceOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BulkInsertInstanceResource) *string { return v.Count }).(pulumi.StringPtrOutput)
 }
 
-// DEPRECATED: Please use instance_properties instead.
-//
-// Deprecated: DEPRECATED: Please use instance_properties instead.
-func (o BulkInsertInstanceResourceOutput) Instance() InstanceTypePtrOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResource) *InstanceType { return v.Instance }).(InstanceTypePtrOutput)
-}
-
 // The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
 func (o BulkInsertInstanceResourceOutput) InstanceProperties() InstancePropertiesPtrOutput {
 	return o.ApplyT(func(v BulkInsertInstanceResource) *InstanceProperties { return v.InstanceProperties }).(InstancePropertiesPtrOutput)
@@ -10118,18 +10129,6 @@ func (o BulkInsertInstanceResourcePtrOutput) Count() pulumi.StringPtrOutput {
 		}
 		return v.Count
 	}).(pulumi.StringPtrOutput)
-}
-
-// DEPRECATED: Please use instance_properties instead.
-//
-// Deprecated: DEPRECATED: Please use instance_properties instead.
-func (o BulkInsertInstanceResourcePtrOutput) Instance() InstanceTypePtrOutput {
-	return o.ApplyT(func(v *BulkInsertInstanceResource) *InstanceType {
-		if v == nil {
-			return nil
-		}
-		return v.Instance
-	}).(InstanceTypePtrOutput)
 }
 
 // The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
@@ -10196,10 +10195,6 @@ func (o BulkInsertInstanceResourcePtrOutput) SourceInstanceTemplate() pulumi.Str
 type BulkInsertInstanceResourceResponse struct {
 	// The maximum number of instances to create.
 	Count string `pulumi:"count"`
-	// DEPRECATED: Please use instance_properties instead.
-	//
-	// Deprecated: DEPRECATED: Please use instance_properties instead.
-	Instance InstanceResponse `pulumi:"instance"`
 	// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
 	InstanceProperties InstancePropertiesResponse `pulumi:"instanceProperties"`
 	// Policy for chosing target zone. For more information, see Create VMs in bulk .
@@ -10232,13 +10227,6 @@ func (o BulkInsertInstanceResourceResponseOutput) ToBulkInsertInstanceResourceRe
 // The maximum number of instances to create.
 func (o BulkInsertInstanceResourceResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) string { return v.Count }).(pulumi.StringOutput)
-}
-
-// DEPRECATED: Please use instance_properties instead.
-//
-// Deprecated: DEPRECATED: Please use instance_properties instead.
-func (o BulkInsertInstanceResourceResponseOutput) Instance() InstanceResponseOutput {
-	return o.ApplyT(func(v BulkInsertInstanceResourceResponse) InstanceResponse { return v.Instance }).(InstanceResponseOutput)
 }
 
 // The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
@@ -24029,795 +24017,6 @@ func (o InitialStateConfigResponseOutput) Pk() FileContentBufferResponseOutput {
 	return o.ApplyT(func(v InitialStateConfigResponse) FileContentBufferResponse { return v.Pk }).(FileContentBufferResponseOutput)
 }
 
-// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
-type InstanceType struct {
-	// Controls for advanced machine-related behavior features.
-	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
-	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-	CanIpForward               *bool                       `pulumi:"canIpForward"`
-	ConfidentialInstanceConfig *ConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
-	// Whether the resource should be protected against deletion.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-	Disks []AttachedDisk `pulumi:"disks"`
-	// Enables display device for the instance.
-	DisplayDevice *DisplayDevice `pulumi:"displayDevice"`
-	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-	EraseWindowsVssSignature *bool `pulumi:"eraseWindowsVssSignature"`
-	// A list of the type and count of accelerator cards attached to the instance.
-	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
-	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-	Hostname *string `pulumi:"hostname"`
-	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-	InstanceEncryptionKey *CustomerEncryptionKey `pulumi:"instanceEncryptionKey"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType *InstanceKeyRevocationActionType `pulumi:"keyRevocationActionType"`
-	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels map[string]string `pulumi:"labels"`
-	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-	MachineType *string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-	Metadata *Metadata `pulumi:"metadata"`
-	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces        []NetworkInterface        `pulumi:"networkInterfaces"`
-	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
-	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-	Params *InstanceParams `pulumi:"params"`
-	// PostKeyRevocationActionType of the instance.
-	PostKeyRevocationActionType *InstancePostKeyRevocationActionType `pulumi:"postKeyRevocationActionType"`
-	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-	PreservedStateSizeGb *string `pulumi:"preservedStateSizeGb"`
-	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that this instance can consume from.
-	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
-	// Resource policies applied to this instance.
-	ResourcePolicies []string `pulumi:"resourcePolicies"`
-	// Sets the scheduling options for this instance.
-	Scheduling *Scheduling `pulumi:"scheduling"`
-	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-	SecureTags []string `pulumi:"secureTags"`
-	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
-	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         map[string]string                `pulumi:"serviceIntegrationSpecs"`
-	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
-	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
-	// Deprecating, please use shielded_instance_config.
-	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
-	// Deprecating, please use shielded_instance_integrity_policy.
-	ShieldedVmIntegrityPolicy *ShieldedVmIntegrityPolicy `pulumi:"shieldedVmIntegrityPolicy"`
-	// Source machine image
-	SourceMachineImage *string `pulumi:"sourceMachineImage"`
-	// Source machine image encryption key when creating an instance from a machine image.
-	SourceMachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceMachineImageEncryptionKey"`
-	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-	Tags *Tags `pulumi:"tags"`
-}
-
-// InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
-// You can construct a concrete instance of `InstanceTypeInput` via:
-//
-//	InstanceTypeArgs{...}
-type InstanceTypeInput interface {
-	pulumi.Input
-
-	ToInstanceTypeOutput() InstanceTypeOutput
-	ToInstanceTypeOutputWithContext(context.Context) InstanceTypeOutput
-}
-
-// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
-type InstanceTypeArgs struct {
-	// Controls for advanced machine-related behavior features.
-	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
-	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-	CanIpForward               pulumi.BoolPtrInput                `pulumi:"canIpForward"`
-	ConfidentialInstanceConfig ConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
-	// Whether the resource should be protected against deletion.
-	DeletionProtection pulumi.BoolPtrInput `pulumi:"deletionProtection"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-	Disks AttachedDiskArrayInput `pulumi:"disks"`
-	// Enables display device for the instance.
-	DisplayDevice DisplayDevicePtrInput `pulumi:"displayDevice"`
-	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-	EraseWindowsVssSignature pulumi.BoolPtrInput `pulumi:"eraseWindowsVssSignature"`
-	// A list of the type and count of accelerator cards attached to the instance.
-	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
-	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-	InstanceEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"instanceEncryptionKey"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType InstanceKeyRevocationActionTypePtrInput `pulumi:"keyRevocationActionType"`
-	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-	Metadata MetadataPtrInput `pulumi:"metadata"`
-	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces        NetworkInterfaceArrayInput       `pulumi:"networkInterfaces"`
-	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
-	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-	Params InstanceParamsPtrInput `pulumi:"params"`
-	// PostKeyRevocationActionType of the instance.
-	PostKeyRevocationActionType InstancePostKeyRevocationActionTypePtrInput `pulumi:"postKeyRevocationActionType"`
-	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-	PreservedStateSizeGb pulumi.StringPtrInput `pulumi:"preservedStateSizeGb"`
-	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-	PrivateIpv6GoogleAccess InstancePrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that this instance can consume from.
-	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
-	// Resource policies applied to this instance.
-	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
-	// Sets the scheduling options for this instance.
-	Scheduling SchedulingPtrInput `pulumi:"scheduling"`
-	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-	SecureTags pulumi.StringArrayInput `pulumi:"secureTags"`
-	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts ServiceAccountArrayInput `pulumi:"serviceAccounts"`
-	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         pulumi.StringMapInput                   `pulumi:"serviceIntegrationSpecs"`
-	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput          `pulumi:"shieldedInstanceConfig"`
-	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput `pulumi:"shieldedInstanceIntegrityPolicy"`
-	// Deprecating, please use shielded_instance_config.
-	ShieldedVmConfig ShieldedVmConfigPtrInput `pulumi:"shieldedVmConfig"`
-	// Deprecating, please use shielded_instance_integrity_policy.
-	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyPtrInput `pulumi:"shieldedVmIntegrityPolicy"`
-	// Source machine image
-	SourceMachineImage pulumi.StringPtrInput `pulumi:"sourceMachineImage"`
-	// Source machine image encryption key when creating an instance from a machine image.
-	SourceMachineImageEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"sourceMachineImageEncryptionKey"`
-	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-	Tags TagsPtrInput `pulumi:"tags"`
-}
-
-func (InstanceTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceType)(nil)).Elem()
-}
-
-func (i InstanceTypeArgs) ToInstanceTypeOutput() InstanceTypeOutput {
-	return i.ToInstanceTypeOutputWithContext(context.Background())
-}
-
-func (i InstanceTypeArgs) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypeOutput)
-}
-
-func (i InstanceTypeArgs) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
-	return i.ToInstanceTypePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceTypeArgs) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypeOutput).ToInstanceTypePtrOutputWithContext(ctx)
-}
-
-// InstanceTypePtrInput is an input type that accepts InstanceTypeArgs, InstanceTypePtr and InstanceTypePtrOutput values.
-// You can construct a concrete instance of `InstanceTypePtrInput` via:
-//
-//	        InstanceTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceTypePtrInput interface {
-	pulumi.Input
-
-	ToInstanceTypePtrOutput() InstanceTypePtrOutput
-	ToInstanceTypePtrOutputWithContext(context.Context) InstanceTypePtrOutput
-}
-
-type instanceTypePtrType InstanceTypeArgs
-
-func InstanceTypePtr(v *InstanceTypeArgs) InstanceTypePtrInput {
-	return (*instanceTypePtrType)(v)
-}
-
-func (*instanceTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceType)(nil)).Elem()
-}
-
-func (i *instanceTypePtrType) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
-	return i.ToInstanceTypePtrOutputWithContext(context.Background())
-}
-
-func (i *instanceTypePtrType) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceTypePtrOutput)
-}
-
-// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
-type InstanceTypeOutput struct{ *pulumi.OutputState }
-
-func (InstanceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceType)(nil)).Elem()
-}
-
-func (o InstanceTypeOutput) ToInstanceTypeOutput() InstanceTypeOutput {
-	return o
-}
-
-func (o InstanceTypeOutput) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
-	return o
-}
-
-func (o InstanceTypeOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
-	return o.ToInstanceTypePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceType) *InstanceType {
-		return &v
-	}).(InstanceTypePtrOutput)
-}
-
-// Controls for advanced machine-related behavior features.
-func (o InstanceTypeOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
-	return o.ApplyT(func(v InstanceType) *AdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesPtrOutput)
-}
-
-// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-func (o InstanceTypeOutput) CanIpForward() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceType) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
-}
-
-func (o InstanceTypeOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ConfidentialInstanceConfig { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigPtrOutput)
-}
-
-// Whether the resource should be protected against deletion.
-func (o InstanceTypeOutput) DeletionProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceType) *bool { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
-}
-
-// An optional description of this resource. Provide this property when you create the resource.
-func (o InstanceTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-func (o InstanceTypeOutput) Disks() AttachedDiskArrayOutput {
-	return o.ApplyT(func(v InstanceType) []AttachedDisk { return v.Disks }).(AttachedDiskArrayOutput)
-}
-
-// Enables display device for the instance.
-func (o InstanceTypeOutput) DisplayDevice() DisplayDevicePtrOutput {
-	return o.ApplyT(func(v InstanceType) *DisplayDevice { return v.DisplayDevice }).(DisplayDevicePtrOutput)
-}
-
-// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-func (o InstanceTypeOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceType) *bool { return v.EraseWindowsVssSignature }).(pulumi.BoolPtrOutput)
-}
-
-// A list of the type and count of accelerator cards attached to the instance.
-func (o InstanceTypeOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
-	return o.ApplyT(func(v InstanceType) []AcceleratorConfig { return v.GuestAccelerators }).(AcceleratorConfigArrayOutput)
-}
-
-// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-func (o InstanceTypeOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-func (o InstanceTypeOutput) InstanceEncryptionKey() CustomerEncryptionKeyPtrOutput {
-	return o.ApplyT(func(v InstanceType) *CustomerEncryptionKey { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstanceTypeOutput) KeyRevocationActionType() InstanceKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v InstanceType) *InstanceKeyRevocationActionType { return v.KeyRevocationActionType }).(InstanceKeyRevocationActionTypePtrOutput)
-}
-
-// Labels to apply to this instance. These can be later modified by the setLabels method.
-func (o InstanceTypeOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-func (o InstanceTypeOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.MachineType }).(pulumi.StringPtrOutput)
-}
-
-// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-func (o InstanceTypeOutput) Metadata() MetadataPtrOutput {
-	return o.ApplyT(func(v InstanceType) *Metadata { return v.Metadata }).(MetadataPtrOutput)
-}
-
-// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-func (o InstanceTypeOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (o InstanceTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-func (o InstanceTypeOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
-	return o.ApplyT(func(v InstanceType) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
-}
-
-func (o InstanceTypeOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
-	return o.ApplyT(func(v InstanceType) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
-}
-
-// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-func (o InstanceTypeOutput) Params() InstanceParamsPtrOutput {
-	return o.ApplyT(func(v InstanceType) *InstanceParams { return v.Params }).(InstanceParamsPtrOutput)
-}
-
-// PostKeyRevocationActionType of the instance.
-func (o InstanceTypeOutput) PostKeyRevocationActionType() InstancePostKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v InstanceType) *InstancePostKeyRevocationActionType { return v.PostKeyRevocationActionType }).(InstancePostKeyRevocationActionTypePtrOutput)
-}
-
-// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-func (o InstanceTypeOutput) PreservedStateSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.PreservedStateSizeGb }).(pulumi.StringPtrOutput)
-}
-
-// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-func (o InstanceTypeOutput) PrivateIpv6GoogleAccess() InstancePrivateIpv6GoogleAccessPtrOutput {
-	return o.ApplyT(func(v InstanceType) *InstancePrivateIpv6GoogleAccess { return v.PrivateIpv6GoogleAccess }).(InstancePrivateIpv6GoogleAccessPtrOutput)
-}
-
-// Specifies the reservations that this instance can consume from.
-func (o InstanceTypeOutput) ReservationAffinity() ReservationAffinityPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
-}
-
-// Resource policies applied to this instance.
-func (o InstanceTypeOutput) ResourcePolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InstanceType) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
-}
-
-// Sets the scheduling options for this instance.
-func (o InstanceTypeOutput) Scheduling() SchedulingPtrOutput {
-	return o.ApplyT(func(v InstanceType) *Scheduling { return v.Scheduling }).(SchedulingPtrOutput)
-}
-
-// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-func (o InstanceTypeOutput) SecureTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InstanceType) []string { return v.SecureTags }).(pulumi.StringArrayOutput)
-}
-
-// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-func (o InstanceTypeOutput) ServiceAccounts() ServiceAccountArrayOutput {
-	return o.ApplyT(func(v InstanceType) []ServiceAccount { return v.ServiceAccounts }).(ServiceAccountArrayOutput)
-}
-
-// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-func (o InstanceTypeOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceType) map[string]string { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
-}
-
-func (o InstanceTypeOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
-}
-
-func (o InstanceTypeOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ShieldedInstanceIntegrityPolicy { return v.ShieldedInstanceIntegrityPolicy }).(ShieldedInstanceIntegrityPolicyPtrOutput)
-}
-
-// Deprecating, please use shielded_instance_config.
-func (o InstanceTypeOutput) ShieldedVmConfig() ShieldedVmConfigPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ShieldedVmConfig { return v.ShieldedVmConfig }).(ShieldedVmConfigPtrOutput)
-}
-
-// Deprecating, please use shielded_instance_integrity_policy.
-func (o InstanceTypeOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyPtrOutput {
-	return o.ApplyT(func(v InstanceType) *ShieldedVmIntegrityPolicy { return v.ShieldedVmIntegrityPolicy }).(ShieldedVmIntegrityPolicyPtrOutput)
-}
-
-// Source machine image
-func (o InstanceTypeOutput) SourceMachineImage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.SourceMachineImage }).(pulumi.StringPtrOutput)
-}
-
-// Source machine image encryption key when creating an instance from a machine image.
-func (o InstanceTypeOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
-	return o.ApplyT(func(v InstanceType) *CustomerEncryptionKey { return v.SourceMachineImageEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
-}
-
-// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-func (o InstanceTypeOutput) Tags() TagsPtrOutput {
-	return o.ApplyT(func(v InstanceType) *Tags { return v.Tags }).(TagsPtrOutput)
-}
-
-type InstanceTypePtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceType)(nil)).Elem()
-}
-
-func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
-	return o
-}
-
-func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
-	return o
-}
-
-func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
-	return o.ApplyT(func(v *InstanceType) InstanceType {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceType
-		return ret
-	}).(InstanceTypeOutput)
-}
-
-// Controls for advanced machine-related behavior features.
-func (o InstanceTypePtrOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *AdvancedMachineFeatures {
-		if v == nil {
-			return nil
-		}
-		return v.AdvancedMachineFeatures
-	}).(AdvancedMachineFeaturesPtrOutput)
-}
-
-// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-func (o InstanceTypePtrOutput) CanIpForward() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CanIpForward
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o InstanceTypePtrOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ConfidentialInstanceConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ConfidentialInstanceConfig
-	}).(ConfidentialInstanceConfigPtrOutput)
-}
-
-// Whether the resource should be protected against deletion.
-func (o InstanceTypePtrOutput) DeletionProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DeletionProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An optional description of this resource. Provide this property when you create the resource.
-func (o InstanceTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-func (o InstanceTypePtrOutput) Disks() AttachedDiskArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []AttachedDisk {
-		if v == nil {
-			return nil
-		}
-		return v.Disks
-	}).(AttachedDiskArrayOutput)
-}
-
-// Enables display device for the instance.
-func (o InstanceTypePtrOutput) DisplayDevice() DisplayDevicePtrOutput {
-	return o.ApplyT(func(v *InstanceType) *DisplayDevice {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayDevice
-	}).(DisplayDevicePtrOutput)
-}
-
-// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-func (o InstanceTypePtrOutput) EraseWindowsVssSignature() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EraseWindowsVssSignature
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A list of the type and count of accelerator cards attached to the instance.
-func (o InstanceTypePtrOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []AcceleratorConfig {
-		if v == nil {
-			return nil
-		}
-		return v.GuestAccelerators
-	}).(AcceleratorConfigArrayOutput)
-}
-
-// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-func (o InstanceTypePtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-func (o InstanceTypePtrOutput) InstanceEncryptionKey() CustomerEncryptionKeyPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *CustomerEncryptionKey {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceEncryptionKey
-	}).(CustomerEncryptionKeyPtrOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstanceTypePtrOutput) KeyRevocationActionType() InstanceKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v *InstanceType) *InstanceKeyRevocationActionType {
-		if v == nil {
-			return nil
-		}
-		return v.KeyRevocationActionType
-	}).(InstanceKeyRevocationActionTypePtrOutput)
-}
-
-// Labels to apply to this instance. These can be later modified by the setLabels method.
-func (o InstanceTypePtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceType) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-func (o InstanceTypePtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MachineType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-func (o InstanceTypePtrOutput) Metadata() MetadataPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *Metadata {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(MetadataPtrOutput)
-}
-
-// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-func (o InstanceTypePtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinCpuPlatform
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (o InstanceTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-func (o InstanceTypePtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []NetworkInterface {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkInterfaces
-	}).(NetworkInterfaceArrayOutput)
-}
-
-func (o InstanceTypePtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *NetworkPerformanceConfig {
-		if v == nil {
-			return nil
-		}
-		return v.NetworkPerformanceConfig
-	}).(NetworkPerformanceConfigPtrOutput)
-}
-
-// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-func (o InstanceTypePtrOutput) Params() InstanceParamsPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *InstanceParams {
-		if v == nil {
-			return nil
-		}
-		return v.Params
-	}).(InstanceParamsPtrOutput)
-}
-
-// PostKeyRevocationActionType of the instance.
-func (o InstanceTypePtrOutput) PostKeyRevocationActionType() InstancePostKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v *InstanceType) *InstancePostKeyRevocationActionType {
-		if v == nil {
-			return nil
-		}
-		return v.PostKeyRevocationActionType
-	}).(InstancePostKeyRevocationActionTypePtrOutput)
-}
-
-// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-func (o InstanceTypePtrOutput) PreservedStateSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PreservedStateSizeGb
-	}).(pulumi.StringPtrOutput)
-}
-
-// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-func (o InstanceTypePtrOutput) PrivateIpv6GoogleAccess() InstancePrivateIpv6GoogleAccessPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *InstancePrivateIpv6GoogleAccess {
-		if v == nil {
-			return nil
-		}
-		return v.PrivateIpv6GoogleAccess
-	}).(InstancePrivateIpv6GoogleAccessPtrOutput)
-}
-
-// Specifies the reservations that this instance can consume from.
-func (o InstanceTypePtrOutput) ReservationAffinity() ReservationAffinityPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ReservationAffinity {
-		if v == nil {
-			return nil
-		}
-		return v.ReservationAffinity
-	}).(ReservationAffinityPtrOutput)
-}
-
-// Resource policies applied to this instance.
-func (o InstanceTypePtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourcePolicies
-	}).(pulumi.StringArrayOutput)
-}
-
-// Sets the scheduling options for this instance.
-func (o InstanceTypePtrOutput) Scheduling() SchedulingPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *Scheduling {
-		if v == nil {
-			return nil
-		}
-		return v.Scheduling
-	}).(SchedulingPtrOutput)
-}
-
-// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-func (o InstanceTypePtrOutput) SecureTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SecureTags
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-func (o InstanceTypePtrOutput) ServiceAccounts() ServiceAccountArrayOutput {
-	return o.ApplyT(func(v *InstanceType) []ServiceAccount {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceAccounts
-	}).(ServiceAccountArrayOutput)
-}
-
-// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-func (o InstanceTypePtrOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstanceType) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ServiceIntegrationSpecs
-	}).(pulumi.StringMapOutput)
-}
-
-func (o InstanceTypePtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ShieldedInstanceConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ShieldedInstanceConfig
-	}).(ShieldedInstanceConfigPtrOutput)
-}
-
-func (o InstanceTypePtrOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ShieldedInstanceIntegrityPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.ShieldedInstanceIntegrityPolicy
-	}).(ShieldedInstanceIntegrityPolicyPtrOutput)
-}
-
-// Deprecating, please use shielded_instance_config.
-func (o InstanceTypePtrOutput) ShieldedVmConfig() ShieldedVmConfigPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ShieldedVmConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ShieldedVmConfig
-	}).(ShieldedVmConfigPtrOutput)
-}
-
-// Deprecating, please use shielded_instance_integrity_policy.
-func (o InstanceTypePtrOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *ShieldedVmIntegrityPolicy {
-		if v == nil {
-			return nil
-		}
-		return v.ShieldedVmIntegrityPolicy
-	}).(ShieldedVmIntegrityPolicyPtrOutput)
-}
-
-// Source machine image
-func (o InstanceTypePtrOutput) SourceMachineImage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SourceMachineImage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Source machine image encryption key when creating an instance from a machine image.
-func (o InstanceTypePtrOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *CustomerEncryptionKey {
-		if v == nil {
-			return nil
-		}
-		return v.SourceMachineImageEncryptionKey
-	}).(CustomerEncryptionKeyPtrOutput)
-}
-
-// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-func (o InstanceTypePtrOutput) Tags() TagsPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *Tags {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(TagsPtrOutput)
-}
-
 type InstanceGroupManagerActionsSummaryResponse struct {
 	// The total number of instances in the managed instance group that are scheduled to be abandoned. Abandoning an instance removes it from the managed instance group without deleting it.
 	Abandoning int `pulumi:"abandoning"`
@@ -28101,390 +27300,6 @@ func (o InstancePropertiesResponseOutput) ShieldedVmConfig() ShieldedVmConfigRes
 // A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
 func (o InstancePropertiesResponseOutput) Tags() TagsResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) TagsResponse { return v.Tags }).(TagsResponseOutput)
-}
-
-// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
-type InstanceResponse struct {
-	// Controls for advanced machine-related behavior features.
-	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
-	// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-	CanIpForward               bool                               `pulumi:"canIpForward"`
-	ConfidentialInstanceConfig ConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
-	// The CPU platform used by this instance.
-	CpuPlatform string `pulumi:"cpuPlatform"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp string `pulumi:"creationTimestamp"`
-	// Whether the resource should be protected against deletion.
-	DeletionProtection bool `pulumi:"deletionProtection"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description string `pulumi:"description"`
-	// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-	Disks []AttachedDiskResponse `pulumi:"disks"`
-	// Enables display device for the instance.
-	DisplayDevice DisplayDeviceResponse `pulumi:"displayDevice"`
-	// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
-	// Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
-	Fingerprint string `pulumi:"fingerprint"`
-	// A list of the type and count of accelerator cards attached to the instance.
-	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
-	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-	Hostname string `pulumi:"hostname"`
-	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-	InstanceEncryptionKey CustomerEncryptionKeyResponse `pulumi:"instanceEncryptionKey"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
-	// Type of the resource. Always compute#instance for instances.
-	Kind string `pulumi:"kind"`
-	// A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
-	LabelFingerprint string `pulumi:"labelFingerprint"`
-	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels map[string]string `pulumi:"labels"`
-	// Last start timestamp in RFC3339 text format.
-	LastStartTimestamp string `pulumi:"lastStartTimestamp"`
-	// Last stop timestamp in RFC3339 text format.
-	LastStopTimestamp string `pulumi:"lastStopTimestamp"`
-	// Last suspended timestamp in RFC3339 text format.
-	LastSuspendedTimestamp string `pulumi:"lastSuspendedTimestamp"`
-	// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-	MachineType string `pulumi:"machineType"`
-	// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-	Metadata MetadataResponse `pulumi:"metadata"`
-	// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name string `pulumi:"name"`
-	// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-	NetworkInterfaces        []NetworkInterfaceResponse       `pulumi:"networkInterfaces"`
-	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
-	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-	Params InstanceParamsResponse `pulumi:"params"`
-	// PostKeyRevocationActionType of the instance.
-	PostKeyRevocationActionType string `pulumi:"postKeyRevocationActionType"`
-	// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-	PreservedStateSizeGb string `pulumi:"preservedStateSizeGb"`
-	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
-	// Specifies the reservations that this instance can consume from.
-	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
-	// Resource policies applied to this instance.
-	ResourcePolicies []string `pulumi:"resourcePolicies"`
-	// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-	ResourceStatus ResourceStatusResponse `pulumi:"resourceStatus"`
-	// Reserved for future use.
-	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
-	// Sets the scheduling options for this instance.
-	Scheduling SchedulingResponse `pulumi:"scheduling"`
-	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-	SecureTags []string `pulumi:"secureTags"`
-	// Server-defined URL for this resource.
-	SelfLink string `pulumi:"selfLink"`
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts []ServiceAccountResponse `pulumi:"serviceAccounts"`
-	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-	ServiceIntegrationSpecs         map[string]string                       `pulumi:"serviceIntegrationSpecs"`
-	ShieldedInstanceConfig          ShieldedInstanceConfigResponse          `pulumi:"shieldedInstanceConfig"`
-	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponse `pulumi:"shieldedInstanceIntegrityPolicy"`
-	// Deprecating, please use shielded_instance_config.
-	ShieldedVmConfig ShieldedVmConfigResponse `pulumi:"shieldedVmConfig"`
-	// Deprecating, please use shielded_instance_integrity_policy.
-	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyResponse `pulumi:"shieldedVmIntegrityPolicy"`
-	// Source machine image
-	SourceMachineImage string `pulumi:"sourceMachineImage"`
-	// Source machine image encryption key when creating an instance from a machine image.
-	SourceMachineImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceMachineImageEncryptionKey"`
-	// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-	StartRestricted bool `pulumi:"startRestricted"`
-	// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
-	Status string `pulumi:"status"`
-	// An optional, human-readable explanation of the status.
-	StatusMessage string `pulumi:"statusMessage"`
-	// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-	Tags TagsResponse `pulumi:"tags"`
-	// Specifies upcoming maintenance for the instance.
-	UpcomingMaintenance UpcomingMaintenanceResponse `pulumi:"upcomingMaintenance"`
-	// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Zone string `pulumi:"zone"`
-}
-
-// Represents an Instance resource. An instance is a virtual machine that is hosted on Google Cloud Platform. For more information, read Virtual Machine Instances.
-type InstanceResponseOutput struct{ *pulumi.OutputState }
-
-func (InstanceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceResponse)(nil)).Elem()
-}
-
-func (o InstanceResponseOutput) ToInstanceResponseOutput() InstanceResponseOutput {
-	return o
-}
-
-func (o InstanceResponseOutput) ToInstanceResponseOutputWithContext(ctx context.Context) InstanceResponseOutput {
-	return o
-}
-
-// Controls for advanced machine-related behavior features.
-func (o InstanceResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) AdvancedMachineFeaturesResponse { return v.AdvancedMachineFeatures }).(AdvancedMachineFeaturesResponseOutput)
-}
-
-// Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
-func (o InstanceResponseOutput) CanIpForward() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceResponse) bool { return v.CanIpForward }).(pulumi.BoolOutput)
-}
-
-func (o InstanceResponseOutput) ConfidentialInstanceConfig() ConfidentialInstanceConfigResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ConfidentialInstanceConfigResponse { return v.ConfidentialInstanceConfig }).(ConfidentialInstanceConfigResponseOutput)
-}
-
-// The CPU platform used by this instance.
-func (o InstanceResponseOutput) CpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.CpuPlatform }).(pulumi.StringOutput)
-}
-
-// Creation timestamp in RFC3339 text format.
-func (o InstanceResponseOutput) CreationTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
-}
-
-// Whether the resource should be protected against deletion.
-func (o InstanceResponseOutput) DeletionProtection() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceResponse) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
-}
-
-// An optional description of this resource. Provide this property when you create the resource.
-func (o InstanceResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Array of disks associated with this instance. Persistent disks must be created before you can assign them.
-func (o InstanceResponseOutput) Disks() AttachedDiskResponseArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []AttachedDiskResponse { return v.Disks }).(AttachedDiskResponseArrayOutput)
-}
-
-// Enables display device for the instance.
-func (o InstanceResponseOutput) DisplayDevice() DisplayDeviceResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) DisplayDeviceResponse { return v.DisplayDevice }).(DisplayDeviceResponseOutput)
-}
-
-// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-func (o InstanceResponseOutput) EraseWindowsVssSignature() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceResponse) bool { return v.EraseWindowsVssSignature }).(pulumi.BoolOutput)
-}
-
-// Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
-func (o InstanceResponseOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Fingerprint }).(pulumi.StringOutput)
-}
-
-// A list of the type and count of accelerator cards attached to the instance.
-func (o InstanceResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
-}
-
-// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-func (o InstanceResponseOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Hostname }).(pulumi.StringOutput)
-}
-
-// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
-func (o InstanceResponseOutput) InstanceEncryptionKey() CustomerEncryptionKeyResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) CustomerEncryptionKeyResponse { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstanceResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
-}
-
-// Type of the resource. Always compute#instance for instances.
-func (o InstanceResponseOutput) Kind() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
-func (o InstanceResponseOutput) LabelFingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.LabelFingerprint }).(pulumi.StringOutput)
-}
-
-// Labels to apply to this instance. These can be later modified by the setLabels method.
-func (o InstanceResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// Last start timestamp in RFC3339 text format.
-func (o InstanceResponseOutput) LastStartTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.LastStartTimestamp }).(pulumi.StringOutput)
-}
-
-// Last stop timestamp in RFC3339 text format.
-func (o InstanceResponseOutput) LastStopTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.LastStopTimestamp }).(pulumi.StringOutput)
-}
-
-// Last suspended timestamp in RFC3339 text format.
-func (o InstanceResponseOutput) LastSuspendedTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.LastSuspendedTimestamp }).(pulumi.StringOutput)
-}
-
-// Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
-func (o InstanceResponseOutput) MachineType() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.MachineType }).(pulumi.StringOutput)
-}
-
-// The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
-func (o InstanceResponseOutput) Metadata() MetadataResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) MetadataResponse { return v.Metadata }).(MetadataResponseOutput)
-}
-
-// Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
-func (o InstanceResponseOutput) MinCpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
-}
-
-// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-func (o InstanceResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-func (o InstanceResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
-}
-
-func (o InstanceResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
-}
-
-// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
-func (o InstanceResponseOutput) Params() InstanceParamsResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) InstanceParamsResponse { return v.Params }).(InstanceParamsResponseOutput)
-}
-
-// PostKeyRevocationActionType of the instance.
-func (o InstanceResponseOutput) PostKeyRevocationActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.PostKeyRevocationActionType }).(pulumi.StringOutput)
-}
-
-// Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-func (o InstanceResponseOutput) PreservedStateSizeGb() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.PreservedStateSizeGb }).(pulumi.StringOutput)
-}
-
-// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
-func (o InstanceResponseOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
-}
-
-// Specifies the reservations that this instance can consume from.
-func (o InstanceResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
-}
-
-// Resource policies applied to this instance.
-func (o InstanceResponseOutput) ResourcePolicies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
-}
-
-// Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
-func (o InstanceResponseOutput) ResourceStatus() ResourceStatusResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ResourceStatusResponse { return v.ResourceStatus }).(ResourceStatusResponseOutput)
-}
-
-// Reserved for future use.
-func (o InstanceResponseOutput) SatisfiesPzs() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceResponse) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
-}
-
-// Sets the scheduling options for this instance.
-func (o InstanceResponseOutput) Scheduling() SchedulingResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) SchedulingResponse { return v.Scheduling }).(SchedulingResponseOutput)
-}
-
-// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
-func (o InstanceResponseOutput) SecureTags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []string { return v.SecureTags }).(pulumi.StringArrayOutput)
-}
-
-// Server-defined URL for this resource.
-func (o InstanceResponseOutput) SelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.SelfLink }).(pulumi.StringOutput)
-}
-
-// Server-defined URL for this resource with the resource id.
-func (o InstanceResponseOutput) SelfLinkWithId() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
-}
-
-// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-func (o InstanceResponseOutput) ServiceAccounts() ServiceAccountResponseArrayOutput {
-	return o.ApplyT(func(v InstanceResponse) []ServiceAccountResponse { return v.ServiceAccounts }).(ServiceAccountResponseArrayOutput)
-}
-
-// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
-func (o InstanceResponseOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstanceResponse) map[string]string { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
-}
-
-func (o InstanceResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
-}
-
-func (o InstanceResponseOutput) ShieldedInstanceIntegrityPolicy() ShieldedInstanceIntegrityPolicyResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ShieldedInstanceIntegrityPolicyResponse {
-		return v.ShieldedInstanceIntegrityPolicy
-	}).(ShieldedInstanceIntegrityPolicyResponseOutput)
-}
-
-// Deprecating, please use shielded_instance_config.
-func (o InstanceResponseOutput) ShieldedVmConfig() ShieldedVmConfigResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ShieldedVmConfigResponse { return v.ShieldedVmConfig }).(ShieldedVmConfigResponseOutput)
-}
-
-// Deprecating, please use shielded_instance_integrity_policy.
-func (o InstanceResponseOutput) ShieldedVmIntegrityPolicy() ShieldedVmIntegrityPolicyResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) ShieldedVmIntegrityPolicyResponse { return v.ShieldedVmIntegrityPolicy }).(ShieldedVmIntegrityPolicyResponseOutput)
-}
-
-// Source machine image
-func (o InstanceResponseOutput) SourceMachineImage() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.SourceMachineImage }).(pulumi.StringOutput)
-}
-
-// Source machine image encryption key when creating an instance from a machine image.
-func (o InstanceResponseOutput) SourceMachineImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) CustomerEncryptionKeyResponse { return v.SourceMachineImageEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
-}
-
-// Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
-func (o InstanceResponseOutput) StartRestricted() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceResponse) bool { return v.StartRestricted }).(pulumi.BoolOutput)
-}
-
-// The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
-func (o InstanceResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// An optional, human-readable explanation of the status.
-func (o InstanceResponseOutput) StatusMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
-}
-
-// Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
-func (o InstanceResponseOutput) Tags() TagsResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) TagsResponse { return v.Tags }).(TagsResponseOutput)
-}
-
-// Specifies upcoming maintenance for the instance.
-func (o InstanceResponseOutput) UpcomingMaintenance() UpcomingMaintenanceResponseOutput {
-	return o.ApplyT(func(v InstanceResponse) UpcomingMaintenanceResponse { return v.UpcomingMaintenance }).(UpcomingMaintenanceResponseOutput)
-}
-
-// URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-func (o InstanceResponseOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 type InstantSnapshotResourceStatusResponse struct {
@@ -32883,7 +31698,7 @@ type NetworkAttachmentConnectedEndpointResponse struct {
 	IpAddress string `pulumi:"ipAddress"`
 	// The project id or number of the interface to which the IP was assigned.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
-	// Alias IP ranges from the same subnetwork
+	// Alias IP ranges from the same subnetwork.
 	SecondaryIpCidrRanges []string `pulumi:"secondaryIpCidrRanges"`
 	// The status of a connected endpoint to this network attachment.
 	Status string `pulumi:"status"`
@@ -32916,7 +31731,7 @@ func (o NetworkAttachmentConnectedEndpointResponseOutput) ProjectIdOrNum() pulum
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
 }
 
-// Alias IP ranges from the same subnetwork
+// Alias IP ranges from the same subnetwork.
 func (o NetworkAttachmentConnectedEndpointResponseOutput) SecondaryIpCidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) []string { return v.SecondaryIpCidrRanges }).(pulumi.StringArrayOutput)
 }
@@ -44238,8 +43053,7 @@ type ResourceStatusResponse struct {
 	PhysicalHost string                           `pulumi:"physicalHost"`
 	Scheduling   ResourceStatusSchedulingResponse `pulumi:"scheduling"`
 	// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
-	ServiceIntegrationStatuses map[string]string                         `pulumi:"serviceIntegrationStatuses"`
-	UpcomingMaintenance        ResourceStatusUpcomingMaintenanceResponse `pulumi:"upcomingMaintenance"`
+	ServiceIntegrationStatuses map[string]string `pulumi:"serviceIntegrationStatuses"`
 }
 
 // Contains output only fields. Use this sub-message for actual values set on Instance attributes as compared to the value requested by the user (intent) in their instance CRUD calls.
@@ -44271,10 +43085,6 @@ func (o ResourceStatusResponseOutput) ServiceIntegrationStatuses() pulumi.String
 	return o.ApplyT(func(v ResourceStatusResponse) map[string]string { return v.ServiceIntegrationStatuses }).(pulumi.StringMapOutput)
 }
 
-func (o ResourceStatusResponseOutput) UpcomingMaintenance() ResourceStatusUpcomingMaintenanceResponseOutput {
-	return o.ApplyT(func(v ResourceStatusResponse) ResourceStatusUpcomingMaintenanceResponse { return v.UpcomingMaintenance }).(ResourceStatusUpcomingMaintenanceResponseOutput)
-}
-
 type ResourceStatusSchedulingResponse struct {
 	// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
@@ -44304,30 +43114,6 @@ func (o ResourceStatusSchedulingResponseOutput) AvailabilityDomain() pulumi.IntO
 // Time in future when the instance will be terminated in RFC3339 text format.
 func (o ResourceStatusSchedulingResponseOutput) TerminationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceStatusSchedulingResponse) string { return v.TerminationTimestamp }).(pulumi.StringOutput)
-}
-
-type ResourceStatusUpcomingMaintenanceResponse struct {
-	// Indicates if the maintenance can be customer triggered. See go/sf-ctm-design for more details
-	CanReschedule bool `pulumi:"canReschedule"`
-}
-
-type ResourceStatusUpcomingMaintenanceResponseOutput struct{ *pulumi.OutputState }
-
-func (ResourceStatusUpcomingMaintenanceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceStatusUpcomingMaintenanceResponse)(nil)).Elem()
-}
-
-func (o ResourceStatusUpcomingMaintenanceResponseOutput) ToResourceStatusUpcomingMaintenanceResponseOutput() ResourceStatusUpcomingMaintenanceResponseOutput {
-	return o
-}
-
-func (o ResourceStatusUpcomingMaintenanceResponseOutput) ToResourceStatusUpcomingMaintenanceResponseOutputWithContext(ctx context.Context) ResourceStatusUpcomingMaintenanceResponseOutput {
-	return o
-}
-
-// Indicates if the maintenance can be customer triggered. See go/sf-ctm-design for more details
-func (o ResourceStatusUpcomingMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput {
-	return o.ApplyT(func(v ResourceStatusUpcomingMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
 }
 
 // A rollout policy configuration.
@@ -49832,11 +48618,11 @@ func (o SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseOutput) Lo
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse) float64 { return v.LoadThreshold }).(pulumi.Float64Output)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable *bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility `pulumi:"ruleVisibility"`
 }
 
@@ -49851,11 +48637,11 @@ type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interfac
 	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrInput `pulumi:"ruleVisibility"`
 }
 
@@ -49912,7 +48698,7 @@ func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
@@ -49937,12 +48723,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToS
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		return v.RuleVisibility
@@ -49973,7 +48759,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool {
 		if v == nil {
@@ -49983,7 +48769,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) RuleVisibility() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility {
 		if v == nil {
@@ -49993,15 +48779,15 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) 
 	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityPtrOutput)
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse struct {
-	// If set to true, enables CAAP for L7 DDoS detection.
+	// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	Enable bool `pulumi:"enable"`
-	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+	// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RuleVisibility string `pulumi:"ruleVisibility"`
 }
 
-// Configuration options for L7 DDoS detection.
+// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) ElementType() reflect.Type {
@@ -50016,12 +48802,12 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOut
 	return o
 }
 
-// If set to true, enables CAAP for L7 DDoS detection.
+// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseOutput) RuleVisibility() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse) string {
 		return v.RuleVisibility
@@ -50954,7 +49740,7 @@ func (o SecurityPolicyDdosProtectionConfigResponseOutput) DdosProtection() pulum
 }
 
 type SecurityPolicyRecaptchaOptionsConfig struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
 }
 
@@ -50970,7 +49756,7 @@ type SecurityPolicyRecaptchaOptionsConfigInput interface {
 }
 
 type SecurityPolicyRecaptchaOptionsConfigArgs struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey pulumi.StringPtrInput `pulumi:"redirectSiteKey"`
 }
 
@@ -51051,7 +49837,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigOutput) ToSecurityPolicyRecaptchaOpt
 	}).(SecurityPolicyRecaptchaOptionsConfigPtrOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfig) *string { return v.RedirectSiteKey }).(pulumi.StringPtrOutput)
 }
@@ -51080,7 +49866,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) Elem() SecurityPolicyReca
 	}).(SecurityPolicyRecaptchaOptionsConfigOutput)
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRecaptchaOptionsConfig) *string {
 		if v == nil {
@@ -51091,7 +49877,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigPtrOutput) RedirectSiteKey() pulumi.
 }
 
 type SecurityPolicyRecaptchaOptionsConfigResponse struct {
-	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectSiteKey string `pulumi:"redirectSiteKey"`
 }
 
@@ -51109,14 +49895,14 @@ func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) ToSecurityPolicyReca
 	return o
 }
 
-// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRecaptchaOptionsConfigResponse) string { return v.RedirectSiteKey }).(pulumi.StringOutput)
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -51124,7 +49910,7 @@ type SecurityPolicyRule struct {
 	Direction *SecurityPolicyRuleDirection `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging *bool `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
@@ -51138,7 +49924,7 @@ type SecurityPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// This must be specified for redirect actions. Cannot be specified for any other actions.
 	RedirectTarget *string `pulumi:"redirectTarget"`
@@ -51163,7 +49949,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -51171,7 +49957,7 @@ type SecurityPolicyRuleArgs struct {
 	Direction SecurityPolicyRuleDirectionPtrInput `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging pulumi.BoolPtrInput `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
@@ -51185,7 +49971,7 @@ type SecurityPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"redirectOptions"`
 	// This must be specified for redirect actions. Cannot be specified for any other actions.
 	RedirectTarget pulumi.StringPtrInput `pulumi:"redirectTarget"`
@@ -51249,7 +50035,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -51269,7 +50055,7 @@ func (o SecurityPolicyRuleOutput) EnableLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *bool { return v.EnableLogging }).(pulumi.BoolPtrOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleHttpHeaderAction { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionPtrOutput)
 }
@@ -51304,7 +50090,7 @@ func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimit
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRateLimitOptions { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleRedirectOptions { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
@@ -51675,7 +50461,7 @@ func (o SecurityPolicyRuleHttpHeaderActionResponseOutput) RequestHeadersToAdds()
 type SecurityPolicyRuleMatcher struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr *Expr `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
@@ -51696,7 +50482,7 @@ type SecurityPolicyRuleMatcherInput interface {
 type SecurityPolicyRuleMatcherArgs struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprPtrInput `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
@@ -51785,7 +50571,7 @@ func (o SecurityPolicyRuleMatcherOutput) Config() SecurityPolicyRuleMatcherConfi
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherConfig { return v.Config }).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
 }
@@ -51829,7 +50615,7 @@ func (o SecurityPolicyRuleMatcherPtrOutput) Config() SecurityPolicyRuleMatcherCo
 	}).(SecurityPolicyRuleMatcherConfigPtrOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *Expr {
 		if v == nil {
@@ -52414,7 +51200,7 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 type SecurityPolicyRuleMatcherResponse struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
-	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprResponse `pulumi:"expr"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr string `pulumi:"versionedExpr"`
@@ -52440,7 +51226,7 @@ func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatc
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherConfigResponse { return v.Config }).(SecurityPolicyRuleMatcherConfigResponseOutput)
 }
 
-// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
 }
@@ -53533,11 +52319,11 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction *string `pulumi:"exceedAction"`
 	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
 	ExceedActionRpcStatus *SecurityPolicyRuleRateLimitOptionsRpcStatus `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"rateLimitThreshold"`
@@ -53567,11 +52353,11 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	EnforceOnKeyConfigs SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
 	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
 	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
 	// Threshold at which to begin ratelimiting.
 	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"rateLimitThreshold"`
@@ -53690,7 +52476,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
@@ -53702,7 +52488,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedActionRpcStatus() Securi
 	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		return v.ExceedRedirectOptions
@@ -53800,7 +52586,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -53820,7 +52606,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedActionRpcStatus() Sec
 	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
 }
 
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRedirectOptions {
 		if v == nil {
@@ -53946,6 +52732,313 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
 		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)[vs[1].(int)]
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponse struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction string `pulumi:"conformAction"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedAction string `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs and SecurityPolicyRuleRateLimitOptionsRpcStatusOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+type SecurityPolicyRuleRateLimitOptionsRpcStatusInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput).ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs, SecurityPolicyRuleRateLimitOptionsRpcStatusPtr and SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput` via:
+//
+//	        SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsRpcStatusPtrType SecurityPolicyRuleRateLimitOptionsRpcStatusArgs
+
+func SecurityPolicyRuleRateLimitOptionsRpcStatusPtr(v *SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsRpcStatus) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRateLimitOptionsRpcStatus
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
@@ -54154,8 +53247,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskPtrInput)(nil)).Elem(), ImageRawDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigInput)(nil)).Elem(), InitialStateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigPtrInput)(nil)).Elem(), InitialStateConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypePtrInput)(nil)).Elem(), InstanceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigPtrInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArgs{})
@@ -54406,6 +53497,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
 	pulumi.RegisterOutputType(AWSV4SignatureOutput{})
 	pulumi.RegisterOutputType(AWSV4SignaturePtrOutput{})
 	pulumi.RegisterOutputType(AWSV4SignatureResponseOutput{})
@@ -54762,8 +53855,6 @@ func init() {
 	pulumi.RegisterOutputType(InitialStateConfigOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigPtrOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigResponseOutput{})
-	pulumi.RegisterOutputType(InstanceTypeOutput{})
-	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigPtrOutput{})
@@ -54811,7 +53902,6 @@ func init() {
 	pulumi.RegisterOutputType(InstancePropertiesPatchPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPatchResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(InstanceResponseOutput{})
 	pulumi.RegisterOutputType(InstantSnapshotResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
@@ -55085,7 +54175,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyWeeklyCycleResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceStatusSchedulingResponseOutput{})
-	pulumi.RegisterOutputType(ResourceStatusUpcomingMaintenanceResponseOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RolloutPolicyResponseOutput{})
@@ -55235,4 +54324,9 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
 }

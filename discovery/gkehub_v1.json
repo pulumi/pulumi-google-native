@@ -1192,7 +1192,7 @@
       }
     }
   },
-  "revision": "20230329",
+  "revision": "20230424",
   "rootUrl": "https://gkehub.googleapis.com/",
   "schemas": {
     "AppDevExperienceFeatureSpec": {
@@ -1217,7 +1217,7 @@
       "id": "ApplianceCluster",
       "properties": {
         "resourceLink": {
-          "description": "Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance",
+          "description": "Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance",
           "type": "string"
         }
       },
@@ -1385,6 +1385,10 @@
         "git": {
           "$ref": "ConfigManagementGitConfig",
           "description": "Git repo configuration for the cluster."
+        },
+        "managed": {
+          "$ref": "ConfigManagementManaged",
+          "description": "Configuration for Managed Config Sync."
         },
         "oci": {
           "$ref": "ConfigManagementOciConfig",
@@ -1810,6 +1814,17 @@
       },
       "type": "object"
     },
+    "ConfigManagementManaged": {
+      "description": "Configuration for Managed Config Sync.",
+      "id": "ConfigManagementManaged",
+      "properties": {
+        "enabled": {
+          "description": "Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "ConfigManagementMembershipSpec": {
       "description": "**Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.",
       "id": "ConfigManagementMembershipSpec",
@@ -2145,7 +2160,7 @@
       "id": "EdgeCluster",
       "properties": {
         "resourceLink": {
-          "description": "Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster",
+          "description": "Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster",
           "type": "string"
         }
       },
@@ -2204,7 +2219,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "GCP labels for this Feature.",
+          "description": "Labels for this Feature.",
           "type": "object"
         },
         "membershipSpecs": {
@@ -2372,7 +2387,7 @@
           "type": "boolean"
         },
         "resourceLink": {
-          "description": "Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.",
+          "description": "Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.",
           "type": "string"
         }
       },
@@ -2772,7 +2787,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
@@ -2842,7 +2857,7 @@
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Optional. GCP labels for this membership.",
+          "description": "Optional. Labels for this membership.",
           "type": "object"
         },
         "lastConnectionTime": {
@@ -2850,6 +2865,10 @@
           "format": "google-datetime",
           "readOnly": true,
           "type": "string"
+        },
+        "monitoringConfig": {
+          "$ref": "MonitoringConfig",
+          "description": "Optional. The monitoring config information for this membership."
         },
         "name": {
           "description": "Output only. The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.",
@@ -3075,6 +3094,33 @@
       },
       "type": "object"
     },
+    "MonitoringConfig": {
+      "description": "This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.",
+      "id": "MonitoringConfig",
+      "properties": {
+        "cluster": {
+          "description": "Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.",
+          "type": "string"
+        },
+        "clusterHash": {
+          "description": "Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.",
+          "type": "string"
+        },
+        "kubernetesMetricsPrefix": {
+          "description": "Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos",
+          "type": "string"
+        },
+        "location": {
+          "description": "Immutable. Location used to report Metrics",
+          "type": "string"
+        },
+        "projectId": {
+          "description": "Immutable. Project used to report Metrics",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "MultiCloudCluster": {
       "description": "MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.",
       "id": "MultiCloudCluster",
@@ -3085,7 +3131,7 @@
           "type": "boolean"
         },
         "resourceLink": {
-          "description": "Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster",
+          "description": "Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster",
           "type": "string"
         }
       },
@@ -3134,7 +3180,7 @@
           "type": "string"
         },
         "resourceLink": {
-          "description": "Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster",
+          "description": "Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster",
           "type": "string"
         }
       },
@@ -3288,6 +3334,10 @@
       "description": "Scope represents a Scope in a Fleet.",
       "id": "Scope",
       "properties": {
+        "allMemberships": {
+          "description": "If true, all Memberships in the Fleet bind to this Scope.",
+          "type": "boolean"
+        },
         "createTime": {
           "description": "Output only. When the scope was created.",
           "format": "google-datetime",

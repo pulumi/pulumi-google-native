@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAttachmentResult:
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, region=None, self_link=None, target_service=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, creation_timestamp=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, kind=None, name=None, nat_subnets=None, producer_forwarding_rule=None, psc_service_attachment_id=None, reconcile_connections=None, region=None, self_link=None, target_service=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -62,6 +62,9 @@ class GetServiceAttachmentResult:
         if psc_service_attachment_id and not isinstance(psc_service_attachment_id, dict):
             raise TypeError("Expected argument 'psc_service_attachment_id' to be a dict")
         pulumi.set(__self__, "psc_service_attachment_id", psc_service_attachment_id)
+        if reconcile_connections and not isinstance(reconcile_connections, bool):
+            raise TypeError("Expected argument 'reconcile_connections' to be a bool")
+        pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -185,6 +188,14 @@ class GetServiceAttachmentResult:
         return pulumi.get(self, "psc_service_attachment_id")
 
     @property
+    @pulumi.getter(name="reconcileConnections")
+    def reconcile_connections(self) -> bool:
+        """
+        This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.
+        """
+        return pulumi.get(self, "reconcile_connections")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -229,6 +240,7 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             nat_subnets=self.nat_subnets,
             producer_forwarding_rule=self.producer_forwarding_rule,
             psc_service_attachment_id=self.psc_service_attachment_id,
+            reconcile_connections=self.reconcile_connections,
             region=self.region,
             self_link=self.self_link,
             target_service=self.target_service)
@@ -263,6 +275,7 @@ def get_service_attachment(project: Optional[str] = None,
         nat_subnets=__ret__.nat_subnets,
         producer_forwarding_rule=__ret__.producer_forwarding_rule,
         psc_service_attachment_id=__ret__.psc_service_attachment_id,
+        reconcile_connections=__ret__.reconcile_connections,
         region=__ret__.region,
         self_link=__ret__.self_link,
         target_service=__ret__.target_service)

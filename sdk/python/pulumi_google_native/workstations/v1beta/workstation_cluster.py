@@ -32,7 +32,7 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] workstation_cluster_id: Required. ID to use for the workstation cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
@@ -101,7 +101,7 @@ class WorkstationClusterArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -212,7 +212,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[str] network: Immutable. Name of the Compute Engine network in which instances associated with this cluster will be created.
@@ -278,6 +278,7 @@ class WorkstationCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
             __props__.__dict__["conditions"] = None
+            __props__.__dict__["control_plane_ip"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["degraded"] = None
             __props__.__dict__["delete_time"] = None
@@ -310,6 +311,7 @@ class WorkstationCluster(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = None
         __props__.__dict__["conditions"] = None
+        __props__.__dict__["control_plane_ip"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["degraded"] = None
         __props__.__dict__["delete_time"] = None
@@ -343,6 +345,14 @@ class WorkstationCluster(pulumi.CustomResource):
         Status conditions describing the current resource state.
         """
         return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="controlPlaneIp")
+    def control_plane_ip(self) -> pulumi.Output[str]:
+        """
+        The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+        """
+        return pulumi.get(self, "control_plane_ip")
 
     @property
     @pulumi.getter(name="createTime")
@@ -380,7 +390,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 

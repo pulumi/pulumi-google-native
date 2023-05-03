@@ -52,7 +52,7 @@ export class Fleet extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
+     * The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;

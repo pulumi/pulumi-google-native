@@ -211,6 +211,10 @@ class InstanceDatabaseVersion(str, Enum):
     """
     The database version is PostgreSQL 14.
     """
+    POSTGRES15 = "POSTGRES_15"
+    """
+    The database version is PostgreSQL 15.
+    """
     MYSQL80 = "MYSQL_8_0"
     """
     The database version is MySQL 8.
@@ -246,6 +250,22 @@ class InstanceDatabaseVersion(str, Enum):
     MYSQL8032 = "MYSQL_8_0_32"
     """
     The database major version is MySQL 8.0 and the minor version is 32.
+    """
+    MYSQL8033 = "MYSQL_8_0_33"
+    """
+    The database major version is MySQL 8.0 and the minor version is 33.
+    """
+    MYSQL8034 = "MYSQL_8_0_34"
+    """
+    The database major version is MySQL 8.0 and the minor version is 34.
+    """
+    MYSQL8035 = "MYSQL_8_0_35"
+    """
+    The database major version is MySQL 8.0 and the minor version is 35.
+    """
+    MYSQL8036 = "MYSQL_8_0_36"
+    """
+    The database major version is MySQL 8.0 and the minor version is 36.
     """
     SQLSERVER2019_STANDARD = "SQLSERVER_2019_STANDARD"
     """

@@ -1770,7 +1770,9 @@ class SqlIpConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "authorizedNetworks":
+        if key == "allocatedIpRange":
+            suggest = "allocated_ip_range"
+        elif key == "authorizedNetworks":
             suggest = "authorized_networks"
         elif key == "enableIpv4":
             suggest = "enable_ipv4"
@@ -1791,21 +1793,32 @@ class SqlIpConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allocated_ip_range: str,
                  authorized_networks: Sequence['outputs.SqlAclEntryResponse'],
                  enable_ipv4: bool,
                  private_network: str,
                  require_ssl: bool):
         """
         IP Management configuration.
+        :param str allocated_ip_range: Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
         :param Sequence['SqlAclEntryResponse'] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
         :param bool enable_ipv4: Whether the instance should be assigned an IPv4 address or not.
         :param str private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param bool require_ssl: Whether SSL connections over IP should be enforced or not.
         """
+        pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_ipv4", enable_ipv4)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "require_ssl", require_ssl)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> str:
+        """
+        Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+        """
+        return pulumi.get(self, "allocated_ip_range")
 
     @property
     @pulumi.getter(name="authorizedNetworks")

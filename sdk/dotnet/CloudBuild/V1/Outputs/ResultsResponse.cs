@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.UploadedMavenArtifactResponse> MavenArtifacts;
         /// <summary>
+        /// Npm packages uploaded to Artifact Registry at the end of the build.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.UploadedNpmPackageResponse> NpmPackages;
+        /// <summary>
         /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         /// </summary>
         public readonly string NumArtifacts;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<Outputs.UploadedMavenArtifactResponse> mavenArtifacts,
 
+            ImmutableArray<Outputs.UploadedNpmPackageResponse> npmPackages,
+
             string numArtifacts,
 
             ImmutableArray<Outputs.UploadedPythonPackageResponse> pythonPackages)
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             BuildStepOutputs = buildStepOutputs;
             Images = images;
             MavenArtifacts = mavenArtifacts;
+            NpmPackages = npmPackages;
             NumArtifacts = numArtifacts;
             PythonPackages = pythonPackages;
         }

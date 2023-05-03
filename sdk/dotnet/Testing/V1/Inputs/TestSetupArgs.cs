@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<string>? NetworkProfile { get; set; }
 
         /// <summary>
-        /// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        /// Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
         /// </summary>
         [Input("systrace")]
         public Input<Inputs.SystraceSetupArgs>? Systrace { get; set; }

@@ -94,6 +94,47 @@ namespace Pulumi.GoogleNative.Firestore.V1
     }
 
     /// <summary>
+    /// State of delete protection for the database.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabaseDeleteProtectionState : IEquatable<DatabaseDeleteProtectionState>
+    {
+        private readonly string _value;
+
+        private DatabaseDeleteProtectionState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default value. Delete protection type is not specified
+        /// </summary>
+        public static DatabaseDeleteProtectionState DeleteProtectionStateUnspecified { get; } = new DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Delete protection is disabled
+        /// </summary>
+        public static DatabaseDeleteProtectionState DeleteProtectionDisabled { get; } = new DatabaseDeleteProtectionState("DELETE_PROTECTION_DISABLED");
+        /// <summary>
+        /// Delete protection is enabled
+        /// </summary>
+        public static DatabaseDeleteProtectionState DeleteProtectionEnabled { get; } = new DatabaseDeleteProtectionState("DELETE_PROTECTION_ENABLED");
+
+        public static bool operator ==(DatabaseDeleteProtectionState left, DatabaseDeleteProtectionState right) => left.Equals(right);
+        public static bool operator !=(DatabaseDeleteProtectionState left, DatabaseDeleteProtectionState right) => !left.Equals(right);
+
+        public static explicit operator string(DatabaseDeleteProtectionState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabaseDeleteProtectionState other && Equals(other);
+        public bool Equals(DatabaseDeleteProtectionState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
     /// </summary>
     [EnumType]

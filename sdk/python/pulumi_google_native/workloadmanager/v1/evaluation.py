@@ -24,7 +24,8 @@ class EvaluationArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  resource_filter: Optional[pulumi.Input['ResourceFilterArgs']] = None,
-                 rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Evaluation resource.
         :param pulumi.Input[str] evaluation_id: Required. Id of the requesting object
@@ -34,6 +35,7 @@ class EvaluationArgs:
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['ResourceFilterArgs'] resource_filter: annotations as key value pairs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_names: the name of the rule
+        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, example: 0 */3 * * *
         """
         pulumi.set(__self__, "evaluation_id", evaluation_id)
         if description is not None:
@@ -52,6 +54,8 @@ class EvaluationArgs:
             pulumi.set(__self__, "resource_filter", resource_filter)
         if rule_names is not None:
             pulumi.set(__self__, "rule_names", rule_names)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="evaluationId")
@@ -155,6 +159,18 @@ class EvaluationArgs:
     def rule_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "rule_names", value)
 
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
 
 class Evaluation(pulumi.CustomResource):
     @overload
@@ -170,6 +186,7 @@ class Evaluation(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  resource_filter: Optional[pulumi.Input[pulumi.InputType['ResourceFilterArgs']]] = None,
                  rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Evaluation in a given project and location.
@@ -185,6 +202,7 @@ class Evaluation(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ResourceFilterArgs']] resource_filter: annotations as key value pairs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_names: the name of the rule
+        :param pulumi.Input[str] schedule: crontab format schedule for scheduled evaluation, example: 0 */3 * * *
         """
         ...
     @overload
@@ -221,6 +239,7 @@ class Evaluation(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  resource_filter: Optional[pulumi.Input[pulumi.InputType['ResourceFilterArgs']]] = None,
                  rule_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,6 +260,7 @@ class Evaluation(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["resource_filter"] = resource_filter
             __props__.__dict__["rule_names"] = rule_names
+            __props__.__dict__["schedule"] = schedule
             __props__.__dict__["create_time"] = None
             __props__.__dict__["resource_status"] = None
             __props__.__dict__["rule_versions"] = None
@@ -281,6 +301,7 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["resource_status"] = None
         __props__.__dict__["rule_names"] = None
         __props__.__dict__["rule_versions"] = None
+        __props__.__dict__["schedule"] = None
         __props__.__dict__["update_time"] = None
         return Evaluation(resource_name, opts=opts, __props__=__props__)
 
@@ -373,6 +394,14 @@ class Evaluation(pulumi.CustomResource):
         [Output only] The updated rule ids if exist.
         """
         return pulumi.get(self, "rule_versions")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output[str]:
+        """
+        crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        """
+        return pulumi.get(self, "schedule")
 
     @property
     @pulumi.getter(name="updateTime")

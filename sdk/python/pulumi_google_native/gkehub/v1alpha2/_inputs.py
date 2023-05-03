@@ -21,6 +21,7 @@ __all__ = [
     'GkeClusterArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
+    'MonitoringConfigArgs',
     'MultiCloudClusterArgs',
     'OnPremClusterArgs',
     'ResourceOptionsArgs',
@@ -32,7 +33,7 @@ class ApplianceClusterArgs:
                  resource_link: Optional[pulumi.Input[str]] = None):
         """
         ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
-        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         """
         if resource_link is not None:
             pulumi.set(__self__, "resource_link", resource_link)
@@ -41,7 +42,7 @@ class ApplianceClusterArgs:
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         """
         return pulumi.get(self, "resource_link")
 
@@ -232,7 +233,7 @@ class EdgeClusterArgs:
                  resource_link: Optional[pulumi.Input[str]] = None):
         """
         EdgeCluster contains information specific to Google Edge Clusters.
-        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         """
         if resource_link is not None:
             pulumi.set(__self__, "resource_link", resource_link)
@@ -241,7 +242,7 @@ class EdgeClusterArgs:
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 
@@ -328,7 +329,7 @@ class GkeClusterArgs:
                  resource_link: Optional[pulumi.Input[str]] = None):
         """
         GkeCluster contains information specific to GKE clusters.
-        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         """
         if resource_link is not None:
             pulumi.set(__self__, "resource_link", resource_link)
@@ -337,7 +338,7 @@ class GkeClusterArgs:
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         """
         return pulumi.get(self, "resource_link")
 
@@ -491,12 +492,100 @@ class MembershipEndpointArgs:
 
 
 @pulumi.input_type
+class MonitoringConfigArgs:
+    def __init__(__self__, *,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 cluster_hash: Optional[pulumi.Input[str]] = None,
+                 kubernetes_metrics_prefix: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+        :param pulumi.Input[str] cluster: Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+        :param pulumi.Input[str] cluster_hash: Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+        :param pulumi.Input[str] kubernetes_metrics_prefix: Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+        :param pulumi.Input[str] location: Immutable. Location used to report Metrics
+        :param pulumi.Input[str] project: Immutable. Project used to report Metrics
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if cluster_hash is not None:
+            pulumi.set(__self__, "cluster_hash", cluster_hash)
+        if kubernetes_metrics_prefix is not None:
+            pulumi.set(__self__, "kubernetes_metrics_prefix", kubernetes_metrics_prefix)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="clusterHash")
+    def cluster_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+        """
+        return pulumi.get(self, "cluster_hash")
+
+    @cluster_hash.setter
+    def cluster_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_hash", value)
+
+    @property
+    @pulumi.getter(name="kubernetesMetricsPrefix")
+    def kubernetes_metrics_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+        """
+        return pulumi.get(self, "kubernetes_metrics_prefix")
+
+    @kubernetes_metrics_prefix.setter
+    def kubernetes_metrics_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubernetes_metrics_prefix", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Location used to report Metrics
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Project used to report Metrics
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
 class MultiCloudClusterArgs:
     def __init__(__self__, *,
                  resource_link: Optional[pulumi.Input[str]] = None):
         """
         MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
-        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         """
         if resource_link is not None:
             pulumi.set(__self__, "resource_link", resource_link)
@@ -505,7 +594,7 @@ class MultiCloudClusterArgs:
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 
@@ -524,7 +613,7 @@ class OnPremClusterArgs:
         OnPremCluster contains information specific to GKE On-Prem clusters.
         :param pulumi.Input[bool] admin_cluster: Immutable. Whether the cluster is an admin cluster.
         :param pulumi.Input['OnPremClusterClusterType'] cluster_type: Immutable. The on prem cluster's type.
-        :param pulumi.Input[str] resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        :param pulumi.Input[str] resource_link: Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         if admin_cluster is not None:
             pulumi.set(__self__, "admin_cluster", admin_cluster)
@@ -561,7 +650,7 @@ class OnPremClusterArgs:
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 

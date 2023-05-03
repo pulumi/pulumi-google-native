@@ -98,12 +98,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public Output<string> RequestAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// </summary>
-        [Output("restrictedExportConfig")]
-        public Output<Outputs.RestrictedExportConfigResponse> RestrictedExportConfig { get; private set; } = null!;
-
-        /// <summary>
         /// Current state of the listing.
         /// </summary>
         [Output("state")]
@@ -241,12 +235,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         /// </summary>
         [Input("requestAccess")]
         public Input<string>? RequestAccess { get; set; }
-
-        /// <summary>
-        /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// </summary>
-        [Input("restrictedExportConfig")]
-        public Input<Inputs.RestrictedExportConfigArgs>? RestrictedExportConfig { get; set; }
 
         public ListingArgs()
         {

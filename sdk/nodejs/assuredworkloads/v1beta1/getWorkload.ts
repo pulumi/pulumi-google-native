@@ -48,6 +48,10 @@ export interface GetWorkloadResult {
      */
     readonly compliantButDisallowedServices: string[];
     /**
+     * Controls associated with the customer workload
+     */
+    readonly controls: outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse;
+    /**
      * Immutable. The Workload creation timestamp.
      */
     readonly createTime: string;
@@ -117,6 +121,10 @@ export interface GetWorkloadResult {
      * Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
      */
     readonly saaEnrollmentResponse: outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse;
+    /**
+     * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     */
+    readonly violationNotificationsEnabled: boolean;
 }
 /**
  * Gets Assured Workload associated with a CRM Node

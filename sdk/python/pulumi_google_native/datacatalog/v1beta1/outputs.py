@@ -573,7 +573,7 @@ class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse(dict):
                  name: str):
         """
         The source system of the Taxonomy.
-        :param str identity: P4SA Identity of the service.
+        :param str identity: The service agent for the service.
         :param str name: The Google Cloud service name.
         """
         pulumi.set(__self__, "identity", identity)
@@ -583,7 +583,7 @@ class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse(dict):
     @pulumi.getter
     def identity(self) -> str:
         """
-        P4SA Identity of the service.
+        The service agent for the service.
         """
         return pulumi.get(self, "identity")
 

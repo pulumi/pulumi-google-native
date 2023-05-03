@@ -2379,6 +2379,7 @@ export const RegionCommitmentType = {
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
+    GraphicsOptimized: "GRAPHICS_OPTIMIZED",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
@@ -2776,6 +2777,30 @@ export const RouterBgpPeerEnable = {
  */
 export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof RouterBgpPeerEnable];
 
+export const RouterNatAutoNetworkTier = {
+    /**
+     * Public internet quality with fixed bandwidth.
+     */
+    FixedStandard: "FIXED_STANDARD",
+    /**
+     * High quality, Google-grade network tier, support for all networking products.
+     */
+    Premium: "PREMIUM",
+    /**
+     * Public internet quality, only limited support for other networking products.
+     */
+    Standard: "STANDARD",
+    /**
+     * (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+     */
+    StandardOverridesFixedStandard: "STANDARD_OVERRIDES_FIXED_STANDARD",
+} as const;
+
+/**
+ * The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+ */
+export type RouterNatAutoNetworkTier = (typeof RouterNatAutoNetworkTier)[keyof typeof RouterNatAutoNetworkTier];
+
 export const RouterNatEndpointTypesItem = {
     /**
      * This is used for Secure Web Gateway endpoints.
@@ -3011,7 +3036,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVi
 } as const;
 
 /**
- * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+ * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
  */
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility = (typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility)[keyof typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility];
 
@@ -3519,6 +3544,22 @@ export const TargetTcpProxyProxyHeader = {
  * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
  */
 export type TargetTcpProxyProxyHeader = (typeof TargetTcpProxyProxyHeader)[keyof typeof TargetTcpProxyProxyHeader];
+
+export const VpnGatewayGatewayIpVersion = {
+    /**
+     * Every HA-VPN gateway interface is configured with an IPv4 address.
+     */
+    Ipv4: "IPV4",
+    /**
+     * Every HA-VPN gateway interface is configured with an IPv6 address.
+     */
+    Ipv6: "IPV6",
+} as const;
+
+/**
+ * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+ */
+export type VpnGatewayGatewayIpVersion = (typeof VpnGatewayGatewayIpVersion)[keyof typeof VpnGatewayGatewayIpVersion];
 
 export const VpnGatewayStackType = {
     /**

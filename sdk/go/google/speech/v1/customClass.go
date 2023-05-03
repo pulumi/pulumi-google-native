@@ -18,8 +18,12 @@ type CustomClass struct {
 	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 	CustomClassId pulumi.StringOutput `pulumi:"customClassId"`
 	// A collection of class items.
-	Items    ClassItemResponseArrayOutput `pulumi:"items"`
-	Location pulumi.StringOutput          `pulumi:"location"`
+	Items ClassItemResponseArrayOutput `pulumi:"items"`
+	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
+	// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+	KmsKeyVersionName pulumi.StringOutput `pulumi:"kmsKeyVersionName"`
+	Location          pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the custom class.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -139,6 +143,16 @@ func (o CustomClassOutput) CustomClassId() pulumi.StringOutput {
 // A collection of class items.
 func (o CustomClassOutput) Items() ClassItemResponseArrayOutput {
 	return o.ApplyT(func(v *CustomClass) ClassItemResponseArrayOutput { return v.Items }).(ClassItemResponseArrayOutput)
+}
+
+// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o CustomClassOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+func (o CustomClassOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.KmsKeyVersionName }).(pulumi.StringOutput)
 }
 
 func (o CustomClassOutput) Location() pulumi.StringOutput {

@@ -13,9 +13,6 @@ from ._enums import *
 
 __all__ = [
     'AllocatedConnectionResponse',
-    'ConfigResponse',
-    'DestinationRouteResponse',
-    'EgressResponse',
     'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse',
     'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoResponse',
@@ -25,8 +22,6 @@ __all__ = [
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
-    'IngressResponse',
-    'PeeredVpcResponse',
 ]
 
 @pulumi.output_type
@@ -79,130 +74,6 @@ class AllocatedConnectionResponse(dict):
         The PSC uri of an allocated connection
         """
         return pulumi.get(self, "psc_uri")
-
-
-@pulumi.output_type
-class ConfigResponse(dict):
-    """
-    The basic ingress config for ClientGateways.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationRoutes":
-            suggest = "destination_routes"
-        elif key == "transportProtocol":
-            suggest = "transport_protocol"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 destination_routes: Sequence['outputs.DestinationRouteResponse'],
-                 transport_protocol: str):
-        """
-        The basic ingress config for ClientGateways.
-        :param Sequence['DestinationRouteResponse'] destination_routes: The settings used to configure basic ClientGateways.
-        :param str transport_protocol: Immutable. The transport protocol used between the client and the server.
-        """
-        pulumi.set(__self__, "destination_routes", destination_routes)
-        pulumi.set(__self__, "transport_protocol", transport_protocol)
-
-    @property
-    @pulumi.getter(name="destinationRoutes")
-    def destination_routes(self) -> Sequence['outputs.DestinationRouteResponse']:
-        """
-        The settings used to configure basic ClientGateways.
-        """
-        return pulumi.get(self, "destination_routes")
-
-    @property
-    @pulumi.getter(name="transportProtocol")
-    def transport_protocol(self) -> str:
-        """
-        Immutable. The transport protocol used between the client and the server.
-        """
-        return pulumi.get(self, "transport_protocol")
-
-
-@pulumi.output_type
-class DestinationRouteResponse(dict):
-    """
-    The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-    """
-    def __init__(__self__, *,
-                 address: str,
-                 netmask: str):
-        """
-        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-        :param str address: The network address of the subnet for which the packet is routed to the ClientGateway.
-        :param str netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "netmask", netmask)
-
-    @property
-    @pulumi.getter
-    def address(self) -> str:
-        """
-        The network address of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "address")
-
-    @property
-    @pulumi.getter
-    def netmask(self) -> str:
-        """
-        The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "netmask")
-
-
-@pulumi.output_type
-class EgressResponse(dict):
-    """
-    The details of the egress info. One of the following options should be set.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "peeredVpc":
-            suggest = "peered_vpc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in EgressResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        EgressResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        EgressResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 peered_vpc: 'outputs.PeeredVpcResponse'):
-        """
-        The details of the egress info. One of the following options should be set.
-        :param 'PeeredVpcResponse' peered_vpc: A VPC from the consumer project.
-        """
-        pulumi.set(__self__, "peered_vpc", peered_vpc)
-
-    @property
-    @pulumi.getter(name="peeredVpc")
-    def peered_vpc(self) -> 'outputs.PeeredVpcResponse':
-        """
-        A VPC from the consumer project.
-        """
-        return pulumi.get(self, "peered_vpc")
 
 
 @pulumi.output_type
@@ -638,66 +509,5 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-
-@pulumi.output_type
-class IngressResponse(dict):
-    """
-    Settings of how to connect to the ClientGateway. One of the following options should be set.
-    """
-    def __init__(__self__, *,
-                 config: 'outputs.ConfigResponse'):
-        """
-        Settings of how to connect to the ClientGateway. One of the following options should be set.
-        :param 'ConfigResponse' config: The basic ingress config for ClientGateways.
-        """
-        pulumi.set(__self__, "config", config)
-
-    @property
-    @pulumi.getter
-    def config(self) -> 'outputs.ConfigResponse':
-        """
-        The basic ingress config for ClientGateways.
-        """
-        return pulumi.get(self, "config")
-
-
-@pulumi.output_type
-class PeeredVpcResponse(dict):
-    """
-    The peered VPC owned by the consumer project.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "networkVpc":
-            suggest = "network_vpc"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PeeredVpcResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        PeeredVpcResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        PeeredVpcResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 network_vpc: str):
-        """
-        The peered VPC owned by the consumer project.
-        :param str network_vpc: The name of the peered VPC owned by the consumer project.
-        """
-        pulumi.set(__self__, "network_vpc", network_vpc)
-
-    @property
-    @pulumi.getter(name="networkVpc")
-    def network_vpc(self) -> str:
-        """
-        The name of the peered VPC owned by the consumer project.
-        """
-        return pulumi.get(self, "network_vpc")
 
 

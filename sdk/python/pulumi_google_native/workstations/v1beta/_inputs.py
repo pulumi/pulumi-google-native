@@ -24,6 +24,7 @@ __all__ = [
     'HostArgs',
     'PersistentDirectoryArgs',
     'PrivateClusterConfigArgs',
+    'ReadinessCheckArgs',
 ]
 
 @pulumi.input_type
@@ -175,8 +176,8 @@ class ContainerArgs:
         A Docker container.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments passed to the entrypoint.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: If set, overrides the default ENTRYPOINT specified by the image.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the container.
-        :param pulumi.Input[str] image: Docker image defining the container. This image must be accessible by the config's service account.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the container's entrypoint.
+        :param pulumi.Input[str] image: Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
         :param pulumi.Input[int] run_as_user: If set, overrides the USER specified in the image with the given uid.
         :param pulumi.Input[str] working_dir: If set, overrides the default DIR specified by the image.
         """
@@ -221,7 +222,7 @@ class ContainerArgs:
     @pulumi.getter
     def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Environment variables passed to the container.
+        Environment variables passed to the container's entrypoint.
         """
         return pulumi.get(self, "env")
 
@@ -233,7 +234,7 @@ class ContainerArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        Docker image defining the container. This image must be accessible by the config's service account.
+        Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
         """
         return pulumi.get(self, "image")
 
@@ -273,8 +274,8 @@ class CustomerEncryptionKeyArgs:
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
         """
         A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
-        :param pulumi.Input[str] kms_key: The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
-        :param pulumi.Input[str] kms_key_service_account: The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+        :param pulumi.Input[str] kms_key: Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        :param pulumi.Input[str] kms_key_service_account: Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
@@ -285,7 +286,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         """
         return pulumi.get(self, "kms_key")
 
@@ -297,7 +298,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKeyServiceAccount")
     def kms_key_service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+        Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         return pulumi.get(self, "kms_key_service_account")
 
@@ -419,8 +420,8 @@ class GceInstanceArgs:
         :param pulumi.Input['GceConfidentialInstanceConfigArgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
         :param pulumi.Input[bool] disable_public_ip_addresses: Whether instances have no public IP address.
         :param pulumi.Input[str] machine_type: The name of a Compute Engine machine type.
-        :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation starup.
-        :param pulumi.Input[str] service_account: Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+        :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation startup.
+        :param pulumi.Input[str] service_account: Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
         :param pulumi.Input['GceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
@@ -493,7 +494,7 @@ class GceInstanceArgs:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of instances to pool for faster workstation starup.
+        Number of instances to pool for faster workstation startup.
         """
         return pulumi.get(self, "pool_size")
 
@@ -505,7 +506,7 @@ class GceInstanceArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+        Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
         """
         return pulumi.get(self, "service_account")
 
@@ -784,5 +785,45 @@ class PrivateClusterConfigArgs:
     @enable_private_endpoint.setter
     def enable_private_endpoint(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_private_endpoint", value)
+
+
+@pulumi.input_type
+class ReadinessCheckArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        A readiness check to be performed on a workstation.
+        :param pulumi.Input[str] path: Path to which the request should be sent.
+        :param pulumi.Input[int] port: Port to which the request should be sent.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to which the request should be sent.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port to which the request should be sent.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 

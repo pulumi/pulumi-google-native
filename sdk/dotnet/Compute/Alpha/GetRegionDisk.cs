@@ -256,6 +256,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
+        /// <summary>
         /// [Deprecated] Storage type of the persistent disk.
         /// </summary>
         public readonly string StorageType;
@@ -374,6 +378,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string status,
 
+            string storagePool,
+
             string storageType,
 
             string type,
@@ -432,6 +438,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SourceSnapshotId = sourceSnapshotId;
             SourceStorageObject = sourceStorageObject;
             Status = status;
+            StoragePool = storagePool;
             StorageType = storageType;
             Type = type;
             UserLicenses = userLicenses;

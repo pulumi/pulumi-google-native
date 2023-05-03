@@ -12,7 +12,7 @@ import (
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReference struct {
-	// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 }
 
@@ -29,7 +29,7 @@ type GoogleCloudDatacatalogLineageV1EntityReferenceInput interface {
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReferenceArgs struct {
-	// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName pulumi.StringInput `pulumi:"fullyQualifiedName"`
 }
 
@@ -60,14 +60,14 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) ToGoogleCloudDatac
 	return o
 }
 
-// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceOutput) FullyQualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1EntityReference) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
 }
 
 // The soft reference to everything you can attach a lineage event to.
 type GoogleCloudDatacatalogLineageV1EntityReferenceResponse struct {
-	// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+	// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
 	FullyQualifiedName string `pulumi:"fullyQualifiedName"`
 }
 
@@ -86,7 +86,7 @@ func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) ToGoogleCl
 	return o
 }
 
-// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
 func (o GoogleCloudDatacatalogLineageV1EntityReferenceResponseOutput) FullyQualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1EntityReferenceResponse) string { return v.FullyQualifiedName }).(pulumi.StringOutput)
 }
@@ -263,9 +263,9 @@ func (o GoogleCloudDatacatalogLineageV1EventLinkResponseArrayOutput) Index(i pul
 
 // Origin of a process.
 type GoogleCloudDatacatalogLineageV1Origin struct {
-	// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+	// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 	Name *string `pulumi:"name"`
-	// Type of the source.
+	// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 	SourceType *GoogleCloudDatacatalogLineageV1OriginSourceType `pulumi:"sourceType"`
 }
 
@@ -282,9 +282,9 @@ type GoogleCloudDatacatalogLineageV1OriginInput interface {
 
 // Origin of a process.
 type GoogleCloudDatacatalogLineageV1OriginArgs struct {
-	// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+	// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Type of the source.
+	// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 	SourceType GoogleCloudDatacatalogLineageV1OriginSourceTypePtrInput `pulumi:"sourceType"`
 }
 
@@ -366,12 +366,12 @@ func (o GoogleCloudDatacatalogLineageV1OriginOutput) ToGoogleCloudDatacatalogLin
 	}).(GoogleCloudDatacatalogLineageV1OriginPtrOutput)
 }
 
-// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 func (o GoogleCloudDatacatalogLineageV1OriginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1Origin) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Type of the source.
+// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 func (o GoogleCloudDatacatalogLineageV1OriginOutput) SourceType() GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1Origin) *GoogleCloudDatacatalogLineageV1OriginSourceType {
 		return v.SourceType
@@ -402,7 +402,7 @@ func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) Elem() GoogleCloudDataca
 	}).(GoogleCloudDatacatalogLineageV1OriginOutput)
 }
 
-// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogLineageV1Origin) *string {
 		if v == nil {
@@ -412,7 +412,7 @@ func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) Name() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of the source.
+// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) SourceType() GoogleCloudDatacatalogLineageV1OriginSourceTypePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogLineageV1Origin) *GoogleCloudDatacatalogLineageV1OriginSourceType {
 		if v == nil {
@@ -424,9 +424,9 @@ func (o GoogleCloudDatacatalogLineageV1OriginPtrOutput) SourceType() GoogleCloud
 
 // Origin of a process.
 type GoogleCloudDatacatalogLineageV1OriginResponse struct {
-	// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+	// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 	Name string `pulumi:"name"`
-	// Type of the source.
+	// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 	SourceType string `pulumi:"sourceType"`
 }
 
@@ -445,12 +445,12 @@ func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) ToGoogleCloudDataca
 	return o
 }
 
-// If the source_type isn't CUSTOM, the value of this field should be a Google Cloud resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
+// If the source_type isn't CUSTOM, the value of this field should be a GCP resource name of the system, which reports lineage. The project and location parts of the resource name must match the project and location of the lineage resource being created. Examples: - `{source_type: COMPOSER, name: "projects/foo/locations/us/environments/bar"}` - `{source_type: BIGQUERY, name: "projects/foo/locations/eu"}` - `{source_type: CUSTOM, name: "myCustomIntegration"}`
 func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1OriginResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Type of the source.
+// Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged, and may be restricted in the future without notice.
 func (o GoogleCloudDatacatalogLineageV1OriginResponseOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogLineageV1OriginResponse) string { return v.SourceType }).(pulumi.StringOutput)
 }

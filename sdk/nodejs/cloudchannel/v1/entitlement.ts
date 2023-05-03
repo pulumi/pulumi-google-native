@@ -46,6 +46,10 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public readonly associationInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoResponse>;
     /**
+     * Optional. The billing account resource name that is used to pay for this entitlement.
+     */
+    public readonly billingAccount!: pulumi.Output<string>;
+    /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
     public readonly commitmentSettings!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsResponse>;
@@ -113,6 +117,7 @@ export class Entitlement extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["associationInfo"] = args ? args.associationInfo : undefined;
+            resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
             resourceInputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
             resourceInputs["customerId"] = args ? args.customerId : undefined;
             resourceInputs["offer"] = args ? args.offer : undefined;
@@ -129,6 +134,7 @@ export class Entitlement extends pulumi.CustomResource {
         } else {
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["associationInfo"] = undefined /*out*/;
+            resourceInputs["billingAccount"] = undefined /*out*/;
             resourceInputs["commitmentSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customerId"] = undefined /*out*/;
@@ -158,6 +164,10 @@ export interface EntitlementArgs {
      * Association information to other entitlements.
      */
     associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoArgs>;
+    /**
+     * Optional. The billing account resource name that is used to pay for this entitlement.
+     */
+    billingAccount?: pulumi.Input<string>;
     /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */

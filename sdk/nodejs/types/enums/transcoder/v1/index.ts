@@ -48,16 +48,16 @@ export const ManifestType = {
      */
     ManifestTypeUnspecified: "MANIFEST_TYPE_UNSPECIFIED",
     /**
-     * Create `HLS` manifest. The corresponding file extension is `.m3u8`.
+     * Create an HLS manifest. The corresponding file extension is `.m3u8`.
      */
     Hls: "HLS",
     /**
-     * Create `DASH` manifest. The corresponding file extension is `.mpd`.
+     * Create an MPEG-DASH manifest. The corresponding file extension is `.mpd`.
      */
     Dash: "DASH",
 } as const;
 
 /**
- * Required. Type of the manifest, can be `HLS` or `DASH`.
+ * Required. Type of the manifest.
  */
 export type ManifestType = (typeof ManifestType)[keyof typeof ManifestType];

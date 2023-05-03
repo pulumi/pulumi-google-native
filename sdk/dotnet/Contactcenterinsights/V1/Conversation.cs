@@ -81,6 +81,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("latestAnalysis")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse> LatestAnalysis { get; private set; } = null!;
 
+        /// <summary>
+        /// Latest summary of the conversation.
+        /// </summary>
+        [Output("latestSummary")]
+        public Output<Outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse> LatestSummary { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

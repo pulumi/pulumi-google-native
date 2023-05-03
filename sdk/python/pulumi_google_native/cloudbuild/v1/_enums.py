@@ -138,6 +138,10 @@ class BuildOptionsSourceProvenanceHashItem(str, Enum):
     """
     Use a md5 hash.
     """
+    SHA512 = "SHA512"
+    """
+    Use a sha512 hash.
+    """
 
 
 class BuildOptionsSubstitutionOption(str, Enum):

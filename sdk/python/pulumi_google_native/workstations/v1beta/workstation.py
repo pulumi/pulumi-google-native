@@ -19,6 +19,7 @@ class WorkstationArgs:
                  workstation_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -29,7 +30,8 @@ class WorkstationArgs:
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the workstation container's entrypoint.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         """
@@ -40,6 +42,8 @@ class WorkstationArgs:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -107,9 +111,21 @@ class WorkstationArgs:
 
     @property
     @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Environment variables passed to the workstation container's entrypoint.
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -167,6 +183,7 @@ class Workstation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -183,7 +200,8 @@ class Workstation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: Environment variables passed to the workstation container's entrypoint.
+        :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[str] workstation_id: Required. ID to use for the workstation.
@@ -214,6 +232,7 @@ class Workstation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -233,6 +252,7 @@ class Workstation(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["env"] = env
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -282,6 +302,7 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["env"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["labels"] = None
@@ -331,9 +352,17 @@ class Workstation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def env(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Environment variables passed to the workstation container's entrypoint.
+        """
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 

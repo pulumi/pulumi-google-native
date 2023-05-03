@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs',
     'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs',
     'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs',
     'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs',
@@ -24,6 +25,46 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs:
+    def __init__(__self__, *,
+                 conversation_profile: Optional[pulumi.Input[str]] = None,
+                 summarization_model: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel']] = None):
+        """
+        Configuration for summarization.
+        :param pulumi.Input[str] conversation_profile: Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel'] summarization_model: Default summarization model to be used.
+        """
+        if conversation_profile is not None:
+            pulumi.set(__self__, "conversation_profile", conversation_profile)
+        if summarization_model is not None:
+            pulumi.set(__self__, "summarization_model", summarization_model)
+
+    @property
+    @pulumi.getter(name="conversationProfile")
+    def conversation_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        """
+        return pulumi.get(self, "conversation_profile")
+
+    @conversation_profile.setter
+    def conversation_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "conversation_profile", value)
+
+    @property
+    @pulumi.getter(name="summarizationModel")
+    def summarization_model(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel']]:
+        """
+        Default summarization model to be used.
+        """
+        return pulumi.get(self, "summarization_model")
+
+    @summarization_model.setter
+    def summarization_model(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel']]):
+        pulumi.set(self, "summarization_model", value)
+
+
+@pulumi.input_type
 class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
     def __init__(__self__, *,
                  issue_models: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -34,7 +75,9 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
                  run_issue_model_annotator: Optional[pulumi.Input[bool]] = None,
                  run_phrase_matcher_annotator: Optional[pulumi.Input[bool]] = None,
                  run_sentiment_annotator: Optional[pulumi.Input[bool]] = None,
-                 run_silence_annotator: Optional[pulumi.Input[bool]] = None):
+                 run_silence_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_summarization_annotator: Optional[pulumi.Input[bool]] = None,
+                 summarization_config: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs']] = None):
         """
         Selector of all available annotators and phrase matchers to run.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] issue_models: The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
@@ -46,6 +89,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
         :param pulumi.Input[bool] run_phrase_matcher_annotator: Whether to run the active phrase matcher annotator(s).
         :param pulumi.Input[bool] run_sentiment_annotator: Whether to run the sentiment annotator.
         :param pulumi.Input[bool] run_silence_annotator: Whether to run the silence annotator.
+        :param pulumi.Input[bool] run_summarization_annotator: Whether to run the summarization annotator.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs'] summarization_config: Configuration for the summarization annotator.
         """
         if issue_models is not None:
             pulumi.set(__self__, "issue_models", issue_models)
@@ -65,6 +110,10 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
             pulumi.set(__self__, "run_sentiment_annotator", run_sentiment_annotator)
         if run_silence_annotator is not None:
             pulumi.set(__self__, "run_silence_annotator", run_silence_annotator)
+        if run_summarization_annotator is not None:
+            pulumi.set(__self__, "run_summarization_annotator", run_summarization_annotator)
+        if summarization_config is not None:
+            pulumi.set(__self__, "summarization_config", summarization_config)
 
     @property
     @pulumi.getter(name="issueModels")
@@ -173,6 +222,30 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
     @run_silence_annotator.setter
     def run_silence_annotator(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "run_silence_annotator", value)
+
+    @property
+    @pulumi.getter(name="runSummarizationAnnotator")
+    def run_summarization_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the summarization annotator.
+        """
+        return pulumi.get(self, "run_summarization_annotator")
+
+    @run_summarization_annotator.setter
+    def run_summarization_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_summarization_annotator", value)
+
+    @property
+    @pulumi.getter(name="summarizationConfig")
+    def summarization_config(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs']]:
+        """
+        Configuration for the summarization annotator.
+        """
+        return pulumi.get(self, "summarization_config")
+
+    @summarization_config.setter
+    def summarization_config(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs']]):
+        pulumi.set(self, "summarization_config", value)
 
 
 @pulumi.input_type
@@ -415,7 +488,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs:
         """
         A message representing a rule in the phrase matcher.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType'] type: The type of this phrase match rule group.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs']]] phrase_match_rules: A list of phase match rules that are included in this group.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs']]] phrase_match_rules: A list of phrase match rules that are included in this group.
         """
         pulumi.set(__self__, "type", type)
         if phrase_match_rules is not None:
@@ -437,7 +510,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs:
     @pulumi.getter(name="phraseMatchRules")
     def phrase_match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs']]]]:
         """
-        A list of phase match rules that are included in this group.
+        A list of phrase match rules that are included in this group.
         """
         return pulumi.get(self, "phrase_match_rules")
 

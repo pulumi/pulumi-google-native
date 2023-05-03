@@ -519,6 +519,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["title"] = title
             __props__.__dict__["updater"] = updater
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["disposition_time"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -550,6 +551,7 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["creator"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["display_uri"] = None
+        __props__.__dict__["disposition_time"] = None
         __props__.__dict__["document_schema_name"] = None
         __props__.__dict__["inline_raw_document"] = None
         __props__.__dict__["location"] = None
@@ -614,6 +616,14 @@ class Document(pulumi.CustomResource):
         Uri to display the document, for example, in the UI.
         """
         return pulumi.get(self, "display_uri")
+
+    @property
+    @pulumi.getter(name="dispositionTime")
+    def disposition_time(self) -> pulumi.Output[str]:
+        """
+        If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+        """
+        return pulumi.get(self, "disposition_time")
 
     @property
     @pulumi.getter(name="documentSchemaName")

@@ -31,6 +31,10 @@ type LookupCustomClassResult struct {
 	CustomClassId string `pulumi:"customClassId"`
 	// A collection of class items.
 	Items []ClassItemResponse `pulumi:"items"`
+	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the custom class.
 	Name string `pulumi:"name"`
 }
@@ -80,6 +84,16 @@ func (o LookupCustomClassResultOutput) CustomClassId() pulumi.StringOutput {
 // A collection of class items.
 func (o LookupCustomClassResultOutput) Items() ClassItemResponseArrayOutput {
 	return o.ApplyT(func(v LookupCustomClassResult) []ClassItemResponse { return v.Items }).(ClassItemResponseArrayOutput)
+}
+
+// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o LookupCustomClassResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+func (o LookupCustomClassResultOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomClassResult) string { return v.KmsKeyVersionName }).(pulumi.StringOutput)
 }
 
 // The resource name of the custom class.

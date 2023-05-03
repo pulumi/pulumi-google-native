@@ -68,6 +68,7 @@ __all__ = [
     'GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse',
     'GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse',
     'GoogleCloudDocumentaiV1DocumentPageTokenResponse',
+    'GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse',
     'GoogleCloudDocumentaiV1DocumentPageVisualElementResponse',
     'GoogleCloudDocumentaiV1DocumentProvenanceParentResponse',
     'GoogleCloudDocumentaiV1DocumentProvenanceResponse',
@@ -3192,6 +3193,8 @@ class GoogleCloudDocumentaiV1DocumentPageTokenResponse(dict):
             suggest = "detected_break"
         elif key == "detectedLanguages":
             suggest = "detected_languages"
+        elif key == "styleInfo":
+            suggest = "style_info"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDocumentaiV1DocumentPageTokenResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3208,18 +3211,21 @@ class GoogleCloudDocumentaiV1DocumentPageTokenResponse(dict):
                  detected_break: 'outputs.GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse',
                  detected_languages: Sequence['outputs.GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse'],
                  layout: 'outputs.GoogleCloudDocumentaiV1DocumentPageLayoutResponse',
-                 provenance: 'outputs.GoogleCloudDocumentaiV1DocumentProvenanceResponse'):
+                 provenance: 'outputs.GoogleCloudDocumentaiV1DocumentProvenanceResponse',
+                 style_info: 'outputs.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse'):
         """
         A detected token.
         :param 'GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse' detected_break: Detected break at the end of a Token.
         :param Sequence['GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse'] detected_languages: A list of detected languages together with confidence.
         :param 'GoogleCloudDocumentaiV1DocumentPageLayoutResponse' layout: Layout for Token.
         :param 'GoogleCloudDocumentaiV1DocumentProvenanceResponse' provenance: The history of this annotation.
+        :param 'GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse' style_info: Text style attributes.
         """
         pulumi.set(__self__, "detected_break", detected_break)
         pulumi.set(__self__, "detected_languages", detected_languages)
         pulumi.set(__self__, "layout", layout)
         pulumi.set(__self__, "provenance", provenance)
+        pulumi.set(__self__, "style_info", style_info)
 
     @property
     @pulumi.getter(name="detectedBreak")
@@ -3252,6 +3258,219 @@ class GoogleCloudDocumentaiV1DocumentPageTokenResponse(dict):
         The history of this annotation.
         """
         return pulumi.get(self, "provenance")
+
+    @property
+    @pulumi.getter(name="styleInfo")
+    def style_info(self) -> 'outputs.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse':
+        """
+        Text style attributes.
+        """
+        return pulumi.get(self, "style_info")
+
+
+@pulumi.output_type
+class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse(dict):
+    """
+    Font and other text style attributes.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "fontSize":
+            suggest = "font_size"
+        elif key == "fontType":
+            suggest = "font_type"
+        elif key == "fontWeight":
+            suggest = "font_weight"
+        elif key == "letterSpacing":
+            suggest = "letter_spacing"
+        elif key == "pixelFontSize":
+            suggest = "pixel_font_size"
+        elif key == "textColor":
+            suggest = "text_color"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: 'outputs.GoogleTypeColorResponse',
+                 bold: bool,
+                 font_size: int,
+                 font_type: str,
+                 font_weight: int,
+                 handwritten: bool,
+                 italic: bool,
+                 letter_spacing: float,
+                 pixel_font_size: float,
+                 smallcaps: bool,
+                 strikeout: bool,
+                 subscript: bool,
+                 superscript: bool,
+                 text_color: 'outputs.GoogleTypeColorResponse',
+                 underlined: bool):
+        """
+        Font and other text style attributes.
+        :param 'GoogleTypeColorResponse' background_color: Color of the background.
+        :param bool bold: Whether the text is bold (equivalent to font_weight is at least `700`).
+        :param int font_size: Font size in points (`1` point is `¹⁄₇₂` inches).
+        :param str font_type: Name or style of the font.
+        :param int font_weight: TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+        :param bool handwritten: Whether the text is handwritten.
+        :param bool italic: Whether the text is italic.
+        :param float letter_spacing: Letter spacing in points.
+        :param float pixel_font_size: Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+        :param bool smallcaps: Whether the text is in small caps.
+        :param bool strikeout: Whether the text is strikethrough.
+        :param bool subscript: Whether the text is a subscript.
+        :param bool superscript: Whether the text is a superscript.
+        :param 'GoogleTypeColorResponse' text_color: Color of the text.
+        :param bool underlined: Whether the text is underlined.
+        """
+        pulumi.set(__self__, "background_color", background_color)
+        pulumi.set(__self__, "bold", bold)
+        pulumi.set(__self__, "font_size", font_size)
+        pulumi.set(__self__, "font_type", font_type)
+        pulumi.set(__self__, "font_weight", font_weight)
+        pulumi.set(__self__, "handwritten", handwritten)
+        pulumi.set(__self__, "italic", italic)
+        pulumi.set(__self__, "letter_spacing", letter_spacing)
+        pulumi.set(__self__, "pixel_font_size", pixel_font_size)
+        pulumi.set(__self__, "smallcaps", smallcaps)
+        pulumi.set(__self__, "strikeout", strikeout)
+        pulumi.set(__self__, "subscript", subscript)
+        pulumi.set(__self__, "superscript", superscript)
+        pulumi.set(__self__, "text_color", text_color)
+        pulumi.set(__self__, "underlined", underlined)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> 'outputs.GoogleTypeColorResponse':
+        """
+        Color of the background.
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter
+    def bold(self) -> bool:
+        """
+        Whether the text is bold (equivalent to font_weight is at least `700`).
+        """
+        return pulumi.get(self, "bold")
+
+    @property
+    @pulumi.getter(name="fontSize")
+    def font_size(self) -> int:
+        """
+        Font size in points (`1` point is `¹⁄₇₂` inches).
+        """
+        return pulumi.get(self, "font_size")
+
+    @property
+    @pulumi.getter(name="fontType")
+    def font_type(self) -> str:
+        """
+        Name or style of the font.
+        """
+        return pulumi.get(self, "font_type")
+
+    @property
+    @pulumi.getter(name="fontWeight")
+    def font_weight(self) -> int:
+        """
+        TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+        """
+        return pulumi.get(self, "font_weight")
+
+    @property
+    @pulumi.getter
+    def handwritten(self) -> bool:
+        """
+        Whether the text is handwritten.
+        """
+        return pulumi.get(self, "handwritten")
+
+    @property
+    @pulumi.getter
+    def italic(self) -> bool:
+        """
+        Whether the text is italic.
+        """
+        return pulumi.get(self, "italic")
+
+    @property
+    @pulumi.getter(name="letterSpacing")
+    def letter_spacing(self) -> float:
+        """
+        Letter spacing in points.
+        """
+        return pulumi.get(self, "letter_spacing")
+
+    @property
+    @pulumi.getter(name="pixelFontSize")
+    def pixel_font_size(self) -> float:
+        """
+        Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+        """
+        return pulumi.get(self, "pixel_font_size")
+
+    @property
+    @pulumi.getter
+    def smallcaps(self) -> bool:
+        """
+        Whether the text is in small caps.
+        """
+        return pulumi.get(self, "smallcaps")
+
+    @property
+    @pulumi.getter
+    def strikeout(self) -> bool:
+        """
+        Whether the text is strikethrough.
+        """
+        return pulumi.get(self, "strikeout")
+
+    @property
+    @pulumi.getter
+    def subscript(self) -> bool:
+        """
+        Whether the text is a subscript.
+        """
+        return pulumi.get(self, "subscript")
+
+    @property
+    @pulumi.getter
+    def superscript(self) -> bool:
+        """
+        Whether the text is a superscript.
+        """
+        return pulumi.get(self, "superscript")
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> 'outputs.GoogleTypeColorResponse':
+        """
+        Color of the text.
+        """
+        return pulumi.get(self, "text_color")
+
+    @property
+    @pulumi.getter
+    def underlined(self) -> bool:
+        """
+        Whether the text is underlined.
+        """
+        return pulumi.get(self, "underlined")
 
 
 @pulumi.output_type
@@ -3448,7 +3667,7 @@ class GoogleCloudDocumentaiV1DocumentResponse(dict):
         :param str text: Optional. UTF-8 encoded text in reading order from the document.
         :param Sequence['GoogleCloudDocumentaiV1DocumentTextChangeResponse'] text_changes: Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         :param Sequence['GoogleCloudDocumentaiV1DocumentStyleResponse'] text_styles: Styles for the Document.text.
-        :param str uri: Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+        :param str uri: Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "entities", entities)
@@ -3555,7 +3774,7 @@ class GoogleCloudDocumentaiV1DocumentResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+        Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
         """
         return pulumi.get(self, "uri")
 

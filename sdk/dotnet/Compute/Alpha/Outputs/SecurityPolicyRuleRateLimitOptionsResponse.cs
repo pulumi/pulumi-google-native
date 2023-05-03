@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string EnforceOnKeyName;
         /// <summary>
-        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly string ExceedAction;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsRpcStatusResponse ExceedActionRpcStatus;
         /// <summary>
-        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse ExceedRedirectOptions;
         /// <summary>

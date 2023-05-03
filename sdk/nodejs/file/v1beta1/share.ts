@@ -39,6 +39,10 @@ export class Share extends pulumi.CustomResource {
     }
 
     /**
+     * Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+     */
+    public readonly backup!: pulumi.Output<string>;
+    /**
      * File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
      */
     public readonly capacityGb!: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class Share extends pulumi.CustomResource {
             if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
+            resourceInputs["backup"] = args ? args.backup : undefined;
             resourceInputs["capacityGb"] = args ? args.capacityGb : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
@@ -108,6 +113,7 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["backup"] = undefined /*out*/;
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export class Share extends pulumi.CustomResource {
  * The set of arguments for constructing a Share resource.
  */
 export interface ShareArgs {
+    /**
+     * Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+     */
+    backup?: pulumi.Input<string>;
     /**
      * File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
      */

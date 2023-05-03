@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 {
 
     /// <summary>
-    /// Overlaid jpeg image.
+    /// Overlaid image.
     /// </summary>
     [OutputType]
     public sealed class ImageResponse
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly Outputs.NormalizedCoordinateResponse Resolution;
         /// <summary>
-        /// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        /// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         /// </summary>
         public readonly string Uri;
 

@@ -67,6 +67,8 @@ type Snapshot struct {
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceDiskEncryptionKey"`
+	// The source disk whose recovery checkpoint will be used to create this snapshot.
+	SourceDiskForRecoveryCheckpoint pulumi.StringOutput `pulumi:"sourceDiskForRecoveryCheckpoint"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
@@ -157,6 +159,8 @@ type snapshotArgs struct {
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKey *CustomerEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
+	// The source disk whose recovery checkpoint will be used to create this snapshot.
+	SourceDiskForRecoveryCheckpoint *string `pulumi:"sourceDiskForRecoveryCheckpoint"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -190,6 +194,8 @@ type SnapshotArgs struct {
 	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKey CustomerEncryptionKeyPtrInput
+	// The source disk whose recovery checkpoint will be used to create this snapshot.
+	SourceDiskForRecoveryCheckpoint pulumi.StringPtrInput
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
 	SourceInstantSnapshot pulumi.StringPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -365,6 +371,11 @@ func (o SnapshotOutput) SourceDisk() pulumi.StringOutput {
 // The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 func (o SnapshotOutput) SourceDiskEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *Snapshot) CustomerEncryptionKeyResponseOutput { return v.SourceDiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The source disk whose recovery checkpoint will be used to create this snapshot.
+func (o SnapshotOutput) SourceDiskForRecoveryCheckpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SourceDiskForRecoveryCheckpoint }).(pulumi.StringOutput)
 }
 
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.

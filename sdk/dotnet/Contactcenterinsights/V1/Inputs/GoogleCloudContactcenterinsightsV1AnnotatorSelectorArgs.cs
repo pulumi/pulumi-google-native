@@ -81,6 +81,18 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         [Input("runSilenceAnnotator")]
         public Input<bool>? RunSilenceAnnotator { get; set; }
 
+        /// <summary>
+        /// Whether to run the summarization annotator.
+        /// </summary>
+        [Input("runSummarizationAnnotator")]
+        public Input<bool>? RunSummarizationAnnotator { get; set; }
+
+        /// <summary>
+        /// Configuration for the summarization annotator.
+        /// </summary>
+        [Input("summarizationConfig")]
+        public Input<Inputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs>? SummarizationConfig { get; set; }
+
         public GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs()
         {
         }

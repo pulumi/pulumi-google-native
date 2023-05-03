@@ -182,7 +182,7 @@ export const DatabaseEncryptionState = {
 } as const;
 
 /**
- * Denotes the state of etcd encryption.
+ * The desired state of etcd encryption.
  */
 export type DatabaseEncryptionState = (typeof DatabaseEncryptionState)[keyof typeof DatabaseEncryptionState];
 

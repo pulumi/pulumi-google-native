@@ -29,6 +29,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> AnalyticsRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        [Output("apiConsumerDataEncryptionKeyName")]
+        public Output<string> ApiConsumerDataEncryptionKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        /// </summary>
+        [Output("apiConsumerDataLocation")]
+        public Output<string> ApiConsumerDataLocation { get; private set; } = null!;
+
+        /// <summary>
         /// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
         /// </summary>
         [Output("apigeeProjectId")]
@@ -57,6 +69,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Output("caCertificate")]
         public Output<string> CaCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        [Output("controlPlaneEncryptionKeyName")]
+        public Output<string> ControlPlaneEncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
         /// Time that the Apigee organization was created in milliseconds since epoch.
@@ -221,6 +239,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("analyticsRegion", required: true)]
         public Input<string> AnalyticsRegion { get; set; } = null!;
 
+        /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        [Input("apiConsumerDataEncryptionKeyName")]
+        public Input<string>? ApiConsumerDataEncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        /// </summary>
+        [Input("apiConsumerDataLocation")]
+        public Input<string>? ApiConsumerDataLocation { get; set; }
+
         [Input("attributes")]
         private InputList<string>? _attributes;
 
@@ -244,6 +274,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("billingType")]
         public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationBillingType>? BillingType { get; set; }
+
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        [Input("controlPlaneEncryptionKeyName")]
+        public Input<string>? ControlPlaneEncryptionKeyName { get; set; }
 
         /// <summary>
         /// Not used by Apigee.

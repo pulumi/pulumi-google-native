@@ -84,6 +84,12 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         public Output<ImmutableArray<string>> RuleVersions { get; private set; } = null!;
 
         /// <summary>
+        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// </summary>
+        [Output("schedule")]
+        public Output<string> Schedule { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] Update time stamp
         /// </summary>
         [Output("updateTime")]
@@ -199,6 +205,12 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
             get => _ruleNames ?? (_ruleNames = new InputList<string>());
             set => _ruleNames = value;
         }
+
+        /// <summary>
+        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// </summary>
+        [Input("schedule")]
+        public Input<string>? Schedule { get; set; }
 
         public EvaluationArgs()
         {

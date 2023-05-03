@@ -18,14 +18,14 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Inputs
         /// <summary>
         /// Name of the group.
         /// </summary>
-        [Input("group")]
-        public Input<string>? Group { get; set; }
+        [Input("group", required: true)]
+        public Input<string> Group { get; set; } = null!;
 
         /// <summary>
         /// Name of the Preference Set.
         /// </summary>
-        [Input("preferenceSet")]
-        public Input<string>? PreferenceSet { get; set; }
+        [Input("preferenceSet", required: true)]
+        public Input<string> PreferenceSet { get; set; } = null!;
 
         public ReportConfigGroupPreferenceSetAssignmentArgs()
         {

@@ -46,7 +46,7 @@ export interface GetWorkforcePoolKeyResult {
      */
     readonly state: string;
     /**
-     * Immutable. The purpose of the key.
+     * The purpose of the key.
      */
     readonly use: string;
 }

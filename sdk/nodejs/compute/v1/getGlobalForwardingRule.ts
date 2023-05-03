@@ -34,6 +34,10 @@ export interface GetGlobalForwardingRuleResult {
      */
     readonly allowGlobalAccess: boolean;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    readonly allowPscGlobalAccess: boolean;
+    /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */
     readonly backendService: string;
@@ -94,7 +98,7 @@ export interface GetGlobalForwardingRuleResult {
      */
     readonly name: string;
     /**
-     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
      */
     readonly network: string;
     /**

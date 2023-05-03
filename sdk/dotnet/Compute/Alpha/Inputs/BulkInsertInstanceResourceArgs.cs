@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Count { get; set; }
 
         /// <summary>
-        /// DEPRECATED: Please use instance_properties instead.
-        /// </summary>
-        [Input("instance")]
-        public Input<Inputs.InstanceArgs>? Instance { get; set; }
-
-        /// <summary>
         /// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
         /// </summary>
         [Input("instanceProperties")]

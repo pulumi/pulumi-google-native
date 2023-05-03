@@ -58,9 +58,9 @@ export interface GetFhirStoreResult {
      */
     readonly name: string;
     /**
-     * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+     * Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      *
-     * @deprecated If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+     * @deprecated Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     readonly notificationConfig: outputs.healthcare.v1beta1.NotificationConfigResponse;
     /**

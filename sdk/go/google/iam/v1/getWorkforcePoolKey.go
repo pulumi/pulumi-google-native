@@ -36,7 +36,7 @@ type LookupWorkforcePoolKeyResult struct {
 	Name string `pulumi:"name"`
 	// The state of the key.
 	State string `pulumi:"state"`
-	// Immutable. The purpose of the key.
+	// The purpose of the key.
 	Use string `pulumi:"use"`
 }
 
@@ -98,7 +98,7 @@ func (o LookupWorkforcePoolKeyResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolKeyResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Immutable. The purpose of the key.
+// The purpose of the key.
 func (o LookupWorkforcePoolKeyResultOutput) Use() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolKeyResult) string { return v.Use }).(pulumi.StringOutput)
 }

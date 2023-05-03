@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Inputs.GoogleCloudRunV2HTTPGetActionArgs>? HttpGet { get; set; }
 
         /// <summary>
-        /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         /// </summary>
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Inputs.GoogleCloudRunV2TCPSocketActionArgs>? TcpSocket { get; set; }
 
         /// <summary>
-        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

@@ -33,10 +33,6 @@ export interface GetModelResult {
      */
     readonly dataset: string;
     /**
-     * Timestamp when the model training finished and ready to be used for translation.
-     */
-    readonly deployTime: string;
-    /**
      * The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
      */
     readonly displayName: string;

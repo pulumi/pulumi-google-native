@@ -61,6 +61,51 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
     }
 
     /// <summary>
+    /// Detailed error message if Ekm provisioning fails
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping : IEquatable<GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Error is unspecified.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping EkmProvisioningErrorMappingUnspecified { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED");
+        /// <summary>
+        /// Service account is used is invalid.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping InvalidServiceAccount { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("INVALID_SERVICE_ACCOUNT");
+        /// <summary>
+        /// Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping MissingMetricsScopeAdminPermission { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("MISSING_METRICS_SCOPE_ADMIN_PERMISSION");
+        /// <summary>
+        /// Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping MissingEkmConnectionAdminPermission { get; } = new GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("MISSING_EKM_CONNECTION_ADMIN_PERMISSION");
+
+        public static bool operator ==(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping left, GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping other && Equals(other);
+        public bool Equals(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indicates Ekm enrollment Provisioning of a given workload.
     /// </summary>
     [EnumType]
@@ -269,6 +314,14 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// Enum representing T_SYSTEM (TSI) partner.
         /// </summary>
         public static WorkloadPartner SovereignControlsByTSystems { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS");
+        /// <summary>
+        /// Enum representing SIA_MINSAIT (Indra) partner.
+        /// </summary>
+        public static WorkloadPartner SovereignControlsBySiaMinsait { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_SIA_MINSAIT");
+        /// <summary>
+        /// Enum representing PSN (TIM) partner.
+        /// </summary>
+        public static WorkloadPartner SovereignControlsByPsn { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_PSN");
 
         public static bool operator ==(WorkloadPartner left, WorkloadPartner right) => left.Equals(right);
         public static bool operator !=(WorkloadPartner left, WorkloadPartner right) => !left.Equals(right);

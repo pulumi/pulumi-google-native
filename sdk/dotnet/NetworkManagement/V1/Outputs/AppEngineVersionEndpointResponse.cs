@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 {
 
     /// <summary>
-    /// Wrapper for app engine service version attributes.
+    /// Wrapper for the App Engine service version attributes.
     /// </summary>
     [OutputType]
     public sealed class AppEngineVersionEndpointResponse

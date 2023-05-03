@@ -84,6 +84,9 @@ export class ReportConfig extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.groupPreferencesetAssignments === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupPreferencesetAssignments'");
+            }
             if ((!args || args.reportConfigId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reportConfigId'");
             }
@@ -131,7 +134,7 @@ export interface ReportConfigArgs {
     /**
      * Collection of combinations of groups and preference sets.
      */
-    groupPreferencesetAssignments?: pulumi.Input<pulumi.Input<inputs.migrationcenter.v1alpha1.ReportConfigGroupPreferenceSetAssignmentArgs>[]>;
+    groupPreferencesetAssignments: pulumi.Input<pulumi.Input<inputs.migrationcenter.v1alpha1.ReportConfigGroupPreferenceSetAssignmentArgs>[]>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

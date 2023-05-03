@@ -4937,6 +4937,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
+        public static RegionCommitmentType GraphicsOptimized { get; } = new RegionCommitmentType("GRAPHICS_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
@@ -5889,6 +5890,51 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct RouterNatAutoNetworkTier : IEquatable<RouterNatAutoNetworkTier>
+    {
+        private readonly string _value;
+
+        private RouterNatAutoNetworkTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Public internet quality with fixed bandwidth.
+        /// </summary>
+        public static RouterNatAutoNetworkTier FixedStandard { get; } = new RouterNatAutoNetworkTier("FIXED_STANDARD");
+        /// <summary>
+        /// High quality, Google-grade network tier, support for all networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Premium { get; } = new RouterNatAutoNetworkTier("PREMIUM");
+        /// <summary>
+        /// Public internet quality, only limited support for other networking products.
+        /// </summary>
+        public static RouterNatAutoNetworkTier Standard { get; } = new RouterNatAutoNetworkTier("STANDARD");
+        /// <summary>
+        /// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+        /// </summary>
+        public static RouterNatAutoNetworkTier StandardOverridesFixedStandard { get; } = new RouterNatAutoNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD");
+
+        public static bool operator ==(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => left.Equals(right);
+        public static bool operator !=(RouterNatAutoNetworkTier left, RouterNatAutoNetworkTier right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatAutoNetworkTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatAutoNetworkTier other && Equals(other);
+        public bool Equals(RouterNatAutoNetworkTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct RouterNatEndpointTypesItem : IEquatable<RouterNatEndpointTypesItem>
     {
@@ -6392,7 +6438,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility : IEquatable<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>
@@ -7592,6 +7638,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TargetTcpProxyProxyHeader other && Equals(other);
         public bool Equals(TargetTcpProxyProxyHeader other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct VpnGatewayGatewayIpVersion : IEquatable<VpnGatewayGatewayIpVersion>
+    {
+        private readonly string _value;
+
+        private VpnGatewayGatewayIpVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Every HA-VPN gateway interface is configured with an IPv4 address.
+        /// </summary>
+        public static VpnGatewayGatewayIpVersion Ipv4 { get; } = new VpnGatewayGatewayIpVersion("IPV4");
+        /// <summary>
+        /// Every HA-VPN gateway interface is configured with an IPv6 address.
+        /// </summary>
+        public static VpnGatewayGatewayIpVersion Ipv6 { get; } = new VpnGatewayGatewayIpVersion("IPV6");
+
+        public static bool operator ==(VpnGatewayGatewayIpVersion left, VpnGatewayGatewayIpVersion right) => left.Equals(right);
+        public static bool operator !=(VpnGatewayGatewayIpVersion left, VpnGatewayGatewayIpVersion right) => !left.Equals(right);
+
+        public static explicit operator string(VpnGatewayGatewayIpVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VpnGatewayGatewayIpVersion other && Equals(other);
+        public bool Equals(VpnGatewayGatewayIpVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

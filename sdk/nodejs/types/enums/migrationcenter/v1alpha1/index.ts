@@ -114,7 +114,7 @@ export const ImportDataFileFormat = {
 } as const;
 
 /**
- * The payload format.
+ * Required. The payload format.
  */
 export type ImportDataFileFormat = (typeof ImportDataFileFormat)[keyof typeof ImportDataFileFormat];
 

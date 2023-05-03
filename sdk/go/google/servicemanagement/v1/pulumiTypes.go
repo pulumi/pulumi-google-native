@@ -10842,7 +10842,7 @@ type Publishing struct {
 	LibrarySettings []ClientLibrarySettings `pulumi:"librarySettings"`
 	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
 	MethodSettings []MethodSettings `pulumi:"methodSettings"`
-	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 	NewIssueUri *string `pulumi:"newIssueUri"`
 	// For whom the client library is being published.
 	Organization *PublishingOrganization `pulumi:"organization"`
@@ -10877,7 +10877,7 @@ type PublishingArgs struct {
 	LibrarySettings ClientLibrarySettingsArrayInput `pulumi:"librarySettings"`
 	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
 	MethodSettings MethodSettingsArrayInput `pulumi:"methodSettings"`
-	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 	NewIssueUri pulumi.StringPtrInput `pulumi:"newIssueUri"`
 	// For whom the client library is being published.
 	Organization PublishingOrganizationPtrInput `pulumi:"organization"`
@@ -10998,7 +10998,7 @@ func (o PublishingOutput) MethodSettings() MethodSettingsArrayOutput {
 	return o.ApplyT(func(v Publishing) []MethodSettings { return v.MethodSettings }).(MethodSettingsArrayOutput)
 }
 
-// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 func (o PublishingOutput) NewIssueUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Publishing) *string { return v.NewIssueUri }).(pulumi.StringPtrOutput)
 }
@@ -11107,7 +11107,7 @@ func (o PublishingPtrOutput) MethodSettings() MethodSettingsArrayOutput {
 	}).(MethodSettingsArrayOutput)
 }
 
-// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 func (o PublishingPtrOutput) NewIssueUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Publishing) *string {
 		if v == nil {
@@ -11153,7 +11153,7 @@ type PublishingResponse struct {
 	LibrarySettings []ClientLibrarySettingsResponse `pulumi:"librarySettings"`
 	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
 	MethodSettings []MethodSettingsResponse `pulumi:"methodSettings"`
-	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 	NewIssueUri string `pulumi:"newIssueUri"`
 	// For whom the client library is being published.
 	Organization string `pulumi:"organization"`
@@ -11211,7 +11211,7 @@ func (o PublishingResponseOutput) MethodSettings() MethodSettingsResponseArrayOu
 	return o.ApplyT(func(v PublishingResponse) []MethodSettingsResponse { return v.MethodSettings }).(MethodSettingsResponseArrayOutput)
 }
 
-// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+// Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
 func (o PublishingResponseOutput) NewIssueUri() pulumi.StringOutput {
 	return o.ApplyT(func(v PublishingResponse) string { return v.NewIssueUri }).(pulumi.StringOutput)
 }

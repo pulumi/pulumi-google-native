@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+        /// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+        /// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

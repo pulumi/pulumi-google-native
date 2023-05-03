@@ -16,7 +16,7 @@ import (
 type ProjectBigQueryExport struct {
 	pulumi.CustomResourceState
 
-	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
 	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -84,7 +84,7 @@ func (ProjectBigQueryExportState) ElementType() reflect.Type {
 }
 
 type projectBigQueryExportArgs struct {
-	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	BigQueryExportId string `pulumi:"bigQueryExportId"`
 	// The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset *string `pulumi:"dataset"`
@@ -99,7 +99,7 @@ type projectBigQueryExportArgs struct {
 
 // The set of arguments for constructing a ProjectBigQueryExport resource.
 type ProjectBigQueryExportArgs struct {
-	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+	// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 	BigQueryExportId pulumi.StringInput
 	// The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrInput
@@ -149,7 +149,7 @@ func (o ProjectBigQueryExportOutput) ToProjectBigQueryExportOutputWithContext(ct
 	return o
 }
 
-// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
 func (o ProjectBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
 }

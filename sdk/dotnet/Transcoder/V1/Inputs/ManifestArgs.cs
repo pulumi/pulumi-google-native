@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         }
 
         /// <summary>
-        /// Type of the manifest, can be `HLS` or `DASH`.
+        /// Type of the manifest.
         /// </summary>
         [Input("type", required: true)]
         public Input<Pulumi.GoogleNative.Transcoder.V1.ManifestType> Type { get; set; } = null!;

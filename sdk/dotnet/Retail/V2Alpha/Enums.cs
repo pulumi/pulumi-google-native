@@ -84,6 +84,47 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     }
 
     /// <summary>
+    /// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType : IEquatable<GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified default value, should never be explicitly set. Defaults to MULTIPLE_CONTEXT_PRODUCTS.
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType ContextProductsTypeUnspecified { get; } = new GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType("CONTEXT_PRODUCTS_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Use only a single product as context for the recommendation. Typically used on pages like add-to-cart or product details.
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType SingleContextProduct { get; } = new GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType("SINGLE_CONTEXT_PRODUCT");
+        /// <summary>
+        /// Use one or multiple products as context for the recommendation. Typically used on shopping cart pages.
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType MultipleContextProducts { get; } = new GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType("MULTIPLE_CONTEXT_PRODUCTS");
+
+        public static bool operator ==(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType left, GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType left, GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType other && Equals(other);
+        public bool Equals(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
     /// </summary>
     [EnumType]

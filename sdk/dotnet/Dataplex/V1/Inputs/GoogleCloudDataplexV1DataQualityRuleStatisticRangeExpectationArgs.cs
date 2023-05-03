@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         [Input("minValue")]
         public Input<string>? MinValue { get; set; }
 
+        /// <summary>
+        /// The aggregate metric to evaluate.
+        /// </summary>
         [Input("statistic")]
         public Input<Pulumi.GoogleNative.Dataplex.V1.GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic>? Statistic { get; set; }
 

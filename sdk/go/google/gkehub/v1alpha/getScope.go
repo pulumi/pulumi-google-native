@@ -27,6 +27,8 @@ type LookupScopeArgs struct {
 }
 
 type LookupScopeResult struct {
+	// If true, all Memberships in the Fleet bind to this Scope.
+	AllMemberships bool `pulumi:"allMemberships"`
 	// When the scope was created.
 	CreateTime string `pulumi:"createTime"`
 	// When the scope was deleted.
@@ -76,6 +78,11 @@ func (o LookupScopeResultOutput) ToLookupScopeResultOutput() LookupScopeResultOu
 
 func (o LookupScopeResultOutput) ToLookupScopeResultOutputWithContext(ctx context.Context) LookupScopeResultOutput {
 	return o
+}
+
+// If true, all Memberships in the Fleet bind to this Scope.
+func (o LookupScopeResultOutput) AllMemberships() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScopeResult) bool { return v.AllMemberships }).(pulumi.BoolOutput)
 }
 
 // When the scope was created.

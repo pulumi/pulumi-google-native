@@ -192,6 +192,10 @@ export const InstanceDatabaseVersion = {
      */
     Postgres14: "POSTGRES_14",
     /**
+     * The database version is PostgreSQL 15.
+     */
+    Postgres15: "POSTGRES_15",
+    /**
      * The database version is MySQL 8.
      */
     Mysql80: "MYSQL_8_0",
@@ -227,6 +231,22 @@ export const InstanceDatabaseVersion = {
      * The database major version is MySQL 8.0 and the minor version is 32.
      */
     Mysql8032: "MYSQL_8_0_32",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 33.
+     */
+    Mysql8033: "MYSQL_8_0_33",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 34.
+     */
+    Mysql8034: "MYSQL_8_0_34",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 35.
+     */
+    Mysql8035: "MYSQL_8_0_35",
+    /**
+     * The database major version is MySQL 8.0 and the minor version is 36.
+     */
+    Mysql8036: "MYSQL_8_0_36",
     /**
      * The database version is SQL Server 2019 Standard.
      */

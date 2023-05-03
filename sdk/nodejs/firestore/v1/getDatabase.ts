@@ -31,9 +31,13 @@ export interface GetDatabaseResult {
      */
     readonly concurrencyMode: string;
     /**
-     * The timestamp at which this database was created.
+     * The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
      */
     readonly createTime: string;
+    /**
+     * State of delete protection for the database.
+     */
+    readonly deleteProtectionState: string;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */

@@ -85,6 +85,9 @@ export class ImportDataFile extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.format === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'format'");
+            }
             if ((!args || args.importDataFileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importDataFileId'");
             }
@@ -133,7 +136,7 @@ export interface ImportDataFileArgs {
     /**
      * The payload format.
      */
-    format?: pulumi.Input<enums.migrationcenter.v1alpha1.ImportDataFileFormat>;
+    format: pulumi.Input<enums.migrationcenter.v1alpha1.ImportDataFileFormat>;
     /**
      * Required. The ID of the new data file.
      */

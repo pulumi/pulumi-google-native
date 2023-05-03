@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntitlementResult:
-    def __init__(__self__, association_info=None, commitment_settings=None, create_time=None, name=None, offer=None, parameters=None, provisioned_service=None, provisioning_state=None, purchase_order_id=None, suspension_reasons=None, trial_settings=None, update_time=None):
+    def __init__(__self__, association_info=None, billing_account=None, commitment_settings=None, create_time=None, name=None, offer=None, parameters=None, provisioned_service=None, provisioning_state=None, purchase_order_id=None, suspension_reasons=None, trial_settings=None, update_time=None):
         if association_info and not isinstance(association_info, dict):
             raise TypeError("Expected argument 'association_info' to be a dict")
         pulumi.set(__self__, "association_info", association_info)
+        if billing_account and not isinstance(billing_account, str):
+            raise TypeError("Expected argument 'billing_account' to be a str")
+        pulumi.set(__self__, "billing_account", billing_account)
         if commitment_settings and not isinstance(commitment_settings, dict):
             raise TypeError("Expected argument 'commitment_settings' to be a dict")
         pulumi.set(__self__, "commitment_settings", commitment_settings)
@@ -64,6 +67,14 @@ class GetEntitlementResult:
         Association information to other entitlements.
         """
         return pulumi.get(self, "association_info")
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> str:
+        """
+        Optional. The billing account resource name that is used to pay for this entitlement.
+        """
+        return pulumi.get(self, "billing_account")
 
     @property
     @pulumi.getter(name="commitmentSettings")
@@ -161,6 +172,7 @@ class AwaitableGetEntitlementResult(GetEntitlementResult):
             yield self
         return GetEntitlementResult(
             association_info=self.association_info,
+            billing_account=self.billing_account,
             commitment_settings=self.commitment_settings,
             create_time=self.create_time,
             name=self.name,
@@ -190,6 +202,7 @@ def get_entitlement(account_id: Optional[str] = None,
 
     return AwaitableGetEntitlementResult(
         association_info=__ret__.association_info,
+        billing_account=__ret__.billing_account,
         commitment_settings=__ret__.commitment_settings,
         create_time=__ret__.create_time,
         name=__ret__.name,

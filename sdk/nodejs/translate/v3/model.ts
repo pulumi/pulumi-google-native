@@ -43,10 +43,6 @@ export class Model extends pulumi.CustomResource {
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
-     * Timestamp when the model training finished and ready to be used for translation.
-     */
-    public /*out*/ readonly deployTime!: pulumi.Output<string>;
-    /**
      * The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -98,7 +94,6 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["deployTime"] = undefined /*out*/;
             resourceInputs["sourceLanguageCode"] = undefined /*out*/;
             resourceInputs["targetLanguageCode"] = undefined /*out*/;
             resourceInputs["testExampleCount"] = undefined /*out*/;
@@ -108,7 +103,6 @@ export class Model extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataset"] = undefined /*out*/;
-            resourceInputs["deployTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

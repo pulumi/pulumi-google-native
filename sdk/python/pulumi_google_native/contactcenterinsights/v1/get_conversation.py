@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConversationResult:
-    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, medium=None, name=None, obfuscated_user_id=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
+    def __init__(__self__, agent_id=None, call_metadata=None, create_time=None, data_source=None, dialogflow_intents=None, duration=None, expire_time=None, labels=None, language_code=None, latest_analysis=None, latest_summary=None, medium=None, name=None, obfuscated_user_id=None, runtime_annotations=None, start_time=None, transcript=None, ttl=None, turn_count=None, update_time=None):
         if agent_id and not isinstance(agent_id, str):
             raise TypeError("Expected argument 'agent_id' to be a str")
         pulumi.set(__self__, "agent_id", agent_id)
@@ -50,6 +50,9 @@ class GetConversationResult:
         if latest_analysis and not isinstance(latest_analysis, dict):
             raise TypeError("Expected argument 'latest_analysis' to be a dict")
         pulumi.set(__self__, "latest_analysis", latest_analysis)
+        if latest_summary and not isinstance(latest_summary, dict):
+            raise TypeError("Expected argument 'latest_summary' to be a dict")
+        pulumi.set(__self__, "latest_summary", latest_summary)
         if medium and not isinstance(medium, str):
             raise TypeError("Expected argument 'medium' to be a str")
         pulumi.set(__self__, "medium", medium)
@@ -159,6 +162,14 @@ class GetConversationResult:
         return pulumi.get(self, "latest_analysis")
 
     @property
+    @pulumi.getter(name="latestSummary")
+    def latest_summary(self) -> 'outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse':
+        """
+        Latest summary of the conversation.
+        """
+        return pulumi.get(self, "latest_summary")
+
+    @property
     @pulumi.getter
     def medium(self) -> str:
         """
@@ -247,6 +258,7 @@ class AwaitableGetConversationResult(GetConversationResult):
             labels=self.labels,
             language_code=self.language_code,
             latest_analysis=self.latest_analysis,
+            latest_summary=self.latest_summary,
             medium=self.medium,
             name=self.name,
             obfuscated_user_id=self.obfuscated_user_id,
@@ -285,6 +297,7 @@ def get_conversation(conversation_id: Optional[str] = None,
         labels=__ret__.labels,
         language_code=__ret__.language_code,
         latest_analysis=__ret__.latest_analysis,
+        latest_summary=__ret__.latest_summary,
         medium=__ret__.medium,
         name=__ret__.name,
         obfuscated_user_id=__ret__.obfuscated_user_id,

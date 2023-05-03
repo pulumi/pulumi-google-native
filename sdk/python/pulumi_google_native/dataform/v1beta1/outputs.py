@@ -13,8 +13,6 @@ from . import outputs
 __all__ = [
     'BindingResponse',
     'CodeCompilationConfigResponse',
-    'CommitAuthorResponse',
-    'CommitMetadataResponse',
     'CompilationErrorResponse',
     'ExprResponse',
     'GitRemoteSettingsResponse',
@@ -197,106 +195,6 @@ class CodeCompilationConfigResponse(dict):
         Optional. User-defined variables that are made available to project code during compilation.
         """
         return pulumi.get(self, "vars")
-
-
-@pulumi.output_type
-class CommitAuthorResponse(dict):
-    """
-    Represents the author of a Git commit.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "emailAddress":
-            suggest = "email_address"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommitAuthorResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommitAuthorResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommitAuthorResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 email_address: str,
-                 name: str):
-        """
-        Represents the author of a Git commit.
-        :param str email_address: The commit author's email address.
-        :param str name: The commit author's name.
-        """
-        pulumi.set(__self__, "email_address", email_address)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="emailAddress")
-    def email_address(self) -> str:
-        """
-        The commit author's email address.
-        """
-        return pulumi.get(self, "email_address")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The commit author's name.
-        """
-        return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class CommitMetadataResponse(dict):
-    """
-    Represents a Dataform Git commit.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "commitMessage":
-            suggest = "commit_message"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CommitMetadataResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CommitMetadataResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CommitMetadataResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 author: 'outputs.CommitAuthorResponse',
-                 commit_message: str):
-        """
-        Represents a Dataform Git commit.
-        :param 'CommitAuthorResponse' author: The commit's author.
-        :param str commit_message: Optional. The commit's message.
-        """
-        pulumi.set(__self__, "author", author)
-        pulumi.set(__self__, "commit_message", commit_message)
-
-    @property
-    @pulumi.getter
-    def author(self) -> 'outputs.CommitAuthorResponse':
-        """
-        The commit's author.
-        """
-        return pulumi.get(self, "author")
-
-    @property
-    @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> str:
-        """
-        Optional. The commit's message.
-        """
-        return pulumi.get(self, "commit_message")
 
 
 @pulumi.output_type

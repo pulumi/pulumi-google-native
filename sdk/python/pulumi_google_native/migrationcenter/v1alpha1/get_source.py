@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSourceResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, is_managed=None, name=None, pending_frame_count=None, priority=None, type=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, is_managed=None, name=None, pending_frame_count=None, priority=None, state=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +40,9 @@ class GetSourceResult:
         if priority and not isinstance(priority, int):
             raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -105,6 +108,14 @@ class GetSourceResult:
 
     @property
     @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the source.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
     def type(self) -> str:
         """
         Data source type.
@@ -133,6 +144,7 @@ class AwaitableGetSourceResult(GetSourceResult):
             name=self.name,
             pending_frame_count=self.pending_frame_count,
             priority=self.priority,
+            state=self.state,
             type=self.type,
             update_time=self.update_time)
 
@@ -159,6 +171,7 @@ def get_source(location: Optional[str] = None,
         name=__ret__.name,
         pending_frame_count=__ret__.pending_frame_count,
         priority=__ret__.priority,
+        state=__ret__.state,
         type=__ret__.type,
         update_time=__ret__.update_time)
 

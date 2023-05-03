@@ -222,10 +222,14 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfig struct {
+	// Name for pod secondary ipv4 range which has the actual range defined ahead.
+	PodRangeNames []string `pulumi:"podRangeNames"`
 }
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfigResponse struct {
+	// Name for pod secondary ipv4 range which has the actual range defined ahead.
+	PodRangeNames []string `pulumi:"podRangeNames"`
 }
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
@@ -243,6 +247,11 @@ func (o AdditionalPodRangesConfigResponseOutput) ToAdditionalPodRangesConfigResp
 	return o
 }
 
+// Name for pod secondary ipv4 range which has the actual range defined ahead.
+func (o AdditionalPodRangesConfigResponseOutput) PodRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AdditionalPodRangesConfigResponse) []string { return v.PodRangeNames }).(pulumi.StringArrayOutput)
+}
+
 // Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
 type AddonsConfig struct {
 	// Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
@@ -255,6 +264,8 @@ type AddonsConfig struct {
 	GcePersistentDiskCsiDriverConfig *GcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig *GcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig *GcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig *GkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -294,6 +305,8 @@ type AddonsConfigArgs struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig GcsFuseCsiDriverConfigPtrInput `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig GkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -413,6 +426,11 @@ func (o AddonsConfigOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverC
 	return o.ApplyT(func(v AddonsConfig) *GcpFilestoreCsiDriverConfig { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v AddonsConfig) *GcsFuseCsiDriverConfig { return v.GcsFuseCsiDriverConfig }).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the Backup for GKE agent addon.
 func (o AddonsConfigOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v AddonsConfig) *GkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(GkeBackupAgentConfigPtrOutput)
@@ -522,6 +540,16 @@ func (o AddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriv
 	}).(GcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigPtrOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *AddonsConfig) *GcsFuseCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcsFuseCsiDriverConfig
+	}).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
 // Configuration for the Backup for GKE agent addon.
 func (o AddonsConfigPtrOutput) GkeBackupAgentConfig() GkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) *GkeBackupAgentConfig {
@@ -604,6 +632,8 @@ type AddonsConfigResponse struct {
 	GcePersistentDiskCsiDriverConfig GcePersistentDiskCsiDriverConfigResponse `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// Configuration for the GCP Filestore CSI driver.
 	GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfigResponse `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// Configuration for the Cloud Storage Fuse CSI driver.
+	GcsFuseCsiDriverConfig GcsFuseCsiDriverConfigResponse `pulumi:"gcsFuseCsiDriverConfig"`
 	// Configuration for the Backup for GKE agent addon.
 	GkeBackupAgentConfig GkeBackupAgentConfigResponse `pulumi:"gkeBackupAgentConfig"`
 	// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
@@ -660,6 +690,11 @@ func (o AddonsConfigResponseOutput) GcePersistentDiskCsiDriverConfig() GcePersis
 // Configuration for the GCP Filestore CSI driver.
 func (o AddonsConfigResponseOutput) GcpFilestoreCsiDriverConfig() GcpFilestoreCsiDriverConfigResponseOutput {
 	return o.ApplyT(func(v AddonsConfigResponse) GcpFilestoreCsiDriverConfigResponse { return v.GcpFilestoreCsiDriverConfig }).(GcpFilestoreCsiDriverConfigResponseOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+func (o AddonsConfigResponseOutput) GcsFuseCsiDriverConfig() GcsFuseCsiDriverConfigResponseOutput {
+	return o.ApplyT(func(v AddonsConfigResponse) GcsFuseCsiDriverConfigResponse { return v.GcsFuseCsiDriverConfig }).(GcsFuseCsiDriverConfigResponseOutput)
 }
 
 // Configuration for the Backup for GKE agent addon.
@@ -4579,7 +4614,7 @@ func (o DailyMaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 type DatabaseEncryption struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName *string `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State *DatabaseEncryptionState `pulumi:"state"`
 }
 
@@ -4598,7 +4633,7 @@ type DatabaseEncryptionInput interface {
 type DatabaseEncryptionArgs struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State DatabaseEncryptionStatePtrInput `pulumi:"state"`
 }
 
@@ -4685,7 +4720,7 @@ func (o DatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionOutput) State() DatabaseEncryptionStatePtrOutput {
 	return o.ApplyT(func(v DatabaseEncryption) *DatabaseEncryptionState { return v.State }).(DatabaseEncryptionStatePtrOutput)
 }
@@ -4724,7 +4759,7 @@ func (o DatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
 	return o.ApplyT(func(v *DatabaseEncryption) *DatabaseEncryptionState {
 		if v == nil {
@@ -4738,7 +4773,7 @@ func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
 type DatabaseEncryptionResponse struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName string `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State string `pulumi:"state"`
 }
 
@@ -4762,7 +4797,7 @@ func (o DatabaseEncryptionResponseOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.State }).(pulumi.StringOutput)
 }
@@ -6797,6 +6832,172 @@ func (o GcpFilestoreCsiDriverConfigResponseOutput) ToGcpFilestoreCsiDriverConfig
 // Whether the GCP Filestore CSI driver is enabled for this cluster.
 func (o GcpFilestoreCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GcpFilestoreCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfig struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GcsFuseCsiDriverConfigInput is an input type that accepts GcsFuseCsiDriverConfigArgs and GcsFuseCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GcsFuseCsiDriverConfigInput` via:
+//
+//	GcsFuseCsiDriverConfigArgs{...}
+type GcsFuseCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput
+	ToGcsFuseCsiDriverConfigOutputWithContext(context.Context) GcsFuseCsiDriverConfigOutput
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigArgs struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GcsFuseCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput {
+	return i.ToGcsFuseCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigOutput)
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return i.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GcsFuseCsiDriverConfigArgs) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigOutput).ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// GcsFuseCsiDriverConfigPtrInput is an input type that accepts GcsFuseCsiDriverConfigArgs, GcsFuseCsiDriverConfigPtr and GcsFuseCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `GcsFuseCsiDriverConfigPtrInput` via:
+//
+//	        GcsFuseCsiDriverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcsFuseCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput
+	ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Context) GcsFuseCsiDriverConfigPtrOutput
+}
+
+type gcsFuseCsiDriverConfigPtrType GcsFuseCsiDriverConfigArgs
+
+func GcsFuseCsiDriverConfigPtr(v *GcsFuseCsiDriverConfigArgs) GcsFuseCsiDriverConfigPtrInput {
+	return (*gcsFuseCsiDriverConfigPtrType)(v)
+}
+
+func (*gcsFuseCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *gcsFuseCsiDriverConfigPtrType) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return i.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gcsFuseCsiDriverConfigPtrType) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigOutput() GcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return o.ToGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GcsFuseCsiDriverConfigOutput) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsFuseCsiDriverConfig) *GcsFuseCsiDriverConfig {
+		return &v
+	}).(GcsFuseCsiDriverConfigPtrOutput)
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GcsFuseCsiDriverConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GcsFuseCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) ToGcsFuseCsiDriverConfigPtrOutput() GcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) ToGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigPtrOutput) Elem() GcsFuseCsiDriverConfigOutput {
+	return o.ApplyT(func(v *GcsFuseCsiDriverConfig) GcsFuseCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GcsFuseCsiDriverConfig
+		return ret
+	}).(GcsFuseCsiDriverConfigOutput)
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcsFuseCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigResponse struct {
+	// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for the Cloud Storage Fuse CSI driver.
+type GcsFuseCsiDriverConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GcsFuseCsiDriverConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsFuseCsiDriverConfigResponse)(nil)).Elem()
+}
+
+func (o GcsFuseCsiDriverConfigResponseOutput) ToGcsFuseCsiDriverConfigResponseOutput() GcsFuseCsiDriverConfigResponseOutput {
+	return o
+}
+
+func (o GcsFuseCsiDriverConfigResponseOutput) ToGcsFuseCsiDriverConfigResponseOutputWithContext(ctx context.Context) GcsFuseCsiDriverConfigResponseOutput {
+	return o
+}
+
+// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+func (o GcsFuseCsiDriverConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GcsFuseCsiDriverConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Configuration for the Backup for GKE Agent.
@@ -22065,6 +22266,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigPtrInput)(nil)).Elem(), GcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), GcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsFuseCsiDriverConfigInput)(nil)).Elem(), GcsFuseCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsFuseCsiDriverConfigPtrInput)(nil)).Elem(), GcsFuseCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeBackupAgentConfigPtrInput)(nil)).Elem(), GkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HorizontalPodAutoscalingInput)(nil)).Elem(), HorizontalPodAutoscalingArgs{})
@@ -22315,6 +22518,9 @@ func init() {
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcpFilestoreCsiDriverConfigResponseOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(GcsFuseCsiDriverConfigResponseOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GkeBackupAgentConfigResponseOutput{})

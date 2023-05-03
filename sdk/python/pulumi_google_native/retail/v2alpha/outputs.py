@@ -21,6 +21,8 @@ __all__ = [
     'GoogleCloudRetailV2alphaImageResponse',
     'GoogleCloudRetailV2alphaIntervalResponse',
     'GoogleCloudRetailV2alphaLocalInventoryResponse',
+    'GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse',
+    'GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse',
     'GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateResponse',
     'GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse',
     'GoogleCloudRetailV2alphaModelPageOptimizationConfigResponse',
@@ -541,6 +543,84 @@ class GoogleCloudRetailV2alphaLocalInventoryResponse(dict):
         Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
         """
         return pulumi.get(self, "price_info")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse(dict):
+    """
+    More configs of the frequently-bought-together model type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextProductsType":
+            suggest = "context_products_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_products_type: str):
+        """
+        More configs of the frequently-bought-together model type.
+        :param str context_products_type: Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        pulumi.set(__self__, "context_products_type", context_products_type)
+
+    @property
+    @pulumi.getter(name="contextProductsType")
+    def context_products_type(self) -> str:
+        """
+        Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        return pulumi.get(self, "context_products_type")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse(dict):
+    """
+    Additional model features config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "frequentlyBoughtTogetherConfig":
+            suggest = "frequently_bought_together_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 frequently_bought_together_config: 'outputs.GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse'):
+        """
+        Additional model features config.
+        :param 'GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse' frequently_bought_together_config: Additional configs for frequently-bought-together models.
+        """
+        pulumi.set(__self__, "frequently_bought_together_config", frequently_bought_together_config)
+
+    @property
+    @pulumi.getter(name="frequentlyBoughtTogetherConfig")
+    def frequently_bought_together_config(self) -> 'outputs.GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse':
+        """
+        Additional configs for frequently-bought-together models.
+        """
+        return pulumi.get(self, "frequently_bought_together_config")
 
 
 @pulumi.output_type
@@ -1547,7 +1627,7 @@ class GoogleCloudRetailV2alphaRuleFilterActionResponse(dict):
                  filter: str):
         """
         * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
-        :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -1555,7 +1635,7 @@ class GoogleCloudRetailV2alphaRuleFilterActionResponse(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         return pulumi.get(self, "filter")
 
@@ -1990,12 +2070,12 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
         """
         Specifies how a facet is computed.
         :param bool case_insensitive: True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
-        :param Sequence[str] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
-        :param Sequence['GoogleCloudRetailV2alphaIntervalResponse'] intervals: For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+        :param Sequence[str] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        :param Sequence['GoogleCloudRetailV2alphaIntervalResponse'] intervals: Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
         :param str key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
         :param str order_by: The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
-        :param Sequence[str] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
-        :param str query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet will count the products that are both in stock and ship to store "123".
+        :param Sequence[str] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+        :param str query: The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet counts the products that are both in stock and ship to store "123".
         :param Sequence[str] restricted_values: Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
         :param bool return_min_max: Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
         """
@@ -2021,7 +2101,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
     @pulumi.getter
     def contains(self) -> Sequence[str]:
         """
-        Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+        Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
         """
         return pulumi.get(self, "contains")
 
@@ -2029,7 +2109,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
     @pulumi.getter
     def intervals(self) -> Sequence['outputs.GoogleCloudRetailV2alphaIntervalResponse']:
         """
-        For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+        Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
         """
         return pulumi.get(self, "intervals")
 
@@ -2053,7 +2133,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
     @pulumi.getter
     def prefixes(self) -> Sequence[str]:
         """
-        Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+        Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
         """
         return pulumi.get(self, "prefixes")
 
@@ -2061,7 +2141,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse(dict):
     @pulumi.getter
     def query(self) -> str:
         """
-        The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet will count the products that are both in stock and ship to store "123".
+        The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet counts the products that are both in stock and ship to store "123".
         """
         return pulumi.get(self, "query")
 
@@ -2115,7 +2195,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse(dict):
                  limit: int):
         """
         A facet specification to perform faceted search.
-        :param bool enable_dynamic_position: Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+        :param bool enable_dynamic_position: Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
         :param Sequence[str] excluded_filter_keys: List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue products available, "Blue" would not be shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
         :param 'GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse' facet_key: The facet key specification.
         :param int limit: Maximum of facet values that should be returned for this facet. If unspecified, defaults to 50. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
@@ -2129,7 +2209,7 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse(dict):
     @pulumi.getter(name="enableDynamicPosition")
     def enable_dynamic_position(self) -> bool:
         """
-        Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+        Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
         """
         return pulumi.get(self, "enable_dynamic_position")
 

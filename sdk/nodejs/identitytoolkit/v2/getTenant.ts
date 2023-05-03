@@ -78,6 +78,10 @@ export interface GetTenantResult {
      */
     readonly name: string;
     /**
+     * The tenant-level reCAPTCHA config.
+     */
+    readonly recaptchaConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse;
+    /**
      * Configures which regions are enabled for SMS verification code sending.
      */
     readonly smsRegionConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse;

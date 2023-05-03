@@ -683,6 +683,14 @@ class HashType(str, Enum):
     """
     A SHA-256 hash.
     """
+    GO_MODULE_H1 = "GO_MODULE_H1"
+    """
+    Dirhash of a Go module's source code which is then hex-encoded. See b/244466565 and https://github.com/in-toto/attestation/pull/108.
+    """
+    SHA512 = "SHA512"
+    """
+    A SHA-512 hash.
+    """
 
 
 class JustificationJustificationType(str, Enum):

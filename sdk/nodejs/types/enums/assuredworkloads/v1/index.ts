@@ -34,6 +34,30 @@ export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProv
  */
 export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain];
 
+export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = {
+    /**
+     * Error is unspecified.
+     */
+    EkmProvisioningErrorMappingUnspecified: "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED",
+    /**
+     * Service account is used is invalid.
+     */
+    InvalidServiceAccount: "INVALID_SERVICE_ACCOUNT",
+    /**
+     * Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+     */
+    MissingMetricsScopeAdminPermission: "MISSING_METRICS_SCOPE_ADMIN_PERMISSION",
+    /**
+     * Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
+     */
+    MissingEkmConnectionAdminPermission: "MISSING_EKM_CONNECTION_ADMIN_PERMISSION",
+} as const;
+
+/**
+ * Detailed error message if Ekm provisioning fails
+ */
+export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping];
+
 export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState = {
     /**
      * Default State for Ekm Provisioning
@@ -64,7 +88,7 @@ export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType =
      */
     ResourceTypeUnspecified: "RESOURCE_TYPE_UNSPECIFIED",
     /**
-     * Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
+     * Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
      */
     ConsumerProject: "CONSUMER_PROJECT",
     /**
@@ -82,7 +106,7 @@ export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType =
 } as const;
 
 /**
- * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+ * Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
  */
 export type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType = (typeof GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType];
 
@@ -136,11 +160,11 @@ export const WorkloadComplianceRegime = {
      */
     AuRegionsAndUsSupport: "AU_REGIONS_AND_US_SUPPORT",
     /**
-     * Assured Workloads for Partners;
+     * Assured Workloads for Partners
      */
     AssuredWorkloadsForPartners: "ASSURED_WORKLOADS_FOR_PARTNERS",
     /**
-     * Assured Workloads for Israel
+     * Assured Workloads for Israel Regions
      */
     IsrRegions: "ISR_REGIONS",
     /**
@@ -168,6 +192,14 @@ export const WorkloadPartner = {
      * Enum representing T_SYSTEM (TSI) partner.
      */
     SovereignControlsByTSystems: "SOVEREIGN_CONTROLS_BY_T_SYSTEMS",
+    /**
+     * Enum representing SIA_MINSAIT (Indra) partner.
+     */
+    SovereignControlsBySiaMinsait: "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT",
+    /**
+     * Enum representing PSN (TIM) partner.
+     */
+    SovereignControlsByPsn: "SOVEREIGN_CONTROLS_BY_PSN",
 } as const;
 
 /**

@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
+ * Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -76,13 +76,11 @@ export class Case extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The priority of this case. If this is set, do not set severity.
+     * The priority of this case.
      */
     public readonly priority!: pulumi.Output<string>;
     /**
-     * The severity of this case. Deprecated. Use priority instead.
-     *
-     * @deprecated The severity of this case. Deprecated. Use priority instead.
+     * REMOVED. The severity of this case. Use priority instead.
      */
     public readonly severity!: pulumi.Output<string>;
     /**
@@ -207,13 +205,11 @@ export interface CaseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The priority of this case. If this is set, do not set severity.
+     * The priority of this case.
      */
     priority?: pulumi.Input<enums.cloudsupport.v2beta.CasePriority>;
     /**
-     * The severity of this case. Deprecated. Use priority instead.
-     *
-     * @deprecated The severity of this case. Deprecated. Use priority instead.
+     * REMOVED. The severity of this case. Use priority instead.
      */
     severity?: pulumi.Input<enums.cloudsupport.v2beta.CaseSeverity>;
     /**

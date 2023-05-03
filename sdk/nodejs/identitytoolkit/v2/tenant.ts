@@ -92,6 +92,10 @@ export class Tenant extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The tenant-level reCAPTCHA config.
+     */
+    public readonly recaptchaConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse>;
+    /**
      * Configures which regions are enabled for SMS verification code sending.
      */
     public readonly smsRegionConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse>;
@@ -123,6 +127,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["mfaConfig"] = args ? args.mfaConfig : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["recaptchaConfig"] = args ? args.recaptchaConfig : undefined;
             resourceInputs["smsRegionConfig"] = args ? args.smsRegionConfig : undefined;
             resourceInputs["testPhoneNumbers"] = args ? args.testPhoneNumbers : undefined;
             resourceInputs["hashConfig"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["monitoring"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["recaptchaConfig"] = undefined /*out*/;
             resourceInputs["smsRegionConfig"] = undefined /*out*/;
             resourceInputs["testPhoneNumbers"] = undefined /*out*/;
         }
@@ -201,6 +207,10 @@ export interface TenantArgs {
      */
     monitoring?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * The tenant-level reCAPTCHA config.
+     */
+    recaptchaConfig?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs>;
     /**
      * Configures which regions are enabled for SMS verification code sending.
      */

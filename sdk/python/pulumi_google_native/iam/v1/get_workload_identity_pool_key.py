@@ -72,7 +72,7 @@ class GetWorkloadIdentityPoolKeyResult:
     @pulumi.getter
     def use(self) -> str:
         """
-        Immutable. The purpose of the key.
+        The purpose of the key.
         """
         return pulumi.get(self, "use")
 

@@ -46,13 +46,17 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly concurrencyMode!: pulumi.Output<string>;
     /**
-     * The timestamp at which this database was created.
+     * The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
      */
     public readonly databaseId!: pulumi.Output<string>;
+    /**
+     * State of delete protection for the database.
+     */
+    public readonly deleteProtectionState!: pulumi.Output<string>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -100,6 +104,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["appEngineIntegrationMode"] = args ? args.appEngineIntegrationMode : undefined;
             resourceInputs["concurrencyMode"] = args ? args.concurrencyMode : undefined;
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
+            resourceInputs["deleteProtectionState"] = args ? args.deleteProtectionState : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -114,6 +119,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["concurrencyMode"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
+            resourceInputs["deleteProtectionState"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["keyPrefix"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -146,6 +152,10 @@ export interface DatabaseArgs {
      * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
      */
     databaseId: pulumi.Input<string>;
+    /**
+     * State of delete protection for the database.
+     */
+    deleteProtectionState?: pulumi.Input<enums.firestore.v1.DatabaseDeleteProtectionState>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */

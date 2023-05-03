@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// Secret represents a secret that should populate this volume.
         /// </summary>
         [Input("secret")]
         public Input<Inputs.GoogleCloudRunV2SecretVolumeSourceArgs>? Secret { get; set; }

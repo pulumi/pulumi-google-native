@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("groupPreferencesetAssignments")]
+        [Input("groupPreferencesetAssignments", required: true)]
         private InputList<Inputs.ReportConfigGroupPreferenceSetAssignmentArgs>? _groupPreferencesetAssignments;
 
         /// <summary>

@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Immutable. The purpose of the key.
+        /// The purpose of the key.
         /// </summary>
         public readonly string Use;
 

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.DataLineage.V1.Outputs
     public sealed class GoogleCloudDatacatalogLineageV1EntityReferenceResponse
     {
         /// <summary>
-        /// Fully Qualified Name of the entity. Useful for referencing entities that aren't represented as Google Cloud resources, for example, tables in Dataproc Metastore API. Examples: * `bigquery:dataset.project_id.dataset_id` * `bigquery:table.project_id.dataset_id.table_id` * `pubsub:project_id.topic_id` * `dataproc_metastore:projectId.locationId.instanceId.databaseId.tableId`
+        /// [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.
         /// </summary>
         public readonly string FullyQualifiedName;
 

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
     public sealed class KeyDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The specifications for the key.
+        /// The specifications for the key.
         /// </summary>
-        [Input("keySpec")]
-        public Input<Pulumi.GoogleNative.IAM.V1.KeyDataKeySpec>? KeySpec { get; set; }
+        [Input("keySpec", required: true)]
+        public Input<Pulumi.GoogleNative.IAM.V1.KeyDataKeySpec> KeySpec { get; set; } = null!;
 
         public KeyDataArgs()
         {

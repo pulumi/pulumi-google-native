@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         private InputList<Inputs.GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs>? _phraseMatchRules;
 
         /// <summary>
-        /// A list of phase match rules that are included in this group.
+        /// A list of phrase match rules that are included in this group.
         /// </summary>
         public InputList<Inputs.GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs> PhraseMatchRules
         {

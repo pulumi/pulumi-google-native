@@ -12,7 +12,7 @@ __all__ = [
 
 class CasePriority(str, Enum):
     """
-    The priority of this case. If this is set, do not set severity.
+    The priority of this case.
     """
     PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
     """
@@ -42,7 +42,7 @@ class CasePriority(str, Enum):
 
 class CaseSeverity(str, Enum):
     """
-    The severity of this case. Deprecated. Use priority instead.
+    REMOVED. The severity of this case. Use priority instead.
     """
     SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
     """

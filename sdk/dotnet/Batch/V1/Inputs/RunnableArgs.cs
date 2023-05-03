@@ -51,6 +51,18 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         [Input("ignoreExitStatus")]
         public Input<bool>? IgnoreExitStatus { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Runnable.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Script runnable.
         /// </summary>

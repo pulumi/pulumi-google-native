@@ -2678,6 +2678,458 @@ func (o GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput) Inde
 	}).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput)
 }
 
+// The reCAPTCHA Enterprise integration config.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig struct {
+	// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+	EmailPasswordEnforcementState *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState `pulumi:"emailPasswordEnforcementState"`
+	// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+	ManagedRules []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule `pulumi:"managedRules"`
+	// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+	UseAccountDefender *bool `pulumi:"useAccountDefender"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput
+}
+
+// The reCAPTCHA Enterprise integration config.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs struct {
+	// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+	EmailPasswordEnforcementState GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrInput `pulumi:"emailPasswordEnforcementState"`
+	// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+	ManagedRules GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput `pulumi:"managedRules"`
+	// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+	UseAccountDefender pulumi.BoolPtrInput `pulumi:"useAccountDefender"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput).ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs, GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtr and GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs
+
+func GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtr(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput)
+}
+
+// The reCAPTCHA Enterprise integration config.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput)
+}
+
+// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) EmailPasswordEnforcementState() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState {
+		return v.EmailPasswordEnforcementState
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) ManagedRules() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
+		return v.ManagedRules
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput)
+}
+
+// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput) UseAccountDefender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *bool { return v.UseAccountDefender }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput)
+}
+
+// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) EmailPasswordEnforcementState() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState {
+		if v == nil {
+			return nil
+		}
+		return v.EmailPasswordEnforcementState
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) ManagedRules() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedRules
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput)
+}
+
+// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput) UseAccountDefender() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAccountDefender
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The reCAPTCHA Enterprise integration config.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse struct {
+	// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+	EmailPasswordEnforcementState string `pulumi:"emailPasswordEnforcementState"`
+	// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+	ManagedRules []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse `pulumi:"managedRules"`
+	// The reCAPTCHA keys.
+	RecaptchaKeys []GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse `pulumi:"recaptchaKeys"`
+	// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+	UseAccountDefender bool `pulumi:"useAccountDefender"`
+}
+
+// The reCAPTCHA Enterprise integration config.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput {
+	return o
+}
+
+// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) EmailPasswordEnforcementState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse) string {
+		return v.EmailPasswordEnforcementState
+	}).(pulumi.StringOutput)
+}
+
+// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) ManagedRules() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse) []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse {
+		return v.ManagedRules
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput)
+}
+
+// The reCAPTCHA keys.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) RecaptchaKeys() GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse) []GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
+		return v.RecaptchaKeys
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput)
+}
+
+// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput) UseAccountDefender() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse) bool { return v.UseAccountDefender }).(pulumi.BoolOutput)
+}
+
+// The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse struct {
+	// The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
+	Key string `pulumi:"key"`
+	// The client's platform type.
+	Type string `pulumi:"type"`
+}
+
+// The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput {
+	return o
+}
+
+// The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The client's platform type.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput)
+}
+
+// The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule struct {
+	// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+	Action *GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction `pulumi:"action"`
+	// The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+	EndScore *float64 `pulumi:"endScore"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput
+}
+
+// The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs struct {
+	// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+	Action GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrInput `pulumi:"action"`
+	// The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+	EndScore pulumi.Float64PtrInput `pulumi:"endScore"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray and GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray{ GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs{...} }
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray []GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleInput
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput)
+}
+
+// The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
+	return o
+}
+
+// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) Action() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule) *GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
+		return v.Action
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
+}
+
+// The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput) EndScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule) *float64 { return v.EndScore }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput)
+}
+
+// The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse struct {
+	// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+	Action string `pulumi:"action"`
+	// The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+	EndScore float64 `pulumi:"endScore"`
+}
+
+// The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput {
+	return o
+}
+
+// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput) EndScore() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse) float64 { return v.EndScore }).(pulumi.Float64Output)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponse)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput)
+}
+
 // Configuration for logging requests made to this project to Stackdriver Logging
 type GoogleCloudIdentitytoolkitAdminV2RequestLogging struct {
 	// Whether logging is enabled for this project or not.
@@ -4239,6 +4691,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs{})
@@ -4300,6 +4756,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput{})

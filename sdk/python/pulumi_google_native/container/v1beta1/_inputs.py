@@ -45,6 +45,7 @@ __all__ = [
     'GcePersistentDiskCsiDriverConfigArgs',
     'GcfsConfigArgs',
     'GcpFilestoreCsiDriverConfigArgs',
+    'GcsFuseCsiDriverConfigArgs',
     'GkeBackupAgentConfigArgs',
     'HorizontalPodAutoscalingArgs',
     'HttpLoadBalancingArgs',
@@ -214,6 +215,7 @@ class AddonsConfigArgs:
                  dns_cache_config: Optional[pulumi.Input['DnsCacheConfigArgs']] = None,
                  gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['GcePersistentDiskCsiDriverConfigArgs']] = None,
                  gcp_filestore_csi_driver_config: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']] = None,
+                 gcs_fuse_csi_driver_config: Optional[pulumi.Input['GcsFuseCsiDriverConfigArgs']] = None,
                  gke_backup_agent_config: Optional[pulumi.Input['GkeBackupAgentConfigArgs']] = None,
                  horizontal_pod_autoscaling: Optional[pulumi.Input['HorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: Optional[pulumi.Input['HttpLoadBalancingArgs']] = None,
@@ -228,6 +230,7 @@ class AddonsConfigArgs:
         :param pulumi.Input['DnsCacheConfigArgs'] dns_cache_config: Configuration for NodeLocalDNS, a dns cache running on cluster nodes
         :param pulumi.Input['GcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_config: Configuration for the Compute Engine Persistent Disk CSI driver.
         :param pulumi.Input['GcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: Configuration for the GCP Filestore CSI driver.
+        :param pulumi.Input['GcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_config: Configuration for the Cloud Storage Fuse CSI driver.
         :param pulumi.Input['GkeBackupAgentConfigArgs'] gke_backup_agent_config: Configuration for the Backup for GKE agent addon.
         :param pulumi.Input['HorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
         :param pulumi.Input['HttpLoadBalancingArgs'] http_load_balancing: Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
@@ -246,6 +249,8 @@ class AddonsConfigArgs:
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gcs_fuse_csi_driver_config is not None:
+            pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         if gke_backup_agent_config is not None:
             pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
@@ -320,6 +325,18 @@ class AddonsConfigArgs:
     @gcp_filestore_csi_driver_config.setter
     def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['GcpFilestoreCsiDriverConfigArgs']]):
         pulumi.set(self, "gcp_filestore_csi_driver_config", value)
+
+    @property
+    @pulumi.getter(name="gcsFuseCsiDriverConfig")
+    def gcs_fuse_csi_driver_config(self) -> Optional[pulumi.Input['GcsFuseCsiDriverConfigArgs']]:
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        """
+        return pulumi.get(self, "gcs_fuse_csi_driver_config")
+
+    @gcs_fuse_csi_driver_config.setter
+    def gcs_fuse_csi_driver_config(self, value: Optional[pulumi.Input['GcsFuseCsiDriverConfigArgs']]):
+        pulumi.set(self, "gcs_fuse_csi_driver_config", value)
 
     @property
     @pulumi.getter(name="gkeBackupAgentConfig")
@@ -1181,7 +1198,7 @@ class DatabaseEncryptionArgs:
         """
         Configuration of etcd encryption.
         :param pulumi.Input[str] key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-        :param pulumi.Input['DatabaseEncryptionState'] state: Denotes the state of etcd encryption.
+        :param pulumi.Input['DatabaseEncryptionState'] state: The desired state of etcd encryption.
         """
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
@@ -1204,7 +1221,7 @@ class DatabaseEncryptionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['DatabaseEncryptionState']]:
         """
-        Denotes the state of etcd encryption.
+        The desired state of etcd encryption.
         """
         return pulumi.get(self, "state")
 
@@ -1509,6 +1526,30 @@ class GcpFilestoreCsiDriverConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether the GCP Filestore CSI driver is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GcsFuseCsiDriverConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Cloud Storage Fuse CSI driver.
+        :param pulumi.Input[bool] enabled: Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
         """
         return pulumi.get(self, "enabled")
 

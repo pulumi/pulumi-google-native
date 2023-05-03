@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
     public sealed class GetDocumentResult
     {
         /// <summary>
-        /// The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        /// The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         public readonly string JsonData;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// </summary>
         public readonly string SchemaId;
         /// <summary>
-        /// The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        /// The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         public readonly ImmutableDictionary<string, string> StructData;
 

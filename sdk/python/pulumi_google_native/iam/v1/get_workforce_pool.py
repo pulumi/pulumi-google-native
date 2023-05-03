@@ -53,7 +53,7 @@ class GetWorkforcePoolResult:
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         """
         return pulumi.get(self, "disabled")
 

@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         public Output<string> DisplayUri { get; private set; } = null!;
 
         /// <summary>
+        /// If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+        /// </summary>
+        [Output("dispositionTime")]
+        public Output<string> DispositionTime { get; private set; } = null!;
+
+        /// <summary>
         /// The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
         /// </summary>
         [Output("documentSchemaName")]

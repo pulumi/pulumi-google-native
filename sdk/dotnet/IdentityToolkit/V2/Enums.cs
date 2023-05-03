@@ -132,6 +132,88 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
     }
 
     /// <summary>
+    /// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState : IEquatable<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Enforcement state has not been set.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState RecaptchaProviderEnforcementStateUnspecified { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Unenforced.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState Off { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("OFF");
+        /// <summary>
+        /// reCAPTCHA assessment is created, result is not used to enforce.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState Audit { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("AUDIT");
+        /// <summary>
+        /// reCAPTCHA assessment is created, result is used to enforce.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState Enforce { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("ENFORCE");
+
+        public static bool operator ==(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState left, GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState left, GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState other && Equals(other);
+        public bool Equals(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction : IEquatable<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The reCAPTCHA action is not specified.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction RecaptchaActionUnspecified { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("RECAPTCHA_ACTION_UNSPECIFIED");
+        /// <summary>
+        /// The reCAPTCHA-protected request will be blocked.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction Block { get; } = new GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("BLOCK");
+
+        public static bool operator ==(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction left, GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction left, GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction other && Equals(other);
+        public bool Equals(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The log type that this config enables.
     /// </summary>
     [EnumType]

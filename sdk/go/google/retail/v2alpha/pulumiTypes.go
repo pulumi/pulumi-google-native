@@ -1521,6 +1521,346 @@ func (o GoogleCloudRetailV2alphaLocalInventoryResponseArrayOutput) Index(i pulum
 	}).(GoogleCloudRetailV2alphaLocalInventoryResponseOutput)
 }
 
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType `pulumi:"contextProductsType"`
+}
+
+// GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigInput is an input type that accepts GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs and GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigInput` via:
+//
+//	GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs{...}
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput
+	ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrInput `pulumi:"contextProductsType"`
+}
+
+func (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return i.ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput)
+}
+
+func (i GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput).ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput is an input type that accepts GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs, GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtr and GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput` via:
+//
+//	        GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput
+	ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput
+}
+
+type googleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrType GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs
+
+func GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtr(v *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput {
+	return (*googleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrType)(v)
+}
+
+func (*googleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig {
+		return &v
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ContextProductsType() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
+		return v.ContextProductsType
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig
+		return ret
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput)
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ContextProductsType() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
+		if v == nil {
+			return nil
+		}
+		return v.ContextProductsType
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType string `pulumi:"contextProductsType"`
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToGoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ContextProductsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse) string {
+		return v.ContextProductsType
+	}).(pulumi.StringOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2alphaModelModelFeaturesConfig struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+// GoogleCloudRetailV2alphaModelModelFeaturesConfigInput is an input type that accepts GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs and GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelModelFeaturesConfigInput` via:
+//
+//	GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs{...}
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput
+	ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+func (GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput {
+	return i.ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput)
+}
+
+func (i GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput).ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrInput is an input type that accepts GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs, GoogleCloudRetailV2alphaModelModelFeaturesConfigPtr and GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrInput` via:
+//
+//	        GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput
+	ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput
+}
+
+type googleCloudRetailV2alphaModelModelFeaturesConfigPtrType GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs
+
+func GoogleCloudRetailV2alphaModelModelFeaturesConfigPtr(v *GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrInput {
+	return (*googleCloudRetailV2alphaModelModelFeaturesConfigPtrType)(v)
+}
+
+func (*googleCloudRetailV2alphaModelModelFeaturesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2alphaModelModelFeaturesConfigPtrType) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2alphaModelModelFeaturesConfigPtrType) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return o.ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2alphaModelModelFeaturesConfig) *GoogleCloudRetailV2alphaModelModelFeaturesConfig {
+		return &v
+	}).(GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput)
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelModelFeaturesConfig) *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig {
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelModelFeaturesConfig) GoogleCloudRetailV2alphaModelModelFeaturesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2alphaModelModelFeaturesConfig
+		return ret
+	}).(GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput)
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelModelFeaturesConfig) *GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput() GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput) ToGoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput {
+	return o
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse) GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse {
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput)
+}
+
 // The PageOptimizationConfig for model training. This determines how many panels to optimize for, and which serving configs to consider for each panel. The purpose of this model is to optimize which ServingConfig to show on which panels in way that optimizes the visitors shopping journey.
 type GoogleCloudRetailV2alphaModelPageOptimizationConfig struct {
 	// The type of UserEvent this page optimization is shown for. Each page has an associated event type - this will be the corresponding event type for the page that the page optimization model is used on. Supported types: * `add-to-cart`: Products being added to cart. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage viewed * `category-page-view`: Homepage viewed * `shopping-cart-page-view`: User viewing a shopping cart. `home-page-view` only allows models with type `recommended-for-you`. All other page_optimization_event_type allow all Model.types.
@@ -3841,7 +4181,7 @@ func (o GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponseOutput) Terms() 
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2alphaRuleFilterAction struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter *string `pulumi:"filter"`
 }
 
@@ -3858,7 +4198,7 @@ type GoogleCloudRetailV2alphaRuleFilterActionInput interface {
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2alphaRuleFilterActionArgs struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 }
 
@@ -3940,7 +4280,7 @@ func (o GoogleCloudRetailV2alphaRuleFilterActionOutput) ToGoogleCloudRetailV2alp
 	}).(GoogleCloudRetailV2alphaRuleFilterActionPtrOutput)
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2alphaRuleFilterActionOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaRuleFilterAction) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -3969,7 +4309,7 @@ func (o GoogleCloudRetailV2alphaRuleFilterActionPtrOutput) Elem() GoogleCloudRet
 	}).(GoogleCloudRetailV2alphaRuleFilterActionOutput)
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2alphaRuleFilterActionPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaRuleFilterAction) *string {
 		if v == nil {
@@ -3981,7 +4321,7 @@ func (o GoogleCloudRetailV2alphaRuleFilterActionPtrOutput) Filter() pulumi.Strin
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2alphaRuleFilterActionResponse struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter string `pulumi:"filter"`
 }
 
@@ -4000,7 +4340,7 @@ func (o GoogleCloudRetailV2alphaRuleFilterActionResponseOutput) ToGoogleCloudRet
 	return o
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2alphaRuleFilterActionResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaRuleFilterActionResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -5209,7 +5549,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecResponseOutput) Mod
 
 // A facet specification to perform faceted search.
 type GoogleCloudRetailV2alphaSearchRequestFacetSpec struct {
-	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 	EnableDynamicPosition *bool `pulumi:"enableDynamicPosition"`
 	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue products available, "Blue" would not be shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
 	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
@@ -5232,7 +5572,7 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecInput interface {
 
 // A facet specification to perform faceted search.
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs struct {
-	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 	EnableDynamicPosition pulumi.BoolPtrInput `pulumi:"enableDynamicPosition"`
 	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue products available, "Blue" would not be shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
 	ExcludedFilterKeys pulumi.StringArrayInput `pulumi:"excludedFilterKeys"`
@@ -5320,7 +5660,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecOutput) ToGoogleCloudRetai
 	}).(GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrOutput)
 }
 
-// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecOutput) EnableDynamicPosition() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpec) *bool { return v.EnableDynamicPosition }).(pulumi.BoolPtrOutput)
 }
@@ -5366,7 +5706,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudRetailV2alphaSearchRequestFacetSpecOutput)
 }
 
-// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrOutput) EnableDynamicPosition() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpec) *bool {
 		if v == nil {
@@ -5410,17 +5750,17 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrOutput) Limit() pulumi.
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey struct {
 	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
 	CaseInsensitive *bool `pulumi:"caseInsensitive"`
-	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 	Intervals []GoogleCloudRetailV2alphaInterval `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
 	// The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
 	OrderBy *string `pulumi:"orderBy"`
-	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 	Prefixes []string `pulumi:"prefixes"`
-	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 	Query *string `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues []string `pulumi:"restrictedValues"`
@@ -5443,17 +5783,17 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyInput interface {
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs struct {
 	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
 	CaseInsensitive pulumi.BoolPtrInput `pulumi:"caseInsensitive"`
-	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains pulumi.StringArrayInput `pulumi:"contains"`
-	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 	Intervals GoogleCloudRetailV2alphaIntervalArrayInput `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key pulumi.StringInput `pulumi:"key"`
 	// The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
-	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
-	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues pulumi.StringArrayInput `pulumi:"restrictedValues"`
@@ -5544,12 +5884,12 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) CaseInsens
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *bool { return v.CaseInsensitive }).(pulumi.BoolPtrOutput)
 }
 
-// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Contains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Intervals() GoogleCloudRetailV2alphaIntervalArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2alphaInterval {
 		return v.Intervals
@@ -5566,12 +5906,12 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) OrderBy() 
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
-// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -5620,7 +5960,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) CaseIns
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Contains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string {
 		if v == nil {
@@ -5630,7 +5970,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Contain
 	}).(pulumi.StringArrayOutput)
 }
 
-// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Intervals() GoogleCloudRetailV2alphaIntervalArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2alphaInterval {
 		if v == nil {
@@ -5660,7 +6000,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) OrderBy
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string {
 		if v == nil {
@@ -5670,7 +6010,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Prefixe
 	}).(pulumi.StringArrayOutput)
 }
 
-// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *string {
 		if v == nil {
@@ -5704,17 +6044,17 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) ReturnM
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse struct {
 	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
 	CaseInsensitive bool `pulumi:"caseInsensitive"`
-	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 	Intervals []GoogleCloudRetailV2alphaIntervalResponse `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
 	// The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
 	OrderBy string `pulumi:"orderBy"`
-	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+	// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 	Prefixes []string `pulumi:"prefixes"`
-	// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+	// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 	Query string `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues []string `pulumi:"restrictedValues"`
@@ -5742,12 +6082,12 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Ca
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) bool { return v.CaseInsensitive }).(pulumi.BoolOutput)
 }
 
-// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
+// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet gives only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Contains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
+// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles become the bounds for its intervals and are returned in the response. If the facet key intervals are specified in the request, then the specified intervals are returned instead.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Intervals() GoogleCloudRetailV2alphaIntervalResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []GoogleCloudRetailV2alphaIntervalResponse {
 		return v.Intervals
@@ -5764,12 +6104,12 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Or
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) string { return v.OrderBy }).(pulumi.StringOutput)
 }
 
-// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
+// Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet gives only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products that are both in stock and ship to store "123".
+// The query that is used to compute facet for the given facet key. When provided, it overrides the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value is always "1" and SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are both in stock and ship to store "123".
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -5788,7 +6128,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Re
 
 // A facet specification to perform faceted search.
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse struct {
-	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+	// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 	EnableDynamicPosition bool `pulumi:"enableDynamicPosition"`
 	// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 products with the color facet "Red" and 200 products with the color facet "Blue". A query containing the filter "colorFamilies:ANY("Red")" and having "colorFamilies" as FacetKey.key would by default return only "Red" products in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue products available, "Blue" would not be shown as an available facet value. If "colorFamilies" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "colorFamilies" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" products. A maximum of 100 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
 	ExcludedFilterKeys []string `pulumi:"excludedFilterKeys"`
@@ -5813,7 +6153,7 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput) ToGoogleCl
 	return o
 }
 
-// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response will be the same as in the request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response will be determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be ranked at 1st and 2nd position since their enable_dynamic_position are false.
+// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets is enabled. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined by Google Retail Search. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position values are false.
 func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput) EnableDynamicPosition() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse) bool { return v.EnableDynamicPosition }).(pulumi.BoolOutput)
 }
@@ -6020,6 +6360,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaIntervalInput)(nil)).Elem(), GoogleCloudRetailV2alphaIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaIntervalArrayInput)(nil)).Elem(), GoogleCloudRetailV2alphaIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelModelFeaturesConfigInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateArgs{})
@@ -6089,6 +6433,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaIntervalResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaLocalInventoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaLocalInventoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelModelFeaturesConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelModelFeaturesConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelModelFeaturesConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidateOutput{})

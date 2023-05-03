@@ -206,10 +206,14 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfig struct {
+	// Name for pod secondary ipv4 range which has the actual range defined ahead.
+	PodRangeNames []string `pulumi:"podRangeNames"`
 }
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 type AdditionalPodRangesConfigResponse struct {
+	// Name for pod secondary ipv4 range which has the actual range defined ahead.
+	PodRangeNames []string `pulumi:"podRangeNames"`
 }
 
 // AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
@@ -225,6 +229,11 @@ func (o AdditionalPodRangesConfigResponseOutput) ToAdditionalPodRangesConfigResp
 
 func (o AdditionalPodRangesConfigResponseOutput) ToAdditionalPodRangesConfigResponseOutputWithContext(ctx context.Context) AdditionalPodRangesConfigResponseOutput {
 	return o
+}
+
+// Name for pod secondary ipv4 range which has the actual range defined ahead.
+func (o AdditionalPodRangesConfigResponseOutput) PodRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AdditionalPodRangesConfigResponse) []string { return v.PodRangeNames }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
@@ -4278,7 +4287,7 @@ func (o DailyMaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 type DatabaseEncryption struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName *string `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State *DatabaseEncryptionState `pulumi:"state"`
 }
 
@@ -4297,7 +4306,7 @@ type DatabaseEncryptionInput interface {
 type DatabaseEncryptionArgs struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State DatabaseEncryptionStatePtrInput `pulumi:"state"`
 }
 
@@ -4384,7 +4393,7 @@ func (o DatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionOutput) State() DatabaseEncryptionStatePtrOutput {
 	return o.ApplyT(func(v DatabaseEncryption) *DatabaseEncryptionState { return v.State }).(DatabaseEncryptionStatePtrOutput)
 }
@@ -4423,7 +4432,7 @@ func (o DatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
 	return o.ApplyT(func(v *DatabaseEncryption) *DatabaseEncryptionState {
 		if v == nil {
@@ -4437,7 +4446,7 @@ func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
 type DatabaseEncryptionResponse struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName string `pulumi:"keyName"`
-	// Denotes the state of etcd encryption.
+	// The desired state of etcd encryption.
 	State string `pulumi:"state"`
 }
 
@@ -4461,7 +4470,7 @@ func (o DatabaseEncryptionResponseOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 func (o DatabaseEncryptionResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEncryptionResponse) string { return v.State }).(pulumi.StringOutput)
 }

@@ -314,6 +314,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static InstanceDatabaseVersion Postgres14 { get; } = new InstanceDatabaseVersion("POSTGRES_14");
         /// <summary>
+        /// The database version is PostgreSQL 15.
+        /// </summary>
+        public static InstanceDatabaseVersion Postgres15 { get; } = new InstanceDatabaseVersion("POSTGRES_15");
+        /// <summary>
         /// The database version is MySQL 8.
         /// </summary>
         public static InstanceDatabaseVersion Mysql80 { get; } = new InstanceDatabaseVersion("MYSQL_8_0");
@@ -349,6 +353,22 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The database major version is MySQL 8.0 and the minor version is 32.
         /// </summary>
         public static InstanceDatabaseVersion Mysql8032 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_32");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 33.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8033 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_33");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 34.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8034 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_34");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 35.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8035 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_35");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 36.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8036 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_36");
         /// <summary>
         /// The database version is SQL Server 2019 Standard.
         /// </summary>

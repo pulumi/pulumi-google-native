@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 {
 
     /// <summary>
-    /// Represents an example that the agent is trained on to identify the intent. Next ID: 15
+    /// Represents an example that the agent is trained on to identify the intent.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse

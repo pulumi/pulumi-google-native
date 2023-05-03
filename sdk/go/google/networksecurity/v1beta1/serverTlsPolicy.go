@@ -15,7 +15,7 @@ import (
 type ServerTlsPolicy struct {
 	pulumi.CustomResourceState
 
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+	// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen pulumi.BoolOutput `pulumi:"allowOpen"`
 	// The timestamp when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -24,12 +24,12 @@ type ServerTlsPolicy struct {
 	// Set of label tags associated with the resource.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	//  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+	// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 	MtlsPolicy MTLSPolicyResponseOutput `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput `pulumi:"serverCertificate"`
 	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
 	ServerTlsPolicyId pulumi.StringOutput `pulumi:"serverTlsPolicyId"`
@@ -85,19 +85,19 @@ func (ServerTlsPolicyState) ElementType() reflect.Type {
 }
 
 type serverTlsPolicyArgs struct {
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+	// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen *bool `pulumi:"allowOpen"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	//  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+	// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 	MtlsPolicy *MTLSPolicy `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate *GoogleCloudNetworksecurityV1beta1CertificateProvider `pulumi:"serverCertificate"`
 	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
 	ServerTlsPolicyId string `pulumi:"serverTlsPolicyId"`
@@ -105,19 +105,19 @@ type serverTlsPolicyArgs struct {
 
 // The set of arguments for constructing a ServerTlsPolicy resource.
 type ServerTlsPolicyArgs struct {
-	//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+	// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 	AllowOpen pulumi.BoolPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	//  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+	// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 	MtlsPolicy MTLSPolicyPtrInput
 	// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate GoogleCloudNetworksecurityV1beta1CertificateProviderPtrInput
 	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
 	ServerTlsPolicyId pulumi.StringInput
@@ -160,7 +160,7 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
 func (o ServerTlsPolicyOutput) AllowOpen() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.BoolOutput { return v.AllowOpen }).(pulumi.BoolOutput)
 }
@@ -184,7 +184,7 @@ func (o ServerTlsPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
 func (o ServerTlsPolicyOutput) MtlsPolicy() MTLSPolicyResponseOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) MTLSPolicyResponseOutput { return v.MtlsPolicy }).(MTLSPolicyResponseOutput)
 }
@@ -198,7 +198,7 @@ func (o ServerTlsPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 func (o ServerTlsPolicyOutput) ServerCertificate() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
 		return v.ServerCertificate

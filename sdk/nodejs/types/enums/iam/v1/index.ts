@@ -26,6 +26,38 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior = {
+    /**
+     * No assertion claims behavior specified.
+     */
+    AssertionClaimsBehaviorUnspecified: "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED",
+    /**
+     * Only include ID Token Claims.
+     */
+    OnlyIdTokenClaims: "ONLY_ID_TOKEN_CLAIMS",
+} as const;
+
+/**
+ * Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+ */
+export type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior = (typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior)[keyof typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior];
+
+export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType = {
+    /**
+     * No Response Type specified.
+     */
+    ResponseTypeUnspecified: "RESPONSE_TYPE_UNSPECIFIED",
+    /**
+     * The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+     */
+    IdToken: "ID_TOKEN",
+} as const;
+
+/**
+ * Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+ */
+export type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType = (typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)[keyof typeof GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType];
+
 export const KeyDataKeySpec = {
     /**
      * No key specification specified.
@@ -46,7 +78,7 @@ export const KeyDataKeySpec = {
 } as const;
 
 /**
- * Immutable. The specifications for the key.
+ * Required. The specifications for the key.
  */
 export type KeyDataKeySpec = (typeof KeyDataKeySpec)[keyof typeof KeyDataKeySpec];
 
@@ -166,7 +198,7 @@ export const WorkforcePoolKeyUse = {
 } as const;
 
 /**
- * Immutable. The purpose of the key.
+ * Required. The purpose of the key.
  */
 export type WorkforcePoolKeyUse = (typeof WorkforcePoolKeyUse)[keyof typeof WorkforcePoolKeyUse];
 
@@ -182,6 +214,6 @@ export const WorkloadIdentityPoolKeyUse = {
 } as const;
 
 /**
- * Immutable. The purpose of the key.
+ * Required. The purpose of the key.
  */
 export type WorkloadIdentityPoolKeyUse = (typeof WorkloadIdentityPoolKeyUse)[keyof typeof WorkloadIdentityPoolKeyUse];

@@ -15842,7 +15842,7 @@ func (o SparkSqlJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
 
 // Basic autoscaling configurations for Spark Standalone.
 type SparkStandaloneAutoscalingConfig struct {
-	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
@@ -15867,7 +15867,7 @@ type SparkStandaloneAutoscalingConfigInput interface {
 
 // Basic autoscaling configurations for Spark Standalone.
 type SparkStandaloneAutoscalingConfigArgs struct {
-	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
@@ -15957,7 +15957,7 @@ func (o SparkStandaloneAutoscalingConfigOutput) ToSparkStandaloneAutoscalingConf
 	}).(SparkStandaloneAutoscalingConfigPtrOutput)
 }
 
-// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o SparkStandaloneAutoscalingConfigOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfig) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }
@@ -16006,7 +16006,7 @@ func (o SparkStandaloneAutoscalingConfigPtrOutput) Elem() SparkStandaloneAutosca
 	}).(SparkStandaloneAutoscalingConfigOutput)
 }
 
-// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o SparkStandaloneAutoscalingConfigPtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkStandaloneAutoscalingConfig) *string {
 		if v == nil {
@@ -16058,7 +16058,7 @@ func (o SparkStandaloneAutoscalingConfigPtrOutput) ScaleUpMinWorkerFraction() pu
 
 // Basic autoscaling configurations for Spark Standalone.
 type SparkStandaloneAutoscalingConfigResponse struct {
-	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+	// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
 	// Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive scaling). A scale-down factor closer to 0 will result in a smaller magnitude of scaling donw (less aggressive scaling).Bounds: 0.0, 1.0.
 	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
@@ -16085,7 +16085,7 @@ func (o SparkStandaloneAutoscalingConfigResponseOutput) ToSparkStandaloneAutosca
 	return o
 }
 
-// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o SparkStandaloneAutoscalingConfigResponseOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkStandaloneAutoscalingConfigResponse) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }

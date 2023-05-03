@@ -31,6 +31,8 @@ type LookupWorkstationClusterResult struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Status conditions describing the current resource state.
 	Conditions []StatusResponse `pulumi:"conditions"`
+	// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+	ControlPlaneIp string `pulumi:"controlPlaneIp"`
 	// Time when this resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the `conditions` field.
@@ -39,7 +41,7 @@ type LookupWorkstationClusterResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
@@ -106,6 +108,11 @@ func (o LookupWorkstationClusterResultOutput) Conditions() StatusResponseArrayOu
 	return o.ApplyT(func(v LookupWorkstationClusterResult) []StatusResponse { return v.Conditions }).(StatusResponseArrayOutput)
 }
 
+// The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+func (o LookupWorkstationClusterResultOutput) ControlPlaneIp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.ControlPlaneIp }).(pulumi.StringOutput)
+}
+
 // Time when this resource was created.
 func (o LookupWorkstationClusterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -126,7 +133,7 @@ func (o LookupWorkstationClusterResultOutput) DisplayName() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o LookupWorkstationClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }

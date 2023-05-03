@@ -229,6 +229,10 @@ type GoogleCloudContactcenterinsightsV1AnnotatorSelector struct {
 	RunSentimentAnnotator *bool `pulumi:"runSentimentAnnotator"`
 	// Whether to run the silence annotator.
 	RunSilenceAnnotator *bool `pulumi:"runSilenceAnnotator"`
+	// Whether to run the summarization annotator.
+	RunSummarizationAnnotator *bool `pulumi:"runSummarizationAnnotator"`
+	// Configuration for the summarization annotator.
+	SummarizationConfig *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig `pulumi:"summarizationConfig"`
 }
 
 // GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput is an input type that accepts GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs and GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput values.
@@ -262,6 +266,10 @@ type GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs struct {
 	RunSentimentAnnotator pulumi.BoolPtrInput `pulumi:"runSentimentAnnotator"`
 	// Whether to run the silence annotator.
 	RunSilenceAnnotator pulumi.BoolPtrInput `pulumi:"runSilenceAnnotator"`
+	// Whether to run the summarization annotator.
+	RunSummarizationAnnotator pulumi.BoolPtrInput `pulumi:"runSummarizationAnnotator"`
+	// Configuration for the summarization annotator.
+	SummarizationConfig GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput `pulumi:"summarizationConfig"`
 }
 
 func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ElementType() reflect.Type {
@@ -387,6 +395,18 @@ func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunSilenceAnn
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunSilenceAnnotator }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to run the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunSummarizationAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunSummarizationAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) SummarizationConfig() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+		return v.SummarizationConfig
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput)
+}
+
 type GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) ElementType() reflect.Type {
@@ -501,6 +521,26 @@ func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunSilence
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether to run the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunSummarizationAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunSummarizationAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) SummarizationConfig() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SummarizationConfig
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput)
+}
+
 // Selector of all available annotators and phrase matchers to run.
 type GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse struct {
 	// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
@@ -521,6 +561,10 @@ type GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse struct {
 	RunSentimentAnnotator bool `pulumi:"runSentimentAnnotator"`
 	// Whether to run the silence annotator.
 	RunSilenceAnnotator bool `pulumi:"runSilenceAnnotator"`
+	// Whether to run the summarization annotator.
+	RunSummarizationAnnotator bool `pulumi:"runSummarizationAnnotator"`
+	// Configuration for the summarization annotator.
+	SummarizationConfig GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse `pulumi:"summarizationConfig"`
 }
 
 // Selector of all available annotators and phrase matchers to run.
@@ -589,6 +633,220 @@ func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunSe
 // Whether to run the silence annotator.
 func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunSilenceAnnotator() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool { return v.RunSilenceAnnotator }).(pulumi.BoolOutput)
+}
+
+// Whether to run the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunSummarizationAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool {
+		return v.RunSummarizationAnnotator
+	}).(pulumi.BoolOutput)
+}
+
+// Configuration for the summarization annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) SummarizationConfig() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse {
+		return v.SummarizationConfig
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput)
+}
+
+// Configuration for summarization.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig struct {
+	// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+	ConversationProfile *string `pulumi:"conversationProfile"`
+	// Default summarization model to be used.
+	SummarizationModel *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel `pulumi:"summarizationModel"`
+}
+
+// GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigInput is an input type that accepts GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs and GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs{...}
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput
+}
+
+// Configuration for summarization.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs struct {
+	// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+	ConversationProfile pulumi.StringPtrInput `pulumi:"conversationProfile"`
+	// Default summarization model to be used.
+	SummarizationModel GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrInput `pulumi:"summarizationModel"`
+}
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput)
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput).ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput is an input type that accepts GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs, GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtr and GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput` via:
+//
+//	        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput
+}
+
+type googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrType GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs
+
+func GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtr(v *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput {
+	return (*googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrType)(v)
+}
+
+func (*googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrType) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrType) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput)
+}
+
+// Configuration for summarization.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+		return &v
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput)
+}
+
+// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) ConversationProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) *string {
+		return v.ConversationProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default summarization model to be used.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput) SummarizationModel() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel {
+		return v.SummarizationModel
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput)
+}
+
+// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) ConversationProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConversationProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default summarization model to be used.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput) SummarizationModel() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig) *GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel {
+		if v == nil {
+			return nil
+		}
+		return v.SummarizationModel
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelPtrOutput)
+}
+
+// Configuration for summarization.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse struct {
+	// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+	ConversationProfile string `pulumi:"conversationProfile"`
+	// Default summarization model to be used.
+	SummarizationModel string `pulumi:"summarizationModel"`
+}
+
+// Configuration for summarization.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput {
+	return o
+}
+
+// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput) ConversationProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse) string {
+		return v.ConversationProfile
+	}).(pulumi.StringOutput)
+}
+
+// Default summarization model to be used.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput) SummarizationModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse) string {
+		return v.SummarizationModel
+	}).(pulumi.StringOutput)
 }
 
 // The feedback that the customer has about a certain answer in the conversation.
@@ -1343,6 +1601,79 @@ func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput)
 // A user-specified ID representing the participant.
 func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationParticipantResponse) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Conversation summarization suggestion data.
+type GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse struct {
+	// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+	AnswerRecord string `pulumi:"answerRecord"`
+	// The confidence score of the summarization.
+	Confidence float64 `pulumi:"confidence"`
+	// The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model}
+	ConversationModel string `pulumi:"conversationModel"`
+	// A map that contains metadata about the summarization and the document from which it originates.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The summarization content that is concatenated into one string.
+	Text string `pulumi:"text"`
+	// The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.
+	TextSections map[string]string `pulumi:"textSections"`
+}
+
+// Conversation summarization suggestion data.
+type GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput() GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput {
+	return o
+}
+
+// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) AnswerRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) string {
+		return v.AnswerRecord
+	}).(pulumi.StringOutput)
+}
+
+// The confidence score of the summarization.
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) Confidence() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) float64 {
+		return v.Confidence
+	}).(pulumi.Float64Output)
+}
+
+// The name of the model that generates this summary. Format: projects/{project}/locations/{location}/conversationModels/{conversation_model}
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) ConversationModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) string {
+		return v.ConversationModel
+	}).(pulumi.StringOutput)
+}
+
+// A map that contains metadata about the summarization and the document from which it originates.
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) map[string]string {
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// The summarization content that is concatenated into one string.
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) string {
+		return v.Text
+	}).(pulumi.StringOutput)
+}
+
+// The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.
+func (o GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput) TextSections() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse) map[string]string {
+		return v.TextSections
+	}).(pulumi.StringMapOutput)
 }
 
 // A message representing the transcript of a conversation.
@@ -3030,7 +3361,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponseOutput) E
 
 // A message representing a rule in the phrase matcher.
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup struct {
-	// A list of phase match rules that are included in this group.
+	// A list of phrase match rules that are included in this group.
 	PhraseMatchRules []GoogleCloudContactcenterinsightsV1PhraseMatchRule `pulumi:"phraseMatchRules"`
 	// The type of this phrase match rule group.
 	Type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupType `pulumi:"type"`
@@ -3049,7 +3380,7 @@ type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupInput interface {
 
 // A message representing a rule in the phrase matcher.
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs struct {
-	// A list of phase match rules that are included in this group.
+	// A list of phrase match rules that are included in this group.
 	PhraseMatchRules GoogleCloudContactcenterinsightsV1PhraseMatchRuleArrayInput `pulumi:"phraseMatchRules"`
 	// The type of this phrase match rule group.
 	Type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput `pulumi:"type"`
@@ -3107,7 +3438,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupOutput) ToGoogleCl
 	return o
 }
 
-// A list of phase match rules that are included in this group.
+// A list of phrase match rules that are included in this group.
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupOutput) PhraseMatchRules() GoogleCloudContactcenterinsightsV1PhraseMatchRuleArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup) []GoogleCloudContactcenterinsightsV1PhraseMatchRule {
 		return v.PhraseMatchRules
@@ -3143,7 +3474,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArrayOutput) Index
 
 // A message representing a rule in the phrase matcher.
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse struct {
-	// A list of phase match rules that are included in this group.
+	// A list of phrase match rules that are included in this group.
 	PhraseMatchRules []GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse `pulumi:"phraseMatchRules"`
 	// The type of this phrase match rule group.
 	Type string `pulumi:"type"`
@@ -3164,7 +3495,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseOutput) To
 	return o
 }
 
-// A list of phase match rules that are included in this group.
+// A list of phrase match rules that are included in this group.
 func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseOutput) PhraseMatchRules() GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse) []GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
 		return v.PhraseMatchRules
@@ -3266,6 +3597,8 @@ type GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse struct {
 	AnswerFeedback GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse `pulumi:"answerFeedback"`
 	// Agent Assist Article Suggestion data.
 	ArticleSuggestion GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse `pulumi:"articleSuggestion"`
+	// Conversation summarization suggestion data.
+	ConversationSummarizationSuggestion GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse `pulumi:"conversationSummarizationSuggestion"`
 	// The time at which this annotation was created.
 	CreateTime string `pulumi:"createTime"`
 	// Dialogflow interaction data.
@@ -3314,6 +3647,13 @@ func (o GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseOutput) Artic
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse) GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse {
 		return v.ArticleSuggestion
 	}).(GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseOutput)
+}
+
+// Conversation summarization suggestion data.
+func (o GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseOutput) ConversationSummarizationSuggestion() GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponse) GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse {
+		return v.ConversationSummarizationSuggestion
+	}).(GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput)
 }
 
 // The time at which this annotation was created.
@@ -3540,6 +3880,8 @@ func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) Reply() 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
@@ -3565,6 +3907,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnswerFeedbackResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1CallAnnotationResponseOutput{})
@@ -3578,6 +3923,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponseOutput{})

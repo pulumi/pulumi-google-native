@@ -175,6 +175,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Output("sourceDiskForRecoveryCheckpoint")]
+        public Output<string> SourceDiskForRecoveryCheckpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         [Output("sourceDiskId")]
@@ -363,6 +369,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        [Input("sourceDiskForRecoveryCheckpoint")]
+        public Input<string>? SourceDiskForRecoveryCheckpoint { get; set; }
 
         /// <summary>
         /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 

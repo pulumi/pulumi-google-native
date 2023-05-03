@@ -1535,9 +1535,9 @@ func (o RegionPreferencesResponseOutput) PreferredRegions() pulumi.StringArrayOu
 // Represents a combination of a group with a preference set.
 type ReportConfigGroupPreferenceSetAssignment struct {
 	// Name of the group.
-	Group *string `pulumi:"group"`
+	Group string `pulumi:"group"`
 	// Name of the Preference Set.
-	PreferenceSet *string `pulumi:"preferenceSet"`
+	PreferenceSet string `pulumi:"preferenceSet"`
 }
 
 // ReportConfigGroupPreferenceSetAssignmentInput is an input type that accepts ReportConfigGroupPreferenceSetAssignmentArgs and ReportConfigGroupPreferenceSetAssignmentOutput values.
@@ -1554,9 +1554,9 @@ type ReportConfigGroupPreferenceSetAssignmentInput interface {
 // Represents a combination of a group with a preference set.
 type ReportConfigGroupPreferenceSetAssignmentArgs struct {
 	// Name of the group.
-	Group pulumi.StringPtrInput `pulumi:"group"`
+	Group pulumi.StringInput `pulumi:"group"`
 	// Name of the Preference Set.
-	PreferenceSet pulumi.StringPtrInput `pulumi:"preferenceSet"`
+	PreferenceSet pulumi.StringInput `pulumi:"preferenceSet"`
 }
 
 func (ReportConfigGroupPreferenceSetAssignmentArgs) ElementType() reflect.Type {
@@ -1612,13 +1612,13 @@ func (o ReportConfigGroupPreferenceSetAssignmentOutput) ToReportConfigGroupPrefe
 }
 
 // Name of the group.
-func (o ReportConfigGroupPreferenceSetAssignmentOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReportConfigGroupPreferenceSetAssignment) *string { return v.Group }).(pulumi.StringPtrOutput)
+func (o ReportConfigGroupPreferenceSetAssignmentOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportConfigGroupPreferenceSetAssignment) string { return v.Group }).(pulumi.StringOutput)
 }
 
 // Name of the Preference Set.
-func (o ReportConfigGroupPreferenceSetAssignmentOutput) PreferenceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReportConfigGroupPreferenceSetAssignment) *string { return v.PreferenceSet }).(pulumi.StringPtrOutput)
+func (o ReportConfigGroupPreferenceSetAssignmentOutput) PreferenceSet() pulumi.StringOutput {
+	return o.ApplyT(func(v ReportConfigGroupPreferenceSetAssignment) string { return v.PreferenceSet }).(pulumi.StringOutput)
 }
 
 type ReportConfigGroupPreferenceSetAssignmentArrayOutput struct{ *pulumi.OutputState }

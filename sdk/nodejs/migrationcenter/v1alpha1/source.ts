@@ -77,6 +77,10 @@ export class Source extends pulumi.CustomResource {
      */
     public readonly sourceId!: pulumi.Output<string>;
     /**
+     * The state of the source.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
      * Data source type.
      */
     public readonly type!: pulumi.Output<string>;
@@ -111,6 +115,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingFrameCount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["sourceId"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

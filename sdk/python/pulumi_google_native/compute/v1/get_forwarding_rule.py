@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetForwardingRuleResult:
-    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
         if allow_global_access and not isinstance(allow_global_access, bool):
             raise TypeError("Expected argument 'allow_global_access' to be a bool")
         pulumi.set(__self__, "allow_global_access", allow_global_access)
+        if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
+            raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
+        pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
         if backend_service and not isinstance(backend_service, str):
             raise TypeError("Expected argument 'backend_service' to be a str")
         pulumi.set(__self__, "backend_service", backend_service)
@@ -132,6 +135,14 @@ class GetForwardingRuleResult:
         This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
         """
         return pulumi.get(self, "allow_global_access")
+
+    @property
+    @pulumi.getter(name="allowPscGlobalAccess")
+    def allow_psc_global_access(self) -> bool:
+        """
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        """
+        return pulumi.get(self, "allow_psc_global_access")
 
     @property
     @pulumi.getter(name="backendService")
@@ -257,7 +268,7 @@ class GetForwardingRuleResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+        This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
         """
         return pulumi.get(self, "network")
 
@@ -379,6 +390,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
         return GetForwardingRuleResult(
             all_ports=self.all_ports,
             allow_global_access=self.allow_global_access,
+            allow_psc_global_access=self.allow_psc_global_access,
             backend_service=self.backend_service,
             base_forwarding_rule=self.base_forwarding_rule,
             creation_timestamp=self.creation_timestamp,
@@ -428,6 +440,7 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
     return AwaitableGetForwardingRuleResult(
         all_ports=__ret__.all_ports,
         allow_global_access=__ret__.allow_global_access,
+        allow_psc_global_access=__ret__.allow_psc_global_access,
         backend_service=__ret__.backend_service,
         base_forwarding_rule=__ret__.base_forwarding_rule,
         creation_timestamp=__ret__.creation_timestamp,

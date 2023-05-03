@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     /// </summary>
     public sealed class FleetObservabilityFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.FleetObservabilityLoggingConfigArgs>? LoggingConfig { get; set; }
+
         public FleetObservabilityFeatureSpecArgs()
         {
         }

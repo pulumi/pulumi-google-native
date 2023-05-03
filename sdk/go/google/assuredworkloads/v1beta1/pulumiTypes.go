@@ -180,6 +180,91 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponseOutput) Km
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput)
 }
 
+// An org policy control applied by Assured Workloads
+type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse struct {
+	// Constraint name of the org policy control Example: constraints/gcp.resourcelocations
+	Constraint string `pulumi:"constraint"`
+	// Org policy version
+	Version int `pulumi:"version"`
+}
+
+// An org policy control applied by Assured Workloads
+type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput {
+	return o
+}
+
+// Constraint name of the org policy control Example: constraints/gcp.resourcelocations
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) Constraint() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse) string {
+		return v.Constraint
+	}).(pulumi.StringOutput)
+}
+
+// Org policy version
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse) int {
+		return v.Version
+	}).(pulumi.IntOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse {
+		return vs[0].([]GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse)[vs[1].(int)]
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput)
+}
+
+// Controls enabled to the user associated with this workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse struct {
+	// Org policies currently applied by this Assured Workload
+	AppliedOrgPolicies []GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse `pulumi:"appliedOrgPolicies"`
+}
+
+// Controls enabled to the user associated with this workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput {
+	return o
+}
+
+// Org policies currently applied by this Assured Workload
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput) AppliedOrgPolicies() GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse) []GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse {
+		return v.AppliedOrgPolicies
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput)
+}
+
 // Represents the Compliance Status of this workload
 type GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse struct {
 	// Count of active Violations which are acknowledged in the Workload.
@@ -222,7 +307,7 @@ type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse struct {
 	// Indicates Ekm provisioning error if any.
 	EkmProvisioningErrorDomain *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain `pulumi:"ekmProvisioningErrorDomain"`
 	// Detailed error message if Ekm provisioning fails
-	EkmProvisioningErrorMessage *string `pulumi:"ekmProvisioningErrorMessage"`
+	EkmProvisioningErrorMapping *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping `pulumi:"ekmProvisioningErrorMapping"`
 	// Indicates Ekm enrollment Provisioning of a given workload.
 	EkmProvisioningState *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState `pulumi:"ekmProvisioningState"`
 }
@@ -243,7 +328,7 @@ type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseArgs struc
 	// Indicates Ekm provisioning error if any.
 	EkmProvisioningErrorDomain GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomainPtrInput `pulumi:"ekmProvisioningErrorDomain"`
 	// Detailed error message if Ekm provisioning fails
-	EkmProvisioningErrorMessage pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorMessage"`
+	EkmProvisioningErrorMapping GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrInput `pulumi:"ekmProvisioningErrorMapping"`
 	// Indicates Ekm enrollment Provisioning of a given workload.
 	EkmProvisioningState GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrInput `pulumi:"ekmProvisioningState"`
 }
@@ -334,10 +419,10 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput)
 }
 
 // Detailed error message if Ekm provisioning fails
-func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse) *string {
-		return v.EkmProvisioningErrorMessage
-	}).(pulumi.StringPtrOutput)
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorMapping() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping {
+		return v.EkmProvisioningErrorMapping
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput)
 }
 
 // Indicates Ekm enrollment Provisioning of a given workload.
@@ -382,13 +467,13 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutp
 }
 
 // Detailed error message if Ekm provisioning fails
-func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput) EkmProvisioningErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse) *string {
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput) EkmProvisioningErrorMapping() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponse) *GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping {
 		if v == nil {
 			return nil
 		}
-		return v.EkmProvisioningErrorMessage
-	}).(pulumi.StringPtrOutput)
+		return v.EkmProvisioningErrorMapping
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMappingPtrOutput)
 }
 
 // Indicates Ekm enrollment Provisioning of a given workload.
@@ -406,7 +491,7 @@ type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse s
 	// Indicates Ekm provisioning error if any.
 	EkmProvisioningErrorDomain string `pulumi:"ekmProvisioningErrorDomain"`
 	// Detailed error message if Ekm provisioning fails
-	EkmProvisioningErrorMessage string `pulumi:"ekmProvisioningErrorMessage"`
+	EkmProvisioningErrorMapping string `pulumi:"ekmProvisioningErrorMapping"`
 	// Indicates Ekm enrollment Provisioning of a given workload.
 	EkmProvisioningState string `pulumi:"ekmProvisioningState"`
 }
@@ -434,9 +519,9 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseRespons
 }
 
 // Detailed error message if Ekm provisioning fails
-func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningErrorMessage() pulumi.StringOutput {
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput) EkmProvisioningErrorMapping() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse) string {
-		return v.EkmProvisioningErrorMessage
+		return v.EkmProvisioningErrorMapping
 	}).(pulumi.StringOutput)
 }
 
@@ -1443,6 +1528,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponsePtrOutput{})

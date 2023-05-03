@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'ControlSearchSolutionUseCaseItem',
     'ControlSolutionTypesItem',
+    'GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType',
     'GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction',
     'GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode',
     'GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode',
@@ -47,6 +48,24 @@ class ControlSolutionTypesItem(str, Enum):
     SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
     """
     Used for Retail Search.
+    """
+
+
+class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType(str, Enum):
+    """
+    Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+    """
+    CONTEXT_PRODUCTS_TYPE_UNSPECIFIED = "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED"
+    """
+    Unspecified default value, should never be explicitly set. Defaults to MULTIPLE_CONTEXT_PRODUCTS.
+    """
+    SINGLE_CONTEXT_PRODUCT = "SINGLE_CONTEXT_PRODUCT"
+    """
+    Use only a single product as context for the recommendation. Typically used on pages like add-to-cart or product details.
+    """
+    MULTIPLE_CONTEXT_PRODUCTS = "MULTIPLE_CONTEXT_PRODUCTS"
+    """
+    Use one or multiple products as context for the recommendation. Typically used on shopping cart pages.
     """
 
 

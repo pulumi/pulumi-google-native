@@ -115,6 +115,8 @@ type RegionDisk struct {
 	SourceStorageObject pulumi.StringOutput `pulumi:"sourceStorageObject"`
 	// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool pulumi.StringOutput `pulumi:"storagePool"`
 	// [Deprecated] Storage type of the persistent disk.
 	//
 	// Deprecated: [Deprecated] Storage type of the persistent disk.
@@ -240,6 +242,8 @@ type regionDiskArgs struct {
 	SourceSnapshotEncryptionKey *CustomerEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
 	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
 	SourceStorageObject *string `pulumi:"sourceStorageObject"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool *string `pulumi:"storagePool"`
 	// [Deprecated] Storage type of the persistent disk.
 	//
 	// Deprecated: [Deprecated] Storage type of the persistent disk.
@@ -316,6 +320,8 @@ type RegionDiskArgs struct {
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyPtrInput
 	// The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
 	SourceStorageObject pulumi.StringPtrInput
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool pulumi.StringPtrInput
 	// [Deprecated] Storage type of the persistent disk.
 	//
 	// Deprecated: [Deprecated] Storage type of the persistent disk.
@@ -611,6 +617,11 @@ func (o RegionDiskOutput) SourceStorageObject() pulumi.StringOutput {
 // The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 func (o RegionDiskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o RegionDiskOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // [Deprecated] Storage type of the persistent disk.

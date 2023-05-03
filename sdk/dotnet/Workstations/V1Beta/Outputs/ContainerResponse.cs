@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
-        /// Environment variables passed to the container.
+        /// Environment variables passed to the container's entrypoint.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Env;
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the config's service account.
+        /// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
         /// </summary>
         public readonly string Image;
         /// <summary>

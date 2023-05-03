@@ -246,6 +246,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// Use a md5 hash.
         /// </summary>
         public static BuildOptionsSourceProvenanceHashItem Md5 { get; } = new BuildOptionsSourceProvenanceHashItem("MD5");
+        /// <summary>
+        /// Use a sha512 hash.
+        /// </summary>
+        public static BuildOptionsSourceProvenanceHashItem Sha512 { get; } = new BuildOptionsSourceProvenanceHashItem("SHA512");
 
         public static bool operator ==(BuildOptionsSourceProvenanceHashItem left, BuildOptionsSourceProvenanceHashItem right) => left.Equals(right);
         public static bool operator !=(BuildOptionsSourceProvenanceHashItem left, BuildOptionsSourceProvenanceHashItem right) => !left.Equals(right);

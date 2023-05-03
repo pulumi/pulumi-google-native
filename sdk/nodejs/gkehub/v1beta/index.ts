@@ -30,6 +30,11 @@ export type FeatureIamPolicy = import("./featureIamPolicy").FeatureIamPolicy;
 export const FeatureIamPolicy: typeof import("./featureIamPolicy").FeatureIamPolicy = null as any;
 utilities.lazyLoad(exports, ["FeatureIamPolicy"], () => require("./featureIamPolicy"));
 
+export { FleetArgs } from "./fleet";
+export type Fleet = import("./fleet").Fleet;
+export const Fleet: typeof import("./fleet").Fleet = null as any;
+utilities.lazyLoad(exports, ["Fleet"], () => require("./fleet"));
+
 export { GetBindingArgs, GetBindingResult, GetBindingOutputArgs } from "./getBinding";
 export const getBinding: typeof import("./getBinding").getBinding = null as any;
 export const getBindingOutput: typeof import("./getBinding").getBindingOutput = null as any;
@@ -44,6 +49,11 @@ export { GetFeatureIamPolicyArgs, GetFeatureIamPolicyResult, GetFeatureIamPolicy
 export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeatureIamPolicy = null as any;
 export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
+
+export { GetFleetArgs, GetFleetResult, GetFleetOutputArgs } from "./getFleet";
+export const getFleet: typeof import("./getFleet").getFleet = null as any;
+export const getFleetOutput: typeof import("./getFleet").getFleetOutput = null as any;
+utilities.lazyLoad(exports, ["getFleet","getFleetOutput"], () => require("./getFleet"));
 
 export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
 export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
@@ -113,6 +123,8 @@ const _module = {
                 return new FeatureIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:FeatureIamPolicy":
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1beta:Fleet":
+                return new Fleet(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:MembershipIamBinding":
                 return new MembershipIamBinding(name, <any>undefined, { urn })
             case "google-native:gkehub/v1beta:MembershipIamMember":

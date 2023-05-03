@@ -88,7 +88,7 @@ class GetFeatureResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        GCP labels for this Feature.
+        Labels for this Feature.
         """
         return pulumi.get(self, "labels")
 

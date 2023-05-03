@@ -20364,6 +20364,7 @@ const (
 	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
 	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
 	RegionCommitmentTypeGeneralPurposeT2d    = RegionCommitmentType("GENERAL_PURPOSE_T2D")
+	RegionCommitmentTypeGraphicsOptimized    = RegionCommitmentType("GRAPHICS_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
 	RegionCommitmentTypeMemoryOptimizedM3    = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
 	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
@@ -24969,6 +24970,177 @@ func (in *routerBgpPeerEnablePtr) ToRouterBgpPeerEnablePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RouterBgpPeerEnablePtrOutput)
 }
 
+// The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+type RouterNatAutoNetworkTier string
+
+const (
+	// Public internet quality with fixed bandwidth.
+	RouterNatAutoNetworkTierFixedStandard = RouterNatAutoNetworkTier("FIXED_STANDARD")
+	// High quality, Google-grade network tier, support for all networking products.
+	RouterNatAutoNetworkTierPremium = RouterNatAutoNetworkTier("PREMIUM")
+	// Public internet quality, only limited support for other networking products.
+	RouterNatAutoNetworkTierStandard = RouterNatAutoNetworkTier("STANDARD")
+	// (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+	RouterNatAutoNetworkTierStandardOverridesFixedStandard = RouterNatAutoNetworkTier("STANDARD_OVERRIDES_FIXED_STANDARD")
+)
+
+func (RouterNatAutoNetworkTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput {
+	return pulumi.ToOutput(e).(RouterNatAutoNetworkTierOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RouterNatAutoNetworkTierOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return e.ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatAutoNetworkTier) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return RouterNatAutoNetworkTier(e).ToRouterNatAutoNetworkTierOutputWithContext(ctx).ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RouterNatAutoNetworkTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RouterNatAutoNetworkTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RouterNatAutoNetworkTierOutput struct{ *pulumi.OutputState }
+
+func (RouterNatAutoNetworkTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return o.ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterNatAutoNetworkTier) *RouterNatAutoNetworkTier {
+		return &v
+	}).(RouterNatAutoNetworkTierPtrOutput)
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatAutoNetworkTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RouterNatAutoNetworkTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RouterNatAutoNetworkTierPtrOutput struct{ *pulumi.OutputState }
+
+func (RouterNatAutoNetworkTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNatAutoNetworkTier)(nil)).Elem()
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return o
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) Elem() RouterNatAutoNetworkTierOutput {
+	return o.ApplyT(func(v *RouterNatAutoNetworkTier) RouterNatAutoNetworkTier {
+		if v != nil {
+			return *v
+		}
+		var ret RouterNatAutoNetworkTier
+		return ret
+	}).(RouterNatAutoNetworkTierOutput)
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatAutoNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RouterNatAutoNetworkTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RouterNatAutoNetworkTierInput is an input type that accepts RouterNatAutoNetworkTierArgs and RouterNatAutoNetworkTierOutput values.
+// You can construct a concrete instance of `RouterNatAutoNetworkTierInput` via:
+//
+//	RouterNatAutoNetworkTierArgs{...}
+type RouterNatAutoNetworkTierInput interface {
+	pulumi.Input
+
+	ToRouterNatAutoNetworkTierOutput() RouterNatAutoNetworkTierOutput
+	ToRouterNatAutoNetworkTierOutputWithContext(context.Context) RouterNatAutoNetworkTierOutput
+}
+
+var routerNatAutoNetworkTierPtrType = reflect.TypeOf((**RouterNatAutoNetworkTier)(nil)).Elem()
+
+type RouterNatAutoNetworkTierPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput
+	ToRouterNatAutoNetworkTierPtrOutputWithContext(context.Context) RouterNatAutoNetworkTierPtrOutput
+}
+
+type routerNatAutoNetworkTierPtr string
+
+func RouterNatAutoNetworkTierPtr(v string) RouterNatAutoNetworkTierPtrInput {
+	return (*routerNatAutoNetworkTierPtr)(&v)
+}
+
+func (*routerNatAutoNetworkTierPtr) ElementType() reflect.Type {
+	return routerNatAutoNetworkTierPtrType
+}
+
+func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutput() RouterNatAutoNetworkTierPtrOutput {
+	return pulumi.ToOutput(in).(RouterNatAutoNetworkTierPtrOutput)
+}
+
+func (in *routerNatAutoNetworkTierPtr) ToRouterNatAutoNetworkTierPtrOutputWithContext(ctx context.Context) RouterNatAutoNetworkTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RouterNatAutoNetworkTierPtrOutput)
+}
+
 type RouterNatEndpointTypesItem string
 
 const (
@@ -27243,7 +27415,7 @@ func (in *schedulingProvisioningModelPtr) ToSchedulingProvisioningModelPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingProvisioningModelPtrOutput)
 }
 
-// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility string
 
 const (
@@ -32779,6 +32951,173 @@ func (in *targetTcpProxyProxyHeaderPtr) ToTargetTcpProxyProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(TargetTcpProxyProxyHeaderPtrOutput)
 }
 
+// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+type VpnGatewayGatewayIpVersion string
+
+const (
+	// Every HA-VPN gateway interface is configured with an IPv4 address.
+	VpnGatewayGatewayIpVersionIpv4 = VpnGatewayGatewayIpVersion("IPV4")
+	// Every HA-VPN gateway interface is configured with an IPv6 address.
+	VpnGatewayGatewayIpVersionIpv6 = VpnGatewayGatewayIpVersion("IPV6")
+)
+
+func (VpnGatewayGatewayIpVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput {
+	return pulumi.ToOutput(e).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return e.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayGatewayIpVersion) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return VpnGatewayGatewayIpVersion(e).ToVpnGatewayGatewayIpVersionOutputWithContext(ctx).ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VpnGatewayGatewayIpVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VpnGatewayGatewayIpVersionOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayGatewayIpVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return o.ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayGatewayIpVersion) *VpnGatewayGatewayIpVersion {
+		return &v
+	}).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayGatewayIpVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VpnGatewayGatewayIpVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayGatewayIpVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayGatewayIpVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayGatewayIpVersion)(nil)).Elem()
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return o
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) Elem() VpnGatewayGatewayIpVersionOutput {
+	return o.ApplyT(func(v *VpnGatewayGatewayIpVersion) VpnGatewayGatewayIpVersion {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayGatewayIpVersion
+		return ret
+	}).(VpnGatewayGatewayIpVersionOutput)
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayGatewayIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VpnGatewayGatewayIpVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VpnGatewayGatewayIpVersionInput is an input type that accepts VpnGatewayGatewayIpVersionArgs and VpnGatewayGatewayIpVersionOutput values.
+// You can construct a concrete instance of `VpnGatewayGatewayIpVersionInput` via:
+//
+//	VpnGatewayGatewayIpVersionArgs{...}
+type VpnGatewayGatewayIpVersionInput interface {
+	pulumi.Input
+
+	ToVpnGatewayGatewayIpVersionOutput() VpnGatewayGatewayIpVersionOutput
+	ToVpnGatewayGatewayIpVersionOutputWithContext(context.Context) VpnGatewayGatewayIpVersionOutput
+}
+
+var vpnGatewayGatewayIpVersionPtrType = reflect.TypeOf((**VpnGatewayGatewayIpVersion)(nil)).Elem()
+
+type VpnGatewayGatewayIpVersionPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput
+	ToVpnGatewayGatewayIpVersionPtrOutputWithContext(context.Context) VpnGatewayGatewayIpVersionPtrOutput
+}
+
+type vpnGatewayGatewayIpVersionPtr string
+
+func VpnGatewayGatewayIpVersionPtr(v string) VpnGatewayGatewayIpVersionPtrInput {
+	return (*vpnGatewayGatewayIpVersionPtr)(&v)
+}
+
+func (*vpnGatewayGatewayIpVersionPtr) ElementType() reflect.Type {
+	return vpnGatewayGatewayIpVersionPtrType
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutput() VpnGatewayGatewayIpVersionPtrOutput {
+	return pulumi.ToOutput(in).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
+func (in *vpnGatewayGatewayIpVersionPtr) ToVpnGatewayGatewayIpVersionPtrOutputWithContext(ctx context.Context) VpnGatewayGatewayIpVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayGatewayIpVersionPtrOutput)
+}
+
 // The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY, IPV4_IPV6. If not specified, IPV4_ONLY will be used.
 type VpnGatewayStackType string
 
@@ -33243,6 +33582,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdSessionInitializationModePtrInput)(nil)).Elem(), RouterBgpPeerBfdSessionInitializationMode("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnableInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerEnablePtrInput)(nil)).Elem(), RouterBgpPeerEnable("FALSE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatAutoNetworkTierPtrInput)(nil)).Elem(), RouterNatAutoNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemPtrInput)(nil)).Elem(), RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatEndpointTypesItemArrayInput)(nil)).Elem(), RouterNatEndpointTypesItemArray{})
@@ -33337,6 +33678,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSslProxyProxyHeaderPtrInput)(nil)).Elem(), TargetSslProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetTcpProxyProxyHeaderPtrInput)(nil)).Elem(), TargetTcpProxyProxyHeader("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayGatewayIpVersionInput)(nil)).Elem(), VpnGatewayGatewayIpVersion("IPV4"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayGatewayIpVersionPtrInput)(nil)).Elem(), VpnGatewayGatewayIpVersion("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypeInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayStackTypePtrInput)(nil)).Elem(), VpnGatewayStackType("IPV4_IPV6"))
 	pulumi.RegisterOutputType(AccessConfigNetworkTierOutput{})
@@ -33635,6 +33978,8 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdSessionInitializationModePtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnableOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerEnablePtrOutput{})
+	pulumi.RegisterOutputType(RouterNatAutoNetworkTierOutput{})
+	pulumi.RegisterOutputType(RouterNatAutoNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(RouterNatEndpointTypesItemArrayOutput{})
@@ -33729,6 +34074,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetSslProxyProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderOutput{})
 	pulumi.RegisterOutputType(TargetTcpProxyProxyHeaderPtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayGatewayIpVersionOutput{})
+	pulumi.RegisterOutputType(VpnGatewayGatewayIpVersionPtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayStackTypeOutput{})
 	pulumi.RegisterOutputType(VpnGatewayStackTypePtrOutput{})
 }

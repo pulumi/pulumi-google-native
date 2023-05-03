@@ -5452,6 +5452,8 @@ func (o SqlAclEntryResponseArrayOutput) Index(i pulumi.IntInput) SqlAclEntryResp
 
 // IP Management configuration.
 type SqlIpConfig struct {
+	// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks []SqlAclEntry `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
@@ -5475,6 +5477,8 @@ type SqlIpConfigInput interface {
 
 // IP Management configuration.
 type SqlIpConfigArgs struct {
+	// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks SqlAclEntryArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
@@ -5563,6 +5567,11 @@ func (o SqlIpConfigOutput) ToSqlIpConfigPtrOutputWithContext(ctx context.Context
 	}).(SqlIpConfigPtrOutput)
 }
 
+// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+func (o SqlIpConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlIpConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 func (o SqlIpConfigOutput) AuthorizedNetworks() SqlAclEntryArrayOutput {
 	return o.ApplyT(func(v SqlIpConfig) []SqlAclEntry { return v.AuthorizedNetworks }).(SqlAclEntryArrayOutput)
@@ -5607,6 +5616,16 @@ func (o SqlIpConfigPtrOutput) Elem() SqlIpConfigOutput {
 	}).(SqlIpConfigOutput)
 }
 
+// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+func (o SqlIpConfigPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 func (o SqlIpConfigPtrOutput) AuthorizedNetworks() SqlAclEntryArrayOutput {
 	return o.ApplyT(func(v *SqlIpConfig) []SqlAclEntry {
@@ -5649,6 +5668,8 @@ func (o SqlIpConfigPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 
 // IP Management configuration.
 type SqlIpConfigResponse struct {
+	// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+	AllocatedIpRange string `pulumi:"allocatedIpRange"`
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks []SqlAclEntryResponse `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
@@ -5672,6 +5693,11 @@ func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponseOutput() SqlIpConfigResp
 
 func (o SqlIpConfigResponseOutput) ToSqlIpConfigResponseOutputWithContext(ctx context.Context) SqlIpConfigResponseOutput {
 	return o
+}
+
+// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+func (o SqlIpConfigResponseOutput) AllocatedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlIpConfigResponse) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
 }
 
 // The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).

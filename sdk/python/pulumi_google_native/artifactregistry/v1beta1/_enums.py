@@ -37,6 +37,10 @@ class RepositoryFormat(str, Enum):
     """
     YUM package format.
     """
+    GOOGET = "GOOGET"
+    """
+    GooGet package format.
+    """
     PYTHON = "PYTHON"
     """
     Python package format.

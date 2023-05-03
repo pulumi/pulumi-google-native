@@ -58,7 +58,7 @@ export class WorkloadIdentityPoolKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Immutable. The purpose of the key.
+     * The purpose of the key.
      */
     public readonly use!: pulumi.Output<string>;
     public readonly workloadIdentityPoolId!: pulumi.Output<string>;
@@ -80,6 +80,9 @@ export class WorkloadIdentityPoolKey extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.providerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
+            }
+            if ((!args || args.use === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'use'");
             }
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
@@ -128,9 +131,9 @@ export interface WorkloadIdentityPoolKeyArgs {
     project?: pulumi.Input<string>;
     providerId: pulumi.Input<string>;
     /**
-     * Immutable. The purpose of the key.
+     * The purpose of the key.
      */
-    use?: pulumi.Input<enums.iam.v1.WorkloadIdentityPoolKeyUse>;
+    use: pulumi.Input<enums.iam.v1.WorkloadIdentityPoolKeyUse>;
     workloadIdentityPoolId: pulumi.Input<string>;
     /**
      * Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].

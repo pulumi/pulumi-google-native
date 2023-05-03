@@ -24,7 +24,7 @@ class WorkforcePoolArgs:
         """
         The set of arguments for constructing a WorkforcePool resource.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
-        :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        :param pulumi.Input[bool] disabled: Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For SAML providers, the lifetime of the token is the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
@@ -61,7 +61,7 @@ class WorkforcePoolArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         """
         return pulumi.get(self, "disabled")
 
@@ -147,7 +147,7 @@ class WorkforcePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
-        :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        :param pulumi.Input[bool] disabled: Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions, and `gcloud` sign-in sessions from this pool are valid. Must be greater than 15 minutes (900s) and less than 12 hours (43200s). If `session_duration` is not configured, minted credentials have a default duration of one hour (3600s). For SAML providers, the lifetime of the token is the minimum of the `session_duration` and the `SessionNotOnOrAfter` claim in the SAML assertion.
@@ -250,7 +250,7 @@ class WorkforcePool(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
         """
-        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         """
         return pulumi.get(self, "disabled")
 

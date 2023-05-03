@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MuxStreams;
         /// <summary>
-        /// Type of the manifest, can be `HLS` or `DASH`.
+        /// Type of the manifest.
         /// </summary>
         public readonly string Type;
 

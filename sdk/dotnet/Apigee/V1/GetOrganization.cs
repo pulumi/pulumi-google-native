@@ -60,6 +60,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string AnalyticsRegion;
         /// <summary>
+        /// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        public readonly string ApiConsumerDataEncryptionKeyName;
+        /// <summary>
+        /// This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+        /// </summary>
+        public readonly string ApiConsumerDataLocation;
+        /// <summary>
         /// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
         /// </summary>
         public readonly string ApigeeProjectId;
@@ -79,6 +87,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
         /// </summary>
         public readonly string CaCertificate;
+        /// <summary>
+        /// Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
+        public readonly string ControlPlaneEncryptionKeyName;
         /// <summary>
         /// Time that the Apigee organization was created in milliseconds since epoch.
         /// </summary>
@@ -150,6 +162,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string analyticsRegion,
 
+            string apiConsumerDataEncryptionKeyName,
+
+            string apiConsumerDataLocation,
+
             string apigeeProjectId,
 
             ImmutableArray<string> attributes,
@@ -159,6 +175,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
             string billingType,
 
             string caCertificate,
+
+            string controlPlaneEncryptionKeyName,
 
             string createdAt,
 
@@ -194,11 +212,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
         {
             AddonsConfig = addonsConfig;
             AnalyticsRegion = analyticsRegion;
+            ApiConsumerDataEncryptionKeyName = apiConsumerDataEncryptionKeyName;
+            ApiConsumerDataLocation = apiConsumerDataLocation;
             ApigeeProjectId = apigeeProjectId;
             Attributes = attributes;
             AuthorizedNetwork = authorizedNetwork;
             BillingType = billingType;
             CaCertificate = caCertificate;
+            ControlPlaneEncryptionKeyName = controlPlaneEncryptionKeyName;
             CreatedAt = createdAt;
             CustomerName = customerName;
             Description = description;

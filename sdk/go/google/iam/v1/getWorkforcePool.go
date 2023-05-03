@@ -28,7 +28,7 @@ type LookupWorkforcePoolArgs struct {
 type LookupWorkforcePoolResult struct {
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description string `pulumi:"description"`
-	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+	// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled bool `pulumi:"disabled"`
 	// A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -83,7 +83,7 @@ func (o LookupWorkforcePoolResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 func (o LookupWorkforcePoolResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }

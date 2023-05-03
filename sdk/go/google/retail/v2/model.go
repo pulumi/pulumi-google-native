@@ -29,6 +29,8 @@ type Model struct {
 	// The timestamp when the latest successful tune finished.
 	LastTuneTime pulumi.StringOutput `pulumi:"lastTuneTime"`
 	Location     pulumi.StringOutput `pulumi:"location"`
+	// Optional. Additional model features config.
+	ModelFeaturesConfig GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput `pulumi:"modelFeaturesConfig"`
 	// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
@@ -112,6 +114,8 @@ type modelArgs struct {
 	// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
 	FilteringOption *ModelFilteringOption `pulumi:"filteringOption"`
 	Location        *string               `pulumi:"location"`
+	// Optional. Additional model features config.
+	ModelFeaturesConfig *GoogleCloudRetailV2ModelModelFeaturesConfig `pulumi:"modelFeaturesConfig"`
 	// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
 	Name *string `pulumi:"name"`
 	// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
@@ -135,6 +139,8 @@ type ModelArgs struct {
 	// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
 	FilteringOption ModelFilteringOptionPtrInput
 	Location        pulumi.StringPtrInput
+	// Optional. Additional model features config.
+	ModelFeaturesConfig GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput
 	// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
 	Name pulumi.StringPtrInput
 	// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
@@ -221,6 +227,11 @@ func (o ModelOutput) LastTuneTime() pulumi.StringOutput {
 
 func (o ModelOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Additional model features config.
+func (o ModelOutput) ModelFeaturesConfig() GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput {
+	return o.ApplyT(func(v *Model) GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput { return v.ModelFeaturesConfig }).(GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput)
 }
 
 // The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.

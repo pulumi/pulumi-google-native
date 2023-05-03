@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior',
+    'GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType',
     'KeyDataKeySpec',
     'KeyKeyAlgorithm',
     'KeyPrivateKeyType',
@@ -38,9 +40,37 @@ class AuditLogConfigLogType(str, Enum):
     """
 
 
+class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(str, Enum):
+    """
+    Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+    """
+    ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED = "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED"
+    """
+    No assertion claims behavior specified.
+    """
+    ONLY_ID_TOKEN_CLAIMS = "ONLY_ID_TOKEN_CLAIMS"
+    """
+    Only include ID Token Claims.
+    """
+
+
+class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(str, Enum):
+    """
+    Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+    """
+    RESPONSE_TYPE_UNSPECIFIED = "RESPONSE_TYPE_UNSPECIFIED"
+    """
+    No Response Type specified.
+    """
+    ID_TOKEN = "ID_TOKEN"
+    """
+    The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+    """
+
+
 class KeyDataKeySpec(str, Enum):
     """
-    Immutable. The specifications for the key.
+    Required. The specifications for the key.
     """
     KEY_SPEC_UNSPECIFIED = "KEY_SPEC_UNSPECIFIED"
     """
@@ -158,7 +188,7 @@ class RoleStage(str, Enum):
 
 class WorkforcePoolKeyUse(str, Enum):
     """
-    Immutable. The purpose of the key.
+    Required. The purpose of the key.
     """
     KEY_USE_UNSPECIFIED = "KEY_USE_UNSPECIFIED"
     """
@@ -172,7 +202,7 @@ class WorkforcePoolKeyUse(str, Enum):
 
 class WorkloadIdentityPoolKeyUse(str, Enum):
     """
-    Immutable. The purpose of the key.
+    Required. The purpose of the key.
     """
     KEY_USE_UNSPECIFIED = "KEY_USE_UNSPECIFIED"
     """

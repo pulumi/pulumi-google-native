@@ -19,6 +19,7 @@ class ShareArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  share_id: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[str]] = None,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -29,6 +30,7 @@ class ShareArgs:
         """
         The set of arguments for constructing a Share resource.
         :param pulumi.Input[str] share_id: Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        :param pulumi.Input[str] backup: Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
         :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         :param pulumi.Input[str] description: A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
@@ -37,6 +39,8 @@ class ShareArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "share_id", share_id)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
         if capacity_gb is not None:
             pulumi.set(__self__, "capacity_gb", capacity_gb)
         if description is not None:
@@ -72,6 +76,18 @@ class ShareArgs:
     @share_id.setter
     def share_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "share_id", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup", value)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -157,6 +173,7 @@ class Share(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup: Optional[pulumi.Input[str]] = None,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -173,6 +190,7 @@ class Share(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup: Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
         :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         :param pulumi.Input[str] description: A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
@@ -205,6 +223,7 @@ class Share(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup: Optional[pulumi.Input[str]] = None,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -223,6 +242,7 @@ class Share(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ShareArgs.__new__(ShareArgs)
 
+            __props__.__dict__["backup"] = backup
             __props__.__dict__["capacity_gb"] = capacity_gb
             __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
@@ -263,6 +283,7 @@ class Share(pulumi.CustomResource):
 
         __props__ = ShareArgs.__new__(ShareArgs)
 
+        __props__.__dict__["backup"] = None
         __props__.__dict__["capacity_gb"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -276,6 +297,14 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["share_id"] = None
         __props__.__dict__["state"] = None
         return Share(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> pulumi.Output[str]:
+        """
+        Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+        """
+        return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter(name="capacityGb")

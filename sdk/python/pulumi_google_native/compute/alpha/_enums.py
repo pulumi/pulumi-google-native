@@ -1167,6 +1167,10 @@ class ConfidentialInstanceConfigConfidentialInstanceType(str, Enum):
     """
     AMD Secure Encrypted Virtualization - Secure Nested Paging.
     """
+    TDX = "TDX"
+    """
+    Intel Trust Domain eXtension.
+    """
 
 
 class DeprecationStatusState(str, Enum):
@@ -1710,6 +1714,7 @@ class GuestOsFeatureType(str, Enum):
     SEV_CAPABLE = "SEV_CAPABLE"
     SEV_LIVE_MIGRATABLE = "SEV_LIVE_MIGRATABLE"
     SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
+    TDX_CAPABLE = "TDX_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
     VIRTIO_SCSI_MULTIQUEUE = "VIRTIO_SCSI_MULTIQUEUE"
     WINDOWS = "WINDOWS"
@@ -2921,6 +2926,7 @@ class RegionCommitmentType(str, Enum):
     COMPUTE_OPTIMIZED = "COMPUTE_OPTIMIZED"
     COMPUTE_OPTIMIZED_C2D = "COMPUTE_OPTIMIZED_C2D"
     COMPUTE_OPTIMIZED_C3 = "COMPUTE_OPTIMIZED_C3"
+    COMPUTE_OPTIMIZED_C3D = "COMPUTE_OPTIMIZED_C3D"
     GENERAL_PURPOSE = "GENERAL_PURPOSE"
     GENERAL_PURPOSE_E2 = "GENERAL_PURPOSE_E2"
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
@@ -3649,7 +3655,7 @@ class SchedulingProvisioningModel(str, Enum):
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(str, Enum):
     """
-    Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+    Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     """
     PREMIUM = "PREMIUM"
     STANDARD = "STANDARD"

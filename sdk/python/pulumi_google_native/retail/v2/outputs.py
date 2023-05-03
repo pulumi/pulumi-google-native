@@ -21,6 +21,8 @@ __all__ = [
     'GoogleCloudRetailV2ImageResponse',
     'GoogleCloudRetailV2IntervalResponse',
     'GoogleCloudRetailV2LocalInventoryResponse',
+    'GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse',
+    'GoogleCloudRetailV2ModelModelFeaturesConfigResponse',
     'GoogleCloudRetailV2ModelServingConfigListResponse',
     'GoogleCloudRetailV2PriceInfoPriceRangeResponse',
     'GoogleCloudRetailV2PriceInfoResponse',
@@ -536,6 +538,84 @@ class GoogleCloudRetailV2LocalInventoryResponse(dict):
         Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
         """
         return pulumi.get(self, "price_info")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse(dict):
+    """
+    More configs of the frequently-bought-together model type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contextProductsType":
+            suggest = "context_products_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 context_products_type: str):
+        """
+        More configs of the frequently-bought-together model type.
+        :param str context_products_type: Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        pulumi.set(__self__, "context_products_type", context_products_type)
+
+    @property
+    @pulumi.getter(name="contextProductsType")
+    def context_products_type(self) -> str:
+        """
+        Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        return pulumi.get(self, "context_products_type")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2ModelModelFeaturesConfigResponse(dict):
+    """
+    Additional model features config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "frequentlyBoughtTogetherConfig":
+            suggest = "frequently_bought_together_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2ModelModelFeaturesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2ModelModelFeaturesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2ModelModelFeaturesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 frequently_bought_together_config: 'outputs.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse'):
+        """
+        Additional model features config.
+        :param 'GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse' frequently_bought_together_config: Additional configs for frequently-bought-together models.
+        """
+        pulumi.set(__self__, "frequently_bought_together_config", frequently_bought_together_config)
+
+    @property
+    @pulumi.getter(name="frequentlyBoughtTogetherConfig")
+    def frequently_bought_together_config(self) -> 'outputs.GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse':
+        """
+        Additional configs for frequently-bought-together models.
+        """
+        return pulumi.get(self, "frequently_bought_together_config")
 
 
 @pulumi.output_type
@@ -1379,7 +1459,7 @@ class GoogleCloudRetailV2RuleFilterActionResponse(dict):
                  filter: str):
         """
         * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
-        :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        :param str filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         pulumi.set(__self__, "filter", filter)
 
@@ -1387,7 +1467,7 @@ class GoogleCloudRetailV2RuleFilterActionResponse(dict):
     @pulumi.getter
     def filter(self) -> str:
         """
-        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         return pulumi.get(self, "filter")
 

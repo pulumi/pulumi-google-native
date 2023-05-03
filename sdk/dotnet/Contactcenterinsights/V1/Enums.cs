@@ -49,6 +49,43 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     }
 
     /// <summary>
+    /// Default summarization model to be used.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel : IEquatable<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel>
+    {
+        private readonly string _value;
+
+        private GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified summarization model.
+        /// </summary>
+        public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel SummarizationModelUnspecified { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("SUMMARIZATION_MODEL_UNSPECIFIED");
+        /// <summary>
+        /// The Insights baseline model.
+        /// </summary>
+        public static GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel BaselineModel { get; } = new GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel("BASELINE_MODEL");
+
+        public static bool operator ==(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel left, GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel left, GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel other && Equals(other);
+        public bool Equals(GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
     /// </summary>
     [EnumType]

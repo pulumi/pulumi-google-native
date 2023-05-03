@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class SourceResponse
     {
         /// <summary>
+        /// If provided, get the source from this Git repository.
+        /// </summary>
+        public readonly Outputs.GitSourceResponse GitSource;
+        /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
         /// </summary>
         public readonly Outputs.RepoSourceResponse RepoSource;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
         [OutputConstructor]
         private SourceResponse(
+            Outputs.GitSourceResponse gitSource,
+
             Outputs.RepoSourceResponse repoSource,
 
             Outputs.StorageSourceResponse storageSource,
 
             Outputs.StorageSourceManifestResponse storageSourceManifest)
         {
+            GitSource = gitSource;
             RepoSource = repoSource;
             StorageSource = storageSource;
             StorageSourceManifest = storageSourceManifest;

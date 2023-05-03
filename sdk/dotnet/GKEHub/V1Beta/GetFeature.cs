@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         /// </summary>
         public readonly Outputs.CommonFleetDefaultMemberConfigSpecResponse FleetDefaultMemberConfig;
         /// <summary>
-        /// GCP labels for this Feature.
+        /// Labels for this Feature.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

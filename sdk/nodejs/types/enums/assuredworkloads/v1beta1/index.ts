@@ -34,6 +34,30 @@ export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEk
  */
 export type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = (typeof GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain)[keyof typeof GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain];
 
+export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = {
+    /**
+     * Error is unspecified.
+     */
+    EkmProvisioningErrorMappingUnspecified: "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED",
+    /**
+     * Service account is used is invalid.
+     */
+    InvalidServiceAccount: "INVALID_SERVICE_ACCOUNT",
+    /**
+     * Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+     */
+    MissingMetricsScopeAdminPermission: "MISSING_METRICS_SCOPE_ADMIN_PERMISSION",
+    /**
+     * Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
+     */
+    MissingEkmConnectionAdminPermission: "MISSING_EKM_CONNECTION_ADMIN_PERMISSION",
+} as const;
+
+/**
+ * Detailed error message if Ekm provisioning fails
+ */
+export type GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping = (typeof GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping)[keyof typeof GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping];
+
 export const GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseEkmProvisioningState = {
     /**
      * Default State for Ekm Provisioning
@@ -168,6 +192,14 @@ export const WorkloadPartner = {
      * Enum representing T_SYSTEM (TSI) partner.
      */
     SovereignControlsByTSystems: "SOVEREIGN_CONTROLS_BY_T_SYSTEMS",
+    /**
+     * Enum representing SIA_MINSAIT (Indra) partner.
+     */
+    SovereignControlsBySiaMinsait: "SOVEREIGN_CONTROLS_BY_SIA_MINSAIT",
+    /**
+     * Enum representing PSN (TIM) partner.
+     */
+    SovereignControlsByPsn: "SOVEREIGN_CONTROLS_BY_PSN",
 } as const;
 
 /**

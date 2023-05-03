@@ -58,8 +58,11 @@ __all__ = [
     'CorsPolicyResponse',
     'CustomerEncryptionKeyResponse',
     'DeprecationStatusResponse',
+    'DiskAsyncReplicationResponse',
     'DiskInstantiationConfigResponse',
     'DiskParamsResponse',
+    'DiskResourceStatusAsyncReplicationStatusResponse',
+    'DiskResourceStatusResponse',
     'DisplayDeviceResponse',
     'DistributionPolicyResponse',
     'DistributionPolicyZoneConfigurationResponse',
@@ -203,6 +206,7 @@ __all__ = [
     'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionResponse',
     'SecurityPolicyRulePreconfiguredWafConfigResponse',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse',
     'SecurityPolicyRuleRateLimitOptionsResponse',
     'SecurityPolicyRuleRateLimitOptionsThresholdResponse',
     'SecurityPolicyRuleRedirectOptionsResponse',
@@ -878,6 +882,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "on_update_action"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "replicaZones":
+            suggest = "replica_zones"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
@@ -912,6 +918,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  licenses: Sequence[str],
                  on_update_action: str,
                  provisioned_iops: str,
+                 replica_zones: Sequence[str],
                  resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source_image: str,
@@ -929,6 +936,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
+        :param Sequence[str] replica_zones: Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
         :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param str source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -945,6 +953,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "replica_zones", replica_zones)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source_image", source_image)
@@ -1023,6 +1032,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> Sequence[str]:
+        """
+        Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
+        """
+        return pulumi.get(self, "replica_zones")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -3806,6 +3823,78 @@ class DeprecationStatusResponse(dict):
 
 
 @pulumi.output_type
+class DiskAsyncReplicationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consistencyGroupPolicy":
+            suggest = "consistency_group_policy"
+        elif key == "consistencyGroupPolicyId":
+            suggest = "consistency_group_policy_id"
+        elif key == "diskId":
+            suggest = "disk_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskAsyncReplicationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskAsyncReplicationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskAsyncReplicationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consistency_group_policy: str,
+                 consistency_group_policy_id: str,
+                 disk: str,
+                 disk_id: str):
+        """
+        :param str consistency_group_policy: URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        :param str consistency_group_policy_id: ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        :param str disk: The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        :param str disk_id: The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+        """
+        pulumi.set(__self__, "consistency_group_policy", consistency_group_policy)
+        pulumi.set(__self__, "consistency_group_policy_id", consistency_group_policy_id)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "disk_id", disk_id)
+
+    @property
+    @pulumi.getter(name="consistencyGroupPolicy")
+    def consistency_group_policy(self) -> str:
+        """
+        URL of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        """
+        return pulumi.get(self, "consistency_group_policy")
+
+    @property
+    @pulumi.getter(name="consistencyGroupPolicyId")
+    def consistency_group_policy_id(self) -> str:
+        """
+        ID of the DiskConsistencyGroupPolicy if replication was started on the disk as a member of a group.
+        """
+        return pulumi.get(self, "consistency_group_policy_id")
+
+    @property
+    @pulumi.getter
+    def disk(self) -> str:
+        """
+        The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        """
+        return pulumi.get(self, "disk")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        """
+        The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+        """
+        return pulumi.get(self, "disk_id")
+
+
+@pulumi.output_type
 class DiskInstantiationConfigResponse(dict):
     """
     A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
@@ -3920,6 +4009,62 @@ class DiskParamsResponse(dict):
         Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class DiskResourceStatusAsyncReplicationStatusResponse(dict):
+    def __init__(__self__, *,
+                 state: str):
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class DiskResourceStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asyncPrimaryDisk":
+            suggest = "async_primary_disk"
+        elif key == "asyncSecondaryDisks":
+            suggest = "async_secondary_disks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 async_primary_disk: 'outputs.DiskResourceStatusAsyncReplicationStatusResponse',
+                 async_secondary_disks: Mapping[str, str]):
+        """
+        :param Mapping[str, str] async_secondary_disks: Key: disk, value: AsyncReplicationStatus message
+        """
+        pulumi.set(__self__, "async_primary_disk", async_primary_disk)
+        pulumi.set(__self__, "async_secondary_disks", async_secondary_disks)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> 'outputs.DiskResourceStatusAsyncReplicationStatusResponse':
+        return pulumi.get(self, "async_primary_disk")
+
+    @property
+    @pulumi.getter(name="asyncSecondaryDisks")
+    def async_secondary_disks(self) -> Mapping[str, str]:
+        """
+        Key: disk, value: AsyncReplicationStatus message
+        """
+        return pulumi.get(self, "async_secondary_disks")
 
 
 @pulumi.output_type
@@ -8438,7 +8583,7 @@ class NetworkAttachmentConnectedEndpointResponse(dict):
         [Output Only] A connection connected to this network attachment.
         :param str ip_address: The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
         :param str project_id_or_num: The project id or number of the interface to which the IP was assigned.
-        :param Sequence[str] secondary_ip_cidr_ranges: Alias IP ranges from the same subnetwork
+        :param Sequence[str] secondary_ip_cidr_ranges: Alias IP ranges from the same subnetwork.
         :param str status: The status of a connected endpoint to this network attachment.
         :param str subnetwork: The subnetwork used to assign the IP to the producer instance network interface.
         """
@@ -8468,7 +8613,7 @@ class NetworkAttachmentConnectedEndpointResponse(dict):
     @pulumi.getter(name="secondaryIpCidrRanges")
     def secondary_ip_cidr_ranges(self) -> Sequence[str]:
         """
-        Alias IP ranges from the same subnetwork
+        Alias IP ranges from the same subnetwork.
         """
         return pulumi.get(self, "secondary_ip_cidr_ranges")
 
@@ -13309,7 +13454,7 @@ class SchedulingResponse(dict):
 @pulumi.output_type
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(dict):
     """
-    Configuration options for L7 DDoS detection.
+    Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -13332,9 +13477,9 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(dict
                  enable: bool,
                  rule_visibility: str):
         """
-        Configuration options for L7 DDoS detection.
-        :param bool enable: If set to true, enables CAAP for L7 DDoS detection.
-        :param str rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param bool enable: If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param str rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "rule_visibility", rule_visibility)
@@ -13343,7 +13488,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(dict
     @pulumi.getter
     def enable(self) -> bool:
         """
-        If set to true, enables CAAP for L7 DDoS detection.
+        If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "enable")
 
@@ -13351,7 +13496,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse(dict
     @pulumi.getter(name="ruleVisibility")
     def rule_visibility(self) -> str:
         """
-        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "rule_visibility")
 
@@ -13534,7 +13679,7 @@ class SecurityPolicyRecaptchaOptionsConfigResponse(dict):
     def __init__(__self__, *,
                  redirect_site_key: str):
         """
-        :param str redirect_site_key: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        :param str redirect_site_key: An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         pulumi.set(__self__, "redirect_site_key", redirect_site_key)
 
@@ -13542,7 +13687,7 @@ class SecurityPolicyRecaptchaOptionsConfigResponse(dict):
     @pulumi.getter(name="redirectSiteKey")
     def redirect_site_key(self) -> str:
         """
-        An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "redirect_site_key")
 
@@ -13694,7 +13839,7 @@ class SecurityPolicyRuleMatcherResponse(dict):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param 'SecurityPolicyRuleMatcherConfigResponse' config: The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
-        :param 'ExprResponse' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        :param 'ExprResponse' expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         :param str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         """
         pulumi.set(__self__, "config", config)
@@ -13713,7 +13858,7 @@ class SecurityPolicyRuleMatcherResponse(dict):
     @pulumi.getter
     def expr(self) -> 'outputs.ExprResponse':
         """
-        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
         """
         return pulumi.get(self, "expr")
 
@@ -13874,6 +14019,54 @@ class SecurityPolicyRulePreconfiguredWafConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enforceOnKeyName":
+            suggest = "enforce_on_key_name"
+        elif key == "enforceOnKeyType":
+            suggest = "enforce_on_key_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce_on_key_name: str,
+                 enforce_on_key_type: str):
+        """
+        :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param str enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        """
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> str:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @property
+    @pulumi.getter(name="enforceOnKeyType")
+    def enforce_on_key_type(self) -> str:
+        """
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        """
+        return pulumi.get(self, "enforce_on_key_type")
+
+
+@pulumi.output_type
 class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -13886,6 +14079,8 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
             suggest = "conform_action"
         elif key == "enforceOnKey":
             suggest = "enforce_on_key"
+        elif key == "enforceOnKeyConfigs":
+            suggest = "enforce_on_key_configs"
         elif key == "enforceOnKeyName":
             suggest = "enforce_on_key_name"
         elif key == "exceedAction":
@@ -13911,6 +14106,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
                  ban_threshold: 'outputs.SecurityPolicyRuleRateLimitOptionsThresholdResponse',
                  conform_action: str,
                  enforce_on_key: str,
+                 enforce_on_key_configs: Sequence['outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse'],
                  enforce_on_key_name: str,
                  exceed_action: str,
                  exceed_redirect_options: 'outputs.SecurityPolicyRuleRedirectOptionsResponse',
@@ -13920,15 +14116,17 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse'] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-        :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
+        :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
         pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
         pulumi.set(__self__, "ban_threshold", ban_threshold)
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
         pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         pulumi.set(__self__, "exceed_action", exceed_action)
         pulumi.set(__self__, "exceed_redirect_options", exceed_redirect_options)
@@ -13967,6 +14165,14 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         return pulumi.get(self, "enforce_on_key")
 
     @property
+    @pulumi.getter(name="enforceOnKeyConfigs")
+    def enforce_on_key_configs(self) -> Sequence['outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse']:
+        """
+        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+        """
+        return pulumi.get(self, "enforce_on_key_configs")
+
+    @property
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> str:
         """
@@ -13978,7 +14184,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> str:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -13986,7 +14192,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> 'outputs.SecurityPolicyRuleRedirectOptionsResponse':
         """
-        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "exceed_redirect_options")
 
@@ -14115,16 +14321,16 @@ class SecurityPolicyRuleResponse(dict):
                  redirect_options: 'outputs.SecurityPolicyRuleRedirectOptionsResponse'):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param str action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        :param str action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         :param str description: An optional description of this resource. Provide this property when you create the resource.
-        :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers.
+        :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param str kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param 'SecurityPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param 'SecurityPolicyRulePreconfiguredWafConfigResponse' preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param bool preview: If set to true, the specified action is not enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param 'SecurityPolicyRuleRateLimitOptionsResponse' rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-        :param 'SecurityPolicyRuleRedirectOptionsResponse' redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions.
+        :param 'SecurityPolicyRuleRedirectOptionsResponse' redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "description", description)
@@ -14141,7 +14347,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         """
         return pulumi.get(self, "action")
 
@@ -14157,7 +14363,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter(name="headerAction")
     def header_action(self) -> 'outputs.SecurityPolicyRuleHttpHeaderActionResponse':
         """
-        Optional, additional actions that are performed on headers.
+        Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "header_action")
 
@@ -14213,7 +14419,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter(name="redirectOptions")
     def redirect_options(self) -> 'outputs.SecurityPolicyRuleRedirectOptionsResponse':
         """
-        Parameters defining the redirect action. Cannot be specified for any other actions.
+        Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         """
         return pulumi.get(self, "redirect_options")
 

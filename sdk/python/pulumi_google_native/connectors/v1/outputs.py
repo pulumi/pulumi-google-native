@@ -146,6 +146,8 @@ class AuthConfigResponse(dict):
         suggest = None
         if key == "additionalVariables":
             suggest = "additional_variables"
+        elif key == "authKey":
+            suggest = "auth_key"
         elif key == "authType":
             suggest = "auth_type"
         elif key == "oauth2AuthCodeFlow":
@@ -172,6 +174,7 @@ class AuthConfigResponse(dict):
 
     def __init__(__self__, *,
                  additional_variables: Sequence['outputs.ConfigVariableResponse'],
+                 auth_key: str,
                  auth_type: str,
                  oauth2_auth_code_flow: 'outputs.Oauth2AuthCodeFlowResponse',
                  oauth2_client_credentials: 'outputs.Oauth2ClientCredentialsResponse',
@@ -181,6 +184,7 @@ class AuthConfigResponse(dict):
         """
         AuthConfig defines details of a authentication type.
         :param Sequence['ConfigVariableResponse'] additional_variables: List containing additional auth configs.
+        :param str auth_key: Identifier key for auth config
         :param str auth_type: The type of authentication configured.
         :param 'Oauth2AuthCodeFlowResponse' oauth2_auth_code_flow: Oauth2AuthCodeFlow.
         :param 'Oauth2ClientCredentialsResponse' oauth2_client_credentials: Oauth2ClientCredentials.
@@ -189,6 +193,7 @@ class AuthConfigResponse(dict):
         :param 'UserPasswordResponse' user_password: UserPassword.
         """
         pulumi.set(__self__, "additional_variables", additional_variables)
+        pulumi.set(__self__, "auth_key", auth_key)
         pulumi.set(__self__, "auth_type", auth_type)
         pulumi.set(__self__, "oauth2_auth_code_flow", oauth2_auth_code_flow)
         pulumi.set(__self__, "oauth2_client_credentials", oauth2_client_credentials)
@@ -203,6 +208,14 @@ class AuthConfigResponse(dict):
         List containing additional auth configs.
         """
         return pulumi.get(self, "additional_variables")
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> str:
+        """
+        Identifier key for auth config
+        """
+        return pulumi.get(self, "auth_key")
 
     @property
     @pulumi.getter(name="authType")

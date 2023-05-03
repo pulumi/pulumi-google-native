@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+        /// Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
         /// </summary>
         [Output("recentScheduledReleaseRecords")]
         public Output<ImmutableArray<Outputs.ScheduledReleaseRecordResponse>> RecentScheduledReleaseRecords { get; private set; } = null!;

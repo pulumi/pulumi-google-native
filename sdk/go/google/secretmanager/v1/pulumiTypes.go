@@ -1541,7 +1541,7 @@ func (o RotationResponseOutput) RotationPeriod() pulumi.StringOutput {
 
 // A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
 type Topic struct {
-	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission.
 	Name string `pulumi:"name"`
 }
 
@@ -1558,7 +1558,7 @@ type TopicInput interface {
 
 // A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
 type TopicArgs struct {
-	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1614,7 +1614,7 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
-// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission.
 func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Topic) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1641,7 +1641,7 @@ func (o TopicArrayOutput) Index(i pulumi.IntInput) TopicOutput {
 
 // A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
 type TopicResponse struct {
-	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission.
 	Name string `pulumi:"name"`
 }
 
@@ -1660,7 +1660,7 @@ func (o TopicResponseOutput) ToTopicResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission.
 func (o TopicResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TopicResponse) string { return v.Name }).(pulumi.StringOutput)
 }

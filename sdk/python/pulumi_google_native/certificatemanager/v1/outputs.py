@@ -17,10 +17,13 @@ __all__ = [
     'CertificateAuthorityServiceConfigResponse',
     'DnsResourceRecordResponse',
     'GclbTargetResponse',
+    'IntermediateCAResponse',
     'IpConfigResponse',
     'ManagedCertificateResponse',
     'ProvisioningIssueResponse',
     'SelfManagedCertificateResponse',
+    'TrustAnchorResponse',
+    'TrustStoreResponse',
 ]
 
 @pulumi.output_type
@@ -283,6 +286,45 @@ class GclbTargetResponse(dict):
 
 
 @pulumi.output_type
+class IntermediateCAResponse(dict):
+    """
+    Defines an intermediate CA.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntermediateCAResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntermediateCAResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntermediateCAResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        Defines an intermediate CA.
+        :param str pem_certificate: PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
 class IpConfigResponse(dict):
     """
     Defines IP configuration where this Certificate Map is serving.
@@ -515,5 +557,96 @@ class SelfManagedCertificateResponse(dict):
         Input only. The PEM-encoded private key of the leaf certificate.
         """
         return pulumi.get(self, "pem_private_key")
+
+
+@pulumi.output_type
+class TrustAnchorResponse(dict):
+    """
+    Defines a trust anchor.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustAnchorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustAnchorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustAnchorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: str):
+        """
+        Defines a trust anchor.
+        :param str pem_certificate: PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> str:
+        """
+        PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class TrustStoreResponse(dict):
+    """
+    Defines a trust store.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intermediateCas":
+            suggest = "intermediate_cas"
+        elif key == "trustAnchors":
+            suggest = "trust_anchors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustStoreResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustStoreResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustStoreResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 intermediate_cas: Sequence['outputs.IntermediateCAResponse'],
+                 trust_anchors: Sequence['outputs.TrustAnchorResponse']):
+        """
+        Defines a trust store.
+        :param Sequence['IntermediateCAResponse'] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+        :param Sequence['TrustAnchorResponse'] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
+        """
+        pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Sequence['outputs.IntermediateCAResponse']:
+        """
+        Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Sequence['outputs.TrustAnchorResponse']:
+        """
+        List of Trust Anchors to be used while performing validation against a given TrustStore.
+        """
+        return pulumi.get(self, "trust_anchors")
 
 

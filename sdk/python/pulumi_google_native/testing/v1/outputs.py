@@ -2330,7 +2330,7 @@ class TestSetupResponse(dict):
         :param Sequence['EnvironmentVariableResponse'] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param Sequence['DeviceFileResponse'] files_to_push: List of files to push to the device before starting the test.
         :param str network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
-        :param 'SystraceSetupResponse' systrace: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        :param 'SystraceSetupResponse' systrace: Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "additional_apks", additional_apks)
@@ -2401,7 +2401,7 @@ class TestSetupResponse(dict):
     @pulumi.getter
     def systrace(self) -> 'outputs.SystraceSetupResponse':
         """
-        Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
         """
         return pulumi.get(self, "systrace")
 

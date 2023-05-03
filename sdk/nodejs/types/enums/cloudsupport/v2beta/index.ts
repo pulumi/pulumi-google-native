@@ -30,7 +30,7 @@ export const CasePriority = {
 } as const;
 
 /**
- * The priority of this case. If this is set, do not set severity.
+ * The priority of this case.
  */
 export type CasePriority = (typeof CasePriority)[keyof typeof CasePriority];
 
@@ -62,6 +62,6 @@ export const CaseSeverity = {
 } as const;
 
 /**
- * The severity of this case. Deprecated. Use priority instead.
+ * REMOVED. The severity of this case. Use priority instead.
  */
 export type CaseSeverity = (typeof CaseSeverity)[keyof typeof CaseSeverity];

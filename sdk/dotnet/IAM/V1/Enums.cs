@@ -53,7 +53,81 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
     /// <summary>
-    /// Immutable. The specifications for the key.
+    /// Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior : IEquatable<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior>
+    {
+        private readonly string _value;
+
+        private GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No assertion claims behavior specified.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior AssertionClaimsBehaviorUnspecified { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// Only include ID Token Claims.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior OnlyIdTokenClaims { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ONLY_ID_TOKEN_CLAIMS");
+
+        public static bool operator ==(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior left, GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior right) => left.Equals(right);
+        public static bool operator !=(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior left, GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior other && Equals(other);
+        public bool Equals(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType : IEquatable<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType>
+    {
+        private readonly string _value;
+
+        private GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No Response Type specified.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType ResponseTypeUnspecified { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("RESPONSE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+        /// </summary>
+        public static GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType IdToken { get; } = new GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("ID_TOKEN");
+
+        public static bool operator ==(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType left, GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType right) => left.Equals(right);
+        public static bool operator !=(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType left, GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType other && Equals(other);
+        public bool Equals(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Required. The specifications for the key.
     /// </summary>
     [EnumType]
     public readonly struct KeyDataKeySpec : IEquatable<KeyDataKeySpec>
@@ -286,7 +360,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
     /// <summary>
-    /// Immutable. The purpose of the key.
+    /// Required. The purpose of the key.
     /// </summary>
     [EnumType]
     public readonly struct WorkforcePoolKeyUse : IEquatable<WorkforcePoolKeyUse>
@@ -323,7 +397,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
     /// <summary>
-    /// Immutable. The purpose of the key.
+    /// Required. The purpose of the key.
     /// </summary>
     [EnumType]
     public readonly struct WorkloadIdentityPoolKeyUse : IEquatable<WorkloadIdentityPoolKeyUse>

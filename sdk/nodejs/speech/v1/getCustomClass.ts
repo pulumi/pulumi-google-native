@@ -36,6 +36,14 @@ export interface GetCustomClassResult {
      */
     readonly items: outputs.speech.v1.ClassItemResponse[];
     /**
+     * The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    readonly kmsKeyName: string;
+    /**
+     * The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+     */
+    readonly kmsKeyVersionName: string;
+    /**
      * The resource name of the custom class.
      */
     readonly name: string;

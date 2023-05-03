@@ -42,7 +42,7 @@ export interface GetWorkflowConfigResult {
      */
     readonly name: string;
     /**
-     * Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+     * Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
      */
     readonly recentScheduledExecutionRecords: outputs.dataform.v1beta1.ScheduledExecutionRecordResponse[];
     /**

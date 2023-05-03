@@ -72,10 +72,6 @@ namespace Pulumi.GoogleNative.Translate.V3
         /// </summary>
         public readonly string Dataset;
         /// <summary>
-        /// Timestamp when the model training finished and ready to be used for translation.
-        /// </summary>
-        public readonly string DeployTime;
-        /// <summary>
         /// The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
         /// </summary>
         public readonly string DisplayName;
@@ -114,8 +110,6 @@ namespace Pulumi.GoogleNative.Translate.V3
 
             string dataset,
 
-            string deployTime,
-
             string displayName,
 
             string name,
@@ -134,7 +128,6 @@ namespace Pulumi.GoogleNative.Translate.V3
         {
             CreateTime = createTime;
             Dataset = dataset;
-            DeployTime = deployTime;
             DisplayName = displayName;
             Name = name;
             SourceLanguageCode = sourceLanguageCode;

@@ -38,11 +38,11 @@ export class Document extends pulumi.CustomResource {
     public readonly collectionId!: pulumi.Output<string>;
     public readonly dataStoreId!: pulumi.Output<string>;
     /**
-     * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+     * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
      */
     public readonly documentId!: pulumi.Output<string>;
     /**
-     * The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     public readonly jsonData!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
@@ -60,7 +60,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly schemaId!: pulumi.Output<string>;
     /**
-     * The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     public readonly structData!: pulumi.Output<{[key: string]: string}>;
 
@@ -127,7 +127,7 @@ export interface DocumentArgs {
     collectionId: pulumi.Input<string>;
     dataStoreId: pulumi.Input<string>;
     /**
-     * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+     * Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
      */
     documentId: pulumi.Input<string>;
     /**
@@ -135,7 +135,7 @@ export interface DocumentArgs {
      */
     id?: pulumi.Input<string>;
     /**
-     * The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     jsonData?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
@@ -153,7 +153,7 @@ export interface DocumentArgs {
      */
     schemaId?: pulumi.Input<string>;
     /**
-     * The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+     * The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
      */
     structData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

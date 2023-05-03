@@ -24,6 +24,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
         /// </summary>
         public readonly string MinValue;
+        /// <summary>
+        /// The aggregate metric to evaluate.
+        /// </summary>
         public readonly string Statistic;
         /// <summary>
         /// Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.

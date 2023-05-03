@@ -153,6 +153,7 @@ __all__ = [
     'RouterBgpPeerAdvertisedGroupsItem',
     'RouterBgpPeerBfdSessionInitializationMode',
     'RouterBgpPeerEnable',
+    'RouterNatAutoNetworkTier',
     'RouterNatEndpointTypesItem',
     'RouterNatLogConfigFilter',
     'RouterNatNatIpAllocateOption',
@@ -199,6 +200,7 @@ __all__ = [
     'TargetPoolSessionAffinity',
     'TargetSslProxyProxyHeader',
     'TargetTcpProxyProxyHeader',
+    'VpnGatewayGatewayIpVersion',
     'VpnGatewayStackType',
 ]
 
@@ -2341,6 +2343,7 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
     GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
+    GRAPHICS_OPTIMIZED = "GRAPHICS_OPTIMIZED"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
@@ -2681,6 +2684,28 @@ class RouterBgpPeerEnable(str, Enum):
     TRUE = "TRUE"
 
 
+class RouterNatAutoNetworkTier(str, Enum):
+    """
+    The network tier to use when automatically reserving IP addresses. Must be one of: PREMIUM, STANDARD. If not specified, PREMIUM tier will be used.
+    """
+    FIXED_STANDARD = "FIXED_STANDARD"
+    """
+    Public internet quality with fixed bandwidth.
+    """
+    PREMIUM = "PREMIUM"
+    """
+    High quality, Google-grade network tier, support for all networking products.
+    """
+    STANDARD = "STANDARD"
+    """
+    Public internet quality, only limited support for other networking products.
+    """
+    STANDARD_OVERRIDES_FIXED_STANDARD = "STANDARD_OVERRIDES_FIXED_STANDARD"
+    """
+    (Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured.
+    """
+
+
 class RouterNatEndpointTypesItem(str, Enum):
     ENDPOINT_TYPE_SWG = "ENDPOINT_TYPE_SWG"
     """
@@ -2886,7 +2911,7 @@ class SchedulingProvisioningModel(str, Enum):
 
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility(str, Enum):
     """
-    Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+    Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     """
     PREMIUM = "PREMIUM"
     STANDARD = "STANDARD"
@@ -3331,6 +3356,20 @@ class TargetTcpProxyProxyHeader(str, Enum):
     """
     NONE = "NONE"
     PROXY_V1 = "PROXY_V1"
+
+
+class VpnGatewayGatewayIpVersion(str, Enum):
+    """
+    The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+    """
+    IPV4 = "IPV4"
+    """
+    Every HA-VPN gateway interface is configured with an IPv4 address.
+    """
+    IPV6 = "IPV6"
+    """
+    Every HA-VPN gateway interface is configured with an IPv6 address.
+    """
 
 
 class VpnGatewayStackType(str, Enum):

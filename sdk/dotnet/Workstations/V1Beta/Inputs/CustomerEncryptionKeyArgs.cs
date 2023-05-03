@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class CustomerEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        /// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+        /// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         /// </summary>
         [Input("kmsKeyServiceAccount")]
         public Input<string>? KmsKeyServiceAccount { get; set; }

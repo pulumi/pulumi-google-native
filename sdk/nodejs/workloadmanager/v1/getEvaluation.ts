@@ -60,6 +60,10 @@ export interface GetEvaluationResult {
      */
     readonly ruleVersions: string[];
     /**
+     * crontab format schedule for scheduled evaluation, example: 0 *&#47;3 * * *
+     */
+    readonly schedule: string;
+    /**
      * [Output only] Update time stamp
      */
     readonly updateTime: string;

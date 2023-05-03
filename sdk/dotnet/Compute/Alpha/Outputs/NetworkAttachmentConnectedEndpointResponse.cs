@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string ProjectIdOrNum;
         /// <summary>
-        /// Alias IP ranges from the same subnetwork
+        /// Alias IP ranges from the same subnetwork.
         /// </summary>
         public readonly ImmutableArray<string> SecondaryIpCidrRanges;
         /// <summary>

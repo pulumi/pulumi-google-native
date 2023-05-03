@@ -46,6 +46,10 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.v1beta.StatusResponse[]>;
     /**
+     * The private IP address of the control plane for this cluster. Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
+     */
+    public /*out*/ readonly controlPlaneIp!: pulumi.Output<string>;
+    /**
      * Time when this resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -62,7 +66,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -130,6 +134,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["controlPlaneIp"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -139,6 +144,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
         } else {
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["controlPlaneIp"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -176,7 +182,7 @@ export interface WorkstationClusterArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**

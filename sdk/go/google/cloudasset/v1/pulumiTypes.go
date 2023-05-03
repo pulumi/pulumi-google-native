@@ -1165,6 +1165,8 @@ type Options struct {
 	ExpandResources *bool `pulumi:"expandResources"`
 	// Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
 	ExpandRoles *bool `pulumi:"expandRoles"`
+	// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+	IncludeDenyPolicyAnalysis *bool `pulumi:"includeDenyPolicyAnalysis"`
 	// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
 	OutputGroupEdges *bool `pulumi:"outputGroupEdges"`
 	// Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
@@ -1192,6 +1194,8 @@ type OptionsArgs struct {
 	ExpandResources pulumi.BoolPtrInput `pulumi:"expandResources"`
 	// Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
 	ExpandRoles pulumi.BoolPtrInput `pulumi:"expandRoles"`
+	// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+	IncludeDenyPolicyAnalysis pulumi.BoolPtrInput `pulumi:"includeDenyPolicyAnalysis"`
 	// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
 	OutputGroupEdges pulumi.BoolPtrInput `pulumi:"outputGroupEdges"`
 	// Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
@@ -1296,6 +1300,11 @@ func (o OptionsOutput) ExpandRoles() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Options) *bool { return v.ExpandRoles }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+func (o OptionsOutput) IncludeDenyPolicyAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Options) *bool { return v.IncludeDenyPolicyAnalysis }).(pulumi.BoolPtrOutput)
+}
+
 // Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
 func (o OptionsOutput) OutputGroupEdges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Options) *bool { return v.OutputGroupEdges }).(pulumi.BoolPtrOutput)
@@ -1370,6 +1379,16 @@ func (o OptionsPtrOutput) ExpandRoles() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+func (o OptionsPtrOutput) IncludeDenyPolicyAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Options) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeDenyPolicyAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
 func (o OptionsPtrOutput) OutputGroupEdges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Options) *bool {
@@ -1400,6 +1419,8 @@ type OptionsResponse struct {
 	ExpandResources bool `pulumi:"expandResources"`
 	// Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
 	ExpandRoles bool `pulumi:"expandRoles"`
+	// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+	IncludeDenyPolicyAnalysis bool `pulumi:"includeDenyPolicyAnalysis"`
 	// Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.
 	OutputGroupEdges bool `pulumi:"outputGroupEdges"`
 	// Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false.
@@ -1439,6 +1460,11 @@ func (o OptionsResponseOutput) ExpandResources() pulumi.BoolOutput {
 // Optional. If true, the access section of result will expand any roles appearing in IAM policy bindings to include their permissions. If IamPolicyAnalysisQuery.access_selector is specified, the access section of the result will be determined by the selector, and this flag is not allowed to set. Default is false.
 func (o OptionsResponseOutput) ExpandRoles() pulumi.BoolOutput {
 	return o.ApplyT(func(v OptionsResponse) bool { return v.ExpandRoles }).(pulumi.BoolOutput)
+}
+
+// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples are denied. Default is false.
+func (o OptionsResponseOutput) IncludeDenyPolicyAnalysis() pulumi.BoolOutput {
+	return o.ApplyT(func(v OptionsResponse) bool { return v.IncludeDenyPolicyAnalysis }).(pulumi.BoolOutput)
 }
 
 // Optional. If true, the result will output the relevant membership relationships between groups and other groups, and between groups and principals. Default is false.

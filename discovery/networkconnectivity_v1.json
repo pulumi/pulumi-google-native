@@ -1393,7 +1393,7 @@
       }
     }
   },
-  "revision": "20230329",
+  "revision": "20230417",
   "rootUrl": "https://networkconnectivity.googleapis.com/",
   "schemas": {
     "AuditConfig": {

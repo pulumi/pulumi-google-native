@@ -527,7 +527,7 @@ func (in *gcspayloadInfoFormatPtr) ToGCSPayloadInfoFormatPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(GCSPayloadInfoFormatPtrOutput)
 }
 
-// The payload format.
+// Required. The payload format.
 type ImportDataFileFormat string
 
 const (

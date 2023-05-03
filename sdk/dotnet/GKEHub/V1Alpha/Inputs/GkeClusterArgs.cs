@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     public sealed class GkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        /// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         /// </summary>
         [Input("resourceLink")]
         public Input<string>? ResourceLink { get; set; }

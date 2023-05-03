@@ -50,22 +50,6 @@ export const AppGatewayType = {
  */
 export type AppGatewayType = (typeof AppGatewayType)[keyof typeof AppGatewayType];
 
-export const ConfigTransportProtocol = {
-    /**
-     * Default value. This value is unused.
-     */
-    TransportProtocolUnspecified: "TRANSPORT_PROTOCOL_UNSPECIFIED",
-    /**
-     * TCP protocol.
-     */
-    Tcp: "TCP",
-} as const;
-
-/**
- * Required. Immutable. The transport protocol used between the client and the server.
- */
-export type ConfigTransportProtocol = (typeof ConfigTransportProtocol)[keyof typeof ConfigTransportProtocol];
-
 export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType = {
     /**
      * Default value. This value is unused.

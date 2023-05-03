@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         private InputList<string>? _args;
 
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
         /// </summary>
         public InputList<string> Args
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         private InputList<string>? _command;
 
         /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
         /// </summary>
         public InputList<string> Command
         {
@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         }
 
         /// <summary>
-        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
         /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails.
         /// </summary>
         [Input("livenessProbe")]
         public Input<Inputs.GoogleCloudRunV2ProbeArgs>? LivenessProbe { get; set; }
@@ -82,13 +82,13 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         }
 
         /// <summary>
-        /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Compute Resource requirements by this container.
         /// </summary>
         [Input("resources")]
         public Input<Inputs.GoogleCloudRunV2ResourceRequirementsArgs>? Resources { get; set; }
 
         /// <summary>
-        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// </summary>
         [Input("startupProbe")]
         public Input<Inputs.GoogleCloudRunV2ProbeArgs>? StartupProbe { get; set; }

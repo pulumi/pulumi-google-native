@@ -32,6 +32,7 @@ __all__ = [
     'NFSArgs',
     'NetworkInterfaceArgs',
     'NetworkPolicyArgs',
+    'PlacementPolicyArgs',
     'RunnableArgs',
     'ScriptArgs',
     'ServiceAccountArgs',
@@ -130,6 +131,7 @@ class AllocationPolicyArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input['LocationPolicyArgs']] = None,
                  network: Optional[pulumi.Input['NetworkPolicyArgs']] = None,
+                 placement: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  service_account: Optional[pulumi.Input['ServiceAccountArgs']] = None):
         """
         A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
@@ -137,6 +139,7 @@ class AllocationPolicyArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to all VM instances and other resources created by AllocationPolicy. Labels could be user provided or system generated. You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
         :param pulumi.Input['LocationPolicyArgs'] location: Location where compute resources should be allocated for the Job.
         :param pulumi.Input['NetworkPolicyArgs'] network: The network policy.
+        :param pulumi.Input['PlacementPolicyArgs'] placement: The placement policy.
         :param pulumi.Input['ServiceAccountArgs'] service_account: Service account that VMs will run as.
         """
         if instances is not None:
@@ -147,6 +150,8 @@ class AllocationPolicyArgs:
             pulumi.set(__self__, "location", location)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
 
@@ -197,6 +202,18 @@ class AllocationPolicyArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input['NetworkPolicyArgs']]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def placement(self) -> Optional[pulumi.Input['PlacementPolicyArgs']]:
+        """
+        The placement policy.
+        """
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: Optional[pulumi.Input['PlacementPolicyArgs']]):
+        pulumi.set(self, "placement", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1166,6 +1183,46 @@ class NetworkPolicyArgs:
 
 
 @pulumi.input_type
+class PlacementPolicyArgs:
+    def __init__(__self__, *,
+                 collocation: Optional[pulumi.Input[str]] = None,
+                 max_distance: Optional[pulumi.Input[str]] = None):
+        """
+        PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+        :param pulumi.Input[str] collocation: UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+        :param pulumi.Input[str] max_distance: When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+        """
+        if collocation is not None:
+            pulumi.set(__self__, "collocation", collocation)
+        if max_distance is not None:
+            pulumi.set(__self__, "max_distance", max_distance)
+
+    @property
+    @pulumi.getter
+    def collocation(self) -> Optional[pulumi.Input[str]]:
+        """
+        UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+        """
+        return pulumi.get(self, "collocation")
+
+    @collocation.setter
+    def collocation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collocation", value)
+
+    @property
+    @pulumi.getter(name="maxDistance")
+    def max_distance(self) -> Optional[pulumi.Input[str]]:
+        """
+        When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+        """
+        return pulumi.get(self, "max_distance")
+
+    @max_distance.setter
+    def max_distance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_distance", value)
+
+
+@pulumi.input_type
 class RunnableArgs:
     def __init__(__self__, *,
                  always_run: Optional[pulumi.Input[bool]] = None,
@@ -1174,6 +1231,7 @@ class RunnableArgs:
                  container: Optional[pulumi.Input['ContainerArgs']] = None,
                  environment: Optional[pulumi.Input['EnvironmentArgs']] = None,
                  ignore_exit_status: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  script: Optional[pulumi.Input['ScriptArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -1184,6 +1242,7 @@ class RunnableArgs:
         :param pulumi.Input['ContainerArgs'] container: Container runnable.
         :param pulumi.Input['EnvironmentArgs'] environment: Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
         :param pulumi.Input[bool] ignore_exit_status: Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Runnable.
         :param pulumi.Input['ScriptArgs'] script: Script runnable.
         :param pulumi.Input[str] timeout: Timeout for this Runnable.
         """
@@ -1199,6 +1258,8 @@ class RunnableArgs:
             pulumi.set(__self__, "environment", environment)
         if ignore_exit_status is not None:
             pulumi.set(__self__, "ignore_exit_status", ignore_exit_status)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if script is not None:
             pulumi.set(__self__, "script", script)
         if timeout is not None:
@@ -1275,6 +1336,18 @@ class RunnableArgs:
     @ignore_exit_status.setter
     def ignore_exit_status(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_exit_status", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Runnable.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter

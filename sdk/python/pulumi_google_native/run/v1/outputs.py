@@ -554,15 +554,15 @@ class ContainerResponse(dict):
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
         :param Sequence['EnvFromSourceResponse'] env_from: Not supported by Cloud Run.
-        :param str image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-        :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str name: Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        :param str image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
+        :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+        :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
+        :param str name: Name of the container specified as a DNS_LABEL (RFC 1123).
         :param Sequence['ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'ProbeResponse' readiness_probe: Not supported by Cloud Run.
-        :param 'ResourceRequirementsResponse' resources: Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'ResourceRequirementsResponse' resources: Compute Resources required by this container.
         :param 'SecurityContextResponse' security_context: Not supported by Cloud Run.
-        :param 'ProbeResponse' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'ProbeResponse' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
         :param str termination_message_path: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
         :param str termination_message_policy: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
         :param Sequence['VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
@@ -622,7 +622,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         """
         return pulumi.get(self, "image")
 
@@ -630,7 +630,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="imagePullPolicy")
     def image_pull_policy(self) -> str:
         """
-        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
         """
         return pulumi.get(self, "image_pull_policy")
 
@@ -638,7 +638,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> 'outputs.ProbeResponse':
         """
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails.
         """
         return pulumi.get(self, "liveness_probe")
 
@@ -646,7 +646,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        Name of the container specified as a DNS_LABEL (RFC 1123).
         """
         return pulumi.get(self, "name")
 
@@ -670,7 +670,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def resources(self) -> 'outputs.ResourceRequirementsResponse':
         """
-        Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resources required by this container.
         """
         return pulumi.get(self, "resources")
 
@@ -686,7 +686,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> 'outputs.ProbeResponse':
         """
-        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
         """
         return pulumi.get(self, "startup_probe")
 
@@ -1164,13 +1164,13 @@ class ExecutionSpecResponse(dict):
 @pulumi.output_type
 class ExecutionTemplateSpecResponse(dict):
     """
-    ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+    ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
     """
     def __init__(__self__, *,
                  metadata: 'outputs.ObjectMetaResponse',
                  spec: 'outputs.ExecutionSpecResponse'):
         """
-        ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+        ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
         :param 'ObjectMetaResponse' metadata: Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
         :param 'ExecutionSpecResponse' spec: ExecutionSpec holds the desired configuration for executions of this job.
         """
@@ -1260,7 +1260,7 @@ class GRPCActionResponse(dict):
         """
         GRPCAction describes an action involving a GRPC port.
         :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535.
-        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "service", service)
@@ -1277,7 +1277,7 @@ class GRPCActionResponse(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
         """
         return pulumi.get(self, "service")
 
@@ -1318,7 +1318,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
         :param str reason: Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
         :param str severity: Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
         :param str status: Status of the condition, one of True, False, Unknown.
-        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+        :param str type: type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
         """
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -1371,7 +1371,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -1622,7 +1622,7 @@ class LocalObjectReferenceResponse(dict):
                  name: str):
         """
         Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-        :param str name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        :param str name: Name of the referent.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1630,7 +1630,7 @@ class LocalObjectReferenceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
         """
         return pulumi.get(self, "name")
 
@@ -1689,21 +1689,21 @@ class ObjectMetaResponse(dict):
                  uid: str):
         """
         k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-        :param Mapping[str, str] annotations: Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+        :param Mapping[str, str] annotations: Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
         :param str cluster_name: Not supported by Cloud Run
-        :param str creation_timestamp: UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        :param str creation_timestamp: UTC timestamp representing the server time when this object was created.
         :param int deletion_grace_period_seconds: Not supported by Cloud Run
         :param str deletion_timestamp: The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field. Instead, they must call the corresponding Delete API.
         :param Sequence[str] finalizers: Not supported by Cloud Run
         :param str generate_name: Not supported by Cloud Run
         :param int generation: A system-provided sequence number representing a specific generation of the desired state.
-        :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
-        :param str name: The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+        :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
+        :param str name: The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
         :param str namespace: Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
         :param Sequence['OwnerReferenceResponse'] owner_references: Not supported by Cloud Run
-        :param str resource_version: Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param str resource_version: Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
         :param str self_link: URL representing this object.
-        :param str uid: Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        :param str uid: Unique, system-generated identifier for this resource.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1725,7 +1725,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+        Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
         """
         return pulumi.get(self, "annotations")
 
@@ -1741,7 +1741,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        UTC timestamp representing the server time when this object was created.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1789,7 +1789,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
         """
         return pulumi.get(self, "labels")
 
@@ -1797,7 +1797,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+        The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
         """
         return pulumi.get(self, "name")
 
@@ -1821,7 +1821,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
         """
-        Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
         """
         return pulumi.get(self, "resource_version")
 
@@ -1837,7 +1837,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def uid(self) -> str:
         """
-        Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        Unique, system-generated identifier for this resource.
         """
         return pulumi.get(self, "uid")
 
@@ -1990,11 +1990,11 @@ class ProbeResponse(dict):
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param 'GRPCActionResponse' grpc: GRPCAction specifies an action involving a GRPC port.
         :param 'HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform.
-        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         :param int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
         :param 'TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port.
-        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
         """
         pulumi.set(__self__, "exec_", exec_)
         pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -2042,7 +2042,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
         """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -2074,7 +2074,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
         """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2133,8 +2133,8 @@ class ResourceRequirementsResponse(dict):
                  requests: Mapping[str, str]):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param Mapping[str, str] limits: Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param Mapping[str, str] requests: Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] limits: Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
+        :param Mapping[str, str] requests: Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         """
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "requests", requests)
@@ -2143,7 +2143,7 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
         """
-        Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         """
         return pulumi.get(self, "limits")
 
@@ -2151,7 +2151,7 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         """
-        Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
         """
         return pulumi.get(self, "requests")
 
@@ -2197,7 +2197,7 @@ class RevisionSpecResponse(dict):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
-        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
         :param bool enable_service_links: Not supported by Cloud Run.
         :param Sequence['LocalObjectReferenceResponse'] image_pull_secrets: Not supported by Cloud Run.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -2223,7 +2223,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter
     def containers(self) -> Sequence['outputs.ContainerResponse']:
         """
-        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
         """
         return pulumi.get(self, "containers")
 
@@ -2268,13 +2268,13 @@ class RevisionSpecResponse(dict):
 @pulumi.output_type
 class RevisionTemplateResponse(dict):
     """
-    RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+    RevisionTemplateSpec describes the data a revision should have when created from a template.
     """
     def __init__(__self__, *,
                  metadata: 'outputs.ObjectMetaResponse',
                  spec: 'outputs.RevisionSpecResponse'):
         """
-        RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+        RevisionTemplateSpec describes the data a revision should have when created from a template.
         :param 'ObjectMetaResponse' metadata: Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
         :param 'RevisionSpecResponse' spec: RevisionSpec holds the desired state of the Revision (from the client).
         """
@@ -2736,7 +2736,7 @@ class TaskSpecResponse(dict):
         :param int max_retries: Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
         :param str service_account_name: Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param str timeout_seconds: Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
-        :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task.
         """
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "max_retries", max_retries)
@@ -2780,7 +2780,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.VolumeResponse']:
         """
-        Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+        Optional. List of volumes that can be mounted by containers belonging to the task.
         """
         return pulumi.get(self, "volumes")
 
@@ -2794,7 +2794,7 @@ class TaskTemplateSpecResponse(dict):
                  spec: 'outputs.TaskSpecResponse'):
         """
         TaskTemplateSpec describes the data a task should have when created from a template.
-        :param 'TaskSpecResponse' spec: Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        :param 'TaskSpecResponse' spec: Optional. Specification of the desired behavior of the task.
         """
         pulumi.set(__self__, "spec", spec)
 
@@ -2802,7 +2802,7 @@ class TaskTemplateSpecResponse(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.TaskSpecResponse':
         """
-        Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        Optional. Specification of the desired behavior of the task.
         """
         return pulumi.get(self, "spec")
 

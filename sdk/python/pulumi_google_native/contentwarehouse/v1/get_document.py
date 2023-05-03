@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, cloud_ai_document=None, content_category=None, create_time=None, creator=None, display_name=None, display_uri=None, document_schema_name=None, inline_raw_document=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, text_extraction_disabled=None, text_extraction_enabled=None, title=None, update_time=None, updater=None):
+    def __init__(__self__, cloud_ai_document=None, content_category=None, create_time=None, creator=None, display_name=None, display_uri=None, disposition_time=None, document_schema_name=None, inline_raw_document=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, text_extraction_disabled=None, text_extraction_enabled=None, title=None, update_time=None, updater=None):
         if cloud_ai_document and not isinstance(cloud_ai_document, dict):
             raise TypeError("Expected argument 'cloud_ai_document' to be a dict")
         pulumi.set(__self__, "cloud_ai_document", cloud_ai_document)
@@ -38,6 +38,9 @@ class GetDocumentResult:
         if display_uri and not isinstance(display_uri, str):
             raise TypeError("Expected argument 'display_uri' to be a str")
         pulumi.set(__self__, "display_uri", display_uri)
+        if disposition_time and not isinstance(disposition_time, str):
+            raise TypeError("Expected argument 'disposition_time' to be a str")
+        pulumi.set(__self__, "disposition_time", disposition_time)
         if document_schema_name and not isinstance(document_schema_name, str):
             raise TypeError("Expected argument 'document_schema_name' to be a str")
         pulumi.set(__self__, "document_schema_name", document_schema_name)
@@ -125,6 +128,14 @@ class GetDocumentResult:
         Uri to display the document, for example, in the UI.
         """
         return pulumi.get(self, "display_uri")
+
+    @property
+    @pulumi.getter(name="dispositionTime")
+    def disposition_time(self) -> str:
+        """
+        If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+        """
+        return pulumi.get(self, "disposition_time")
 
     @property
     @pulumi.getter(name="documentSchemaName")
@@ -243,6 +254,7 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             creator=self.creator,
             display_name=self.display_name,
             display_uri=self.display_uri,
+            disposition_time=self.disposition_time,
             document_schema_name=self.document_schema_name,
             inline_raw_document=self.inline_raw_document,
             name=self.name,
@@ -279,6 +291,7 @@ def get_document(document_id: Optional[str] = None,
         creator=__ret__.creator,
         display_name=__ret__.display_name,
         display_uri=__ret__.display_uri,
+        disposition_time=__ret__.disposition_time,
         document_schema_name=__ret__.document_schema_name,
         inline_raw_document=__ret__.inline_raw_document,
         name=__ret__.name,

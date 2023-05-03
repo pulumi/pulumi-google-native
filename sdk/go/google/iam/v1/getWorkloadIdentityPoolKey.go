@@ -37,7 +37,7 @@ type LookupWorkloadIdentityPoolKeyResult struct {
 	Name string `pulumi:"name"`
 	// The state of the key.
 	State string `pulumi:"state"`
-	// Immutable. The purpose of the key.
+	// The purpose of the key.
 	Use string `pulumi:"use"`
 }
 
@@ -100,7 +100,7 @@ func (o LookupWorkloadIdentityPoolKeyResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolKeyResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Immutable. The purpose of the key.
+// The purpose of the key.
 func (o LookupWorkloadIdentityPoolKeyResultOutput) Use() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolKeyResult) string { return v.Use }).(pulumi.StringOutput)
 }

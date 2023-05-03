@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DocumentAI.V1
 {
     /// <summary>
-    /// Creates a processor from the type processor that the user chose. The processor will be at "ENABLED" state by default after its creation.
+    /// Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:documentai/v1:Processor")]
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+        /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+        /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

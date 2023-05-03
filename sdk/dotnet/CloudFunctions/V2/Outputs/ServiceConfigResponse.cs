@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Outputs
 {
 
     /// <summary>
-    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
+    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
     /// </summary>
     [OutputType]
     public sealed class ServiceConfigResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Outputs
         /// </summary>
         public readonly bool AllTrafficOnLatestRevision;
         /// <summary>
-        /// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        /// [Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         /// </summary>
         public readonly string AvailableCpu;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Outputs
         /// </summary>
         public readonly int MaxInstanceCount;
         /// <summary>
-        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// [Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         /// </summary>
         public readonly int MaxInstanceRequestConcurrency;
         /// <summary>

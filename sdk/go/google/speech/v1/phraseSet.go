@@ -16,8 +16,12 @@ type PhraseSet struct {
 	pulumi.CustomResourceState
 
 	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
-	Boost    pulumi.Float64Output `pulumi:"boost"`
-	Location pulumi.StringOutput  `pulumi:"location"`
+	Boost pulumi.Float64Output `pulumi:"boost"`
+	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
+	// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+	KmsKeyVersionName pulumi.StringOutput `pulumi:"kmsKeyVersionName"`
+	Location          pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the phrase set.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of word and phrases.
@@ -138,6 +142,16 @@ func (o PhraseSetOutput) ToPhraseSetOutputWithContext(ctx context.Context) Phras
 // Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 func (o PhraseSetOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v *PhraseSet) pulumi.Float64Output { return v.Boost }).(pulumi.Float64Output)
+}
+
+// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o PhraseSetOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+func (o PhraseSetOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseSet) pulumi.StringOutput { return v.KmsKeyVersionName }).(pulumi.StringOutput)
 }
 
 func (o PhraseSetOutput) Location() pulumi.StringOutput {

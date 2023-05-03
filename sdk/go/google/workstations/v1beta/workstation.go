@@ -23,7 +23,9 @@ type Workstation struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Environment variables passed to the workstation container's entrypoint.
+	Env pulumi.StringMapOutput `pulumi:"env"`
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -107,7 +109,9 @@ type workstationArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Environment variables passed to the workstation container's entrypoint.
+	Env map[string]string `pulumi:"env"`
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels   map[string]string `pulumi:"labels"`
@@ -127,7 +131,9 @@ type WorkstationArgs struct {
 	Annotations pulumi.StringMapInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Environment variables passed to the workstation container's entrypoint.
+	Env pulumi.StringMapInput
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels   pulumi.StringMapInput
@@ -198,7 +204,12 @@ func (o WorkstationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+// Environment variables passed to the workstation container's entrypoint.
+func (o WorkstationOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Env }).(pulumi.StringMapOutput)
+}
+
+// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

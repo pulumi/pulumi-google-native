@@ -692,6 +692,14 @@ export const HashType = {
      * A SHA-256 hash.
      */
     Sha256: "SHA256",
+    /**
+     * Dirhash of a Go module's source code which is then hex-encoded. See b/244466565 and https://github.com/in-toto/attestation/pull/108.
+     */
+    GoModuleH1: "GO_MODULE_H1",
+    /**
+     * A SHA-512 hash.
+     */
+    Sha512: "SHA512",
 } as const;
 
 /**

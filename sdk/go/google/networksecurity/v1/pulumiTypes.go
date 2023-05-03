@@ -1676,8 +1676,12 @@ func (o HttpHeaderMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicy struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCA `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode *MTLSPolicyClientValidationMode `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig *string `pulumi:"clientValidationTrustConfig"`
 }
 
 // MTLSPolicyInput is an input type that accepts MTLSPolicyArgs and MTLSPolicyOutput values.
@@ -1693,8 +1697,12 @@ type MTLSPolicyInput interface {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicyArgs struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa ValidationCAArrayInput `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode MTLSPolicyClientValidationModePtrInput `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig pulumi.StringPtrInput `pulumi:"clientValidationTrustConfig"`
 }
 
 func (MTLSPolicyArgs) ElementType() reflect.Type {
@@ -1775,9 +1783,19 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(MTLSPolicyPtrOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v MTLSPolicy) []ValidationCA { return v.ClientValidationCa }).(ValidationCAArrayOutput)
+}
+
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyOutput) ClientValidationMode() MTLSPolicyClientValidationModePtrOutput {
+	return o.ApplyT(func(v MTLSPolicy) *MTLSPolicyClientValidationMode { return v.ClientValidationMode }).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MTLSPolicy) *string { return v.ClientValidationTrustConfig }).(pulumi.StringPtrOutput)
 }
 
 type MTLSPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -1804,7 +1822,7 @@ func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
 	}).(MTLSPolicyOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v *MTLSPolicy) []ValidationCA {
 		if v == nil {
@@ -1814,10 +1832,34 @@ func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	}).(ValidationCAArrayOutput)
 }
 
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyPtrOutput) ClientValidationMode() MTLSPolicyClientValidationModePtrOutput {
+	return o.ApplyT(func(v *MTLSPolicy) *MTLSPolicyClientValidationMode {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationMode
+	}).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyPtrOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MTLSPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationTrustConfig
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specification of the MTLSPolicy.
 type MTLSPolicyResponse struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCAResponse `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode string `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig string `pulumi:"clientValidationTrustConfig"`
 }
 
 // Specification of the MTLSPolicy.
@@ -1835,118 +1877,128 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
 }
 
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyResponseOutput) ClientValidationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v MTLSPolicyResponse) string { return v.ClientValidationMode }).(pulumi.StringOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyResponseOutput) ClientValidationTrustConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v MTLSPolicyResponse) string { return v.ClientValidationTrustConfig }).(pulumi.StringOutput)
+}
+
 // Specification of rules.
-type Rule struct {
+type RuleType struct {
 	// Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
 	Destinations []Destination `pulumi:"destinations"`
 	// Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
 	Sources []Source `pulumi:"sources"`
 }
 
-// RuleInput is an input type that accepts RuleArgs and RuleOutput values.
-// You can construct a concrete instance of `RuleInput` via:
+// RuleTypeInput is an input type that accepts RuleTypeArgs and RuleTypeOutput values.
+// You can construct a concrete instance of `RuleTypeInput` via:
 //
-//	RuleArgs{...}
-type RuleInput interface {
+//	RuleTypeArgs{...}
+type RuleTypeInput interface {
 	pulumi.Input
 
-	ToRuleOutput() RuleOutput
-	ToRuleOutputWithContext(context.Context) RuleOutput
+	ToRuleTypeOutput() RuleTypeOutput
+	ToRuleTypeOutputWithContext(context.Context) RuleTypeOutput
 }
 
 // Specification of rules.
-type RuleArgs struct {
+type RuleTypeArgs struct {
 	// Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
 	Destinations DestinationArrayInput `pulumi:"destinations"`
 	// Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
 	Sources SourceArrayInput `pulumi:"sources"`
 }
 
-func (RuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rule)(nil)).Elem()
+func (RuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleType)(nil)).Elem()
 }
 
-func (i RuleArgs) ToRuleOutput() RuleOutput {
-	return i.ToRuleOutputWithContext(context.Background())
+func (i RuleTypeArgs) ToRuleTypeOutput() RuleTypeOutput {
+	return i.ToRuleTypeOutputWithContext(context.Background())
 }
 
-func (i RuleArgs) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleOutput)
+func (i RuleTypeArgs) ToRuleTypeOutputWithContext(ctx context.Context) RuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTypeOutput)
 }
 
-// RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
-// You can construct a concrete instance of `RuleArrayInput` via:
+// RuleTypeArrayInput is an input type that accepts RuleTypeArray and RuleTypeArrayOutput values.
+// You can construct a concrete instance of `RuleTypeArrayInput` via:
 //
-//	RuleArray{ RuleArgs{...} }
-type RuleArrayInput interface {
+//	RuleTypeArray{ RuleTypeArgs{...} }
+type RuleTypeArrayInput interface {
 	pulumi.Input
 
-	ToRuleArrayOutput() RuleArrayOutput
-	ToRuleArrayOutputWithContext(context.Context) RuleArrayOutput
+	ToRuleTypeArrayOutput() RuleTypeArrayOutput
+	ToRuleTypeArrayOutputWithContext(context.Context) RuleTypeArrayOutput
 }
 
-type RuleArray []RuleInput
+type RuleTypeArray []RuleTypeInput
 
-func (RuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Rule)(nil)).Elem()
+func (RuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleType)(nil)).Elem()
 }
 
-func (i RuleArray) ToRuleArrayOutput() RuleArrayOutput {
-	return i.ToRuleArrayOutputWithContext(context.Background())
+func (i RuleTypeArray) ToRuleTypeArrayOutput() RuleTypeArrayOutput {
+	return i.ToRuleTypeArrayOutputWithContext(context.Background())
 }
 
-func (i RuleArray) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RuleArrayOutput)
+func (i RuleTypeArray) ToRuleTypeArrayOutputWithContext(ctx context.Context) RuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleTypeArrayOutput)
 }
 
 // Specification of rules.
-type RuleOutput struct{ *pulumi.OutputState }
+type RuleTypeOutput struct{ *pulumi.OutputState }
 
-func (RuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Rule)(nil)).Elem()
+func (RuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleType)(nil)).Elem()
 }
 
-func (o RuleOutput) ToRuleOutput() RuleOutput {
+func (o RuleTypeOutput) ToRuleTypeOutput() RuleTypeOutput {
 	return o
 }
 
-func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
+func (o RuleTypeOutput) ToRuleTypeOutputWithContext(ctx context.Context) RuleTypeOutput {
 	return o
 }
 
 // Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
-func (o RuleOutput) Destinations() DestinationArrayOutput {
-	return o.ApplyT(func(v Rule) []Destination { return v.Destinations }).(DestinationArrayOutput)
+func (o RuleTypeOutput) Destinations() DestinationArrayOutput {
+	return o.ApplyT(func(v RuleType) []Destination { return v.Destinations }).(DestinationArrayOutput)
 }
 
 // Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
-func (o RuleOutput) Sources() SourceArrayOutput {
-	return o.ApplyT(func(v Rule) []Source { return v.Sources }).(SourceArrayOutput)
+func (o RuleTypeOutput) Sources() SourceArrayOutput {
+	return o.ApplyT(func(v RuleType) []Source { return v.Sources }).(SourceArrayOutput)
 }
 
-type RuleArrayOutput struct{ *pulumi.OutputState }
+type RuleTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (RuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Rule)(nil)).Elem()
+func (RuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleType)(nil)).Elem()
 }
 
-func (o RuleArrayOutput) ToRuleArrayOutput() RuleArrayOutput {
+func (o RuleTypeArrayOutput) ToRuleTypeArrayOutput() RuleTypeArrayOutput {
 	return o
 }
 
-func (o RuleArrayOutput) ToRuleArrayOutputWithContext(ctx context.Context) RuleArrayOutput {
+func (o RuleTypeArrayOutput) ToRuleTypeArrayOutputWithContext(ctx context.Context) RuleTypeArrayOutput {
 	return o
 }
 
-func (o RuleArrayOutput) Index(i pulumi.IntInput) RuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Rule {
-		return vs[0].([]Rule)[vs[1].(int)]
-	}).(RuleOutput)
+func (o RuleTypeArrayOutput) Index(i pulumi.IntInput) RuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleType {
+		return vs[0].([]RuleType)[vs[1].(int)]
+	}).(RuleTypeOutput)
 }
 
 // Specification of rules.
@@ -2347,8 +2399,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpHeaderMatchPtrInput)(nil)).Elem(), HttpHeaderMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyInput)(nil)).Elem(), MTLSPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyPtrInput)(nil)).Elem(), MTLSPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuleInput)(nil)).Elem(), RuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RuleArrayInput)(nil)).Elem(), RuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeInput)(nil)).Elem(), RuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleTypeArrayInput)(nil)).Elem(), RuleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceArrayInput)(nil)).Elem(), SourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationCAInput)(nil)).Elem(), ValidationCAArgs{})
@@ -2387,8 +2439,8 @@ func init() {
 	pulumi.RegisterOutputType(MTLSPolicyOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyPtrOutput{})
 	pulumi.RegisterOutputType(MTLSPolicyResponseOutput{})
-	pulumi.RegisterOutputType(RuleOutput{})
-	pulumi.RegisterOutputType(RuleArrayOutput{})
+	pulumi.RegisterOutputType(RuleTypeOutput{})
+	pulumi.RegisterOutputType(RuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(RuleResponseOutput{})
 	pulumi.RegisterOutputType(RuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})

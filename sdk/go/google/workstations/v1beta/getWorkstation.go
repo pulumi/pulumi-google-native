@@ -37,7 +37,9 @@ type LookupWorkstationResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Environment variables passed to the workstation container's entrypoint.
+	Env map[string]string `pulumi:"env"`
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`.
 	Host string `pulumi:"host"`
@@ -114,7 +116,12 @@ func (o LookupWorkstationResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+// Environment variables passed to the workstation container's entrypoint.
+func (o LookupWorkstationResultOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupWorkstationResult) map[string]string { return v.Env }).(pulumi.StringMapOutput)
+}
+
+// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o LookupWorkstationResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkstationResult) string { return v.Etag }).(pulumi.StringOutput)
 }

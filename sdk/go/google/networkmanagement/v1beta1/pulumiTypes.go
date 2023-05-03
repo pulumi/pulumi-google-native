@@ -50,7 +50,7 @@ func (o AbortInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AbortInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
 }
 
-// Wrapper for app engine service version attributes.
+// Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpoint struct {
 	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
 	Uri *string `pulumi:"uri"`
@@ -67,7 +67,7 @@ type AppEngineVersionEndpointInput interface {
 	ToAppEngineVersionEndpointOutputWithContext(context.Context) AppEngineVersionEndpointOutput
 }
 
-// Wrapper for app engine service version attributes.
+// Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpointArgs struct {
 	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -126,7 +126,7 @@ func (i *appEngineVersionEndpointPtrType) ToAppEngineVersionEndpointPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointPtrOutput)
 }
 
-// Wrapper for app engine service version attributes.
+// Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpointOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionEndpointOutput) ElementType() reflect.Type {
@@ -190,13 +190,13 @@ func (o AppEngineVersionEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Wrapper for app engine service version attributes.
+// Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpointResponse struct {
 	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
 	Uri string `pulumi:"uri"`
 }
 
-// Wrapper for app engine service version attributes.
+// Wrapper for the App Engine service version attributes.
 type AppEngineVersionEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionEndpointResponseOutput) ElementType() reflect.Type {
@@ -1375,7 +1375,7 @@ type Endpoint struct {
 	NetworkType *EndpointNetworkType `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port *int `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 	Project *string `pulumi:"project"`
 }
 
@@ -1414,7 +1414,7 @@ type EndpointArgs struct {
 	NetworkType EndpointNetworkTypePtrInput `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1500,7 +1500,7 @@ func (o EndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Endpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 func (o EndpointOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoint) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1610,7 +1610,7 @@ type EndpointResponse struct {
 	NetworkType string `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port int `pulumi:"port"`
-	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 	Project string `pulumi:"project"`
 }
 
@@ -1699,7 +1699,7 @@ func (o EndpointResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
 func (o EndpointResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointResponse) string { return v.Project }).(pulumi.StringOutput)
 }

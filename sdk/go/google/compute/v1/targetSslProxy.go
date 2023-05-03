@@ -14,7 +14,7 @@ import (
 type TargetSslProxy struct {
 	pulumi.CustomResourceState
 
-	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 	CertificateMap pulumi.StringOutput `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -82,7 +82,7 @@ func (TargetSslProxyState) ElementType() reflect.Type {
 }
 
 type targetSslProxyArgs struct {
-	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 	CertificateMap *string `pulumi:"certificateMap"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -103,7 +103,7 @@ type targetSslProxyArgs struct {
 
 // The set of arguments for constructing a TargetSslProxy resource.
 type TargetSslProxyArgs struct {
-	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 	CertificateMap pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -159,7 +159,7 @@ func (o TargetSslProxyOutput) ToTargetSslProxyOutputWithContext(ctx context.Cont
 	return o
 }
 
-// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 func (o TargetSslProxyOutput) CertificateMap() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSslProxy) pulumi.StringOutput { return v.CertificateMap }).(pulumi.StringOutput)
 }

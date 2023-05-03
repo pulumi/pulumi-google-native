@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// The history of this annotation.
         /// </summary>
         public readonly Outputs.GoogleCloudDocumentaiV1DocumentProvenanceResponse Provenance;
+        /// <summary>
+        /// Text style attributes.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse StyleInfo;
 
         [OutputConstructor]
         private GoogleCloudDocumentaiV1DocumentPageTokenResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
 
             Outputs.GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout,
 
-            Outputs.GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance)
+            Outputs.GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance,
+
+            Outputs.GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse styleInfo)
         {
             DetectedBreak = detectedBreak;
             DetectedLanguages = detectedLanguages;
             Layout = layout;
             Provenance = provenance;
+            StyleInfo = styleInfo;
         }
     }
 }

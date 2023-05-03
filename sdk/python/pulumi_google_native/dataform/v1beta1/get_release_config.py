@@ -78,7 +78,7 @@ class GetReleaseConfigResult:
     @pulumi.getter(name="recentScheduledReleaseRecords")
     def recent_scheduled_release_records(self) -> Sequence['outputs.ScheduledReleaseRecordResponse']:
         """
-        Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+        Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
         """
         return pulumi.get(self, "recent_scheduled_release_records")
 

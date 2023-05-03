@@ -39,6 +39,8 @@ type LookupDocumentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Uri to display the document, for example, in the UI.
 	DisplayUri string `pulumi:"displayUri"`
+	// If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+	DispositionTime string `pulumi:"dispositionTime"`
 	// The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
 	DocumentSchemaName string `pulumi:"documentSchemaName"`
 	// Raw document content.
@@ -132,6 +134,11 @@ func (o LookupDocumentResultOutput) DisplayName() pulumi.StringOutput {
 // Uri to display the document, for example, in the UI.
 func (o LookupDocumentResultOutput) DisplayUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.DisplayUri }).(pulumi.StringOutput)
+}
+
+// If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+func (o LookupDocumentResultOutput) DispositionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.DispositionTime }).(pulumi.StringOutput)
 }
 
 // The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.

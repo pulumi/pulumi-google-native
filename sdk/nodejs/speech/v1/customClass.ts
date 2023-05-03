@@ -45,6 +45,14 @@ export class CustomClass extends pulumi.CustomResource {
      * A collection of class items.
      */
     public readonly items!: pulumi.Output<outputs.speech.v1.ClassItemResponse[]>;
+    /**
+     * The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    public /*out*/ readonly kmsKeyName!: pulumi.Output<string>;
+    /**
+     * The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+     */
+    public /*out*/ readonly kmsKeyVersionName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the custom class.
@@ -71,9 +79,13 @@ export class CustomClass extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
         } else {
             resourceInputs["customClassId"] = undefined /*out*/;
             resourceInputs["items"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

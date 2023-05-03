@@ -26,7 +26,7 @@ type LookupTargetSslProxyArgs struct {
 }
 
 type LookupTargetSslProxyResult struct {
-	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 	CertificateMap string `pulumi:"certificateMap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -84,7 +84,7 @@ func (o LookupTargetSslProxyResultOutput) ToLookupTargetSslProxyResultOutputWith
 	return o
 }
 
-// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
 func (o LookupTargetSslProxyResultOutput) CertificateMap() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetSslProxyResult) string { return v.CertificateMap }).(pulumi.StringOutput)
 }

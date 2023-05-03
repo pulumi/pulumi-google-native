@@ -374,6 +374,8 @@ type AllocationPolicy struct {
 	Location *LocationPolicy `pulumi:"location"`
 	// The network policy.
 	Network *NetworkPolicy `pulumi:"network"`
+	// The placement policy.
+	Placement *PlacementPolicy `pulumi:"placement"`
 	// Service account that VMs will run as.
 	ServiceAccount *ServiceAccount `pulumi:"serviceAccount"`
 }
@@ -399,6 +401,8 @@ type AllocationPolicyArgs struct {
 	Location LocationPolicyPtrInput `pulumi:"location"`
 	// The network policy.
 	Network NetworkPolicyPtrInput `pulumi:"network"`
+	// The placement policy.
+	Placement PlacementPolicyPtrInput `pulumi:"placement"`
 	// Service account that VMs will run as.
 	ServiceAccount ServiceAccountPtrInput `pulumi:"serviceAccount"`
 }
@@ -501,6 +505,11 @@ func (o AllocationPolicyOutput) Network() NetworkPolicyPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *NetworkPolicy { return v.Network }).(NetworkPolicyPtrOutput)
 }
 
+// The placement policy.
+func (o AllocationPolicyOutput) Placement() PlacementPolicyPtrOutput {
+	return o.ApplyT(func(v AllocationPolicy) *PlacementPolicy { return v.Placement }).(PlacementPolicyPtrOutput)
+}
+
 // Service account that VMs will run as.
 func (o AllocationPolicyOutput) ServiceAccount() ServiceAccountPtrOutput {
 	return o.ApplyT(func(v AllocationPolicy) *ServiceAccount { return v.ServiceAccount }).(ServiceAccountPtrOutput)
@@ -570,6 +579,16 @@ func (o AllocationPolicyPtrOutput) Network() NetworkPolicyPtrOutput {
 	}).(NetworkPolicyPtrOutput)
 }
 
+// The placement policy.
+func (o AllocationPolicyPtrOutput) Placement() PlacementPolicyPtrOutput {
+	return o.ApplyT(func(v *AllocationPolicy) *PlacementPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Placement
+	}).(PlacementPolicyPtrOutput)
+}
+
 // Service account that VMs will run as.
 func (o AllocationPolicyPtrOutput) ServiceAccount() ServiceAccountPtrOutput {
 	return o.ApplyT(func(v *AllocationPolicy) *ServiceAccount {
@@ -590,6 +609,8 @@ type AllocationPolicyResponse struct {
 	Location LocationPolicyResponse `pulumi:"location"`
 	// The network policy.
 	Network NetworkPolicyResponse `pulumi:"network"`
+	// The placement policy.
+	Placement PlacementPolicyResponse `pulumi:"placement"`
 	// Service account that VMs will run as.
 	ServiceAccount ServiceAccountResponse `pulumi:"serviceAccount"`
 }
@@ -627,6 +648,11 @@ func (o AllocationPolicyResponseOutput) Location() LocationPolicyResponseOutput 
 // The network policy.
 func (o AllocationPolicyResponseOutput) Network() NetworkPolicyResponseOutput {
 	return o.ApplyT(func(v AllocationPolicyResponse) NetworkPolicyResponse { return v.Network }).(NetworkPolicyResponseOutput)
+}
+
+// The placement policy.
+func (o AllocationPolicyResponseOutput) Placement() PlacementPolicyResponseOutput {
+	return o.ApplyT(func(v AllocationPolicyResponse) PlacementPolicyResponse { return v.Placement }).(PlacementPolicyResponseOutput)
 }
 
 // Service account that VMs will run as.
@@ -4397,6 +4423,198 @@ func (o NetworkPolicyResponseOutput) NetworkInterfaces() NetworkInterfaceRespons
 	return o.ApplyT(func(v NetworkPolicyResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
 }
 
+// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+type PlacementPolicy struct {
+	// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+	Collocation *string `pulumi:"collocation"`
+	// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+	MaxDistance *string `pulumi:"maxDistance"`
+}
+
+// PlacementPolicyInput is an input type that accepts PlacementPolicyArgs and PlacementPolicyOutput values.
+// You can construct a concrete instance of `PlacementPolicyInput` via:
+//
+//	PlacementPolicyArgs{...}
+type PlacementPolicyInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyOutput() PlacementPolicyOutput
+	ToPlacementPolicyOutputWithContext(context.Context) PlacementPolicyOutput
+}
+
+// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+type PlacementPolicyArgs struct {
+	// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+	Collocation pulumi.StringPtrInput `pulumi:"collocation"`
+	// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+	MaxDistance pulumi.StringPtrInput `pulumi:"maxDistance"`
+}
+
+func (PlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicy)(nil)).Elem()
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyOutput() PlacementPolicyOutput {
+	return i.ToPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyOutputWithContext(ctx context.Context) PlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyOutput)
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return i.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PlacementPolicyArgs) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyOutput).ToPlacementPolicyPtrOutputWithContext(ctx)
+}
+
+// PlacementPolicyPtrInput is an input type that accepts PlacementPolicyArgs, PlacementPolicyPtr and PlacementPolicyPtrOutput values.
+// You can construct a concrete instance of `PlacementPolicyPtrInput` via:
+//
+//	        PlacementPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PlacementPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput
+	ToPlacementPolicyPtrOutputWithContext(context.Context) PlacementPolicyPtrOutput
+}
+
+type placementPolicyPtrType PlacementPolicyArgs
+
+func PlacementPolicyPtr(v *PlacementPolicyArgs) PlacementPolicyPtrInput {
+	return (*placementPolicyPtrType)(v)
+}
+
+func (*placementPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicy)(nil)).Elem()
+}
+
+func (i *placementPolicyPtrType) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return i.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *placementPolicyPtrType) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyPtrOutput)
+}
+
+// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+type PlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicy)(nil)).Elem()
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyOutput() PlacementPolicyOutput {
+	return o
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyOutputWithContext(ctx context.Context) PlacementPolicyOutput {
+	return o
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return o.ToPlacementPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyOutput) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicy) *PlacementPolicy {
+		return &v
+	}).(PlacementPolicyPtrOutput)
+}
+
+// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+func (o PlacementPolicyOutput) Collocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlacementPolicy) *string { return v.Collocation }).(pulumi.StringPtrOutput)
+}
+
+// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+func (o PlacementPolicyOutput) MaxDistance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlacementPolicy) *string { return v.MaxDistance }).(pulumi.StringPtrOutput)
+}
+
+type PlacementPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicy)(nil)).Elem()
+}
+
+func (o PlacementPolicyPtrOutput) ToPlacementPolicyPtrOutput() PlacementPolicyPtrOutput {
+	return o
+}
+
+func (o PlacementPolicyPtrOutput) ToPlacementPolicyPtrOutputWithContext(ctx context.Context) PlacementPolicyPtrOutput {
+	return o
+}
+
+func (o PlacementPolicyPtrOutput) Elem() PlacementPolicyOutput {
+	return o.ApplyT(func(v *PlacementPolicy) PlacementPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementPolicy
+		return ret
+	}).(PlacementPolicyOutput)
+}
+
+// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+func (o PlacementPolicyPtrOutput) Collocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Collocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+func (o PlacementPolicyPtrOutput) MaxDistance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDistance
+	}).(pulumi.StringPtrOutput)
+}
+
+// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+type PlacementPolicyResponse struct {
+	// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+	Collocation string `pulumi:"collocation"`
+	// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+	MaxDistance string `pulumi:"maxDistance"`
+}
+
+// PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+type PlacementPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyResponse)(nil)).Elem()
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponseOutput() PlacementPolicyResponseOutput {
+	return o
+}
+
+func (o PlacementPolicyResponseOutput) ToPlacementPolicyResponseOutputWithContext(ctx context.Context) PlacementPolicyResponseOutput {
+	return o
+}
+
+// UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+func (o PlacementPolicyResponseOutput) Collocation() pulumi.StringOutput {
+	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+// When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+func (o PlacementPolicyResponseOutput) MaxDistance() pulumi.StringOutput {
+	return o.ApplyT(func(v PlacementPolicyResponse) string { return v.MaxDistance }).(pulumi.StringOutput)
+}
+
 // Runnable describes instructions for executing a specific script or container as part of a Task.
 type Runnable struct {
 	// By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable must be run even if the Task has already failed. This is useful for Runnables that copy output files off of the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the max_run_duration has expired then no further Runnables will execute, not even always_run Runnables.
@@ -4411,6 +4629,8 @@ type Runnable struct {
 	Environment *Environment `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
 	IgnoreExitStatus *bool `pulumi:"ignoreExitStatus"`
+	// Labels for this Runnable.
+	Labels map[string]string `pulumi:"labels"`
 	// Script runnable.
 	Script *Script `pulumi:"script"`
 	// Timeout for this Runnable.
@@ -4442,6 +4662,8 @@ type RunnableArgs struct {
 	Environment EnvironmentPtrInput `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
 	IgnoreExitStatus pulumi.BoolPtrInput `pulumi:"ignoreExitStatus"`
+	// Labels for this Runnable.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Script runnable.
 	Script ScriptPtrInput `pulumi:"script"`
 	// Timeout for this Runnable.
@@ -4530,6 +4752,11 @@ func (o RunnableOutput) IgnoreExitStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Runnable) *bool { return v.IgnoreExitStatus }).(pulumi.BoolPtrOutput)
 }
 
+// Labels for this Runnable.
+func (o RunnableOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Runnable) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // Script runnable.
 func (o RunnableOutput) Script() ScriptPtrOutput {
 	return o.ApplyT(func(v Runnable) *Script { return v.Script }).(ScriptPtrOutput)
@@ -4574,6 +4801,8 @@ type RunnableResponse struct {
 	Environment EnvironmentResponse `pulumi:"environment"`
 	// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
 	IgnoreExitStatus bool `pulumi:"ignoreExitStatus"`
+	// Labels for this Runnable.
+	Labels map[string]string `pulumi:"labels"`
 	// Script runnable.
 	Script ScriptResponse `pulumi:"script"`
 	// Timeout for this Runnable.
@@ -4623,6 +4852,11 @@ func (o RunnableResponseOutput) Environment() EnvironmentResponseOutput {
 // Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
 func (o RunnableResponseOutput) IgnoreExitStatus() pulumi.BoolOutput {
 	return o.ApplyT(func(v RunnableResponse) bool { return v.IgnoreExitStatus }).(pulumi.BoolOutput)
+}
+
+// Labels for this Runnable.
+func (o RunnableResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RunnableResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Script runnable.
@@ -5845,6 +6079,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceArrayInput)(nil)).Elem(), NetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyInput)(nil)).Elem(), PlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyPtrInput)(nil)).Elem(), PlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunnableInput)(nil)).Elem(), RunnableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RunnableArrayInput)(nil)).Elem(), RunnableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScriptInput)(nil)).Elem(), ScriptArgs{})
@@ -5928,6 +6164,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyPtrOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RunnableOutput{})
 	pulumi.RegisterOutputType(RunnableArrayOutput{})
 	pulumi.RegisterOutputType(RunnableResponseOutput{})

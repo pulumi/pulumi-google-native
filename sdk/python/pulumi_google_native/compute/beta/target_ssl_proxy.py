@@ -26,7 +26,7 @@ class TargetSslProxyArgs:
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetSslProxy resource.
-        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -58,7 +58,7 @@ class TargetSslProxyArgs:
     @pulumi.getter(name="certificateMap")
     def certificate_map(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
         """
         return pulumi.get(self, "certificate_map")
 
@@ -180,7 +180,7 @@ class TargetSslProxy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        :param pulumi.Input[str] certificate_map: URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['TargetSslProxyProxyHeader'] proxy_header: Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
@@ -285,7 +285,7 @@ class TargetSslProxy(pulumi.CustomResource):
     @pulumi.getter(name="certificateMap")
     def certificate_map(self) -> pulumi.Output[str]:
         """
-        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.
         """
         return pulumi.get(self, "certificate_map")
 

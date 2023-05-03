@@ -74,10 +74,6 @@ export interface GetListingResult {
      */
     readonly requestAccess: string;
     /**
-     * Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     */
-    readonly restrictedExportConfig: outputs.analyticshub.v1.RestrictedExportConfigResponse;
-    /**
      * Current state of the listing.
      */
     readonly state: string;

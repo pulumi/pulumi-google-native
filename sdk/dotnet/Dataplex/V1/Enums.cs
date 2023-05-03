@@ -245,6 +245,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The aggregate metric to evaluate.
+    /// </summary>
     [EnumType]
     public readonly struct GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic : IEquatable<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic>
     {

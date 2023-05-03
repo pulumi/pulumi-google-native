@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         private InputMap<string>? _env;
 
         /// <summary>
-        /// Environment variables passed to the container.
+        /// Environment variables passed to the container's entrypoint.
         /// </summary>
         public InputMap<string> Env
         {
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         }
 
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the config's service account.
+        /// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }

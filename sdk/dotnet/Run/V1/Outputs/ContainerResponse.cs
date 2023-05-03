@@ -33,19 +33,19 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.EnvFromSourceResponse> EnvFrom;
         /// <summary>
-        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
         /// </summary>
         public readonly string ImagePullPolicy;
         /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails.
         /// </summary>
         public readonly Outputs.ProbeResponse LivenessProbe;
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        /// Name of the container specified as a DNS_LABEL (RFC 1123).
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.ProbeResponse ReadinessProbe;
         /// <summary>
-        /// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Compute Resources required by this container.
         /// </summary>
         public readonly Outputs.ResourceRequirementsResponse Resources;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.SecurityContextResponse SecurityContext;
         /// <summary>
-        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
         /// </summary>
         public readonly Outputs.ProbeResponse StartupProbe;
         /// <summary>

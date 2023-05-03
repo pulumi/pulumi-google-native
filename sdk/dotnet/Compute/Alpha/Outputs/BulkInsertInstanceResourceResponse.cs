@@ -21,10 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Count;
         /// <summary>
-        /// DEPRECATED: Please use instance_properties instead.
-        /// </summary>
-        public readonly Outputs.InstanceResponse Instance;
-        /// <summary>
         /// The instance properties defining the VM instances to be created. Required if sourceInstanceTemplate is not provided.
         /// </summary>
         public readonly Outputs.InstancePropertiesResponse InstanceProperties;
@@ -53,8 +49,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private BulkInsertInstanceResourceResponse(
             string count,
 
-            Outputs.InstanceResponse instance,
-
             Outputs.InstancePropertiesResponse instanceProperties,
 
             Outputs.LocationPolicyResponse locationPolicy,
@@ -68,7 +62,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             string sourceInstanceTemplate)
         {
             Count = count;
-            Instance = instance;
             InstanceProperties = instanceProperties;
             LocationPolicy = locationPolicy;
             MinCount = minCount;

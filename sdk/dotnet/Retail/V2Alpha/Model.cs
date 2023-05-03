@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Additional model features config.
+        /// </summary>
+        [Output("modelFeaturesConfig")]
+        public Output<Outputs.GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse> ModelFeaturesConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
         /// </summary>
         [Output("name")]
@@ -194,6 +200,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Optional. Additional model features config.
+        /// </summary>
+        [Input("modelFeaturesConfig")]
+        public Input<Inputs.GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs>? ModelFeaturesConfig { get; set; }
 
         /// <summary>
         /// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.

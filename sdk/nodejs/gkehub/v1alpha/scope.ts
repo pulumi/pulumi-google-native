@@ -39,6 +39,10 @@ export class Scope extends pulumi.CustomResource {
     }
 
     /**
+     * If true, all Memberships in the Fleet bind to this Scope.
+     */
+    public readonly allMemberships!: pulumi.Output<boolean>;
+    /**
      * When the scope was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class Scope extends pulumi.CustomResource {
             if ((!args || args.scopeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
+            resourceInputs["allMemberships"] = args ? args.allMemberships : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -93,6 +98,7 @@ export class Scope extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["allMemberships"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -114,6 +120,10 @@ export class Scope extends pulumi.CustomResource {
  * The set of arguments for constructing a Scope resource.
  */
 export interface ScopeArgs {
+    /**
+     * If true, all Memberships in the Fleet bind to this Scope.
+     */
+    allMemberships?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
      * The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`

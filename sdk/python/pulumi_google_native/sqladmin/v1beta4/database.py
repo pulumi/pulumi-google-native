@@ -179,7 +179,7 @@ class Database(pulumi.CustomResource):
                  sqlserver_database_details: Optional[pulumi.Input[pulumi.InputType['SqlServerDatabaseDetailsArgs']]] = None,
                  __props__=None):
         """
-        Inserts a resource containing information about a database inside a Cloud SQL instance.
+        Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -199,7 +199,7 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Inserts a resource containing information about a database inside a Cloud SQL instance.
+        Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

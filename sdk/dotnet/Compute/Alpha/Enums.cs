@@ -1988,6 +1988,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// AMD Secure Encrypted Virtualization - Secure Nested Paging.
         /// </summary>
         public static ConfidentialInstanceConfigConfidentialInstanceType SevSnp { get; } = new ConfidentialInstanceConfigConfidentialInstanceType("SEV_SNP");
+        /// <summary>
+        /// Intel Trust Domain eXtension.
+        /// </summary>
+        public static ConfidentialInstanceConfigConfidentialInstanceType Tdx { get; } = new ConfidentialInstanceConfigConfidentialInstanceType("TDX");
 
         public static bool operator ==(ConfidentialInstanceConfigConfidentialInstanceType left, ConfidentialInstanceConfigConfidentialInstanceType right) => left.Equals(right);
         public static bool operator !=(ConfidentialInstanceConfigConfidentialInstanceType left, ConfidentialInstanceConfigConfidentialInstanceType right) => !left.Equals(right);
@@ -3267,6 +3271,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
         public static GuestOsFeatureType SevLiveMigratable { get; } = new GuestOsFeatureType("SEV_LIVE_MIGRATABLE");
         public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
+        public static GuestOsFeatureType TdxCapable { get; } = new GuestOsFeatureType("TDX_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
         public static GuestOsFeatureType Windows { get; } = new GuestOsFeatureType("WINDOWS");
@@ -6180,6 +6185,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static RegionCommitmentType ComputeOptimized { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED");
         public static RegionCommitmentType ComputeOptimizedC2d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C2D");
         public static RegionCommitmentType ComputeOptimizedC3 { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3");
+        public static RegionCommitmentType ComputeOptimizedC3d { get; } = new RegionCommitmentType("COMPUTE_OPTIMIZED_C3D");
         public static RegionCommitmentType GeneralPurpose { get; } = new RegionCommitmentType("GENERAL_PURPOSE");
         public static RegionCommitmentType GeneralPurposeE2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_E2");
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
@@ -8071,7 +8077,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+    /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility : IEquatable<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>

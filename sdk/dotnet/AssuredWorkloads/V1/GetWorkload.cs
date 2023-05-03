@@ -135,6 +135,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse SaaEnrollmentResponse;
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// </summary>
+        public readonly bool ViolationNotificationsEnabled;
 
         [OutputConstructor]
         private GetWorkloadResult(
@@ -172,7 +176,9 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse> resources,
 
-            Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse)
+            Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse saaEnrollmentResponse,
+
+            bool violationNotificationsEnabled)
         {
             BillingAccount = billingAccount;
             ComplianceRegime = complianceRegime;
@@ -192,6 +198,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             ResourceSettings = resourceSettings;
             Resources = resources;
             SaaEnrollmentResponse = saaEnrollmentResponse;
+            ViolationNotificationsEnabled = violationNotificationsEnabled;
         }
     }
 }

@@ -563,6 +563,344 @@ func (in *googleCloudIdentitytoolkitAdminV2ProviderConfigStatePtr) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput)
 }
 
+// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState string
+
+const (
+	// Enforcement state has not been set.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateRecaptchaProviderEnforcementStateUnspecified = GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED")
+	// Unenforced.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOff = GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("OFF")
+	// reCAPTCHA assessment is created, result is not used to enforce.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateAudit = GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("AUDIT")
+	// reCAPTCHA assessment is created, result is used to enforce.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateEnforce = GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("ENFORCE")
+)
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)(nil)).Elem()
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return e.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState(e).ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutputWithContext(ctx).ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput
+}
+
+var googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrType = reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)(nil)).Elem()
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr string
+
+func GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr(v string) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr)(&v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr) ElementType() reflect.Type {
+	return googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrType
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput)
+}
+
+// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction string
+
+const (
+	// The reCAPTCHA action is not specified.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionRecaptchaActionUnspecified = GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("RECAPTCHA_ACTION_UNSPECIFIED")
+	// The reCAPTCHA-protected request will be blocked.
+	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionBlock = GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("BLOCK")
+)
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction)(nil)).Elem()
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
+	return pulumi.ToOutput(e).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return e.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction(e).ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutputWithContext(ctx).ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) *GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput)
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionArgs and GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput
+}
+
+var googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrType = reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction)(nil)).Elem()
+
+type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr string
+
+func GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr(v string) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr)(&v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ElementType() reflect.Type {
+	return googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrType
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput() GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
+}
+
+func (in *googleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtr) ToGoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput)
+}
+
 // The log type that this config enables.
 type GoogleIamV1AuditLogConfigLogType string
 
@@ -742,6 +1080,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState("RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("RECAPTCHA_ACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction("RECAPTCHA_ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemOutput{})
@@ -751,6 +1093,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 }

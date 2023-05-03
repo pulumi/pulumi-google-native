@@ -385,7 +385,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
-    /// Denotes the state of etcd encryption.
+    /// The desired state of etcd encryption.
     /// </summary>
     [EnumType]
     public readonly struct DatabaseEncryptionState : IEquatable<DatabaseEncryptionState>

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class TaskTemplateSpecResponse
     {
         /// <summary>
-        /// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        /// Optional. Specification of the desired behavior of the task.
         /// </summary>
         public readonly Outputs.TaskSpecResponse Spec;
 

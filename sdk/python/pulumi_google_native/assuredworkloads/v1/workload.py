@@ -31,7 +31,8 @@ class WorkloadArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
-                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] = None):
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] = None,
+                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Workload resource.
         :param pulumi.Input['WorkloadComplianceRegime'] compliance_regime: Immutable. Compliance Regime associated with this workload.
@@ -47,6 +48,7 @@ class WorkloadArgs:
         :param pulumi.Input['WorkloadPartner'] partner: Optional. Partner regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
         """
         pulumi.set(__self__, "compliance_regime", compliance_regime)
         pulumi.set(__self__, "display_name", display_name)
@@ -78,6 +80,8 @@ class WorkloadArgs:
             pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
         if resource_settings is not None:
             pulumi.set(__self__, "resource_settings", resource_settings)
+        if violation_notifications_enabled is not None:
+            pulumi.set(__self__, "violation_notifications_enabled", violation_notifications_enabled)
 
     @property
     @pulumi.getter(name="complianceRegime")
@@ -253,6 +257,18 @@ class WorkloadArgs:
     def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]):
         pulumi.set(self, "resource_settings", value)
 
+    @property
+    @pulumi.getter(name="violationNotificationsEnabled")
+    def violation_notifications_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        """
+        return pulumi.get(self, "violation_notifications_enabled")
+
+    @violation_notifications_enabled.setter
+    def violation_notifications_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "violation_notifications_enabled", value)
+
 
 class Workload(pulumi.CustomResource):
     @overload
@@ -274,6 +290,7 @@ class Workload(pulumi.CustomResource):
                  partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
+                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates Assured Workload.
@@ -293,6 +310,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input['WorkloadPartner'] partner: Optional. Partner regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
         """
         ...
     @overload
@@ -333,6 +351,7 @@ class Workload(pulumi.CustomResource):
                  partner: Optional[pulumi.Input['WorkloadPartner']] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
+                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,6 +385,7 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["partner"] = partner
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
+            __props__.__dict__["violation_notifications_enabled"] = violation_notifications_enabled
             __props__.__dict__["compliance_status"] = None
             __props__.__dict__["compliant_but_disallowed_services"] = None
             __props__.__dict__["create_time"] = None
@@ -417,6 +437,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
         __props__.__dict__["saa_enrollment_response"] = None
+        __props__.__dict__["violation_notifications_enabled"] = None
         return Workload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -580,4 +601,12 @@ class Workload(pulumi.CustomResource):
         Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
         """
         return pulumi.get(self, "saa_enrollment_response")
+
+    @property
+    @pulumi.getter(name="violationNotificationsEnabled")
+    def violation_notifications_enabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        """
+        return pulumi.get(self, "violation_notifications_enabled")
 

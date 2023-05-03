@@ -33,11 +33,15 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Number of instances to pool for faster workstation starup.
+        /// Number of instances to pool for faster workstation startup.
         /// </summary>
         public readonly int PoolSize;
         /// <summary>
-        /// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+        /// Number of instances currently available in the pool for faster workstation startup.
+        /// </summary>
+        public readonly int PooledInstances;
+        /// <summary>
+        /// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
             int poolSize,
 
+            int pooledInstances,
+
             string serviceAccount,
 
             Outputs.GceShieldedInstanceConfigResponse shieldedInstanceConfig,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
             DisablePublicIpAddresses = disablePublicIpAddresses;
             MachineType = machineType;
             PoolSize = poolSize;
+            PooledInstances = pooledInstances;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;

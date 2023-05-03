@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a processor from the type processor that the user chose. The processor will be at "ENABLED" state by default after its creation.
+ * Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation.
  * Auto-naming is currently not supported for this resource.
  */
 export class Processor extends pulumi.CustomResource {
@@ -66,7 +66,7 @@ export class Processor extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+     * The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -133,7 +133,7 @@ export interface ProcessorArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+     * The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
      */
     type?: pulumi.Input<string>;
 }

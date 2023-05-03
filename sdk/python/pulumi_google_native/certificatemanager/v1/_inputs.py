@@ -13,8 +13,11 @@ from ._enums import *
 __all__ = [
     'CertificateAuthorityConfigArgs',
     'CertificateAuthorityServiceConfigArgs',
+    'IntermediateCAArgs',
     'ManagedCertificateArgs',
     'SelfManagedCertificateArgs',
+    'TrustAnchorArgs',
+    'TrustStoreArgs',
 ]
 
 @pulumi.input_type
@@ -62,6 +65,30 @@ class CertificateAuthorityServiceConfigArgs:
     @ca_pool.setter
     def ca_pool(self, value: pulumi.Input[str]):
         pulumi.set(self, "ca_pool", value)
+
+
+@pulumi.input_type
+class IntermediateCAArgs:
+    def __init__(__self__, *,
+                 pem_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        Defines an intermediate CA.
+        :param pulumi.Input[str] pem_certificate: PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
 
 
 @pulumi.input_type
@@ -158,5 +185,69 @@ class SelfManagedCertificateArgs:
     @pem_private_key.setter
     def pem_private_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_private_key", value)
+
+
+@pulumi.input_type
+class TrustAnchorArgs:
+    def __init__(__self__, *,
+                 pem_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        Defines a trust anchor.
+        :param pulumi.Input[str] pem_certificate: PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
+
+
+@pulumi.input_type
+class TrustStoreArgs:
+    def __init__(__self__, *,
+                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['IntermediateCAArgs']]]] = None,
+                 trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustAnchorArgs']]]] = None):
+        """
+        Defines a trust store.
+        :param pulumi.Input[Sequence[pulumi.Input['IntermediateCAArgs']]] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
+        """
+        if intermediate_cas is not None:
+            pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+        if trust_anchors is not None:
+            pulumi.set(__self__, "trust_anchors", trust_anchors)
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntermediateCAArgs']]]]:
+        """
+        Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+    @intermediate_cas.setter
+    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntermediateCAArgs']]]]):
+        pulumi.set(self, "intermediate_cas", value)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustAnchorArgs']]]]:
+        """
+        List of Trust Anchors to be used while performing validation against a given TrustStore.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @trust_anchors.setter
+    def trust_anchors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustAnchorArgs']]]]):
+        pulumi.set(self, "trust_anchors", value)
 
 

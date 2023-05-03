@@ -45,7 +45,11 @@ export interface GetWorkstationResult {
      */
     readonly displayName: string;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Environment variables passed to the workstation container's entrypoint.
+     */
+    readonly env: {[key: string]: string};
+    /**
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
     /**

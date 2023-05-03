@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<Outputs.GoogleCloudChannelV1AssociationInfoResponse> AssociationInfo { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The billing account resource name that is used to pay for this entitlement.
+        /// </summary>
+        [Output("billingAccount")]
+        public Output<string> BillingAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
         /// </summary>
         [Output("commitmentSettings")]
@@ -154,6 +160,12 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         [Input("associationInfo")]
         public Input<Inputs.GoogleCloudChannelV1AssociationInfoArgs>? AssociationInfo { get; set; }
+
+        /// <summary>
+        /// Optional. The billing account resource name that is used to pay for this entitlement.
+        /// </summary>
+        [Input("billingAccount")]
+        public Input<string>? BillingAccount { get; set; }
 
         /// <summary>
         /// Commitment settings for a commitment-based Offer. Required for commitment based offers.

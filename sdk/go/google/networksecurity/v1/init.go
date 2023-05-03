@@ -37,6 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy":
 		r = &ClientTlsPolicyIamPolicy{}
+	case "google-native:networksecurity/v1:GatewaySecurityPolicy":
+		r = &GatewaySecurityPolicy{}
+	case "google-native:networksecurity/v1:Rule":
+		r = &Rule{}
 	case "google-native:networksecurity/v1:ServerTlsPolicy":
 		r = &ServerTlsPolicy{}
 	case "google-native:networksecurity/v1:ServerTlsPolicyIamBinding":
@@ -45,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerTlsPolicyIamMember{}
 	case "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy":
 		r = &ServerTlsPolicyIamPolicy{}
+	case "google-native:networksecurity/v1:TlsInspectionPolicy":
+		r = &TlsInspectionPolicy{}
+	case "google-native:networksecurity/v1:UrlList":
+		r = &UrlList{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

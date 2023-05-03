@@ -16,15 +16,19 @@ __all__ = ['ScopeArgs', 'Scope']
 class ScopeArgs:
     def __init__(__self__, *,
                  scope_id: pulumi.Input[str],
+                 all_memberships: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Scope resource.
         :param pulumi.Input[str] scope_id: Required. Client chosen ID for the Scope. `scope_id` must be a ????
+        :param pulumi.Input[bool] all_memberships: If true, all Memberships in the Fleet bind to this Scope.
         :param pulumi.Input[str] name: The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
         """
         pulumi.set(__self__, "scope_id", scope_id)
+        if all_memberships is not None:
+            pulumi.set(__self__, "all_memberships", all_memberships)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -43,6 +47,18 @@ class ScopeArgs:
     @scope_id.setter
     def scope_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "scope_id", value)
+
+    @property
+    @pulumi.getter(name="allMemberships")
+    def all_memberships(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, all Memberships in the Fleet bind to this Scope.
+        """
+        return pulumi.get(self, "all_memberships")
+
+    @all_memberships.setter
+    def all_memberships(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all_memberships", value)
 
     @property
     @pulumi.getter
@@ -80,6 +96,7 @@ class Scope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_memberships: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -91,6 +108,7 @@ class Scope(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] all_memberships: If true, all Memberships in the Fleet bind to this Scope.
         :param pulumi.Input[str] name: The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`
         :param pulumi.Input[str] scope_id: Required. Client chosen ID for the Scope. `scope_id` must be a ????
         """
@@ -119,6 +137,7 @@ class Scope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 all_memberships: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -132,6 +151,7 @@ class Scope(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ScopeArgs.__new__(ScopeArgs)
 
+            __props__.__dict__["all_memberships"] = all_memberships
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -167,6 +187,7 @@ class Scope(pulumi.CustomResource):
 
         __props__ = ScopeArgs.__new__(ScopeArgs)
 
+        __props__.__dict__["all_memberships"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["location"] = None
@@ -177,6 +198,14 @@ class Scope(pulumi.CustomResource):
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Scope(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allMemberships")
+    def all_memberships(self) -> pulumi.Output[bool]:
+        """
+        If true, all Memberships in the Fleet bind to this Scope.
+        """
+        return pulumi.get(self, "all_memberships")
 
     @property
     @pulumi.getter(name="createTime")

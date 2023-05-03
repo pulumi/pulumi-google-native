@@ -41,7 +41,7 @@ export interface GetTagKeyResult {
      */
     readonly namespacedName: string;
     /**
-     * Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+     * Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
      */
     readonly parent: string;
     /**

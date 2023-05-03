@@ -61,6 +61,51 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     }
 
     /// <summary>
+    /// Detailed error message if Ekm provisioning fails
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping : IEquatable<GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping>
+    {
+        private readonly string _value;
+
+        private GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Error is unspecified.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping EkmProvisioningErrorMappingUnspecified { get; } = new GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED");
+        /// <summary>
+        /// Service account is used is invalid.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping InvalidServiceAccount { get; } = new GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("INVALID_SERVICE_ACCOUNT");
+        /// <summary>
+        /// Iam permission monitoring.MetricsScopeAdmin wasn't applied.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping MissingMetricsScopeAdminPermission { get; } = new GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("MISSING_METRICS_SCOPE_ADMIN_PERMISSION");
+        /// <summary>
+        /// Iam permission cloudkms.ekmConnectionsAdmin wasn't applied.
+        /// </summary>
+        public static GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping MissingEkmConnectionAdminPermission { get; } = new GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping("MISSING_EKM_CONNECTION_ADMIN_PERMISSION");
+
+        public static bool operator ==(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping left, GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping left, GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping other && Equals(other);
+        public bool Equals(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorMapping other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indicates Ekm enrollment Provisioning of a given workload.
     /// </summary>
     [EnumType]
@@ -106,7 +151,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     }
 
     /// <summary>
-    /// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+    /// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
     /// </summary>
     [EnumType]
     public readonly struct GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType : IEquatable<GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType>
@@ -123,7 +168,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ResourceTypeUnspecified { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
+        /// Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
         /// </summary>
         public static GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType ConsumerProject { get; } = new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_PROJECT");
         /// <summary>
@@ -216,11 +261,11 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public static WorkloadComplianceRegime AuRegionsAndUsSupport { get; } = new WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT");
         /// <summary>
-        /// Assured Workloads for Partners;
+        /// Assured Workloads for Partners
         /// </summary>
         public static WorkloadComplianceRegime AssuredWorkloadsForPartners { get; } = new WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS");
         /// <summary>
-        /// Assured Workloads for Israel
+        /// Assured Workloads for Israel Regions
         /// </summary>
         public static WorkloadComplianceRegime IsrRegions { get; } = new WorkloadComplianceRegime("ISR_REGIONS");
         /// <summary>
@@ -269,6 +314,14 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// Enum representing T_SYSTEM (TSI) partner.
         /// </summary>
         public static WorkloadPartner SovereignControlsByTSystems { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS");
+        /// <summary>
+        /// Enum representing SIA_MINSAIT (Indra) partner.
+        /// </summary>
+        public static WorkloadPartner SovereignControlsBySiaMinsait { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_SIA_MINSAIT");
+        /// <summary>
+        /// Enum representing PSN (TIM) partner.
+        /// </summary>
+        public static WorkloadPartner SovereignControlsByPsn { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_PSN");
 
         public static bool operator ==(WorkloadPartner left, WorkloadPartner right) => left.Equals(right);
         public static bool operator !=(WorkloadPartner left, WorkloadPartner right) => !left.Equals(right);

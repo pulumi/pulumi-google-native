@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Immutable. The specifications for the key.
+        /// The specifications for the key.
         /// </summary>
         public readonly string KeySpec;
         /// <summary>

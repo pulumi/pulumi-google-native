@@ -25,6 +25,8 @@ type Workload struct {
 	ComplianceStatus GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponseOutput `pulumi:"complianceStatus"`
 	// Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
 	CompliantButDisallowedServices pulumi.StringArrayOutput `pulumi:"compliantButDisallowedServices"`
+	// Controls associated with the customer workload
+	Controls GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput `pulumi:"controls"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
@@ -65,6 +67,8 @@ type Workload struct {
 	Resources GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
 	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
 	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput `pulumi:"saaEnrollmentResponse"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled pulumi.BoolOutput `pulumi:"violationNotificationsEnabled"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -158,6 +162,8 @@ type workloadArgs struct {
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings `pulumi:"resourceSettings"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
 }
 
 // The set of arguments for constructing a Workload resource.
@@ -200,6 +206,8 @@ type WorkloadArgs struct {
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayInput
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+	ViolationNotificationsEnabled pulumi.BoolPtrInput
 }
 
 func (WorkloadArgs) ElementType() reflect.Type {
@@ -266,6 +274,13 @@ func (o WorkloadOutput) ComplianceStatus() GoogleCloudAssuredworkloadsV1beta1Wor
 // Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment."
 func (o WorkloadOutput) CompliantButDisallowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringArrayOutput { return v.CompliantButDisallowedServices }).(pulumi.StringArrayOutput)
+}
+
+// Controls associated with the customer workload
+func (o WorkloadOutput) Controls() GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput {
+		return v.Controls
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponseOutput)
 }
 
 // Immutable. The Workload creation timestamp.
@@ -382,6 +397,11 @@ func (o WorkloadOutput) SaaEnrollmentResponse() GoogleCloudAssuredworkloadsV1bet
 	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput {
 		return v.SaaEnrollmentResponse
 	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+func (o WorkloadOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

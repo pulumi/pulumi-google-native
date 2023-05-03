@@ -22,7 +22,7 @@ type WorkforcePoolProvider struct {
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+	// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// A user-specified display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -100,7 +100,7 @@ type workforcePoolProviderArgs struct {
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
-	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+	// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 	Disabled *bool `pulumi:"disabled"`
 	// A user-specified display name for the provider. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -122,7 +122,7 @@ type WorkforcePoolProviderArgs struct {
 	AttributeMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
-	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+	// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 	Disabled pulumi.BoolPtrInput
 	// A user-specified display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
@@ -188,7 +188,7 @@ func (o WorkforcePoolProviderOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 func (o WorkforcePoolProviderOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }

@@ -746,6 +746,8 @@ const (
 	InstanceDatabaseVersionPostgres13 = InstanceDatabaseVersion("POSTGRES_13")
 	// The database version is PostgreSQL 14.
 	InstanceDatabaseVersionPostgres14 = InstanceDatabaseVersion("POSTGRES_14")
+	// The database version is PostgreSQL 15.
+	InstanceDatabaseVersionPostgres15 = InstanceDatabaseVersion("POSTGRES_15")
 	// The database version is MySQL 8.
 	InstanceDatabaseVersionMysql80 = InstanceDatabaseVersion("MYSQL_8_0")
 	// The database major version is MySQL 8.0 and the minor version is 18.
@@ -764,6 +766,14 @@ const (
 	InstanceDatabaseVersionMysql8031 = InstanceDatabaseVersion("MYSQL_8_0_31")
 	// The database major version is MySQL 8.0 and the minor version is 32.
 	InstanceDatabaseVersionMysql8032 = InstanceDatabaseVersion("MYSQL_8_0_32")
+	// The database major version is MySQL 8.0 and the minor version is 33.
+	InstanceDatabaseVersionMysql8033 = InstanceDatabaseVersion("MYSQL_8_0_33")
+	// The database major version is MySQL 8.0 and the minor version is 34.
+	InstanceDatabaseVersionMysql8034 = InstanceDatabaseVersion("MYSQL_8_0_34")
+	// The database major version is MySQL 8.0 and the minor version is 35.
+	InstanceDatabaseVersionMysql8035 = InstanceDatabaseVersion("MYSQL_8_0_35")
+	// The database major version is MySQL 8.0 and the minor version is 36.
+	InstanceDatabaseVersionMysql8036 = InstanceDatabaseVersion("MYSQL_8_0_36")
 	// The database version is SQL Server 2019 Standard.
 	InstanceDatabaseVersionSqlserver2019Standard = InstanceDatabaseVersion("SQLSERVER_2019_STANDARD")
 	// The database version is SQL Server 2019 Enterprise.

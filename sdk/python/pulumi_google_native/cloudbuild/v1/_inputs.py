@@ -27,9 +27,11 @@ __all__ = [
     'GitLabRepositoryIdArgs',
     'GitLabSecretsArgs',
     'GitRepoSourceArgs',
+    'GitSourceArgs',
     'InlineSecretArgs',
     'MavenArtifactArgs',
     'NetworkConfigArgs',
+    'NpmPackageArgs',
     'PoolOptionArgs',
     'PrivatePoolV1ConfigArgs',
     'PubsubConfigArgs',
@@ -119,12 +121,14 @@ class ArtifactsArgs:
     def __init__(__self__, *,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  maven_artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]]] = None,
+                 npm_packages: Optional[pulumi.Input[Sequence[pulumi.Input['NpmPackageArgs']]]] = None,
                  objects: Optional[pulumi.Input['ArtifactObjectsArgs']] = None,
                  python_packages: Optional[pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]]] = None):
         """
         Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
         :param pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]] maven_artifacts: A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+        :param pulumi.Input[Sequence[pulumi.Input['NpmPackageArgs']]] npm_packages: A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
         :param pulumi.Input['ArtifactObjectsArgs'] objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         :param pulumi.Input[Sequence[pulumi.Input['PythonPackageArgs']]] python_packages: A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
         """
@@ -132,6 +136,8 @@ class ArtifactsArgs:
             pulumi.set(__self__, "images", images)
         if maven_artifacts is not None:
             pulumi.set(__self__, "maven_artifacts", maven_artifacts)
+        if npm_packages is not None:
+            pulumi.set(__self__, "npm_packages", npm_packages)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
         if python_packages is not None:
@@ -160,6 +166,18 @@ class ArtifactsArgs:
     @maven_artifacts.setter
     def maven_artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MavenArtifactArgs']]]]):
         pulumi.set(self, "maven_artifacts", value)
+
+    @property
+    @pulumi.getter(name="npmPackages")
+    def npm_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NpmPackageArgs']]]]:
+        """
+        A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "npm_packages")
+
+    @npm_packages.setter
+    def npm_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NpmPackageArgs']]]]):
+        pulumi.set(self, "npm_packages", value)
 
     @property
     @pulumi.getter
@@ -993,6 +1011,7 @@ class GitFileSourceArgs:
                  github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  repo_type: Optional[pulumi.Input['GitFileSourceRepoType']] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
@@ -1001,6 +1020,7 @@ class GitFileSourceArgs:
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
         :param pulumi.Input['GitFileSourceRepoType'] repo_type: See RepoType above.
+        :param pulumi.Input[str] repository: The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
@@ -1012,6 +1032,8 @@ class GitFileSourceArgs:
             pulumi.set(__self__, "path", path)
         if repo_type is not None:
             pulumi.set(__self__, "repo_type", repo_type)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if uri is not None:
@@ -1064,6 +1086,18 @@ class GitFileSourceArgs:
     @repo_type.setter
     def repo_type(self, value: Optional[pulumi.Input['GitFileSourceRepoType']]):
         pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
 
     @property
     @pulumi.getter
@@ -1556,6 +1590,7 @@ class GitRepoSourceArgs:
                  github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
                  repo_type: Optional[pulumi.Input['GitRepoSourceRepoType']] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         GitRepoSource describes a repo and ref of a code repository.
@@ -1563,6 +1598,7 @@ class GitRepoSourceArgs:
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input['GitRepoSourceRepoType'] repo_type: See RepoType below.
+        :param pulumi.Input[str] repository: The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
         :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified and is required.
         """
         if bitbucket_server_config is not None:
@@ -1573,6 +1609,8 @@ class GitRepoSourceArgs:
             pulumi.set(__self__, "ref", ref)
         if repo_type is not None:
             pulumi.set(__self__, "repo_type", repo_type)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
 
@@ -1626,6 +1664,18 @@ class GitRepoSourceArgs:
 
     @property
     @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
         The URI of the repo. Either uri or repository can be specified and is required.
@@ -1635,6 +1685,62 @@ class GitRepoSourceArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GitSourceArgs:
+    def __init__(__self__, *,
+                 dir: Optional[pulumi.Input[str]] = None,
+                 revision: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Location of the source in any accessible Git repository.
+        :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        :param pulumi.Input[str] revision: The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+        :param pulumi.Input[str] url: Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+        """
+        if dir is not None:
+            pulumi.set(__self__, "dir", dir)
+        if revision is not None:
+            pulumi.set(__self__, "revision", revision)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def dir(self) -> Optional[pulumi.Input[str]]:
+        """
+        Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        """
+        return pulumi.get(self, "dir")
+
+    @dir.setter
+    def dir(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dir", value)
+
+    @property
+    @pulumi.getter
+    def revision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+        """
+        return pulumi.get(self, "revision")
+
+    @revision.setter
+    def revision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
@@ -1818,6 +1924,46 @@ class NetworkConfigArgs:
     @peered_network_ip_range.setter
     def peered_network_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peered_network_ip_range", value)
+
+
+@pulumi.input_type
+class NpmPackageArgs:
+    def __init__(__self__, *,
+                 package_path: Optional[pulumi.Input[str]] = None,
+                 repository: Optional[pulumi.Input[str]] = None):
+        """
+        Npm package to upload to Artifact Registry upon successful completion of all build steps.
+        :param pulumi.Input[str] package_path: Path to the package.json. e.g. workspace/path/to/package
+        :param pulumi.Input[str] repository: Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        if package_path is not None:
+            pulumi.set(__self__, "package_path", package_path)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="packagePath")
+    def package_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to the package.json. e.g. workspace/path/to/package
+        """
+        return pulumi.get(self, "package_path")
+
+    @package_path.setter
+    def package_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_path", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
 
 
 @pulumi.input_type
@@ -2431,21 +2577,37 @@ class ServiceDirectoryConfigArgs:
 @pulumi.input_type
 class SourceArgs:
     def __init__(__self__, *,
+                 git_source: Optional[pulumi.Input['GitSourceArgs']] = None,
                  repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
                  storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
                  storage_source_manifest: Optional[pulumi.Input['StorageSourceManifestArgs']] = None):
         """
         Location of the source in a supported storage service.
+        :param pulumi.Input['GitSourceArgs'] git_source: If provided, get the source from this Git repository.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
         :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
+        if git_source is not None:
+            pulumi.set(__self__, "git_source", git_source)
         if repo_source is not None:
             pulumi.set(__self__, "repo_source", repo_source)
         if storage_source is not None:
             pulumi.set(__self__, "storage_source", storage_source)
         if storage_source_manifest is not None:
             pulumi.set(__self__, "storage_source_manifest", storage_source_manifest)
+
+    @property
+    @pulumi.getter(name="gitSource")
+    def git_source(self) -> Optional[pulumi.Input['GitSourceArgs']]:
+        """
+        If provided, get the source from this Git repository.
+        """
+        return pulumi.get(self, "git_source")
+
+    @git_source.setter
+    def git_source(self, value: Optional[pulumi.Input['GitSourceArgs']]):
+        pulumi.set(self, "git_source", value)
 
     @property
     @pulumi.getter(name="repoSource")

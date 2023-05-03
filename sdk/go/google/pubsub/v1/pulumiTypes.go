@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+type AvroConfig struct {
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// AvroConfigInput is an input type that accepts AvroConfigArgs and AvroConfigOutput values.
+// You can construct a concrete instance of `AvroConfigInput` via:
+//
+//	AvroConfigArgs{...}
+type AvroConfigInput interface {
+	pulumi.Input
+
+	ToAvroConfigOutput() AvroConfigOutput
+	ToAvroConfigOutputWithContext(context.Context) AvroConfigOutput
+}
+
+// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+type AvroConfigArgs struct {
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (AvroConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroConfig)(nil)).Elem()
+}
+
+func (i AvroConfigArgs) ToAvroConfigOutput() AvroConfigOutput {
+	return i.ToAvroConfigOutputWithContext(context.Background())
+}
+
+func (i AvroConfigArgs) ToAvroConfigOutputWithContext(ctx context.Context) AvroConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroConfigOutput)
+}
+
+func (i AvroConfigArgs) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
+	return i.ToAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AvroConfigArgs) ToAvroConfigPtrOutputWithContext(ctx context.Context) AvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroConfigOutput).ToAvroConfigPtrOutputWithContext(ctx)
+}
+
+// AvroConfigPtrInput is an input type that accepts AvroConfigArgs, AvroConfigPtr and AvroConfigPtrOutput values.
+// You can construct a concrete instance of `AvroConfigPtrInput` via:
+//
+//	        AvroConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvroConfigPtrInput interface {
+	pulumi.Input
+
+	ToAvroConfigPtrOutput() AvroConfigPtrOutput
+	ToAvroConfigPtrOutputWithContext(context.Context) AvroConfigPtrOutput
+}
+
+type avroConfigPtrType AvroConfigArgs
+
+func AvroConfigPtr(v *AvroConfigArgs) AvroConfigPtrInput {
+	return (*avroConfigPtrType)(v)
+}
+
+func (*avroConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroConfig)(nil)).Elem()
+}
+
+func (i *avroConfigPtrType) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
+	return i.ToAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *avroConfigPtrType) ToAvroConfigPtrOutputWithContext(ctx context.Context) AvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvroConfigPtrOutput)
+}
+
+// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+type AvroConfigOutput struct{ *pulumi.OutputState }
+
+func (AvroConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroConfig)(nil)).Elem()
+}
+
+func (o AvroConfigOutput) ToAvroConfigOutput() AvroConfigOutput {
+	return o
+}
+
+func (o AvroConfigOutput) ToAvroConfigOutputWithContext(ctx context.Context) AvroConfigOutput {
+	return o
+}
+
+func (o AvroConfigOutput) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
+	return o.ToAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AvroConfigOutput) ToAvroConfigPtrOutputWithContext(ctx context.Context) AvroConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvroConfig) *AvroConfig {
+		return &v
+	}).(AvroConfigPtrOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+func (o AvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvroConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type AvroConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AvroConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvroConfig)(nil)).Elem()
+}
+
+func (o AvroConfigPtrOutput) ToAvroConfigPtrOutput() AvroConfigPtrOutput {
+	return o
+}
+
+func (o AvroConfigPtrOutput) ToAvroConfigPtrOutputWithContext(ctx context.Context) AvroConfigPtrOutput {
+	return o
+}
+
+func (o AvroConfigPtrOutput) Elem() AvroConfigOutput {
+	return o.ApplyT(func(v *AvroConfig) AvroConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AvroConfig
+		return ret
+	}).(AvroConfigOutput)
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+func (o AvroConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+type AvroConfigResponse struct {
+	// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+type AvroConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AvroConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvroConfigResponse)(nil)).Elem()
+}
+
+func (o AvroConfigResponseOutput) ToAvroConfigResponseOutput() AvroConfigResponseOutput {
+	return o
+}
+
+func (o AvroConfigResponseOutput) ToAvroConfigResponseOutputWithContext(ctx context.Context) AvroConfigResponseOutput {
+	return o
+}
+
+// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+func (o AvroConfigResponseOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v AvroConfigResponse) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
 // Configuration for a BigQuery subscription.
 type BigQueryConfig struct {
 	// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
@@ -437,6 +603,335 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Configuration for a Cloud Storage subscription.
+type CloudStorageConfig struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	AvroConfig *AvroConfig `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+	Bucket string `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenamePrefix *string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenameSuffix *string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes *string `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+	MaxDuration *string `pulumi:"maxDuration"`
+	// If set, message data will be written to Cloud Storage in text format.
+	TextConfig *TextConfig `pulumi:"textConfig"`
+}
+
+// CloudStorageConfigInput is an input type that accepts CloudStorageConfigArgs and CloudStorageConfigOutput values.
+// You can construct a concrete instance of `CloudStorageConfigInput` via:
+//
+//	CloudStorageConfigArgs{...}
+type CloudStorageConfigInput interface {
+	pulumi.Input
+
+	ToCloudStorageConfigOutput() CloudStorageConfigOutput
+	ToCloudStorageConfigOutputWithContext(context.Context) CloudStorageConfigOutput
+}
+
+// Configuration for a Cloud Storage subscription.
+type CloudStorageConfigArgs struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	AvroConfig AvroConfigPtrInput `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenameSuffix pulumi.StringPtrInput `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes pulumi.StringPtrInput `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// If set, message data will be written to Cloud Storage in text format.
+	TextConfig TextConfigPtrInput `pulumi:"textConfig"`
+}
+
+func (CloudStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageConfig)(nil)).Elem()
+}
+
+func (i CloudStorageConfigArgs) ToCloudStorageConfigOutput() CloudStorageConfigOutput {
+	return i.ToCloudStorageConfigOutputWithContext(context.Background())
+}
+
+func (i CloudStorageConfigArgs) ToCloudStorageConfigOutputWithContext(ctx context.Context) CloudStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageConfigOutput)
+}
+
+func (i CloudStorageConfigArgs) ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput {
+	return i.ToCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageConfigArgs) ToCloudStorageConfigPtrOutputWithContext(ctx context.Context) CloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageConfigOutput).ToCloudStorageConfigPtrOutputWithContext(ctx)
+}
+
+// CloudStorageConfigPtrInput is an input type that accepts CloudStorageConfigArgs, CloudStorageConfigPtr and CloudStorageConfigPtrOutput values.
+// You can construct a concrete instance of `CloudStorageConfigPtrInput` via:
+//
+//	        CloudStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput
+	ToCloudStorageConfigPtrOutputWithContext(context.Context) CloudStorageConfigPtrOutput
+}
+
+type cloudStorageConfigPtrType CloudStorageConfigArgs
+
+func CloudStorageConfigPtr(v *CloudStorageConfigArgs) CloudStorageConfigPtrInput {
+	return (*cloudStorageConfigPtrType)(v)
+}
+
+func (*cloudStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageConfig)(nil)).Elem()
+}
+
+func (i *cloudStorageConfigPtrType) ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput {
+	return i.ToCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageConfigPtrType) ToCloudStorageConfigPtrOutputWithContext(ctx context.Context) CloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageConfigPtrOutput)
+}
+
+// Configuration for a Cloud Storage subscription.
+type CloudStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageConfig)(nil)).Elem()
+}
+
+func (o CloudStorageConfigOutput) ToCloudStorageConfigOutput() CloudStorageConfigOutput {
+	return o
+}
+
+func (o CloudStorageConfigOutput) ToCloudStorageConfigOutputWithContext(ctx context.Context) CloudStorageConfigOutput {
+	return o
+}
+
+func (o CloudStorageConfigOutput) ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput {
+	return o.ToCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageConfigOutput) ToCloudStorageConfigPtrOutputWithContext(ctx context.Context) CloudStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageConfig) *CloudStorageConfig {
+		return &v
+	}).(CloudStorageConfigPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+func (o CloudStorageConfigOutput) AvroConfig() AvroConfigPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *AvroConfig { return v.AvroConfig }).(AvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+func (o CloudStorageConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.FilenamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.FilenameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+func (o CloudStorageConfigOutput) MaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.MaxBytes }).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+func (o CloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in text format.
+func (o CloudStorageConfigOutput) TextConfig() TextConfigPtrOutput {
+	return o.ApplyT(func(v CloudStorageConfig) *TextConfig { return v.TextConfig }).(TextConfigPtrOutput)
+}
+
+type CloudStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageConfig)(nil)).Elem()
+}
+
+func (o CloudStorageConfigPtrOutput) ToCloudStorageConfigPtrOutput() CloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o CloudStorageConfigPtrOutput) ToCloudStorageConfigPtrOutputWithContext(ctx context.Context) CloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o CloudStorageConfigPtrOutput) Elem() CloudStorageConfigOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) CloudStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageConfig
+		return ret
+	}).(CloudStorageConfigOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+func (o CloudStorageConfigPtrOutput) AvroConfig() AvroConfigPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *AvroConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AvroConfig
+	}).(AvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+func (o CloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigPtrOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigPtrOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+func (o CloudStorageConfigPtrOutput) MaxBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+func (o CloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in text format.
+func (o CloudStorageConfigPtrOutput) TextConfig() TextConfigPtrOutput {
+	return o.ApplyT(func(v *CloudStorageConfig) *TextConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TextConfig
+	}).(TextConfigPtrOutput)
+}
+
+// Configuration for a Cloud Storage subscription.
+type CloudStorageConfigResponse struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	AvroConfig AvroConfigResponse `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+	Bucket string `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenamePrefix string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+	FilenameSuffix string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes string `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+	MaxDuration string `pulumi:"maxDuration"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State string `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in text format.
+	TextConfig TextConfigResponse `pulumi:"textConfig"`
+}
+
+// Configuration for a Cloud Storage subscription.
+type CloudStorageConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageConfigResponse)(nil)).Elem()
+}
+
+func (o CloudStorageConfigResponseOutput) ToCloudStorageConfigResponseOutput() CloudStorageConfigResponseOutput {
+	return o
+}
+
+func (o CloudStorageConfigResponseOutput) ToCloudStorageConfigResponseOutputWithContext(ctx context.Context) CloudStorageConfigResponseOutput {
+	return o
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+func (o CloudStorageConfigResponseOutput) AvroConfig() AvroConfigResponseOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) AvroConfigResponse { return v.AvroConfig }).(AvroConfigResponseOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+func (o CloudStorageConfigResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigResponseOutput) FilenamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.FilenamePrefix }).(pulumi.StringOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+func (o CloudStorageConfigResponseOutput) FilenameSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.FilenameSuffix }).(pulumi.StringOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+func (o CloudStorageConfigResponseOutput) MaxBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.MaxBytes }).(pulumi.StringOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+func (o CloudStorageConfigResponseOutput) MaxDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.MaxDuration }).(pulumi.StringOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o CloudStorageConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// If set, message data will be written to Cloud Storage in text format.
+func (o CloudStorageConfigResponseOutput) TextConfig() TextConfigResponseOutput {
+	return o.ApplyT(func(v CloudStorageConfigResponse) TextConfigResponse { return v.TextConfig }).(TextConfigResponseOutput)
 }
 
 // Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
@@ -2047,11 +2542,155 @@ func (o SchemaSettingsResponseOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Schema }).(pulumi.StringOutput)
 }
 
+// Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+type TextConfig struct {
+}
+
+// TextConfigInput is an input type that accepts TextConfigArgs and TextConfigOutput values.
+// You can construct a concrete instance of `TextConfigInput` via:
+//
+//	TextConfigArgs{...}
+type TextConfigInput interface {
+	pulumi.Input
+
+	ToTextConfigOutput() TextConfigOutput
+	ToTextConfigOutputWithContext(context.Context) TextConfigOutput
+}
+
+// Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+type TextConfigArgs struct {
+}
+
+func (TextConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfig)(nil)).Elem()
+}
+
+func (i TextConfigArgs) ToTextConfigOutput() TextConfigOutput {
+	return i.ToTextConfigOutputWithContext(context.Background())
+}
+
+func (i TextConfigArgs) ToTextConfigOutputWithContext(ctx context.Context) TextConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigOutput)
+}
+
+func (i TextConfigArgs) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return i.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TextConfigArgs) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigOutput).ToTextConfigPtrOutputWithContext(ctx)
+}
+
+// TextConfigPtrInput is an input type that accepts TextConfigArgs, TextConfigPtr and TextConfigPtrOutput values.
+// You can construct a concrete instance of `TextConfigPtrInput` via:
+//
+//	        TextConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TextConfigPtrInput interface {
+	pulumi.Input
+
+	ToTextConfigPtrOutput() TextConfigPtrOutput
+	ToTextConfigPtrOutputWithContext(context.Context) TextConfigPtrOutput
+}
+
+type textConfigPtrType TextConfigArgs
+
+func TextConfigPtr(v *TextConfigArgs) TextConfigPtrInput {
+	return (*textConfigPtrType)(v)
+}
+
+func (*textConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextConfig)(nil)).Elem()
+}
+
+func (i *textConfigPtrType) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return i.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *textConfigPtrType) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextConfigPtrOutput)
+}
+
+// Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+type TextConfigOutput struct{ *pulumi.OutputState }
+
+func (TextConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfig)(nil)).Elem()
+}
+
+func (o TextConfigOutput) ToTextConfigOutput() TextConfigOutput {
+	return o
+}
+
+func (o TextConfigOutput) ToTextConfigOutputWithContext(ctx context.Context) TextConfigOutput {
+	return o
+}
+
+func (o TextConfigOutput) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return o.ToTextConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextConfig) *TextConfig {
+		return &v
+	}).(TextConfigPtrOutput)
+}
+
+type TextConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TextConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextConfig)(nil)).Elem()
+}
+
+func (o TextConfigPtrOutput) ToTextConfigPtrOutput() TextConfigPtrOutput {
+	return o
+}
+
+func (o TextConfigPtrOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) TextConfigPtrOutput {
+	return o
+}
+
+func (o TextConfigPtrOutput) Elem() TextConfigOutput {
+	return o.ApplyT(func(v *TextConfig) TextConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TextConfig
+		return ret
+	}).(TextConfigOutput)
+}
+
+// Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+type TextConfigResponse struct {
+}
+
+// Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+type TextConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (TextConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextConfigResponse)(nil)).Elem()
+}
+
+func (o TextConfigResponseOutput) ToTextConfigResponseOutput() TextConfigResponseOutput {
+	return o
+}
+
+func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx context.Context) TextConfigResponseOutput {
+	return o
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroConfigInput)(nil)).Elem(), AvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AvroConfigPtrInput)(nil)).Elem(), AvroConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigInput)(nil)).Elem(), BigQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryConfigPtrInput)(nil)).Elem(), BigQueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageConfigInput)(nil)).Elem(), CloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageConfigPtrInput)(nil)).Elem(), CloudStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyInput)(nil)).Elem(), DeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeadLetterPolicyPtrInput)(nil)).Elem(), DeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpirationPolicyInput)(nil)).Elem(), ExpirationPolicyArgs{})
@@ -2068,6 +2707,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryPolicyPtrInput)(nil)).Elem(), RetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsInput)(nil)).Elem(), SchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaSettingsPtrInput)(nil)).Elem(), SchemaSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigInput)(nil)).Elem(), TextConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigPtrInput)(nil)).Elem(), TextConfigArgs{})
+	pulumi.RegisterOutputType(AvroConfigOutput{})
+	pulumi.RegisterOutputType(AvroConfigPtrOutput{})
+	pulumi.RegisterOutputType(AvroConfigResponseOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigPtrOutput{})
 	pulumi.RegisterOutputType(BigQueryConfigResponseOutput{})
@@ -2075,6 +2719,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloudStorageConfigOutput{})
+	pulumi.RegisterOutputType(CloudStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageConfigResponseOutput{})
 	pulumi.RegisterOutputType(DeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(DeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DeadLetterPolicyResponseOutput{})
@@ -2099,4 +2746,7 @@ func init() {
 	pulumi.RegisterOutputType(SchemaSettingsOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SchemaSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TextConfigOutput{})
+	pulumi.RegisterOutputType(TextConfigPtrOutput{})
+	pulumi.RegisterOutputType(TextConfigResponseOutput{})
 }

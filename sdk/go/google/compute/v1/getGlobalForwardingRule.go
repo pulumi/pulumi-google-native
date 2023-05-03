@@ -30,6 +30,8 @@ type LookupGlobalForwardingRuleResult struct {
 	AllPorts bool `pulumi:"allPorts"`
 	// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess bool `pulumi:"allowPscGlobalAccess"`
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService string `pulumi:"backendService"`
 	// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -60,7 +62,7 @@ type LookupGlobalForwardingRuleResult struct {
 	MetadataFilters []MetadataFilterResponse `pulumi:"metadataFilters"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. For Private Service Connect forwarding rules that forward traffic to Google APIs, the forwarding rule name must be a 1-20 characters string with lowercase letters and numbers and must start with a letter.
 	Name string `pulumi:"name"`
-	// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+	// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
 	Network string `pulumi:"network"`
 	// This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
 	NetworkTier string `pulumi:"networkTier"`
@@ -135,6 +137,11 @@ func (o LookupGlobalForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {
 // This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. If the field is set to TRUE, clients can access ILB from all regions. Otherwise only allows access from clients in the same region as the internal load balancer.
 func (o LookupGlobalForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o LookupGlobalForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
 }
 
 // Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
@@ -212,7 +219,7 @@ func (o LookupGlobalForwardingRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
 func (o LookupGlobalForwardingRuleResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Network }).(pulumi.StringOutput)
 }

@@ -25,8 +25,11 @@ __all__ = [
     'ExprResponse',
     'FeatureResourceStateResponse',
     'FeatureStateResponse',
+    'FleetLifecycleStateResponse',
     'FleetObservabilityFeatureSpecResponse',
     'FleetObservabilityFeatureStateResponse',
+    'FleetObservabilityLoggingConfigResponse',
+    'FleetObservabilityRoutingConfigResponse',
     'IdentityServiceAuthMethodResponse',
     'IdentityServiceAzureADConfigResponse',
     'IdentityServiceGoogleConfigResponse',
@@ -600,15 +603,64 @@ class FeatureStateResponse(dict):
 
 
 @pulumi.output_type
+class FleetLifecycleStateResponse(dict):
+    """
+    FleetLifecycleState describes the state of a Fleet resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        FleetLifecycleState describes the state of a Fleet resource.
+        :param str code: The current state of the Fleet resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the Fleet resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
 class FleetObservabilityFeatureSpecResponse(dict):
     """
     **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingConfig":
+            suggest = "logging_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetObservabilityFeatureSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logging_config: 'outputs.FleetObservabilityLoggingConfigResponse'):
         """
         **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        :param 'FleetObservabilityLoggingConfigResponse' logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         """
-        pass
+        pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> 'outputs.FleetObservabilityLoggingConfigResponse':
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        return pulumi.get(self, "logging_config")
 
 
 @pulumi.output_type
@@ -621,6 +673,80 @@ class FleetObservabilityFeatureStateResponse(dict):
         **FleetObservability**: An empty state left as an example Hub-wide Feature state.
         """
         pass
+
+
+@pulumi.output_type
+class FleetObservabilityLoggingConfigResponse(dict):
+    """
+    LoggingConfig defines the configuration for different types of logs.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConfig":
+            suggest = "default_config"
+        elif key == "fleetScopeLogsConfig":
+            suggest = "fleet_scope_logs_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetObservabilityLoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetObservabilityLoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetObservabilityLoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_config: 'outputs.FleetObservabilityRoutingConfigResponse',
+                 fleet_scope_logs_config: 'outputs.FleetObservabilityRoutingConfigResponse'):
+        """
+        LoggingConfig defines the configuration for different types of logs.
+        :param 'FleetObservabilityRoutingConfigResponse' default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param 'FleetObservabilityRoutingConfigResponse' fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        pulumi.set(__self__, "default_config", default_config)
+        pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> 'outputs.FleetObservabilityRoutingConfigResponse':
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        """
+        return pulumi.get(self, "default_config")
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> 'outputs.FleetObservabilityRoutingConfigResponse':
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+
+@pulumi.output_type
+class FleetObservabilityRoutingConfigResponse(dict):
+    """
+    RoutingConfig configures the behaviour of fleet logging feature.
+    """
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        RoutingConfig configures the behaviour of fleet logging feature.
+        :param str mode: mode configures the logs routing mode.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        mode configures the logs routing mode.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type

@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         public Output<ImmutableArray<string>> CompliantButDisallowedServices { get; private set; } = null!;
 
         /// <summary>
+        /// Controls associated with the customer workload
+        /// </summary>
+        [Output("controls")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse> Controls { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The Workload creation timestamp.
         /// </summary>
         [Output("createTime")]
@@ -158,6 +164,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         [Output("saaEnrollmentResponse")]
         public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse> SaaEnrollmentResponse { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        /// </summary>
+        [Output("violationNotificationsEnabled")]
+        public Output<bool> ViolationNotificationsEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -328,6 +340,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             get => _resourceSettings ?? (_resourceSettings = new InputList<Inputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs>());
             set => _resourceSettings = value;
         }
+
+        /// <summary>
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        /// </summary>
+        [Input("violationNotificationsEnabled")]
+        public Input<bool>? ViolationNotificationsEnabled { get; set; }
 
         public WorkloadArgs()
         {

@@ -30,15 +30,19 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string EnforceOnKey;
         /// <summary>
+        /// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse> EnforceOnKeyConfigs;
+        /// <summary>
         /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         /// </summary>
         public readonly string EnforceOnKeyName;
         /// <summary>
-        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+        /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly string ExceedAction;
         /// <summary>
-        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse ExceedRedirectOptions;
         /// <summary>
@@ -56,6 +60,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string enforceOnKey,
 
+            ImmutableArray<Outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse> enforceOnKeyConfigs,
+
             string enforceOnKeyName,
 
             string exceedAction,
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             BanThreshold = banThreshold;
             ConformAction = conformAction;
             EnforceOnKey = enforceOnKey;
+            EnforceOnKeyConfigs = enforceOnKeyConfigs;
             EnforceOnKeyName = enforceOnKeyName;
             ExceedAction = exceedAction;
             ExceedRedirectOptions = exceedRedirectOptions;

@@ -64,6 +64,10 @@ export class Model extends pulumi.CustomResource {
     public /*out*/ readonly lastTuneTime!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Optional. Additional model features config.
+     */
+    public readonly modelFeaturesConfig!: pulumi.Output<outputs.retail.v2alpha.GoogleCloudRetailV2alphaModelModelFeaturesConfigResponse>;
+    /**
      * The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
      */
     public readonly name!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["filteringOption"] = args ? args.filteringOption : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["modelFeaturesConfig"] = args ? args.modelFeaturesConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["optimizationObjective"] = args ? args.optimizationObjective : undefined;
             resourceInputs["pageOptimizationConfig"] = args ? args.pageOptimizationConfig : undefined;
@@ -153,6 +158,7 @@ export class Model extends pulumi.CustomResource {
             resourceInputs["filteringOption"] = undefined /*out*/;
             resourceInputs["lastTuneTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["modelFeaturesConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["optimizationObjective"] = undefined /*out*/;
             resourceInputs["pageOptimizationConfig"] = undefined /*out*/;
@@ -190,6 +196,10 @@ export interface ModelArgs {
      */
     filteringOption?: pulumi.Input<enums.retail.v2alpha.ModelFilteringOption>;
     location?: pulumi.Input<string>;
+    /**
+     * Optional. Additional model features config.
+     */
+    modelFeaturesConfig?: pulumi.Input<inputs.retail.v2alpha.GoogleCloudRetailV2alphaModelModelFeaturesConfigArgs>;
     /**
      * The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
      */

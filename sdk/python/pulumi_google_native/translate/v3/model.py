@@ -155,7 +155,6 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["deploy_time"] = None
             __props__.__dict__["source_language_code"] = None
             __props__.__dict__["target_language_code"] = None
             __props__.__dict__["test_example_count"] = None
@@ -188,7 +187,6 @@ class Model(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["dataset"] = None
-        __props__.__dict__["deploy_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -216,14 +214,6 @@ class Model(pulumi.CustomResource):
         The dataset from which the model is trained, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
         """
         return pulumi.get(self, "dataset")
-
-    @property
-    @pulumi.getter(name="deployTime")
-    def deploy_time(self) -> pulumi.Output[str]:
-        """
-        Timestamp when the model training finished and ready to be used for translation.
-        """
-        return pulumi.get(self, "deploy_time")
 
     @property
     @pulumi.getter(name="displayName")

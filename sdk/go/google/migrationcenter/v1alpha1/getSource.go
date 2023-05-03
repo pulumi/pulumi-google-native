@@ -41,6 +41,8 @@ type LookupSourceResult struct {
 	PendingFrameCount int `pulumi:"pendingFrameCount"`
 	// The information confidence of the source. The higher the value, the higher the confidence.
 	Priority int `pulumi:"priority"`
+	// The state of the source.
+	State string `pulumi:"state"`
 	// Data source type.
 	Type string `pulumi:"type"`
 	// The timestamp when the source was last updated.
@@ -117,6 +119,11 @@ func (o LookupSourceResultOutput) PendingFrameCount() pulumi.IntOutput {
 // The information confidence of the source. The higher the value, the higher the confidence.
 func (o LookupSourceResultOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSourceResult) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The state of the source.
+func (o LookupSourceResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 // Data source type.

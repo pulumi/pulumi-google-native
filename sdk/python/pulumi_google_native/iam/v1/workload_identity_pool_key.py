@@ -18,19 +18,20 @@ __all__ = ['WorkloadIdentityPoolKeyArgs', 'WorkloadIdentityPoolKey']
 class WorkloadIdentityPoolKeyArgs:
     def __init__(__self__, *,
                  provider_id: pulumi.Input[str],
+                 use: pulumi.Input['WorkloadIdentityPoolKeyUse'],
                  workload_identity_pool_id: pulumi.Input[str],
                  workload_identity_pool_provider_key_id: pulumi.Input[str],
                  key_data: Optional[pulumi.Input['KeyDataArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 use: Optional[pulumi.Input['WorkloadIdentityPoolKeyUse']] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolKey resource.
+        :param pulumi.Input['WorkloadIdentityPoolKeyUse'] use: The purpose of the key.
         :param pulumi.Input[str] workload_identity_pool_provider_key_id: Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input['KeyDataArgs'] key_data: Immutable. Public half of the asymmetric key.
-        :param pulumi.Input['WorkloadIdentityPoolKeyUse'] use: Immutable. The purpose of the key.
         """
         pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "use", use)
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_key_id", workload_identity_pool_provider_key_id)
         if key_data is not None:
@@ -39,8 +40,6 @@ class WorkloadIdentityPoolKeyArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if use is not None:
-            pulumi.set(__self__, "use", use)
 
     @property
     @pulumi.getter(name="providerId")
@@ -50,6 +49,18 @@ class WorkloadIdentityPoolKeyArgs:
     @provider_id.setter
     def provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "provider_id", value)
+
+    @property
+    @pulumi.getter
+    def use(self) -> pulumi.Input['WorkloadIdentityPoolKeyUse']:
+        """
+        The purpose of the key.
+        """
+        return pulumi.get(self, "use")
+
+    @use.setter
+    def use(self, value: pulumi.Input['WorkloadIdentityPoolKeyUse']):
+        pulumi.set(self, "use", value)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -102,18 +113,6 @@ class WorkloadIdentityPoolKeyArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter
-    def use(self) -> Optional[pulumi.Input['WorkloadIdentityPoolKeyUse']]:
-        """
-        Immutable. The purpose of the key.
-        """
-        return pulumi.get(self, "use")
-
-    @use.setter
-    def use(self, value: Optional[pulumi.Input['WorkloadIdentityPoolKeyUse']]):
-        pulumi.set(self, "use", value)
-
 
 class WorkloadIdentityPoolKey(pulumi.CustomResource):
     @overload
@@ -135,7 +134,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['KeyDataArgs']] key_data: Immutable. Public half of the asymmetric key.
-        :param pulumi.Input['WorkloadIdentityPoolKeyUse'] use: Immutable. The purpose of the key.
+        :param pulumi.Input['WorkloadIdentityPoolKeyUse'] use: The purpose of the key.
         :param pulumi.Input[str] workload_identity_pool_provider_key_id: Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
         """
         ...
@@ -185,6 +184,8 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
             if provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
+            if use is None and not opts.urn:
+                raise TypeError("Missing required property 'use'")
             __props__.__dict__["use"] = use
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
@@ -282,7 +283,7 @@ class WorkloadIdentityPoolKey(pulumi.CustomResource):
     @pulumi.getter
     def use(self) -> pulumi.Output[str]:
         """
-        Immutable. The purpose of the key.
+        The purpose of the key.
         """
         return pulumi.get(self, "use")
 

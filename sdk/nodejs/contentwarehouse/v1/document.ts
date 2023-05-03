@@ -62,6 +62,10 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly displayUri!: pulumi.Output<string>;
     /**
+     * If linked to a Collection with RetentionPolicy, the date when the document becomes mutable.
+     */
+    public /*out*/ readonly dispositionTime!: pulumi.Output<string>;
+    /**
      * The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
      */
     public readonly documentSchemaName!: pulumi.Output<string>;
@@ -154,6 +158,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["updater"] = args ? args.updater : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dispositionTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["cloudAiDocument"] = undefined /*out*/;
@@ -162,6 +167,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["displayUri"] = undefined /*out*/;
+            resourceInputs["dispositionTime"] = undefined /*out*/;
             resourceInputs["documentSchemaName"] = undefined /*out*/;
             resourceInputs["inlineRawDocument"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

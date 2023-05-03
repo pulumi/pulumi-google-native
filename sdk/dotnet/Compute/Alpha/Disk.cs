@@ -313,6 +313,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Output("storagePool")]
+        public Output<string> StoragePool { get; private set; } = null!;
+
+        /// <summary>
         /// [Deprecated] Storage type of the persistent disk.
         /// </summary>
         [Output("storageType")]
@@ -607,6 +613,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
+
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
 
         /// <summary>
         /// [Deprecated] Storage type of the persistent disk.

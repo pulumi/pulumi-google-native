@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// Overlaid jpeg image.
+    /// Overlaid image.
     /// </summary>
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<Inputs.NormalizedCoordinateArgs>? Resolution { get; set; }
 
         /// <summary>
-        /// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        /// URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

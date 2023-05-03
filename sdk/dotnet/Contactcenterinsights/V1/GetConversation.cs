@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse LatestAnalysis;
         /// <summary>
+        /// Latest summary of the conversation.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse LatestSummary;
+        /// <summary>
         /// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
         /// </summary>
         public readonly string Medium;
@@ -168,6 +172,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             Outputs.GoogleCloudContactcenterinsightsV1AnalysisResponse latestAnalysis,
 
+            Outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse latestSummary,
+
             string medium,
 
             string name,
@@ -196,6 +202,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             Labels = labels;
             LanguageCode = languageCode;
             LatestAnalysis = latestAnalysis;
+            LatestSummary = latestSummary;
             Medium = medium;
             Name = name;
             ObfuscatedUserId = obfuscatedUserId;

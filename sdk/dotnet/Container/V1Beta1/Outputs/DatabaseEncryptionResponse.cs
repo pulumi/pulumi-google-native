@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string KeyName;
         /// <summary>
-        /// Denotes the state of etcd encryption.
+        /// The desired state of etcd encryption.
         /// </summary>
         public readonly string State;
 

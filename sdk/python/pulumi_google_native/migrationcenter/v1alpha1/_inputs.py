@@ -274,40 +274,38 @@ class RegionPreferencesArgs:
 @pulumi.input_type
 class ReportConfigGroupPreferenceSetAssignmentArgs:
     def __init__(__self__, *,
-                 group: Optional[pulumi.Input[str]] = None,
-                 preference_set: Optional[pulumi.Input[str]] = None):
+                 group: pulumi.Input[str],
+                 preference_set: pulumi.Input[str]):
         """
         Represents a combination of a group with a preference set.
         :param pulumi.Input[str] group: Name of the group.
         :param pulumi.Input[str] preference_set: Name of the Preference Set.
         """
-        if group is not None:
-            pulumi.set(__self__, "group", group)
-        if preference_set is not None:
-            pulumi.set(__self__, "preference_set", preference_set)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "preference_set", preference_set)
 
     @property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[str]]:
+    def group(self) -> pulumi.Input[str]:
         """
         Name of the group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[str]]):
+    def group(self, value: pulumi.Input[str]):
         pulumi.set(self, "group", value)
 
     @property
     @pulumi.getter(name="preferenceSet")
-    def preference_set(self) -> Optional[pulumi.Input[str]]:
+    def preference_set(self) -> pulumi.Input[str]:
         """
         Name of the Preference Set.
         """
         return pulumi.get(self, "preference_set")
 
     @preference_set.setter
-    def preference_set(self, value: Optional[pulumi.Input[str]]):
+    def preference_set(self, value: pulumi.Input[str]):
         pulumi.set(self, "preference_set", value)
 
 

@@ -518,9 +518,9 @@ type Container struct {
 	Args []string `pulumi:"args"`
 	// If set, overrides the default ENTRYPOINT specified by the image.
 	Command []string `pulumi:"command"`
-	// Environment variables passed to the container.
+	// Environment variables passed to the container's entrypoint.
 	Env map[string]string `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the config's service account.
+	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 	Image *string `pulumi:"image"`
 	// If set, overrides the USER specified in the image with the given uid.
 	RunAsUser *int `pulumi:"runAsUser"`
@@ -545,9 +545,9 @@ type ContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// If set, overrides the default ENTRYPOINT specified by the image.
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// Environment variables passed to the container.
+	// Environment variables passed to the container's entrypoint.
 	Env pulumi.StringMapInput `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the config's service account.
+	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// If set, overrides the USER specified in the image with the given uid.
 	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
@@ -643,12 +643,12 @@ func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container.
+// Environment variables passed to the container's entrypoint.
 func (o ContainerOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Container) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the config's service account.
+// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 func (o ContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -707,7 +707,7 @@ func (o ContainerPtrOutput) Command() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container.
+// Environment variables passed to the container's entrypoint.
 func (o ContainerPtrOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Container) map[string]string {
 		if v == nil {
@@ -717,7 +717,7 @@ func (o ContainerPtrOutput) Env() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the config's service account.
+// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 func (o ContainerPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -753,9 +753,9 @@ type ContainerResponse struct {
 	Args []string `pulumi:"args"`
 	// If set, overrides the default ENTRYPOINT specified by the image.
 	Command []string `pulumi:"command"`
-	// Environment variables passed to the container.
+	// Environment variables passed to the container's entrypoint.
 	Env map[string]string `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the config's service account.
+	// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 	Image string `pulumi:"image"`
 	// If set, overrides the USER specified in the image with the given uid.
 	RunAsUser int `pulumi:"runAsUser"`
@@ -788,12 +788,12 @@ func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// Environment variables passed to the container.
+// Environment variables passed to the container's entrypoint.
 func (o ContainerResponseOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ContainerResponse) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the config's service account.
+// Docker image defining the container. This image must be accessible by the service account specified in the workstation configuration.
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -810,9 +810,9 @@ func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
 
 // A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKey struct {
-	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey *string `pulumi:"kmsKey"`
-	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -829,9 +829,9 @@ type CustomerEncryptionKeyInput interface {
 
 // A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyArgs struct {
-	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
-	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -913,12 +913,12 @@ func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
-// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -947,7 +947,7 @@ func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
 	}).(CustomerEncryptionKeyOutput)
 }
 
-// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -957,7 +957,7 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -969,9 +969,9 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrO
 
 // A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyResponse struct {
-	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey string `pulumi:"kmsKey"`
-	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+	// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -990,12 +990,12 @@ func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutp
 	return o
 }
 
-// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// Immutable. The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
-// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
+// Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -1420,9 +1420,9 @@ type GceInstance struct {
 	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
 	// The name of a Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation starup.
+	// Number of instances to pool for faster workstation startup.
 	PoolSize *int `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig *GceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -1451,9 +1451,9 @@ type GceInstanceArgs struct {
 	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
 	// The name of a Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation starup.
+	// Number of instances to pool for faster workstation startup.
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -1559,12 +1559,12 @@ func (o GceInstanceOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceInstance) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// Number of instances to pool for faster workstation starup.
+// Number of instances to pool for faster workstation startup.
 func (o GceInstanceOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 func (o GceInstanceOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceInstance) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -1643,7 +1643,7 @@ func (o GceInstancePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of instances to pool for faster workstation starup.
+// Number of instances to pool for faster workstation startup.
 func (o GceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *int {
 		if v == nil {
@@ -1653,7 +1653,7 @@ func (o GceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 func (o GceInstancePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *string {
 		if v == nil {
@@ -1693,9 +1693,11 @@ type GceInstanceResponse struct {
 	DisablePublicIpAddresses bool `pulumi:"disablePublicIpAddresses"`
 	// The name of a Compute Engine machine type.
 	MachineType string `pulumi:"machineType"`
-	// Number of instances to pool for faster workstation starup.
+	// Number of instances to pool for faster workstation startup.
 	PoolSize int `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+	// Number of instances currently available in the pool for faster workstation startup.
+	PooledInstances int `pulumi:"pooledInstances"`
+	// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
@@ -1738,12 +1740,17 @@ func (o GceInstanceResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceInstanceResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// Number of instances to pool for faster workstation starup.
+// Number of instances to pool for faster workstation startup.
 func (o GceInstanceResponseOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
+// Number of instances currently available in the pool for faster workstation startup.
+func (o GceInstanceResponseOutput) PooledInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v GceInstanceResponse) int { return v.PooledInstances }).(pulumi.IntOutput)
+}
+
+// Email address of the service account used on VM instances used to support this configuration. If not set, VMs run with a Google-managed service account. This service account must have permission to pull the specified container image; otherwise, the image must be publicly accessible.
 func (o GceInstanceResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GceInstanceResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -2780,6 +2787,168 @@ func (o PrivateClusterConfigResponseOutput) ServiceAttachmentUri() pulumi.String
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.ServiceAttachmentUri }).(pulumi.StringOutput)
 }
 
+// A readiness check to be performed on a workstation.
+type ReadinessCheck struct {
+	// Path to which the request should be sent.
+	Path *string `pulumi:"path"`
+	// Port to which the request should be sent.
+	Port *int `pulumi:"port"`
+}
+
+// ReadinessCheckInput is an input type that accepts ReadinessCheckArgs and ReadinessCheckOutput values.
+// You can construct a concrete instance of `ReadinessCheckInput` via:
+//
+//	ReadinessCheckArgs{...}
+type ReadinessCheckInput interface {
+	pulumi.Input
+
+	ToReadinessCheckOutput() ReadinessCheckOutput
+	ToReadinessCheckOutputWithContext(context.Context) ReadinessCheckOutput
+}
+
+// A readiness check to be performed on a workstation.
+type ReadinessCheckArgs struct {
+	// Path to which the request should be sent.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port to which the request should be sent.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (ReadinessCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadinessCheck)(nil)).Elem()
+}
+
+func (i ReadinessCheckArgs) ToReadinessCheckOutput() ReadinessCheckOutput {
+	return i.ToReadinessCheckOutputWithContext(context.Background())
+}
+
+func (i ReadinessCheckArgs) ToReadinessCheckOutputWithContext(ctx context.Context) ReadinessCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckOutput)
+}
+
+// ReadinessCheckArrayInput is an input type that accepts ReadinessCheckArray and ReadinessCheckArrayOutput values.
+// You can construct a concrete instance of `ReadinessCheckArrayInput` via:
+//
+//	ReadinessCheckArray{ ReadinessCheckArgs{...} }
+type ReadinessCheckArrayInput interface {
+	pulumi.Input
+
+	ToReadinessCheckArrayOutput() ReadinessCheckArrayOutput
+	ToReadinessCheckArrayOutputWithContext(context.Context) ReadinessCheckArrayOutput
+}
+
+type ReadinessCheckArray []ReadinessCheckInput
+
+func (ReadinessCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReadinessCheck)(nil)).Elem()
+}
+
+func (i ReadinessCheckArray) ToReadinessCheckArrayOutput() ReadinessCheckArrayOutput {
+	return i.ToReadinessCheckArrayOutputWithContext(context.Background())
+}
+
+func (i ReadinessCheckArray) ToReadinessCheckArrayOutputWithContext(ctx context.Context) ReadinessCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckArrayOutput)
+}
+
+// A readiness check to be performed on a workstation.
+type ReadinessCheckOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadinessCheck)(nil)).Elem()
+}
+
+func (o ReadinessCheckOutput) ToReadinessCheckOutput() ReadinessCheckOutput {
+	return o
+}
+
+func (o ReadinessCheckOutput) ToReadinessCheckOutputWithContext(ctx context.Context) ReadinessCheckOutput {
+	return o
+}
+
+// Path to which the request should be sent.
+func (o ReadinessCheckOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReadinessCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Port to which the request should be sent.
+func (o ReadinessCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReadinessCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type ReadinessCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReadinessCheck)(nil)).Elem()
+}
+
+func (o ReadinessCheckArrayOutput) ToReadinessCheckArrayOutput() ReadinessCheckArrayOutput {
+	return o
+}
+
+func (o ReadinessCheckArrayOutput) ToReadinessCheckArrayOutputWithContext(ctx context.Context) ReadinessCheckArrayOutput {
+	return o
+}
+
+func (o ReadinessCheckArrayOutput) Index(i pulumi.IntInput) ReadinessCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReadinessCheck {
+		return vs[0].([]ReadinessCheck)[vs[1].(int)]
+	}).(ReadinessCheckOutput)
+}
+
+// A readiness check to be performed on a workstation.
+type ReadinessCheckResponse struct {
+	// Path to which the request should be sent.
+	Path string `pulumi:"path"`
+	// Port to which the request should be sent.
+	Port int `pulumi:"port"`
+}
+
+// A readiness check to be performed on a workstation.
+type ReadinessCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponseOutput() ReadinessCheckResponseOutput {
+	return o
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponseOutputWithContext(ctx context.Context) ReadinessCheckResponseOutput {
+	return o
+}
+
+// Path to which the request should be sent.
+func (o ReadinessCheckResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port to which the request should be sent.
+func (o ReadinessCheckResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type ReadinessCheckResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (o ReadinessCheckResponseArrayOutput) ToReadinessCheckResponseArrayOutput() ReadinessCheckResponseArrayOutput {
+	return o
+}
+
+func (o ReadinessCheckResponseArrayOutput) ToReadinessCheckResponseArrayOutputWithContext(ctx context.Context) ReadinessCheckResponseArrayOutput {
+	return o
+}
+
+func (o ReadinessCheckResponseArrayOutput) Index(i pulumi.IntInput) ReadinessCheckResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReadinessCheckResponse {
+		return vs[0].([]ReadinessCheckResponse)[vs[1].(int)]
+	}).(ReadinessCheckResponseOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -2867,6 +3036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PersistentDirectoryArrayInput)(nil)).Elem(), PersistentDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckInput)(nil)).Elem(), ReadinessCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckArrayInput)(nil)).Elem(), ReadinessCheckArray{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2910,6 +3081,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckArrayOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckResponseOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 }

@@ -1998,8 +1998,8 @@ class TcpRouteRouteActionArgs:
                  original_destination: Optional[pulumi.Input[bool]] = None):
         """
         The specifications for routing traffic and applying associated policies.
-        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]] destinations: Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
-        :param pulumi.Input[bool] original_destination: Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]] destinations: Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
+        :param pulumi.Input[bool] original_destination: Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
         """
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
@@ -2010,7 +2010,7 @@ class TcpRouteRouteActionArgs:
     @pulumi.getter
     def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]]]:
         """
-        Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+        Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
         """
         return pulumi.get(self, "destinations")
 
@@ -2022,7 +2022,7 @@ class TcpRouteRouteActionArgs:
     @pulumi.getter(name="originalDestination")
     def original_destination(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+        Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
         """
         return pulumi.get(self, "original_destination")
 
@@ -2217,7 +2217,7 @@ class TlsRouteRouteMatchArgs:
         """
         RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn: Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_host: Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_host: Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
         """
         if alpn is not None:
             pulumi.set(__self__, "alpn", alpn)
@@ -2240,7 +2240,7 @@ class TlsRouteRouteMatchArgs:
     @pulumi.getter(name="sniHost")
     def sni_host(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+        Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
         """
         return pulumi.get(self, "sni_host")
 

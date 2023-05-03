@@ -26,7 +26,7 @@ type ReleaseConfig struct {
 	// The release config's name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+	// Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
 	RecentScheduledReleaseRecords ScheduledReleaseRecordResponseArrayOutput `pulumi:"recentScheduledReleaseRecords"`
 	// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
 	ReleaseCompilationResult pulumi.StringOutput `pulumi:"releaseCompilationResult"`
@@ -193,7 +193,7 @@ func (o ReleaseConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReleaseConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+// Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
 func (o ReleaseConfigOutput) RecentScheduledReleaseRecords() ScheduledReleaseRecordResponseArrayOutput {
 	return o.ApplyT(func(v *ReleaseConfig) ScheduledReleaseRecordResponseArrayOutput {
 		return v.RecentScheduledReleaseRecords

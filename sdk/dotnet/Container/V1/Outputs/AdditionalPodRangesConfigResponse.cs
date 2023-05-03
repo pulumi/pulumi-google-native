@@ -16,9 +16,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
     [OutputType]
     public sealed class AdditionalPodRangesConfigResponse
     {
+        /// <summary>
+        /// Name for pod secondary ipv4 range which has the actual range defined ahead.
+        /// </summary>
+        public readonly ImmutableArray<string> PodRangeNames;
+
         [OutputConstructor]
-        private AdditionalPodRangesConfigResponse()
+        private AdditionalPodRangesConfigResponse(ImmutableArray<string> podRangeNames)
         {
+            PodRangeNames = podRangeNames;
         }
     }
 }

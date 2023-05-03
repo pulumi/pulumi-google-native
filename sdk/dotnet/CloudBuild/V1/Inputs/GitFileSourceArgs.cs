@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public Input<Pulumi.GoogleNative.CloudBuild.V1.GitFileSourceRepoType>? RepoType { get; set; }
 
         /// <summary>
+        /// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        /// </summary>
+        [Input("repository")]
+        public Input<string>? Repository { get; set; }
+
+        /// <summary>
         /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         /// </summary>
         [Input("revision")]

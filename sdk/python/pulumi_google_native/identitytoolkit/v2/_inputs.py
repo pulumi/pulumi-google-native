@@ -25,6 +25,8 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs',
     'GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs',
     'GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigArgs',
@@ -557,6 +559,102 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs:
     @totp_provider_config.setter
     def totp_provider_config(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigArgs']]):
         pulumi.set(self, "totp_provider_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs:
+    def __init__(__self__, *,
+                 email_password_enforcement_state: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState']] = None,
+                 managed_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs']]]] = None,
+                 use_account_defender: Optional[pulumi.Input[bool]] = None):
+        """
+        The reCAPTCHA Enterprise integration config.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState'] email_password_enforcement_state: The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs']]] managed_rules: The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+        :param pulumi.Input[bool] use_account_defender: Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+        """
+        if email_password_enforcement_state is not None:
+            pulumi.set(__self__, "email_password_enforcement_state", email_password_enforcement_state)
+        if managed_rules is not None:
+            pulumi.set(__self__, "managed_rules", managed_rules)
+        if use_account_defender is not None:
+            pulumi.set(__self__, "use_account_defender", use_account_defender)
+
+    @property
+    @pulumi.getter(name="emailPasswordEnforcementState")
+    def email_password_enforcement_state(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState']]:
+        """
+        The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+        """
+        return pulumi.get(self, "email_password_enforcement_state")
+
+    @email_password_enforcement_state.setter
+    def email_password_enforcement_state(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState']]):
+        pulumi.set(self, "email_password_enforcement_state", value)
+
+    @property
+    @pulumi.getter(name="managedRules")
+    def managed_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs']]]]:
+        """
+        The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
+        """
+        return pulumi.get(self, "managed_rules")
+
+    @managed_rules.setter
+    def managed_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs']]]]):
+        pulumi.set(self, "managed_rules", value)
+
+    @property
+    @pulumi.getter(name="useAccountDefender")
+    def use_account_defender(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_account_defender")
+
+    @use_account_defender.setter
+    def use_account_defender(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_account_defender", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction']] = None,
+                 end_score: Optional[pulumi.Input[float]] = None):
+        """
+        The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction'] action: The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+        :param pulumi.Input[float] end_score: The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if end_score is not None:
+            pulumi.set(__self__, "end_score", end_score)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction']]:
+        """
+        The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="endScore")
+    def end_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.
+        """
+        return pulumi.get(self, "end_score")
+
+    @end_score.setter
+    def end_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "end_score", value)
 
 
 @pulumi.input_type

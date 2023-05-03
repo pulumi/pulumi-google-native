@@ -70,7 +70,7 @@ class GetFleetResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
+        The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
         """
         return pulumi.get(self, "name")
 

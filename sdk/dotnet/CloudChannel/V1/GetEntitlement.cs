@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1AssociationInfoResponse AssociationInfo;
         /// <summary>
+        /// Optional. The billing account resource name that is used to pay for this entitlement.
+        /// </summary>
+        public readonly string BillingAccount;
+        /// <summary>
         /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1CommitmentSettingsResponse CommitmentSettings;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         private GetEntitlementResult(
             Outputs.GoogleCloudChannelV1AssociationInfoResponse associationInfo,
 
+            string billingAccount,
+
             Outputs.GoogleCloudChannelV1CommitmentSettingsResponse commitmentSettings,
 
             string createTime,
@@ -139,6 +145,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
             string updateTime)
         {
             AssociationInfo = associationInfo;
+            BillingAccount = billingAccount;
             CommitmentSettings = commitmentSettings;
             CreateTime = createTime;
             Name = name;

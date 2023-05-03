@@ -375,6 +375,11 @@ export const getRegionInstanceGroupManager: typeof import("./getRegionInstanceGr
 export const getRegionInstanceGroupManagerOutput: typeof import("./getRegionInstanceGroupManager").getRegionInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionInstanceGroupManager","getRegionInstanceGroupManagerOutput"], () => require("./getRegionInstanceGroupManager"));
 
+export { GetRegionInstanceTemplateArgs, GetRegionInstanceTemplateResult, GetRegionInstanceTemplateOutputArgs } from "./getRegionInstanceTemplate";
+export const getRegionInstanceTemplate: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplate = null as any;
+export const getRegionInstanceTemplateOutput: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstanceTemplate","getRegionInstanceTemplateOutput"], () => require("./getRegionInstanceTemplate"));
+
 export { GetRegionNetworkEndpointGroupArgs, GetRegionNetworkEndpointGroupResult, GetRegionNetworkEndpointGroupOutputArgs } from "./getRegionNetworkEndpointGroup";
 export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroup = null as any;
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
@@ -890,6 +895,11 @@ export type RegionInstanceGroupManager = import("./regionInstanceGroupManager").
 export const RegionInstanceGroupManager: typeof import("./regionInstanceGroupManager").RegionInstanceGroupManager = null as any;
 utilities.lazyLoad(exports, ["RegionInstanceGroupManager"], () => require("./regionInstanceGroupManager"));
 
+export { RegionInstanceTemplateArgs } from "./regionInstanceTemplate";
+export type RegionInstanceTemplate = import("./regionInstanceTemplate").RegionInstanceTemplate;
+export const RegionInstanceTemplate: typeof import("./regionInstanceTemplate").RegionInstanceTemplate = null as any;
+utilities.lazyLoad(exports, ["RegionInstanceTemplate"], () => require("./regionInstanceTemplate"));
+
 export { RegionNetworkEndpointGroupArgs } from "./regionNetworkEndpointGroup";
 export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
 export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup = null as any;
@@ -1311,6 +1321,8 @@ const _module = {
                 return new RegionHealthCheckService(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionInstanceTemplate":
+                return new RegionInstanceTemplate(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkFirewallPolicy":

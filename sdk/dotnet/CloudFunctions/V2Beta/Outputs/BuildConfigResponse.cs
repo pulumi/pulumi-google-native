@@ -21,11 +21,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         /// </summary>
         public readonly string Build;
         /// <summary>
-        /// Specifies one of the Google provided buildpack stacks.
-        /// </summary>
-        public readonly string BuildpackStack;
-        /// <summary>
-        /// Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
         /// </summary>
         public readonly string DockerRegistry;
         /// <summary>
@@ -61,8 +57,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         private BuildConfigResponse(
             string build,
 
-            string buildpackStack,
-
             string dockerRegistry,
 
             string dockerRepository,
@@ -80,7 +74,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
             string workerPool)
         {
             Build = build;
-            BuildpackStack = buildpackStack;
             DockerRegistry = dockerRegistry;
             DockerRepository = dockerRepository;
             EntryPoint = entryPoint;

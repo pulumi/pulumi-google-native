@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The purpose of the key.
+        /// The purpose of the key.
         /// </summary>
         [Output("use")]
         public Output<string> Use { get; private set; } = null!;
@@ -126,10 +126,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Input<string> ProviderId { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The purpose of the key.
+        /// The purpose of the key.
         /// </summary>
-        [Input("use")]
-        public Input<Pulumi.GoogleNative.IAM.V1.WorkforcePoolKeyUse>? Use { get; set; }
+        [Input("use", required: true)]
+        public Input<Pulumi.GoogleNative.IAM.V1.WorkforcePoolKeyUse> Use { get; set; } = null!;
 
         [Input("workforcePoolId", required: true)]
         public Input<string> WorkforcePoolId { get; set; } = null!;

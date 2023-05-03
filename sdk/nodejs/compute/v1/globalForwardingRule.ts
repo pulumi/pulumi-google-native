@@ -46,6 +46,10 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly allowGlobalAccess!: pulumi.Output<boolean>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    public readonly allowPscGlobalAccess!: pulumi.Output<boolean>;
+    /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */
     public readonly backendService!: pulumi.Output<string>;
@@ -106,7 +110,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -181,6 +185,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["allPorts"] = args ? args.allPorts : undefined;
             resourceInputs["allowGlobalAccess"] = args ? args.allowGlobalAccess : undefined;
+            resourceInputs["allowPscGlobalAccess"] = args ? args.allowPscGlobalAccess : undefined;
             resourceInputs["backendService"] = args ? args.backendService : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
@@ -216,6 +221,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
         } else {
             resourceInputs["allPorts"] = undefined /*out*/;
             resourceInputs["allowGlobalAccess"] = undefined /*out*/;
+            resourceInputs["allowPscGlobalAccess"] = undefined /*out*/;
             resourceInputs["backendService"] = undefined /*out*/;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -269,6 +275,10 @@ export interface GlobalForwardingRuleArgs {
      */
     allowGlobalAccess?: pulumi.Input<boolean>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     */
+    allowPscGlobalAccess?: pulumi.Input<boolean>;
+    /**
      * Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
      */
     backendService?: pulumi.Input<string>;
@@ -309,7 +319,7 @@ export interface GlobalForwardingRuleArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+     * This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
      */
     network?: pulumi.Input<string>;
     /**

@@ -43,6 +43,8 @@ type LookupEvaluationResult struct {
 	RuleNames []string `pulumi:"ruleNames"`
 	// [Output only] The updated rule ids if exist.
 	RuleVersions []string `pulumi:"ruleVersions"`
+	// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+	Schedule string `pulumi:"schedule"`
 	// [Output only] Update time stamp
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -122,6 +124,11 @@ func (o LookupEvaluationResultOutput) RuleNames() pulumi.StringArrayOutput {
 // [Output only] The updated rule ids if exist.
 func (o LookupEvaluationResultOutput) RuleVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEvaluationResult) []string { return v.RuleVersions }).(pulumi.StringArrayOutput)
+}
+
+// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+func (o LookupEvaluationResultOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEvaluationResult) string { return v.Schedule }).(pulumi.StringOutput)
 }
 
 // [Output only] Update time stamp

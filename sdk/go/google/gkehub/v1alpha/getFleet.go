@@ -33,7 +33,7 @@ type LookupFleetResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName string `pulumi:"displayName"`
-	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
+	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
 	Name string `pulumi:"name"`
 	// State of the namespace resource.
 	State FleetLifecycleStateResponse `pulumi:"state"`
@@ -95,7 +95,7 @@ func (o LookupFleetResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
+// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default".
 func (o LookupFleetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.Name }).(pulumi.StringOutput)
 }

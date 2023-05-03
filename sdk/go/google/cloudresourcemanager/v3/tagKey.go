@@ -25,7 +25,7 @@ type TagKey struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. Namespaced name of the TagKey.
 	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
-	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
@@ -85,7 +85,7 @@ type tagKeyArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
 	Name *string `pulumi:"name"`
-	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
 	Parent *string `pulumi:"parent"`
 	// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
 	Purpose *TagKeyPurpose `pulumi:"purpose"`
@@ -103,7 +103,7 @@ type TagKeyArgs struct {
 	Etag pulumi.StringPtrInput
 	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
 	Name pulumi.StringPtrInput
-	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
 	Parent pulumi.StringPtrInput
 	// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
 	Purpose TagKeyPurposePtrInput
@@ -175,7 +175,7 @@ func (o TagKeyOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.NamespacedName }).(pulumi.StringOutput)
 }
 
-// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+// Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
 func (o TagKeyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

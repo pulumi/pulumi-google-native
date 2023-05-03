@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// </summary>
+        [Output("gatewayIpVersion")]
+        public Output<string> GatewayIpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Type of resource. Always compute#vpnGateway for VPN gateways.
         /// </summary>
         [Output("kind")]
@@ -142,6 +148,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// </summary>
+        [Input("gatewayIpVersion")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.VpnGatewayGatewayIpVersion>? GatewayIpVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -12,8 +12,6 @@ from ... import _utilities
 __all__ = [
     'BindingArgs',
     'CodeCompilationConfigArgs',
-    'CommitAuthorArgs',
-    'CommitMetadataArgs',
     'ExprArgs',
     'GitRemoteSettingsArgs',
     'InvocationConfigArgs',
@@ -211,83 +209,6 @@ class CodeCompilationConfigArgs:
     @vars.setter
     def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "vars", value)
-
-
-@pulumi.input_type
-class CommitAuthorArgs:
-    def __init__(__self__, *,
-                 email_address: pulumi.Input[str],
-                 name: pulumi.Input[str]):
-        """
-        Represents the author of a Git commit.
-        :param pulumi.Input[str] email_address: The commit author's email address.
-        :param pulumi.Input[str] name: The commit author's name.
-        """
-        pulumi.set(__self__, "email_address", email_address)
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="emailAddress")
-    def email_address(self) -> pulumi.Input[str]:
-        """
-        The commit author's email address.
-        """
-        return pulumi.get(self, "email_address")
-
-    @email_address.setter
-    def email_address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "email_address", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The commit author's name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class CommitMetadataArgs:
-    def __init__(__self__, *,
-                 author: pulumi.Input['CommitAuthorArgs'],
-                 commit_message: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a Dataform Git commit.
-        :param pulumi.Input['CommitAuthorArgs'] author: The commit's author.
-        :param pulumi.Input[str] commit_message: Optional. The commit's message.
-        """
-        pulumi.set(__self__, "author", author)
-        if commit_message is not None:
-            pulumi.set(__self__, "commit_message", commit_message)
-
-    @property
-    @pulumi.getter
-    def author(self) -> pulumi.Input['CommitAuthorArgs']:
-        """
-        The commit's author.
-        """
-        return pulumi.get(self, "author")
-
-    @author.setter
-    def author(self, value: pulumi.Input['CommitAuthorArgs']):
-        pulumi.set(self, "author", value)
-
-    @property
-    @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The commit's message.
-        """
-        return pulumi.get(self, "commit_message")
-
-    @commit_message.setter
-    def commit_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "commit_message", value)
 
 
 @pulumi.input_type

@@ -818,6 +818,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Street View Org.
         /// </summary>
         public static PublishingOrganization StreetView { get; } = new PublishingOrganization("STREET_VIEW");
+        /// <summary>
+        /// Shopping Org.
+        /// </summary>
+        public static PublishingOrganization Shopping { get; } = new PublishingOrganization("SHOPPING");
 
         public static bool operator ==(PublishingOrganization left, PublishingOrganization right) => left.Equals(right);
         public static bool operator !=(PublishingOrganization left, PublishingOrganization right) => !left.Equals(right);

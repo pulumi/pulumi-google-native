@@ -8,6 +8,8 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigState',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState',
+    'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction',
     'GoogleIamV1AuditLogConfigLogType',
 ]
 
@@ -64,6 +66,42 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfigState(str, Enum):
     MANDATORY = "MANDATORY"
     """
     Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+    """
+
+
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState(str, Enum):
+    """
+    The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+    """
+    RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED = "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"
+    """
+    Enforcement state has not been set.
+    """
+    OFF = "OFF"
+    """
+    Unenforced.
+    """
+    AUDIT = "AUDIT"
+    """
+    reCAPTCHA assessment is created, result is not used to enforce.
+    """
+    ENFORCE = "ENFORCE"
+    """
+    reCAPTCHA assessment is created, result is used to enforce.
+    """
+
+
+class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction(str, Enum):
+    """
+    The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+    """
+    RECAPTCHA_ACTION_UNSPECIFIED = "RECAPTCHA_ACTION_UNSPECIFIED"
+    """
+    The reCAPTCHA action is not specified.
+    """
+    BLOCK = "BLOCK"
+    """
+    The reCAPTCHA-protected request will be blocked.
     """
 
 

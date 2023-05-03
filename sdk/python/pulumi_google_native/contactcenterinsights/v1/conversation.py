@@ -341,6 +341,7 @@ class Conversation(pulumi.CustomResource):
             __props__.__dict__["dialogflow_intents"] = None
             __props__.__dict__["duration"] = None
             __props__.__dict__["latest_analysis"] = None
+            __props__.__dict__["latest_summary"] = None
             __props__.__dict__["runtime_annotations"] = None
             __props__.__dict__["transcript"] = None
             __props__.__dict__["turn_count"] = None
@@ -380,6 +381,7 @@ class Conversation(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["language_code"] = None
         __props__.__dict__["latest_analysis"] = None
+        __props__.__dict__["latest_summary"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["medium"] = None
         __props__.__dict__["name"] = None
@@ -480,6 +482,14 @@ class Conversation(pulumi.CustomResource):
         The conversation's latest analysis, if one exists.
         """
         return pulumi.get(self, "latest_analysis")
+
+    @property
+    @pulumi.getter(name="latestSummary")
+    def latest_summary(self) -> pulumi.Output['outputs.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse']:
+        """
+        Latest summary of the conversation.
+        """
+        return pulumi.get(self, "latest_summary")
 
     @property
     @pulumi.getter

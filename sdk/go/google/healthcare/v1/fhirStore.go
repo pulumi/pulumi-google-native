@@ -34,9 +34,13 @@ type FhirStore struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name of the FHIR store, of the form `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	//
+	// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
-	Project            pulumi.StringOutput              `pulumi:"project"`
+	// Specifies where and whether to send notifications upon changes to a FHIR store.
+	NotificationConfigs FhirNotificationConfigResponseArrayOutput `pulumi:"notificationConfigs"`
+	Project             pulumi.StringOutput                       `pulumi:"project"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs StreamConfigResponseArrayOutput `pulumi:"streamConfigs"`
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -109,9 +113,13 @@ type fhirStoreArgs struct {
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	//
+	// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
-	Project            *string             `pulumi:"project"`
+	// Specifies where and whether to send notifications upon changes to a FHIR store.
+	NotificationConfigs []FhirNotificationConfig `pulumi:"notificationConfigs"`
+	Project             *string                  `pulumi:"project"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs []StreamConfig `pulumi:"streamConfigs"`
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -138,9 +146,13 @@ type FhirStoreArgs struct {
 	// User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+	//
+	// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigPtrInput
-	Project            pulumi.StringPtrInput
+	// Specifies where and whether to send notifications upon changes to a FHIR store.
+	NotificationConfigs FhirNotificationConfigArrayInput
+	Project             pulumi.StringPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs StreamConfigArrayInput
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -234,9 +246,16 @@ func (o FhirStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+//
+// Deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 func (o FhirStoreOutput) NotificationConfig() NotificationConfigResponseOutput {
 	return o.ApplyT(func(v *FhirStore) NotificationConfigResponseOutput { return v.NotificationConfig }).(NotificationConfigResponseOutput)
+}
+
+// Specifies where and whether to send notifications upon changes to a FHIR store.
+func (o FhirStoreOutput) NotificationConfigs() FhirNotificationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *FhirStore) FhirNotificationConfigResponseArrayOutput { return v.NotificationConfigs }).(FhirNotificationConfigResponseArrayOutput)
 }
 
 func (o FhirStoreOutput) Project() pulumi.StringOutput {

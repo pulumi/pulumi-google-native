@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     public partial class ServerTlsPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+        /// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Output("allowOpen")]
         public Output<bool> AllowOpen { get; private set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+        /// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
         [Output("mtlsPolicy")]
         public Output<Outputs.MTLSPolicyResponse> MtlsPolicy { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+        /// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Output("serverCertificate")]
         public Output<Outputs.GoogleCloudNetworksecurityV1CertificateProviderResponse> ServerCertificate { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     public sealed class ServerTlsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
+        /// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
         /// </summary>
         [Input("allowOpen")]
         public Input<bool>? AllowOpen { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+        /// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
         [Input("mtlsPolicy")]
         public Input<Inputs.MTLSPolicyArgs>? MtlsPolicy { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+        /// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Input("serverCertificate")]
         public Input<Inputs.GoogleCloudNetworksecurityV1CertificateProviderArgs>? ServerCertificate { get; set; }

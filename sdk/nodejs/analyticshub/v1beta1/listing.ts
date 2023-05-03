@@ -90,10 +90,6 @@ export class Listing extends pulumi.CustomResource {
      */
     public readonly requestAccess!: pulumi.Output<string>;
     /**
-     * Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     */
-    public readonly restrictedExportConfig!: pulumi.Output<outputs.analyticshub.v1beta1.RestrictedExportConfigResponse>;
-    /**
      * Current state of the listing.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -135,7 +131,6 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publisher"] = args ? args.publisher : undefined;
             resourceInputs["requestAccess"] = args ? args.requestAccess : undefined;
-            resourceInputs["restrictedExportConfig"] = args ? args.restrictedExportConfig : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -154,7 +149,6 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["publisher"] = undefined /*out*/;
             resourceInputs["requestAccess"] = undefined /*out*/;
-            resourceInputs["restrictedExportConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,8 +209,4 @@ export interface ListingArgs {
      * Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
      */
     requestAccess?: pulumi.Input<string>;
-    /**
-     * Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-     */
-    restrictedExportConfig?: pulumi.Input<inputs.analyticshub.v1beta1.RestrictedExportConfigArgs>;
 }

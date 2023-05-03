@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The tenant-level reCAPTCHA config.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse RecaptchaConfig;
+        /// <summary>
         /// Configures which regions are enabled for SMS verification code sending.
         /// </summary>
         public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse SmsRegionConfig;
@@ -146,6 +150,8 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
             string name,
 
+            Outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse recaptchaConfig,
+
             Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse smsRegionConfig,
 
             ImmutableDictionary<string, string> testPhoneNumbers)
@@ -163,6 +169,7 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
             MfaConfig = mfaConfig;
             Monitoring = monitoring;
             Name = name;
+            RecaptchaConfig = recaptchaConfig;
             SmsRegionConfig = smsRegionConfig;
             TestPhoneNumbers = testPhoneNumbers;
         }

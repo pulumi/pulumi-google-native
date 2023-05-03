@@ -6909,7 +6909,7 @@ func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) GroupedEntry() pulumi.S
 
 // The source system of the Taxonomy.
 type GoogleCloudDatacatalogV1TaxonomyServiceResponse struct {
-	// P4SA Identity of the service.
+	// The service agent for the service.
 	Identity string `pulumi:"identity"`
 	// The Google Cloud service name.
 	Name string `pulumi:"name"`
@@ -6930,7 +6930,7 @@ func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) ToGoogleCloudData
 	return o
 }
 
-// P4SA Identity of the service.
+// The service agent for the service.
 func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1TaxonomyServiceResponse) string { return v.Identity }).(pulumi.StringOutput)
 }

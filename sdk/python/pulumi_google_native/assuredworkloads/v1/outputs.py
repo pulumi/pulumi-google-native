@@ -81,8 +81,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(dict)
         suggest = None
         if key == "ekmProvisioningErrorDomain":
             suggest = "ekm_provisioning_error_domain"
-        elif key == "ekmProvisioningErrorMessage":
-            suggest = "ekm_provisioning_error_message"
+        elif key == "ekmProvisioningErrorMapping":
+            suggest = "ekm_provisioning_error_mapping"
         elif key == "ekmProvisioningState":
             suggest = "ekm_provisioning_state"
 
@@ -99,16 +99,16 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(dict)
 
     def __init__(__self__, *,
                  ekm_provisioning_error_domain: str,
-                 ekm_provisioning_error_message: str,
+                 ekm_provisioning_error_mapping: str,
                  ekm_provisioning_state: str):
         """
         External key management systems(EKM) Provisioning response
         :param str ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
-        :param str ekm_provisioning_error_message: Detailed error message if Ekm provisioning fails
+        :param str ekm_provisioning_error_mapping: Detailed error message if Ekm provisioning fails
         :param str ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
         """
         pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
-        pulumi.set(__self__, "ekm_provisioning_error_message", ekm_provisioning_error_message)
+        pulumi.set(__self__, "ekm_provisioning_error_mapping", ekm_provisioning_error_mapping)
         pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
 
     @property
@@ -120,12 +120,12 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(dict)
         return pulumi.get(self, "ekm_provisioning_error_domain")
 
     @property
-    @pulumi.getter(name="ekmProvisioningErrorMessage")
-    def ekm_provisioning_error_message(self) -> str:
+    @pulumi.getter(name="ekmProvisioningErrorMapping")
+    def ekm_provisioning_error_mapping(self) -> str:
         """
         Detailed error message if Ekm provisioning fails
         """
-        return pulumi.get(self, "ekm_provisioning_error_message")
+        return pulumi.get(self, "ekm_provisioning_error_mapping")
 
     @property
     @pulumi.getter(name="ekmProvisioningState")
@@ -139,7 +139,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(dict)
 @pulumi.output_type
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
     """
-    Settings specific to the Key Management Service.
+    Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -164,7 +164,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
                  next_rotation_time: str,
                  rotation_period: str):
         """
-        Settings specific to the Key Management Service.
+        Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param str next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
         :param str rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
@@ -274,7 +274,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse(dict):
         Represent the custom settings for the resources to be created.
         :param str display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
         :param str resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
-        :param str resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        :param str resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "resource_id", resource_id)
@@ -300,7 +300,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
         """
-        Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
         """
         return pulumi.get(self, "resource_type")
 

@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly bool IgnoreExitStatus;
         /// <summary>
+        /// Labels for this Runnable.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Script runnable.
         /// </summary>
         public readonly Outputs.ScriptResponse Script;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             bool ignoreExitStatus,
 
+            ImmutableDictionary<string, string> labels,
+
             Outputs.ScriptResponse script,
 
             string timeout)
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             Container = container;
             Environment = environment;
             IgnoreExitStatus = ignoreExitStatus;
+            Labels = labels;
             Script = script;
             Timeout = timeout;
         }

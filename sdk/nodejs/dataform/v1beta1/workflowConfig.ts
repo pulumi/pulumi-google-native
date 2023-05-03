@@ -53,7 +53,7 @@ export class WorkflowConfig extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+     * Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
      */
     public /*out*/ readonly recentScheduledExecutionRecords!: pulumi.Output<outputs.dataform.v1beta1.ScheduledExecutionRecordResponse[]>;
     /**

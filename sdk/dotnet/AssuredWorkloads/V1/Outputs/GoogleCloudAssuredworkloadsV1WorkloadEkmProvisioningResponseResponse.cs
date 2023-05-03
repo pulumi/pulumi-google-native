@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
         /// <summary>
         /// Detailed error message if Ekm provisioning fails
         /// </summary>
-        public readonly string EkmProvisioningErrorMessage;
+        public readonly string EkmProvisioningErrorMapping;
         /// <summary>
         /// Indicates Ekm enrollment Provisioning of a given workload.
         /// </summary>
@@ -33,12 +33,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Outputs
         private GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse(
             string ekmProvisioningErrorDomain,
 
-            string ekmProvisioningErrorMessage,
+            string ekmProvisioningErrorMapping,
 
             string ekmProvisioningState)
         {
             EkmProvisioningErrorDomain = ekmProvisioningErrorDomain;
-            EkmProvisioningErrorMessage = ekmProvisioningErrorMessage;
+            EkmProvisioningErrorMapping = ekmProvisioningErrorMapping;
             EkmProvisioningState = ekmProvisioningState;
         }
     }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class SparkStandaloneAutoscalingConfigResponse
     {
         /// <summary>
-        /// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
+        /// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
         /// </summary>
         public readonly string GracefulDecommissionTimeout;
         /// <summary>

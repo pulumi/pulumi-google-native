@@ -33,6 +33,8 @@ __all__ = [
     'FleetLifecycleStateResponse',
     'FleetObservabilityFeatureSpecResponse',
     'FleetObservabilityFeatureStateResponse',
+    'FleetObservabilityLoggingConfigResponse',
+    'FleetObservabilityRoutingConfigResponse',
     'GkeClusterResponse',
     'IdentityServiceAuthMethodResponse',
     'IdentityServiceAzureADConfigResponse',
@@ -45,6 +47,7 @@ __all__ = [
     'MembershipEndpointResponse',
     'MembershipSpecResponse',
     'MembershipStateResponse',
+    'MonitoringConfigResponse',
     'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
     'NamespaceLifecycleStateResponse',
@@ -240,7 +243,7 @@ class ApplianceClusterResponse(dict):
                  resource_link: str):
         """
         ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
-        :param str resource_link: Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         """
         pulumi.set(__self__, "resource_link", resource_link)
 
@@ -248,7 +251,7 @@ class ApplianceClusterResponse(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         """
-        Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         """
         return pulumi.get(self, "resource_link")
 
@@ -694,7 +697,7 @@ class EdgeClusterResponse(dict):
                  resource_link: str):
         """
         EdgeCluster contains information specific to Google Edge Clusters.
-        :param str resource_link: Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         """
         pulumi.set(__self__, "resource_link", resource_link)
 
@@ -702,7 +705,7 @@ class EdgeClusterResponse(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         """
-        Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 
@@ -924,11 +927,38 @@ class FleetObservabilityFeatureSpecResponse(dict):
     """
     **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingConfig":
+            suggest = "logging_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetObservabilityFeatureSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logging_config: 'outputs.FleetObservabilityLoggingConfigResponse'):
         """
         **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
+        :param 'FleetObservabilityLoggingConfigResponse' logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         """
-        pass
+        pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> 'outputs.FleetObservabilityLoggingConfigResponse':
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        return pulumi.get(self, "logging_config")
 
 
 @pulumi.output_type
@@ -941,6 +971,80 @@ class FleetObservabilityFeatureStateResponse(dict):
         **FleetObservability**: An empty state left as an example Hub-wide Feature state.
         """
         pass
+
+
+@pulumi.output_type
+class FleetObservabilityLoggingConfigResponse(dict):
+    """
+    LoggingConfig defines the configuration for different types of logs.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConfig":
+            suggest = "default_config"
+        elif key == "fleetScopeLogsConfig":
+            suggest = "fleet_scope_logs_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetObservabilityLoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetObservabilityLoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetObservabilityLoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_config: 'outputs.FleetObservabilityRoutingConfigResponse',
+                 fleet_scope_logs_config: 'outputs.FleetObservabilityRoutingConfigResponse'):
+        """
+        LoggingConfig defines the configuration for different types of logs.
+        :param 'FleetObservabilityRoutingConfigResponse' default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param 'FleetObservabilityRoutingConfigResponse' fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        pulumi.set(__self__, "default_config", default_config)
+        pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> 'outputs.FleetObservabilityRoutingConfigResponse':
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        """
+        return pulumi.get(self, "default_config")
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> 'outputs.FleetObservabilityRoutingConfigResponse':
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+
+@pulumi.output_type
+class FleetObservabilityRoutingConfigResponse(dict):
+    """
+    RoutingConfig configures the behaviour of fleet logging feature.
+    """
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        RoutingConfig configures the behaviour of fleet logging feature.
+        :param str mode: mode configures the logs routing mode.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        mode configures the logs routing mode.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -973,7 +1077,7 @@ class GkeClusterResponse(dict):
         """
         GkeCluster contains information specific to GKE clusters.
         :param bool cluster_missing: If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
-        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         """
         pulumi.set(__self__, "cluster_missing", cluster_missing)
         pulumi.set(__self__, "resource_link", resource_link)
@@ -990,7 +1094,7 @@ class GkeClusterResponse(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         """
-        Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+        Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
         """
         return pulumi.get(self, "resource_link")
 
@@ -1834,6 +1938,91 @@ class MembershipStateResponse(dict):
 
 
 @pulumi.output_type
+class MonitoringConfigResponse(dict):
+    """
+    This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterHash":
+            suggest = "cluster_hash"
+        elif key == "kubernetesMetricsPrefix":
+            suggest = "kubernetes_metrics_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster: str,
+                 cluster_hash: str,
+                 kubernetes_metrics_prefix: str,
+                 location: str,
+                 project: str):
+        """
+        This field informs Fleet-based applications/services/UIs with the necessary information for where each underlying Cluster reports its metrics.
+        :param str cluster: Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+        :param str cluster_hash: Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+        :param str kubernetes_metrics_prefix: Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+        :param str location: Immutable. Location used to report Metrics
+        :param str project: Immutable. Project used to report Metrics
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "cluster_hash", cluster_hash)
+        pulumi.set(__self__, "kubernetes_metrics_prefix", kubernetes_metrics_prefix)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters, awsClusters}/cluster_name`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="clusterHash")
+    def cluster_hash(self) -> str:
+        """
+        Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII, which we can use to reference the cluster. This is expected to be created by the monitoring stack and persisted into the Cluster object as well as to GKE-Hub.
+        """
+        return pulumi.get(self, "cluster_hash")
+
+    @property
+    @pulumi.getter(name="kubernetesMetricsPrefix")
+    def kubernetes_metrics_prefix(self) -> str:
+        """
+        Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos
+        """
+        return pulumi.get(self, "kubernetes_metrics_prefix")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Immutable. Location used to report Metrics
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Immutable. Project used to report Metrics
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
 class MultiCloudClusterResponse(dict):
     """
     MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
@@ -1863,7 +2052,7 @@ class MultiCloudClusterResponse(dict):
         """
         MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
         :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
-        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         """
         pulumi.set(__self__, "cluster_missing", cluster_missing)
         pulumi.set(__self__, "resource_link", resource_link)
@@ -1880,7 +2069,7 @@ class MultiCloudClusterResponse(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         """
-        Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 
@@ -1995,7 +2184,7 @@ class OnPremClusterResponse(dict):
         :param bool admin_cluster: Immutable. Whether the cluster is an admin cluster.
         :param bool cluster_missing: If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no longer exists.
         :param str cluster_type: Immutable. The on prem cluster's type.
-        :param str resource_link: Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        :param str resource_link: Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         pulumi.set(__self__, "admin_cluster", admin_cluster)
         pulumi.set(__self__, "cluster_missing", cluster_missing)
@@ -2030,7 +2219,7 @@ class OnPremClusterResponse(dict):
     @pulumi.getter(name="resourceLink")
     def resource_link(self) -> str:
         """
-        Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
 

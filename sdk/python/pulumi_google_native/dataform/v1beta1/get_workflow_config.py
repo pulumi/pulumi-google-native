@@ -67,7 +67,7 @@ class GetWorkflowConfigResult:
     @pulumi.getter(name="recentScheduledExecutionRecords")
     def recent_scheduled_execution_records(self) -> Sequence['outputs.ScheduledExecutionRecordResponse']:
         """
-        Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+        Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
         """
         return pulumi.get(self, "recent_scheduled_execution_records")
 

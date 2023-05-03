@@ -29,6 +29,10 @@ type LookupPhraseSetArgs struct {
 type LookupPhraseSetResult struct {
 	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 	Boost float64 `pulumi:"boost"`
+	// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the phrase set.
 	Name string `pulumi:"name"`
 	// A list of word and phrases.
@@ -75,6 +79,16 @@ func (o LookupPhraseSetResultOutput) ToLookupPhraseSetResultOutputWithContext(ct
 // Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
 func (o LookupPhraseSetResultOutput) Boost() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupPhraseSetResult) float64 { return v.Boost }).(pulumi.Float64Output)
+}
+
+// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o LookupPhraseSetResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPhraseSetResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+func (o LookupPhraseSetResultOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPhraseSetResult) string { return v.KmsKeyVersionName }).(pulumi.StringOutput)
 }
 
 // The resource name of the phrase set.

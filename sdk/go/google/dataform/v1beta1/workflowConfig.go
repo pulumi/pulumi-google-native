@@ -24,7 +24,7 @@ type WorkflowConfig struct {
 	// The workflow config's name.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+	// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
 	RecentScheduledExecutionRecords ScheduledExecutionRecordResponseArrayOutput `pulumi:"recentScheduledExecutionRecords"`
 	// The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
 	ReleaseConfig pulumi.StringOutput `pulumi:"releaseConfig"`
@@ -182,7 +182,7 @@ func (o WorkflowConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Records of the 10 most recent scheduled execution attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+// Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
 func (o WorkflowConfigOutput) RecentScheduledExecutionRecords() ScheduledExecutionRecordResponseArrayOutput {
 	return o.ApplyT(func(v *WorkflowConfig) ScheduledExecutionRecordResponseArrayOutput {
 		return v.RecentScheduledExecutionRecords

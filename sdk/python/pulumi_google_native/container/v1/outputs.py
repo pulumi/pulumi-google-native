@@ -195,11 +195,38 @@ class AdditionalPodRangesConfigResponse(dict):
     """
     AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
     """
-    def __init__(__self__):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podRangeNames":
+            suggest = "pod_range_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdditionalPodRangesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdditionalPodRangesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdditionalPodRangesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_range_names: Sequence[str]):
         """
         AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+        :param Sequence[str] pod_range_names: Name for pod secondary ipv4 range which has the actual range defined ahead.
         """
-        pass
+        pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeNames")
+    def pod_range_names(self) -> Sequence[str]:
+        """
+        Name for pod secondary ipv4 range which has the actual range defined ahead.
+        """
+        return pulumi.get(self, "pod_range_names")
 
 
 @pulumi.output_type
@@ -1366,7 +1393,7 @@ class DatabaseEncryptionResponse(dict):
         """
         Configuration of etcd encryption.
         :param str key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-        :param str state: Denotes the state of etcd encryption.
+        :param str state: The desired state of etcd encryption.
         """
         pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "state", state)
@@ -1383,7 +1410,7 @@ class DatabaseEncryptionResponse(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        Denotes the state of etcd encryption.
+        The desired state of etcd encryption.
         """
         return pulumi.get(self, "state")
 

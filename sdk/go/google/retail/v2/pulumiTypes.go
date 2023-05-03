@@ -1370,6 +1370,346 @@ func (o GoogleCloudRetailV2LocalInventoryResponseArrayOutput) Index(i pulumi.Int
 	}).(GoogleCloudRetailV2LocalInventoryResponseOutput)
 }
 
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType `pulumi:"contextProductsType"`
+}
+
+// GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigInput is an input type that accepts GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs and GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigInput` via:
+//
+//	GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs{...}
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput
+	ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrInput `pulumi:"contextProductsType"`
+}
+
+func (GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return i.ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput)
+}
+
+func (i GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput).ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput is an input type that accepts GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs, GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtr and GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput` via:
+//
+//	        GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput
+	ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput
+}
+
+type googleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrType GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs
+
+func GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtr(v *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput {
+	return (*googleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrType)(v)
+}
+
+func (*googleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrType) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
+		return &v
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput) ContextProductsType() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
+		return v.ContextProductsType
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
+}
+
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig
+		return ret
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput)
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ContextProductsType() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
+		if v == nil {
+			return nil
+		}
+		return v.ContextProductsType
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse struct {
+	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	ContextProductsType string `pulumi:"contextProductsType"`
+}
+
+// More configs of the frequently-bought-together model type.
+type GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ToGoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o
+}
+
+// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+func (o GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ContextProductsType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse) string {
+		return v.ContextProductsType
+	}).(pulumi.StringOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2ModelModelFeaturesConfig struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+// GoogleCloudRetailV2ModelModelFeaturesConfigInput is an input type that accepts GoogleCloudRetailV2ModelModelFeaturesConfigArgs and GoogleCloudRetailV2ModelModelFeaturesConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2ModelModelFeaturesConfigInput` via:
+//
+//	GoogleCloudRetailV2ModelModelFeaturesConfigArgs{...}
+type GoogleCloudRetailV2ModelModelFeaturesConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2ModelModelFeaturesConfigOutput() GoogleCloudRetailV2ModelModelFeaturesConfigOutput
+	ToGoogleCloudRetailV2ModelModelFeaturesConfigOutputWithContext(context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigOutput
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2ModelModelFeaturesConfigArgs struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+func (GoogleCloudRetailV2ModelModelFeaturesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2ModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2ModelModelFeaturesConfigOutput() GoogleCloudRetailV2ModelModelFeaturesConfigOutput {
+	return i.ToGoogleCloudRetailV2ModelModelFeaturesConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2ModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2ModelModelFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelModelFeaturesConfigOutput)
+}
+
+func (i GoogleCloudRetailV2ModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2ModelModelFeaturesConfigArgs) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelModelFeaturesConfigOutput).ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput is an input type that accepts GoogleCloudRetailV2ModelModelFeaturesConfigArgs, GoogleCloudRetailV2ModelModelFeaturesConfigPtr and GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput` via:
+//
+//	        GoogleCloudRetailV2ModelModelFeaturesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput
+	ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput
+}
+
+type googleCloudRetailV2ModelModelFeaturesConfigPtrType GoogleCloudRetailV2ModelModelFeaturesConfigArgs
+
+func GoogleCloudRetailV2ModelModelFeaturesConfigPtr(v *GoogleCloudRetailV2ModelModelFeaturesConfigArgs) GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput {
+	return (*googleCloudRetailV2ModelModelFeaturesConfigPtrType)(v)
+}
+
+func (*googleCloudRetailV2ModelModelFeaturesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2ModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2ModelModelFeaturesConfigPtrType) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return i.ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2ModelModelFeaturesConfigPtrType) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2ModelModelFeaturesConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelModelFeaturesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigOutput() GoogleCloudRetailV2ModelModelFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return o.ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2ModelModelFeaturesConfig) *GoogleCloudRetailV2ModelModelFeaturesConfig {
+		return &v
+	}).(GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput)
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ModelModelFeaturesConfig) *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+type GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2ModelModelFeaturesConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput() GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput) Elem() GoogleCloudRetailV2ModelModelFeaturesConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2ModelModelFeaturesConfig) GoogleCloudRetailV2ModelModelFeaturesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2ModelModelFeaturesConfig
+		return ret
+	}).(GoogleCloudRetailV2ModelModelFeaturesConfigOutput)
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2ModelModelFeaturesConfig) *GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2ModelModelFeaturesConfigResponse struct {
+	// Additional configs for frequently-bought-together models.
+	FrequentlyBoughtTogetherConfig GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse `pulumi:"frequentlyBoughtTogetherConfig"`
+}
+
+// Additional model features config.
+type GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelModelFeaturesConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput() GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput) ToGoogleCloudRetailV2ModelModelFeaturesConfigResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput {
+	return o
+}
+
+// Additional configs for frequently-bought-together models.
+func (o GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput) FrequentlyBoughtTogetherConfig() GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ModelModelFeaturesConfigResponse) GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponse {
+		return v.FrequentlyBoughtTogetherConfig
+	}).(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput)
+}
+
 // Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
 type GoogleCloudRetailV2ModelServingConfigListResponse struct {
 	// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
@@ -3110,7 +3450,7 @@ func (o GoogleCloudRetailV2RuleDoNotAssociateActionResponseOutput) Terms() pulum
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2RuleFilterAction struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter *string `pulumi:"filter"`
 }
 
@@ -3127,7 +3467,7 @@ type GoogleCloudRetailV2RuleFilterActionInput interface {
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2RuleFilterActionArgs struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 }
 
@@ -3209,7 +3549,7 @@ func (o GoogleCloudRetailV2RuleFilterActionOutput) ToGoogleCloudRetailV2RuleFilt
 	}).(GoogleCloudRetailV2RuleFilterActionPtrOutput)
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2RuleFilterActionOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleFilterAction) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -3238,7 +3578,7 @@ func (o GoogleCloudRetailV2RuleFilterActionPtrOutput) Elem() GoogleCloudRetailV2
 	}).(GoogleCloudRetailV2RuleFilterActionOutput)
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2RuleFilterActionPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2RuleFilterAction) *string {
 		if v == nil {
@@ -3250,7 +3590,7 @@ func (o GoogleCloudRetailV2RuleFilterActionPtrOutput) Filter() pulumi.StringPtrO
 
 // * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2RuleFilterActionResponse struct {
-	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter string `pulumi:"filter"`
 }
 
@@ -3269,7 +3609,7 @@ func (o GoogleCloudRetailV2RuleFilterActionResponseOutput) ToGoogleCloudRetailV2
 	return o
 }
 
-// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 func (o GoogleCloudRetailV2RuleFilterActionResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2RuleFilterActionResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -4657,6 +4997,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2FulfillmentInfoArrayInput)(nil)).Elem(), GoogleCloudRetailV2FulfillmentInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageInput)(nil)).Elem(), GoogleCloudRetailV2ImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ImageArrayInput)(nil)).Elem(), GoogleCloudRetailV2ImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigInput)(nil)).Elem(), GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ModelModelFeaturesConfigInput)(nil)).Elem(), GoogleCloudRetailV2ModelModelFeaturesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2ModelModelFeaturesConfigPtrInput)(nil)).Elem(), GoogleCloudRetailV2ModelModelFeaturesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PriceInfoPtrInput)(nil)).Elem(), GoogleCloudRetailV2PriceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2PromotionInput)(nil)).Elem(), GoogleCloudRetailV2PromotionArgs{})
@@ -4713,6 +5057,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2IntervalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2LocalInventoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2LocalInventoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelModelFeaturesConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelModelFeaturesConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelModelFeaturesConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelServingConfigListResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2PriceInfoOutput{})

@@ -158,6 +158,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceDiskEncryptionKey;
         /// <summary>
+        /// The source disk whose recovery checkpoint will be used to create this snapshot.
+        /// </summary>
+        public readonly string SourceDiskForRecoveryCheckpoint;
+        /// <summary>
         /// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         /// </summary>
         public readonly string SourceDiskId;
@@ -250,6 +254,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             Outputs.CustomerEncryptionKeyResponse sourceDiskEncryptionKey,
 
+            string sourceDiskForRecoveryCheckpoint,
+
             string sourceDiskId,
 
             string sourceInstantSnapshot,
@@ -295,6 +301,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
+            SourceDiskForRecoveryCheckpoint = sourceDiskForRecoveryCheckpoint;
             SourceDiskId = sourceDiskId;
             SourceInstantSnapshot = sourceInstantSnapshot;
             SourceInstantSnapshotId = sourceInstantSnapshotId;

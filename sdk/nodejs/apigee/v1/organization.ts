@@ -49,6 +49,14 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly analyticsRegion!: pulumi.Output<string>;
     /**
+     * Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
+     */
+    public readonly apiConsumerDataEncryptionKeyName!: pulumi.Output<string>;
+    /**
+     * This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+     */
+    public readonly apiConsumerDataLocation!: pulumi.Output<string>;
+    /**
      * Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
      */
     public /*out*/ readonly apigeeProjectId!: pulumi.Output<string>;
@@ -68,6 +76,10 @@ export class Organization extends pulumi.CustomResource {
      * Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
      */
     public /*out*/ readonly caCertificate!: pulumi.Output<string>;
+    /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
+     */
+    public readonly controlPlaneEncryptionKeyName!: pulumi.Output<string>;
     /**
      * Time that the Apigee organization was created in milliseconds since epoch.
      */
@@ -161,9 +173,12 @@ export class Organization extends pulumi.CustomResource {
             }
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = args ? args.apiConsumerDataEncryptionKeyName : undefined;
+            resourceInputs["apiConsumerDataLocation"] = args ? args.apiConsumerDataLocation : undefined;
             resourceInputs["attributes"] = args ? args.attributes : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["billingType"] = args ? args.billingType : undefined;
+            resourceInputs["controlPlaneEncryptionKeyName"] = args ? args.controlPlaneEncryptionKeyName : undefined;
             resourceInputs["customerName"] = args ? args.customerName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -186,11 +201,14 @@ export class Organization extends pulumi.CustomResource {
         } else {
             resourceInputs["addonsConfig"] = undefined /*out*/;
             resourceInputs["analyticsRegion"] = undefined /*out*/;
+            resourceInputs["apiConsumerDataEncryptionKeyName"] = undefined /*out*/;
+            resourceInputs["apiConsumerDataLocation"] = undefined /*out*/;
             resourceInputs["apigeeProjectId"] = undefined /*out*/;
             resourceInputs["attributes"] = undefined /*out*/;
             resourceInputs["authorizedNetwork"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;
             resourceInputs["caCertificate"] = undefined /*out*/;
+            resourceInputs["controlPlaneEncryptionKeyName"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["customerName"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -231,6 +249,14 @@ export interface OrganizationArgs {
      */
     analyticsRegion: pulumi.Input<string>;
     /**
+     * Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
+     */
+    apiConsumerDataEncryptionKeyName?: pulumi.Input<string>;
+    /**
+     * This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+     */
+    apiConsumerDataLocation?: pulumi.Input<string>;
+    /**
      * Not used by Apigee.
      */
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -242,6 +268,10 @@ export interface OrganizationArgs {
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      */
     billingType?: pulumi.Input<enums.apigee.v1.OrganizationBillingType>;
+    /**
+     * Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
+     */
+    controlPlaneEncryptionKeyName?: pulumi.Input<string>;
     /**
      * Not used by Apigee.
      */

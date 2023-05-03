@@ -51,7 +51,11 @@ export class Workstation extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Environment variables passed to the workstation container's entrypoint.
+     */
+    public readonly env!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -113,6 +117,7 @@ export class Workstation extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["env"] = args ? args.env : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -133,6 +138,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["env"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -167,7 +173,11 @@ export interface WorkstationArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+     * Environment variables passed to the workstation container's entrypoint.
+     */
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**

@@ -5174,6 +5174,8 @@ type FhirNotificationConfig struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource *bool `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete *bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
 // FhirNotificationConfigInput is an input type that accepts FhirNotificationConfigArgs and FhirNotificationConfigOutput values.
@@ -5193,6 +5195,8 @@ type FhirNotificationConfigArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource pulumi.BoolPtrInput `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete pulumi.BoolPtrInput `pulumi:"sendPreviousResourceOnDelete"`
 }
 
 func (FhirNotificationConfigArgs) ElementType() reflect.Type {
@@ -5257,6 +5261,11 @@ func (o FhirNotificationConfigOutput) SendFullResource() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendFullResource }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+func (o FhirNotificationConfigOutput) SendPreviousResourceOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FhirNotificationConfig) *bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolPtrOutput)
+}
+
 type FhirNotificationConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (FhirNotificationConfigArrayOutput) ElementType() reflect.Type {
@@ -5283,6 +5292,8 @@ type FhirNotificationConfigResponse struct {
 	PubsubTopic string `pulumi:"pubsubTopic"`
 	// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 	SendFullResource bool `pulumi:"sendFullResource"`
+	// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+	SendPreviousResourceOnDelete bool `pulumi:"sendPreviousResourceOnDelete"`
 }
 
 // Contains the configuration for FHIR notifications.
@@ -5308,6 +5319,11 @@ func (o FhirNotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput 
 // Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full resource as a separate operation.
 func (o FhirNotificationConfigResponseOutput) SendFullResource() pulumi.BoolOutput {
 	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendFullResource }).(pulumi.BoolOutput)
+}
+
+// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this to true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous resource as a separate operation.
+func (o FhirNotificationConfigResponseOutput) SendPreviousResourceOnDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v FhirNotificationConfigResponse) bool { return v.SendPreviousResourceOnDelete }).(pulumi.BoolOutput)
 }
 
 type FhirNotificationConfigResponseArrayOutput struct{ *pulumi.OutputState }

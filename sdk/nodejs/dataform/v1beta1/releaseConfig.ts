@@ -57,7 +57,7 @@ export class ReleaseConfig extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * Records of the 10 most recent scheduled release attempts. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
+     * Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
      */
     public /*out*/ readonly recentScheduledReleaseRecords!: pulumi.Output<outputs.dataform.v1beta1.ScheduledReleaseRecordResponse[]>;
     /**

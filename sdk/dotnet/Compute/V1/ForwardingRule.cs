@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<bool> AllowGlobalAccess { get; private set; } = null!;
 
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        [Output("allowPscGlobalAccess")]
+        public Output<bool> AllowPscGlobalAccess { get; private set; } = null!;
+
+        /// <summary>
         /// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         /// </summary>
         [Output("backendService")]
@@ -118,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -273,6 +279,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<bool>? AllowGlobalAccess { get; set; }
 
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        [Input("allowPscGlobalAccess")]
+        public Input<bool>? AllowPscGlobalAccess { get; set; }
+
+        /// <summary>
         /// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         /// </summary>
         [Input("backendService")]
@@ -345,7 +357,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

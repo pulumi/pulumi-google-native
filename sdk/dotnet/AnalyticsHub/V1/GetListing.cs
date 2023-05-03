@@ -114,10 +114,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
         /// </summary>
         public readonly string RequestAccess;
         /// <summary>
-        /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// </summary>
-        public readonly Outputs.RestrictedExportConfigResponse RestrictedExportConfig;
-        /// <summary>
         /// Current state of the listing.
         /// </summary>
         public readonly string State;
@@ -146,8 +142,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
 
             string requestAccess,
 
-            Outputs.RestrictedExportConfigResponse restrictedExportConfig,
-
             string state)
         {
             BigqueryDataset = bigqueryDataset;
@@ -161,7 +155,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1
             PrimaryContact = primaryContact;
             Publisher = publisher;
             RequestAccess = requestAccess;
-            RestrictedExportConfig = restrictedExportConfig;
             State = state;
         }
     }

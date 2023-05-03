@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class SqlIpConfigResponse
     {
         /// <summary>
+        /// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+        /// </summary>
+        public readonly string AllocatedIpRange;
+        /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
         /// </summary>
         public readonly ImmutableArray<Outputs.SqlAclEntryResponse> AuthorizedNetworks;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private SqlIpConfigResponse(
+            string allocatedIpRange,
+
             ImmutableArray<Outputs.SqlAclEntryResponse> authorizedNetworks,
 
             bool enableIpv4,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             bool requireSsl)
         {
+            AllocatedIpRange = allocatedIpRange;
             AuthorizedNetworks = authorizedNetworks;
             EnableIpv4 = enableIpv4;
             PrivateNetwork = privateNetwork;

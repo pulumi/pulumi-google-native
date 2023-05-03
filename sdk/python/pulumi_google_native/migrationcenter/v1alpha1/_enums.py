@@ -94,7 +94,7 @@ class GCSPayloadInfoFormat(str, Enum):
 
 class ImportDataFileFormat(str, Enum):
     """
-    The payload format.
+    Required. The payload format.
     """
     IMPORT_JOB_FORMAT_UNSPECIFIED = "IMPORT_JOB_FORMAT_UNSPECIFIED"
     """

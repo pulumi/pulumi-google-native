@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
+from ._inputs import *
 
 __all__ = ['ModelArgs', 'Model']
 
@@ -22,6 +23,7 @@ class ModelArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  filtering_option: Optional[pulumi.Input['ModelFilteringOption']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_features_config: Optional[pulumi.Input['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  optimization_objective: Optional[pulumi.Input[str]] = None,
                  periodic_tuning_state: Optional[pulumi.Input['ModelPeriodicTuningState']] = None,
@@ -33,6 +35,7 @@ class ModelArgs:
         :param pulumi.Input[str] type: The type of model e.g. `home-page`. Currently supported values: `recommended-for-you`, `others-you-may-like`, `frequently-bought-together`, `page-optimization`, `similar-items`, `buy-it-again`, `on-sale-items`, and `recently-viewed`(readonly value). This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
         :param pulumi.Input[bool] dry_run: Optional. Whether to run a dry run to validate the request (without actually creating the model).
         :param pulumi.Input['ModelFilteringOption'] filtering_option: Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+        :param pulumi.Input['GoogleCloudRetailV2ModelModelFeaturesConfigArgs'] model_features_config: Optional. Additional model features config.
         :param pulumi.Input[str] name: The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
         :param pulumi.Input[str] optimization_objective: Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
         :param pulumi.Input['ModelPeriodicTuningState'] periodic_tuning_state: Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
@@ -47,6 +50,8 @@ class ModelArgs:
             pulumi.set(__self__, "filtering_option", filtering_option)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if model_features_config is not None:
+            pulumi.set(__self__, "model_features_config", model_features_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if optimization_objective is not None:
@@ -125,6 +130,18 @@ class ModelArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="modelFeaturesConfig")
+    def model_features_config(self) -> Optional[pulumi.Input['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']]:
+        """
+        Optional. Additional model features config.
+        """
+        return pulumi.get(self, "model_features_config")
+
+    @model_features_config.setter
+    def model_features_config(self, value: Optional[pulumi.Input['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']]):
+        pulumi.set(self, "model_features_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -192,6 +209,7 @@ class Model(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  filtering_option: Optional[pulumi.Input['ModelFilteringOption']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_features_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  optimization_objective: Optional[pulumi.Input[str]] = None,
                  periodic_tuning_state: Optional[pulumi.Input['ModelPeriodicTuningState']] = None,
@@ -207,6 +225,7 @@ class Model(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the model. Should be human readable, used to display Recommendation Models in the Retail Cloud Console Dashboard. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[bool] dry_run: Optional. Whether to run a dry run to validate the request (without actually creating the model).
         :param pulumi.Input['ModelFilteringOption'] filtering_option: Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']] model_features_config: Optional. Additional model features config.
         :param pulumi.Input[str] name: The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
         :param pulumi.Input[str] optimization_objective: Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
         :param pulumi.Input['ModelPeriodicTuningState'] periodic_tuning_state: Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
@@ -242,6 +261,7 @@ class Model(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  filtering_option: Optional[pulumi.Input['ModelFilteringOption']] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 model_features_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2ModelModelFeaturesConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  optimization_objective: Optional[pulumi.Input[str]] = None,
                  periodic_tuning_state: Optional[pulumi.Input['ModelPeriodicTuningState']] = None,
@@ -266,6 +286,7 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["filtering_option"] = filtering_option
             __props__.__dict__["location"] = location
+            __props__.__dict__["model_features_config"] = model_features_config
             __props__.__dict__["name"] = name
             __props__.__dict__["optimization_objective"] = optimization_objective
             __props__.__dict__["periodic_tuning_state"] = periodic_tuning_state
@@ -313,6 +334,7 @@ class Model(pulumi.CustomResource):
         __props__.__dict__["filtering_option"] = None
         __props__.__dict__["last_tune_time"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["model_features_config"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["optimization_objective"] = None
         __props__.__dict__["periodic_tuning_state"] = None
@@ -382,6 +404,14 @@ class Model(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="modelFeaturesConfig")
+    def model_features_config(self) -> pulumi.Output['outputs.GoogleCloudRetailV2ModelModelFeaturesConfigResponse']:
+        """
+        Optional. Additional model features config.
+        """
+        return pulumi.get(self, "model_features_config")
 
     @property
     @pulumi.getter

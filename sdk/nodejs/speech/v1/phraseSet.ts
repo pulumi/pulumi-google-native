@@ -41,6 +41,14 @@ export class PhraseSet extends pulumi.CustomResource {
      * Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.
      */
     public readonly boost!: pulumi.Output<number>;
+    /**
+     * The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+     */
+    public /*out*/ readonly kmsKeyName!: pulumi.Output<string>;
+    /**
+     * The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+     */
+    public /*out*/ readonly kmsKeyVersionName!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the phrase set.
@@ -72,8 +80,12 @@ export class PhraseSet extends pulumi.CustomResource {
             resourceInputs["phraseSetId"] = args ? args.phraseSetId : undefined;
             resourceInputs["phrases"] = args ? args.phrases : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
         } else {
             resourceInputs["boost"] = undefined /*out*/;
+            resourceInputs["kmsKeyName"] = undefined /*out*/;
+            resourceInputs["kmsKeyVersionName"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["phrases"] = undefined /*out*/;

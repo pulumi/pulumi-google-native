@@ -18,6 +18,8 @@ __all__ = [
     'GoogleCloudRetailV2ConditionArgs',
     'GoogleCloudRetailV2FulfillmentInfoArgs',
     'GoogleCloudRetailV2ImageArgs',
+    'GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs',
+    'GoogleCloudRetailV2ModelModelFeaturesConfigArgs',
     'GoogleCloudRetailV2PriceInfoArgs',
     'GoogleCloudRetailV2PromotionArgs',
     'GoogleCloudRetailV2RatingArgs',
@@ -330,6 +332,54 @@ class GoogleCloudRetailV2ImageArgs:
 
 
 @pulumi.input_type
+class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs:
+    def __init__(__self__, *,
+                 context_products_type: Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType']] = None):
+        """
+        More configs of the frequently-bought-together model type.
+        :param pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType'] context_products_type: Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        if context_products_type is not None:
+            pulumi.set(__self__, "context_products_type", context_products_type)
+
+    @property
+    @pulumi.getter(name="contextProductsType")
+    def context_products_type(self) -> Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType']]:
+        """
+        Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        """
+        return pulumi.get(self, "context_products_type")
+
+    @context_products_type.setter
+    def context_products_type(self, value: Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType']]):
+        pulumi.set(self, "context_products_type", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2ModelModelFeaturesConfigArgs:
+    def __init__(__self__, *,
+                 frequently_bought_together_config: Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs']] = None):
+        """
+        Additional model features config.
+        :param pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs'] frequently_bought_together_config: Additional configs for frequently-bought-together models.
+        """
+        if frequently_bought_together_config is not None:
+            pulumi.set(__self__, "frequently_bought_together_config", frequently_bought_together_config)
+
+    @property
+    @pulumi.getter(name="frequentlyBoughtTogetherConfig")
+    def frequently_bought_together_config(self) -> Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs']]:
+        """
+        Additional configs for frequently-bought-together models.
+        """
+        return pulumi.get(self, "frequently_bought_together_config")
+
+    @frequently_bought_together_config.setter
+    def frequently_bought_together_config(self, value: Optional[pulumi.Input['GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigArgs']]):
+        pulumi.set(self, "frequently_bought_together_config", value)
+
+
+@pulumi.input_type
 class GoogleCloudRetailV2PriceInfoArgs:
     def __init__(__self__, *,
                  cost: Optional[pulumi.Input[float]] = None,
@@ -615,7 +665,7 @@ class GoogleCloudRetailV2RuleFilterActionArgs:
                  filter: Optional[pulumi.Input[str]] = None):
         """
         * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
-        :param pulumi.Input[str] filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        :param pulumi.Input[str] filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -624,7 +674,7 @@ class GoogleCloudRetailV2RuleFilterActionArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. For more information, see [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
         """
         return pulumi.get(self, "filter")
 

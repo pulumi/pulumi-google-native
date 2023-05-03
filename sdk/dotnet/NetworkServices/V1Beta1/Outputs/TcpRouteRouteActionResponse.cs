@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
     public sealed class TcpRouteRouteActionResponse
     {
         /// <summary>
-        /// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+        /// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
         /// </summary>
         public readonly ImmutableArray<Outputs.TcpRouteRouteDestinationResponse> Destinations;
         /// <summary>
-        /// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+        /// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
         /// </summary>
         public readonly bool OriginalDestination;
 

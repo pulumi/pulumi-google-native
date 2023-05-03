@@ -58,23 +58,23 @@ namespace Pulumi.GoogleNative.Run.V1
     public sealed class GetJobResult
     {
         /// <summary>
-        /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
         /// </summary>
         public readonly string ApiVersion;
         /// <summary>
-        /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        /// Optional. Standard object's metadata.
         /// </summary>
         public readonly Outputs.ObjectMetaResponse Metadata;
         /// <summary>
-        /// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        /// Optional. Specification of the desired behavior of a job.
         /// </summary>
         public readonly Outputs.JobSpecResponse Spec;
         /// <summary>
-        /// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        /// Current status of a job.
         /// </summary>
         public readonly Outputs.JobStatusResponse Status;
 

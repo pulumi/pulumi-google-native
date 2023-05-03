@@ -220,7 +220,7 @@ class DNSConfigClusterDnsScope(str, Enum):
 
 class DatabaseEncryptionState(str, Enum):
     """
-    Denotes the state of etcd encryption.
+    The desired state of etcd encryption.
     """
     UNKNOWN = "UNKNOWN"
     """

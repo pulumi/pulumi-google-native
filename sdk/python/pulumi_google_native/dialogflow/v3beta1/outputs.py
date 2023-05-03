@@ -1571,7 +1571,7 @@ class GoogleCloudDialogflowCxV3beta1GcsDestinationResponse(dict):
                  uri: str):
         """
         Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
-        :param str uri: The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        :param str uri: The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
         """
         pulumi.set(__self__, "uri", uri)
 
@@ -1579,7 +1579,7 @@ class GoogleCloudDialogflowCxV3beta1GcsDestinationResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+        The Google Cloud Storage URI for the exported objects. A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
         """
         return pulumi.get(self, "uri")
 
@@ -1957,7 +1957,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse(dict):
     """
-    Represents an example that the agent is trained on to identify the intent. Next ID: 15
+    Represents an example that the agent is trained on to identify the intent.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1980,7 +1980,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse(dict):
                  parts: Sequence['outputs.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse'],
                  repeat_count: int):
         """
-        Represents an example that the agent is trained on to identify the intent. Next ID: 15
+        Represents an example that the agent is trained on to identify the intent.
         :param Sequence['GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse'] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param int repeat_count: Indicates how many times this example was added to the intent.
         """
@@ -2185,7 +2185,7 @@ class GoogleCloudDialogflowCxV3beta1PageResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1QueryInputResponse(dict):
     """
-    Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 
+    Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2212,7 +2212,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInputResponse(dict):
                  language_code: str,
                  text: 'outputs.GoogleCloudDialogflowCxV3beta1TextInputResponse'):
         """
-        Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 
+        Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
         :param 'GoogleCloudDialogflowCxV3beta1AudioInputResponse' audio: The natural language speech audio to be processed.
         :param 'GoogleCloudDialogflowCxV3beta1DtmfInputResponse' dtmf: The DTMF event to be handled.
         :param 'GoogleCloudDialogflowCxV3beta1EventInputResponse' event: The event to be triggered.
@@ -3322,7 +3322,7 @@ class GoogleCloudDialogflowCxV3beta1TextInputResponse(dict):
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse(dict):
     """
-    Settings related to speech generating.
+    Settings related to speech synthesizing.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3344,8 +3344,8 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse(dict):
     def __init__(__self__, *,
                  synthesize_speech_configs: Mapping[str, str]):
         """
-        Settings related to speech generating.
-        :param Mapping[str, str] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        Settings related to speech synthesizing.
+        :param Mapping[str, str] synthesize_speech_configs: Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
         """
         pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
 
@@ -3353,7 +3353,7 @@ class GoogleCloudDialogflowCxV3beta1TextToSpeechSettingsResponse(dict):
     @pulumi.getter(name="synthesizeSpeechConfigs")
     def synthesize_speech_configs(self) -> Mapping[str, str]:
         """
-        Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.
         """
         return pulumi.get(self, "synthesize_speech_configs")
 

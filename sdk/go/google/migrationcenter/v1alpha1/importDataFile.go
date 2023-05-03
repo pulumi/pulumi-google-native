@@ -44,6 +44,9 @@ func NewImportDataFile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Format == nil {
+		return nil, errors.New("invalid value for required argument 'Format'")
+	}
 	if args.ImportDataFileId == nil {
 		return nil, errors.New("invalid value for required argument 'ImportDataFileId'")
 	}
@@ -92,7 +95,7 @@ type importDataFileArgs struct {
 	// User-friendly display name. Maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The payload format.
-	Format *ImportDataFileFormat `pulumi:"format"`
+	Format ImportDataFileFormat `pulumi:"format"`
 	// Required. The ID of the new data file.
 	ImportDataFileId string  `pulumi:"importDataFileId"`
 	ImportJobId      string  `pulumi:"importJobId"`
@@ -109,7 +112,7 @@ type ImportDataFileArgs struct {
 	// User-friendly display name. Maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// The payload format.
-	Format ImportDataFileFormatPtrInput
+	Format ImportDataFileFormatInput
 	// Required. The ID of the new data file.
 	ImportDataFileId pulumi.StringInput
 	ImportJobId      pulumi.StringInput

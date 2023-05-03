@@ -870,6 +870,8 @@ const (
 	BuildOptionsSourceProvenanceHashItemSha256 = BuildOptionsSourceProvenanceHashItem("SHA256")
 	// Use a md5 hash.
 	BuildOptionsSourceProvenanceHashItemMd5 = BuildOptionsSourceProvenanceHashItem("MD5")
+	// Use a sha512 hash.
+	BuildOptionsSourceProvenanceHashItemSha512 = BuildOptionsSourceProvenanceHashItem("SHA512")
 )
 
 func (BuildOptionsSourceProvenanceHashItem) ElementType() reflect.Type {

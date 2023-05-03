@@ -114,6 +114,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public static CVSSAttackComplexity AttackComplexityUnspecified { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED");
         public static CVSSAttackComplexity AttackComplexityLow { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW");
         public static CVSSAttackComplexity AttackComplexityHigh { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH");
+        public static CVSSAttackComplexity AttackComplexityMedium { get; } = new CVSSAttackComplexity("ATTACK_COMPLEXITY_MEDIUM");
 
         public static bool operator ==(CVSSAttackComplexity left, CVSSAttackComplexity right) => left.Equals(right);
         public static bool operator !=(CVSSAttackComplexity left, CVSSAttackComplexity right) => !left.Equals(right);
@@ -208,6 +209,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public static CVSSAvailabilityImpact ImpactHigh { get; } = new CVSSAvailabilityImpact("IMPACT_HIGH");
         public static CVSSAvailabilityImpact ImpactLow { get; } = new CVSSAvailabilityImpact("IMPACT_LOW");
         public static CVSSAvailabilityImpact ImpactNone { get; } = new CVSSAvailabilityImpact("IMPACT_NONE");
+        public static CVSSAvailabilityImpact ImpactPartial { get; } = new CVSSAvailabilityImpact("IMPACT_PARTIAL");
+        public static CVSSAvailabilityImpact ImpactComplete { get; } = new CVSSAvailabilityImpact("IMPACT_COMPLETE");
 
         public static bool operator ==(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => left.Equals(right);
         public static bool operator !=(CVSSAvailabilityImpact left, CVSSAvailabilityImpact right) => !left.Equals(right);
@@ -238,6 +241,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public static CVSSConfidentialityImpact ImpactHigh { get; } = new CVSSConfidentialityImpact("IMPACT_HIGH");
         public static CVSSConfidentialityImpact ImpactLow { get; } = new CVSSConfidentialityImpact("IMPACT_LOW");
         public static CVSSConfidentialityImpact ImpactNone { get; } = new CVSSConfidentialityImpact("IMPACT_NONE");
+        public static CVSSConfidentialityImpact ImpactPartial { get; } = new CVSSConfidentialityImpact("IMPACT_PARTIAL");
+        public static CVSSConfidentialityImpact ImpactComplete { get; } = new CVSSConfidentialityImpact("IMPACT_COMPLETE");
 
         public static bool operator ==(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => left.Equals(right);
         public static bool operator !=(CVSSConfidentialityImpact left, CVSSConfidentialityImpact right) => !left.Equals(right);
@@ -268,6 +273,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public static CVSSIntegrityImpact ImpactHigh { get; } = new CVSSIntegrityImpact("IMPACT_HIGH");
         public static CVSSIntegrityImpact ImpactLow { get; } = new CVSSIntegrityImpact("IMPACT_LOW");
         public static CVSSIntegrityImpact ImpactNone { get; } = new CVSSIntegrityImpact("IMPACT_NONE");
+        public static CVSSIntegrityImpact ImpactPartial { get; } = new CVSSIntegrityImpact("IMPACT_PARTIAL");
+        public static CVSSIntegrityImpact ImpactComplete { get; } = new CVSSIntegrityImpact("IMPACT_COMPLETE");
 
         public static bool operator ==(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => left.Equals(right);
         public static bool operator !=(CVSSIntegrityImpact left, CVSSIntegrityImpact right) => !left.Equals(right);

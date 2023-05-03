@@ -126,6 +126,10 @@ export interface GetSnapshotResult {
      */
     readonly sourceDiskEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
+     * The source disk whose recovery checkpoint will be used to create this snapshot.
+     */
+    readonly sourceDiskForRecoveryCheckpoint: string;
+    /**
      * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */
     readonly sourceDiskId: string;

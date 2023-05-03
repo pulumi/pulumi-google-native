@@ -2269,6 +2269,7 @@ export const RegionCommitmentType = {
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
+    GraphicsOptimized: "GRAPHICS_OPTIMIZED",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
@@ -2837,7 +2838,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVi
 } as const;
 
 /**
- * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+ * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
  */
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility = (typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility)[keyof typeof SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility];
 
@@ -2917,6 +2918,22 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
  * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
+
+export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType = {
+    All: "ALL",
+    HttpCookie: "HTTP_COOKIE",
+    HttpHeader: "HTTP_HEADER",
+    HttpPath: "HTTP_PATH",
+    Ip: "IP",
+    RegionCode: "REGION_CODE",
+    Sni: "SNI",
+    XffIp: "XFF_IP",
+} as const;
+
+/**
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ */
+export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType];
 
 export const SecurityPolicyRuleRedirectOptionsType = {
     External302: "EXTERNAL_302",

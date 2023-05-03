@@ -68,6 +68,7 @@ __all__ = [
     'GoogleCloudDocumentaiV1DocumentPageTableTableRowArgs',
     'GoogleCloudDocumentaiV1DocumentPageTableArgs',
     'GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs',
+    'GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs',
     'GoogleCloudDocumentaiV1DocumentPageTokenArgs',
     'GoogleCloudDocumentaiV1DocumentPageVisualElementArgs',
     'GoogleCloudDocumentaiV1DocumentPageArgs',
@@ -3057,18 +3058,268 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs:
+    def __init__(__self__, *,
+                 background_color: Optional[pulumi.Input['GoogleTypeColorArgs']] = None,
+                 bold: Optional[pulumi.Input[bool]] = None,
+                 font_size: Optional[pulumi.Input[int]] = None,
+                 font_type: Optional[pulumi.Input[str]] = None,
+                 font_weight: Optional[pulumi.Input[int]] = None,
+                 handwritten: Optional[pulumi.Input[bool]] = None,
+                 italic: Optional[pulumi.Input[bool]] = None,
+                 letter_spacing: Optional[pulumi.Input[float]] = None,
+                 pixel_font_size: Optional[pulumi.Input[float]] = None,
+                 smallcaps: Optional[pulumi.Input[bool]] = None,
+                 strikeout: Optional[pulumi.Input[bool]] = None,
+                 subscript: Optional[pulumi.Input[bool]] = None,
+                 superscript: Optional[pulumi.Input[bool]] = None,
+                 text_color: Optional[pulumi.Input['GoogleTypeColorArgs']] = None,
+                 underlined: Optional[pulumi.Input[bool]] = None):
+        """
+        Font and other text style attributes.
+        :param pulumi.Input['GoogleTypeColorArgs'] background_color: Color of the background.
+        :param pulumi.Input[bool] bold: Whether the text is bold (equivalent to font_weight is at least `700`).
+        :param pulumi.Input[int] font_size: Font size in points (`1` point is `¹⁄₇₂` inches).
+        :param pulumi.Input[str] font_type: Name or style of the font.
+        :param pulumi.Input[int] font_weight: TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+        :param pulumi.Input[bool] handwritten: Whether the text is handwritten.
+        :param pulumi.Input[bool] italic: Whether the text is italic.
+        :param pulumi.Input[float] letter_spacing: Letter spacing in points.
+        :param pulumi.Input[float] pixel_font_size: Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+        :param pulumi.Input[bool] smallcaps: Whether the text is in small caps.
+        :param pulumi.Input[bool] strikeout: Whether the text is strikethrough.
+        :param pulumi.Input[bool] subscript: Whether the text is a subscript.
+        :param pulumi.Input[bool] superscript: Whether the text is a superscript.
+        :param pulumi.Input['GoogleTypeColorArgs'] text_color: Color of the text.
+        :param pulumi.Input[bool] underlined: Whether the text is underlined.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if bold is not None:
+            pulumi.set(__self__, "bold", bold)
+        if font_size is not None:
+            pulumi.set(__self__, "font_size", font_size)
+        if font_type is not None:
+            pulumi.set(__self__, "font_type", font_type)
+        if font_weight is not None:
+            pulumi.set(__self__, "font_weight", font_weight)
+        if handwritten is not None:
+            pulumi.set(__self__, "handwritten", handwritten)
+        if italic is not None:
+            pulumi.set(__self__, "italic", italic)
+        if letter_spacing is not None:
+            pulumi.set(__self__, "letter_spacing", letter_spacing)
+        if pixel_font_size is not None:
+            pulumi.set(__self__, "pixel_font_size", pixel_font_size)
+        if smallcaps is not None:
+            pulumi.set(__self__, "smallcaps", smallcaps)
+        if strikeout is not None:
+            pulumi.set(__self__, "strikeout", strikeout)
+        if subscript is not None:
+            pulumi.set(__self__, "subscript", subscript)
+        if superscript is not None:
+            pulumi.set(__self__, "superscript", superscript)
+        if text_color is not None:
+            pulumi.set(__self__, "text_color", text_color)
+        if underlined is not None:
+            pulumi.set(__self__, "underlined", underlined)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[pulumi.Input['GoogleTypeColorArgs']]:
+        """
+        Color of the background.
+        """
+        return pulumi.get(self, "background_color")
+
+    @background_color.setter
+    def background_color(self, value: Optional[pulumi.Input['GoogleTypeColorArgs']]):
+        pulumi.set(self, "background_color", value)
+
+    @property
+    @pulumi.getter
+    def bold(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is bold (equivalent to font_weight is at least `700`).
+        """
+        return pulumi.get(self, "bold")
+
+    @bold.setter
+    def bold(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bold", value)
+
+    @property
+    @pulumi.getter(name="fontSize")
+    def font_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Font size in points (`1` point is `¹⁄₇₂` inches).
+        """
+        return pulumi.get(self, "font_size")
+
+    @font_size.setter
+    def font_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "font_size", value)
+
+    @property
+    @pulumi.getter(name="fontType")
+    def font_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name or style of the font.
+        """
+        return pulumi.get(self, "font_type")
+
+    @font_type.setter
+    def font_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "font_type", value)
+
+    @property
+    @pulumi.getter(name="fontWeight")
+    def font_weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        TrueType weight on a scale `100` (thin) to `1000` (ultra-heavy). Normal is `400`, bold is `700`.
+        """
+        return pulumi.get(self, "font_weight")
+
+    @font_weight.setter
+    def font_weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "font_weight", value)
+
+    @property
+    @pulumi.getter
+    def handwritten(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is handwritten.
+        """
+        return pulumi.get(self, "handwritten")
+
+    @handwritten.setter
+    def handwritten(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "handwritten", value)
+
+    @property
+    @pulumi.getter
+    def italic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is italic.
+        """
+        return pulumi.get(self, "italic")
+
+    @italic.setter
+    def italic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "italic", value)
+
+    @property
+    @pulumi.getter(name="letterSpacing")
+    def letter_spacing(self) -> Optional[pulumi.Input[float]]:
+        """
+        Letter spacing in points.
+        """
+        return pulumi.get(self, "letter_spacing")
+
+    @letter_spacing.setter
+    def letter_spacing(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "letter_spacing", value)
+
+    @property
+    @pulumi.getter(name="pixelFontSize")
+    def pixel_font_size(self) -> Optional[pulumi.Input[float]]:
+        """
+        Font size in pixels, equal to _unrounded font_size_ * _resolution_ ÷ `72.0`.
+        """
+        return pulumi.get(self, "pixel_font_size")
+
+    @pixel_font_size.setter
+    def pixel_font_size(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "pixel_font_size", value)
+
+    @property
+    @pulumi.getter
+    def smallcaps(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is in small caps.
+        """
+        return pulumi.get(self, "smallcaps")
+
+    @smallcaps.setter
+    def smallcaps(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "smallcaps", value)
+
+    @property
+    @pulumi.getter
+    def strikeout(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is strikethrough.
+        """
+        return pulumi.get(self, "strikeout")
+
+    @strikeout.setter
+    def strikeout(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strikeout", value)
+
+    @property
+    @pulumi.getter
+    def subscript(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is a subscript.
+        """
+        return pulumi.get(self, "subscript")
+
+    @subscript.setter
+    def subscript(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "subscript", value)
+
+    @property
+    @pulumi.getter
+    def superscript(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is a superscript.
+        """
+        return pulumi.get(self, "superscript")
+
+    @superscript.setter
+    def superscript(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "superscript", value)
+
+    @property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> Optional[pulumi.Input['GoogleTypeColorArgs']]:
+        """
+        Color of the text.
+        """
+        return pulumi.get(self, "text_color")
+
+    @text_color.setter
+    def text_color(self, value: Optional[pulumi.Input['GoogleTypeColorArgs']]):
+        pulumi.set(self, "text_color", value)
+
+    @property
+    @pulumi.getter
+    def underlined(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the text is underlined.
+        """
+        return pulumi.get(self, "underlined")
+
+    @underlined.setter
+    def underlined(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "underlined", value)
+
+
+@pulumi.input_type
 class GoogleCloudDocumentaiV1DocumentPageTokenArgs:
     def __init__(__self__, *,
                  detected_break: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs']] = None,
                  detected_languages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs']]]] = None,
                  layout: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageLayoutArgs']] = None,
-                 provenance: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentProvenanceArgs']] = None):
+                 provenance: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentProvenanceArgs']] = None,
+                 style_info: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs']] = None):
         """
         A detected token.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakArgs'] detected_break: Detected break at the end of a Token.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs']]] detected_languages: A list of detected languages together with confidence.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageLayoutArgs'] layout: Layout for Token.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentProvenanceArgs'] provenance: The history of this annotation.
+        :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs'] style_info: Text style attributes.
         """
         if detected_break is not None:
             pulumi.set(__self__, "detected_break", detected_break)
@@ -3078,6 +3329,8 @@ class GoogleCloudDocumentaiV1DocumentPageTokenArgs:
             pulumi.set(__self__, "layout", layout)
         if provenance is not None:
             pulumi.set(__self__, "provenance", provenance)
+        if style_info is not None:
+            pulumi.set(__self__, "style_info", style_info)
 
     @property
     @pulumi.getter(name="detectedBreak")
@@ -3126,6 +3379,18 @@ class GoogleCloudDocumentaiV1DocumentPageTokenArgs:
     @provenance.setter
     def provenance(self, value: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentProvenanceArgs']]):
         pulumi.set(self, "provenance", value)
+
+    @property
+    @pulumi.getter(name="styleInfo")
+    def style_info(self) -> Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs']]:
+        """
+        Text style attributes.
+        """
+        return pulumi.get(self, "style_info")
+
+    @style_info.setter
+    def style_info(self, value: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoArgs']]):
+        pulumi.set(self, "style_info", value)
 
 
 @pulumi.input_type
@@ -4148,7 +4413,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
         :param pulumi.Input[str] text: Optional. UTF-8 encoded text in reading order from the document.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentTextChangeArgs']]] text_changes: Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleArgs']]] text_styles: Styles for the Document.text.
-        :param pulumi.Input[str] uri: Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+        :param pulumi.Input[str] uri: Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -4311,7 +4576,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
+        Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
         """
         return pulumi.get(self, "uri")
 

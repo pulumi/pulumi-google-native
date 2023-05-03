@@ -18,8 +18,6 @@ type Model struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dataset from which the model is trained, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
-	// Timestamp when the model training finished and ready to be used for translation.
-	DeployTime pulumi.StringOutput `pulumi:"deployTime"`
 	// The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	Location    pulumi.StringOutput `pulumi:"location"`
@@ -151,11 +149,6 @@ func (o ModelOutput) CreateTime() pulumi.StringOutput {
 // The dataset from which the model is trained, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
 func (o ModelOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
-}
-
-// Timestamp when the model training finished and ready to be used for translation.
-func (o ModelOutput) DeployTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.DeployTime }).(pulumi.StringOutput)
 }
 
 // The name of the model to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.

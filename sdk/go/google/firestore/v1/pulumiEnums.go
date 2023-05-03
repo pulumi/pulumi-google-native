@@ -350,6 +350,175 @@ func (in *databaseConcurrencyModePtr) ToDatabaseConcurrencyModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseConcurrencyModePtrOutput)
 }
 
+// State of delete protection for the database.
+type DatabaseDeleteProtectionState string
+
+const (
+	// The default value. Delete protection type is not specified
+	DatabaseDeleteProtectionStateDeleteProtectionStateUnspecified = DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED")
+	// Delete protection is disabled
+	DatabaseDeleteProtectionStateDeleteProtectionDisabled = DatabaseDeleteProtectionState("DELETE_PROTECTION_DISABLED")
+	// Delete protection is enabled
+	DatabaseDeleteProtectionStateDeleteProtectionEnabled = DatabaseDeleteProtectionState("DELETE_PROTECTION_ENABLED")
+)
+
+func (DatabaseDeleteProtectionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseDeleteProtectionState)(nil)).Elem()
+}
+
+func (e DatabaseDeleteProtectionState) ToDatabaseDeleteProtectionStateOutput() DatabaseDeleteProtectionStateOutput {
+	return pulumi.ToOutput(e).(DatabaseDeleteProtectionStateOutput)
+}
+
+func (e DatabaseDeleteProtectionState) ToDatabaseDeleteProtectionStateOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseDeleteProtectionStateOutput)
+}
+
+func (e DatabaseDeleteProtectionState) ToDatabaseDeleteProtectionStatePtrOutput() DatabaseDeleteProtectionStatePtrOutput {
+	return e.ToDatabaseDeleteProtectionStatePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseDeleteProtectionState) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
+	return DatabaseDeleteProtectionState(e).ToDatabaseDeleteProtectionStateOutputWithContext(ctx).ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx)
+}
+
+func (e DatabaseDeleteProtectionState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseDeleteProtectionState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseDeleteProtectionState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseDeleteProtectionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabaseDeleteProtectionStateOutput struct{ *pulumi.OutputState }
+
+func (DatabaseDeleteProtectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseDeleteProtectionState)(nil)).Elem()
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToDatabaseDeleteProtectionStateOutput() DatabaseDeleteProtectionStateOutput {
+	return o
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToDatabaseDeleteProtectionStateOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStateOutput {
+	return o
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToDatabaseDeleteProtectionStatePtrOutput() DatabaseDeleteProtectionStatePtrOutput {
+	return o.ToDatabaseDeleteProtectionStatePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseDeleteProtectionState) *DatabaseDeleteProtectionState {
+		return &v
+	}).(DatabaseDeleteProtectionStatePtrOutput)
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseDeleteProtectionState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseDeleteProtectionStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseDeleteProtectionState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseDeleteProtectionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseDeleteProtectionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseDeleteProtectionState)(nil)).Elem()
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) ToDatabaseDeleteProtectionStatePtrOutput() DatabaseDeleteProtectionStatePtrOutput {
+	return o
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
+	return o
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) Elem() DatabaseDeleteProtectionStateOutput {
+	return o.ApplyT(func(v *DatabaseDeleteProtectionState) DatabaseDeleteProtectionState {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseDeleteProtectionState
+		return ret
+	}).(DatabaseDeleteProtectionStateOutput)
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseDeleteProtectionStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseDeleteProtectionState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabaseDeleteProtectionStateInput is an input type that accepts DatabaseDeleteProtectionStateArgs and DatabaseDeleteProtectionStateOutput values.
+// You can construct a concrete instance of `DatabaseDeleteProtectionStateInput` via:
+//
+//	DatabaseDeleteProtectionStateArgs{...}
+type DatabaseDeleteProtectionStateInput interface {
+	pulumi.Input
+
+	ToDatabaseDeleteProtectionStateOutput() DatabaseDeleteProtectionStateOutput
+	ToDatabaseDeleteProtectionStateOutputWithContext(context.Context) DatabaseDeleteProtectionStateOutput
+}
+
+var databaseDeleteProtectionStatePtrType = reflect.TypeOf((**DatabaseDeleteProtectionState)(nil)).Elem()
+
+type DatabaseDeleteProtectionStatePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseDeleteProtectionStatePtrOutput() DatabaseDeleteProtectionStatePtrOutput
+	ToDatabaseDeleteProtectionStatePtrOutputWithContext(context.Context) DatabaseDeleteProtectionStatePtrOutput
+}
+
+type databaseDeleteProtectionStatePtr string
+
+func DatabaseDeleteProtectionStatePtr(v string) DatabaseDeleteProtectionStatePtrInput {
+	return (*databaseDeleteProtectionStatePtr)(&v)
+}
+
+func (*databaseDeleteProtectionStatePtr) ElementType() reflect.Type {
+	return databaseDeleteProtectionStatePtrType
+}
+
+func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOutput() DatabaseDeleteProtectionStatePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseDeleteProtectionStatePtrOutput)
+}
+
+func (in *databaseDeleteProtectionStatePtr) ToDatabaseDeleteProtectionStatePtrOutputWithContext(ctx context.Context) DatabaseDeleteProtectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseDeleteProtectionStatePtrOutput)
+}
+
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 type DatabaseType string
 
@@ -1198,6 +1367,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseAppEngineIntegrationModePtrInput)(nil)).Elem(), DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConcurrencyModeInput)(nil)).Elem(), DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConcurrencyModePtrInput)(nil)).Elem(), DatabaseConcurrencyMode("CONCURRENCY_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDeleteProtectionStateInput)(nil)).Elem(), DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseDeleteProtectionStatePtrInput)(nil)).Elem(), DatabaseDeleteProtectionState("DELETE_PROTECTION_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseType("DATABASE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
@@ -1212,6 +1383,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseAppEngineIntegrationModePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConcurrencyModeOutput{})
 	pulumi.RegisterOutputType(DatabaseConcurrencyModePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseDeleteProtectionStateOutput{})
+	pulumi.RegisterOutputType(DatabaseDeleteProtectionStatePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigOutput{})

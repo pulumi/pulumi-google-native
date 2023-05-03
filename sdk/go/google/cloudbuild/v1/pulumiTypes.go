@@ -435,6 +435,8 @@ type Artifacts struct {
 	Images []string `pulumi:"images"`
 	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
 	MavenArtifacts []MavenArtifact `pulumi:"mavenArtifacts"`
+	// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+	NpmPackages []NpmPackage `pulumi:"npmPackages"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects *ArtifactObjects `pulumi:"objects"`
 	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
@@ -458,6 +460,8 @@ type ArtifactsArgs struct {
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
 	MavenArtifacts MavenArtifactArrayInput `pulumi:"mavenArtifacts"`
+	// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+	NpmPackages NpmPackageArrayInput `pulumi:"npmPackages"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects ArtifactObjectsPtrInput `pulumi:"objects"`
 	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
@@ -552,6 +556,11 @@ func (o ArtifactsOutput) MavenArtifacts() MavenArtifactArrayOutput {
 	return o.ApplyT(func(v Artifacts) []MavenArtifact { return v.MavenArtifacts }).(MavenArtifactArrayOutput)
 }
 
+// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsOutput) NpmPackages() NpmPackageArrayOutput {
+	return o.ApplyT(func(v Artifacts) []NpmPackage { return v.NpmPackages }).(NpmPackageArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsOutput) Objects() ArtifactObjectsPtrOutput {
 	return o.ApplyT(func(v Artifacts) *ArtifactObjects { return v.Objects }).(ArtifactObjectsPtrOutput)
@@ -606,6 +615,16 @@ func (o ArtifactsPtrOutput) MavenArtifacts() MavenArtifactArrayOutput {
 	}).(MavenArtifactArrayOutput)
 }
 
+// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsPtrOutput) NpmPackages() NpmPackageArrayOutput {
+	return o.ApplyT(func(v *Artifacts) []NpmPackage {
+		if v == nil {
+			return nil
+		}
+		return v.NpmPackages
+	}).(NpmPackageArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsPtrOutput) Objects() ArtifactObjectsPtrOutput {
 	return o.ApplyT(func(v *Artifacts) *ArtifactObjects {
@@ -632,6 +651,8 @@ type ArtifactsResponse struct {
 	Images []string `pulumi:"images"`
 	// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
 	MavenArtifacts []MavenArtifactResponse `pulumi:"mavenArtifacts"`
+	// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+	NpmPackages []NpmPackageResponse `pulumi:"npmPackages"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
 	Objects ArtifactObjectsResponse `pulumi:"objects"`
 	// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
@@ -661,6 +682,11 @@ func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
 // A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
 func (o ArtifactsResponseOutput) MavenArtifacts() MavenArtifactResponseArrayOutput {
 	return o.ApplyT(func(v ArtifactsResponse) []MavenArtifactResponse { return v.MavenArtifacts }).(MavenArtifactResponseArrayOutput)
+}
+
+// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponseOutput) NpmPackages() NpmPackageResponseArrayOutput {
+	return o.ApplyT(func(v ArtifactsResponse) []NpmPackageResponse { return v.NpmPackages }).(NpmPackageResponseArrayOutput)
 }
 
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
@@ -2831,6 +2857,8 @@ type GitFileSource struct {
 	Path *string `pulumi:"path"`
 	// See RepoType above.
 	RepoType *GitFileSourceRepoType `pulumi:"repoType"`
+	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Repository *string `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision *string `pulumi:"revision"`
 	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
@@ -2858,6 +2886,8 @@ type GitFileSourceArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// See RepoType above.
 	RepoType GitFileSourceRepoTypePtrInput `pulumi:"repoType"`
+	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
@@ -2962,6 +2992,11 @@ func (o GitFileSourceOutput) RepoType() GitFileSourceRepoTypePtrOutput {
 	return o.ApplyT(func(v GitFileSource) *GitFileSourceRepoType { return v.RepoType }).(GitFileSourceRepoTypePtrOutput)
 }
 
+// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourceOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
 // The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 func (o GitFileSourceOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitFileSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
@@ -3036,6 +3071,16 @@ func (o GitFileSourcePtrOutput) RepoType() GitFileSourceRepoTypePtrOutput {
 	}).(GitFileSourceRepoTypePtrOutput)
 }
 
+// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourcePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
 // The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 func (o GitFileSourcePtrOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitFileSource) *string {
@@ -3066,6 +3111,8 @@ type GitFileSourceResponse struct {
 	Path string `pulumi:"path"`
 	// See RepoType above.
 	RepoType string `pulumi:"repoType"`
+	// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	Repository string `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision string `pulumi:"revision"`
 	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
@@ -3105,6 +3152,11 @@ func (o GitFileSourceResponseOutput) Path() pulumi.StringOutput {
 // See RepoType above.
 func (o GitFileSourceResponseOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+func (o GitFileSourceResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
 
 // The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -4583,6 +4635,8 @@ type GitRepoSource struct {
 	Ref *string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType *GitRepoSourceRepoType `pulumi:"repoType"`
+	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	Repository *string `pulumi:"repository"`
 	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri *string `pulumi:"uri"`
 }
@@ -4608,6 +4662,8 @@ type GitRepoSourceArgs struct {
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// See RepoType below.
 	RepoType GitRepoSourceRepoTypePtrInput `pulumi:"repoType"`
+	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
 	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
@@ -4710,6 +4766,11 @@ func (o GitRepoSourceOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *GitRepoSourceRepoType { return v.RepoType }).(GitRepoSourceRepoTypePtrOutput)
 }
 
+// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+func (o GitRepoSourceOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
 // The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourceOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -4779,6 +4840,16 @@ func (o GitRepoSourcePtrOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	}).(GitRepoSourceRepoTypePtrOutput)
 }
 
+// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+func (o GitRepoSourcePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
 // The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRepoSource) *string {
@@ -4799,6 +4870,8 @@ type GitRepoSourceResponse struct {
 	Ref string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType string `pulumi:"repoType"`
+	// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+	Repository string `pulumi:"repository"`
 	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri string `pulumi:"uri"`
 }
@@ -4838,9 +4911,232 @@ func (o GitRepoSourceResponseOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
+// The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+func (o GitRepoSourceResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
 // The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Location of the source in any accessible Git repository.
+type GitSource struct {
+	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+	Dir *string `pulumi:"dir"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+	Revision *string `pulumi:"revision"`
+	// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+	Url *string `pulumi:"url"`
+}
+
+// GitSourceInput is an input type that accepts GitSourceArgs and GitSourceOutput values.
+// You can construct a concrete instance of `GitSourceInput` via:
+//
+//	GitSourceArgs{...}
+type GitSourceInput interface {
+	pulumi.Input
+
+	ToGitSourceOutput() GitSourceOutput
+	ToGitSourceOutputWithContext(context.Context) GitSourceOutput
+}
+
+// Location of the source in any accessible Git repository.
+type GitSourceArgs struct {
+	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+	Dir pulumi.StringPtrInput `pulumi:"dir"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (GitSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitSource)(nil)).Elem()
+}
+
+func (i GitSourceArgs) ToGitSourceOutput() GitSourceOutput {
+	return i.ToGitSourceOutputWithContext(context.Background())
+}
+
+func (i GitSourceArgs) ToGitSourceOutputWithContext(ctx context.Context) GitSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitSourceOutput)
+}
+
+func (i GitSourceArgs) ToGitSourcePtrOutput() GitSourcePtrOutput {
+	return i.ToGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GitSourceArgs) ToGitSourcePtrOutputWithContext(ctx context.Context) GitSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitSourceOutput).ToGitSourcePtrOutputWithContext(ctx)
+}
+
+// GitSourcePtrInput is an input type that accepts GitSourceArgs, GitSourcePtr and GitSourcePtrOutput values.
+// You can construct a concrete instance of `GitSourcePtrInput` via:
+//
+//	        GitSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitSourcePtrInput interface {
+	pulumi.Input
+
+	ToGitSourcePtrOutput() GitSourcePtrOutput
+	ToGitSourcePtrOutputWithContext(context.Context) GitSourcePtrOutput
+}
+
+type gitSourcePtrType GitSourceArgs
+
+func GitSourcePtr(v *GitSourceArgs) GitSourcePtrInput {
+	return (*gitSourcePtrType)(v)
+}
+
+func (*gitSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitSource)(nil)).Elem()
+}
+
+func (i *gitSourcePtrType) ToGitSourcePtrOutput() GitSourcePtrOutput {
+	return i.ToGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *gitSourcePtrType) ToGitSourcePtrOutputWithContext(ctx context.Context) GitSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitSourcePtrOutput)
+}
+
+// Location of the source in any accessible Git repository.
+type GitSourceOutput struct{ *pulumi.OutputState }
+
+func (GitSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitSource)(nil)).Elem()
+}
+
+func (o GitSourceOutput) ToGitSourceOutput() GitSourceOutput {
+	return o
+}
+
+func (o GitSourceOutput) ToGitSourceOutputWithContext(ctx context.Context) GitSourceOutput {
+	return o
+}
+
+func (o GitSourceOutput) ToGitSourcePtrOutput() GitSourcePtrOutput {
+	return o.ToGitSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GitSourceOutput) ToGitSourcePtrOutputWithContext(ctx context.Context) GitSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitSource) *GitSource {
+		return &v
+	}).(GitSourcePtrOutput)
+}
+
+// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+func (o GitSourceOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitSource) *string { return v.Dir }).(pulumi.StringPtrOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+func (o GitSourceOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+func (o GitSourceOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitSource) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type GitSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GitSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitSource)(nil)).Elem()
+}
+
+func (o GitSourcePtrOutput) ToGitSourcePtrOutput() GitSourcePtrOutput {
+	return o
+}
+
+func (o GitSourcePtrOutput) ToGitSourcePtrOutputWithContext(ctx context.Context) GitSourcePtrOutput {
+	return o
+}
+
+func (o GitSourcePtrOutput) Elem() GitSourceOutput {
+	return o.ApplyT(func(v *GitSource) GitSource {
+		if v != nil {
+			return *v
+		}
+		var ret GitSource
+		return ret
+	}).(GitSourceOutput)
+}
+
+// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+func (o GitSourcePtrOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Dir
+	}).(pulumi.StringPtrOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+func (o GitSourcePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+func (o GitSourcePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the source in any accessible Git repository.
+type GitSourceResponse struct {
+	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+	Dir string `pulumi:"dir"`
+	// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+	Revision string `pulumi:"revision"`
+	// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+	Url string `pulumi:"url"`
+}
+
+// Location of the source in any accessible Git repository.
+type GitSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GitSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitSourceResponse)(nil)).Elem()
+}
+
+func (o GitSourceResponseOutput) ToGitSourceResponseOutput() GitSourceResponseOutput {
+	return o
+}
+
+func (o GitSourceResponseOutput) ToGitSourceResponseOutputWithContext(ctx context.Context) GitSourceResponseOutput {
+	return o
+}
+
+// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+func (o GitSourceResponseOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v GitSourceResponse) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+func (o GitSourceResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v GitSourceResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+func (o GitSourceResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GitSourceResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // Container message for hash values.
@@ -5484,6 +5780,168 @@ func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 // Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
 func (o NetworkConfigResponseOutput) PeeredNetworkIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetworkIpRange }).(pulumi.StringOutput)
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+type NpmPackage struct {
+	// Path to the package.json. e.g. workspace/path/to/package
+	PackagePath *string `pulumi:"packagePath"`
+	// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+}
+
+// NpmPackageInput is an input type that accepts NpmPackageArgs and NpmPackageOutput values.
+// You can construct a concrete instance of `NpmPackageInput` via:
+//
+//	NpmPackageArgs{...}
+type NpmPackageInput interface {
+	pulumi.Input
+
+	ToNpmPackageOutput() NpmPackageOutput
+	ToNpmPackageOutputWithContext(context.Context) NpmPackageOutput
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+type NpmPackageArgs struct {
+	// Path to the package.json. e.g. workspace/path/to/package
+	PackagePath pulumi.StringPtrInput `pulumi:"packagePath"`
+	// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (NpmPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmPackage)(nil)).Elem()
+}
+
+func (i NpmPackageArgs) ToNpmPackageOutput() NpmPackageOutput {
+	return i.ToNpmPackageOutputWithContext(context.Background())
+}
+
+func (i NpmPackageArgs) ToNpmPackageOutputWithContext(ctx context.Context) NpmPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpmPackageOutput)
+}
+
+// NpmPackageArrayInput is an input type that accepts NpmPackageArray and NpmPackageArrayOutput values.
+// You can construct a concrete instance of `NpmPackageArrayInput` via:
+//
+//	NpmPackageArray{ NpmPackageArgs{...} }
+type NpmPackageArrayInput interface {
+	pulumi.Input
+
+	ToNpmPackageArrayOutput() NpmPackageArrayOutput
+	ToNpmPackageArrayOutputWithContext(context.Context) NpmPackageArrayOutput
+}
+
+type NpmPackageArray []NpmPackageInput
+
+func (NpmPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NpmPackage)(nil)).Elem()
+}
+
+func (i NpmPackageArray) ToNpmPackageArrayOutput() NpmPackageArrayOutput {
+	return i.ToNpmPackageArrayOutputWithContext(context.Background())
+}
+
+func (i NpmPackageArray) ToNpmPackageArrayOutputWithContext(ctx context.Context) NpmPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpmPackageArrayOutput)
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+type NpmPackageOutput struct{ *pulumi.OutputState }
+
+func (NpmPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmPackage)(nil)).Elem()
+}
+
+func (o NpmPackageOutput) ToNpmPackageOutput() NpmPackageOutput {
+	return o
+}
+
+func (o NpmPackageOutput) ToNpmPackageOutputWithContext(ctx context.Context) NpmPackageOutput {
+	return o
+}
+
+// Path to the package.json. e.g. workspace/path/to/package
+func (o NpmPackageOutput) PackagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NpmPackage) *string { return v.PackagePath }).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+func (o NpmPackageOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NpmPackage) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type NpmPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (NpmPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NpmPackage)(nil)).Elem()
+}
+
+func (o NpmPackageArrayOutput) ToNpmPackageArrayOutput() NpmPackageArrayOutput {
+	return o
+}
+
+func (o NpmPackageArrayOutput) ToNpmPackageArrayOutputWithContext(ctx context.Context) NpmPackageArrayOutput {
+	return o
+}
+
+func (o NpmPackageArrayOutput) Index(i pulumi.IntInput) NpmPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NpmPackage {
+		return vs[0].([]NpmPackage)[vs[1].(int)]
+	}).(NpmPackageOutput)
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+type NpmPackageResponse struct {
+	// Path to the package.json. e.g. workspace/path/to/package
+	PackagePath string `pulumi:"packagePath"`
+	// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+	Repository string `pulumi:"repository"`
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+type NpmPackageResponseOutput struct{ *pulumi.OutputState }
+
+func (NpmPackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmPackageResponse)(nil)).Elem()
+}
+
+func (o NpmPackageResponseOutput) ToNpmPackageResponseOutput() NpmPackageResponseOutput {
+	return o
+}
+
+func (o NpmPackageResponseOutput) ToNpmPackageResponseOutputWithContext(ctx context.Context) NpmPackageResponseOutput {
+	return o
+}
+
+// Path to the package.json. e.g. workspace/path/to/package
+func (o NpmPackageResponseOutput) PackagePath() pulumi.StringOutput {
+	return o.ApplyT(func(v NpmPackageResponse) string { return v.PackagePath }).(pulumi.StringOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+func (o NpmPackageResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v NpmPackageResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type NpmPackageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NpmPackageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NpmPackageResponse)(nil)).Elem()
+}
+
+func (o NpmPackageResponseArrayOutput) ToNpmPackageResponseArrayOutput() NpmPackageResponseArrayOutput {
+	return o
+}
+
+func (o NpmPackageResponseArrayOutput) ToNpmPackageResponseArrayOutputWithContext(ctx context.Context) NpmPackageResponseArrayOutput {
+	return o
+}
+
+func (o NpmPackageResponseArrayOutput) Index(i pulumi.IntInput) NpmPackageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NpmPackageResponse {
+		return vs[0].([]NpmPackageResponse)[vs[1].(int)]
+	}).(NpmPackageResponseOutput)
 }
 
 // Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
@@ -7254,6 +7712,8 @@ type ResultsResponse struct {
 	Images []BuiltImageResponse `pulumi:"images"`
 	// Maven artifacts uploaded to Artifact Registry at the end of the build.
 	MavenArtifacts []UploadedMavenArtifactResponse `pulumi:"mavenArtifacts"`
+	// Npm packages uploaded to Artifact Registry at the end of the build.
+	NpmPackages []UploadedNpmPackageResponse `pulumi:"npmPackages"`
 	// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
 	NumArtifacts string `pulumi:"numArtifacts"`
 	// Python artifacts uploaded to Artifact Registry at the end of the build.
@@ -7303,6 +7763,11 @@ func (o ResultsResponseOutput) Images() BuiltImageResponseArrayOutput {
 // Maven artifacts uploaded to Artifact Registry at the end of the build.
 func (o ResultsResponseOutput) MavenArtifacts() UploadedMavenArtifactResponseArrayOutput {
 	return o.ApplyT(func(v ResultsResponse) []UploadedMavenArtifactResponse { return v.MavenArtifacts }).(UploadedMavenArtifactResponseArrayOutput)
+}
+
+// Npm packages uploaded to Artifact Registry at the end of the build.
+func (o ResultsResponseOutput) NpmPackages() UploadedNpmPackageResponseArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []UploadedNpmPackageResponse { return v.NpmPackages }).(UploadedNpmPackageResponseArrayOutput)
 }
 
 // Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
@@ -7999,6 +8464,8 @@ func (o ServiceDirectoryConfigResponseOutput) Service() pulumi.StringOutput {
 
 // Location of the source in a supported storage service.
 type Source struct {
+	// If provided, get the source from this Git repository.
+	GitSource *GitSource `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource *RepoSource `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -8020,6 +8487,8 @@ type SourceInput interface {
 
 // Location of the source in a supported storage service.
 type SourceArgs struct {
+	// If provided, get the source from this Git repository.
+	GitSource GitSourcePtrInput `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourcePtrInput `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -8106,6 +8575,11 @@ func (o SourceOutput) ToSourcePtrOutputWithContext(ctx context.Context) SourcePt
 	}).(SourcePtrOutput)
 }
 
+// If provided, get the source from this Git repository.
+func (o SourceOutput) GitSource() GitSourcePtrOutput {
+	return o.ApplyT(func(v Source) *GitSource { return v.GitSource }).(GitSourcePtrOutput)
+}
+
 // If provided, get the source from this location in a Cloud Source Repository.
 func (o SourceOutput) RepoSource() RepoSourcePtrOutput {
 	return o.ApplyT(func(v Source) *RepoSource { return v.RepoSource }).(RepoSourcePtrOutput)
@@ -8143,6 +8617,16 @@ func (o SourcePtrOutput) Elem() SourceOutput {
 		var ret Source
 		return ret
 	}).(SourceOutput)
+}
+
+// If provided, get the source from this Git repository.
+func (o SourcePtrOutput) GitSource() GitSourcePtrOutput {
+	return o.ApplyT(func(v *Source) *GitSource {
+		if v == nil {
+			return nil
+		}
+		return v.GitSource
+	}).(GitSourcePtrOutput)
 }
 
 // If provided, get the source from this location in a Cloud Source Repository.
@@ -8224,6 +8708,8 @@ func (o SourceProvenanceResponseOutput) ResolvedStorageSourceManifest() StorageS
 
 // Location of the source in a supported storage service.
 type SourceResponse struct {
+	// If provided, get the source from this Git repository.
+	GitSource GitSourceResponse `pulumi:"gitSource"`
 	// If provided, get the source from this location in a Cloud Source Repository.
 	RepoSource RepoSourceResponse `pulumi:"repoSource"`
 	// If provided, get the source from this location in Google Cloud Storage.
@@ -8245,6 +8731,11 @@ func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
 
 func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
 	return o
+}
+
+// If provided, get the source from this Git repository.
+func (o SourceResponseOutput) GitSource() GitSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) GitSourceResponse { return v.GitSource }).(GitSourceResponseOutput)
 }
 
 // If provided, get the source from this location in a Cloud Source Repository.
@@ -8789,6 +9280,66 @@ func (o UploadedMavenArtifactResponseArrayOutput) Index(i pulumi.IntInput) Uploa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UploadedMavenArtifactResponse {
 		return vs[0].([]UploadedMavenArtifactResponse)[vs[1].(int)]
 	}).(UploadedMavenArtifactResponseOutput)
+}
+
+// An npm package uploaded to Artifact Registry using the NpmPackage directive.
+type UploadedNpmPackageResponse struct {
+	// Hash types and values of the npm package.
+	FileHashes FileHashesResponse `pulumi:"fileHashes"`
+	// Stores timing information for pushing the specified artifact.
+	PushTiming TimeSpanResponse `pulumi:"pushTiming"`
+	// URI of the uploaded npm package.
+	Uri string `pulumi:"uri"`
+}
+
+// An npm package uploaded to Artifact Registry using the NpmPackage directive.
+type UploadedNpmPackageResponseOutput struct{ *pulumi.OutputState }
+
+func (UploadedNpmPackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedNpmPackageResponse)(nil)).Elem()
+}
+
+func (o UploadedNpmPackageResponseOutput) ToUploadedNpmPackageResponseOutput() UploadedNpmPackageResponseOutput {
+	return o
+}
+
+func (o UploadedNpmPackageResponseOutput) ToUploadedNpmPackageResponseOutputWithContext(ctx context.Context) UploadedNpmPackageResponseOutput {
+	return o
+}
+
+// Hash types and values of the npm package.
+func (o UploadedNpmPackageResponseOutput) FileHashes() FileHashesResponseOutput {
+	return o.ApplyT(func(v UploadedNpmPackageResponse) FileHashesResponse { return v.FileHashes }).(FileHashesResponseOutput)
+}
+
+// Stores timing information for pushing the specified artifact.
+func (o UploadedNpmPackageResponseOutput) PushTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v UploadedNpmPackageResponse) TimeSpanResponse { return v.PushTiming }).(TimeSpanResponseOutput)
+}
+
+// URI of the uploaded npm package.
+func (o UploadedNpmPackageResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadedNpmPackageResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type UploadedNpmPackageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UploadedNpmPackageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UploadedNpmPackageResponse)(nil)).Elem()
+}
+
+func (o UploadedNpmPackageResponseArrayOutput) ToUploadedNpmPackageResponseArrayOutput() UploadedNpmPackageResponseArrayOutput {
+	return o
+}
+
+func (o UploadedNpmPackageResponseArrayOutput) ToUploadedNpmPackageResponseArrayOutputWithContext(ctx context.Context) UploadedNpmPackageResponseArrayOutput {
+	return o
+}
+
+func (o UploadedNpmPackageResponseArrayOutput) Index(i pulumi.IntInput) UploadedNpmPackageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UploadedNpmPackageResponse {
+		return vs[0].([]UploadedNpmPackageResponse)[vs[1].(int)]
+	}).(UploadedNpmPackageResponseOutput)
 }
 
 // Artifact uploaded using the PythonPackage directive.
@@ -9481,12 +10032,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitLabSecretsInput)(nil)).Elem(), GitLabSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourceInput)(nil)).Elem(), GitRepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitRepoSourcePtrInput)(nil)).Elem(), GitRepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceInput)(nil)).Elem(), GitSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitSourcePtrInput)(nil)).Elem(), GitSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretInput)(nil)).Elem(), InlineSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InlineSecretArrayInput)(nil)).Elem(), InlineSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenArtifactInput)(nil)).Elem(), MavenArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenArtifactArrayInput)(nil)).Elem(), MavenArtifactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NpmPackageInput)(nil)).Elem(), NpmPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NpmPackageArrayInput)(nil)).Elem(), NpmPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionInput)(nil)).Elem(), PoolOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolOptionPtrInput)(nil)).Elem(), PoolOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolV1ConfigInput)(nil)).Elem(), PrivatePoolV1ConfigArgs{})
@@ -9581,6 +10136,9 @@ func init() {
 	pulumi.RegisterOutputType(GitRepoSourceOutput{})
 	pulumi.RegisterOutputType(GitRepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(GitRepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(GitSourceOutput{})
+	pulumi.RegisterOutputType(GitSourcePtrOutput{})
+	pulumi.RegisterOutputType(GitSourceResponseOutput{})
 	pulumi.RegisterOutputType(HashResponseOutput{})
 	pulumi.RegisterOutputType(HashResponseArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretOutput{})
@@ -9594,6 +10152,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(NpmPackageOutput{})
+	pulumi.RegisterOutputType(NpmPackageArrayOutput{})
+	pulumi.RegisterOutputType(NpmPackageResponseOutput{})
+	pulumi.RegisterOutputType(NpmPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(PoolOptionOutput{})
 	pulumi.RegisterOutputType(PoolOptionPtrOutput{})
 	pulumi.RegisterOutputType(PoolOptionResponseOutput{})
@@ -9647,6 +10209,8 @@ func init() {
 	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
 	pulumi.RegisterOutputType(UploadedMavenArtifactResponseOutput{})
 	pulumi.RegisterOutputType(UploadedMavenArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(UploadedNpmPackageResponseOutput{})
+	pulumi.RegisterOutputType(UploadedNpmPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(UploadedPythonPackageResponseOutput{})
 	pulumi.RegisterOutputType(UploadedPythonPackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})

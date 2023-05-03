@@ -70,6 +70,10 @@ export interface GetConversationResult {
      */
     readonly latestAnalysis: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResponse;
     /**
+     * Latest summary of the conversation.
+     */
+    readonly latestSummary: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse;
+    /**
      * Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
      */
     readonly medium: string;

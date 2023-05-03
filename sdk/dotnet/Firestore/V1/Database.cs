@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public Output<string> ConcurrencyMode { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp at which this database was created.
+        /// The timestamp at which this database was created. Databases created before 2016 do not populate create_time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -38,6 +38,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Output("databaseId")]
         public Output<string> DatabaseId { get; private set; } = null!;
+
+        /// <summary>
+        /// State of delete protection for the database.
+        /// </summary>
+        [Output("deleteProtectionState")]
+        public Output<string> DeleteProtectionState { get; private set; } = null!;
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -151,6 +157,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
+
+        /// <summary>
+        /// State of delete protection for the database.
+        /// </summary>
+        [Input("deleteProtectionState")]
+        public Input<Pulumi.GoogleNative.Firestore.V1.DatabaseDeleteProtectionState>? DeleteProtectionState { get; set; }
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

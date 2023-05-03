@@ -26,7 +26,7 @@ type WorkforcePoolKey struct {
 	ProviderId pulumi.StringOutput `pulumi:"providerId"`
 	// The state of the key.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Immutable. The purpose of the key.
+	// The purpose of the key.
 	Use             pulumi.StringOutput `pulumi:"use"`
 	WorkforcePoolId pulumi.StringOutput `pulumi:"workforcePoolId"`
 	// Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -42,6 +42,9 @@ func NewWorkforcePoolKey(ctx *pulumi.Context,
 
 	if args.ProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'ProviderId'")
+	}
+	if args.Use == nil {
+		return nil, errors.New("invalid value for required argument 'Use'")
 	}
 	if args.WorkforcePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkforcePoolId'")
@@ -92,9 +95,9 @@ type workforcePoolKeyArgs struct {
 	KeyData    *KeyData `pulumi:"keyData"`
 	Location   *string  `pulumi:"location"`
 	ProviderId string   `pulumi:"providerId"`
-	// Immutable. The purpose of the key.
-	Use             *WorkforcePoolKeyUse `pulumi:"use"`
-	WorkforcePoolId string               `pulumi:"workforcePoolId"`
+	// The purpose of the key.
+	Use             WorkforcePoolKeyUse `pulumi:"use"`
+	WorkforcePoolId string              `pulumi:"workforcePoolId"`
 	// Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	WorkforcePoolProviderKeyId string `pulumi:"workforcePoolProviderKeyId"`
 }
@@ -105,8 +108,8 @@ type WorkforcePoolKeyArgs struct {
 	KeyData    KeyDataPtrInput
 	Location   pulumi.StringPtrInput
 	ProviderId pulumi.StringInput
-	// Immutable. The purpose of the key.
-	Use             WorkforcePoolKeyUsePtrInput
+	// The purpose of the key.
+	Use             WorkforcePoolKeyUseInput
 	WorkforcePoolId pulumi.StringInput
 	// Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	WorkforcePoolProviderKeyId pulumi.StringInput
@@ -177,7 +180,7 @@ func (o WorkforcePoolKeyOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolKey) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Immutable. The purpose of the key.
+// The purpose of the key.
 func (o WorkforcePoolKeyOutput) Use() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolKey) pulumi.StringOutput { return v.Use }).(pulumi.StringOutput)
 }

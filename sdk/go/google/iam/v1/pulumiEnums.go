@@ -181,7 +181,341 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
-// Immutable. The specifications for the key.
+// Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior string
+
+const (
+	// No assertion claims behavior specified.
+	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorAssertionClaimsBehaviorUnspecified = GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED")
+	// Only include ID Token Claims.
+	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOnlyIdTokenClaims = GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ONLY_ID_TOKEN_CLAIMS")
+)
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior)(nil)).Elem()
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
+	return pulumi.ToOutput(e).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return e.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior(e).ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutputWithContext(ctx).ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return o.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior {
+		return &v
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior
+		return ret
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorArgs and GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput` via:
+//
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorArgs{...}
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput
+}
+
+var googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrType = reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior)(nil)).Elem()
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput
+}
+
+type googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr string
+
+func GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr(v string) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrInput {
+	return (*googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr)(&v)
+}
+
+func (*googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ElementType() reflect.Type {
+	return googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrType
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return pulumi.ToOutput(in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput)
+}
+
+// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType string
+
+const (
+	// No Response Type specified.
+	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeResponseTypeUnspecified = GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("RESPONSE_TYPE_UNSPECIFIED")
+	// The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeIdToken = GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("ID_TOKEN")
+)
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)(nil)).Elem()
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
+	return pulumi.ToOutput(e).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return e.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType(e).ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutputWithContext(ctx).ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return o.ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType {
+		return &v
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType
+		return ret
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput)
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeArgs and GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput` via:
+//
+//	GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeArgs{...}
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput
+}
+
+var googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrType = reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType)(nil)).Elem()
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput
+}
+
+type googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr string
+
+func GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr(v string) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrInput {
+	return (*googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr)(&v)
+}
+
+func (*googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ElementType() reflect.Type {
+	return googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrType
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
+}
+
+func (in *googleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtr) ToGoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput)
+}
+
+// Required. The specifications for the key.
 type KeyDataKeySpec string
 
 const (
@@ -1040,7 +1374,7 @@ func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) Rol
 	return pulumi.ToOutputWithContext(ctx, in).(RoleStagePtrOutput)
 }
 
-// Immutable. The purpose of the key.
+// Required. The purpose of the key.
 type WorkforcePoolKeyUse string
 
 const (
@@ -1207,7 +1541,7 @@ func (in *workforcePoolKeyUsePtr) ToWorkforcePoolKeyUsePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(WorkforcePoolKeyUsePtrOutput)
 }
 
-// Immutable. The purpose of the key.
+// Required. The purpose of the key.
 type WorkloadIdentityPoolKeyUse string
 
 const (
@@ -1377,6 +1711,10 @@ func (in *workloadIdentityPoolKeyUsePtr) ToWorkloadIdentityPoolKeyUsePtrOutputWi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior("ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("RESPONSE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType("RESPONSE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataKeySpecInput)(nil)).Elem(), KeyDataKeySpec("KEY_SPEC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataKeySpecPtrInput)(nil)).Elem(), KeyDataKeySpec("KEY_SPEC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyKeyAlgorithmInput)(nil)).Elem(), KeyKeyAlgorithm("KEY_ALG_UNSPECIFIED"))
@@ -1393,6 +1731,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolKeyUsePtrInput)(nil)).Elem(), WorkloadIdentityPoolKeyUse("KEY_USE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypeOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseTypePtrOutput{})
 	pulumi.RegisterOutputType(KeyDataKeySpecOutput{})
 	pulumi.RegisterOutputType(KeyDataKeySpecPtrOutput{})
 	pulumi.RegisterOutputType(KeyKeyAlgorithmOutput{})

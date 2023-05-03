@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2ContainerResponse
     {
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
@@ -29,11 +29,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2EnvVarResponse> Env;
         /// <summary>
-        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ProbeResponse LivenessProbe;
         /// <summary>
@@ -45,11 +45,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2ContainerPortResponse> Ports;
         /// <summary>
-        /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        /// Compute Resource requirements by this container.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ResourceRequirementsResponse Resources;
         /// <summary>
-        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ProbeResponse StartupProbe;
         /// <summary>

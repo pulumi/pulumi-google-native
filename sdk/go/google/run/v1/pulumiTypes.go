@@ -1257,23 +1257,23 @@ type Container struct {
 	Env []EnvVar `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom []EnvFromSource `pulumi:"envFrom"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image string `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe *Probe `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPort `pulumi:"ports"`
 	// Not supported by Cloud Run.
 	ReadinessProbe *Probe `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resources required by this container.
 	Resources *ResourceRequirements `pulumi:"resources"`
 	// Not supported by Cloud Run.
 	SecurityContext *SecurityContext `pulumi:"securityContext"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
 	StartupProbe *Probe `pulumi:"startupProbe"`
 	// Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath *string `pulumi:"terminationMessagePath"`
@@ -1306,23 +1306,23 @@ type ContainerArgs struct {
 	Env EnvVarArrayInput `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom EnvFromSourceArrayInput `pulumi:"envFrom"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image pulumi.StringInput `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe ProbePtrInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortArrayInput `pulumi:"ports"`
 	// Not supported by Cloud Run.
 	ReadinessProbe ProbePtrInput `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resources required by this container.
 	Resources ResourceRequirementsPtrInput `pulumi:"resources"`
 	// Not supported by Cloud Run.
 	SecurityContext SecurityContextPtrInput `pulumi:"securityContext"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
 	StartupProbe ProbePtrInput `pulumi:"startupProbe"`
 	// Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath pulumi.StringPtrInput `pulumi:"terminationMessagePath"`
@@ -1406,22 +1406,22 @@ func (o ContainerOutput) EnvFrom() EnvFromSourceArrayOutput {
 	return o.ApplyT(func(v Container) []EnvFromSource { return v.EnvFrom }).(EnvFromSourceArrayOutput)
 }
 
-// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 func (o ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v Container) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
 func (o ContainerOutput) ImagePullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
 func (o ContainerOutput) LivenessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.LivenessProbe }).(ProbePtrOutput)
 }
 
-// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+// Name of the container specified as a DNS_LABEL (RFC 1123).
 func (o ContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1436,7 +1436,7 @@ func (o ContainerOutput) ReadinessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.ReadinessProbe }).(ProbePtrOutput)
 }
 
-// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resources required by this container.
 func (o ContainerOutput) Resources() ResourceRequirementsPtrOutput {
 	return o.ApplyT(func(v Container) *ResourceRequirements { return v.Resources }).(ResourceRequirementsPtrOutput)
 }
@@ -1446,7 +1446,7 @@ func (o ContainerOutput) SecurityContext() SecurityContextPtrOutput {
 	return o.ApplyT(func(v Container) *SecurityContext { return v.SecurityContext }).(SecurityContextPtrOutput)
 }
 
-// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
 func (o ContainerOutput) StartupProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.StartupProbe }).(ProbePtrOutput)
 }
@@ -1679,23 +1679,23 @@ type ContainerResponse struct {
 	Env []EnvVarResponse `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom []EnvFromSourceResponse `pulumi:"envFrom"`
-	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 	Image string `pulumi:"image"`
-	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPortResponse `pulumi:"ports"`
 	// Not supported by Cloud Run.
 	ReadinessProbe ProbeResponse `pulumi:"readinessProbe"`
-	// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	// Compute Resources required by this container.
 	Resources ResourceRequirementsResponse `pulumi:"resources"`
 	// Not supported by Cloud Run.
 	SecurityContext SecurityContextResponse `pulumi:"securityContext"`
-	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
 	StartupProbe ProbeResponse `pulumi:"startupProbe"`
 	// Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
 	TerminationMessagePath string `pulumi:"terminationMessagePath"`
@@ -1742,22 +1742,22 @@ func (o ContainerResponseOutput) EnvFrom() EnvFromSourceResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvFromSourceResponse { return v.EnvFrom }).(EnvFromSourceResponseArrayOutput)
 }
 
-// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
 func (o ContainerResponseOutput) ImagePullPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Periodic probe of container liveness. Container will be restarted if the probe fails.
 func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
 }
 
-// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+// Name of the container specified as a DNS_LABEL (RFC 1123).
 func (o ContainerResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1772,7 +1772,7 @@ func (o ContainerResponseOutput) ReadinessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.ReadinessProbe }).(ProbeResponseOutput)
 }
 
-// Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+// Compute Resources required by this container.
 func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
 }
@@ -1782,7 +1782,7 @@ func (o ContainerResponseOutput) SecurityContext() SecurityContextResponseOutput
 	return o.ApplyT(func(v ContainerResponse) SecurityContextResponse { return v.SecurityContext }).(SecurityContextResponseOutput)
 }
 
-// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used.
 func (o ContainerResponseOutput) StartupProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.StartupProbe }).(ProbeResponseOutput)
 }
@@ -2917,7 +2917,7 @@ func (o ExecutionSpecResponseOutput) Template() TaskTemplateSpecResponseOutput {
 	return o.ApplyT(func(v ExecutionSpecResponse) TaskTemplateSpecResponse { return v.Template }).(TaskTemplateSpecResponseOutput)
 }
 
-// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
 type ExecutionTemplateSpec struct {
 	// Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata *ObjectMeta `pulumi:"metadata"`
@@ -2925,7 +2925,7 @@ type ExecutionTemplateSpec struct {
 	Spec ExecutionSpec `pulumi:"spec"`
 }
 
-// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
 type ExecutionTemplateSpecResponse struct {
 	// Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaResponse `pulumi:"metadata"`
@@ -2933,7 +2933,7 @@ type ExecutionTemplateSpecResponse struct {
 	Spec ExecutionSpecResponse `pulumi:"spec"`
 }
 
-// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job.
 type ExecutionTemplateSpecResponseOutput struct{ *pulumi.OutputState }
 
 func (ExecutionTemplateSpecResponseOutput) ElementType() reflect.Type {
@@ -3206,7 +3206,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type GRPCAction struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535.
 	Port *int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 	Service *string `pulumi:"service"`
 }
 
@@ -3225,7 +3225,7 @@ type GRPCActionInput interface {
 type GRPCActionArgs struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -3312,7 +3312,7 @@ func (o GRPCActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 func (o GRPCActionOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GRPCAction) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -3351,7 +3351,7 @@ func (o GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 func (o GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GRPCAction) *string {
 		if v == nil {
@@ -3365,7 +3365,7 @@ func (o GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
 type GRPCActionResponse struct {
 	// Port number of the gRPC service. Number must be in the range 1 to 65535.
 	Port int `pulumi:"port"`
-	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 	Service string `pulumi:"service"`
 }
 
@@ -3389,7 +3389,7 @@ func (o GRPCActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+// Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC.
 func (o GRPCActionResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GRPCActionResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -3406,7 +3406,7 @@ type GoogleCloudRunV1Condition struct {
 	Severity *string `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status *string `pulumi:"status"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
 	Type *string `pulumi:"type"`
 }
 
@@ -3422,7 +3422,7 @@ type GoogleCloudRunV1ConditionResponse struct {
 	Severity string `pulumi:"severity"`
 	// Status of the condition, one of True, False, Unknown.
 	Status string `pulumi:"status"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+	// type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
 	Type string `pulumi:"type"`
 }
 
@@ -3466,7 +3466,7 @@ func (o GoogleCloudRunV1ConditionResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
+// type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
 func (o GoogleCloudRunV1ConditionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4182,7 +4182,7 @@ func (o KeyToPathResponseArrayOutput) Index(i pulumi.IntInput) KeyToPathResponse
 
 // Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReference struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// Name of the referent.
 	Name *string `pulumi:"name"`
 }
 
@@ -4199,7 +4199,7 @@ type LocalObjectReferenceInput interface {
 
 // Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceArgs struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// Name of the referent.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -4306,7 +4306,7 @@ func (o LocalObjectReferenceOutput) ToLocalObjectReferencePtrOutputWithContext(c
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// Name of the referent.
 func (o LocalObjectReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalObjectReference) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4335,7 +4335,7 @@ func (o LocalObjectReferencePtrOutput) Elem() LocalObjectReferenceOutput {
 	}).(LocalObjectReferenceOutput)
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// Name of the referent.
 func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalObjectReference) *string {
 		if v == nil {
@@ -4367,7 +4367,7 @@ func (o LocalObjectReferenceArrayOutput) Index(i pulumi.IntInput) LocalObjectRef
 
 // Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 type LocalObjectReferenceResponse struct {
-	// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	// Name of the referent.
 	Name string `pulumi:"name"`
 }
 
@@ -4386,7 +4386,7 @@ func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput
 	return o
 }
 
-// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+// Name of the referent.
 func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4413,11 +4413,11 @@ func (o LocalObjectReferenceResponseArrayOutput) Index(i pulumi.IntInput) LocalO
 
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMeta struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName *string `pulumi:"clusterName"`
-	// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// UTC timestamp representing the server time when this object was created.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Not supported by Cloud Run
 	DeletionGracePeriodSeconds *int `pulumi:"deletionGracePeriodSeconds"`
@@ -4429,19 +4429,19 @@ type ObjectMeta struct {
 	GenerateName *string `pulumi:"generateName"`
 	// A system-provided sequence number representing a specific generation of the desired state.
 	Generation *int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+	// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 	Name string `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace string `pulumi:"namespace"`
 	// Not supported by Cloud Run
 	OwnerReferences []OwnerReference `pulumi:"ownerReferences"`
-	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 	ResourceVersion *string `pulumi:"resourceVersion"`
 	// URL representing this object.
 	SelfLink *string `pulumi:"selfLink"`
-	// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+	// Unique, system-generated identifier for this resource.
 	Uid *string `pulumi:"uid"`
 }
 
@@ -4458,11 +4458,11 @@ type ObjectMetaInput interface {
 
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaArgs struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// UTC timestamp representing the server time when this object was created.
 	CreationTimestamp pulumi.StringPtrInput `pulumi:"creationTimestamp"`
 	// Not supported by Cloud Run
 	DeletionGracePeriodSeconds pulumi.IntPtrInput `pulumi:"deletionGracePeriodSeconds"`
@@ -4474,19 +4474,19 @@ type ObjectMetaArgs struct {
 	GenerateName pulumi.StringPtrInput `pulumi:"generateName"`
 	// A system-provided sequence number representing a specific generation of the desired state.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+	// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// Not supported by Cloud Run
 	OwnerReferences OwnerReferenceArrayInput `pulumi:"ownerReferences"`
-	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
 	// URL representing this object.
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
-	// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+	// Unique, system-generated identifier for this resource.
 	Uid pulumi.StringPtrInput `pulumi:"uid"`
 }
 
@@ -4568,7 +4568,7 @@ func (o ObjectMetaOutput) ToObjectMetaPtrOutputWithContext(ctx context.Context) 
 	}).(ObjectMetaPtrOutput)
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -4578,7 +4578,7 @@ func (o ObjectMetaOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// UTC timestamp representing the server time when this object was created.
 func (o ObjectMetaOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.CreationTimestamp }).(pulumi.StringPtrOutput)
 }
@@ -4608,12 +4608,12 @@ func (o ObjectMetaOutput) Generation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 func (o ObjectMetaOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 func (o ObjectMetaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMeta) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4628,7 +4628,7 @@ func (o ObjectMetaOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	return o.ApplyT(func(v ObjectMeta) []OwnerReference { return v.OwnerReferences }).(OwnerReferenceArrayOutput)
 }
 
-// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 func (o ObjectMetaOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
@@ -4638,7 +4638,7 @@ func (o ObjectMetaOutput) SelfLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.SelfLink }).(pulumi.StringPtrOutput)
 }
 
-// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+// Unique, system-generated identifier for this resource.
 func (o ObjectMetaOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Uid }).(pulumi.StringPtrOutput)
 }
@@ -4667,7 +4667,7 @@ func (o ObjectMetaPtrOutput) Elem() ObjectMetaOutput {
 	}).(ObjectMetaOutput)
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMeta) map[string]string {
 		if v == nil {
@@ -4687,7 +4687,7 @@ func (o ObjectMetaPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// UTC timestamp representing the server time when this object was created.
 func (o ObjectMetaPtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4747,7 +4747,7 @@ func (o ObjectMetaPtrOutput) Generation() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectMeta) map[string]string {
 		if v == nil {
@@ -4757,7 +4757,7 @@ func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 func (o ObjectMetaPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4787,7 +4787,7 @@ func (o ObjectMetaPtrOutput) OwnerReferences() OwnerReferenceArrayOutput {
 	}).(OwnerReferenceArrayOutput)
 }
 
-// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 func (o ObjectMetaPtrOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4807,7 +4807,7 @@ func (o ObjectMetaPtrOutput) SelfLink() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+// Unique, system-generated identifier for this resource.
 func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4819,11 +4819,11 @@ func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
 type ObjectMetaResponse struct {
-	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+	// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Not supported by Cloud Run
 	ClusterName string `pulumi:"clusterName"`
-	// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	// UTC timestamp representing the server time when this object was created.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// Not supported by Cloud Run
 	DeletionGracePeriodSeconds int `pulumi:"deletionGracePeriodSeconds"`
@@ -4835,19 +4835,19 @@ type ObjectMetaResponse struct {
 	GenerateName string `pulumi:"generateName"`
 	// A system-provided sequence number representing a specific generation of the desired state.
 	Generation int `pulumi:"generation"`
-	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+	// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 	Name string `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace string `pulumi:"namespace"`
 	// Not supported by Cloud Run
 	OwnerReferences []OwnerReferenceResponse `pulumi:"ownerReferences"`
-	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// URL representing this object.
 	SelfLink string `pulumi:"selfLink"`
-	// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+	// Unique, system-generated identifier for this resource.
 	Uid string `pulumi:"uid"`
 }
 
@@ -4866,7 +4866,7 @@ func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+// Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution.
 func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -4876,7 +4876,7 @@ func (o ObjectMetaResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+// UTC timestamp representing the server time when this object was created.
 func (o ObjectMetaResponseOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
@@ -4906,12 +4906,12 @@ func (o ObjectMetaResponseOutput) Generation() pulumi.IntOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) int { return v.Generation }).(pulumi.IntOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes.
 func (o ObjectMetaResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+// The name of the resource. Name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created.
 func (o ObjectMetaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4926,7 +4926,7 @@ func (o ObjectMetaResponseOutput) OwnerReferences() OwnerReferenceResponseArrayO
 	return o.ApplyT(func(v ObjectMetaResponse) []OwnerReferenceResponse { return v.OwnerReferences }).(OwnerReferenceResponseArrayOutput)
 }
 
-// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+// Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection.
 func (o ObjectMetaResponseOutput) ResourceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ResourceVersion }).(pulumi.StringOutput)
 }
@@ -4936,7 +4936,7 @@ func (o ObjectMetaResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+// Unique, system-generated identifier for this resource.
 func (o ObjectMetaResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
@@ -5177,7 +5177,7 @@ type Probe struct {
 	Grpc *GRPCAction `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform.
 	HttpGet *HTTPGetAction `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
@@ -5185,7 +5185,7 @@ type Probe struct {
 	SuccessThreshold *int `pulumi:"successThreshold"`
 	// TCPSocket specifies an action involving a TCP port.
 	TcpSocket *TCPSocketAction `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -5210,7 +5210,7 @@ type ProbeArgs struct {
 	Grpc GRPCActionPtrInput `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform.
 	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
@@ -5218,7 +5218,7 @@ type ProbeArgs struct {
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// TCPSocket specifies an action involving a TCP port.
 	TcpSocket TCPSocketActionPtrInput `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -5320,7 +5320,7 @@ func (o ProbeOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v Probe) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
@@ -5340,7 +5340,7 @@ func (o ProbeOutput) TcpSocket() TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v Probe) *TCPSocketAction { return v.TcpSocket }).(TCPSocketActionPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o ProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -5409,7 +5409,7 @@ func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
 	}).(HTTPGetActionPtrOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -5449,7 +5449,7 @@ func (o ProbePtrOutput) TcpSocket() TCPSocketActionPtrOutput {
 	}).(TCPSocketActionPtrOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -5469,7 +5469,7 @@ type ProbeResponse struct {
 	Grpc GRPCActionResponse `pulumi:"grpc"`
 	// HTTPGet specifies the http request to perform.
 	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
-	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
@@ -5477,7 +5477,7 @@ type ProbeResponse struct {
 	SuccessThreshold int `pulumi:"successThreshold"`
 	// TCPSocket specifies an action involving a TCP port.
 	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
-	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
@@ -5516,7 +5516,7 @@ func (o ProbeResponseOutput) HttpGet() HTTPGetActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
 }
 
-// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
 func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
@@ -5536,7 +5536,7 @@ func (o ProbeResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
 }
 
-// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
 func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -5613,9 +5613,9 @@ func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceReco
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirements struct {
-	// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
-	// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -5632,9 +5632,9 @@ type ResourceRequirementsInput interface {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsArgs struct {
-	// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits pulumi.StringMapInput `pulumi:"limits"`
-	// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Requests pulumi.StringMapInput `pulumi:"requests"`
 }
 
@@ -5716,12 +5716,12 @@ func (o ResourceRequirementsOutput) ToResourceRequirementsPtrOutputWithContext(c
 	}).(ResourceRequirementsPtrOutput)
 }
 
-// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirements) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -5750,7 +5750,7 @@ func (o ResourceRequirementsPtrOutput) Elem() ResourceRequirementsOutput {
 	}).(ResourceRequirementsOutput)
 }
 
-// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -5760,7 +5760,7 @@ func (o ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRequirements) map[string]string {
 		if v == nil {
@@ -5772,9 +5772,9 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 
 // ResourceRequirements describes the compute resource requirements.
 type ResourceRequirementsResponse struct {
-	// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Limits map[string]string `pulumi:"limits"`
-	// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 	Requests map[string]string `pulumi:"requests"`
 }
 
@@ -5793,12 +5793,12 @@ func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput
 	return o
 }
 
-// Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Limits describes the maximum amount of compute resources allowed. Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
-// Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits
 func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
@@ -5807,7 +5807,7 @@ func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 type RevisionSpec struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
-	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 	Containers []Container `pulumi:"containers"`
 	// Not supported by Cloud Run.
 	EnableServiceLinks *bool `pulumi:"enableServiceLinks"`
@@ -5835,7 +5835,7 @@ type RevisionSpecInput interface {
 type RevisionSpecArgs struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
-	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 	Containers ContainerArrayInput `pulumi:"containers"`
 	// Not supported by Cloud Run.
 	EnableServiceLinks pulumi.BoolPtrInput `pulumi:"enableServiceLinks"`
@@ -5931,7 +5931,7 @@ func (o RevisionSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RevisionSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
 
-// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 func (o RevisionSpecOutput) Containers() ContainerArrayOutput {
 	return o.ApplyT(func(v RevisionSpec) []Container { return v.Containers }).(ContainerArrayOutput)
 }
@@ -5994,7 +5994,7 @@ func (o RevisionSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 func (o RevisionSpecPtrOutput) Containers() ContainerArrayOutput {
 	return o.ApplyT(func(v *RevisionSpec) []Container {
 		if v == nil {
@@ -6057,7 +6057,7 @@ func (o RevisionSpecPtrOutput) Volumes() VolumeArrayOutput {
 type RevisionSpecResponse struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
-	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 	Containers []ContainerResponse `pulumi:"containers"`
 	// Not supported by Cloud Run.
 	EnableServiceLinks bool `pulumi:"enableServiceLinks"`
@@ -6090,7 +6090,7 @@ func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
 }
 
-// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
 func (o RevisionSpecResponseOutput) Containers() ContainerResponseArrayOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
 }
@@ -6119,7 +6119,7 @@ func (o RevisionSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
 }
 
-// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplate struct {
 	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata *ObjectMeta `pulumi:"metadata"`
@@ -6138,7 +6138,7 @@ type RevisionTemplateInput interface {
 	ToRevisionTemplateOutputWithContext(context.Context) RevisionTemplateOutput
 }
 
-// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplateArgs struct {
 	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaPtrInput `pulumi:"metadata"`
@@ -6199,7 +6199,7 @@ func (i *revisionTemplatePtrType) ToRevisionTemplatePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplatePtrOutput)
 }
 
-// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplateOutput struct{ *pulumi.OutputState }
 
 func (RevisionTemplateOutput) ElementType() reflect.Type {
@@ -6278,7 +6278,7 @@ func (o RevisionTemplatePtrOutput) Spec() RevisionSpecPtrOutput {
 	}).(RevisionSpecPtrOutput)
 }
 
-// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplateResponse struct {
 	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`.
 	Metadata ObjectMetaResponse `pulumi:"metadata"`
@@ -6286,7 +6286,7 @@ type RevisionTemplateResponse struct {
 	Spec RevisionSpecResponse `pulumi:"spec"`
 }
 
-// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+// RevisionTemplateSpec describes the data a revision should have when created from a template.
 type RevisionTemplateResponseOutput struct{ *pulumi.OutputState }
 
 func (RevisionTemplateResponseOutput) ElementType() reflect.Type {
@@ -7663,7 +7663,7 @@ type TaskSpec struct {
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
 	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	TimeoutSeconds *string `pulumi:"timeoutSeconds"`
-	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+	// Optional. List of volumes that can be mounted by containers belonging to the task.
 	Volumes []Volume `pulumi:"volumes"`
 }
 
@@ -7677,7 +7677,7 @@ type TaskSpecResponse struct {
 	ServiceAccountName string `pulumi:"serviceAccountName"`
 	// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	TimeoutSeconds string `pulumi:"timeoutSeconds"`
-	// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+	// Optional. List of volumes that can be mounted by containers belonging to the task.
 	Volumes []VolumeResponse `pulumi:"volumes"`
 }
 
@@ -7716,20 +7716,20 @@ func (o TaskSpecResponseOutput) TimeoutSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskSpecResponse) string { return v.TimeoutSeconds }).(pulumi.StringOutput)
 }
 
-// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
+// Optional. List of volumes that can be mounted by containers belonging to the task.
 func (o TaskSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v TaskSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
 }
 
 // TaskTemplateSpec describes the data a task should have when created from a template.
 type TaskTemplateSpec struct {
-	// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// Optional. Specification of the desired behavior of the task.
 	Spec *TaskSpec `pulumi:"spec"`
 }
 
 // TaskTemplateSpec describes the data a task should have when created from a template.
 type TaskTemplateSpecResponse struct {
-	// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// Optional. Specification of the desired behavior of the task.
 	Spec TaskSpecResponse `pulumi:"spec"`
 }
 
@@ -7748,7 +7748,7 @@ func (o TaskTemplateSpecResponseOutput) ToTaskTemplateSpecResponseOutputWithCont
 	return o
 }
 
-// Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+// Optional. Specification of the desired behavior of the task.
 func (o TaskTemplateSpecResponseOutput) Spec() TaskSpecResponseOutput {
 	return o.ApplyT(func(v TaskTemplateSpecResponse) TaskSpecResponse { return v.Spec }).(TaskSpecResponseOutput)
 }

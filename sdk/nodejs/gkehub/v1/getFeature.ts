@@ -40,7 +40,7 @@ export interface GetFeatureResult {
      */
     readonly fleetDefaultMemberConfig: outputs.gkehub.v1.CommonFleetDefaultMemberConfigSpecResponse;
     /**
-     * GCP labels for this Feature.
+     * Labels for this Feature.
      */
     readonly labels: {[key: string]: string};
     /**

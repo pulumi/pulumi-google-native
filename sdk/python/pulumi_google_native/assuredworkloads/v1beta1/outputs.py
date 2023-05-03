@@ -13,6 +13,8 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettingsResponse',
@@ -61,6 +63,78 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsResponse(dict):
         Input only. Immutable. Settings used to create a CMEK crypto key.
         """
         return pulumi.get(self, "kms_settings")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse(dict):
+    """
+    An org policy control applied by Assured Workloads
+    """
+    def __init__(__self__, *,
+                 constraint: str,
+                 version: int):
+        """
+        An org policy control applied by Assured Workloads
+        :param str constraint: Constraint name of the org policy control Example: constraints/gcp.resourcelocations
+        :param int version: Org policy version
+        """
+        pulumi.set(__self__, "constraint", constraint)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def constraint(self) -> str:
+        """
+        Constraint name of the org policy control Example: constraints/gcp.resourcelocations
+        """
+        return pulumi.get(self, "constraint")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        """
+        Org policy version
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse(dict):
+    """
+    Controls enabled to the user associated with this workload
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appliedOrgPolicies":
+            suggest = "applied_org_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 applied_org_policies: Sequence['outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse']):
+        """
+        Controls enabled to the user associated with this workload
+        :param Sequence['GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse'] applied_org_policies: Org policies currently applied by this Assured Workload
+        """
+        pulumi.set(__self__, "applied_org_policies", applied_org_policies)
+
+    @property
+    @pulumi.getter(name="appliedOrgPolicies")
+    def applied_org_policies(self) -> Sequence['outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControlResponse']:
+        """
+        Org policies currently applied by this Assured Workload
+        """
+        return pulumi.get(self, "applied_org_policies")
 
 
 @pulumi.output_type
@@ -125,8 +199,8 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(
         suggest = None
         if key == "ekmProvisioningErrorDomain":
             suggest = "ekm_provisioning_error_domain"
-        elif key == "ekmProvisioningErrorMessage":
-            suggest = "ekm_provisioning_error_message"
+        elif key == "ekmProvisioningErrorMapping":
+            suggest = "ekm_provisioning_error_mapping"
         elif key == "ekmProvisioningState":
             suggest = "ekm_provisioning_state"
 
@@ -143,16 +217,16 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(
 
     def __init__(__self__, *,
                  ekm_provisioning_error_domain: str,
-                 ekm_provisioning_error_message: str,
+                 ekm_provisioning_error_mapping: str,
                  ekm_provisioning_state: str):
         """
         External key management systems(EKM) Provisioning response
         :param str ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
-        :param str ekm_provisioning_error_message: Detailed error message if Ekm provisioning fails
+        :param str ekm_provisioning_error_mapping: Detailed error message if Ekm provisioning fails
         :param str ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
         """
         pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
-        pulumi.set(__self__, "ekm_provisioning_error_message", ekm_provisioning_error_message)
+        pulumi.set(__self__, "ekm_provisioning_error_mapping", ekm_provisioning_error_mapping)
         pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
 
     @property
@@ -164,12 +238,12 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(
         return pulumi.get(self, "ekm_provisioning_error_domain")
 
     @property
-    @pulumi.getter(name="ekmProvisioningErrorMessage")
-    def ekm_provisioning_error_message(self) -> str:
+    @pulumi.getter(name="ekmProvisioningErrorMapping")
+    def ekm_provisioning_error_mapping(self) -> str:
         """
         Detailed error message if Ekm provisioning fails
         """
-        return pulumi.get(self, "ekm_provisioning_error_message")
+        return pulumi.get(self, "ekm_provisioning_error_mapping")
 
     @property
     @pulumi.getter(name="ekmProvisioningState")

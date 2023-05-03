@@ -143,6 +143,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
+     * The source disk whose recovery checkpoint will be used to create this snapshot.
+     */
+    public readonly sourceDiskForRecoveryCheckpoint!: pulumi.Output<string>;
+    /**
      * The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */
     public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
@@ -207,6 +211,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["snapshotType"] = args ? args.snapshotType : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
+            resourceInputs["sourceDiskForRecoveryCheckpoint"] = args ? args.sourceDiskForRecoveryCheckpoint : undefined;
             resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["architecture"] = undefined /*out*/;
@@ -259,6 +264,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["snapshotType"] = undefined /*out*/;
             resourceInputs["sourceDisk"] = undefined /*out*/;
             resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
+            resourceInputs["sourceDiskForRecoveryCheckpoint"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshot"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
@@ -330,6 +336,10 @@ export interface SnapshotArgs {
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
     sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
+    /**
+     * The source disk whose recovery checkpoint will be used to create this snapshot.
+     */
+    sourceDiskForRecoveryCheckpoint?: pulumi.Input<string>;
     /**
      * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
      */

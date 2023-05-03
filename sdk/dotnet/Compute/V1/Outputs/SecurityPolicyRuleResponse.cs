@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class SecurityPolicyRuleResponse
     {
         /// <summary>
-        /// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        /// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Optional, additional actions that are performed on headers.
+        /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleHttpHeaderActionResponse HeaderAction;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsResponse RateLimitOptions;
         /// <summary>
-        /// Parameters defining the redirect action. Cannot be specified for any other actions.
+        /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse RedirectOptions;
 

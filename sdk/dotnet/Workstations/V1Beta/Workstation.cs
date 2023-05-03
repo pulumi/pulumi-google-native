@@ -40,7 +40,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Environment variables passed to the workstation container's entrypoint.
+        /// </summary>
+        [Output("env")]
+        public Output<ImmutableDictionary<string, string>> Env { get; private set; } = null!;
+
+        /// <summary>
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -176,8 +182,20 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("env")]
+        private InputMap<string>? _env;
+
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+        /// Environment variables passed to the workstation container's entrypoint.
+        /// </summary>
+        public InputMap<string> Env
+        {
+            get => _env ?? (_env = new InputMap<string>());
+            set => _env = value;
+        }
+
+        /// <summary>
+        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

@@ -1780,6 +1780,10 @@ type HttpTarget struct {
 	HeaderOverrides []HeaderOverride `pulumi:"headerOverrides"`
 	// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
 	HttpMethod *HttpTargetHttpMethod `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken *OAuthToken `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken *OidcToken `pulumi:"oidcToken"`
 	// URI override. When specified, overrides the execution URI for all the tasks in the queue.
 	UriOverride *UriOverride `pulumi:"uriOverride"`
 }
@@ -1801,6 +1805,10 @@ type HttpTargetArgs struct {
 	HeaderOverrides HeaderOverrideArrayInput `pulumi:"headerOverrides"`
 	// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
 	HttpMethod HttpTargetHttpMethodPtrInput `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
 	// URI override. When specified, overrides the execution URI for all the tasks in the queue.
 	UriOverride UriOverridePtrInput `pulumi:"uriOverride"`
 }
@@ -1893,6 +1901,16 @@ func (o HttpTargetOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
 	return o.ApplyT(func(v HttpTarget) *HttpTargetHttpMethod { return v.HttpMethod }).(HttpTargetHttpMethodPtrOutput)
 }
 
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *OAuthToken { return v.OauthToken }).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
+}
+
 // URI override. When specified, overrides the execution URI for all the tasks in the queue.
 func (o HttpTargetOutput) UriOverride() UriOverridePtrOutput {
 	return o.ApplyT(func(v HttpTarget) *UriOverride { return v.UriOverride }).(UriOverridePtrOutput)
@@ -1942,6 +1960,26 @@ func (o HttpTargetPtrOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
 	}).(HttpTargetHttpMethodPtrOutput)
 }
 
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetPtrOutput) OauthToken() OAuthTokenPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *OAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(OAuthTokenPtrOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetPtrOutput) OidcToken() OidcTokenPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *OidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(OidcTokenPtrOutput)
+}
+
 // URI override. When specified, overrides the execution URI for all the tasks in the queue.
 func (o HttpTargetPtrOutput) UriOverride() UriOverridePtrOutput {
 	return o.ApplyT(func(v *HttpTarget) *UriOverride {
@@ -1958,6 +1996,10 @@ type HttpTargetResponse struct {
 	HeaderOverrides []HeaderOverrideResponse `pulumi:"headerOverrides"`
 	// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
 	HttpMethod string `pulumi:"httpMethod"`
+	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
+	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
 	// URI override. When specified, overrides the execution URI for all the tasks in the queue.
 	UriOverride UriOverrideResponse `pulumi:"uriOverride"`
 }
@@ -1985,6 +2027,16 @@ func (o HttpTargetResponseOutput) HeaderOverrides() HeaderOverrideResponseArrayO
 // The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
 func (o HttpTargetResponseOutput) HttpMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpTargetResponse) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+func (o HttpTargetResponseOutput) OauthToken() OAuthTokenResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) OAuthTokenResponse { return v.OauthToken }).(OAuthTokenResponseOutput)
+}
+
+// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+func (o HttpTargetResponseOutput) OidcToken() OidcTokenResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
 }
 
 // URI override. When specified, overrides the execution URI for all the tasks in the queue.

@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+        /// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>

@@ -116,12 +116,12 @@ class AbortInfoResponse(dict):
 @pulumi.output_type
 class AppEngineVersionEndpointResponse(dict):
     """
-    Wrapper for app engine service version attributes.
+    Wrapper for the App Engine service version attributes.
     """
     def __init__(__self__, *,
                  uri: str):
         """
-        Wrapper for app engine service version attributes.
+        Wrapper for the App Engine service version attributes.
         :param str uri: An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
         """
         pulumi.set(__self__, "uri", uri)
@@ -999,7 +999,7 @@ class EndpointResponse(dict):
         :param str network: A Compute Engine network URI.
         :param str network_type: Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
-        :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+        :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
         pulumi.set(__self__, "app_engine_version", app_engine_version)
         pulumi.set(__self__, "cloud_function", cloud_function)
@@ -1133,7 +1133,7 @@ class EndpointResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+        Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
         return pulumi.get(self, "project")
 

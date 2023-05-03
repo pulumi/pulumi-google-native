@@ -125,6 +125,8 @@ type LookupRegionDiskResult struct {
 	SourceStorageObject string `pulumi:"sourceStorageObject"`
 	// The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 	Status string `pulumi:"status"`
+	// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+	StoragePool string `pulumi:"storagePool"`
 	// [Deprecated] Storage type of the persistent disk.
 	//
 	// Deprecated: [Deprecated] Storage type of the persistent disk.
@@ -416,6 +418,11 @@ func (o LookupRegionDiskResultOutput) SourceStorageObject() pulumi.StringOutput 
 // The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting.
 func (o LookupRegionDiskResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool
+func (o LookupRegionDiskResultOutput) StoragePool() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.StoragePool }).(pulumi.StringOutput)
 }
 
 // [Deprecated] Storage type of the persistent disk.

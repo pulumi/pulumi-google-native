@@ -241,6 +241,7 @@ class Source(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_frame_count"] = None
+            __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "source_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -277,6 +278,7 @@ class Source(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["source_id"] = None
+        __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["update_time"] = None
         return Source(resource_name, opts=opts, __props__=__props__)
@@ -362,6 +364,14 @@ class Source(pulumi.CustomResource):
         Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
         """
         return pulumi.get(self, "source_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of the source.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter

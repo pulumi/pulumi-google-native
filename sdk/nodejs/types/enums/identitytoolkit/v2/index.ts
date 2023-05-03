@@ -63,6 +63,46 @@ export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigState = {
  */
 export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigState = (typeof GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2ProviderConfigState];
 
+export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState = {
+    /**
+     * Enforcement state has not been set.
+     */
+    RecaptchaProviderEnforcementStateUnspecified: "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED",
+    /**
+     * Unenforced.
+     */
+    Off: "OFF",
+    /**
+     * reCAPTCHA assessment is created, result is not used to enforce.
+     */
+    Audit: "AUDIT",
+    /**
+     * reCAPTCHA assessment is created, result is used to enforce.
+     */
+    Enforce: "ENFORCE",
+} as const;
+
+/**
+ * The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
+ */
+export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState = (typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState];
+
+export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction = {
+    /**
+     * The reCAPTCHA action is not specified.
+     */
+    RecaptchaActionUnspecified: "RECAPTCHA_ACTION_UNSPECIFIED",
+    /**
+     * The reCAPTCHA-protected request will be blocked.
+     */
+    Block: "BLOCK",
+} as const;
+
+/**
+ * The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
+ */
+export type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction = (typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction)[keyof typeof GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction];
+
 export const GoogleIamV1AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.

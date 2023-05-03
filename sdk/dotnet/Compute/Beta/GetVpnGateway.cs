@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        /// </summary>
+        public readonly string GatewayIpVersion;
+        /// <summary>
         /// Type of resource. Always compute#vpnGateway for VPN gateways.
         /// </summary>
         public readonly string Kind;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string description,
 
+            string gatewayIpVersion,
+
             string kind,
 
             string labelFingerprint,
@@ -134,6 +140,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         {
             CreationTimestamp = creationTimestamp;
             Description = description;
+            GatewayIpVersion = gatewayIpVersion;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

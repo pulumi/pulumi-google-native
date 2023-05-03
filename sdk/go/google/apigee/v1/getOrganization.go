@@ -31,6 +31,10 @@ type LookupOrganizationResult struct {
 	//
 	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion string `pulumi:"analyticsRegion"`
+	// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+	ApiConsumerDataEncryptionKeyName string `pulumi:"apiConsumerDataEncryptionKeyName"`
+	// This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+	ApiConsumerDataLocation string `pulumi:"apiConsumerDataLocation"`
 	// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
 	ApigeeProjectId string `pulumi:"apigeeProjectId"`
 	// Not used by Apigee.
@@ -41,6 +45,8 @@ type LookupOrganizationResult struct {
 	BillingType string `pulumi:"billingType"`
 	// Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
 	CaCertificate string `pulumi:"caCertificate"`
+	// Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+	ControlPlaneEncryptionKeyName string `pulumi:"controlPlaneEncryptionKeyName"`
 	// Time that the Apigee organization was created in milliseconds since epoch.
 	CreatedAt string `pulumi:"createdAt"`
 	// Not used by Apigee.
@@ -124,6 +130,16 @@ func (o LookupOrganizationResultOutput) AnalyticsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AnalyticsRegion }).(pulumi.StringOutput)
 }
 
+// Cloud KMS key name used for encrypting API consumer data. Required for US/EU regions when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION` or the region is not US/EU, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+func (o LookupOrganizationResultOutput) ApiConsumerDataEncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ApiConsumerDataEncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// This field is needed only for customers with control plane in US or EU. Apigee stores some control plane data only in single region. This field determines which single region Apigee should use. For example: "us-west1" when control plane is in US or "europe-west2" when control plane is in EU.
+func (o LookupOrganizationResultOutput) ApiConsumerDataLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ApiConsumerDataLocation }).(pulumi.StringOutput)
+}
+
 // Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
 func (o LookupOrganizationResultOutput) ApigeeProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ApigeeProjectId }).(pulumi.StringOutput)
@@ -147,6 +163,11 @@ func (o LookupOrganizationResultOutput) BillingType() pulumi.StringOutput {
 // Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
 func (o LookupOrganizationResultOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Cloud KMS key name used for encrypting control plane data that is stored in a multi region. Required when [BillingType](#BillingType) is `SUBSCRIPTION`. When [BillingType](#BillingType) is `EVALUATION`, a Google-Managed encryption key will be used. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+func (o LookupOrganizationResultOutput) ControlPlaneEncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ControlPlaneEncryptionKeyName }).(pulumi.StringOutput)
 }
 
 // Time that the Apigee organization was created in milliseconds since epoch.

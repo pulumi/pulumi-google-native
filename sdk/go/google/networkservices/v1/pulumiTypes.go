@@ -6749,9 +6749,9 @@ func (o HttpRouteURLRewriteResponseOutput) PathPrefixRewrite() pulumi.StringOutp
 
 // The specifications for routing traffic and applying associated policies.
 type TcpRouteRouteAction struct {
-	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations []TcpRouteRouteDestination `pulumi:"destinations"`
-	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination *bool `pulumi:"originalDestination"`
 }
 
@@ -6768,9 +6768,9 @@ type TcpRouteRouteActionInput interface {
 
 // The specifications for routing traffic and applying associated policies.
 type TcpRouteRouteActionArgs struct {
-	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations TcpRouteRouteDestinationArrayInput `pulumi:"destinations"`
-	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination pulumi.BoolPtrInput `pulumi:"originalDestination"`
 }
 
@@ -6801,21 +6801,21 @@ func (o TcpRouteRouteActionOutput) ToTcpRouteRouteActionOutputWithContext(ctx co
 	return o
 }
 
-// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 func (o TcpRouteRouteActionOutput) Destinations() TcpRouteRouteDestinationArrayOutput {
 	return o.ApplyT(func(v TcpRouteRouteAction) []TcpRouteRouteDestination { return v.Destinations }).(TcpRouteRouteDestinationArrayOutput)
 }
 
-// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 func (o TcpRouteRouteActionOutput) OriginalDestination() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TcpRouteRouteAction) *bool { return v.OriginalDestination }).(pulumi.BoolPtrOutput)
 }
 
 // The specifications for routing traffic and applying associated policies.
 type TcpRouteRouteActionResponse struct {
-	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+	// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 	Destinations []TcpRouteRouteDestinationResponse `pulumi:"destinations"`
-	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+	// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 	OriginalDestination bool `pulumi:"originalDestination"`
 }
 
@@ -6834,12 +6834,12 @@ func (o TcpRouteRouteActionResponseOutput) ToTcpRouteRouteActionResponseOutputWi
 	return o
 }
 
-// Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+// Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
 func (o TcpRouteRouteActionResponseOutput) Destinations() TcpRouteRouteDestinationResponseArrayOutput {
 	return o.ApplyT(func(v TcpRouteRouteActionResponse) []TcpRouteRouteDestinationResponse { return v.Destinations }).(TcpRouteRouteDestinationResponseArrayOutput)
 }
 
-// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+// Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
 func (o TcpRouteRouteActionResponseOutput) OriginalDestination() pulumi.BoolOutput {
 	return o.ApplyT(func(v TcpRouteRouteActionResponse) bool { return v.OriginalDestination }).(pulumi.BoolOutput)
 }
@@ -7577,7 +7577,7 @@ func (o TlsRouteRouteDestinationResponseArrayOutput) Index(i pulumi.IntInput) Tl
 type TlsRouteRouteMatch struct {
 	// Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
 	Alpn []string `pulumi:"alpn"`
-	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
 	SniHost []string `pulumi:"sniHost"`
 }
 
@@ -7596,7 +7596,7 @@ type TlsRouteRouteMatchInput interface {
 type TlsRouteRouteMatchArgs struct {
 	// Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
 	Alpn pulumi.StringArrayInput `pulumi:"alpn"`
-	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
 	SniHost pulumi.StringArrayInput `pulumi:"sniHost"`
 }
 
@@ -7657,7 +7657,7 @@ func (o TlsRouteRouteMatchOutput) Alpn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteMatch) []string { return v.Alpn }).(pulumi.StringArrayOutput)
 }
 
-// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
 func (o TlsRouteRouteMatchOutput) SniHost() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteMatch) []string { return v.SniHost }).(pulumi.StringArrayOutput)
 }
@@ -7686,7 +7686,7 @@ func (o TlsRouteRouteMatchArrayOutput) Index(i pulumi.IntInput) TlsRouteRouteMat
 type TlsRouteRouteMatchResponse struct {
 	// Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
 	Alpn []string `pulumi:"alpn"`
-	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+	// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
 	SniHost []string `pulumi:"sniHost"`
 }
 
@@ -7710,7 +7710,7 @@ func (o TlsRouteRouteMatchResponseOutput) Alpn() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteMatchResponse) []string { return v.Alpn }).(pulumi.StringArrayOutput)
 }
 
-// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
 func (o TlsRouteRouteMatchResponseOutput) SniHost() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TlsRouteRouteMatchResponse) []string { return v.SniHost }).(pulumi.StringArrayOutput)
 }

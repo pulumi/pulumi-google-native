@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool AllowGlobalAccess;
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        public readonly bool AllowPscGlobalAccess;
+        /// <summary>
         /// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         /// </summary>
         public readonly string BackendService;
@@ -126,7 +130,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If this field is not specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
+        /// This field is not used for external load balancing. For Internal TCP/UDP Load Balancing, this field identifies the network that the load balanced IP should belong to for this Forwarding Rule. If the subnetwork is specified, the network of the subnetwork will be used. If neither subnetwork nor this field is specified, the default network will be used. For Private Service Connect forwarding rules that forward traffic to Google APIs, a network must be provided.
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -188,6 +192,8 @@ namespace Pulumi.GoogleNative.Compute.V1
             bool allPorts,
 
             bool allowGlobalAccess,
+
+            bool allowPscGlobalAccess,
 
             string backendService,
 
@@ -251,6 +257,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         {
             AllPorts = allPorts;
             AllowGlobalAccess = allowGlobalAccess;
+            AllowPscGlobalAccess = allowPscGlobalAccess;
             BackendService = backendService;
             BaseForwardingRule = baseForwardingRule;
             CreationTimestamp = creationTimestamp;

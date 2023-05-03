@@ -29,6 +29,7 @@ class InterconnectAttachmentArgs:
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option. 
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
@@ -87,6 +89,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "interconnect", interconnect)
         if ipsec_internal_addresses is not None:
             pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -253,6 +257,18 @@ class InterconnectAttachmentArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
@@ -397,6 +413,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
@@ -426,6 +443,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option. 
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
@@ -472,6 +490,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
@@ -504,6 +523,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["interconnect"] = interconnect
             __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["pairing_key"] = pairing_key
@@ -526,6 +546,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["dataplane_version"] = None
             __props__.__dict__["google_reference_id"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["private_interconnect_info"] = None
             __props__.__dict__["satisfies_pzs"] = None
@@ -574,6 +595,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["interconnect"] = None
         __props__.__dict__["ipsec_internal_addresses"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["label_fingerprint"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["mtu"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operational_status"] = None
@@ -744,6 +767,22 @@ class InterconnectAttachment(pulumi.CustomResource):
         Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

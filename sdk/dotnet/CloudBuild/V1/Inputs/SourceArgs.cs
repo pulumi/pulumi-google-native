@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If provided, get the source from this Git repository.
+        /// </summary>
+        [Input("gitSource")]
+        public Input<Inputs.GitSourceArgs>? GitSource { get; set; }
+
+        /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
         /// </summary>
         [Input("repoSource")]

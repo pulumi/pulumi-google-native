@@ -3594,7 +3594,7 @@ class PublishingArgs:
         :param pulumi.Input[str] github_label: GitHub label to apply to issues and pull requests opened for this API.
         :param pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]] library_settings: Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
         :param pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]] method_settings: A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
-        :param pulumi.Input[str] new_issue_uri: Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        :param pulumi.Input[str] new_issue_uri: Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
         :param pulumi.Input['PublishingOrganization'] organization: For whom the client library is being published.
         :param pulumi.Input[str] proto_reference_documentation_uri: Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
         """
@@ -3707,7 +3707,7 @@ class PublishingArgs:
     @pulumi.getter(name="newIssueUri")
     def new_issue_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
         """
         return pulumi.get(self, "new_issue_uri")
 

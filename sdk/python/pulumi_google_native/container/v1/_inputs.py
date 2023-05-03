@@ -1098,7 +1098,7 @@ class DatabaseEncryptionArgs:
         """
         Configuration of etcd encryption.
         :param pulumi.Input[str] key_name: Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
-        :param pulumi.Input['DatabaseEncryptionState'] state: Denotes the state of etcd encryption.
+        :param pulumi.Input['DatabaseEncryptionState'] state: The desired state of etcd encryption.
         """
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
@@ -1121,7 +1121,7 @@ class DatabaseEncryptionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['DatabaseEncryptionState']]:
         """
-        Denotes the state of etcd encryption.
+        The desired state of etcd encryption.
         """
         return pulumi.get(self, "state")
 

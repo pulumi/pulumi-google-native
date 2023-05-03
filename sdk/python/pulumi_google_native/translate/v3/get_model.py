@@ -18,16 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetModelResult:
-    def __init__(__self__, create_time=None, dataset=None, deploy_time=None, display_name=None, name=None, source_language_code=None, target_language_code=None, test_example_count=None, train_example_count=None, update_time=None, validate_example_count=None):
+    def __init__(__self__, create_time=None, dataset=None, display_name=None, name=None, source_language_code=None, target_language_code=None, test_example_count=None, train_example_count=None, update_time=None, validate_example_count=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if dataset and not isinstance(dataset, str):
             raise TypeError("Expected argument 'dataset' to be a str")
         pulumi.set(__self__, "dataset", dataset)
-        if deploy_time and not isinstance(deploy_time, str):
-            raise TypeError("Expected argument 'deploy_time' to be a str")
-        pulumi.set(__self__, "deploy_time", deploy_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -68,14 +65,6 @@ class GetModelResult:
         The dataset from which the model is trained, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
         """
         return pulumi.get(self, "dataset")
-
-    @property
-    @pulumi.getter(name="deployTime")
-    def deploy_time(self) -> str:
-        """
-        Timestamp when the model training finished and ready to be used for translation.
-        """
-        return pulumi.get(self, "deploy_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -150,7 +139,6 @@ class AwaitableGetModelResult(GetModelResult):
         return GetModelResult(
             create_time=self.create_time,
             dataset=self.dataset,
-            deploy_time=self.deploy_time,
             display_name=self.display_name,
             name=self.name,
             source_language_code=self.source_language_code,
@@ -178,7 +166,6 @@ def get_model(location: Optional[str] = None,
     return AwaitableGetModelResult(
         create_time=__ret__.create_time,
         dataset=__ret__.dataset,
-        deploy_time=__ret__.deploy_time,
         display_name=__ret__.display_name,
         name=__ret__.name,
         source_language_code=__ret__.source_language_code,

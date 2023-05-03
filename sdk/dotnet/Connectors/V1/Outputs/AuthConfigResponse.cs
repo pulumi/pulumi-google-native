@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConfigVariableResponse> AdditionalVariables;
         /// <summary>
+        /// Identifier key for auth config
+        /// </summary>
+        public readonly string AuthKey;
+        /// <summary>
         /// The type of authentication configured.
         /// </summary>
         public readonly string AuthType;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
         private AuthConfigResponse(
             ImmutableArray<Outputs.ConfigVariableResponse> additionalVariables,
 
+            string authKey,
+
             string authType,
 
             Outputs.Oauth2AuthCodeFlowResponse oauth2AuthCodeFlow,
@@ -62,6 +68,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
             Outputs.UserPasswordResponse userPassword)
         {
             AdditionalVariables = additionalVariables;
+            AuthKey = authKey;
             AuthType = authType;
             Oauth2AuthCodeFlow = oauth2AuthCodeFlow;
             Oauth2ClientCredentials = oauth2ClientCredentials;

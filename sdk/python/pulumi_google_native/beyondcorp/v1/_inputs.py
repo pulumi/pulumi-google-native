@@ -11,9 +11,6 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
-    'ConfigArgs',
-    'DestinationRouteArgs',
-    'EgressArgs',
     'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArgs',
     'GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs',
@@ -23,109 +20,7 @@ __all__ = [
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
     'GoogleTypeExprArgs',
-    'IngressArgs',
-    'PeeredVpcArgs',
 ]
-
-@pulumi.input_type
-class ConfigArgs:
-    def __init__(__self__, *,
-                 destination_routes: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]],
-                 transport_protocol: pulumi.Input['ConfigTransportProtocol']):
-        """
-        The basic ingress config for ClientGateways.
-        :param pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]] destination_routes: The settings used to configure basic ClientGateways.
-        :param pulumi.Input['ConfigTransportProtocol'] transport_protocol: Immutable. The transport protocol used between the client and the server.
-        """
-        pulumi.set(__self__, "destination_routes", destination_routes)
-        pulumi.set(__self__, "transport_protocol", transport_protocol)
-
-    @property
-    @pulumi.getter(name="destinationRoutes")
-    def destination_routes(self) -> pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]:
-        """
-        The settings used to configure basic ClientGateways.
-        """
-        return pulumi.get(self, "destination_routes")
-
-    @destination_routes.setter
-    def destination_routes(self, value: pulumi.Input[Sequence[pulumi.Input['DestinationRouteArgs']]]):
-        pulumi.set(self, "destination_routes", value)
-
-    @property
-    @pulumi.getter(name="transportProtocol")
-    def transport_protocol(self) -> pulumi.Input['ConfigTransportProtocol']:
-        """
-        Immutable. The transport protocol used between the client and the server.
-        """
-        return pulumi.get(self, "transport_protocol")
-
-    @transport_protocol.setter
-    def transport_protocol(self, value: pulumi.Input['ConfigTransportProtocol']):
-        pulumi.set(self, "transport_protocol", value)
-
-
-@pulumi.input_type
-class DestinationRouteArgs:
-    def __init__(__self__, *,
-                 address: pulumi.Input[str],
-                 netmask: pulumi.Input[str]):
-        """
-        The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
-        :param pulumi.Input[str] address: The network address of the subnet for which the packet is routed to the ClientGateway.
-        :param pulumi.Input[str] netmask: The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "netmask", netmask)
-
-    @property
-    @pulumi.getter
-    def address(self) -> pulumi.Input[str]:
-        """
-        The network address of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "address")
-
-    @address.setter
-    def address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "address", value)
-
-    @property
-    @pulumi.getter
-    def netmask(self) -> pulumi.Input[str]:
-        """
-        The network mask of the subnet for which the packet is routed to the ClientGateway.
-        """
-        return pulumi.get(self, "netmask")
-
-    @netmask.setter
-    def netmask(self, value: pulumi.Input[str]):
-        pulumi.set(self, "netmask", value)
-
-
-@pulumi.input_type
-class EgressArgs:
-    def __init__(__self__, *,
-                 peered_vpc: Optional[pulumi.Input['PeeredVpcArgs']] = None):
-        """
-        The details of the egress info. One of the following options should be set.
-        :param pulumi.Input['PeeredVpcArgs'] peered_vpc: A VPC from the consumer project.
-        """
-        if peered_vpc is not None:
-            pulumi.set(__self__, "peered_vpc", peered_vpc)
-
-    @property
-    @pulumi.getter(name="peeredVpc")
-    def peered_vpc(self) -> Optional[pulumi.Input['PeeredVpcArgs']]:
-        """
-        A VPC from the consumer project.
-        """
-        return pulumi.get(self, "peered_vpc")
-
-    @peered_vpc.setter
-    def peered_vpc(self, value: Optional[pulumi.Input['PeeredVpcArgs']]):
-        pulumi.set(self, "peered_vpc", value)
-
 
 @pulumi.input_type
 class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointArgs:
@@ -544,52 +439,5 @@ class GoogleTypeExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class IngressArgs:
-    def __init__(__self__, *,
-                 config: Optional[pulumi.Input['ConfigArgs']] = None):
-        """
-        Settings of how to connect to the ClientGateway. One of the following options should be set.
-        :param pulumi.Input['ConfigArgs'] config: The basic ingress config for ClientGateways.
-        """
-        if config is not None:
-            pulumi.set(__self__, "config", config)
-
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ConfigArgs']]:
-        """
-        The basic ingress config for ClientGateways.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input['ConfigArgs']]):
-        pulumi.set(self, "config", value)
-
-
-@pulumi.input_type
-class PeeredVpcArgs:
-    def __init__(__self__, *,
-                 network_vpc: pulumi.Input[str]):
-        """
-        The peered VPC owned by the consumer project.
-        :param pulumi.Input[str] network_vpc: The name of the peered VPC owned by the consumer project.
-        """
-        pulumi.set(__self__, "network_vpc", network_vpc)
-
-    @property
-    @pulumi.getter(name="networkVpc")
-    def network_vpc(self) -> pulumi.Input[str]:
-        """
-        The name of the peered VPC owned by the consumer project.
-        """
-        return pulumi.get(self, "network_vpc")
-
-    @network_vpc.setter
-    def network_vpc(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network_vpc", value)
 
 

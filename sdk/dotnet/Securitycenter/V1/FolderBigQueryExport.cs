@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public partial class FolderBigQueryExport : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
         /// </summary>
         [Output("bigQueryExportId")]
         public Output<string> BigQueryExportId { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class FolderBigQueryExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of only lowercase letters, numbers, and hyphens, must start with a letter, must end with either a letter or a number, and must be 63 characters or less.
         /// </summary>
         [Input("bigQueryExportId", required: true)]
         public Input<string> BigQueryExportId { get; set; } = null!;

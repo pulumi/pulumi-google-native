@@ -38,6 +38,8 @@ type LookupModelResult struct {
 	FilteringOption string `pulumi:"filteringOption"`
 	// The timestamp when the latest successful tune finished.
 	LastTuneTime string `pulumi:"lastTuneTime"`
+	// Optional. Additional model features config.
+	ModelFeaturesConfig GoogleCloudRetailV2betaModelModelFeaturesConfigResponse `pulumi:"modelFeaturesConfig"`
 	// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
 	Name string `pulumi:"name"`
 	// Optional. The optimization objective e.g. `cvr`. Currently supported values: `ctr`, `cvr`, `revenue-per-order`. If not specified, we choose default based on model type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` `frequently-bought-together` => `revenue_per_order` This field together with optimization_objective describe model metadata to use to control model training and serving. See https://cloud.google.com/retail/docs/models for more details on what the model metadata control and which combination of parameters are valid. For invalid combinations of parameters (e.g. type = `frequently-bought-together` and optimization_objective = `ctr`), you receive an error 400 if you try to create/update a recommendation with this set of knobs.
@@ -119,6 +121,13 @@ func (o LookupModelResultOutput) FilteringOption() pulumi.StringOutput {
 // The timestamp when the latest successful tune finished.
 func (o LookupModelResultOutput) LastTuneTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelResult) string { return v.LastTuneTime }).(pulumi.StringOutput)
+}
+
+// Optional. Additional model features config.
+func (o LookupModelResultOutput) ModelFeaturesConfig() GoogleCloudRetailV2betaModelModelFeaturesConfigResponseOutput {
+	return o.ApplyT(func(v LookupModelResult) GoogleCloudRetailV2betaModelModelFeaturesConfigResponse {
+		return v.ModelFeaturesConfig
+	}).(GoogleCloudRetailV2betaModelModelFeaturesConfigResponseOutput)
 }
 
 // The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.

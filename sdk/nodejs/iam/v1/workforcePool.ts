@@ -40,7 +40,7 @@ export class WorkforcePool extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+     * Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -116,7 +116,7 @@ export interface WorkforcePoolArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+     * Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
     disabled?: pulumi.Input<boolean>;
     /**

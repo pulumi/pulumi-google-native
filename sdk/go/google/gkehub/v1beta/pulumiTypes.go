@@ -1828,8 +1828,36 @@ func (o FeatureStateResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureStateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// FleetLifecycleState describes the state of a Fleet resource.
+type FleetLifecycleStateResponse struct {
+	// The current state of the Fleet resource.
+	Code string `pulumi:"code"`
+}
+
+// FleetLifecycleState describes the state of a Fleet resource.
+type FleetLifecycleStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetLifecycleStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetLifecycleStateResponse)(nil)).Elem()
+}
+
+func (o FleetLifecycleStateResponseOutput) ToFleetLifecycleStateResponseOutput() FleetLifecycleStateResponseOutput {
+	return o
+}
+
+func (o FleetLifecycleStateResponseOutput) ToFleetLifecycleStateResponseOutputWithContext(ctx context.Context) FleetLifecycleStateResponseOutput {
+	return o
+}
+
+// The current state of the Fleet resource.
+func (o FleetLifecycleStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetLifecycleStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpec struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig *FleetObservabilityLoggingConfig `pulumi:"loggingConfig"`
 }
 
 // FleetObservabilityFeatureSpecInput is an input type that accepts FleetObservabilityFeatureSpecArgs and FleetObservabilityFeatureSpecOutput values.
@@ -1845,6 +1873,8 @@ type FleetObservabilityFeatureSpecInput interface {
 
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpecArgs struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig FleetObservabilityLoggingConfigPtrInput `pulumi:"loggingConfig"`
 }
 
 func (FleetObservabilityFeatureSpecArgs) ElementType() reflect.Type {
@@ -1925,6 +1955,11 @@ func (o FleetObservabilityFeatureSpecOutput) ToFleetObservabilityFeatureSpecPtrO
 	}).(FleetObservabilityFeatureSpecPtrOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecOutput) LoggingConfig() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityFeatureSpec) *FleetObservabilityLoggingConfig { return v.LoggingConfig }).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
 type FleetObservabilityFeatureSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (FleetObservabilityFeatureSpecPtrOutput) ElementType() reflect.Type {
@@ -1949,8 +1984,20 @@ func (o FleetObservabilityFeatureSpecPtrOutput) Elem() FleetObservabilityFeature
 	}).(FleetObservabilityFeatureSpecOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecPtrOutput) LoggingConfig() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityFeatureSpec) *FleetObservabilityLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
 type FleetObservabilityFeatureSpecResponse struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfig FleetObservabilityLoggingConfigResponse `pulumi:"loggingConfig"`
 }
 
 // **Fleet Observability**: The Hub-wide input for the FleetObservability feature.
@@ -1966,6 +2013,13 @@ func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeature
 
 func (o FleetObservabilityFeatureSpecResponseOutput) ToFleetObservabilityFeatureSpecResponseOutputWithContext(ctx context.Context) FleetObservabilityFeatureSpecResponseOutput {
 	return o
+}
+
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o FleetObservabilityFeatureSpecResponseOutput) LoggingConfig() FleetObservabilityLoggingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityFeatureSpecResponse) FleetObservabilityLoggingConfigResponse {
+		return v.LoggingConfig
+	}).(FleetObservabilityLoggingConfigResponseOutput)
 }
 
 // **FleetObservability**: An empty state left as an example Hub-wide Feature state.
@@ -1985,6 +2039,370 @@ func (o FleetObservabilityFeatureStateResponseOutput) ToFleetObservabilityFeatur
 
 func (o FleetObservabilityFeatureStateResponseOutput) ToFleetObservabilityFeatureStateResponseOutputWithContext(ctx context.Context) FleetObservabilityFeatureStateResponseOutput {
 	return o
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfig struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig *FleetObservabilityRoutingConfig `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig *FleetObservabilityRoutingConfig `pulumi:"fleetScopeLogsConfig"`
+}
+
+// FleetObservabilityLoggingConfigInput is an input type that accepts FleetObservabilityLoggingConfigArgs and FleetObservabilityLoggingConfigOutput values.
+// You can construct a concrete instance of `FleetObservabilityLoggingConfigInput` via:
+//
+//	FleetObservabilityLoggingConfigArgs{...}
+type FleetObservabilityLoggingConfigInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput
+	ToFleetObservabilityLoggingConfigOutputWithContext(context.Context) FleetObservabilityLoggingConfigOutput
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigArgs struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig FleetObservabilityRoutingConfigPtrInput `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig FleetObservabilityRoutingConfigPtrInput `pulumi:"fleetScopeLogsConfig"`
+}
+
+func (FleetObservabilityLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput {
+	return i.ToFleetObservabilityLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigOutput)
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return i.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityLoggingConfigArgs) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigOutput).ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityLoggingConfigPtrInput is an input type that accepts FleetObservabilityLoggingConfigArgs, FleetObservabilityLoggingConfigPtr and FleetObservabilityLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityLoggingConfigPtrInput` via:
+//
+//	        FleetObservabilityLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput
+	ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Context) FleetObservabilityLoggingConfigPtrOutput
+}
+
+type fleetObservabilityLoggingConfigPtrType FleetObservabilityLoggingConfigArgs
+
+func FleetObservabilityLoggingConfigPtr(v *FleetObservabilityLoggingConfigArgs) FleetObservabilityLoggingConfigPtrInput {
+	return (*fleetObservabilityLoggingConfigPtrType)(v)
+}
+
+func (*fleetObservabilityLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i *fleetObservabilityLoggingConfigPtrType) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return i.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityLoggingConfigPtrType) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigOutput() FleetObservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return o.ToFleetObservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityLoggingConfigOutput) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityLoggingConfig) *FleetObservabilityLoggingConfig {
+		return &v
+	}).(FleetObservabilityLoggingConfigPtrOutput)
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigOutput) DefaultConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig { return v.DefaultConfig }).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+type FleetObservabilityLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) ToFleetObservabilityLoggingConfigPtrOutput() FleetObservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) ToFleetObservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigPtrOutput) Elem() FleetObservabilityLoggingConfigOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) FleetObservabilityLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityLoggingConfig
+		return ret
+	}).(FleetObservabilityLoggingConfigOutput)
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigPtrOutput) DefaultConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigPtrOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityLoggingConfig) *FleetObservabilityRoutingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigResponse struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfig FleetObservabilityRoutingConfigResponse `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfig FleetObservabilityRoutingConfigResponse `pulumi:"fleetScopeLogsConfig"`
+}
+
+// LoggingConfig defines the configuration for different types of logs.
+type FleetObservabilityLoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityLoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityLoggingConfigResponseOutput) ToFleetObservabilityLoggingConfigResponseOutput() FleetObservabilityLoggingConfigResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityLoggingConfigResponseOutput) ToFleetObservabilityLoggingConfigResponseOutputWithContext(ctx context.Context) FleetObservabilityLoggingConfigResponseOutput {
+	return o
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o FleetObservabilityLoggingConfigResponseOutput) DefaultConfig() FleetObservabilityRoutingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfigResponse) FleetObservabilityRoutingConfigResponse {
+		return v.DefaultConfig
+	}).(FleetObservabilityRoutingConfigResponseOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o FleetObservabilityLoggingConfigResponseOutput) FleetScopeLogsConfig() FleetObservabilityRoutingConfigResponseOutput {
+	return o.ApplyT(func(v FleetObservabilityLoggingConfigResponse) FleetObservabilityRoutingConfigResponse {
+		return v.FleetScopeLogsConfig
+	}).(FleetObservabilityRoutingConfigResponseOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfig struct {
+	// mode configures the logs routing mode.
+	Mode *FleetObservabilityRoutingConfigMode `pulumi:"mode"`
+}
+
+// FleetObservabilityRoutingConfigInput is an input type that accepts FleetObservabilityRoutingConfigArgs and FleetObservabilityRoutingConfigOutput values.
+// You can construct a concrete instance of `FleetObservabilityRoutingConfigInput` via:
+//
+//	FleetObservabilityRoutingConfigArgs{...}
+type FleetObservabilityRoutingConfigInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput
+	ToFleetObservabilityRoutingConfigOutputWithContext(context.Context) FleetObservabilityRoutingConfigOutput
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigArgs struct {
+	// mode configures the logs routing mode.
+	Mode FleetObservabilityRoutingConfigModePtrInput `pulumi:"mode"`
+}
+
+func (FleetObservabilityRoutingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput {
+	return i.ToFleetObservabilityRoutingConfigOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigOutput)
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return i.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetObservabilityRoutingConfigArgs) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigOutput).ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx)
+}
+
+// FleetObservabilityRoutingConfigPtrInput is an input type that accepts FleetObservabilityRoutingConfigArgs, FleetObservabilityRoutingConfigPtr and FleetObservabilityRoutingConfigPtrOutput values.
+// You can construct a concrete instance of `FleetObservabilityRoutingConfigPtrInput` via:
+//
+//	        FleetObservabilityRoutingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetObservabilityRoutingConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput
+	ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Context) FleetObservabilityRoutingConfigPtrOutput
+}
+
+type fleetObservabilityRoutingConfigPtrType FleetObservabilityRoutingConfigArgs
+
+func FleetObservabilityRoutingConfigPtr(v *FleetObservabilityRoutingConfigArgs) FleetObservabilityRoutingConfigPtrInput {
+	return (*fleetObservabilityRoutingConfigPtrType)(v)
+}
+
+func (*fleetObservabilityRoutingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (i *fleetObservabilityRoutingConfigPtrType) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return i.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetObservabilityRoutingConfigPtrType) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigOutput() FleetObservabilityRoutingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return o.ToFleetObservabilityRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetObservabilityRoutingConfigOutput) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfig {
+		return &v
+	}).(FleetObservabilityRoutingConfigPtrOutput)
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigOutput) Mode() FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ApplyT(func(v FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfigMode { return v.Mode }).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+type FleetObservabilityRoutingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetObservabilityRoutingConfig)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) ToFleetObservabilityRoutingConfigPtrOutput() FleetObservabilityRoutingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) ToFleetObservabilityRoutingConfigPtrOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigPtrOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigPtrOutput) Elem() FleetObservabilityRoutingConfigOutput {
+	return o.ApplyT(func(v *FleetObservabilityRoutingConfig) FleetObservabilityRoutingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetObservabilityRoutingConfig
+		return ret
+	}).(FleetObservabilityRoutingConfigOutput)
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigPtrOutput) Mode() FleetObservabilityRoutingConfigModePtrOutput {
+	return o.ApplyT(func(v *FleetObservabilityRoutingConfig) *FleetObservabilityRoutingConfigMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(FleetObservabilityRoutingConfigModePtrOutput)
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigResponse struct {
+	// mode configures the logs routing mode.
+	Mode string `pulumi:"mode"`
+}
+
+// RoutingConfig configures the behaviour of fleet logging feature.
+type FleetObservabilityRoutingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetObservabilityRoutingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetObservabilityRoutingConfigResponse)(nil)).Elem()
+}
+
+func (o FleetObservabilityRoutingConfigResponseOutput) ToFleetObservabilityRoutingConfigResponseOutput() FleetObservabilityRoutingConfigResponseOutput {
+	return o
+}
+
+func (o FleetObservabilityRoutingConfigResponseOutput) ToFleetObservabilityRoutingConfigResponseOutputWithContext(ctx context.Context) FleetObservabilityRoutingConfigResponseOutput {
+	return o
+}
+
+// mode configures the logs routing mode.
+func (o FleetObservabilityRoutingConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetObservabilityRoutingConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
@@ -3710,6 +4128,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecPtrInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityLoggingConfigPtrInput)(nil)).Elem(), FleetObservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityRoutingConfigPtrInput)(nil)).Elem(), FleetObservabilityRoutingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAuthMethodInput)(nil)).Elem(), IdentityServiceAuthMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAuthMethodArrayInput)(nil)).Elem(), IdentityServiceAuthMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAzureADConfigInput)(nil)).Elem(), IdentityServiceAzureADConfigArgs{})
@@ -3757,10 +4179,17 @@ func init() {
 	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateResponseOutput{})
 	pulumi.RegisterOutputType(FeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(FleetLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(FleetObservabilityFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityLoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetObservabilityRoutingConfigResponseOutput{})
 	pulumi.RegisterOutputType(IdentityServiceAuthMethodOutput{})
 	pulumi.RegisterOutputType(IdentityServiceAuthMethodArrayOutput{})
 	pulumi.RegisterOutputType(IdentityServiceAuthMethodResponseOutput{})

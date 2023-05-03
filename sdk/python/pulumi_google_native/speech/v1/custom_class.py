@@ -157,6 +157,8 @@ class CustomClass(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["kms_key_name"] = None
+            __props__.__dict__["kms_key_version_name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CustomClass, __self__).__init__(
@@ -183,6 +185,8 @@ class CustomClass(pulumi.CustomResource):
 
         __props__.__dict__["custom_class_id"] = None
         __props__.__dict__["items"] = None
+        __props__.__dict__["kms_key_name"] = None
+        __props__.__dict__["kms_key_version_name"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -203,6 +207,22 @@ class CustomClass(pulumi.CustomResource):
         A collection of class items.
         """
         return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> pulumi.Output[str]:
+        """
+        The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        """
+        return pulumi.get(self, "kms_key_version_name")
 
     @property
     @pulumi.getter

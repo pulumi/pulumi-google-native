@@ -10,313 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponse struct {
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-	BanDurationSec int `pulumi:"banDurationSec"`
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
-	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKey string `pulumi:"enforceOnKey"`
-	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-	ExceedAction string `pulumi:"exceedAction"`
-	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
-	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
-	// Threshold at which to begin ratelimiting.
-	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.BanThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
-// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
-}
-
-// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return v.EnforceOnKeyConfigs
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
-}
-
-// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
-		return v.ExceedActionRpcStatus
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
-}
-
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
-		return v.ExceedRedirectOptions
-	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
-}
-
-// Threshold at which to begin ratelimiting.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.RateLimitThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A developer-facing error message, which should be in English.
-	Message *string `pulumi:"message"`
-}
-
-// SecurityPolicyRuleRateLimitOptionsRpcStatusInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs and SecurityPolicyRuleRateLimitOptionsRpcStatusOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusInput` via:
-//
-//	SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
-type SecurityPolicyRuleRateLimitOptionsRpcStatusInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A developer-facing error message, which should be in English.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput).ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs, SecurityPolicyRuleRateLimitOptionsRpcStatusPtr and SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput` via:
-//
-//	        SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
-}
-
-type securityPolicyRuleRateLimitOptionsRpcStatusPtrType SecurityPolicyRuleRateLimitOptionsRpcStatusArgs
-
-func SecurityPolicyRuleRateLimitOptionsRpcStatusPtr(v *SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput {
-	return (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType)(v)
-}
-
-func (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatusOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsRpcStatus) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		return &v
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// A developer-facing error message, which should be in English.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleRateLimitOptionsRpcStatus
-		return ret
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A developer-facing error message, which should be in English.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 // Simplified google.rpc.Status type (omitting details).
 type SecurityPolicyRuleRateLimitOptionsRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -726,7 +419,7 @@ func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOut
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponse struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -734,7 +427,7 @@ type SecurityPolicyRuleResponse struct {
 	Direction string `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
 	EnableLogging bool `pulumi:"enableLogging"`
-	// Optional, additional actions that are performed on headers.
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	HeaderAction SecurityPolicyRuleHttpHeaderActionResponse `pulumi:"headerAction"`
 	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
 	Kind string `pulumi:"kind"`
@@ -750,7 +443,7 @@ type SecurityPolicyRuleResponse struct {
 	Priority int `pulumi:"priority"`
 	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponse `pulumi:"rateLimitOptions"`
-	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 	RedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"redirectOptions"`
 	// This must be specified for redirect actions. Cannot be specified for any other actions.
 	RedirectTarget string `pulumi:"redirectTarget"`
@@ -783,7 +476,7 @@ func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -803,7 +496,7 @@ func (o SecurityPolicyRuleResponseOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) bool { return v.EnableLogging }).(pulumi.BoolOutput)
 }
 
-// Optional, additional actions that are performed on headers.
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleHttpHeaderActionResponse { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionResponseOutput)
 }
@@ -847,7 +540,7 @@ func (o SecurityPolicyRuleResponseOutput) RateLimitOptions() SecurityPolicyRuleR
 	}).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
 }
 
-// Parameters defining the redirect action. Cannot be specified for any other actions.
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 func (o SecurityPolicyRuleResponseOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRedirectOptionsResponse { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsResponseOutput)
 }
@@ -7962,8 +7655,6 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
@@ -8032,11 +7723,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput{})

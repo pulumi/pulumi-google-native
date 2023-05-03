@@ -46,6 +46,26 @@ export const DatabaseConcurrencyMode = {
  */
 export type DatabaseConcurrencyMode = (typeof DatabaseConcurrencyMode)[keyof typeof DatabaseConcurrencyMode];
 
+export const DatabaseDeleteProtectionState = {
+    /**
+     * The default value. Delete protection type is not specified
+     */
+    DeleteProtectionStateUnspecified: "DELETE_PROTECTION_STATE_UNSPECIFIED",
+    /**
+     * Delete protection is disabled
+     */
+    DeleteProtectionDisabled: "DELETE_PROTECTION_DISABLED",
+    /**
+     * Delete protection is enabled
+     */
+    DeleteProtectionEnabled: "DELETE_PROTECTION_ENABLED",
+} as const;
+
+/**
+ * State of delete protection for the database.
+ */
+export type DatabaseDeleteProtectionState = (typeof DatabaseDeleteProtectionState)[keyof typeof DatabaseDeleteProtectionState];
+
 export const DatabaseType = {
     /**
      * The default value. This value is used if the database type is omitted.

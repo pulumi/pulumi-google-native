@@ -73,9 +73,15 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+     * Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+     *
+     * @deprecated Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1.NotificationConfigResponse>;
+    /**
+     * Specifies where and whether to send notifications upon changes to a FHIR store.
+     */
+    public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.v1.FhirNotificationConfigResponse[]>;
     public readonly project!: pulumi.Output<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
@@ -114,6 +120,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
+            resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             resourceInputs["validationConfig"] = args ? args.validationConfig : undefined;
@@ -131,6 +138,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
+            resourceInputs["notificationConfigs"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["streamConfigs"] = undefined /*out*/;
             resourceInputs["validationConfig"] = undefined /*out*/;
@@ -178,9 +186,15 @@ export interface FhirStoreArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+     * Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+     *
+     * @deprecated Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
+    /**
+     * Specifies where and whether to send notifications upon changes to a FHIR store.
+     */
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.FhirNotificationConfigArgs>[]>;
     project?: pulumi.Input<string>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.

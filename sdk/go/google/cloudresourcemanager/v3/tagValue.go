@@ -23,7 +23,7 @@ type TagValue struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Immutable. Resource name for TagValue in the format `tagValues/456`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
+	// The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
 	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -158,7 +158,7 @@ func (o TagValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
+// The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
 func (o TagValueOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.NamespacedName }).(pulumi.StringOutput)
 }

@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly Outputs.BigQueryConfigResponse BigqueryConfig;
         /// <summary>
+        /// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        /// </summary>
+        public readonly Outputs.CloudStorageConfigResponse CloudStorageConfig;
+        /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
         /// </summary>
         public readonly Outputs.DeadLetterPolicyResponse DeadLetterPolicy;
@@ -132,6 +136,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             Outputs.BigQueryConfigResponse bigqueryConfig,
 
+            Outputs.CloudStorageConfigResponse cloudStorageConfig,
+
             Outputs.DeadLetterPolicyResponse deadLetterPolicy,
 
             bool detached,
@@ -164,6 +170,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         {
             AckDeadlineSeconds = ackDeadlineSeconds;
             BigqueryConfig = bigqueryConfig;
+            CloudStorageConfig = cloudStorageConfig;
             DeadLetterPolicy = deadLetterPolicy;
             Detached = detached;
             EnableExactlyOnceDelivery = enableExactlyOnceDelivery;

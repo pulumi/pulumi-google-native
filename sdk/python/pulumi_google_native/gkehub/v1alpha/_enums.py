@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'FeatureSpecProvisionGoogleCa',
+    'FleetObservabilityRoutingConfigMode',
     'MembershipSpecCertificateManagement',
     'MultiClusterIngressFeatureSpecBilling',
     'OnPremClusterClusterType',
@@ -51,6 +52,24 @@ class FeatureSpecProvisionGoogleCa(str, Enum):
     ENABLED = "ENABLED"
     """
     Use default Google managed CA.
+    """
+
+
+class FleetObservabilityRoutingConfigMode(str, Enum):
+    """
+    mode configures the logs routing mode.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    If UNSPECIFIED, fleet logging feature is disabled.
+    """
+    COPY = "COPY"
+    """
+    logs will be copied to the destination project.
+    """
+    MOVE = "MOVE"
+    """
+    logs will be moved to the destination project.
     """
 
 

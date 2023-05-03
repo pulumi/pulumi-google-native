@@ -181,9 +181,711 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// The enablement state of the custom module.
+type CustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	CustomModuleEnablementStateEnablementStateUnspecified = CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given CRM resource.
+	CustomModuleEnablementStateEnabled = CustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given CRM resource.
+	CustomModuleEnablementStateDisabled = CustomModuleEnablementState("DISABLED")
+	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+	CustomModuleEnablementStateInherited = CustomModuleEnablementState("INHERITED")
+)
+
+func (CustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e CustomModuleEnablementState) ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(CustomModuleEnablementStateOutput)
+}
+
+func (e CustomModuleEnablementState) ToCustomModuleEnablementStateOutputWithContext(ctx context.Context) CustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomModuleEnablementStateOutput)
+}
+
+func (e CustomModuleEnablementState) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
+	return e.ToCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e CustomModuleEnablementState) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
+	return CustomModuleEnablementState(e).ToCustomModuleEnablementStateOutputWithContext(ctx).ToCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e CustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (CustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStateOutputWithContext(ctx context.Context) CustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
+	return o.ToCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o CustomModuleEnablementStateOutput) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomModuleEnablementState) *CustomModuleEnablementState {
+		return &v
+	}).(CustomModuleEnablementStatePtrOutput)
+}
+
+func (o CustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o CustomModuleEnablementStatePtrOutput) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o CustomModuleEnablementStatePtrOutput) Elem() CustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *CustomModuleEnablementState) CustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret CustomModuleEnablementState
+		return ret
+	}).(CustomModuleEnablementStateOutput)
+}
+
+func (o CustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomModuleEnablementStateInput is an input type that accepts CustomModuleEnablementStateArgs and CustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `CustomModuleEnablementStateInput` via:
+//
+//	CustomModuleEnablementStateArgs{...}
+type CustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToCustomModuleEnablementStateOutput() CustomModuleEnablementStateOutput
+	ToCustomModuleEnablementStateOutputWithContext(context.Context) CustomModuleEnablementStateOutput
+}
+
+var customModuleEnablementStatePtrType = reflect.TypeOf((**CustomModuleEnablementState)(nil)).Elem()
+
+type CustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput
+	ToCustomModuleEnablementStatePtrOutputWithContext(context.Context) CustomModuleEnablementStatePtrOutput
+}
+
+type customModuleEnablementStatePtr string
+
+func CustomModuleEnablementStatePtr(v string) CustomModuleEnablementStatePtrInput {
+	return (*customModuleEnablementStatePtr)(&v)
+}
+
+func (*customModuleEnablementStatePtr) ElementType() reflect.Type {
+	return customModuleEnablementStatePtrType
+}
+
+func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutput() CustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(CustomModuleEnablementStatePtrOutput)
+}
+
+func (in *customModuleEnablementStatePtr) ToCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) CustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomModuleEnablementStatePtrOutput)
+}
+
+// The enablement state of the custom module.
+type FolderCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	FolderCustomModuleEnablementStateEnablementStateUnspecified = FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given CRM resource.
+	FolderCustomModuleEnablementStateEnabled = FolderCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given CRM resource.
+	FolderCustomModuleEnablementStateDisabled = FolderCustomModuleEnablementState("DISABLED")
+	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+	FolderCustomModuleEnablementStateInherited = FolderCustomModuleEnablementState("INHERITED")
+)
+
+func (FolderCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(FolderCustomModuleEnablementStateOutput)
+}
+
+func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FolderCustomModuleEnablementStateOutput)
+}
+
+func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
+	return e.ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e FolderCustomModuleEnablementState) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
+	return FolderCustomModuleEnablementState(e).ToFolderCustomModuleEnablementStateOutputWithContext(ctx).ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e FolderCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FolderCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FolderCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FolderCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FolderCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (FolderCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStateOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
+	return o.ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderCustomModuleEnablementState) *FolderCustomModuleEnablementState {
+		return &v
+	}).(FolderCustomModuleEnablementStatePtrOutput)
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FolderCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FolderCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FolderCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (FolderCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) Elem() FolderCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *FolderCustomModuleEnablementState) FolderCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret FolderCustomModuleEnablementState
+		return ret
+	}).(FolderCustomModuleEnablementStateOutput)
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FolderCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FolderCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FolderCustomModuleEnablementStateInput is an input type that accepts FolderCustomModuleEnablementStateArgs and FolderCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `FolderCustomModuleEnablementStateInput` via:
+//
+//	FolderCustomModuleEnablementStateArgs{...}
+type FolderCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToFolderCustomModuleEnablementStateOutput() FolderCustomModuleEnablementStateOutput
+	ToFolderCustomModuleEnablementStateOutputWithContext(context.Context) FolderCustomModuleEnablementStateOutput
+}
+
+var folderCustomModuleEnablementStatePtrType = reflect.TypeOf((**FolderCustomModuleEnablementState)(nil)).Elem()
+
+type FolderCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput
+	ToFolderCustomModuleEnablementStatePtrOutputWithContext(context.Context) FolderCustomModuleEnablementStatePtrOutput
+}
+
+type folderCustomModuleEnablementStatePtr string
+
+func FolderCustomModuleEnablementStatePtr(v string) FolderCustomModuleEnablementStatePtrInput {
+	return (*folderCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*folderCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return folderCustomModuleEnablementStatePtrType
+}
+
+func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementStatePtrOutput() FolderCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(FolderCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *folderCustomModuleEnablementStatePtr) ToFolderCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) FolderCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FolderCustomModuleEnablementStatePtrOutput)
+}
+
+// The severity to assign to findings generated by the module.
+type GoogleCloudSecuritycenterV1CustomConfigSeverity string
+
+const (
+	// Unspecified severity.
+	GoogleCloudSecuritycenterV1CustomConfigSeveritySeverityUnspecified = GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED")
+	// Critical severity.
+	GoogleCloudSecuritycenterV1CustomConfigSeverityCritical = GoogleCloudSecuritycenterV1CustomConfigSeverity("CRITICAL")
+	// High severity.
+	GoogleCloudSecuritycenterV1CustomConfigSeverityHigh = GoogleCloudSecuritycenterV1CustomConfigSeverity("HIGH")
+	// Medium severity.
+	GoogleCloudSecuritycenterV1CustomConfigSeverityMedium = GoogleCloudSecuritycenterV1CustomConfigSeverity("MEDIUM")
+	// Low severity.
+	GoogleCloudSecuritycenterV1CustomConfigSeverityLow = GoogleCloudSecuritycenterV1CustomConfigSeverity("LOW")
+)
+
+func (GoogleCloudSecuritycenterV1CustomConfigSeverity) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverity)(nil)).Elem()
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
+	return pulumi.ToOutput(e).(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput)
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput)
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return e.ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return GoogleCloudSecuritycenterV1CustomConfigSeverity(e).ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutputWithContext(ctx).ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudSecuritycenterV1CustomConfigSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudSecuritycenterV1CustomConfigSeverityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverity)(nil)).Elem()
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
+	return o
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
+	return o
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return o.ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudSecuritycenterV1CustomConfigSeverity) *GoogleCloudSecuritycenterV1CustomConfigSeverity {
+		return &v
+	}).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudSecuritycenterV1CustomConfigSeverity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudSecuritycenterV1CustomConfigSeverity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudSecuritycenterV1CustomConfigSeverity)(nil)).Elem()
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) Elem() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput {
+	return o.ApplyT(func(v *GoogleCloudSecuritycenterV1CustomConfigSeverity) GoogleCloudSecuritycenterV1CustomConfigSeverity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudSecuritycenterV1CustomConfigSeverity
+		return ret
+	}).(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput)
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudSecuritycenterV1CustomConfigSeverity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudSecuritycenterV1CustomConfigSeverityInput is an input type that accepts GoogleCloudSecuritycenterV1CustomConfigSeverityArgs and GoogleCloudSecuritycenterV1CustomConfigSeverityOutput values.
+// You can construct a concrete instance of `GoogleCloudSecuritycenterV1CustomConfigSeverityInput` via:
+//
+//	GoogleCloudSecuritycenterV1CustomConfigSeverityArgs{...}
+type GoogleCloudSecuritycenterV1CustomConfigSeverityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityOutput
+	ToGoogleCloudSecuritycenterV1CustomConfigSeverityOutputWithContext(context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityOutput
+}
+
+var googleCloudSecuritycenterV1CustomConfigSeverityPtrType = reflect.TypeOf((**GoogleCloudSecuritycenterV1CustomConfigSeverity)(nil)).Elem()
+
+type GoogleCloudSecuritycenterV1CustomConfigSeverityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput
+	ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput
+}
+
+type googleCloudSecuritycenterV1CustomConfigSeverityPtr string
+
+func GoogleCloudSecuritycenterV1CustomConfigSeverityPtr(v string) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrInput {
+	return (*googleCloudSecuritycenterV1CustomConfigSeverityPtr)(&v)
+}
+
+func (*googleCloudSecuritycenterV1CustomConfigSeverityPtr) ElementType() reflect.Type {
+	return googleCloudSecuritycenterV1CustomConfigSeverityPtrType
+}
+
+func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput() GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
+}
+
+func (in *googleCloudSecuritycenterV1CustomConfigSeverityPtr) ToGoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutputWithContext(ctx context.Context) GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput)
+}
+
+// The enablement state of the custom module.
+type OrganizationCustomModuleEnablementState string
+
+const (
+	// Unspecified enablement state.
+	OrganizationCustomModuleEnablementStateEnablementStateUnspecified = OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED")
+	// The module is enabled at the given CRM resource.
+	OrganizationCustomModuleEnablementStateEnabled = OrganizationCustomModuleEnablementState("ENABLED")
+	// The module is disabled at the given CRM resource.
+	OrganizationCustomModuleEnablementStateDisabled = OrganizationCustomModuleEnablementState("DISABLED")
+	// State is inherited from an ancestor module. The module will either be effectively ENABLED or DISABLED based on its closest non-inherited ancestor module in the CRM hierarchy.
+	OrganizationCustomModuleEnablementStateInherited = OrganizationCustomModuleEnablementState("INHERITED")
+)
+
+func (OrganizationCustomModuleEnablementState) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput {
+	return pulumi.ToOutput(e).(OrganizationCustomModuleEnablementStateOutput)
+}
+
+func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationCustomModuleEnablementStateOutput)
+}
+
+func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
+	return e.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationCustomModuleEnablementState) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
+	return OrganizationCustomModuleEnablementState(e).ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx).ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx)
+}
+
+func (e OrganizationCustomModuleEnablementState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationCustomModuleEnablementState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationCustomModuleEnablementState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationCustomModuleEnablementState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationCustomModuleEnablementStateOutput struct{ *pulumi.OutputState }
+
+func (OrganizationCustomModuleEnablementStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStateOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStateOutput {
+	return o
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
+	return o.ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationCustomModuleEnablementState) *OrganizationCustomModuleEnablementState {
+		return &v
+	}).(OrganizationCustomModuleEnablementStatePtrOutput)
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationCustomModuleEnablementState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationCustomModuleEnablementStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationCustomModuleEnablementState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationCustomModuleEnablementStatePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationCustomModuleEnablementStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationCustomModuleEnablementState)(nil)).Elem()
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
+	return o
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) Elem() OrganizationCustomModuleEnablementStateOutput {
+	return o.ApplyT(func(v *OrganizationCustomModuleEnablementState) OrganizationCustomModuleEnablementState {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationCustomModuleEnablementState
+		return ret
+	}).(OrganizationCustomModuleEnablementStateOutput)
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationCustomModuleEnablementStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationCustomModuleEnablementState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationCustomModuleEnablementStateInput is an input type that accepts OrganizationCustomModuleEnablementStateArgs and OrganizationCustomModuleEnablementStateOutput values.
+// You can construct a concrete instance of `OrganizationCustomModuleEnablementStateInput` via:
+//
+//	OrganizationCustomModuleEnablementStateArgs{...}
+type OrganizationCustomModuleEnablementStateInput interface {
+	pulumi.Input
+
+	ToOrganizationCustomModuleEnablementStateOutput() OrganizationCustomModuleEnablementStateOutput
+	ToOrganizationCustomModuleEnablementStateOutputWithContext(context.Context) OrganizationCustomModuleEnablementStateOutput
+}
+
+var organizationCustomModuleEnablementStatePtrType = reflect.TypeOf((**OrganizationCustomModuleEnablementState)(nil)).Elem()
+
+type OrganizationCustomModuleEnablementStatePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput
+	ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(context.Context) OrganizationCustomModuleEnablementStatePtrOutput
+}
+
+type organizationCustomModuleEnablementStatePtr string
+
+func OrganizationCustomModuleEnablementStatePtr(v string) OrganizationCustomModuleEnablementStatePtrInput {
+	return (*organizationCustomModuleEnablementStatePtr)(&v)
+}
+
+func (*organizationCustomModuleEnablementStatePtr) ElementType() reflect.Type {
+	return organizationCustomModuleEnablementStatePtrType
+}
+
+func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModuleEnablementStatePtrOutput() OrganizationCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationCustomModuleEnablementStatePtrOutput)
+}
+
+func (in *organizationCustomModuleEnablementStatePtr) ToOrganizationCustomModuleEnablementStatePtrOutputWithContext(ctx context.Context) OrganizationCustomModuleEnablementStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationCustomModuleEnablementStatePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomModuleEnablementStateInput)(nil)).Elem(), CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomModuleEnablementStatePtrInput)(nil)).Elem(), CustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleEnablementStateInput)(nil)).Elem(), FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderCustomModuleEnablementStatePtrInput)(nil)).Elem(), FolderCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverityInput)(nil)).Elem(), GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudSecuritycenterV1CustomConfigSeverityPtrInput)(nil)).Elem(), GoogleCloudSecuritycenterV1CustomConfigSeverity("SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationCustomModuleEnablementStateInput)(nil)).Elem(), OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationCustomModuleEnablementStatePtrInput)(nil)).Elem(), OrganizationCustomModuleEnablementState("ENABLEMENT_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(CustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(CustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(FolderCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(FolderCustomModuleEnablementStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudSecuritycenterV1CustomConfigSeverityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudSecuritycenterV1CustomConfigSeverityPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationCustomModuleEnablementStateOutput{})
+	pulumi.RegisterOutputType(OrganizationCustomModuleEnablementStatePtrOutput{})
 }

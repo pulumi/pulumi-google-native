@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// </summary>
     public sealed class SqlIpConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+        /// </summary>
+        [Input("allocatedIpRange")]
+        public Input<string>? AllocatedIpRange { get; set; }
+
         [Input("authorizedNetworks")]
         private InputList<Inputs.SqlAclEntryArgs>? _authorizedNetworks;
 

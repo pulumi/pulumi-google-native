@@ -18,11 +18,9 @@ from .app_gateway import *
 from .app_gateway_iam_binding import *
 from .app_gateway_iam_member import *
 from .app_gateway_iam_policy import *
-from .client_connector_service import *
 from .client_connector_service_iam_binding import *
 from .client_connector_service_iam_member import *
 from .client_connector_service_iam_policy import *
-from .client_gateway import *
 from .client_gateway_iam_binding import *
 from .client_gateway_iam_member import *
 from .client_gateway_iam_policy import *
@@ -32,9 +30,7 @@ from .get_app_connector import *
 from .get_app_connector_iam_policy import *
 from .get_app_gateway import *
 from .get_app_gateway_iam_policy import *
-from .get_client_connector_service import *
 from .get_client_connector_service_iam_policy import *
-from .get_client_gateway import *
 from .get_client_gateway_iam_policy import *
 from ._inputs import *
 from . import outputs

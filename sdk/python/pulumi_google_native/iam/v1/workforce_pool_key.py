@@ -18,26 +18,25 @@ __all__ = ['WorkforcePoolKeyArgs', 'WorkforcePoolKey']
 class WorkforcePoolKeyArgs:
     def __init__(__self__, *,
                  provider_id: pulumi.Input[str],
+                 use: pulumi.Input['WorkforcePoolKeyUse'],
                  workforce_pool_id: pulumi.Input[str],
                  workforce_pool_provider_key_id: pulumi.Input[str],
                  key_data: Optional[pulumi.Input['KeyDataArgs']] = None,
-                 location: Optional[pulumi.Input[str]] = None,
-                 use: Optional[pulumi.Input['WorkforcePoolKeyUse']] = None):
+                 location: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolKey resource.
+        :param pulumi.Input['WorkforcePoolKeyUse'] use: The purpose of the key.
         :param pulumi.Input[str] workforce_pool_provider_key_id: Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input['KeyDataArgs'] key_data: Immutable. Public half of the asymmetric key.
-        :param pulumi.Input['WorkforcePoolKeyUse'] use: Immutable. The purpose of the key.
         """
         pulumi.set(__self__, "provider_id", provider_id)
+        pulumi.set(__self__, "use", use)
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
         pulumi.set(__self__, "workforce_pool_provider_key_id", workforce_pool_provider_key_id)
         if key_data is not None:
             pulumi.set(__self__, "key_data", key_data)
         if location is not None:
             pulumi.set(__self__, "location", location)
-        if use is not None:
-            pulumi.set(__self__, "use", use)
 
     @property
     @pulumi.getter(name="providerId")
@@ -47,6 +46,18 @@ class WorkforcePoolKeyArgs:
     @provider_id.setter
     def provider_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "provider_id", value)
+
+    @property
+    @pulumi.getter
+    def use(self) -> pulumi.Input['WorkforcePoolKeyUse']:
+        """
+        The purpose of the key.
+        """
+        return pulumi.get(self, "use")
+
+    @use.setter
+    def use(self, value: pulumi.Input['WorkforcePoolKeyUse']):
+        pulumi.set(self, "use", value)
 
     @property
     @pulumi.getter(name="workforcePoolId")
@@ -90,18 +101,6 @@ class WorkforcePoolKeyArgs:
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
 
-    @property
-    @pulumi.getter
-    def use(self) -> Optional[pulumi.Input['WorkforcePoolKeyUse']]:
-        """
-        Immutable. The purpose of the key.
-        """
-        return pulumi.get(self, "use")
-
-    @use.setter
-    def use(self, value: Optional[pulumi.Input['WorkforcePoolKeyUse']]):
-        pulumi.set(self, "use", value)
-
 
 class WorkforcePoolKey(pulumi.CustomResource):
     @overload
@@ -122,7 +121,7 @@ class WorkforcePoolKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['KeyDataArgs']] key_data: Immutable. Public half of the asymmetric key.
-        :param pulumi.Input['WorkforcePoolKeyUse'] use: Immutable. The purpose of the key.
+        :param pulumi.Input['WorkforcePoolKeyUse'] use: The purpose of the key.
         :param pulumi.Input[str] workforce_pool_provider_key_id: Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         """
         ...
@@ -170,6 +169,8 @@ class WorkforcePoolKey(pulumi.CustomResource):
             if provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'provider_id'")
             __props__.__dict__["provider_id"] = provider_id
+            if use is None and not opts.urn:
+                raise TypeError("Missing required property 'use'")
             __props__.__dict__["use"] = use
             if workforce_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workforce_pool_id'")
@@ -261,7 +262,7 @@ class WorkforcePoolKey(pulumi.CustomResource):
     @pulumi.getter
     def use(self) -> pulumi.Output[str]:
         """
-        Immutable. The purpose of the key.
+        The purpose of the key.
         """
         return pulumi.get(self, "use")
 

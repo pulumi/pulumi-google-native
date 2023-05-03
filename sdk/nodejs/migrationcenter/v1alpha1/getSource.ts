@@ -53,6 +53,10 @@ export interface GetSourceResult {
      */
     readonly priority: number;
     /**
+     * The state of the source.
+     */
+    readonly state: string;
+    /**
      * Data source type.
      */
     readonly type: string;

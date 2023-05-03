@@ -19,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetCustomClassResult:
-    def __init__(__self__, custom_class_id=None, items=None, name=None):
+    def __init__(__self__, custom_class_id=None, items=None, kms_key_name=None, kms_key_version_name=None, name=None):
         if custom_class_id and not isinstance(custom_class_id, str):
             raise TypeError("Expected argument 'custom_class_id' to be a str")
         pulumi.set(__self__, "custom_class_id", custom_class_id)
         if items and not isinstance(items, list):
             raise TypeError("Expected argument 'items' to be a list")
         pulumi.set(__self__, "items", items)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name and not isinstance(kms_key_version_name, str):
+            raise TypeError("Expected argument 'kms_key_version_name' to be a str")
+        pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -47,6 +53,22 @@ class GetCustomClassResult:
         return pulumi.get(self, "items")
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> str:
+        """
+        The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        """
+        return pulumi.get(self, "kms_key_version_name")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -63,6 +85,8 @@ class AwaitableGetCustomClassResult(GetCustomClassResult):
         return GetCustomClassResult(
             custom_class_id=self.custom_class_id,
             items=self.items,
+            kms_key_name=self.kms_key_name,
+            kms_key_version_name=self.kms_key_version_name,
             name=self.name)
 
 
@@ -83,6 +107,8 @@ def get_custom_class(custom_class_id: Optional[str] = None,
     return AwaitableGetCustomClassResult(
         custom_class_id=__ret__.custom_class_id,
         items=__ret__.items,
+        kms_key_name=__ret__.kms_key_name,
+        kms_key_version_name=__ret__.kms_key_version_name,
         name=__ret__.name)
 
 

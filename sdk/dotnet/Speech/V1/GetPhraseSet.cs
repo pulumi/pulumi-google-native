@@ -68,6 +68,14 @@ namespace Pulumi.GoogleNative.Speech.V1
         /// </summary>
         public readonly double Boost;
         /// <summary>
+        /// The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        public readonly string KmsKeyName;
+        /// <summary>
+        /// The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+        /// </summary>
+        public readonly string KmsKeyVersionName;
+        /// <summary>
         /// The resource name of the phrase set.
         /// </summary>
         public readonly string Name;
@@ -80,11 +88,17 @@ namespace Pulumi.GoogleNative.Speech.V1
         private GetPhraseSetResult(
             double boost,
 
+            string kmsKeyName,
+
+            string kmsKeyVersionName,
+
             string name,
 
             ImmutableArray<Outputs.PhraseResponse> phrases)
         {
             Boost = boost;
+            KmsKeyName = kmsKeyName;
+            KmsKeyVersionName = kmsKeyVersionName;
             Name = name;
             Phrases = phrases;
         }

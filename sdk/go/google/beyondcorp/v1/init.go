@@ -45,16 +45,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGatewayIamMember{}
 	case "google-native:beyondcorp/v1:AppGatewayIamPolicy":
 		r = &AppGatewayIamPolicy{}
-	case "google-native:beyondcorp/v1:ClientConnectorService":
-		r = &ClientConnectorService{}
 	case "google-native:beyondcorp/v1:ClientConnectorServiceIamBinding":
 		r = &ClientConnectorServiceIamBinding{}
 	case "google-native:beyondcorp/v1:ClientConnectorServiceIamMember":
 		r = &ClientConnectorServiceIamMember{}
 	case "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy":
 		r = &ClientConnectorServiceIamPolicy{}
-	case "google-native:beyondcorp/v1:ClientGateway":
-		r = &ClientGateway{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamBinding":
 		r = &ClientGatewayIamBinding{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamMember":

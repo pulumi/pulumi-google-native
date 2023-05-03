@@ -34,6 +34,18 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Inputs
         public Input<Pulumi.GoogleNative.CloudTasks.V2Beta3.HttpTargetHttpMethod>? HttpMethod { get; set; }
 
         /// <summary>
+        /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as the `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
+        /// </summary>
+        [Input("oauthToken")]
+        public Input<Inputs.OAuthTokenArgs>? OauthToken { get; set; }
+
+        /// <summary>
+        /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        /// </summary>
+        [Input("oidcToken")]
+        public Input<Inputs.OidcTokenArgs>? OidcToken { get; set; }
+
+        /// <summary>
         /// URI override. When specified, overrides the execution URI for all the tasks in the queue.
         /// </summary>
         [Input("uriOverride")]

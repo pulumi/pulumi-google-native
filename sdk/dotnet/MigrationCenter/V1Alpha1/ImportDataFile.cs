@@ -134,8 +134,8 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// <summary>
         /// The payload format.
         /// </summary>
-        [Input("format")]
-        public Input<Pulumi.GoogleNative.MigrationCenter.V1Alpha1.ImportDataFileFormat>? Format { get; set; }
+        [Input("format", required: true)]
+        public Input<Pulumi.GoogleNative.MigrationCenter.V1Alpha1.ImportDataFileFormat> Format { get; set; } = null!;
 
         /// <summary>
         /// Required. The ID of the new data file.

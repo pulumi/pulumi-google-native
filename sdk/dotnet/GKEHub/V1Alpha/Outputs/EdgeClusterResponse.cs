@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class EdgeClusterResponse
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         /// </summary>
         public readonly string ResourceLink;
 

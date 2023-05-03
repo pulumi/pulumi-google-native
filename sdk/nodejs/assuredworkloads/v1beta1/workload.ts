@@ -58,6 +58,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public /*out*/ readonly compliantButDisallowedServices!: pulumi.Output<string[]>;
     /**
+     * Controls associated with the customer workload
+     */
+    public /*out*/ readonly controls!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsResponse>;
+    /**
      * Immutable. The Workload creation timestamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -133,6 +137,10 @@ export class Workload extends pulumi.CustomResource {
      * Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
      */
     public /*out*/ readonly saaEnrollmentResponse!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse>;
+    /**
+     * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     */
+    public readonly violationNotificationsEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -173,8 +181,10 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["partner"] = args ? args.partner : undefined;
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
+            resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
             resourceInputs["complianceStatus"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
+            resourceInputs["controls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
@@ -185,6 +195,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["complianceRegime"] = undefined /*out*/;
             resourceInputs["complianceStatus"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
+            resourceInputs["controls"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["ekmProvisioningResponse"] = undefined /*out*/;
@@ -205,6 +216,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["saaEnrollmentResponse"] = undefined /*out*/;
+            resourceInputs["violationNotificationsEnabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "organizationId"] };
@@ -289,4 +301,8 @@ export interface WorkloadArgs {
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs>[]>;
+    /**
+     * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+     */
+    violationNotificationsEnabled?: pulumi.Input<boolean>;
 }

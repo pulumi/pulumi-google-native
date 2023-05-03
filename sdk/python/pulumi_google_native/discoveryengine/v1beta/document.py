@@ -28,13 +28,13 @@ class DocumentArgs:
                  struct_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Document resource.
-        :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "collection_id", collection_id)
@@ -88,7 +88,7 @@ class DocumentArgs:
     @pulumi.getter(name="documentId")
     def document_id(self) -> pulumi.Input[str]:
         """
-        Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         """
         return pulumi.get(self, "document_id")
 
@@ -112,7 +112,7 @@ class DocumentArgs:
     @pulumi.getter(name="jsonData")
     def json_data(self) -> Optional[pulumi.Input[str]]:
         """
-        The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -178,7 +178,7 @@ class DocumentArgs:
     @pulumi.getter(name="structData")
     def struct_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 
@@ -210,13 +210,13 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[str] document_id: Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         :param pulumi.Input[str] id: Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
-        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        :param pulumi.Input[str] json_data: The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         :param pulumi.Input[str] name: Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         :param pulumi.Input[str] parent_document_id: The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
         :param pulumi.Input[str] schema_id: The identifier of the schema located in the same data store.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] struct_data: The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         ...
     @overload
@@ -339,7 +339,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="documentId")
     def document_id(self) -> pulumi.Output[str]:
         """
-        Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         """
         return pulumi.get(self, "document_id")
 
@@ -347,7 +347,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="jsonData")
     def json_data(self) -> pulumi.Output[str]:
         """
-        The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The JSON string representation of the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "json_data")
 
@@ -389,7 +389,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="structData")
     def struct_data(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
+        The structured JSON data for the document. It should conform to the registered Schema.schema or an `INVALID_ARGUMENT` error is thrown.
         """
         return pulumi.get(self, "struct_data")
 

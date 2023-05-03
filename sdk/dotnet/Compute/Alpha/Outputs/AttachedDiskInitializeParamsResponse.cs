@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The customer-supplied encryption key of the source snapshot.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SourceSnapshotEncryptionKey;
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        public readonly string StoragePool;
 
         [OutputConstructor]
         private AttachedDiskInitializeParamsResponse(
@@ -149,7 +153,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string sourceSnapshot,
 
-            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey)
+            Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey,
+
+            string storagePool)
         {
             Architecture = architecture;
             Description = description;
@@ -173,6 +179,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             SourceInstantSnapshot = sourceInstantSnapshot;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+            StoragePool = storagePool;
         }
     }
 }

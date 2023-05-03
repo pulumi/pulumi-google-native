@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     public sealed class EdgeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         /// </summary>
         [Input("resourceLink")]
         public Input<string>? ResourceLink { get; set; }

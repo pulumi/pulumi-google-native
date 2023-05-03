@@ -52,10 +52,6 @@ class GetCaseResult:
         pulumi.set(__self__, "priority", priority)
         if severity and not isinstance(severity, str):
             raise TypeError("Expected argument 'severity' to be a str")
-        if severity is not None:
-            warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
-            pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
-
         pulumi.set(__self__, "severity", severity)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
@@ -149,7 +145,7 @@ class GetCaseResult:
     @pulumi.getter
     def priority(self) -> str:
         """
-        The priority of this case. If this is set, do not set severity.
+        The priority of this case.
         """
         return pulumi.get(self, "priority")
 
@@ -157,7 +153,7 @@ class GetCaseResult:
     @pulumi.getter
     def severity(self) -> str:
         """
-        The severity of this case. Deprecated. Use priority instead.
+        REMOVED. The severity of this case. Use priority instead.
         """
         return pulumi.get(self, "severity")
 

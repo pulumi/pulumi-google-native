@@ -52,6 +52,14 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// Whether to run the silence annotator.
         /// </summary>
         public readonly bool RunSilenceAnnotator;
+        /// <summary>
+        /// Whether to run the summarization annotator.
+        /// </summary>
+        public readonly bool RunSummarizationAnnotator;
+        /// <summary>
+        /// Configuration for the summarization annotator.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse SummarizationConfig;
 
         [OutputConstructor]
         private GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(
@@ -71,7 +79,11 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
             bool runSentimentAnnotator,
 
-            bool runSilenceAnnotator)
+            bool runSilenceAnnotator,
+
+            bool runSummarizationAnnotator,
+
+            Outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse summarizationConfig)
         {
             IssueModels = issueModels;
             PhraseMatchers = phraseMatchers;
@@ -82,6 +94,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
             RunPhraseMatcherAnnotator = runPhraseMatcherAnnotator;
             RunSentimentAnnotator = runSentimentAnnotator;
             RunSilenceAnnotator = runSilenceAnnotator;
+            RunSummarizationAnnotator = runSummarizationAnnotator;
+            SummarizationConfig = summarizationConfig;
         }
     }
 }

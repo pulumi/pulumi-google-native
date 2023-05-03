@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Configuration options for L7 DDoS detection.
+    /// Configuration options for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
     /// </summary>
     public sealed class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to true, enables CAAP for L7 DDoS detection.
+        /// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         /// </summary>
         [Input("ruleVisibility")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility>? RuleVisibility { get; set; }

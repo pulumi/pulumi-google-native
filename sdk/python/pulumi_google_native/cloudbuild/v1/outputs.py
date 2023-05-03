@@ -36,10 +36,12 @@ __all__ = [
     'GitLabRepositoryIdResponse',
     'GitLabSecretsResponse',
     'GitRepoSourceResponse',
+    'GitSourceResponse',
     'HashResponse',
     'InlineSecretResponse',
     'MavenArtifactResponse',
     'NetworkConfigResponse',
+    'NpmPackageResponse',
     'PoolOptionResponse',
     'PrivatePoolV1ConfigResponse',
     'PubsubConfigResponse',
@@ -59,6 +61,7 @@ __all__ = [
     'StorageSourceResponse',
     'TimeSpanResponse',
     'UploadedMavenArtifactResponse',
+    'UploadedNpmPackageResponse',
     'UploadedPythonPackageResponse',
     'VolumeResponse',
     'WarningResponse',
@@ -244,6 +247,8 @@ class ArtifactsResponse(dict):
         suggest = None
         if key == "mavenArtifacts":
             suggest = "maven_artifacts"
+        elif key == "npmPackages":
+            suggest = "npm_packages"
         elif key == "pythonPackages":
             suggest = "python_packages"
 
@@ -261,17 +266,20 @@ class ArtifactsResponse(dict):
     def __init__(__self__, *,
                  images: Sequence[str],
                  maven_artifacts: Sequence['outputs.MavenArtifactResponse'],
+                 npm_packages: Sequence['outputs.NpmPackageResponse'],
                  objects: 'outputs.ArtifactObjectsResponse',
                  python_packages: Sequence['outputs.PythonPackageResponse']):
         """
         Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
         :param Sequence['MavenArtifactResponse'] maven_artifacts: A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
+        :param Sequence['NpmPackageResponse'] npm_packages: A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
         :param 'ArtifactObjectsResponse' objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
         :param Sequence['PythonPackageResponse'] python_packages: A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE.
         """
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "maven_artifacts", maven_artifacts)
+        pulumi.set(__self__, "npm_packages", npm_packages)
         pulumi.set(__self__, "objects", objects)
         pulumi.set(__self__, "python_packages", python_packages)
 
@@ -290,6 +298,14 @@ class ArtifactsResponse(dict):
         A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE.
         """
         return pulumi.get(self, "maven_artifacts")
+
+    @property
+    @pulumi.getter(name="npmPackages")
+    def npm_packages(self) -> Sequence['outputs.NpmPackageResponse']:
+        """
+        A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        """
+        return pulumi.get(self, "npm_packages")
 
     @property
     @pulumi.getter
@@ -1670,6 +1686,7 @@ class GitFileSourceResponse(dict):
                  github_enterprise_config: str,
                  path: str,
                  repo_type: str,
+                 repository: str,
                  revision: str,
                  uri: str):
         """
@@ -1678,6 +1695,7 @@ class GitFileSourceResponse(dict):
         :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str path: The path of the file, with the repo root as the root of the path.
         :param str repo_type: See RepoType above.
+        :param str repository: The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param str uri: The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
@@ -1685,6 +1703,7 @@ class GitFileSourceResponse(dict):
         pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "uri", uri)
 
@@ -1719,6 +1738,14 @@ class GitFileSourceResponse(dict):
         See RepoType above.
         """
         return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        """
+        return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter
@@ -2378,6 +2405,7 @@ class GitRepoSourceResponse(dict):
                  github_enterprise_config: str,
                  ref: str,
                  repo_type: str,
+                 repository: str,
                  uri: str):
         """
         GitRepoSource describes a repo and ref of a code repository.
@@ -2385,12 +2413,14 @@ class GitRepoSourceResponse(dict):
         :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: See RepoType below.
+        :param str repository: The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
         :param str uri: The URI of the repo. Either uri or repository can be specified and is required.
         """
         pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "uri", uri)
 
     @property
@@ -2427,11 +2457,63 @@ class GitRepoSourceResponse(dict):
 
     @property
     @pulumi.getter
+    def repository(self) -> str:
+        """
+        The qualified resource name of the Repo API repository Either uri or repository can be specified and is required.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
     def uri(self) -> str:
         """
         The URI of the repo. Either uri or repository can be specified and is required.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GitSourceResponse(dict):
+    """
+    Location of the source in any accessible Git repository.
+    """
+    def __init__(__self__, *,
+                 dir: str,
+                 revision: str,
+                 url: str):
+        """
+        Location of the source in any accessible Git repository.
+        :param str dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        :param str revision: The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+        :param str url: Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+        """
+        pulumi.set(__self__, "dir", dir)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def dir(self) -> str:
+        """
+        Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        """
+        return pulumi.get(self, "dir")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        """
+        The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string you provide for `revision` is parsable by the command. For information on string values accepted by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+        """
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote.
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -2667,6 +2749,56 @@ class NetworkConfigResponse(dict):
         Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
         """
         return pulumi.get(self, "peered_network_ip_range")
+
+
+@pulumi.output_type
+class NpmPackageResponse(dict):
+    """
+    Npm package to upload to Artifact Registry upon successful completion of all build steps.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packagePath":
+            suggest = "package_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NpmPackageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NpmPackageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NpmPackageResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 package_path: str,
+                 repository: str):
+        """
+        Npm package to upload to Artifact Registry upon successful completion of all build steps.
+        :param str package_path: Path to the package.json. e.g. workspace/path/to/package
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        pulumi.set(__self__, "package_path", package_path)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="packagePath")
+    def package_path(self) -> str:
+        """
+        Path to the package.json. e.g. workspace/path/to/package
+        """
+        return pulumi.get(self, "package_path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
 
 
 @pulumi.output_type
@@ -3188,6 +3320,8 @@ class ResultsResponse(dict):
             suggest = "build_step_outputs"
         elif key == "mavenArtifacts":
             suggest = "maven_artifacts"
+        elif key == "npmPackages":
+            suggest = "npm_packages"
         elif key == "numArtifacts":
             suggest = "num_artifacts"
         elif key == "pythonPackages":
@@ -3211,6 +3345,7 @@ class ResultsResponse(dict):
                  build_step_outputs: Sequence[str],
                  images: Sequence['outputs.BuiltImageResponse'],
                  maven_artifacts: Sequence['outputs.UploadedMavenArtifactResponse'],
+                 npm_packages: Sequence['outputs.UploadedNpmPackageResponse'],
                  num_artifacts: str,
                  python_packages: Sequence['outputs.UploadedPythonPackageResponse']):
         """
@@ -3221,6 +3356,7 @@ class ResultsResponse(dict):
         :param Sequence[str] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
         :param Sequence['BuiltImageResponse'] images: Container images that were built as a part of the build.
         :param Sequence['UploadedMavenArtifactResponse'] maven_artifacts: Maven artifacts uploaded to Artifact Registry at the end of the build.
+        :param Sequence['UploadedNpmPackageResponse'] npm_packages: Npm packages uploaded to Artifact Registry at the end of the build.
         :param str num_artifacts: Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage.
         :param Sequence['UploadedPythonPackageResponse'] python_packages: Python artifacts uploaded to Artifact Registry at the end of the build.
         """
@@ -3230,6 +3366,7 @@ class ResultsResponse(dict):
         pulumi.set(__self__, "build_step_outputs", build_step_outputs)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "maven_artifacts", maven_artifacts)
+        pulumi.set(__self__, "npm_packages", npm_packages)
         pulumi.set(__self__, "num_artifacts", num_artifacts)
         pulumi.set(__self__, "python_packages", python_packages)
 
@@ -3280,6 +3417,14 @@ class ResultsResponse(dict):
         Maven artifacts uploaded to Artifact Registry at the end of the build.
         """
         return pulumi.get(self, "maven_artifacts")
+
+    @property
+    @pulumi.getter(name="npmPackages")
+    def npm_packages(self) -> Sequence['outputs.UploadedNpmPackageResponse']:
+        """
+        Npm packages uploaded to Artifact Registry at the end of the build.
+        """
+        return pulumi.get(self, "npm_packages")
 
     @property
     @pulumi.getter(name="numArtifacts")
@@ -3558,7 +3703,9 @@ class SourceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "repoSource":
+        if key == "gitSource":
+            suggest = "git_source"
+        elif key == "repoSource":
             suggest = "repo_source"
         elif key == "storageSource":
             suggest = "storage_source"
@@ -3577,18 +3724,29 @@ class SourceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 git_source: 'outputs.GitSourceResponse',
                  repo_source: 'outputs.RepoSourceResponse',
                  storage_source: 'outputs.StorageSourceResponse',
                  storage_source_manifest: 'outputs.StorageSourceManifestResponse'):
         """
         Location of the source in a supported storage service.
+        :param 'GitSourceResponse' git_source: If provided, get the source from this Git repository.
         :param 'RepoSourceResponse' repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param 'StorageSourceResponse' storage_source: If provided, get the source from this location in Google Cloud Storage.
         :param 'StorageSourceManifestResponse' storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
+        pulumi.set(__self__, "git_source", git_source)
         pulumi.set(__self__, "repo_source", repo_source)
         pulumi.set(__self__, "storage_source", storage_source)
         pulumi.set(__self__, "storage_source_manifest", storage_source_manifest)
+
+    @property
+    @pulumi.getter(name="gitSource")
+    def git_source(self) -> 'outputs.GitSourceResponse':
+        """
+        If provided, get the source from this Git repository.
+        """
+        return pulumi.get(self, "git_source")
 
     @property
     @pulumi.getter(name="repoSource")
@@ -3814,6 +3972,69 @@ class UploadedMavenArtifactResponse(dict):
     def uri(self) -> str:
         """
         URI of the uploaded artifact.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class UploadedNpmPackageResponse(dict):
+    """
+    An npm package uploaded to Artifact Registry using the NpmPackage directive.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileHashes":
+            suggest = "file_hashes"
+        elif key == "pushTiming":
+            suggest = "push_timing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UploadedNpmPackageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UploadedNpmPackageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UploadedNpmPackageResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_hashes: 'outputs.FileHashesResponse',
+                 push_timing: 'outputs.TimeSpanResponse',
+                 uri: str):
+        """
+        An npm package uploaded to Artifact Registry using the NpmPackage directive.
+        :param 'FileHashesResponse' file_hashes: Hash types and values of the npm package.
+        :param 'TimeSpanResponse' push_timing: Stores timing information for pushing the specified artifact.
+        :param str uri: URI of the uploaded npm package.
+        """
+        pulumi.set(__self__, "file_hashes", file_hashes)
+        pulumi.set(__self__, "push_timing", push_timing)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="fileHashes")
+    def file_hashes(self) -> 'outputs.FileHashesResponse':
+        """
+        Hash types and values of the npm package.
+        """
+        return pulumi.get(self, "file_hashes")
+
+    @property
+    @pulumi.getter(name="pushTiming")
+    def push_timing(self) -> 'outputs.TimeSpanResponse':
+        """
+        Stores timing information for pushing the specified artifact.
+        """
+        return pulumi.get(self, "push_timing")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of the uploaded npm package.
         """
         return pulumi.get(self, "uri")
 

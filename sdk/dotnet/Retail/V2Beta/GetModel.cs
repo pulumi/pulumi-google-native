@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly string LastTuneTime;
         /// <summary>
+        /// Optional. Additional model features config.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRetailV2betaModelModelFeaturesConfigResponse ModelFeaturesConfig;
+        /// <summary>
         /// The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
         /// </summary>
         public readonly string Name;
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
 
             string lastTuneTime,
 
+            Outputs.GoogleCloudRetailV2betaModelModelFeaturesConfigResponse modelFeaturesConfig,
+
             string name,
 
             string optimizationObjective,
@@ -161,6 +167,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
             DisplayName = displayName;
             FilteringOption = filteringOption;
             LastTuneTime = lastTuneTime;
+            ModelFeaturesConfig = modelFeaturesConfig;
             Name = name;
             OptimizationObjective = optimizationObjective;
             PeriodicTuningState = periodicTuningState;

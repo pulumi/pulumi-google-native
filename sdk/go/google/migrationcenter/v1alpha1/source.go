@@ -36,6 +36,8 @@ type Source struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 	SourceId pulumi.StringOutput `pulumi:"sourceId"`
+	// The state of the source.
+	State pulumi.StringOutput `pulumi:"state"`
 	// Data source type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The timestamp when the source was last updated.
@@ -216,6 +218,11 @@ func (o SourceOutput) RequestId() pulumi.StringPtrOutput {
 // Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
 func (o SourceOutput) SourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// The state of the source.
+func (o SourceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // Data source type.

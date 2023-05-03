@@ -511,173 +511,6 @@ func (in *appGatewayTypePtr) ToAppGatewayTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AppGatewayTypePtrOutput)
 }
 
-// Required. Immutable. The transport protocol used between the client and the server.
-type ConfigTransportProtocol string
-
-const (
-	// Default value. This value is unused.
-	ConfigTransportProtocolTransportProtocolUnspecified = ConfigTransportProtocol("TRANSPORT_PROTOCOL_UNSPECIFIED")
-	// TCP protocol.
-	ConfigTransportProtocolTcp = ConfigTransportProtocol("TCP")
-)
-
-func (ConfigTransportProtocol) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigTransportProtocol)(nil)).Elem()
-}
-
-func (e ConfigTransportProtocol) ToConfigTransportProtocolOutput() ConfigTransportProtocolOutput {
-	return pulumi.ToOutput(e).(ConfigTransportProtocolOutput)
-}
-
-func (e ConfigTransportProtocol) ToConfigTransportProtocolOutputWithContext(ctx context.Context) ConfigTransportProtocolOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ConfigTransportProtocolOutput)
-}
-
-func (e ConfigTransportProtocol) ToConfigTransportProtocolPtrOutput() ConfigTransportProtocolPtrOutput {
-	return e.ToConfigTransportProtocolPtrOutputWithContext(context.Background())
-}
-
-func (e ConfigTransportProtocol) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
-	return ConfigTransportProtocol(e).ToConfigTransportProtocolOutputWithContext(ctx).ToConfigTransportProtocolPtrOutputWithContext(ctx)
-}
-
-func (e ConfigTransportProtocol) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ConfigTransportProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ConfigTransportProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ConfigTransportProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ConfigTransportProtocolOutput struct{ *pulumi.OutputState }
-
-func (ConfigTransportProtocolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigTransportProtocol)(nil)).Elem()
-}
-
-func (o ConfigTransportProtocolOutput) ToConfigTransportProtocolOutput() ConfigTransportProtocolOutput {
-	return o
-}
-
-func (o ConfigTransportProtocolOutput) ToConfigTransportProtocolOutputWithContext(ctx context.Context) ConfigTransportProtocolOutput {
-	return o
-}
-
-func (o ConfigTransportProtocolOutput) ToConfigTransportProtocolPtrOutput() ConfigTransportProtocolPtrOutput {
-	return o.ToConfigTransportProtocolPtrOutputWithContext(context.Background())
-}
-
-func (o ConfigTransportProtocolOutput) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigTransportProtocol) *ConfigTransportProtocol {
-		return &v
-	}).(ConfigTransportProtocolPtrOutput)
-}
-
-func (o ConfigTransportProtocolOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ConfigTransportProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigTransportProtocol) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ConfigTransportProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ConfigTransportProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigTransportProtocol) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ConfigTransportProtocolPtrOutput struct{ *pulumi.OutputState }
-
-func (ConfigTransportProtocolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfigTransportProtocol)(nil)).Elem()
-}
-
-func (o ConfigTransportProtocolPtrOutput) ToConfigTransportProtocolPtrOutput() ConfigTransportProtocolPtrOutput {
-	return o
-}
-
-func (o ConfigTransportProtocolPtrOutput) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
-	return o
-}
-
-func (o ConfigTransportProtocolPtrOutput) Elem() ConfigTransportProtocolOutput {
-	return o.ApplyT(func(v *ConfigTransportProtocol) ConfigTransportProtocol {
-		if v != nil {
-			return *v
-		}
-		var ret ConfigTransportProtocol
-		return ret
-	}).(ConfigTransportProtocolOutput)
-}
-
-func (o ConfigTransportProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ConfigTransportProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfigTransportProtocol) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ConfigTransportProtocolInput is an input type that accepts ConfigTransportProtocolArgs and ConfigTransportProtocolOutput values.
-// You can construct a concrete instance of `ConfigTransportProtocolInput` via:
-//
-//	ConfigTransportProtocolArgs{...}
-type ConfigTransportProtocolInput interface {
-	pulumi.Input
-
-	ToConfigTransportProtocolOutput() ConfigTransportProtocolOutput
-	ToConfigTransportProtocolOutputWithContext(context.Context) ConfigTransportProtocolOutput
-}
-
-var configTransportProtocolPtrType = reflect.TypeOf((**ConfigTransportProtocol)(nil)).Elem()
-
-type ConfigTransportProtocolPtrInput interface {
-	pulumi.Input
-
-	ToConfigTransportProtocolPtrOutput() ConfigTransportProtocolPtrOutput
-	ToConfigTransportProtocolPtrOutputWithContext(context.Context) ConfigTransportProtocolPtrOutput
-}
-
-type configTransportProtocolPtr string
-
-func ConfigTransportProtocolPtr(v string) ConfigTransportProtocolPtrInput {
-	return (*configTransportProtocolPtr)(&v)
-}
-
-func (*configTransportProtocolPtr) ElementType() reflect.Type {
-	return configTransportProtocolPtrType
-}
-
-func (in *configTransportProtocolPtr) ToConfigTransportProtocolPtrOutput() ConfigTransportProtocolPtrOutput {
-	return pulumi.ToOutput(in).(ConfigTransportProtocolPtrOutput)
-}
-
-func (in *configTransportProtocolPtr) ToConfigTransportProtocolPtrOutputWithContext(ctx context.Context) ConfigTransportProtocolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ConfigTransportProtocolPtrOutput)
-}
-
 // Required. The type of hosting used by the gateway.
 type GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType string
 
@@ -1196,8 +1029,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayHostTypePtrInput)(nil)).Elem(), AppGatewayHostType("HOST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayTypeInput)(nil)).Elem(), AppGatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGatewayTypePtrInput)(nil)).Elem(), AppGatewayType("TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigTransportProtocolInput)(nil)).Elem(), ConfigTransportProtocol("TRANSPORT_PROTOCOL_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfigTransportProtocolPtrInput)(nil)).Elem(), ConfigTransportProtocol("TRANSPORT_PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus("HEALTH_STATUS_UNSPECIFIED"))
@@ -1210,8 +1041,6 @@ func init() {
 	pulumi.RegisterOutputType(AppGatewayHostTypePtrOutput{})
 	pulumi.RegisterOutputType(AppGatewayTypeOutput{})
 	pulumi.RegisterOutputType(AppGatewayTypePtrOutput{})
-	pulumi.RegisterOutputType(ConfigTransportProtocolOutput{})
-	pulumi.RegisterOutputType(ConfigTransportProtocolPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatusOutput{})

@@ -46,6 +46,10 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.v1.BigQueryConfigResponse>;
     /**
+     * If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+     */
+    public readonly cloudStorageConfig!: pulumi.Output<outputs.pubsub.v1.CloudStorageConfigResponse>;
+    /**
      * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
      */
     public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.v1.DeadLetterPolicyResponse>;
@@ -127,6 +131,7 @@ export class Subscription extends pulumi.CustomResource {
             }
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             resourceInputs["bigqueryConfig"] = args ? args.bigqueryConfig : undefined;
+            resourceInputs["cloudStorageConfig"] = args ? args.cloudStorageConfig : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             resourceInputs["detached"] = args ? args.detached : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
@@ -147,6 +152,7 @@ export class Subscription extends pulumi.CustomResource {
         } else {
             resourceInputs["ackDeadlineSeconds"] = undefined /*out*/;
             resourceInputs["bigqueryConfig"] = undefined /*out*/;
+            resourceInputs["cloudStorageConfig"] = undefined /*out*/;
             resourceInputs["deadLetterPolicy"] = undefined /*out*/;
             resourceInputs["detached"] = undefined /*out*/;
             resourceInputs["enableExactlyOnceDelivery"] = undefined /*out*/;
@@ -184,6 +190,10 @@ export interface SubscriptionArgs {
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
      */
     bigqueryConfig?: pulumi.Input<inputs.pubsub.v1.BigQueryConfigArgs>;
+    /**
+     * If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+     */
+    cloudStorageConfig?: pulumi.Input<inputs.pubsub.v1.CloudStorageConfigArgs>;
     /**
      * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
      */

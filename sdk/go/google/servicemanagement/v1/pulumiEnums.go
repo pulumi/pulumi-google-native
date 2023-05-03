@@ -2687,6 +2687,8 @@ const (
 	PublishingOrganizationPhotos = PublishingOrganization("PHOTOS")
 	// Street View Org.
 	PublishingOrganizationStreetView = PublishingOrganization("STREET_VIEW")
+	// Shopping Org.
+	PublishingOrganizationShopping = PublishingOrganization("SHOPPING")
 )
 
 func (PublishingOrganization) ElementType() reflect.Type {

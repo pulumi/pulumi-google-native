@@ -46,6 +46,10 @@ export class VpnGateway extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     */
+    public readonly gatewayIpVersion!: pulumi.Output<string>;
+    /**
      * Type of resource. Always compute#vpnGateway for VPN gateways.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class VpnGateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gatewayIpVersion"] = args ? args.gatewayIpVersion : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
@@ -114,6 +119,7 @@ export class VpnGateway extends pulumi.CustomResource {
         } else {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gatewayIpVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -141,6 +147,10 @@ export interface VpnGatewayArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+     */
+    gatewayIpVersion?: pulumi.Input<enums.compute.beta.VpnGatewayGatewayIpVersion>;
     /**
      * Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
      */

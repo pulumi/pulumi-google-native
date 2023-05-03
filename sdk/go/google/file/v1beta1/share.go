@@ -16,6 +16,8 @@ import (
 type Share struct {
 	pulumi.CustomResourceState
 
+	// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+	Backup pulumi.StringOutput `pulumi:"backup"`
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb pulumi.StringOutput `pulumi:"capacityGb"`
 	// The time when the share was created.
@@ -91,6 +93,8 @@ func (ShareState) ElementType() reflect.Type {
 }
 
 type shareArgs struct {
+	// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+	Backup *string `pulumi:"backup"`
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb *string `pulumi:"capacityGb"`
 	// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -110,6 +114,8 @@ type shareArgs struct {
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
+	// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+	Backup pulumi.StringPtrInput
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb pulumi.StringPtrInput
 	// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -162,6 +168,11 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
+}
+
+// Immutable. Full name of the Cloud Filestore Backup resource that this Share is restored from, in the format of projects/{project_id}/locations/{location_id}/backups/{backup_id}. Empty, if the Share is created from scratch and not restored from a backup.
+func (o ShareOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Backup }).(pulumi.StringOutput)
 }
 
 // File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.

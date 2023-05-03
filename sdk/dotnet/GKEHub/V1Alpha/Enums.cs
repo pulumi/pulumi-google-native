@@ -94,6 +94,47 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     }
 
     /// <summary>
+    /// mode configures the logs routing mode.
+    /// </summary>
+    [EnumType]
+    public readonly struct FleetObservabilityRoutingConfigMode : IEquatable<FleetObservabilityRoutingConfigMode>
+    {
+        private readonly string _value;
+
+        private FleetObservabilityRoutingConfigMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If UNSPECIFIED, fleet logging feature is disabled.
+        /// </summary>
+        public static FleetObservabilityRoutingConfigMode ModeUnspecified { get; } = new FleetObservabilityRoutingConfigMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// logs will be copied to the destination project.
+        /// </summary>
+        public static FleetObservabilityRoutingConfigMode Copy { get; } = new FleetObservabilityRoutingConfigMode("COPY");
+        /// <summary>
+        /// logs will be moved to the destination project.
+        /// </summary>
+        public static FleetObservabilityRoutingConfigMode Move { get; } = new FleetObservabilityRoutingConfigMode("MOVE");
+
+        public static bool operator ==(FleetObservabilityRoutingConfigMode left, FleetObservabilityRoutingConfigMode right) => left.Equals(right);
+        public static bool operator !=(FleetObservabilityRoutingConfigMode left, FleetObservabilityRoutingConfigMode right) => !left.Equals(right);
+
+        public static explicit operator string(FleetObservabilityRoutingConfigMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FleetObservabilityRoutingConfigMode other && Equals(other);
+        public bool Equals(FleetObservabilityRoutingConfigMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies workload certificate management.
     /// </summary>
     [EnumType]

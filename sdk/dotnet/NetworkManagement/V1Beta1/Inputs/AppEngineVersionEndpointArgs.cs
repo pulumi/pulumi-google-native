@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// Wrapper for app engine service version attributes.
+    /// Wrapper for the App Engine service version attributes.
     /// </summary>
     public sealed class AppEngineVersionEndpointArgs : global::Pulumi.ResourceArgs
     {

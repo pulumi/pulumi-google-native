@@ -52,6 +52,8 @@ type LookupTenantResult struct {
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name string `pulumi:"name"`
+	// The tenant-level reCAPTCHA config.
+	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
 	SmsRegionConfig GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse `pulumi:"smsRegionConfig"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -165,6 +167,13 @@ func (o LookupTenantResultOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 func (o LookupTenantResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tenant-level reCAPTCHA config.
+func (o LookupTenantResultOutput) RecaptchaConfig() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput {
+	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse {
+		return v.RecaptchaConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput)
 }
 
 // Configures which regions are enabled for SMS verification code sending.

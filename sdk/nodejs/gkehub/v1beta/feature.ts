@@ -55,7 +55,7 @@ export class Feature extends pulumi.CustomResource {
      */
     public readonly fleetDefaultMemberConfig!: pulumi.Output<outputs.gkehub.v1beta.CommonFleetDefaultMemberConfigSpecResponse>;
     /**
-     * GCP labels for this Feature.
+     * Labels for this Feature.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
@@ -168,7 +168,7 @@ export interface FeatureArgs {
      */
     fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.v1beta.CommonFleetDefaultMemberConfigSpecArgs>;
     /**
-     * GCP labels for this Feature.
+     * Labels for this Feature.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;

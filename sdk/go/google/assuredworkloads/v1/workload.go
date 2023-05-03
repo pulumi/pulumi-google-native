@@ -57,6 +57,8 @@ type Workload struct {
 	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
 	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
 	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput `pulumi:"saaEnrollmentResponse"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	ViolationNotificationsEnabled pulumi.BoolOutput `pulumi:"violationNotificationsEnabled"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -142,6 +144,8 @@ type workloadArgs struct {
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettings `pulumi:"resourceSettings"`
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
 }
 
 // The set of arguments for constructing a Workload resource.
@@ -176,6 +180,8 @@ type WorkloadArgs struct {
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	ViolationNotificationsEnabled pulumi.BoolPtrInput
 }
 
 func (WorkloadArgs) ElementType() reflect.Type {
@@ -328,6 +334,11 @@ func (o WorkloadOutput) SaaEnrollmentResponse() GoogleCloudAssuredworkloadsV1Wor
 	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
 		return v.SaaEnrollmentResponse
 	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+func (o WorkloadOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

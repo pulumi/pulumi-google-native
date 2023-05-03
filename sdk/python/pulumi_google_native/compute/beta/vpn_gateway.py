@@ -19,6 +19,7 @@ class VpnGatewayArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input['VpnGatewayGatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class VpnGatewayArgs:
         """
         The set of arguments for constructing a VpnGateway resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['VpnGatewayGatewayIpVersion'] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
@@ -39,6 +41,8 @@ class VpnGatewayArgs:
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway_ip_version is not None:
+            pulumi.set(__self__, "gateway_ip_version", gateway_ip_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -74,6 +78,18 @@ class VpnGatewayArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> Optional[pulumi.Input['VpnGatewayGatewayIpVersion']]:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        """
+        return pulumi.get(self, "gateway_ip_version")
+
+    @gateway_ip_version.setter
+    def gateway_ip_version(self, value: Optional[pulumi.Input['VpnGatewayGatewayIpVersion']]):
+        pulumi.set(self, "gateway_ip_version", value)
 
     @property
     @pulumi.getter
@@ -163,6 +179,7 @@ class VpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input['VpnGatewayGatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -178,6 +195,7 @@ class VpnGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['VpnGatewayGatewayIpVersion'] gateway_ip_version: The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
@@ -210,6 +228,7 @@ class VpnGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_ip_version: Optional[pulumi.Input['VpnGatewayGatewayIpVersion']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -228,6 +247,7 @@ class VpnGateway(pulumi.CustomResource):
             __props__ = VpnGatewayArgs.__new__(VpnGatewayArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gateway_ip_version"] = gateway_ip_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -268,6 +288,7 @@ class VpnGateway(pulumi.CustomResource):
 
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["gateway_ip_version"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -296,6 +317,14 @@ class VpnGateway(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewayIpVersion")
+    def gateway_ip_version(self) -> pulumi.Output[str]:
+        """
+        The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
+        """
+        return pulumi.get(self, "gateway_ip_version")
 
     @property
     @pulumi.getter

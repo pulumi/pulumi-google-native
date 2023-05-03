@@ -189,6 +189,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("sourceSnapshotEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
+        /// <summary>
+        /// The storage pool in which the new disk is created. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /storagePools/storagePool - projects/project/zones/zone/storagePools/storagePool - zones/zone/storagePools/storagePool 
+        /// </summary>
+        [Input("storagePool")]
+        public Input<string>? StoragePool { get; set; }
+
         public AttachedDiskInitializeParamsArgs()
         {
         }

@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
         /// </summary>
         public readonly ImmutableArray<string> RuleVersions;
         /// <summary>
+        /// crontab format schedule for scheduled evaluation, example: 0 */3 * * *
+        /// </summary>
+        public readonly string Schedule;
+        /// <summary>
         /// [Output only] Update time stamp
         /// </summary>
         public readonly string UpdateTime;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
 
             ImmutableArray<string> ruleVersions,
 
+            string schedule,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.WorkloadManager.V1
             ResourceStatus = resourceStatus;
             RuleNames = ruleNames;
             RuleVersions = ruleVersions;
+            Schedule = schedule;
             UpdateTime = updateTime;
         }
     }

@@ -1676,8 +1676,12 @@ func (o HttpHeaderMatchResponseOutput) RegexMatch() pulumi.StringOutput {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicy struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCA `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode *MTLSPolicyClientValidationMode `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig *string `pulumi:"clientValidationTrustConfig"`
 }
 
 // MTLSPolicyInput is an input type that accepts MTLSPolicyArgs and MTLSPolicyOutput values.
@@ -1693,8 +1697,12 @@ type MTLSPolicyInput interface {
 
 // Specification of the MTLSPolicy.
 type MTLSPolicyArgs struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa ValidationCAArrayInput `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode MTLSPolicyClientValidationModePtrInput `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig pulumi.StringPtrInput `pulumi:"clientValidationTrustConfig"`
 }
 
 func (MTLSPolicyArgs) ElementType() reflect.Type {
@@ -1775,9 +1783,19 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(MTLSPolicyPtrOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v MTLSPolicy) []ValidationCA { return v.ClientValidationCa }).(ValidationCAArrayOutput)
+}
+
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyOutput) ClientValidationMode() MTLSPolicyClientValidationModePtrOutput {
+	return o.ApplyT(func(v MTLSPolicy) *MTLSPolicyClientValidationMode { return v.ClientValidationMode }).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MTLSPolicy) *string { return v.ClientValidationTrustConfig }).(pulumi.StringPtrOutput)
 }
 
 type MTLSPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -1804,7 +1822,7 @@ func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
 	}).(MTLSPolicyOutput)
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v *MTLSPolicy) []ValidationCA {
 		if v == nil {
@@ -1814,10 +1832,34 @@ func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	}).(ValidationCAArrayOutput)
 }
 
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyPtrOutput) ClientValidationMode() MTLSPolicyClientValidationModePtrOutput {
+	return o.ApplyT(func(v *MTLSPolicy) *MTLSPolicyClientValidationMode {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationMode
+	}).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyPtrOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MTLSPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationTrustConfig
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specification of the MTLSPolicy.
 type MTLSPolicyResponse struct {
-	//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 	ClientValidationCa []ValidationCAResponse `pulumi:"clientValidationCa"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	ClientValidationMode string `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig string `pulumi:"clientValidationTrustConfig"`
 }
 
 // Specification of the MTLSPolicy.
@@ -1835,9 +1877,19 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
+}
+
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+func (o MTLSPolicyResponseOutput) ClientValidationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v MTLSPolicyResponse) string { return v.ClientValidationMode }).(pulumi.StringOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o MTLSPolicyResponseOutput) ClientValidationTrustConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v MTLSPolicyResponse) string { return v.ClientValidationTrustConfig }).(pulumi.StringOutput)
 }
 
 // Specification of rules.

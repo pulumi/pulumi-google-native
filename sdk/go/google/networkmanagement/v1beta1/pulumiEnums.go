@@ -187,9 +187,9 @@ type EndpointNetworkType string
 const (
 	// Default type if unspecified.
 	EndpointNetworkTypeNetworkTypeUnspecified = EndpointNetworkType("NETWORK_TYPE_UNSPECIFIED")
-	// A network hosted within Google Cloud Platform. To receive more detailed output, specify the URI for the source or destination network.
+	// A network hosted within Google Cloud. To receive more detailed output, specify the URI for the source or destination network.
 	EndpointNetworkTypeGcpNetwork = EndpointNetworkType("GCP_NETWORK")
-	// A network hosted outside of Google Cloud Platform. This can be an on-premises network, or a network hosted by another cloud provider.
+	// A network hosted outside of Google Cloud. This can be an on-premises network, or a network hosted by another cloud provider.
 	EndpointNetworkTypeNonGcpNetwork = EndpointNetworkType("NON_GCP_NETWORK")
 )
 

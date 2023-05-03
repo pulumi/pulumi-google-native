@@ -17,28 +17,27 @@ __all__ = ['ImportDataFileArgs', 'ImportDataFile']
 @pulumi.input_type
 class ImportDataFileArgs:
     def __init__(__self__, *,
+                 format: pulumi.Input['ImportDataFileFormat'],
                  import_data_file_id: pulumi.Input[str],
                  import_job_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 format: Optional[pulumi.Input['ImportDataFileFormat']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  upload_file_info: Optional[pulumi.Input['UploadFileInfoArgs']] = None):
         """
         The set of arguments for constructing a ImportDataFile resource.
+        :param pulumi.Input['ImportDataFileFormat'] format: The payload format.
         :param pulumi.Input[str] import_data_file_id: Required. The ID of the new data file.
         :param pulumi.Input[str] display_name: User-friendly display name. Maximum length is 63 characters.
-        :param pulumi.Input['ImportDataFileFormat'] format: The payload format.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['UploadFileInfoArgs'] upload_file_info: Information about a file that is uploaded to a storage service.
         """
+        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "import_data_file_id", import_data_file_id)
         pulumi.set(__self__, "import_job_id", import_job_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if format is not None:
-            pulumi.set(__self__, "format", format)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -47,6 +46,18 @@ class ImportDataFileArgs:
             pulumi.set(__self__, "request_id", request_id)
         if upload_file_info is not None:
             pulumi.set(__self__, "upload_file_info", upload_file_info)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input['ImportDataFileFormat']:
+        """
+        The payload format.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input['ImportDataFileFormat']):
+        pulumi.set(self, "format", value)
 
     @property
     @pulumi.getter(name="importDataFileId")
@@ -80,18 +91,6 @@ class ImportDataFileArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def format(self) -> Optional[pulumi.Input['ImportDataFileFormat']]:
-        """
-        The payload format.
-        """
-        return pulumi.get(self, "format")
-
-    @format.setter
-    def format(self, value: Optional[pulumi.Input['ImportDataFileFormat']]):
-        pulumi.set(self, "format", value)
 
     @property
     @pulumi.getter
@@ -205,6 +204,8 @@ class ImportDataFile(pulumi.CustomResource):
             __props__ = ImportDataFileArgs.__new__(ImportDataFileArgs)
 
             __props__.__dict__["display_name"] = display_name
+            if format is None and not opts.urn:
+                raise TypeError("Missing required property 'format'")
             __props__.__dict__["format"] = format
             if import_data_file_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_data_file_id'")

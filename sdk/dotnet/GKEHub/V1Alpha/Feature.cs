@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public Output<Outputs.CommonFleetDefaultMemberConfigSpecResponse> FleetDefaultMemberConfig { get; private set; } = null!;
 
         /// <summary>
-        /// GCP labels for this Feature.
+        /// Labels for this Feature.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// GCP labels for this Feature.
+        /// Labels for this Feature.
         /// </summary>
         public InputMap<string> Labels
         {

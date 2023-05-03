@@ -1064,7 +1064,7 @@ func (in *dnsconfigClusterDnsScopePtr) ToDNSConfigClusterDnsScopePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DNSConfigClusterDnsScopePtrOutput)
 }
 
-// Denotes the state of etcd encryption.
+// The desired state of etcd encryption.
 type DatabaseEncryptionState string
 
 const (

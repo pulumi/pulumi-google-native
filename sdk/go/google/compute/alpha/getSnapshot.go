@@ -76,6 +76,8 @@ type LookupSnapshotResult struct {
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 	SourceDiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKey"`
+	// The source disk whose recovery checkpoint will be used to create this snapshot.
+	SourceDiskForRecoveryCheckpoint string `pulumi:"sourceDiskForRecoveryCheckpoint"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId string `pulumi:"sourceDiskId"`
 	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
@@ -257,6 +259,11 @@ func (o LookupSnapshotResultOutput) SourceDisk() pulumi.StringOutput {
 // The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
 func (o LookupSnapshotResultOutput) SourceDiskEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) CustomerEncryptionKeyResponse { return v.SourceDiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// The source disk whose recovery checkpoint will be used to create this snapshot.
+func (o LookupSnapshotResultOutput) SourceDiskForRecoveryCheckpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceDiskForRecoveryCheckpoint }).(pulumi.StringOutput)
 }
 
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.

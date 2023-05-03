@@ -28,7 +28,7 @@ class TagKeyArgs:
         :param pulumi.Input[str] description: Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
         :param pulumi.Input[str] name: Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
-        :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        :param pulumi.Input[str] parent: Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         :param pulumi.Input['TagKeyPurpose'] purpose: Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
         """
@@ -98,7 +98,7 @@ class TagKeyArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         """
         return pulumi.get(self, "parent")
 
@@ -152,7 +152,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
         :param pulumi.Input[str] name: Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
-        :param pulumi.Input[str] parent: Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        :param pulumi.Input[str] parent: Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         :param pulumi.Input['TagKeyPurpose'] purpose: Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
         :param pulumi.Input[str] short_name: Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -287,7 +287,7 @@ class TagKey(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+        Immutable. The resource name of the TagKey's parent. A TagKey can be parented by an Organization or a Project. For a TagKey parented by an Organization, its parent must be in the form `organizations/{org_id}`. For a TagKey parented by a Project, its parent can be in the form `projects/{project_id}` or `projects/{project_number}`.
         """
         return pulumi.get(self, "parent")
 

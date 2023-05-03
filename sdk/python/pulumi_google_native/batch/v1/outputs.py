@@ -34,6 +34,7 @@ __all__ = [
     'NFSResponse',
     'NetworkInterfaceResponse',
     'NetworkPolicyResponse',
+    'PlacementPolicyResponse',
     'RunnableResponse',
     'ScriptResponse',
     'ServiceAccountResponse',
@@ -171,6 +172,7 @@ class AllocationPolicyResponse(dict):
                  labels: Mapping[str, str],
                  location: 'outputs.LocationPolicyResponse',
                  network: 'outputs.NetworkPolicyResponse',
+                 placement: 'outputs.PlacementPolicyResponse',
                  service_account: 'outputs.ServiceAccountResponse'):
         """
         A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
@@ -178,12 +180,14 @@ class AllocationPolicyResponse(dict):
         :param Mapping[str, str] labels: Labels applied to all VM instances and other resources created by AllocationPolicy. Labels could be user provided or system generated. You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
         :param 'LocationPolicyResponse' location: Location where compute resources should be allocated for the Job.
         :param 'NetworkPolicyResponse' network: The network policy.
+        :param 'PlacementPolicyResponse' placement: The placement policy.
         :param 'ServiceAccountResponse' service_account: Service account that VMs will run as.
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "placement", placement)
         pulumi.set(__self__, "service_account", service_account)
 
     @property
@@ -217,6 +221,14 @@ class AllocationPolicyResponse(dict):
         The network policy.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def placement(self) -> 'outputs.PlacementPolicyResponse':
+        """
+        The placement policy.
+        """
+        return pulumi.get(self, "placement")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1366,6 +1378,56 @@ class NetworkPolicyResponse(dict):
 
 
 @pulumi.output_type
+class PlacementPolicyResponse(dict):
+    """
+    PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxDistance":
+            suggest = "max_distance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PlacementPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PlacementPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PlacementPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collocation: str,
+                 max_distance: str):
+        """
+        PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy.
+        :param str collocation: UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+        :param str max_distance: When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+        """
+        pulumi.set(__self__, "collocation", collocation)
+        pulumi.set(__self__, "max_distance", max_distance)
+
+    @property
+    @pulumi.getter
+    def collocation(self) -> str:
+        """
+        UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED.
+        """
+        return pulumi.get(self, "collocation")
+
+    @property
+    @pulumi.getter(name="maxDistance")
+    def max_distance(self) -> str:
+        """
+        When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented
+        """
+        return pulumi.get(self, "max_distance")
+
+
+@pulumi.output_type
 class RunnableResponse(dict):
     """
     Runnable describes instructions for executing a specific script or container as part of a Task.
@@ -1396,6 +1458,7 @@ class RunnableResponse(dict):
                  container: 'outputs.ContainerResponse',
                  environment: 'outputs.EnvironmentResponse',
                  ignore_exit_status: bool,
+                 labels: Mapping[str, str],
                  script: 'outputs.ScriptResponse',
                  timeout: str):
         """
@@ -1406,6 +1469,7 @@ class RunnableResponse(dict):
         :param 'ContainerResponse' container: Container runnable.
         :param 'EnvironmentResponse' environment: Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
         :param bool ignore_exit_status: Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
+        :param Mapping[str, str] labels: Labels for this Runnable.
         :param 'ScriptResponse' script: Script runnable.
         :param str timeout: Timeout for this Runnable.
         """
@@ -1415,6 +1479,7 @@ class RunnableResponse(dict):
         pulumi.set(__self__, "container", container)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "ignore_exit_status", ignore_exit_status)
+        pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "timeout", timeout)
 
@@ -1465,6 +1530,14 @@ class RunnableResponse(dict):
         Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
         """
         return pulumi.get(self, "ignore_exit_status")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels for this Runnable.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

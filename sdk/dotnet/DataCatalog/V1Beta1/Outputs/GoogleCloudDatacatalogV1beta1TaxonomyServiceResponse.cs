@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
     public sealed class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse
     {
         /// <summary>
-        /// P4SA Identity of the service.
+        /// The service agent for the service.
         /// </summary>
         public readonly string Identity;
         /// <summary>

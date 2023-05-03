@@ -42,6 +42,8 @@ type Tenant struct {
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The tenant-level reCAPTCHA config.
+	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
 	SmsRegionConfig GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponseOutput `pulumi:"smsRegionConfig"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -114,6 +116,8 @@ type tenantArgs struct {
 	// Configuration related to monitoring project activity.
 	Monitoring *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig `pulumi:"monitoring"`
 	Project    *string                                            `pulumi:"project"`
+	// The tenant-level reCAPTCHA config.
+	RecaptchaConfig *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
 	SmsRegionConfig *GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig `pulumi:"smsRegionConfig"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -145,6 +149,8 @@ type TenantArgs struct {
 	// Configuration related to monitoring project activity.
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput
 	Project    pulumi.StringPtrInput
+	// The tenant-level reCAPTCHA config.
+	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput
 	// Configures which regions are enabled for SMS verification code sending.
 	SmsRegionConfig GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigPtrInput
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -259,6 +265,13 @@ func (o TenantOutput) Name() pulumi.StringOutput {
 
 func (o TenantOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The tenant-level reCAPTCHA config.
+func (o TenantOutput) RecaptchaConfig() GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput {
+	return o.ApplyT(func(v *Tenant) GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput {
+		return v.RecaptchaConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput)
 }
 
 // Configures which regions are enabled for SMS verification code sending.

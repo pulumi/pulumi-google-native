@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
+// Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type Case struct {
@@ -35,11 +35,9 @@ type Case struct {
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// The resource name for the case.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The priority of this case. If this is set, do not set severity.
+	// The priority of this case.
 	Priority pulumi.StringOutput `pulumi:"priority"`
-	// The severity of this case. Deprecated. Use priority instead.
-	//
-	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	// REMOVED. The severity of this case. Use priority instead.
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// The current status of the support case.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -121,11 +119,9 @@ type caseArgs struct {
 	LanguageCode *string `pulumi:"languageCode"`
 	// The resource name for the case.
 	Name *string `pulumi:"name"`
-	// The priority of this case. If this is set, do not set severity.
+	// The priority of this case.
 	Priority *CasePriority `pulumi:"priority"`
-	// The severity of this case. Deprecated. Use priority instead.
-	//
-	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	// REMOVED. The severity of this case. Use priority instead.
 	Severity *CaseSeverity `pulumi:"severity"`
 	// The email addresses to receive updates on this case.
 	SubscriberEmailAddresses []string `pulumi:"subscriberEmailAddresses"`
@@ -155,11 +151,9 @@ type CaseArgs struct {
 	LanguageCode pulumi.StringPtrInput
 	// The resource name for the case.
 	Name pulumi.StringPtrInput
-	// The priority of this case. If this is set, do not set severity.
+	// The priority of this case.
 	Priority CasePriorityPtrInput
-	// The severity of this case. Deprecated. Use priority instead.
-	//
-	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	// REMOVED. The severity of this case. Use priority instead.
 	Severity CaseSeverityPtrInput
 	// The email addresses to receive updates on this case.
 	SubscriberEmailAddresses pulumi.StringArrayInput
@@ -253,14 +247,12 @@ func (o CaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The priority of this case. If this is set, do not set severity.
+// The priority of this case.
 func (o CaseOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
 }
 
-// The severity of this case. Deprecated. Use priority instead.
-//
-// Deprecated: The severity of this case. Deprecated. Use priority instead.
+// REMOVED. The severity of this case. Use priority instead.
 func (o CaseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
 }

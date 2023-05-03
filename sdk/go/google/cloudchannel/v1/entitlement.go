@@ -21,6 +21,8 @@ type Entitlement struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Association information to other entitlements.
 	AssociationInfo GoogleCloudChannelV1AssociationInfoResponseOutput `pulumi:"associationInfo"`
+	// Optional. The billing account resource name that is used to pay for this entitlement.
+	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsResponseOutput `pulumi:"commitmentSettings"`
 	// The time at which the entitlement is created.
@@ -102,6 +104,8 @@ type entitlementArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Association information to other entitlements.
 	AssociationInfo *GoogleCloudChannelV1AssociationInfo `pulumi:"associationInfo"`
+	// Optional. The billing account resource name that is used to pay for this entitlement.
+	BillingAccount *string `pulumi:"billingAccount"`
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings *GoogleCloudChannelV1CommitmentSettings `pulumi:"commitmentSettings"`
 	CustomerId         string                                  `pulumi:"customerId"`
@@ -120,6 +124,8 @@ type EntitlementArgs struct {
 	AccountId pulumi.StringInput
 	// Association information to other entitlements.
 	AssociationInfo GoogleCloudChannelV1AssociationInfoPtrInput
+	// Optional. The billing account resource name that is used to pay for this entitlement.
+	BillingAccount pulumi.StringPtrInput
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsPtrInput
 	CustomerId         pulumi.StringInput
@@ -177,6 +183,11 @@ func (o EntitlementOutput) AccountId() pulumi.StringOutput {
 // Association information to other entitlements.
 func (o EntitlementOutput) AssociationInfo() GoogleCloudChannelV1AssociationInfoResponseOutput {
 	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1AssociationInfoResponseOutput { return v.AssociationInfo }).(GoogleCloudChannelV1AssociationInfoResponseOutput)
+}
+
+// Optional. The billing account resource name that is used to pay for this entitlement.
+func (o EntitlementOutput) BillingAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.BillingAccount }).(pulumi.StringOutput)
 }
 
 // Commitment settings for a commitment-based Offer. Required for commitment based offers.

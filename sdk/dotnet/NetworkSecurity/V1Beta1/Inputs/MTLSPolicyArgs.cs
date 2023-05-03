@@ -19,13 +19,25 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         private InputList<Inputs.ValidationCAArgs>? _clientValidationCa;
 
         /// <summary>
-        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        /// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         public InputList<Inputs.ValidationCAArgs> ClientValidationCa
         {
             get => _clientValidationCa ?? (_clientValidationCa = new InputList<Inputs.ValidationCAArgs>());
             set => _clientValidationCa = value;
         }
+
+        /// <summary>
+        /// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        /// </summary>
+        [Input("clientValidationMode")]
+        public Input<Pulumi.GoogleNative.NetworkSecurity.V1Beta1.MTLSPolicyClientValidationMode>? ClientValidationMode { get; set; }
+
+        /// <summary>
+        /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+        /// </summary>
+        [Input("clientValidationTrustConfig")]
+        public Input<string>? ClientValidationTrustConfig { get; set; }
 
         public MTLSPolicyArgs()
         {

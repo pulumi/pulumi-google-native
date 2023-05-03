@@ -26,15 +26,15 @@ type GetJobArgs struct {
 }
 
 type GetJobResult struct {
-	// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+	// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
 	ApiVersion string `pulumi:"apiVersion"`
-	// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
 	Kind string `pulumi:"kind"`
-	// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+	// Optional. Standard object's metadata.
 	Metadata ObjectMetaResponse `pulumi:"metadata"`
-	// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// Optional. Specification of the desired behavior of a job.
 	Spec JobSpecResponse `pulumi:"spec"`
-	// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+	// Current status of a job.
 	Status JobStatusResponse `pulumi:"status"`
 }
 
@@ -74,27 +74,27 @@ func (o GetJobResultOutput) ToGetJobResultOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
 func (o GetJobResultOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobResult) string { return v.ApiVersion }).(pulumi.StringOutput)
 }
 
-// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase.
 func (o GetJobResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+// Optional. Standard object's metadata.
 func (o GetJobResultOutput) Metadata() ObjectMetaResponseOutput {
 	return o.ApplyT(func(v GetJobResult) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
 }
 
-// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+// Optional. Specification of the desired behavior of a job.
 func (o GetJobResultOutput) Spec() JobSpecResponseOutput {
 	return o.ApplyT(func(v GetJobResult) JobSpecResponse { return v.Spec }).(JobSpecResponseOutput)
 }
 
-// Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+// Current status of a job.
 func (o GetJobResultOutput) Status() JobStatusResponseOutput {
 	return o.ApplyT(func(v GetJobResult) JobStatusResponse { return v.Status }).(JobStatusResponseOutput)
 }

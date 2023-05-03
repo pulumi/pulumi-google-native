@@ -28,13 +28,15 @@ type Membership struct {
 	Endpoint MembershipEndpointResponseOutput `pulumi:"endpoint"`
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
-	// Optional. GCP labels for this membership.
+	// Optional. Labels for this membership.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
 	LastConnectionTime pulumi.StringOutput `pulumi:"lastConnectionTime"`
 	Location           pulumi.StringOutput `pulumi:"location"`
 	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
+	// Optional. The monitoring config information for this membership.
+	MonitoringConfig MonitoringConfigResponseOutput `pulumi:"monitoringConfig"`
 	// The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -102,12 +104,14 @@ type membershipArgs struct {
 	Endpoint *MembershipEndpoint `pulumi:"endpoint"`
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId *string `pulumi:"externalId"`
-	// Optional. GCP labels for this membership.
+	// Optional. Labels for this membership.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
-	MembershipId string  `pulumi:"membershipId"`
-	Project      *string `pulumi:"project"`
+	MembershipId string `pulumi:"membershipId"`
+	// Optional. The monitoring config information for this membership.
+	MonitoringConfig *MonitoringConfig `pulumi:"monitoringConfig"`
+	Project          *string           `pulumi:"project"`
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 }
@@ -120,12 +124,14 @@ type MembershipArgs struct {
 	Endpoint MembershipEndpointPtrInput
 	// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
 	ExternalId pulumi.StringPtrInput
-	// Optional. GCP labels for this membership.
+	// Optional. Labels for this membership.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
 	MembershipId pulumi.StringInput
-	Project      pulumi.StringPtrInput
+	// Optional. The monitoring config information for this membership.
+	MonitoringConfig MonitoringConfigPtrInput
+	Project          pulumi.StringPtrInput
 	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 }
@@ -197,7 +203,7 @@ func (o MembershipOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// Optional. GCP labels for this membership.
+// Optional. Labels for this membership.
 func (o MembershipOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -214,6 +220,11 @@ func (o MembershipOutput) Location() pulumi.StringOutput {
 // Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
 func (o MembershipOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
+}
+
+// Optional. The monitoring config information for this membership.
+func (o MembershipOutput) MonitoringConfig() MonitoringConfigResponseOutput {
+	return o.ApplyT(func(v *Membership) MonitoringConfigResponseOutput { return v.MonitoringConfig }).(MonitoringConfigResponseOutput)
 }
 
 // The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.

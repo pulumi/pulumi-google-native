@@ -64,13 +64,11 @@ export interface GetCaseResult {
      */
     readonly name: string;
     /**
-     * The priority of this case. If this is set, do not set severity.
+     * The priority of this case.
      */
     readonly priority: string;
     /**
-     * The severity of this case. Deprecated. Use priority instead.
-     *
-     * @deprecated The severity of this case. Deprecated. Use priority instead.
+     * REMOVED. The severity of this case. Use priority instead.
      */
     readonly severity: string;
     /**

@@ -492,6 +492,10 @@ class MTLSPolicyResponse(dict):
         suggest = None
         if key == "clientValidationCa":
             suggest = "client_validation_ca"
+        elif key == "clientValidationMode":
+            suggest = "client_validation_mode"
+        elif key == "clientValidationTrustConfig":
+            suggest = "client_validation_trust_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MTLSPolicyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -505,20 +509,42 @@ class MTLSPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 client_validation_ca: Sequence['outputs.ValidationCAResponse']):
+                 client_validation_ca: Sequence['outputs.ValidationCAResponse'],
+                 client_validation_mode: str,
+                 client_validation_trust_config: str):
         """
         Specification of the MTLSPolicy.
-        :param Sequence['ValidationCAResponse'] client_validation_ca:  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param Sequence['ValidationCAResponse'] client_validation_ca: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        :param str client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        :param str client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
         """
         pulumi.set(__self__, "client_validation_ca", client_validation_ca)
+        pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
 
     @property
     @pulumi.getter(name="clientValidationCa")
     def client_validation_ca(self) -> Sequence['outputs.ValidationCAResponse']:
         """
-         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         """
         return pulumi.get(self, "client_validation_ca")
+
+    @property
+    @pulumi.getter(name="clientValidationMode")
+    def client_validation_mode(self) -> str:
+        """
+        When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        """
+        return pulumi.get(self, "client_validation_mode")
+
+    @property
+    @pulumi.getter(name="clientValidationTrustConfig")
+    def client_validation_trust_config(self) -> str:
+        """
+        Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain validation will be performed against certificates configured in the given TrustConfig. Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        return pulumi.get(self, "client_validation_trust_config")
 
 
 @pulumi.output_type

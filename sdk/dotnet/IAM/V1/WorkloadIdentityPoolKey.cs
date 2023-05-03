@@ -50,7 +50,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The purpose of the key.
+        /// The purpose of the key.
         /// </summary>
         [Output("use")]
         public Output<string> Use { get; private set; } = null!;
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Input<string> ProviderId { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The purpose of the key.
+        /// The purpose of the key.
         /// </summary>
-        [Input("use")]
-        public Input<Pulumi.GoogleNative.IAM.V1.WorkloadIdentityPoolKeyUse>? Use { get; set; }
+        [Input("use", required: true)]
+        public Input<Pulumi.GoogleNative.IAM.V1.WorkloadIdentityPoolKeyUse> Use { get; set; } = null!;
 
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;

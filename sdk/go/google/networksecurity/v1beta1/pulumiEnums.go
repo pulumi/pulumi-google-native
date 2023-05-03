@@ -519,6 +519,175 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+// When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+type MTLSPolicyClientValidationMode string
+
+const (
+	// Not allowed.
+	MTLSPolicyClientValidationModeClientValidationModeUnspecified = MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED")
+	// Allow connection even if certificate chain validation of the client certificate failed or no client certificate was presented. The proof of possession of the private key is always checked if client certificate was presented. This mode requires the backend to implement processing of data extracted from a client certificate to authenticate the peer, or to reject connections if the client certificate fingerprint is missing.
+	MTLSPolicyClientValidationModeAllowInvalidOrMissingClientCert = MTLSPolicyClientValidationMode("ALLOW_INVALID_OR_MISSING_CLIENT_CERT")
+	// Require a client certificate and allow connection to the backend only if validation of the client certificate passed. If set, requires a reference to non-empty TrustConfig specified in `client_validation_trust_config`.
+	MTLSPolicyClientValidationModeRejectInvalid = MTLSPolicyClientValidationMode("REJECT_INVALID")
+)
+
+func (MTLSPolicyClientValidationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*MTLSPolicyClientValidationMode)(nil)).Elem()
+}
+
+func (e MTLSPolicyClientValidationMode) ToMTLSPolicyClientValidationModeOutput() MTLSPolicyClientValidationModeOutput {
+	return pulumi.ToOutput(e).(MTLSPolicyClientValidationModeOutput)
+}
+
+func (e MTLSPolicyClientValidationMode) ToMTLSPolicyClientValidationModeOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MTLSPolicyClientValidationModeOutput)
+}
+
+func (e MTLSPolicyClientValidationMode) ToMTLSPolicyClientValidationModePtrOutput() MTLSPolicyClientValidationModePtrOutput {
+	return e.ToMTLSPolicyClientValidationModePtrOutputWithContext(context.Background())
+}
+
+func (e MTLSPolicyClientValidationMode) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
+	return MTLSPolicyClientValidationMode(e).ToMTLSPolicyClientValidationModeOutputWithContext(ctx).ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx)
+}
+
+func (e MTLSPolicyClientValidationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MTLSPolicyClientValidationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MTLSPolicyClientValidationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MTLSPolicyClientValidationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MTLSPolicyClientValidationModeOutput struct{ *pulumi.OutputState }
+
+func (MTLSPolicyClientValidationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MTLSPolicyClientValidationMode)(nil)).Elem()
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModeOutput() MTLSPolicyClientValidationModeOutput {
+	return o
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModeOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModeOutput {
+	return o
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModePtrOutput() MTLSPolicyClientValidationModePtrOutput {
+	return o.ToMTLSPolicyClientValidationModePtrOutputWithContext(context.Background())
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MTLSPolicyClientValidationMode) *MTLSPolicyClientValidationMode {
+		return &v
+	}).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MTLSPolicyClientValidationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MTLSPolicyClientValidationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MTLSPolicyClientValidationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MTLSPolicyClientValidationModePtrOutput struct{ *pulumi.OutputState }
+
+func (MTLSPolicyClientValidationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MTLSPolicyClientValidationMode)(nil)).Elem()
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationModePtrOutput() MTLSPolicyClientValidationModePtrOutput {
+	return o
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
+	return o
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) Elem() MTLSPolicyClientValidationModeOutput {
+	return o.ApplyT(func(v *MTLSPolicyClientValidationMode) MTLSPolicyClientValidationMode {
+		if v != nil {
+			return *v
+		}
+		var ret MTLSPolicyClientValidationMode
+		return ret
+	}).(MTLSPolicyClientValidationModeOutput)
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MTLSPolicyClientValidationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MTLSPolicyClientValidationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MTLSPolicyClientValidationModeInput is an input type that accepts MTLSPolicyClientValidationModeArgs and MTLSPolicyClientValidationModeOutput values.
+// You can construct a concrete instance of `MTLSPolicyClientValidationModeInput` via:
+//
+//	MTLSPolicyClientValidationModeArgs{...}
+type MTLSPolicyClientValidationModeInput interface {
+	pulumi.Input
+
+	ToMTLSPolicyClientValidationModeOutput() MTLSPolicyClientValidationModeOutput
+	ToMTLSPolicyClientValidationModeOutputWithContext(context.Context) MTLSPolicyClientValidationModeOutput
+}
+
+var mtlspolicyClientValidationModePtrType = reflect.TypeOf((**MTLSPolicyClientValidationMode)(nil)).Elem()
+
+type MTLSPolicyClientValidationModePtrInput interface {
+	pulumi.Input
+
+	ToMTLSPolicyClientValidationModePtrOutput() MTLSPolicyClientValidationModePtrOutput
+	ToMTLSPolicyClientValidationModePtrOutputWithContext(context.Context) MTLSPolicyClientValidationModePtrOutput
+}
+
+type mtlspolicyClientValidationModePtr string
+
+func MTLSPolicyClientValidationModePtr(v string) MTLSPolicyClientValidationModePtrInput {
+	return (*mtlspolicyClientValidationModePtr)(&v)
+}
+
+func (*mtlspolicyClientValidationModePtr) ElementType() reflect.Type {
+	return mtlspolicyClientValidationModePtrType
+}
+
+func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtrOutput() MTLSPolicyClientValidationModePtrOutput {
+	return pulumi.ToOutput(in).(MTLSPolicyClientValidationModePtrOutput)
+}
+
+func (in *mtlspolicyClientValidationModePtr) ToMTLSPolicyClientValidationModePtrOutputWithContext(ctx context.Context) MTLSPolicyClientValidationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MTLSPolicyClientValidationModePtrOutput)
+}
+
 // Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
 type OrganizationAddressGroupType string
 
@@ -864,6 +1033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionPtrInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyClientValidationModeInput)(nil)).Elem(), MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MTLSPolicyClientValidationModePtrInput)(nil)).Elem(), MTLSPolicyClientValidationMode("CLIENT_VALIDATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypeInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypePtrInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfileInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
@@ -874,6 +1045,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthorizationPolicyActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(MTLSPolicyClientValidationModeOutput{})
+	pulumi.RegisterOutputType(MTLSPolicyClientValidationModePtrOutput{})
 	pulumi.RegisterOutputType(OrganizationAddressGroupTypeOutput{})
 	pulumi.RegisterOutputType(OrganizationAddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(RuleBasicProfileOutput{})

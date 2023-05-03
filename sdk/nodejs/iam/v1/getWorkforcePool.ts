@@ -27,7 +27,7 @@ export interface GetWorkforcePoolResult {
      */
     readonly description: string;
     /**
-     * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+     * Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
     readonly disabled: boolean;
     /**

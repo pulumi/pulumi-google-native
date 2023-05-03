@@ -33,7 +33,7 @@ type LookupWorkforcePoolProviderResult struct {
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description string `pulumi:"description"`
-	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+	// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 	Disabled bool `pulumi:"disabled"`
 	// A user-specified display name for the provider. Cannot exceed 32 characters.
 	DisplayName string `pulumi:"displayName"`
@@ -99,7 +99,7 @@ func (o LookupWorkforcePoolProviderResultOutput) Description() pulumi.StringOutp
 	return o.ApplyT(func(v LookupWorkforcePoolProviderResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
+// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
 func (o LookupWorkforcePoolProviderResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkforcePoolProviderResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }

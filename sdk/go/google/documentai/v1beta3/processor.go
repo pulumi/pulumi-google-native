@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a processor from the type processor that the user chose. The processor will be at "ENABLED" state by default after its creation.
+// Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation.
 // Auto-naming is currently not supported for this resource.
 type Processor struct {
 	pulumi.CustomResourceState
@@ -31,7 +31,7 @@ type Processor struct {
 	Project         pulumi.StringOutput `pulumi:"project"`
 	// The state of the processor.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+	// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -89,7 +89,7 @@ type processorArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	Location   *string `pulumi:"location"`
 	Project    *string `pulumi:"project"`
-	// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+	// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
 	Type *string `pulumi:"type"`
 }
 
@@ -105,7 +105,7 @@ type ProcessorArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
-	// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+	// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
 	Type pulumi.StringPtrInput
 }
 
@@ -189,7 +189,7 @@ func (o ProcessorOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
+// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
 func (o ProcessorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

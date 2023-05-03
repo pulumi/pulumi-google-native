@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureIamMember{}
 	case "google-native:gkehub/v1beta:FeatureIamPolicy":
 		r = &FeatureIamPolicy{}
+	case "google-native:gkehub/v1beta:Fleet":
+		r = &Fleet{}
 	case "google-native:gkehub/v1beta:MembershipIamBinding":
 		r = &MembershipIamBinding{}
 	case "google-native:gkehub/v1beta:MembershipIamMember":

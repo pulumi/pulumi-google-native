@@ -1595,17 +1595,17 @@ class H265CodecSettingsResponse(dict):
 @pulumi.output_type
 class ImageResponse(dict):
     """
-    Overlaid jpeg image.
+    Overlaid image.
     """
     def __init__(__self__, *,
                  alpha: float,
                  resolution: 'outputs.NormalizedCoordinateResponse',
                  uri: str):
         """
-        Overlaid jpeg image.
+        Overlaid image.
         :param float alpha: Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
         :param 'NormalizedCoordinateResponse' resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-        :param str uri: URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        :param str uri: URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         """
         pulumi.set(__self__, "alpha", alpha)
         pulumi.set(__self__, "resolution", resolution)
@@ -1631,7 +1631,7 @@ class ImageResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are supported.
         """
         return pulumi.get(self, "uri")
 
@@ -1877,7 +1877,7 @@ class ManifestResponse(dict):
         Manifest configuration.
         :param str file_name: The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
         :param Sequence[str] mux_streams: List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        :param str type: Type of the manifest, can be `HLS` or `DASH`.
+        :param str type: Type of the manifest.
         """
         pulumi.set(__self__, "file_name", file_name)
         pulumi.set(__self__, "mux_streams", mux_streams)
@@ -1903,7 +1903,7 @@ class ManifestResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of the manifest, can be `HLS` or `DASH`.
+        Type of the manifest.
         """
         return pulumi.get(self, "type")
 

@@ -52,13 +52,17 @@ export interface GetMembershipResult {
      */
     readonly externalId: string;
     /**
-     * Optional. GCP labels for this membership.
+     * Optional. Labels for this membership.
      */
     readonly labels: {[key: string]: string};
     /**
      * For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
      */
     readonly lastConnectionTime: string;
+    /**
+     * Optional. The monitoring config information for this membership.
+     */
+    readonly monitoringConfig: outputs.gkehub.v1.MonitoringConfigResponse;
     /**
      * The full, unique name of this Membership resource in the format `projects/*&#47;locations/*&#47;memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
      */

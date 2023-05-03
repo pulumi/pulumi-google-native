@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class LocalObjectReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        /// Name of the referent.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

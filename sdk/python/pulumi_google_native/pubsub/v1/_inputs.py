@@ -11,8 +11,10 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AvroConfigArgs',
     'BigQueryConfigArgs',
     'BindingArgs',
+    'CloudStorageConfigArgs',
     'DeadLetterPolicyArgs',
     'ExpirationPolicyArgs',
     'ExprArgs',
@@ -21,7 +23,32 @@ __all__ = [
     'PushConfigArgs',
     'RetryPolicyArgs',
     'SchemaSettingsArgs',
+    'TextConfigArgs',
 ]
+
+@pulumi.input_type
+class AvroConfigArgs:
+    def __init__(__self__, *,
+                 write_metadata: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary.
+        :param pulumi.Input[bool] write_metadata: When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+        """
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "write_metadata", value)
+
 
 @pulumi.input_type
 class BigQueryConfigArgs:
@@ -149,6 +176,125 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class CloudStorageConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 avro_config: Optional[pulumi.Input['AvroConfigArgs']] = None,
+                 filename_prefix: Optional[pulumi.Input[str]] = None,
+                 filename_suffix: Optional[pulumi.Input[str]] = None,
+                 max_bytes: Optional[pulumi.Input[str]] = None,
+                 max_duration: Optional[pulumi.Input[str]] = None,
+                 text_config: Optional[pulumi.Input['TextConfigArgs']] = None):
+        """
+        Configuration for a Cloud Storage subscription.
+        :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+        :param pulumi.Input['AvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
+        :param pulumi.Input[str] filename_prefix: User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        :param pulumi.Input[str] filename_suffix: User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        :param pulumi.Input[str] max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+        :param pulumi.Input[str] max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+        :param pulumi.Input['TextConfigArgs'] text_config: If set, message data will be written to Cloud Storage in text format.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if avro_config is not None:
+            pulumi.set(__self__, "avro_config", avro_config)
+        if filename_prefix is not None:
+            pulumi.set(__self__, "filename_prefix", filename_prefix)
+        if filename_suffix is not None:
+            pulumi.set(__self__, "filename_suffix", filename_suffix)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+        if text_config is not None:
+            pulumi.set(__self__, "text_config", text_config)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://". See the [bucket naming requirements] (https://cloud.google.com/storage/docs/buckets#naming).
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="avroConfig")
+    def avro_config(self) -> Optional[pulumi.Input['AvroConfigArgs']]:
+        """
+        If set, message data will be written to Cloud Storage in Avro format.
+        """
+        return pulumi.get(self, "avro_config")
+
+    @avro_config.setter
+    def avro_config(self, value: Optional[pulumi.Input['AvroConfigArgs']]):
+        pulumi.set(self, "avro_config", value)
+
+    @property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided prefix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        """
+        return pulumi.get(self, "filename_prefix")
+
+    @filename_prefix.setter
+    def filename_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_prefix", value)
+
+    @property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided suffix for Cloud Storage filename. See the [object naming requirements](https://cloud.google.com/storage/docs/objects#naming).
+        """
+        return pulumi.get(self, "filename_suffix")
+
+    @filename_suffix.setter
+    def filename_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_suffix", value)
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @max_bytes.setter
+    def max_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_duration", value)
+
+    @property
+    @pulumi.getter(name="textConfig")
+    def text_config(self) -> Optional[pulumi.Input['TextConfigArgs']]:
+        """
+        If set, message data will be written to Cloud Storage in text format.
+        """
+        return pulumi.get(self, "text_config")
+
+    @text_config.setter
+    def text_config(self, value: Optional[pulumi.Input['TextConfigArgs']]):
+        pulumi.set(self, "text_config", value)
 
 
 @pulumi.input_type
@@ -512,5 +658,14 @@ class SchemaSettingsArgs:
     @last_revision_id.setter
     def last_revision_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_revision_id", value)
+
+
+@pulumi.input_type
+class TextConfigArgs:
+    def __init__(__self__):
+        """
+        Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline.
+        """
+        pass
 
 

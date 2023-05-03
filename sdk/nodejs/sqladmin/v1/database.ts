@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Inserts a resource containing information about a database inside a Cloud SQL instance.
+ * Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation.
  */
 export class Database extends pulumi.CustomResource {
     /**

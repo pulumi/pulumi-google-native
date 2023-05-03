@@ -29,9 +29,11 @@ type WorkstationConfig struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent pulumi.BoolOutput `pulumi:"enableAuditAgent"`
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"encryptionKey"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Runtime host for the workstation.
 	Host HostResponseOutput `pulumi:"host"`
@@ -45,6 +47,8 @@ type WorkstationConfig struct {
 	// Directories to persist across workstation sessions.
 	PersistentDirectories PersistentDirectoryResponseArrayOutput `pulumi:"persistentDirectories"`
 	Project               pulumi.StringOutput                    `pulumi:"project"`
+	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	ReadinessChecks ReadinessCheckResponseArrayOutput `pulumi:"readinessChecks"`
 	// Indicates whether this resource is currently being updated to match its intended state.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
@@ -54,7 +58,7 @@ type WorkstationConfig struct {
 	// Time when this resource was most recently updated.
 	UpdateTime           pulumi.StringOutput `pulumi:"updateTime"`
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
-	// Required. ID to use for the config.
+	// Required. ID to use for the workstation configuration.
 	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
 }
 
@@ -116,9 +120,11 @@ type workstationConfigArgs struct {
 	Container *Container `pulumi:"container"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
-	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent *bool `pulumi:"enableAuditAgent"`
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey *CustomerEncryptionKey `pulumi:"encryptionKey"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Runtime host for the workstation.
 	Host *Host `pulumi:"host"`
@@ -132,10 +138,12 @@ type workstationConfigArgs struct {
 	// Directories to persist across workstation sessions.
 	PersistentDirectories []PersistentDirectory `pulumi:"persistentDirectories"`
 	Project               *string               `pulumi:"project"`
+	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	ReadinessChecks []ReadinessCheck `pulumi:"readinessChecks"`
 	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 	RunningTimeout       *string `pulumi:"runningTimeout"`
 	WorkstationClusterId string  `pulumi:"workstationClusterId"`
-	// Required. ID to use for the config.
+	// Required. ID to use for the workstation configuration.
 	WorkstationConfigId string `pulumi:"workstationConfigId"`
 }
 
@@ -147,9 +155,11 @@ type WorkstationConfigArgs struct {
 	Container ContainerPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
-	// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+	// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+	EnableAuditAgent pulumi.BoolPtrInput
+	// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
 	EncryptionKey CustomerEncryptionKeyPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+	// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Runtime host for the workstation.
 	Host HostPtrInput
@@ -163,10 +173,12 @@ type WorkstationConfigArgs struct {
 	// Directories to persist across workstation sessions.
 	PersistentDirectories PersistentDirectoryArrayInput
 	Project               pulumi.StringPtrInput
+	// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+	ReadinessChecks ReadinessCheckArrayInput
 	// How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
 	RunningTimeout       pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringInput
-	// Required. ID to use for the config.
+	// Required. ID to use for the workstation configuration.
 	WorkstationConfigId pulumi.StringInput
 }
 
@@ -242,12 +254,17 @@ func (o WorkstationConfigOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+// Whether to enable linux auditd logging on the workstation. When enabled, a service account must also be specified that has logging.buckets.write permission on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+func (o WorkstationConfigOutput) EnableAuditAgent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.EnableAuditAgent }).(pulumi.BoolOutput)
+}
+
+// Immutable. Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours. Immutable after the workstation configuration is created.
 func (o WorkstationConfigOutput) EncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *WorkstationConfig) CustomerEncryptionKeyResponseOutput { return v.EncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
 
-// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
 func (o WorkstationConfigOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -285,6 +302,11 @@ func (o WorkstationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes.
+func (o WorkstationConfigOutput) ReadinessChecks() ReadinessCheckResponseArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) ReadinessCheckResponseArrayOutput { return v.ReadinessChecks }).(ReadinessCheckResponseArrayOutput)
+}
+
 // Indicates whether this resource is currently being updated to match its intended state.
 func (o WorkstationConfigOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
@@ -309,7 +331,7 @@ func (o WorkstationConfigOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }
 
-// Required. ID to use for the config.
+// Required. ID to use for the workstation configuration.
 func (o WorkstationConfigOutput) WorkstationConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.WorkstationConfigId }).(pulumi.StringOutput)
 }

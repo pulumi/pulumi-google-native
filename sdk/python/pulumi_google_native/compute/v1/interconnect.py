@@ -20,6 +20,7 @@ class InterconnectArgs:
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,7 @@ class InterconnectArgs:
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -48,6 +50,8 @@ class InterconnectArgs:
             pulumi.set(__self__, "description", description)
         if interconnect_type is not None:
             pulumi.set(__self__, "interconnect_type", interconnect_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if link_type is not None:
             pulumi.set(__self__, "link_type", link_type)
         if location is not None:
@@ -110,6 +114,18 @@ class InterconnectArgs:
     @interconnect_type.setter
     def interconnect_type(self, value: Optional[pulumi.Input['InterconnectInterconnectType']]):
         pulumi.set(self, "interconnect_type", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter(name="linkType")
@@ -202,6 +218,7 @@ class Interconnect(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -219,6 +236,7 @@ class Interconnect(pulumi.CustomResource):
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['InterconnectInterconnectType'] interconnect_type: Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input['InterconnectLinkType'] link_type: Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -254,6 +272,7 @@ class Interconnect(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  interconnect_type: Optional[pulumi.Input['InterconnectInterconnectType']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  link_type: Optional[pulumi.Input['InterconnectLinkType']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -274,6 +293,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
             __props__.__dict__["interconnect_type"] = interconnect_type
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["link_type"] = link_type
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -288,6 +308,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["google_reference_id"] = None
             __props__.__dict__["interconnect_attachments"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["peer_ip_address"] = None
             __props__.__dict__["provisioned_link_count"] = None
@@ -329,6 +350,8 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["interconnect_attachments"] = None
         __props__.__dict__["interconnect_type"] = None
         __props__.__dict__["kind"] = None
+        __props__.__dict__["label_fingerprint"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["link_type"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -431,6 +454,22 @@ class Interconnect(pulumi.CustomResource):
         Type of the resource. Always compute#interconnect for interconnects.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this Interconnect, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an Interconnect.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="linkType")

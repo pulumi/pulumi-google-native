@@ -133,6 +133,9 @@ export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatis
     Max: "MAX",
 } as const;
 
+/**
+ * The aggregate metric to evaluate.
+ */
 export type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic = (typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)[keyof typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic];
 
 export const GoogleCloudDataplexV1SchemaPartitionFieldType = {
