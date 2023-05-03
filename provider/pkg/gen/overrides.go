@@ -125,13 +125,15 @@ var resourceNameByPathOverrides = map[string]string{
 	"policysimulator_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
 
 	// Security Center.
-	"securitycenter_v1.json:v1/folders/{foldersId}/muteConfigs":                     "",
-	"securitycenter_v1.json:v1/folders/{foldersId}/notificationConfigs":             "FolderNotificationConfig",
-	"securitycenter_v1.json:v1/folders/{foldersId}/bigQueryExports":                 "FolderBigQueryExport",
-	"securitycenter_v1.json:v1/organizations/{organizationsId}/bigQueryExports":     "OrganizationBigQueryExport",
-	"securitycenter_v1.json:v1/organizations/{organizationsId}/muteConfigs":         "OrganizationMuteConfig",
-	"securitycenter_v1.json:v1/organizations/{organizationsId}/notificationConfigs": "OrganizationNotificationConfig",
-	"securitycenter_v1.json:v1/projects/{projectsId}/bigQueryExports":               "ProjectBigQueryExport",
+	"securitycenter_v1.json:v1/folders/{foldersId}/muteConfigs":                                               "",
+	"securitycenter_v1.json:v1/folders/{foldersId}/notificationConfigs":                                       "FolderNotificationConfig",
+	"securitycenter_v1.json:v1/folders/{foldersId}/bigQueryExports":                                           "FolderBigQueryExport",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/bigQueryExports":                               "OrganizationBigQueryExport",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/muteConfigs":                                   "OrganizationMuteConfig",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/notificationConfigs":                           "OrganizationNotificationConfig",
+	"securitycenter_v1.json:v1/projects/{projectsId}/bigQueryExports":                                         "ProjectBigQueryExport",
+	"securitycenter_v1.json:v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules":             "FolderCustomModule",
+	"securitycenter_v1.json:v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules": "OrganizationCustomModule",
 
 	// Storage.
 	"storage_v1.json:b/{bucket}/o": "BucketObject",
