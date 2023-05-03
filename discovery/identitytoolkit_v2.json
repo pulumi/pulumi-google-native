@@ -109,6 +109,26 @@
   "protocol": "rest",
   "resources": {
     "accounts": {
+      "methods": {
+        "revokeToken": {
+          "description": "Revokes a user's token from an Identity Provider (IdP). This is done by manually providing an IdP credential, and the token types for revocation. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project.",
+          "flatPath": "v2/accounts:revokeToken",
+          "httpMethod": "POST",
+          "id": "identitytoolkit.accounts.revokeToken",
+          "parameterOrder": [],
+          "parameters": {},
+          "path": "v2/accounts:revokeToken",
+          "request": {
+            "$ref": "GoogleCloudIdentitytoolkitV2RevokeTokenRequest"
+          },
+          "response": {
+            "$ref": "GoogleCloudIdentitytoolkitV2RevokeTokenResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        }
+      },
       "resources": {
         "mfaEnrollment": {
           "methods": {
@@ -201,6 +221,86 @@
               },
               "response": {
                 "$ref": "GoogleCloudIdentitytoolkitV2StartMfaSignInResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          }
+        },
+        "passkeyEnrollment": {
+          "methods": {
+            "finalize": {
+              "description": "Finishes enrolling a passkey credential for the user.",
+              "flatPath": "v2/accounts/passkeyEnrollment:finalize",
+              "httpMethod": "POST",
+              "id": "identitytoolkit.accounts.passkeyEnrollment.finalize",
+              "parameterOrder": [],
+              "parameters": {},
+              "path": "v2/accounts/passkeyEnrollment:finalize",
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "start": {
+              "description": "Step one of the passkey enrollment process. Returns a challenge and parameters for creation of the passkey credential.",
+              "flatPath": "v2/accounts/passkeyEnrollment:start",
+              "httpMethod": "POST",
+              "id": "identitytoolkit.accounts.passkeyEnrollment.start",
+              "parameterOrder": [],
+              "parameters": {},
+              "path": "v2/accounts/passkeyEnrollment:start",
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            }
+          }
+        },
+        "passkeySignIn": {
+          "methods": {
+            "finalize": {
+              "description": "Verifies the passkey assertion and signs the user in.",
+              "flatPath": "v2/accounts/passkeySignIn:finalize",
+              "httpMethod": "POST",
+              "id": "identitytoolkit.accounts.passkeySignIn.finalize",
+              "parameterOrder": [],
+              "parameters": {},
+              "path": "v2/accounts/passkeySignIn:finalize",
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
+            "start": {
+              "description": "Creates and returns the passkey challenge",
+              "flatPath": "v2/accounts/passkeySignIn:start",
+              "httpMethod": "POST",
+              "id": "identitytoolkit.accounts.passkeySignIn.start",
+              "parameterOrder": [],
+              "parameters": {},
+              "path": "v2/accounts/passkeySignIn:start",
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
@@ -1557,9 +1657,64 @@
           }
         }
       }
+    },
+    "v2": {
+      "methods": {
+        "getRecaptchaConfig": {
+          "description": "Gets parameters needed for reCAPTCHA analysis.",
+          "flatPath": "v2/recaptchaConfig",
+          "httpMethod": "GET",
+          "id": "identitytoolkit.getRecaptchaConfig",
+          "parameterOrder": [],
+          "parameters": {
+            "clientType": {
+              "description": "reCAPTCHA Enterprise uses separate site keys for different client types. Specify the client type to get the corresponding key.",
+              "enum": [
+                "CLIENT_TYPE_UNSPECIFIED",
+                "CLIENT_TYPE_WEB",
+                "CLIENT_TYPE_ANDROID",
+                "CLIENT_TYPE_IOS"
+              ],
+              "enumDescriptions": [
+                "Client type is not specified.",
+                "Client type is web.",
+                "Client type is android.",
+                "Client type is ios."
+              ],
+              "location": "query",
+              "type": "string"
+            },
+            "tenantId": {
+              "description": "The id of a tenant.",
+              "location": "query",
+              "type": "string"
+            },
+            "version": {
+              "description": "The reCAPTCHA version.",
+              "enum": [
+                "RECAPTCHA_VERSION_UNSPECIFIED",
+                "RECAPTCHA_ENTERPRISE"
+              ],
+              "enumDescriptions": [
+                "The reCAPTCHA version is not specified.",
+                "Use reCAPTCHA Enterprise."
+              ],
+              "location": "query",
+              "type": "string"
+            }
+          },
+          "path": "v2/recaptchaConfig",
+          "response": {
+            "$ref": "GoogleCloudIdentitytoolkitV2RecaptchaConfig"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ]
+        }
+      }
     }
   },
-  "revision": "20230401",
+  "revision": "20230429",
   "rootUrl": "https://identitytoolkit.googleapis.com/",
   "schemas": {
     "GoogleCloudIdentitytoolkitAdminV2AllowByDefault": {
@@ -1753,6 +1908,10 @@
         "quota": {
           "$ref": "GoogleCloudIdentitytoolkitAdminV2QuotaConfig",
           "description": "Configuration related to quotas."
+        },
+        "recaptchaConfig": {
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig",
+          "description": "The project-level reCAPTCHA config."
         },
         "signIn": {
           "$ref": "GoogleCloudIdentitytoolkitAdminV2SignInConfig",
@@ -2417,6 +2576,99 @@
       },
       "type": "object"
     },
+    "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig": {
+      "description": "The reCAPTCHA Enterprise integration config.",
+      "id": "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig",
+      "properties": {
+        "emailPasswordEnforcementState": {
+          "description": "The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.",
+          "enum": [
+            "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED",
+            "OFF",
+            "AUDIT",
+            "ENFORCE"
+          ],
+          "enumDescriptions": [
+            "Enforcement state has not been set.",
+            "Unenforced.",
+            "reCAPTCHA assessment is created, result is not used to enforce.",
+            "reCAPTCHA assessment is created, result is used to enforce."
+          ],
+          "type": "string"
+        },
+        "managedRules": {
+          "description": "The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.",
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule"
+          },
+          "type": "array"
+        },
+        "recaptchaKeys": {
+          "description": "Output only. The reCAPTCHA keys.",
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "useAccountDefender": {
+          "description": "Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey": {
+      "description": "The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.",
+      "id": "GoogleCloudIdentitytoolkitAdminV2RecaptchaKey",
+      "properties": {
+        "key": {
+          "description": "The reCAPTCHA Enterprise key resource name, e.g. \"projects/{project}/keys/{key}\"",
+          "type": "string"
+        },
+        "type": {
+          "description": "The client's platform type.",
+          "enum": [
+            "CLIENT_TYPE_UNSPECIFIED",
+            "WEB",
+            "IOS",
+            "ANDROID"
+          ],
+          "enumDescriptions": [
+            "Client type is not specified.",
+            "Client type is web.",
+            "Client type is iOS.",
+            "Client type is Android."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule": {
+      "description": "The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping.",
+      "id": "GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule",
+      "properties": {
+        "action": {
+          "description": "The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].",
+          "enum": [
+            "RECAPTCHA_ACTION_UNSPECIFIED",
+            "BLOCK"
+          ],
+          "enumDescriptions": [
+            "The reCAPTCHA action is not specified.",
+            "The reCAPTCHA-protected request will be blocked."
+          ],
+          "type": "string"
+        },
+        "endScore": {
+          "description": "The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment.",
+          "format": "float",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudIdentitytoolkitAdminV2RequestLogging": {
       "description": "Configuration for logging requests made to this project to Stackdriver Logging",
       "id": "GoogleCloudIdentitytoolkitAdminV2RequestLogging",
@@ -2713,6 +2965,10 @@
           "readOnly": true,
           "type": "string"
         },
+        "recaptchaConfig": {
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig",
+          "description": "The tenant-level reCAPTCHA config."
+        },
         "smsRegionConfig": {
           "$ref": "GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig",
           "description": "Configures which regions are enabled for SMS verification code sending."
@@ -2750,6 +3006,116 @@
         "updateTime": {
           "description": "When the trigger was changed.",
           "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse": {
+      "description": "Authentication response from a FIDO authenticator.",
+      "id": "GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse",
+      "properties": {
+        "authenticatorData": {
+          "description": "The AuthenticatorData from the authenticator.",
+          "format": "byte",
+          "type": "string"
+        },
+        "clientDataJson": {
+          "description": "The CollectedClientData object from the authenticator.",
+          "format": "byte",
+          "type": "string"
+        },
+        "signature": {
+          "description": "The signature from the authenticator.",
+          "format": "byte",
+          "type": "string"
+        },
+        "userHandle": {
+          "description": "The user handle.",
+          "format": "byte",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse": {
+      "description": "Attestation response from a FIDO authenticator.",
+      "id": "GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse",
+      "properties": {
+        "attestationObject": {
+          "description": "The attestation object from the authenticator.",
+          "format": "byte",
+          "type": "string"
+        },
+        "clientDataJson": {
+          "description": "The CollectedClientData object from the authenticator.",
+          "format": "byte",
+          "type": "string"
+        },
+        "transports": {
+          "description": "Authenticator transports that are supported by the authenticator.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse": {
+      "description": "Authenticator response to authenticate the user with an existing FIDO key.",
+      "id": "GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse",
+      "properties": {
+        "authenticatorAssertionResponse": {
+          "$ref": "GoogleCloudIdentitytoolkitV2AuthenticatorAssertionResponse",
+          "description": "Authentication assertion from the authenticator."
+        },
+        "credentialId": {
+          "description": "Identifier for the authentication credential.",
+          "format": "byte",
+          "type": "string"
+        },
+        "credentialType": {
+          "description": "The type of public key.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse": {
+      "description": "Authenticator response to register a new FIDO key.",
+      "id": "GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse",
+      "properties": {
+        "authenticatorAttestationResponse": {
+          "$ref": "GoogleCloudIdentitytoolkitV2AuthenticatorAttestationResponse",
+          "description": "The attestation response object as described in the spec."
+        },
+        "credentialId": {
+          "description": "Identifier for the registered credential.",
+          "format": "byte",
+          "type": "string"
+        },
+        "credentialType": {
+          "description": "The type of credential.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria": {
+      "description": "Criteria for the authenticator to create a registered FIDO key.",
+      "id": "GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria",
+      "properties": {
+        "authenticatorAttachment": {
+          "description": "The preferred authenticator attachment modality.",
+          "type": "string"
+        },
+        "requireResidentKey": {
+          "description": "Whether resident key is required.",
+          "type": "boolean"
+        },
+        "userVerification": {
+          "description": "The Relying Party's user verification requirements.",
           "type": "string"
         }
       },
@@ -2926,12 +3292,291 @@
       "properties": {},
       "type": "object"
     },
+    "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest": {
+      "description": "FinalizePasskeyEnrollment request. Registers passkey as a first factor for the user.",
+      "id": "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentRequest",
+      "properties": {
+        "authenticatorRegistrationResponse": {
+          "$ref": "GoogleCloudIdentitytoolkitV2AuthenticatorRegistrationResponse",
+          "description": "Optional. The registration object from the authenticator."
+        },
+        "idToken": {
+          "description": "Required. The GCIP ID token of the signed-in user",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Optional. The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse": {
+      "description": "FinalizePasskeyEnrollment response.",
+      "id": "GoogleCloudIdentitytoolkitV2FinalizePasskeyEnrollmentResponse",
+      "properties": {
+        "idToken": {
+          "description": "ID token for the authenticated user.",
+          "type": "string"
+        },
+        "refreshToken": {
+          "description": "Refresh token for the authenticated user.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest": {
+      "description": "Request to finalize a passkey sign-in.",
+      "id": "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInRequest",
+      "properties": {
+        "authenticatorAuthenticationResponse": {
+          "$ref": "GoogleCloudIdentitytoolkitV2AuthenticatorAuthenticationResponse",
+          "description": "Required. The authentication response object from the authenticator."
+        },
+        "sessionId": {
+          "description": "Optional. The session ID that was passed into StartPasskeySignIn, if any.",
+          "format": "byte",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Optional. The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse": {
+      "description": "Response for FinalizePasskeySignIn.",
+      "id": "GoogleCloudIdentitytoolkitV2FinalizePasskeySignInResponse",
+      "properties": {
+        "idToken": {
+          "description": "ID token for the authenticated user.",
+          "type": "string"
+        },
+        "refreshToken": {
+          "description": "Refresh token for the authenticated user.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo": {
       "description": "TOTP verification info for FinalizeMfaSignInRequest.",
       "id": "GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo",
       "properties": {
         "verificationCode": {
           "description": "User-entered verification code.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions": {
+      "description": "Parameters for creating a FIDO key.",
+      "id": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions",
+      "properties": {
+        "authenticatorSelection": {
+          "$ref": "GoogleCloudIdentitytoolkitV2AuthenticatorSelectionCriteria",
+          "description": "Criteria for the authenticator to create a credential."
+        },
+        "challenge": {
+          "description": "The FIDO challenge.",
+          "format": "byte",
+          "type": "string"
+        },
+        "excludeCredentials": {
+          "description": "Credentials already mapped to this user.",
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor"
+          },
+          "type": "array"
+        },
+        "pubKeyCredParams": {
+          "description": "Lists the supported key types and signature algorithms.",
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters"
+          },
+          "type": "array"
+        },
+        "rp": {
+          "$ref": "GoogleCloudIdentitytoolkitV2RpEntity",
+          "description": "The relying party attributes for creating a new credential."
+        },
+        "user": {
+          "$ref": "GoogleCloudIdentitytoolkitV2UserEntity",
+          "description": "The user attributes for creating a new credential."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor": {
+      "description": "Descriptor for a public key credential.",
+      "id": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialDescriptor",
+      "properties": {
+        "credentialId": {
+          "description": "The identifier for the credential.",
+          "format": "byte",
+          "type": "string"
+        },
+        "credentialType": {
+          "description": "The type of public key.",
+          "type": "string"
+        },
+        "transports": {
+          "description": "Authenticator transports that are supported by the authenticator.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters": {
+      "description": "Parameters to create a public credential.",
+      "id": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialParameters",
+      "properties": {
+        "alg": {
+          "description": "The COSE registry number of the cryptographic signature algorithm.",
+          "format": "int64",
+          "type": "string"
+        },
+        "credentialType": {
+          "description": "The type of public key to be created.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions": {
+      "description": "Parameters for signing a challenge with a FIDO key.",
+      "id": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions",
+      "properties": {
+        "challenge": {
+          "description": "The FIDO challenge.",
+          "format": "byte",
+          "type": "string"
+        },
+        "rpId": {
+          "description": "The relying party identifier.",
+          "type": "string"
+        },
+        "userVerification": {
+          "description": "The requirements regarding user verification.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2RecaptchaConfig": {
+      "description": "Configuration for reCAPTCHA",
+      "id": "GoogleCloudIdentitytoolkitV2RecaptchaConfig",
+      "properties": {
+        "recaptchaEnforcementState": {
+          "description": "The reCAPTCHA enforcement state for the providers that GCIP supports reCAPTCHA protection.",
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState"
+          },
+          "type": "array"
+        },
+        "recaptchaKey": {
+          "description": "The reCAPTCHA Enterprise key resource name, e.g. \"projects/{project}/keys/{key}\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState": {
+      "description": "Enforcement states for reCAPTCHA protection.",
+      "id": "GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState",
+      "properties": {
+        "enforcementState": {
+          "description": "The reCAPTCHA enforcement state for the provider.",
+          "enum": [
+            "ENFORCEMENT_STATE_UNSPECIFIED",
+            "OFF",
+            "AUDIT",
+            "ENFORCE"
+          ],
+          "enumDescriptions": [
+            "Enforcement state has not been set.",
+            "Unenforced.",
+            "reCAPTCHA assessment is created, result is not used to enforce.",
+            "reCAPTCHA assessment is created, result is used to enforce."
+          ],
+          "type": "string"
+        },
+        "provider": {
+          "description": "The provider that has reCAPTCHA protection.",
+          "enum": [
+            "RECAPTCHA_PROVIDER_UNSPECIFIED",
+            "EMAIL_PASSWORD_PROVIDER"
+          ],
+          "enumDescriptions": [
+            "reCAPTCHA provider not specified",
+            "Email password provider"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2RevokeTokenRequest": {
+      "description": "Request message for RevokeToken.",
+      "id": "GoogleCloudIdentitytoolkitV2RevokeTokenRequest",
+      "properties": {
+        "idToken": {
+          "description": "Required. A valid Identity Platform ID token to link the account. If there was a successful token revocation request on the account and no tokens are generated after the revocation, the duplicate requests will be ignored and returned immediately.",
+          "type": "string"
+        },
+        "providerId": {
+          "description": "Required. The idp provider for the token. Currently only supports Apple Idp. The format should be \"apple.com\".",
+          "type": "string"
+        },
+        "redirectUri": {
+          "description": "The redirect URI provided in the initial authorization request made by the client to the IDP. The URI must use the HTTPS protocol, include a domain name, and can’t contain an IP address or localhost. Required if token_type is CODE.",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project.",
+          "type": "string"
+        },
+        "token": {
+          "description": "Required. The token to be revoked. If an authorization_code is passed in, the API will first exchange the code for access token and then revoke the token exchanged.",
+          "type": "string"
+        },
+        "tokenType": {
+          "description": "Required. The type of the token to be revoked.",
+          "enum": [
+            "TOKEN_TYPE_UNSPECIFIED",
+            "REFRESH_TOKEN",
+            "ACCESS_TOKEN",
+            "CODE"
+          ],
+          "enumDescriptions": [
+            "Default value, do not use.",
+            "Token type is refresh_token.",
+            "Token type is access_token.",
+            "Token type is authorization_code."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2RevokeTokenResponse": {
+      "description": "Response message for RevokeToken. Empty for now.",
+      "id": "GoogleCloudIdentitytoolkitV2RevokeTokenResponse",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2RpEntity": {
+      "description": "The entity object for the Relying Party.",
+      "id": "GoogleCloudIdentitytoolkitV2RpEntity",
+      "properties": {
+        "id": {
+          "description": "The RP ID of the FIDO Relying Party.",
           "type": "string"
         }
       },
@@ -3091,6 +3736,71 @@
           "description": "The length of the verification code that needs to be generated.",
           "format": "int32",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest": {
+      "description": "Starts passkey enrollment for passkey as a first factor by returning the FIDO challenge.",
+      "id": "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentRequest",
+      "properties": {
+        "idToken": {
+          "description": "Required. The GCIP ID token of the signed-in user",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Optional. The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse": {
+      "description": "StartPasskeyEnrollment response.",
+      "id": "GoogleCloudIdentitytoolkitV2StartPasskeyEnrollmentResponse",
+      "properties": {
+        "credentialCreationOptions": {
+          "$ref": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialCreationOptions",
+          "description": "Parameters specified for the authenticator to create a public key."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest": {
+      "description": "Starts passkey sign-in by returning the FIDO challenge.",
+      "id": "GoogleCloudIdentitytoolkitV2StartPasskeySignInRequest",
+      "properties": {
+        "sessionId": {
+          "description": "Optional. The developer can bind their own concept of a user session to this flow.",
+          "format": "byte",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Optional. The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse": {
+      "description": "Response for StartPasskeySignIn.",
+      "id": "GoogleCloudIdentitytoolkitV2StartPasskeySignInResponse",
+      "properties": {
+        "credentialRequestOptions": {
+          "$ref": "GoogleCloudIdentitytoolkitV2PublicKeyCredentialRequestOptions",
+          "description": "Parameters specified for the authenticator to sign a challenge."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudIdentitytoolkitV2UserEntity": {
+      "description": "The entity object for the user.",
+      "id": "GoogleCloudIdentitytoolkitV2UserEntity",
+      "properties": {
+        "id": {
+          "description": "The user ID.",
+          "format": "byte",
+          "type": "string"
         }
       },
       "type": "object"

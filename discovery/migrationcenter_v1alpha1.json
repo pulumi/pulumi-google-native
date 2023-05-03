@@ -327,36 +327,6 @@
                     "https://www.googleapis.com/auth/cloud-platform"
                   ]
                 },
-                "delete": {
-                  "description": "Deletes an asset. Deprecated: Please use BatchDeleteAssets API instead.",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/assets/{assetsId}",
-                  "httpMethod": "DELETE",
-                  "id": "migrationcenter.projects.locations.assets.delete",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "Required. Name of the resource.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/assets/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "requestId": {
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "location": "query",
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1alpha1/{+name}",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
                 "get": {
                   "description": "Gets the details of an asset.",
                   "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/assets/{assetsId}",
@@ -457,45 +427,6 @@
                   "path": "v1alpha1/{+parent}/assets",
                   "response": {
                     "$ref": "ListAssetsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "patch": {
-                  "description": "Updates the parameters of an asset. Deprecated: Please use BatchUpdateAssets API instead.",
-                  "flatPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/assets/{assetsId}",
-                  "httpMethod": "PATCH",
-                  "id": "migrationcenter.projects.locations.assets.patch",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "Output only. The full name of the asset.",
-                      "location": "path",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/assets/[^/]+$",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "requestId": {
-                      "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-                      "location": "query",
-                      "type": "string"
-                    },
-                    "updateMask": {
-                      "description": "Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields.",
-                      "format": "google-fieldmask",
-                      "location": "query",
-                      "type": "string"
-                    }
-                  },
-                  "path": "v1alpha1/{+name}",
-                  "request": {
-                    "$ref": "Asset"
-                  },
-                  "response": {
-                    "$ref": "Operation"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
@@ -2005,7 +1936,7 @@
       }
     }
   },
-  "revision": "20230324",
+  "revision": "20230420",
   "rootUrl": "https://migrationcenter.googleapis.com/",
   "schemas": {
     "AddAssetsToGroupRequest": {
@@ -2328,7 +2259,7 @@
       "id": "AssetList",
       "properties": {
         "assetIds": {
-          "description": "A list of asset IDs",
+          "description": "Required. A list of asset IDs",
           "items": {
             "type": "string"
           },
@@ -3260,7 +3191,7 @@
           "type": "string"
         },
         "format": {
-          "description": "The payload format.",
+          "description": "Required. The payload format.",
           "enum": [
             "IMPORT_JOB_FORMAT_UNSPECIFIED",
             "IMPORT_JOB_FORMAT_CMDB",
@@ -3756,7 +3687,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
@@ -4419,7 +4350,7 @@
           "type": "string"
         },
         "groupPreferencesetAssignments": {
-          "description": "Collection of combinations of groups and preference sets.",
+          "description": "Required. Collection of combinations of groups and preference sets.",
           "items": {
             "$ref": "ReportConfigGroupPreferenceSetAssignment"
           },
@@ -4444,11 +4375,11 @@
       "id": "ReportConfigGroupPreferenceSetAssignment",
       "properties": {
         "group": {
-          "description": "Name of the group.",
+          "description": "Required. Name of the group.",
           "type": "string"
         },
         "preferenceSet": {
-          "description": "Name of the Preference Set.",
+          "description": "Required. Name of the Preference Set.",
           "type": "string"
         }
       },
@@ -4962,6 +4893,23 @@
           "description": "The information confidence of the source. The higher the value, the higher the confidence.",
           "format": "int32",
           "type": "integer"
+        },
+        "state": {
+          "description": "Output only. The state of the source.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "DELETING",
+            "INVALID"
+          ],
+          "enumDescriptions": [
+            "Unspecified.",
+            "The source is active and ready to be used.",
+            "In the process of being deleted.",
+            "Source is in an invalid state. Asset frames reported to it will be ignored."
+          ],
+          "readOnly": true,
+          "type": "string"
         },
         "type": {
           "description": "Data source type.",

@@ -571,7 +571,7 @@
       }
     }
   },
-  "revision": "20230330",
+  "revision": "20230420",
   "rootUrl": "https://cloudfunctions.googleapis.com/",
   "schemas": {
     "AuditConfig": {
@@ -653,12 +653,8 @@
           "readOnly": true,
           "type": "string"
         },
-        "buildpackStack": {
-          "description": "Specifies one of the Google provided buildpack stacks.",
-          "type": "string"
-        },
         "dockerRegistry": {
-          "description": "Optional. Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.",
+          "description": "Docker Registry to use for this deployment. This configuration is only applicable to 1st Gen functions, 2nd Gen functions can only use Artifact Registry. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.",
           "enum": [
             "DOCKER_REGISTRY_UNSPECIFIED",
             "CONTAINER_REGISTRY",
@@ -1448,7 +1444,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
@@ -1762,7 +1758,7 @@
       "type": "object"
     },
     "ServiceConfig": {
-      "description": "Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23",
+      "description": "Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).",
       "id": "ServiceConfig",
       "properties": {
         "allTrafficOnLatestRevision": {
@@ -1770,7 +1766,7 @@
           "type": "boolean"
         },
         "availableCpu": {
-          "description": "The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: \"1\" indicates 1 vCPU",
+          "description": "[Preview] The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: \"1\" indicates 1 vCPU",
           "type": "string"
         },
         "availableMemory": {
@@ -1806,7 +1802,7 @@
           "type": "integer"
         },
         "maxInstanceRequestConcurrency": {
-          "description": "Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.",
+          "description": "[Preview] Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.",
           "format": "int32",
           "type": "integer"
         },

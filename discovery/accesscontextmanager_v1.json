@@ -1235,7 +1235,7 @@
       }
     }
   },
-  "revision": "20230331",
+  "revision": "20230425",
   "rootUrl": "https://accesscontextmanager.googleapis.com/",
   "schemas": {
     "AccessContextManagerOperationMetadata": {

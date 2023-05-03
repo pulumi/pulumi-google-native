@@ -1423,7 +1423,7 @@
       }
     }
   },
-  "revision": "20230402",
+  "revision": "20230421",
   "rootUrl": "https://firestore.googleapis.com/",
   "schemas": {
     "Aggregation": {
@@ -2027,9 +2027,23 @@
           "type": "string"
         },
         "createTime": {
-          "description": "Output only. The timestamp at which this database was created.",
+          "description": "Output only. The timestamp at which this database was created. Databases created before 2016 do not populate create_time.",
           "format": "google-datetime",
           "readOnly": true,
+          "type": "string"
+        },
+        "deleteProtectionState": {
+          "description": "State of delete protection for the database.",
+          "enum": [
+            "DELETE_PROTECTION_STATE_UNSPECIFIED",
+            "DELETE_PROTECTION_DISABLED",
+            "DELETE_PROTECTION_ENABLED"
+          ],
+          "enumDescriptions": [
+            "The default value. Delete protection type is not specified",
+            "Delete protection is disabled",
+            "Delete protection is enabled"
+          ],
           "type": "string"
         },
         "etag": {
@@ -2884,7 +2898,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
