@@ -8143,7 +8143,7 @@
       }
     }
   },
-  "revision": "20230501",
+  "revision": "20230505",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {

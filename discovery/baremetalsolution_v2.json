@@ -1605,7 +1605,7 @@
       }
     }
   },
-  "revision": "20230426",
+  "revision": "20230501",
   "rootUrl": "https://baremetalsolution.googleapis.com/",
   "schemas": {
     "AllowedClient": {

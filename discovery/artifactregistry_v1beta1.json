@@ -929,7 +929,7 @@
       }
     }
   },
-  "revision": "20230427",
+  "revision": "20230502",
   "rootUrl": "https://artifactregistry.googleapis.com/",
   "schemas": {
     "Binding": {
