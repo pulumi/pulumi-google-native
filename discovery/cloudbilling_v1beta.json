@@ -170,7 +170,7 @@
       }
     }
   },
-  "revision": "20230501",
+  "revision": "20230507",
   "rootUrl": "https://cloudbilling.googleapis.com/",
   "schemas": {
     "CacheFillRegions": {

@@ -351,7 +351,7 @@
       }
     }
   },
-  "revision": "20230502",
+  "revision": "20230504",
   "rootUrl": "https://firebasedatabase.googleapis.com/",
   "schemas": {
     "DatabaseInstance": {
