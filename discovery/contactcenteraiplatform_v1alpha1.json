@@ -512,7 +512,7 @@
       }
     }
   },
-  "revision": "20230424",
+  "revision": "20230503",
   "rootUrl": "https://contactcenteraiplatform.googleapis.com/",
   "schemas": {
     "AdminUser": {

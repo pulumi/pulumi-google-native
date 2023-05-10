@@ -197,7 +197,7 @@
       }
     }
   },
-  "revision": "20230421",
+  "revision": "20230428",
   "rootUrl": "https://servicecontrol.googleapis.com/",
   "schemas": {
     "AllocateInfo": {

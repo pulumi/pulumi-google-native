@@ -1579,7 +1579,7 @@
       }
     }
   },
-  "revision": "20230425",
+  "revision": "20230502",
   "rootUrl": "https://metastore.googleapis.com/",
   "schemas": {
     "AlterMetadataResourceLocationRequest": {
