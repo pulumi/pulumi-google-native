@@ -1813,7 +1813,7 @@
       }
     }
   },
-  "revision": "20230421",
+  "revision": "20230505",
   "rootUrl": "https://datacatalog.googleapis.com/",
   "schemas": {
     "Binding": {
