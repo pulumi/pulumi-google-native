@@ -85,16 +85,16 @@ func buildURL(
 			sdkName = param.SdkName
 		}
 		key := resource.PropertyKey(sdkName)
-		if !inputs[key].HasValue() {
+		inputString, found := getInputString(inputs, key)
+		if !found {
 			continue
 		}
 
-		value := inputs[key].StringValue()
 		switch param.Kind {
 		case "path":
-			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
+			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(inputString), 1)
 		case "query":
-			queryMap[param.Name] = value
+			queryMap[param.Name] = inputString
 		default:
 			return "", errors.Errorf("unknown param location %q", param.Kind)
 		}
@@ -113,6 +113,24 @@ func buildURL(
 	}
 	uri.RawQuery = query.Encode()
 	return uri.String(), nil
+}
+
+func getInputString(inputs resource.PropertyMap, key resource.PropertyKey) (string, bool) {
+	val := inputs[key]
+	if !val.HasValue() {
+		return "", false
+	}
+	if val.IsString() {
+		return val.StringValue(), true
+	}
+	if val.IsNumber() {
+		return fmt.Sprintf("%v", val.NumberValue()), true
+	}
+	if val.IsBool() {
+		return fmt.Sprintf("%v", val.BoolValue()), true
+	}
+	// Don't panic if we get an unexpected type, just ignore it.
+	return "", false
 }
 
 var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters allowed
