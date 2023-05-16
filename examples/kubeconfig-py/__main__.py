@@ -9,7 +9,7 @@ LOCATION = config.require("location")
 server_config = container.get_server_config_output(location=LOCATION)
 
 cluster = container.Cluster("cluster", container.ClusterArgs(
-    initial_cluster_version=server_config.valid_master_versions[0],
+    initial_cluster_version=server_config.valid_master_versions[1],
     node_pools=[container.NodePoolArgs(initial_node_count=1, name="initial")],
 ))
 
