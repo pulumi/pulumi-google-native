@@ -116,6 +116,9 @@ class GetBareMetalAdminClusterResult:
     @property
     @pulumi.getter(name="bareMetalVersion")
     def bare_metal_version(self) -> str:
+        """
+        The Anthos clusters on bare metal version for the bare metal admin cluster.
+        """
         return pulumi.get(self, "bare_metal_version")
 
     @property

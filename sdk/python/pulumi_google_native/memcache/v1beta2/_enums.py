@@ -16,6 +16,9 @@ class InstanceMemcacheVersion(str, Enum):
     The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
     """
     MEMCACHE_VERSION_UNSPECIFIED = "MEMCACHE_VERSION_UNSPECIFIED"
+    """
+    Memcache version is not specified by customer
+    """
     MEMCACHE15 = "MEMCACHE_1_5"
     """
     Memcached 1.5 version.

@@ -86,6 +86,10 @@ export interface GetNoteResult {
      */
     readonly relatedUrl: outputs.containeranalysis.v1.RelatedUrlResponse[];
     /**
+     * A note describing an SBOM reference.
+     */
+    readonly sbomReference: outputs.containeranalysis.v1.SBOMReferenceNoteResponse;
+    /**
      * A one sentence description of this note.
      */
     readonly shortDescription: string;

@@ -34,6 +34,7 @@ class JobArgs:
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
+                 runtime_updatable_params: Optional[pulumi.Input['RuntimeUpdatableParamsArgs']] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  stage_states: Optional[pulumi.Input[Sequence[pulumi.Input['ExecutionStageStateArgs']]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,7 @@ class JobArgs:
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        :param pulumi.Input['RuntimeUpdatableParamsArgs'] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionStageStateArgs']]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] start_time: The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
@@ -109,6 +111,8 @@ class JobArgs:
             pulumi.set(__self__, "replaced_by_job_id", replaced_by_job_id)
         if requested_state is not None:
             pulumi.set(__self__, "requested_state", requested_state)
+        if runtime_updatable_params is not None:
+            pulumi.set(__self__, "runtime_updatable_params", runtime_updatable_params)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if stage_states is not None:
@@ -333,6 +337,18 @@ class JobArgs:
         pulumi.set(self, "requested_state", value)
 
     @property
+    @pulumi.getter(name="runtimeUpdatableParams")
+    def runtime_updatable_params(self) -> Optional[pulumi.Input['RuntimeUpdatableParamsArgs']]:
+        """
+        This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        """
+        return pulumi.get(self, "runtime_updatable_params")
+
+    @runtime_updatable_params.setter
+    def runtime_updatable_params(self, value: Optional[pulumi.Input['RuntimeUpdatableParamsArgs']]):
+        pulumi.set(self, "runtime_updatable_params", value)
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -463,6 +479,7 @@ class Job(pulumi.CustomResource):
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
+                 runtime_updatable_params: Optional[pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -497,6 +514,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] replace_job_id: If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
         :param pulumi.Input[str] replaced_by_job_id: If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
         :param pulumi.Input['JobRequestedState'] requested_state: The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
+        :param pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']] runtime_updatable_params: This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] start_time: The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
@@ -550,6 +568,7 @@ class Job(pulumi.CustomResource):
                  replace_job_id: Optional[pulumi.Input[str]] = None,
                  replaced_by_job_id: Optional[pulumi.Input[str]] = None,
                  requested_state: Optional[pulumi.Input['JobRequestedState']] = None,
+                 runtime_updatable_params: Optional[pulumi.Input[pulumi.InputType['RuntimeUpdatableParamsArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  stage_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
@@ -588,6 +607,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["replace_job_id"] = replace_job_id
             __props__.__dict__["replaced_by_job_id"] = replaced_by_job_id
             __props__.__dict__["requested_state"] = requested_state
+            __props__.__dict__["runtime_updatable_params"] = runtime_updatable_params
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["stage_states"] = stage_states
             __props__.__dict__["start_time"] = start_time
@@ -637,6 +657,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["replace_job_id"] = None
         __props__.__dict__["replaced_by_job_id"] = None
         __props__.__dict__["requested_state"] = None
+        __props__.__dict__["runtime_updatable_params"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["stage_states"] = None
         __props__.__dict__["start_time"] = None
@@ -769,6 +790,14 @@ class Job(pulumi.CustomResource):
         The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
         """
         return pulumi.get(self, "requested_state")
+
+    @property
+    @pulumi.getter(name="runtimeUpdatableParams")
+    def runtime_updatable_params(self) -> pulumi.Output['outputs.RuntimeUpdatableParamsResponse']:
+        """
+        This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        """
+        return pulumi.get(self, "runtime_updatable_params")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

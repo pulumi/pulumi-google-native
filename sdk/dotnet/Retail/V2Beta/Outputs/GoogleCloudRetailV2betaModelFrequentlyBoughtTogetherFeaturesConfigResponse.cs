@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 {
 
     /// <summary>
-    /// More configs of the frequently-bought-together model type.
+    /// Additional configs for the frequently-bought-together model type.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         public readonly string ContextProductsType;
 

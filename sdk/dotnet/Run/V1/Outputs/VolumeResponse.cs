@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.ConfigMapVolumeSourceResponse ConfigMap;
         /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
+        public readonly Outputs.EmptyDirVolumeSourceResponse EmptyDir;
+        /// <summary>
         /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         /// </summary>
         public readonly string Name;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         private VolumeResponse(
             Outputs.ConfigMapVolumeSourceResponse configMap,
 
+            Outputs.EmptyDirVolumeSourceResponse emptyDir,
+
             string name,
 
             Outputs.SecretVolumeSourceResponse secret)
         {
             ConfigMap = configMap;
+            EmptyDir = emptyDir;
             Name = name;
             Secret = secret;
         }

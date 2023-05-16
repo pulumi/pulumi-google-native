@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, max_retention_days=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_for_recovery_checkpoint=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, enable_confidential_compute=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, max_retention_days=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_for_recovery_checkpoint=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -44,6 +44,9 @@ class GetSnapshotResult:
         if download_bytes and not isinstance(download_bytes, str):
             raise TypeError("Expected argument 'download_bytes' to be a str")
         pulumi.set(__self__, "download_bytes", download_bytes)
+        if enable_confidential_compute and not isinstance(enable_confidential_compute, bool):
+            raise TypeError("Expected argument 'enable_confidential_compute' to be a bool")
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_flush and not isinstance(guest_flush, bool):
             raise TypeError("Expected argument 'guest_flush' to be a bool")
         pulumi.set(__self__, "guest_flush", guest_flush)
@@ -192,6 +195,14 @@ class GetSnapshotResult:
         Number of bytes downloaded to restore a snapshot to a disk.
         """
         return pulumi.get(self, "download_bytes")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestFlush")
@@ -432,6 +443,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             download_bytes=self.download_bytes,
+            enable_confidential_compute=self.enable_confidential_compute,
             guest_flush=self.guest_flush,
             guest_os_features=self.guest_os_features,
             kind=self.kind,
@@ -483,6 +495,7 @@ def get_snapshot(project: Optional[str] = None,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,
         download_bytes=__ret__.download_bytes,
+        enable_confidential_compute=__ret__.enable_confidential_compute,
         guest_flush=__ret__.guest_flush,
         guest_os_features=__ret__.guest_os_features,
         kind=__ret__.kind,

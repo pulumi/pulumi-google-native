@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Directory Services configuration for Kerberos-based authentication.
+type DirectoryServicesConfig struct {
+	// Configuration for Managed Service for Microsoft Active Directory.
+	ManagedActiveDirectory *ManagedActiveDirectoryConfig `pulumi:"managedActiveDirectory"`
+}
+
+// DirectoryServicesConfigInput is an input type that accepts DirectoryServicesConfigArgs and DirectoryServicesConfigOutput values.
+// You can construct a concrete instance of `DirectoryServicesConfigInput` via:
+//
+//	DirectoryServicesConfigArgs{...}
+type DirectoryServicesConfigInput interface {
+	pulumi.Input
+
+	ToDirectoryServicesConfigOutput() DirectoryServicesConfigOutput
+	ToDirectoryServicesConfigOutputWithContext(context.Context) DirectoryServicesConfigOutput
+}
+
+// Directory Services configuration for Kerberos-based authentication.
+type DirectoryServicesConfigArgs struct {
+	// Configuration for Managed Service for Microsoft Active Directory.
+	ManagedActiveDirectory ManagedActiveDirectoryConfigPtrInput `pulumi:"managedActiveDirectory"`
+}
+
+func (DirectoryServicesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryServicesConfig)(nil)).Elem()
+}
+
+func (i DirectoryServicesConfigArgs) ToDirectoryServicesConfigOutput() DirectoryServicesConfigOutput {
+	return i.ToDirectoryServicesConfigOutputWithContext(context.Background())
+}
+
+func (i DirectoryServicesConfigArgs) ToDirectoryServicesConfigOutputWithContext(ctx context.Context) DirectoryServicesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryServicesConfigOutput)
+}
+
+func (i DirectoryServicesConfigArgs) ToDirectoryServicesConfigPtrOutput() DirectoryServicesConfigPtrOutput {
+	return i.ToDirectoryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryServicesConfigArgs) ToDirectoryServicesConfigPtrOutputWithContext(ctx context.Context) DirectoryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryServicesConfigOutput).ToDirectoryServicesConfigPtrOutputWithContext(ctx)
+}
+
+// DirectoryServicesConfigPtrInput is an input type that accepts DirectoryServicesConfigArgs, DirectoryServicesConfigPtr and DirectoryServicesConfigPtrOutput values.
+// You can construct a concrete instance of `DirectoryServicesConfigPtrInput` via:
+//
+//	        DirectoryServicesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryServicesConfigPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryServicesConfigPtrOutput() DirectoryServicesConfigPtrOutput
+	ToDirectoryServicesConfigPtrOutputWithContext(context.Context) DirectoryServicesConfigPtrOutput
+}
+
+type directoryServicesConfigPtrType DirectoryServicesConfigArgs
+
+func DirectoryServicesConfigPtr(v *DirectoryServicesConfigArgs) DirectoryServicesConfigPtrInput {
+	return (*directoryServicesConfigPtrType)(v)
+}
+
+func (*directoryServicesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryServicesConfig)(nil)).Elem()
+}
+
+func (i *directoryServicesConfigPtrType) ToDirectoryServicesConfigPtrOutput() DirectoryServicesConfigPtrOutput {
+	return i.ToDirectoryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *directoryServicesConfigPtrType) ToDirectoryServicesConfigPtrOutputWithContext(ctx context.Context) DirectoryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryServicesConfigPtrOutput)
+}
+
+// Directory Services configuration for Kerberos-based authentication.
+type DirectoryServicesConfigOutput struct{ *pulumi.OutputState }
+
+func (DirectoryServicesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryServicesConfig)(nil)).Elem()
+}
+
+func (o DirectoryServicesConfigOutput) ToDirectoryServicesConfigOutput() DirectoryServicesConfigOutput {
+	return o
+}
+
+func (o DirectoryServicesConfigOutput) ToDirectoryServicesConfigOutputWithContext(ctx context.Context) DirectoryServicesConfigOutput {
+	return o
+}
+
+func (o DirectoryServicesConfigOutput) ToDirectoryServicesConfigPtrOutput() DirectoryServicesConfigPtrOutput {
+	return o.ToDirectoryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryServicesConfigOutput) ToDirectoryServicesConfigPtrOutputWithContext(ctx context.Context) DirectoryServicesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryServicesConfig) *DirectoryServicesConfig {
+		return &v
+	}).(DirectoryServicesConfigPtrOutput)
+}
+
+// Configuration for Managed Service for Microsoft Active Directory.
+func (o DirectoryServicesConfigOutput) ManagedActiveDirectory() ManagedActiveDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v DirectoryServicesConfig) *ManagedActiveDirectoryConfig { return v.ManagedActiveDirectory }).(ManagedActiveDirectoryConfigPtrOutput)
+}
+
+type DirectoryServicesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryServicesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryServicesConfig)(nil)).Elem()
+}
+
+func (o DirectoryServicesConfigPtrOutput) ToDirectoryServicesConfigPtrOutput() DirectoryServicesConfigPtrOutput {
+	return o
+}
+
+func (o DirectoryServicesConfigPtrOutput) ToDirectoryServicesConfigPtrOutputWithContext(ctx context.Context) DirectoryServicesConfigPtrOutput {
+	return o
+}
+
+func (o DirectoryServicesConfigPtrOutput) Elem() DirectoryServicesConfigOutput {
+	return o.ApplyT(func(v *DirectoryServicesConfig) DirectoryServicesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryServicesConfig
+		return ret
+	}).(DirectoryServicesConfigOutput)
+}
+
+// Configuration for Managed Service for Microsoft Active Directory.
+func (o DirectoryServicesConfigPtrOutput) ManagedActiveDirectory() ManagedActiveDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *DirectoryServicesConfig) *ManagedActiveDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedActiveDirectory
+	}).(ManagedActiveDirectoryConfigPtrOutput)
+}
+
+// Directory Services configuration for Kerberos-based authentication.
+type DirectoryServicesConfigResponse struct {
+	// Configuration for Managed Service for Microsoft Active Directory.
+	ManagedActiveDirectory ManagedActiveDirectoryConfigResponse `pulumi:"managedActiveDirectory"`
+}
+
+// Directory Services configuration for Kerberos-based authentication.
+type DirectoryServicesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DirectoryServicesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryServicesConfigResponse)(nil)).Elem()
+}
+
+func (o DirectoryServicesConfigResponseOutput) ToDirectoryServicesConfigResponseOutput() DirectoryServicesConfigResponseOutput {
+	return o
+}
+
+func (o DirectoryServicesConfigResponseOutput) ToDirectoryServicesConfigResponseOutputWithContext(ctx context.Context) DirectoryServicesConfigResponseOutput {
+	return o
+}
+
+// Configuration for Managed Service for Microsoft Active Directory.
+func (o DirectoryServicesConfigResponseOutput) ManagedActiveDirectory() ManagedActiveDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v DirectoryServicesConfigResponse) ManagedActiveDirectoryConfigResponse {
+		return v.ManagedActiveDirectory
+	}).(ManagedActiveDirectoryConfigResponseOutput)
+}
+
 // File share configuration for the instance.
 type FileShareConfig struct {
 	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
@@ -202,6 +370,198 @@ func (o FileShareConfigResponseArrayOutput) Index(i pulumi.IntInput) FileShareCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileShareConfigResponse {
 		return vs[0].([]FileShareConfigResponse)[vs[1].(int)]
 	}).(FileShareConfigResponseOutput)
+}
+
+// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+type ManagedActiveDirectoryConfig struct {
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+	Computer *string `pulumi:"computer"`
+	// Fully qualified domain name.
+	Domain *string `pulumi:"domain"`
+}
+
+// ManagedActiveDirectoryConfigInput is an input type that accepts ManagedActiveDirectoryConfigArgs and ManagedActiveDirectoryConfigOutput values.
+// You can construct a concrete instance of `ManagedActiveDirectoryConfigInput` via:
+//
+//	ManagedActiveDirectoryConfigArgs{...}
+type ManagedActiveDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToManagedActiveDirectoryConfigOutput() ManagedActiveDirectoryConfigOutput
+	ToManagedActiveDirectoryConfigOutputWithContext(context.Context) ManagedActiveDirectoryConfigOutput
+}
+
+// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+type ManagedActiveDirectoryConfigArgs struct {
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+	Computer pulumi.StringPtrInput `pulumi:"computer"`
+	// Fully qualified domain name.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (ManagedActiveDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i ManagedActiveDirectoryConfigArgs) ToManagedActiveDirectoryConfigOutput() ManagedActiveDirectoryConfigOutput {
+	return i.ToManagedActiveDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedActiveDirectoryConfigArgs) ToManagedActiveDirectoryConfigOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedActiveDirectoryConfigOutput)
+}
+
+func (i ManagedActiveDirectoryConfigArgs) ToManagedActiveDirectoryConfigPtrOutput() ManagedActiveDirectoryConfigPtrOutput {
+	return i.ToManagedActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedActiveDirectoryConfigArgs) ToManagedActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedActiveDirectoryConfigOutput).ToManagedActiveDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedActiveDirectoryConfigPtrInput is an input type that accepts ManagedActiveDirectoryConfigArgs, ManagedActiveDirectoryConfigPtr and ManagedActiveDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedActiveDirectoryConfigPtrInput` via:
+//
+//	        ManagedActiveDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedActiveDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedActiveDirectoryConfigPtrOutput() ManagedActiveDirectoryConfigPtrOutput
+	ToManagedActiveDirectoryConfigPtrOutputWithContext(context.Context) ManagedActiveDirectoryConfigPtrOutput
+}
+
+type managedActiveDirectoryConfigPtrType ManagedActiveDirectoryConfigArgs
+
+func ManagedActiveDirectoryConfigPtr(v *ManagedActiveDirectoryConfigArgs) ManagedActiveDirectoryConfigPtrInput {
+	return (*managedActiveDirectoryConfigPtrType)(v)
+}
+
+func (*managedActiveDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (i *managedActiveDirectoryConfigPtrType) ToManagedActiveDirectoryConfigPtrOutput() ManagedActiveDirectoryConfigPtrOutput {
+	return i.ToManagedActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedActiveDirectoryConfigPtrType) ToManagedActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedActiveDirectoryConfigPtrOutput)
+}
+
+// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+type ManagedActiveDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedActiveDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o ManagedActiveDirectoryConfigOutput) ToManagedActiveDirectoryConfigOutput() ManagedActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o ManagedActiveDirectoryConfigOutput) ToManagedActiveDirectoryConfigOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigOutput {
+	return o
+}
+
+func (o ManagedActiveDirectoryConfigOutput) ToManagedActiveDirectoryConfigPtrOutput() ManagedActiveDirectoryConfigPtrOutput {
+	return o.ToManagedActiveDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedActiveDirectoryConfigOutput) ToManagedActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedActiveDirectoryConfig) *ManagedActiveDirectoryConfig {
+		return &v
+	}).(ManagedActiveDirectoryConfigPtrOutput)
+}
+
+// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+func (o ManagedActiveDirectoryConfigOutput) Computer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfig) *string { return v.Computer }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified domain name.
+func (o ManagedActiveDirectoryConfigOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type ManagedActiveDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedActiveDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedActiveDirectoryConfig)(nil)).Elem()
+}
+
+func (o ManagedActiveDirectoryConfigPtrOutput) ToManagedActiveDirectoryConfigPtrOutput() ManagedActiveDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ManagedActiveDirectoryConfigPtrOutput) ToManagedActiveDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ManagedActiveDirectoryConfigPtrOutput) Elem() ManagedActiveDirectoryConfigOutput {
+	return o.ApplyT(func(v *ManagedActiveDirectoryConfig) ManagedActiveDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedActiveDirectoryConfig
+		return ret
+	}).(ManagedActiveDirectoryConfigOutput)
+}
+
+// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+func (o ManagedActiveDirectoryConfigPtrOutput) Computer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Computer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified domain name.
+func (o ManagedActiveDirectoryConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedActiveDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+type ManagedActiveDirectoryConfigResponse struct {
+	// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+	Computer string `pulumi:"computer"`
+	// Fully qualified domain name.
+	Domain string `pulumi:"domain"`
+}
+
+// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+type ManagedActiveDirectoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedActiveDirectoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedActiveDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedActiveDirectoryConfigResponseOutput) ToManagedActiveDirectoryConfigResponseOutput() ManagedActiveDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o ManagedActiveDirectoryConfigResponseOutput) ToManagedActiveDirectoryConfigResponseOutputWithContext(ctx context.Context) ManagedActiveDirectoryConfigResponseOutput {
+	return o
+}
+
+// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+func (o ManagedActiveDirectoryConfigResponseOutput) Computer() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfigResponse) string { return v.Computer }).(pulumi.StringOutput)
+}
+
+// Fully qualified domain name.
+func (o ManagedActiveDirectoryConfigResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedActiveDirectoryConfigResponse) string { return v.Domain }).(pulumi.StringOutput)
 }
 
 // Network configuration for the instance.
@@ -415,6 +775,8 @@ type NfsExportOptions struct {
 	AnonUid *string `pulumi:"anonUid"`
 	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
+	// The security flavors allowed for mount operations. The default is AUTH_SYS.
+	SecurityFlavors []NfsExportOptionsSecurityFlavorsItem `pulumi:"securityFlavors"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode *NfsExportOptionsSquashMode `pulumi:"squashMode"`
 }
@@ -440,6 +802,8 @@ type NfsExportOptionsArgs struct {
 	AnonUid pulumi.StringPtrInput `pulumi:"anonUid"`
 	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// The security flavors allowed for mount operations. The default is AUTH_SYS.
+	SecurityFlavors NfsExportOptionsSecurityFlavorsItemArrayInput `pulumi:"securityFlavors"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode NfsExportOptionsSquashModePtrInput `pulumi:"squashMode"`
 }
@@ -516,6 +880,11 @@ func (o NfsExportOptionsOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NfsExportOptions) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
 
+// The security flavors allowed for mount operations. The default is AUTH_SYS.
+func (o NfsExportOptionsOutput) SecurityFlavors() NfsExportOptionsSecurityFlavorsItemArrayOutput {
+	return o.ApplyT(func(v NfsExportOptions) []NfsExportOptionsSecurityFlavorsItem { return v.SecurityFlavors }).(NfsExportOptionsSecurityFlavorsItemArrayOutput)
+}
+
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 func (o NfsExportOptionsOutput) SquashMode() NfsExportOptionsSquashModePtrOutput {
 	return o.ApplyT(func(v NfsExportOptions) *NfsExportOptionsSquashMode { return v.SquashMode }).(NfsExportOptionsSquashModePtrOutput)
@@ -551,6 +920,8 @@ type NfsExportOptionsResponse struct {
 	AnonUid string `pulumi:"anonUid"`
 	// List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 	IpRanges []string `pulumi:"ipRanges"`
+	// The security flavors allowed for mount operations. The default is AUTH_SYS.
+	SecurityFlavors []string `pulumi:"securityFlavors"`
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 	SquashMode string `pulumi:"squashMode"`
 }
@@ -590,6 +961,11 @@ func (o NfsExportOptionsResponseOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NfsExportOptionsResponse) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
 
+// The security flavors allowed for mount operations. The default is AUTH_SYS.
+func (o NfsExportOptionsResponseOutput) SecurityFlavors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NfsExportOptionsResponse) []string { return v.SecurityFlavors }).(pulumi.StringArrayOutput)
+}
+
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 func (o NfsExportOptionsResponseOutput) SquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v NfsExportOptionsResponse) string { return v.SquashMode }).(pulumi.StringOutput)
@@ -616,16 +992,26 @@ func (o NfsExportOptionsResponseArrayOutput) Index(i pulumi.IntInput) NfsExportO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryServicesConfigInput)(nil)).Elem(), DirectoryServicesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryServicesConfigPtrInput)(nil)).Elem(), DirectoryServicesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigInput)(nil)).Elem(), FileShareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileShareConfigArrayInput)(nil)).Elem(), FileShareConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedActiveDirectoryConfigInput)(nil)).Elem(), ManagedActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedActiveDirectoryConfigPtrInput)(nil)).Elem(), ManagedActiveDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigArrayInput)(nil)).Elem(), NetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsInput)(nil)).Elem(), NfsExportOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsArrayInput)(nil)).Elem(), NfsExportOptionsArray{})
+	pulumi.RegisterOutputType(DirectoryServicesConfigOutput{})
+	pulumi.RegisterOutputType(DirectoryServicesConfigPtrOutput{})
+	pulumi.RegisterOutputType(DirectoryServicesConfigResponseOutput{})
 	pulumi.RegisterOutputType(FileShareConfigOutput{})
 	pulumi.RegisterOutputType(FileShareConfigArrayOutput{})
 	pulumi.RegisterOutputType(FileShareConfigResponseOutput{})
 	pulumi.RegisterOutputType(FileShareConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedActiveDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ManagedActiveDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedActiveDirectoryConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})

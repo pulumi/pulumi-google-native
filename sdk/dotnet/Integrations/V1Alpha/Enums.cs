@@ -847,6 +847,54 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory UnspecifiedExternalCategory { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("UNSPECIFIED_EXTERNAL_CATEGORY");
         public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory Core { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("CORE");
         public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory Connectors { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("CONNECTORS");
+        /// <summary>
+        /// HTTP tasks, e.g. rest api call task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalHttp { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_HTTP");
+        /// <summary>
+        /// Integration services, e.g. connector task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalIntegrationServices { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_INTEGRATION_SERVICES");
+        /// <summary>
+        /// Customer ations, e.g. email task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalCustomerActions { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_CUSTOMER_ACTIONS");
+        /// <summary>
+        /// Flow control, e.g. while loop task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalFlowControl { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_FLOW_CONTROL");
+        /// <summary>
+        /// Workspace tasks, e.g. list drive task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalWorkspace { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_WORKSPACE");
+        /// <summary>
+        /// Security, e.g. kms related tasks
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalSecurity { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_SECURITY");
+        /// <summary>
+        /// Database operation tasks, e.g. read firestore info tasks
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalDatabases { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_DATABASES");
+        /// <summary>
+        /// Analytics tasks, e.g. dataflow creattion tasks
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalAnalytics { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_ANALYTICS");
+        /// <summary>
+        /// BYOC tasks
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalByoc { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_BYOC");
+        /// <summary>
+        /// BYOT tasks
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalByot { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_BYOT");
+        /// <summary>
+        /// AI related tasks.
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalArtificialInteligence { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_ARTIFICIAL_INTELIGENCE");
+        /// <summary>
+        /// Data manipulation related tasks, e.g. data mapping task
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataExternalCategory ExternalDataManipulation { get; } = new EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_DATA_MANIPULATION");
 
         public static bool operator ==(EnterpriseCrmEventbusProtoTaskMetadataExternalCategory left, EnterpriseCrmEventbusProtoTaskMetadataExternalCategory right) => left.Equals(right);
         public static bool operator !=(EnterpriseCrmEventbusProtoTaskMetadataExternalCategory left, EnterpriseCrmEventbusProtoTaskMetadataExternalCategory right) => !left.Equals(right);

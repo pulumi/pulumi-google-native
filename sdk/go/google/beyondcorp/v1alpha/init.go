@@ -89,8 +89,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetConnectionIamMember{}
 	case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
 		r = &NetConnectionIamPolicy{}
+	case "google-native:beyondcorp/v1alpha:ProxyConfig":
+		r = &ProxyConfig{}
 	case "google-native:beyondcorp/v1alpha:Subscription":
 		r = &Subscription{}
+	case "google-native:beyondcorp/v1alpha:Tenant":
+		r = &Tenant{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

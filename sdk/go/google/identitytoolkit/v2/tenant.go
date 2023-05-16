@@ -40,8 +40,10 @@ type Tenant struct {
 	// Configuration related to monitoring project activity.
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The tenant-level password policy config
+	PasswordPolicyConfig GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput `pulumi:"passwordPolicyConfig"`
+	Project              pulumi.StringOutput                                                 `pulumi:"project"`
 	// The tenant-level reCAPTCHA config.
 	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponseOutput `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
@@ -115,7 +117,9 @@ type tenantArgs struct {
 	MfaConfig *GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig `pulumi:"mfaConfig"`
 	// Configuration related to monitoring project activity.
 	Monitoring *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig `pulumi:"monitoring"`
-	Project    *string                                            `pulumi:"project"`
+	// The tenant-level password policy config
+	PasswordPolicyConfig *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig `pulumi:"passwordPolicyConfig"`
+	Project              *string                                                `pulumi:"project"`
 	// The tenant-level reCAPTCHA config.
 	RecaptchaConfig *GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
@@ -148,7 +152,9 @@ type TenantArgs struct {
 	MfaConfig GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrInput
 	// Configuration related to monitoring project activity.
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput
-	Project    pulumi.StringPtrInput
+	// The tenant-level password policy config
+	PasswordPolicyConfig GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput
+	Project              pulumi.StringPtrInput
 	// The tenant-level reCAPTCHA config.
 	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPtrInput
 	// Configures which regions are enabled for SMS verification code sending.
@@ -261,6 +267,13 @@ func (o TenantOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2MonitoringCo
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 func (o TenantOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tenant-level password policy config
+func (o TenantOutput) PasswordPolicyConfig() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *Tenant) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput {
+		return v.PasswordPolicyConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput)
 }
 
 func (o TenantOutput) Project() pulumi.StringOutput {

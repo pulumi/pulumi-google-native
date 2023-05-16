@@ -80,6 +80,11 @@ export const getPrivateConnection: typeof import("./getPrivateConnection").getPr
 export const getPrivateConnectionOutput: typeof import("./getPrivateConnection").getPrivateConnectionOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivateConnection","getPrivateConnectionOutput"], () => require("./getPrivateConnection"));
 
+export { GetPrivateConnectionIamPolicyArgs, GetPrivateConnectionIamPolicyResult, GetPrivateConnectionIamPolicyOutputArgs } from "./getPrivateConnectionIamPolicy";
+export const getPrivateConnectionIamPolicy: typeof import("./getPrivateConnectionIamPolicy").getPrivateConnectionIamPolicy = null as any;
+export const getPrivateConnectionIamPolicyOutput: typeof import("./getPrivateConnectionIamPolicy").getPrivateConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateConnectionIamPolicy","getPrivateConnectionIamPolicyOutput"], () => require("./getPrivateConnectionIamPolicy"));
+
 export { MigrationJobArgs } from "./migrationJob";
 export type MigrationJob = import("./migrationJob").MigrationJob;
 export const MigrationJob: typeof import("./migrationJob").MigrationJob = null as any;
@@ -104,6 +109,21 @@ export { PrivateConnectionArgs } from "./privateConnection";
 export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
 utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
+
+export { PrivateConnectionIamBindingArgs } from "./privateConnectionIamBinding";
+export type PrivateConnectionIamBinding = import("./privateConnectionIamBinding").PrivateConnectionIamBinding;
+export const PrivateConnectionIamBinding: typeof import("./privateConnectionIamBinding").PrivateConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["PrivateConnectionIamBinding"], () => require("./privateConnectionIamBinding"));
+
+export { PrivateConnectionIamMemberArgs } from "./privateConnectionIamMember";
+export type PrivateConnectionIamMember = import("./privateConnectionIamMember").PrivateConnectionIamMember;
+export const PrivateConnectionIamMember: typeof import("./privateConnectionIamMember").PrivateConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["PrivateConnectionIamMember"], () => require("./privateConnectionIamMember"));
+
+export { PrivateConnectionIamPolicyArgs } from "./privateConnectionIamPolicy";
+export type PrivateConnectionIamPolicy = import("./privateConnectionIamPolicy").PrivateConnectionIamPolicy;
+export const PrivateConnectionIamPolicy: typeof import("./privateConnectionIamPolicy").PrivateConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["PrivateConnectionIamPolicy"], () => require("./privateConnectionIamPolicy"));
 
 
 // Export enums:
@@ -139,6 +159,12 @@ const _module = {
                 return new MigrationJobIamPolicy(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:PrivateConnection":
                 return new PrivateConnection(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:PrivateConnectionIamBinding":
+                return new PrivateConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:PrivateConnectionIamMember":
+                return new PrivateConnectionIamMember(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:PrivateConnectionIamPolicy":
+                return new PrivateConnectionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

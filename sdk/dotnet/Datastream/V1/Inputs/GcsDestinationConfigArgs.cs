@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<Inputs.AvroFileFormatArgs>? AvroFileFormat { get; set; }
 
         /// <summary>
-        /// The maximum duration for which new events are added before a file is closed and a new file is created.
+        /// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
         /// </summary>
         [Input("fileRotationInterval")]
         public Input<string>? FileRotationInterval { get; set; }

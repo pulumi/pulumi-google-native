@@ -69,6 +69,8 @@ type LookupInstanceResult struct {
 	P4ServiceAccount string `pulumi:"p4ServiceAccount"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance bool `pulumi:"privateInstance"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
 	//
 	// Deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.
@@ -231,6 +233,11 @@ func (o LookupInstanceResultOutput) P4ServiceAccount() pulumi.StringOutput {
 // Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 func (o LookupInstanceResultOutput) PrivateInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.PrivateInstance }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupInstanceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // Deprecated. Use tenant_project_id instead to extract the tenant project ID.

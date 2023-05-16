@@ -23,6 +23,10 @@ __all__ = [
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountResponse',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse',
     'GoogleIamV1AuditConfigResponse',
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
@@ -536,6 +540,175 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponse(dict):
         The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
         """
         return pulumi.get(self, "time")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse(dict):
+    """
+    Message contains the authentication information to validate against the proxy server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionSaEmail":
+            suggest = "encryption_sa_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_sa_email: str):
+        """
+        Message contains the authentication information to validate against the proxy server.
+        :param str encryption_sa_email: Optional. Service Account for encrypting the JWT.
+        """
+        pulumi.set(__self__, "encryption_sa_email", encryption_sa_email)
+
+    @property
+    @pulumi.getter(name="encryptionSaEmail")
+    def encryption_sa_email(self) -> str:
+        """
+        Optional. Service Account for encrypting the JWT.
+        """
+        return pulumi.get(self, "encryption_sa_email")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse(dict):
+    """
+    Metadata associated with Tenant and is provided by the Partner.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partnerTenantId":
+            suggest = "partner_tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 partner_tenant_id: str):
+        """
+        Metadata associated with Tenant and is provided by the Partner.
+        :param str partner_tenant_id: Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        """
+        pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
+
+    @property
+    @pulumi.getter(name="partnerTenantId")
+    def partner_tenant_id(self) -> str:
+        """
+        Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        """
+        return pulumi.get(self, "partner_tenant_id")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse(dict):
+    """
+    Message contains the routing information to direct traffic to the proxy server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pacUri":
+            suggest = "pac_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pac_uri: str):
+        """
+        Message contains the routing information to direct traffic to the proxy server.
+        :param str pac_uri: Proxy Auto-Configuration (PAC) URI.
+        """
+        pulumi.set(__self__, "pac_uri", pac_uri)
+
+    @property
+    @pulumi.getter(name="pacUri")
+    def pac_uri(self) -> str:
+        """
+        Proxy Auto-Configuration (PAC) URI.
+        """
+        return pulumi.get(self, "pac_uri")
+
+
+@pulumi.output_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse(dict):
+    """
+    Message contains the transport layer information to verify the proxy server.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverCaCertPem":
+            suggest = "server_ca_cert_pem"
+        elif key == "sslDecryptCaCertPem":
+            suggest = "ssl_decrypt_ca_cert_pem"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_ca_cert_pem: str,
+                 ssl_decrypt_ca_cert_pem: str):
+        """
+        Message contains the transport layer information to verify the proxy server.
+        :param str server_ca_cert_pem: PEM encoded CA certificate associated with the proxy server certificate.
+        :param str ssl_decrypt_ca_cert_pem: Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+        """
+        pulumi.set(__self__, "server_ca_cert_pem", server_ca_cert_pem)
+        pulumi.set(__self__, "ssl_decrypt_ca_cert_pem", ssl_decrypt_ca_cert_pem)
+
+    @property
+    @pulumi.getter(name="serverCaCertPem")
+    def server_ca_cert_pem(self) -> str:
+        """
+        PEM encoded CA certificate associated with the proxy server certificate.
+        """
+        return pulumi.get(self, "server_ca_cert_pem")
+
+    @property
+    @pulumi.getter(name="sslDecryptCaCertPem")
+    def ssl_decrypt_ca_cert_pem(self) -> str:
+        """
+        Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+        """
+        return pulumi.get(self, "ssl_decrypt_ca_cert_pem")
 
 
 @pulumi.output_type

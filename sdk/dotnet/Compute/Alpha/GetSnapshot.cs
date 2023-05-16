@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string DownloadBytes;
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         public readonly bool GuestFlush;
@@ -220,6 +224,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string downloadBytes,
 
+            bool enableConfidentialCompute,
+
             bool guestFlush,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
@@ -284,6 +290,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Description = description;
             DiskSizeGb = diskSizeGb;
             DownloadBytes = downloadBytes;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestFlush = guestFlush;
             GuestOsFeatures = guestOsFeatures;
             Kind = kind;

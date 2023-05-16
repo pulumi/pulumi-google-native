@@ -104,6 +104,10 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly relatedUrl!: pulumi.Output<outputs.containeranalysis.v1.RelatedUrlResponse[]>;
     /**
+     * A note describing an SBOM reference.
+     */
+    public readonly sbomReference!: pulumi.Output<outputs.containeranalysis.v1.SBOMReferenceNoteResponse>;
+    /**
      * A one sentence description of this note.
      */
     public readonly shortDescription!: pulumi.Output<string>;
@@ -152,6 +156,7 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["relatedNoteNames"] = args ? args.relatedNoteNames : undefined;
             resourceInputs["relatedUrl"] = args ? args.relatedUrl : undefined;
+            resourceInputs["sbomReference"] = args ? args.sbomReference : undefined;
             resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
             resourceInputs["upgrade"] = args ? args.upgrade : undefined;
             resourceInputs["vulnerability"] = args ? args.vulnerability : undefined;
@@ -178,6 +183,7 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["relatedNoteNames"] = undefined /*out*/;
             resourceInputs["relatedUrl"] = undefined /*out*/;
+            resourceInputs["sbomReference"] = undefined /*out*/;
             resourceInputs["shortDescription"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgrade"] = undefined /*out*/;
@@ -248,6 +254,10 @@ export interface NoteArgs {
      * URLs associated with this note.
      */
     relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1.RelatedUrlArgs>[]>;
+    /**
+     * A note describing an SBOM reference.
+     */
+    sbomReference?: pulumi.Input<inputs.containeranalysis.v1.SBOMReferenceNoteArgs>;
     /**
      * A one sentence description of this note.
      */

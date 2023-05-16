@@ -129,6 +129,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly privateInstance!: pulumi.Output<boolean>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * Deprecated. Use tenant_project_id instead to extract the tenant project ID.
      *
      * @deprecated Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.
@@ -211,6 +215,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["gcsBucket"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceEndpoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -242,6 +247,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
             resourceInputs["privateInstance"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceEndpoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

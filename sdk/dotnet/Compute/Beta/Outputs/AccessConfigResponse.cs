@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string PublicPtrDomainName;
         /// <summary>
+        /// The resource URL for the security policy associated with this access config.
+        /// </summary>
+        public readonly string SecurityPolicy;
+        /// <summary>
         /// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         /// </summary>
         public readonly bool SetPublicPtr;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string publicPtrDomainName,
 
+            string securityPolicy,
+
             bool setPublicPtr,
 
             string type)
@@ -80,6 +86,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             NatIP = natIP;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
+            SecurityPolicy = securityPolicy;
             SetPublicPtr = setPublicPtr;
             Type = type;
         }

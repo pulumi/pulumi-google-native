@@ -14,7 +14,7 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
-	// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+	// The configuration parameters for the auto scaling feature.
 	Autoscale AutoscaleResponseOutput `pulumi:"autoscale"`
 	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency pulumi.StringOutput `pulumi:"concurrency"`
@@ -82,7 +82,7 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
-	// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+	// The configuration parameters for the auto scaling feature.
 	Autoscale *Autoscale `pulumi:"autoscale"`
 	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency *string `pulumi:"concurrency"`
@@ -104,7 +104,7 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
-	// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+	// The configuration parameters for the auto scaling feature.
 	Autoscale AutoscalePtrInput
 	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency pulumi.StringPtrInput
@@ -161,7 +161,7 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+// The configuration parameters for the auto scaling feature.
 func (o ReservationOutput) Autoscale() AutoscaleResponseOutput {
 	return o.ApplyT(func(v *Reservation) AutoscaleResponseOutput { return v.Autoscale }).(AutoscaleResponseOutput)
 }

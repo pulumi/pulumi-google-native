@@ -23,6 +23,7 @@ __all__ = [
     'ContainerResponse',
     'DomainMappingSpecResponse',
     'DomainMappingStatusResponse',
+    'EmptyDirVolumeSourceResponse',
     'EnvFromSourceResponse',
     'EnvVarResponse',
     'EnvVarSourceResponse',
@@ -873,6 +874,56 @@ class DomainMappingStatusResponse(dict):
         Optional. Not supported by Cloud Run.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class EmptyDirVolumeSourceResponse(dict):
+    """
+    Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmptyDirVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmptyDirVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmptyDirVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: str,
+                 size_limit: str):
+        """
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        :param str medium: The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        pulumi.set(__self__, "medium", medium)
+        pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> str:
+        """
+        The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> str:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type
@@ -2991,6 +3042,8 @@ class VolumeResponse(dict):
         suggest = None
         if key == "configMap":
             suggest = "config_map"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3005,15 +3058,18 @@ class VolumeResponse(dict):
 
     def __init__(__self__, *,
                  config_map: 'outputs.ConfigMapVolumeSourceResponse',
+                 empty_dir: 'outputs.EmptyDirVolumeSourceResponse',
                  name: str,
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
         :param 'ConfigMapVolumeSourceResponse' config_map: Not supported in Cloud Run.
+        :param 'EmptyDirVolumeSourceResponse' empty_dir: Ephemeral storage used as a shared volume.
         :param str name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         :param 'SecretVolumeSourceResponse' secret: The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         """
         pulumi.set(__self__, "config_map", config_map)
+        pulumi.set(__self__, "empty_dir", empty_dir)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "secret", secret)
 
@@ -3024,6 +3080,14 @@ class VolumeResponse(dict):
         Not supported in Cloud Run.
         """
         return pulumi.get(self, "config_map")
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> 'outputs.EmptyDirVolumeSourceResponse':
+        """
+        Ephemeral storage used as a shared volume.
+        """
+        return pulumi.get(self, "empty_dir")
 
     @property
     @pulumi.getter

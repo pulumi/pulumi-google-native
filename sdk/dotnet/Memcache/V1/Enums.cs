@@ -20,6 +20,9 @@ namespace Pulumi.GoogleNative.Memcache.V1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// Memcache version is not specified by customer
+        /// </summary>
         public static InstanceMemcacheVersion MemcacheVersionUnspecified { get; } = new InstanceMemcacheVersion("MEMCACHE_VERSION_UNSPECIFIED");
         /// <summary>
         /// Memcached 1.5 version.

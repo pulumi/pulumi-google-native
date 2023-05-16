@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class GceInstanceResponse
     {
         /// <summary>
+        /// A list of the type and count of accelerator cards attached to the instance.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AcceleratorResponse> Accelerators;
+        /// <summary>
         /// Size of the boot disk in GB. Defaults to 50.
         /// </summary>
         public readonly int BootDiskSizeGb;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
         [OutputConstructor]
         private GceInstanceResponse(
+            ImmutableArray<Outputs.AcceleratorResponse> accelerators,
+
             int bootDiskSizeGb,
 
             Outputs.GceConfidentialInstanceConfigResponse confidentialInstanceConfig,
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
             ImmutableArray<string> tags)
         {
+            Accelerators = accelerators;
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;

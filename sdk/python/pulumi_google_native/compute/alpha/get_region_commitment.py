@@ -205,7 +205,7 @@ class GetRegionCommitmentResult:
     @pulumi.getter(name="splitSourceCommitment")
     def split_source_commitment(self) -> str:
         """
-        Source commitment to be splitted into a new commitment.
+        Source commitment to be split into a new commitment.
         """
         return pulumi.get(self, "split_source_commitment")
 

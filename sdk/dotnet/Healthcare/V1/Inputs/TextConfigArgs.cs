@@ -12,6 +12,30 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
 
     public sealed class TextConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalTransformations")]
+        private InputList<Inputs.InfoTypeTransformationArgs>? _additionalTransformations;
+
+        /// <summary>
+        /// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        /// </summary>
+        public InputList<Inputs.InfoTypeTransformationArgs> AdditionalTransformations
+        {
+            get => _additionalTransformations ?? (_additionalTransformations = new InputList<Inputs.InfoTypeTransformationArgs>());
+            set => _additionalTransformations = value;
+        }
+
+        [Input("excludeInfoTypes")]
+        private InputList<string>? _excludeInfoTypes;
+
+        /// <summary>
+        /// InfoTypes to skip transforming, overriding `additional_transformations`.
+        /// </summary>
+        public InputList<string> ExcludeInfoTypes
+        {
+            get => _excludeInfoTypes ?? (_excludeInfoTypes = new InputList<string>());
+            set => _excludeInfoTypes = value;
+        }
+
         [Input("transformations")]
         private InputList<Inputs.InfoTypeTransformationArgs>? _transformations;
 

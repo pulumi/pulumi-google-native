@@ -293,7 +293,7 @@ class EventFilterArgs:
                  operator: Optional[pulumi.Input[str]] = None):
         """
         Filters events based on exact matches on the CloudEvents attributes.
-        :param pulumi.Input[str] attribute: The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        :param pulumi.Input[str] attribute: The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
         :param pulumi.Input[str] value: The value for the attribute.
         :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
@@ -306,7 +306,7 @@ class EventFilterArgs:
     @pulumi.getter
     def attribute(self) -> pulumi.Input[str]:
         """
-        The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
         """
         return pulumi.get(self, "attribute")
 

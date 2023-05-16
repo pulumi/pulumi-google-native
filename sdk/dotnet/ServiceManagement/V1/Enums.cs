@@ -822,6 +822,14 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// Shopping Org.
         /// </summary>
         public static PublishingOrganization Shopping { get; } = new PublishingOrganization("SHOPPING");
+        /// <summary>
+        /// Geo Org.
+        /// </summary>
+        public static PublishingOrganization Geo { get; } = new PublishingOrganization("GEO");
+        /// <summary>
+        /// Generative AI - https://developers.generativeai.google
+        /// </summary>
+        public static PublishingOrganization GenerativeAi { get; } = new PublishingOrganization("GENERATIVE_AI");
 
         public static bool operator ==(PublishingOrganization left, PublishingOrganization right) => left.Equals(right);
         public static bool operator !=(PublishingOrganization left, PublishingOrganization right) => !left.Equals(right);

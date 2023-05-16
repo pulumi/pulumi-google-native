@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        [Output("instanceFlexibilityPolicy")]
+        public Output<Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse> InstanceFlexibilityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         [Output("instanceGroup")]
@@ -173,6 +179,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The unit of measure for the target size.
+        /// </summary>
+        [Output("targetSizeUnit")]
+        public Output<string> TargetSizeUnit { get; private set; } = null!;
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
@@ -294,6 +306,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerFailoverAction>? FailoverAction { get; set; }
 
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.InstanceGroupManagerInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// The repair policy for this managed instance group.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
@@ -373,6 +391,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
+
+        /// <summary>
+        /// The unit of measure for the target size.
+        /// </summary>
+        [Input("targetSizeUnit")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerTargetSizeUnit>? TargetSizeUnit { get; set; }
 
         /// <summary>
         /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 

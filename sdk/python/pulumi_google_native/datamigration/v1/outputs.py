@@ -1580,7 +1580,7 @@ class PrivateConnectivityResponse(dict):
 @pulumi.output_type
 class PrivateServiceConnectConnectivityResponse(dict):
     """
-    Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+    Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1602,7 +1602,7 @@ class PrivateServiceConnectConnectivityResponse(dict):
     def __init__(__self__, *,
                  service_attachment: str):
         """
-        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
         :param str service_attachment: A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
         """
         pulumi.set(__self__, "service_attachment", service_attachment)

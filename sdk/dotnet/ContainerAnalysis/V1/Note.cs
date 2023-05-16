@@ -116,6 +116,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public Output<ImmutableArray<Outputs.RelatedUrlResponse>> RelatedUrl { get; private set; } = null!;
 
         /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        [Output("sbomReference")]
+        public Output<Outputs.SBOMReferenceNoteResponse> SbomReference { get; private set; } = null!;
+
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         [Output("shortDescription")]
@@ -287,6 +293,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
             get => _relatedUrl ?? (_relatedUrl = new InputList<Inputs.RelatedUrlArgs>());
             set => _relatedUrl = value;
         }
+
+        /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        [Input("sbomReference")]
+        public Input<Inputs.SBOMReferenceNoteArgs>? SbomReference { get; set; }
 
         /// <summary>
         /// A one sentence description of this note.

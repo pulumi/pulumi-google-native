@@ -38,6 +38,10 @@ export class MigrationJob extends pulumi.CustomResource {
     }
 
     /**
+     * The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+     */
+    public readonly cmekKeyName!: pulumi.Output<string>;
+    /**
      * The conversion workspace used by the migration.
      */
     public readonly conversionWorkspace!: pulumi.Output<outputs.datamigration.v1.ConversionWorkspaceInfoResponse>;
@@ -159,6 +163,7 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["cmekKeyName"] = args ? args.cmekKeyName : undefined;
             resourceInputs["conversionWorkspace"] = args ? args.conversionWorkspace : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
@@ -186,6 +191,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["phase"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["cmekKeyName"] = undefined /*out*/;
             resourceInputs["conversionWorkspace"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
@@ -224,6 +230,10 @@ export class MigrationJob extends pulumi.CustomResource {
  * The set of arguments for constructing a MigrationJob resource.
  */
 export interface MigrationJobArgs {
+    /**
+     * The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+     */
+    cmekKeyName?: pulumi.Input<string>;
     /**
      * The conversion workspace used by the migration.
      */

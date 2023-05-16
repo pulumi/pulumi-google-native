@@ -197,6 +197,8 @@ const (
 	InstanceTierHighScaleSsd = InstanceTier("HIGH_SCALE_SSD")
 	// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
 	InstanceTierEnterprise = InstanceTier("ENTERPRISE")
+	// ZONAL instances offer expanded capacity and performance scaling capabilities.
+	InstanceTierZonal = InstanceTier("ZONAL")
 )
 
 func (InstanceTier) ElementType() reflect.Type {
@@ -905,6 +907,223 @@ func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsAccessModePtrOutput)
 }
 
+type NfsExportOptionsSecurityFlavorsItem string
+
+const (
+	// SecurityFlavor not set.
+	NfsExportOptionsSecurityFlavorsItemSecurityFlavorUnspecified = NfsExportOptionsSecurityFlavorsItem("SECURITY_FLAVOR_UNSPECIFIED")
+	// The user's UNIX user-id and group-ids are transferred "in the clear" (not encrypted) on the network, unauthenticated by the NFS server (default).
+	NfsExportOptionsSecurityFlavorsItemAuthSys = NfsExportOptionsSecurityFlavorsItem("AUTH_SYS")
+	// End-user authentication through Kerberos V5.
+	NfsExportOptionsSecurityFlavorsItemKrb5 = NfsExportOptionsSecurityFlavorsItem("KRB5")
+	// krb5 plus integrity protection (data packets are tamper proof).
+	NfsExportOptionsSecurityFlavorsItemKrb5i = NfsExportOptionsSecurityFlavorsItem("KRB5I")
+	// krb5i plus privacy protection (data packets are tamper proof and encrypted).
+	NfsExportOptionsSecurityFlavorsItemKrb5p = NfsExportOptionsSecurityFlavorsItem("KRB5P")
+)
+
+func (NfsExportOptionsSecurityFlavorsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToNfsExportOptionsSecurityFlavorsItemOutput() NfsExportOptionsSecurityFlavorsItemOutput {
+	return pulumi.ToOutput(e).(NfsExportOptionsSecurityFlavorsItemOutput)
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToNfsExportOptionsSecurityFlavorsItemOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsExportOptionsSecurityFlavorsItemOutput)
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToNfsExportOptionsSecurityFlavorsItemPtrOutput() NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return e.ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(context.Background())
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return NfsExportOptionsSecurityFlavorsItem(e).ToNfsExportOptionsSecurityFlavorsItemOutputWithContext(ctx).ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx)
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NfsExportOptionsSecurityFlavorsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NfsExportOptionsSecurityFlavorsItemOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsSecurityFlavorsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToNfsExportOptionsSecurityFlavorsItemOutput() NfsExportOptionsSecurityFlavorsItemOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToNfsExportOptionsSecurityFlavorsItemOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToNfsExportOptionsSecurityFlavorsItemPtrOutput() NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return o.ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsExportOptionsSecurityFlavorsItem) *NfsExportOptionsSecurityFlavorsItem {
+		return &v
+	}).(NfsExportOptionsSecurityFlavorsItemPtrOutput)
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsSecurityFlavorsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsSecurityFlavorsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsExportOptionsSecurityFlavorsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsSecurityFlavorsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) ToNfsExportOptionsSecurityFlavorsItemPtrOutput() NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) Elem() NfsExportOptionsSecurityFlavorsItemOutput {
+	return o.ApplyT(func(v *NfsExportOptionsSecurityFlavorsItem) NfsExportOptionsSecurityFlavorsItem {
+		if v != nil {
+			return *v
+		}
+		var ret NfsExportOptionsSecurityFlavorsItem
+		return ret
+	}).(NfsExportOptionsSecurityFlavorsItemOutput)
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsExportOptionsSecurityFlavorsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NfsExportOptionsSecurityFlavorsItemInput is an input type that accepts NfsExportOptionsSecurityFlavorsItemArgs and NfsExportOptionsSecurityFlavorsItemOutput values.
+// You can construct a concrete instance of `NfsExportOptionsSecurityFlavorsItemInput` via:
+//
+//	NfsExportOptionsSecurityFlavorsItemArgs{...}
+type NfsExportOptionsSecurityFlavorsItemInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsSecurityFlavorsItemOutput() NfsExportOptionsSecurityFlavorsItemOutput
+	ToNfsExportOptionsSecurityFlavorsItemOutputWithContext(context.Context) NfsExportOptionsSecurityFlavorsItemOutput
+}
+
+var nfsExportOptionsSecurityFlavorsItemPtrType = reflect.TypeOf((**NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+
+type NfsExportOptionsSecurityFlavorsItemPtrInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsSecurityFlavorsItemPtrOutput() NfsExportOptionsSecurityFlavorsItemPtrOutput
+	ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput
+}
+
+type nfsExportOptionsSecurityFlavorsItemPtr string
+
+func NfsExportOptionsSecurityFlavorsItemPtr(v string) NfsExportOptionsSecurityFlavorsItemPtrInput {
+	return (*nfsExportOptionsSecurityFlavorsItemPtr)(&v)
+}
+
+func (*nfsExportOptionsSecurityFlavorsItemPtr) ElementType() reflect.Type {
+	return nfsExportOptionsSecurityFlavorsItemPtrType
+}
+
+func (in *nfsExportOptionsSecurityFlavorsItemPtr) ToNfsExportOptionsSecurityFlavorsItemPtrOutput() NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return pulumi.ToOutput(in).(NfsExportOptionsSecurityFlavorsItemPtrOutput)
+}
+
+func (in *nfsExportOptionsSecurityFlavorsItemPtr) ToNfsExportOptionsSecurityFlavorsItemPtrOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsSecurityFlavorsItemPtrOutput)
+}
+
+// NfsExportOptionsSecurityFlavorsItemArrayInput is an input type that accepts NfsExportOptionsSecurityFlavorsItemArray and NfsExportOptionsSecurityFlavorsItemArrayOutput values.
+// You can construct a concrete instance of `NfsExportOptionsSecurityFlavorsItemArrayInput` via:
+//
+//	NfsExportOptionsSecurityFlavorsItemArray{ NfsExportOptionsSecurityFlavorsItemArgs{...} }
+type NfsExportOptionsSecurityFlavorsItemArrayInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsSecurityFlavorsItemArrayOutput() NfsExportOptionsSecurityFlavorsItemArrayOutput
+	ToNfsExportOptionsSecurityFlavorsItemArrayOutputWithContext(context.Context) NfsExportOptionsSecurityFlavorsItemArrayOutput
+}
+
+type NfsExportOptionsSecurityFlavorsItemArray []NfsExportOptionsSecurityFlavorsItem
+
+func (NfsExportOptionsSecurityFlavorsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+}
+
+func (i NfsExportOptionsSecurityFlavorsItemArray) ToNfsExportOptionsSecurityFlavorsItemArrayOutput() NfsExportOptionsSecurityFlavorsItemArrayOutput {
+	return i.ToNfsExportOptionsSecurityFlavorsItemArrayOutputWithContext(context.Background())
+}
+
+func (i NfsExportOptionsSecurityFlavorsItemArray) ToNfsExportOptionsSecurityFlavorsItemArrayOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsExportOptionsSecurityFlavorsItemArrayOutput)
+}
+
+type NfsExportOptionsSecurityFlavorsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsSecurityFlavorsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NfsExportOptionsSecurityFlavorsItem)(nil)).Elem()
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemArrayOutput) ToNfsExportOptionsSecurityFlavorsItemArrayOutput() NfsExportOptionsSecurityFlavorsItemArrayOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemArrayOutput) ToNfsExportOptionsSecurityFlavorsItemArrayOutputWithContext(ctx context.Context) NfsExportOptionsSecurityFlavorsItemArrayOutput {
+	return o
+}
+
+func (o NfsExportOptionsSecurityFlavorsItemArrayOutput) Index(i pulumi.IntInput) NfsExportOptionsSecurityFlavorsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NfsExportOptionsSecurityFlavorsItem {
+		return vs[0].([]NfsExportOptionsSecurityFlavorsItem)[vs[1].(int)]
+	}).(NfsExportOptionsSecurityFlavorsItemOutput)
+}
+
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
 type NfsExportOptionsSquashMode string
 
@@ -1086,6 +1305,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigModesItemArrayInput)(nil)).Elem(), NetworkConfigModesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsAccessModeInput)(nil)).Elem(), NfsExportOptionsAccessMode("ACCESS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsAccessModePtrInput)(nil)).Elem(), NfsExportOptionsAccessMode("ACCESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSecurityFlavorsItemInput)(nil)).Elem(), NfsExportOptionsSecurityFlavorsItem("SECURITY_FLAVOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSecurityFlavorsItemPtrInput)(nil)).Elem(), NfsExportOptionsSecurityFlavorsItem("SECURITY_FLAVOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSecurityFlavorsItemArrayInput)(nil)).Elem(), NfsExportOptionsSecurityFlavorsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModeInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModePtrInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceProtocolOutput{})
@@ -1099,6 +1321,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigModesItemArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportOptionsAccessModeOutput{})
 	pulumi.RegisterOutputType(NfsExportOptionsAccessModePtrOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsSecurityFlavorsItemOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsSecurityFlavorsItemPtrOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsSecurityFlavorsItemArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportOptionsSquashModeOutput{})
 	pulumi.RegisterOutputType(NfsExportOptionsSquashModePtrOutput{})
 }

@@ -3271,6 +3271,30 @@ const (
 	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryUnspecifiedExternalCategory = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("UNSPECIFIED_EXTERNAL_CATEGORY")
 	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryCore                        = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("CORE")
 	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryConnectors                  = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("CONNECTORS")
+	// HTTP tasks, e.g. rest api call task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalHttp = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_HTTP")
+	// Integration services, e.g. connector task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalIntegrationServices = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_INTEGRATION_SERVICES")
+	// Customer ations, e.g. email task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalCustomerActions = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_CUSTOMER_ACTIONS")
+	// Flow control, e.g. while loop task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalFlowControl = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_FLOW_CONTROL")
+	// Workspace tasks, e.g. list drive task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalWorkspace = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_WORKSPACE")
+	// Security, e.g. kms related tasks
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalSecurity = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_SECURITY")
+	// Database operation tasks, e.g. read firestore info tasks
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalDatabases = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_DATABASES")
+	// Analytics tasks, e.g. dataflow creattion tasks
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalAnalytics = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_ANALYTICS")
+	// BYOC tasks
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalByoc = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_BYOC")
+	// BYOT tasks
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalByot = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_BYOT")
+	// AI related tasks.
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalArtificialInteligence = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_ARTIFICIAL_INTELIGENCE")
+	// Data manipulation related tasks, e.g. data mapping task
+	EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryExternalDataManipulation = EnterpriseCrmEventbusProtoTaskMetadataExternalCategory("EXTERNAL_DATA_MANIPULATION")
 )
 
 func (EnterpriseCrmEventbusProtoTaskMetadataExternalCategory) ElementType() reflect.Type {

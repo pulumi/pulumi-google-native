@@ -4504,6 +4504,8 @@ type DocumentationRule struct {
 	DeprecationDescription *string `pulumi:"deprecationDescription"`
 	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description *string `pulumi:"description"`
+	// String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+	DisableReplacementWords *string `pulumi:"disableReplacementWords"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector *string `pulumi:"selector"`
 }
@@ -4525,6 +4527,8 @@ type DocumentationRuleArgs struct {
 	DeprecationDescription pulumi.StringPtrInput `pulumi:"deprecationDescription"`
 	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+	DisableReplacementWords pulumi.StringPtrInput `pulumi:"disableReplacementWords"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 }
@@ -4591,6 +4595,11 @@ func (o DocumentationRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+func (o DocumentationRuleOutput) DisableReplacementWords() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DocumentationRule) *string { return v.DisableReplacementWords }).(pulumi.StringPtrOutput)
+}
+
 // The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 func (o DocumentationRuleOutput) Selector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DocumentationRule) *string { return v.Selector }).(pulumi.StringPtrOutput)
@@ -4622,6 +4631,8 @@ type DocumentationRuleResponse struct {
 	DeprecationDescription string `pulumi:"deprecationDescription"`
 	// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 	Description string `pulumi:"description"`
+	// String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+	DisableReplacementWords string `pulumi:"disableReplacementWords"`
 	// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
 	Selector string `pulumi:"selector"`
 }
@@ -4649,6 +4660,11 @@ func (o DocumentationRuleResponseOutput) DeprecationDescription() pulumi.StringO
 // Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
 func (o DocumentationRuleResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+func (o DocumentationRuleResponseOutput) DisableReplacementWords() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.DisableReplacementWords }).(pulumi.StringOutput)
 }
 
 // The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.

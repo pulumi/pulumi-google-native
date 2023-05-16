@@ -66,6 +66,8 @@ type LookupInterconnectResult struct {
 	PeerIpAddress string `pulumi:"peerIpAddress"`
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount int `pulumi:"provisionedLinkCount"`
+	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+	RemoteLocation string `pulumi:"remoteLocation"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
 	// Reserved for future use.
@@ -210,6 +212,11 @@ func (o LookupInterconnectResultOutput) PeerIpAddress() pulumi.StringOutput {
 // Number of links actually provisioned in this interconnect.
 func (o LookupInterconnectResultOutput) ProvisionedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) int { return v.ProvisionedLinkCount }).(pulumi.IntOutput)
+}
+
+// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+func (o LookupInterconnectResultOutput) RemoteLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectResult) string { return v.RemoteLocation }).(pulumi.StringOutput)
 }
 
 // Target number of physical links in the link bundle, as requested by the customer.

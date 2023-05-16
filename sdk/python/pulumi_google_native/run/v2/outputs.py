@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudRunV2ConditionResponse',
     'GoogleCloudRunV2ContainerPortResponse',
     'GoogleCloudRunV2ContainerResponse',
+    'GoogleCloudRunV2EmptyDirVolumeSourceResponse',
     'GoogleCloudRunV2EnvVarResponse',
     'GoogleCloudRunV2EnvVarSourceResponse',
     'GoogleCloudRunV2ExecutionReferenceResponse',
@@ -296,7 +297,9 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "livenessProbe":
+        if key == "dependsOn":
+            suggest = "depends_on"
+        elif key == "livenessProbe":
             suggest = "liveness_probe"
         elif key == "startupProbe":
             suggest = "startup_probe"
@@ -319,6 +322,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
     def __init__(__self__, *,
                  args: Sequence[str],
                  command: Sequence[str],
+                 depends_on: Sequence[str],
                  env: Sequence['outputs.GoogleCloudRunV2EnvVarResponse'],
                  image: str,
                  liveness_probe: 'outputs.GoogleCloudRunV2ProbeResponse',
@@ -332,6 +336,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        :param Sequence[str] depends_on: Container names which must start before this container.
         :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
         :param str image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         :param 'GoogleCloudRunV2ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
@@ -344,6 +349,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
+        pulumi.set(__self__, "depends_on", depends_on)
         pulumi.set(__self__, "env", env)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "liveness_probe", liveness_probe)
@@ -369,6 +375,14 @@ class GoogleCloudRunV2ContainerResponse(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
         """
         return pulumi.get(self, "command")
+
+    @property
+    @pulumi.getter(name="dependsOn")
+    def depends_on(self) -> Sequence[str]:
+        """
+        Container names which must start before this container.
+        """
+        return pulumi.get(self, "depends_on")
 
     @property
     @pulumi.getter
@@ -441,6 +455,56 @@ class GoogleCloudRunV2ContainerResponse(dict):
         Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2EmptyDirVolumeSourceResponse(dict):
+    """
+    Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2EmptyDirVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2EmptyDirVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2EmptyDirVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: str,
+                 size_limit: str):
+        """
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        :param str medium: The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        pulumi.set(__self__, "medium", medium)
+        pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> str:
+        """
+        The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+        """
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> str:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type
@@ -1692,6 +1756,8 @@ class GoogleCloudRunV2VolumeResponse(dict):
         suggest = None
         if key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2VolumeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1706,15 +1772,18 @@ class GoogleCloudRunV2VolumeResponse(dict):
 
     def __init__(__self__, *,
                  cloud_sql_instance: 'outputs.GoogleCloudRunV2CloudSqlInstanceResponse',
+                 empty_dir: 'outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse',
                  name: str,
                  secret: 'outputs.GoogleCloudRunV2SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
         :param 'GoogleCloudRunV2CloudSqlInstanceResponse' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param 'GoogleCloudRunV2EmptyDirVolumeSourceResponse' empty_dir: Ephemeral storage used as a shared volume.
         :param str name: Volume's name.
         :param 'GoogleCloudRunV2SecretVolumeSourceResponse' secret: Secret represents a secret that should populate this volume.
         """
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        pulumi.set(__self__, "empty_dir", empty_dir)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "secret", secret)
 
@@ -1725,6 +1794,14 @@ class GoogleCloudRunV2VolumeResponse(dict):
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         """
         return pulumi.get(self, "cloud_sql_instance")
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> 'outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse':
+        """
+        Ephemeral storage used as a shared volume.
+        """
+        return pulumi.get(self, "empty_dir")
 
     @property
     @pulumi.getter

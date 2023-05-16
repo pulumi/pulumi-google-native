@@ -138,6 +138,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly Outputs.ConnectionStatusResponse Status;
         /// <summary>
+        /// This subscription type enum states the subscription type of the project.
+        /// </summary>
+        public readonly string SubscriptionType;
+        /// <summary>
         /// Optional. Suspended indicates if a user has suspended a connection or not.
         /// </summary>
         public readonly bool Suspended;
@@ -182,6 +186,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             Outputs.ConnectionStatusResponse status,
 
+            string subscriptionType,
+
             bool suspended,
 
             string updateTime)
@@ -203,6 +209,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
             ServiceDirectory = serviceDirectory;
             SslConfig = sslConfig;
             Status = status;
+            SubscriptionType = subscriptionType;
             Suspended = suspended;
             UpdateTime = updateTime;
         }

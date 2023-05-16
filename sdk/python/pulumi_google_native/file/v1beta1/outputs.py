@@ -12,10 +12,51 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'DirectoryServicesConfigResponse',
     'FileShareConfigResponse',
+    'ManagedActiveDirectoryConfigResponse',
     'NetworkConfigResponse',
     'NfsExportOptionsResponse',
 ]
+
+@pulumi.output_type
+class DirectoryServicesConfigResponse(dict):
+    """
+    Directory Services configuration for Kerberos-based authentication.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedActiveDirectory":
+            suggest = "managed_active_directory"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryServicesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DirectoryServicesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DirectoryServicesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 managed_active_directory: 'outputs.ManagedActiveDirectoryConfigResponse'):
+        """
+        Directory Services configuration for Kerberos-based authentication.
+        :param 'ManagedActiveDirectoryConfigResponse' managed_active_directory: Configuration for Managed Service for Microsoft Active Directory.
+        """
+        pulumi.set(__self__, "managed_active_directory", managed_active_directory)
+
+    @property
+    @pulumi.getter(name="managedActiveDirectory")
+    def managed_active_directory(self) -> 'outputs.ManagedActiveDirectoryConfigResponse':
+        """
+        Configuration for Managed Service for Microsoft Active Directory.
+        """
+        return pulumi.get(self, "managed_active_directory")
+
 
 @pulumi.output_type
 class FileShareConfigResponse(dict):
@@ -91,6 +132,39 @@ class FileShareConfigResponse(dict):
         The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
         """
         return pulumi.get(self, "source_backup")
+
+
+@pulumi.output_type
+class ManagedActiveDirectoryConfigResponse(dict):
+    """
+    ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+    """
+    def __init__(__self__, *,
+                 computer: str,
+                 domain: str):
+        """
+        ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+        :param str computer: The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        :param str domain: Fully qualified domain name.
+        """
+        pulumi.set(__self__, "computer", computer)
+        pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def computer(self) -> str:
+        """
+        The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        """
+        return pulumi.get(self, "computer")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Fully qualified domain name.
+        """
+        return pulumi.get(self, "domain")
 
 
 @pulumi.output_type
@@ -196,6 +270,8 @@ class NfsExportOptionsResponse(dict):
             suggest = "anon_uid"
         elif key == "ipRanges":
             suggest = "ip_ranges"
+        elif key == "securityFlavors":
+            suggest = "security_flavors"
         elif key == "squashMode":
             suggest = "squash_mode"
 
@@ -215,6 +291,7 @@ class NfsExportOptionsResponse(dict):
                  anon_gid: str,
                  anon_uid: str,
                  ip_ranges: Sequence[str],
+                 security_flavors: Sequence[str],
                  squash_mode: str):
         """
         NFS export options specifications.
@@ -222,12 +299,14 @@ class NfsExportOptionsResponse(dict):
         :param str anon_gid: An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param str anon_uid: An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param Sequence[str] ip_ranges: List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        :param Sequence[str] security_flavors: The security flavors allowed for mount operations. The default is AUTH_SYS.
         :param str squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         """
         pulumi.set(__self__, "access_mode", access_mode)
         pulumi.set(__self__, "anon_gid", anon_gid)
         pulumi.set(__self__, "anon_uid", anon_uid)
         pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "security_flavors", security_flavors)
         pulumi.set(__self__, "squash_mode", squash_mode)
 
     @property
@@ -261,6 +340,14 @@ class NfsExportOptionsResponse(dict):
         List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
         """
         return pulumi.get(self, "ip_ranges")
+
+    @property
+    @pulumi.getter(name="securityFlavors")
+    def security_flavors(self) -> Sequence[str]:
+        """
+        The security flavors allowed for mount operations. The default is AUTH_SYS.
+        """
+        return pulumi.get(self, "security_flavors")
 
     @property
     @pulumi.getter(name="squashMode")

@@ -202,3 +202,23 @@ export const PublicKeyFormat = {
  * Required. The format of the public key.
  */
 export type PublicKeyFormat = (typeof PublicKeyFormat)[keyof typeof PublicKeyFormat];
+
+export const PublishingOptionsEncodingFormat = {
+    /**
+     * Not specified. By default, PEM format will be used.
+     */
+    EncodingFormatUnspecified: "ENCODING_FORMAT_UNSPECIFIED",
+    /**
+     * The CertificateAuthority's CA certificate and CRLs will be published in PEM format.
+     */
+    Pem: "PEM",
+    /**
+     * The CertificateAuthority's CA certificate and CRLs will be published in DER format.
+     */
+    Der: "DER",
+} as const;
+
+/**
+ * Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+ */
+export type PublishingOptionsEncodingFormat = (typeof PublishingOptionsEncodingFormat)[keyof typeof PublishingOptionsEncodingFormat];

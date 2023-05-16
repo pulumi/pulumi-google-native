@@ -102,7 +102,7 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * Source commitment to be splitted into a new commitment.
+     * Source commitment to be split into a new commitment.
      */
     public readonly splitSourceCommitment!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export interface RegionCommitmentArgs {
      */
     resources?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ResourceCommitmentArgs>[]>;
     /**
-     * Source commitment to be splitted into a new commitment.
+     * Source commitment to be split into a new commitment.
      */
     splitSourceCommitment?: pulumi.Input<string>;
     /**

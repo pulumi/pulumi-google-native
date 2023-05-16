@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Command;
         /// <summary>
+        /// Container names which must start before this container.
+        /// </summary>
+        public readonly ImmutableArray<string> DependsOn;
+        /// <summary>
         /// List of environment variables to set in the container.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2EnvVarResponse> Env;
@@ -67,6 +71,8 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
             ImmutableArray<string> command,
 
+            ImmutableArray<string> dependsOn,
+
             ImmutableArray<Outputs.GoogleCloudRunV2EnvVarResponse> env,
 
             string image,
@@ -87,6 +93,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         {
             Args = args;
             Command = command;
+            DependsOn = dependsOn;
             Env = env;
             Image = image;
             LivenessProbe = livenessProbe;

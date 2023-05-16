@@ -84,6 +84,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    public /*out*/ readonly multisliceNode!: pulumi.Output<boolean>;
+    /**
      * Immutable. The name of the TPU.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -172,6 +176,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["multisliceNode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
             resourceInputs["queuedResource"] = undefined /*out*/;
@@ -190,6 +195,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["multisliceNode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;

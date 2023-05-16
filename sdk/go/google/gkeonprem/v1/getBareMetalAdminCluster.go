@@ -28,8 +28,9 @@ type LookupBareMetalAdminClusterArgs struct {
 
 type LookupBareMetalAdminClusterResult struct {
 	// Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	Annotations      map[string]string `pulumi:"annotations"`
-	BareMetalVersion string            `pulumi:"bareMetalVersion"`
+	Annotations map[string]string `pulumi:"annotations"`
+	// The Anthos clusters on bare metal version for the bare metal admin cluster.
+	BareMetalVersion string `pulumi:"bareMetalVersion"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigResponse `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -126,6 +127,7 @@ func (o LookupBareMetalAdminClusterResultOutput) Annotations() pulumi.StringMapO
 	return o.ApplyT(func(v LookupBareMetalAdminClusterResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// The Anthos clusters on bare metal version for the bare metal admin cluster.
 func (o LookupBareMetalAdminClusterResultOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBareMetalAdminClusterResult) string { return v.BareMetalVersion }).(pulumi.StringOutput)
 }

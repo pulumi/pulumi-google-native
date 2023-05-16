@@ -113,6 +113,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.connectors.v1.ConnectionStatusResponse>;
     /**
+     * This subscription type enum states the subscription type of the project.
+     */
+    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
+    /**
      * Optional. Suspended indicates if a user has suspended a connection or not.
      */
     public readonly suspended!: pulumi.Output<boolean>;
@@ -159,6 +163,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["subscriptionType"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["authConfig"] = undefined /*out*/;
@@ -181,6 +186,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["serviceDirectory"] = undefined /*out*/;
             resourceInputs["sslConfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["subscriptionType"] = undefined /*out*/;
             resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

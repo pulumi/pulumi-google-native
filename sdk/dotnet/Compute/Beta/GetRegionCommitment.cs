@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Source commitment to be splitted into a new commitment.
+        /// Source commitment to be split into a new commitment.
         /// </summary>
         public readonly string SplitSourceCommitment;
         /// <summary>

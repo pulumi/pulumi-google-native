@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The number of frames that were reported by the source and contained errors.
+        /// </summary>
+        [Output("errorFrameCount")]
+        public Output<int> ErrorFrameCount { get; private set; } = null!;
+
+        /// <summary>
         /// If `true`, the source is managed by other service(s).
         /// </summary>
         [Output("isManaged")]

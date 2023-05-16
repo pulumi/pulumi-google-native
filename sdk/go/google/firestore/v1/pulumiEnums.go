@@ -1024,6 +1024,185 @@ func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1Inde
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
 }
 
+// The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+type GoogleFirestoreAdminV1WeeklyRecurrenceDay string
+
+const (
+	// The day of the week is unspecified.
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayDayOfWeekUnspecified = GoogleFirestoreAdminV1WeeklyRecurrenceDay("DAY_OF_WEEK_UNSPECIFIED")
+	// Monday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayMonday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("MONDAY")
+	// Tuesday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayTuesday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("TUESDAY")
+	// Wednesday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayWednesday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("WEDNESDAY")
+	// Thursday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayThursday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("THURSDAY")
+	// Friday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDayFriday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("FRIDAY")
+	// Saturday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDaySaturday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("SATURDAY")
+	// Sunday
+	GoogleFirestoreAdminV1WeeklyRecurrenceDaySunday = GoogleFirestoreAdminV1WeeklyRecurrenceDay("SUNDAY")
+)
+
+func (GoogleFirestoreAdminV1WeeklyRecurrenceDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceDay)(nil)).Elem()
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
+	return pulumi.ToOutput(e).(GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput)
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput)
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return e.ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return GoogleFirestoreAdminV1WeeklyRecurrenceDay(e).ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutputWithContext(ctx).ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx)
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleFirestoreAdminV1WeeklyRecurrenceDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceDay)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return o.ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleFirestoreAdminV1WeeklyRecurrenceDay) *GoogleFirestoreAdminV1WeeklyRecurrenceDay {
+		return &v
+	}).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleFirestoreAdminV1WeeklyRecurrenceDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleFirestoreAdminV1WeeklyRecurrenceDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleFirestoreAdminV1WeeklyRecurrenceDay)(nil)).Elem()
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return o
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) Elem() GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput {
+	return o.ApplyT(func(v *GoogleFirestoreAdminV1WeeklyRecurrenceDay) GoogleFirestoreAdminV1WeeklyRecurrenceDay {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleFirestoreAdminV1WeeklyRecurrenceDay
+		return ret
+	}).(GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput)
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleFirestoreAdminV1WeeklyRecurrenceDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleFirestoreAdminV1WeeklyRecurrenceDayInput is an input type that accepts GoogleFirestoreAdminV1WeeklyRecurrenceDayArgs and GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput values.
+// You can construct a concrete instance of `GoogleFirestoreAdminV1WeeklyRecurrenceDayInput` via:
+//
+//	GoogleFirestoreAdminV1WeeklyRecurrenceDayArgs{...}
+type GoogleFirestoreAdminV1WeeklyRecurrenceDayInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput
+	ToGoogleFirestoreAdminV1WeeklyRecurrenceDayOutputWithContext(context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput
+}
+
+var googleFirestoreAdminV1WeeklyRecurrenceDayPtrType = reflect.TypeOf((**GoogleFirestoreAdminV1WeeklyRecurrenceDay)(nil)).Elem()
+
+type GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrInput interface {
+	pulumi.Input
+
+	ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput
+	ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput
+}
+
+type googleFirestoreAdminV1WeeklyRecurrenceDayPtr string
+
+func GoogleFirestoreAdminV1WeeklyRecurrenceDayPtr(v string) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrInput {
+	return (*googleFirestoreAdminV1WeeklyRecurrenceDayPtr)(&v)
+}
+
+func (*googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ElementType() reflect.Type {
+	return googleFirestoreAdminV1WeeklyRecurrenceDayPtrType
+}
+
+func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput() GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return pulumi.ToOutput(in).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
+}
+
+func (in *googleFirestoreAdminV1WeeklyRecurrenceDayPtr) ToGoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutputWithContext(ctx context.Context) GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput)
+}
+
 // The API scope supported by this index.
 type IndexApiScope string
 
@@ -1375,6 +1554,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceDayInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceDay("DAY_OF_WEEK_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1WeeklyRecurrenceDay("DAY_OF_WEEK_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexApiScopeInput)(nil)).Elem(), IndexApiScope("ANY_API"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexApiScopePtrInput)(nil)).Elem(), IndexApiScope("ANY_API"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopeInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
@@ -1391,6 +1572,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOrderOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1WeeklyRecurrenceDayOutput{})
+	pulumi.RegisterOutputType(GoogleFirestoreAdminV1WeeklyRecurrenceDayPtrOutput{})
 	pulumi.RegisterOutputType(IndexApiScopeOutput{})
 	pulumi.RegisterOutputType(IndexApiScopePtrOutput{})
 	pulumi.RegisterOutputType(IndexQueryScopeOutput{})

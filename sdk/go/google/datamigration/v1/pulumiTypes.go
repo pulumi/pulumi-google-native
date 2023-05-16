@@ -4846,7 +4846,7 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivity struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment string `pulumi:"serviceAttachment"`
@@ -4863,7 +4863,7 @@ type PrivateServiceConnectConnectivityInput interface {
 	ToPrivateServiceConnectConnectivityOutputWithContext(context.Context) PrivateServiceConnectConnectivityOutput
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityArgs struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
@@ -4922,7 +4922,7 @@ func (i *privateServiceConnectConnectivityPtrType) ToPrivateServiceConnectConnec
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConnectivityPtrOutput)
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityOutput struct{ *pulumi.OutputState }
 
 func (PrivateServiceConnectConnectivityOutput) ElementType() reflect.Type {
@@ -4986,13 +4986,13 @@ func (o PrivateServiceConnectConnectivityPtrOutput) ServiceAttachment() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityResponse struct {
 	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
 	ServiceAttachment string `pulumi:"serviceAttachment"`
 }
 
-// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 type PrivateServiceConnectConnectivityResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateServiceConnectConnectivityResponseOutput) ElementType() reflect.Type {

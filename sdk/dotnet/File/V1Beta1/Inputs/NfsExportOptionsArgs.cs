@@ -45,6 +45,18 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
             set => _ipRanges = value;
         }
 
+        [Input("securityFlavors")]
+        private InputList<Pulumi.GoogleNative.File.V1Beta1.NfsExportOptionsSecurityFlavorsItem>? _securityFlavors;
+
+        /// <summary>
+        /// The security flavors allowed for mount operations. The default is AUTH_SYS.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.File.V1Beta1.NfsExportOptionsSecurityFlavorsItem> SecurityFlavors
+        {
+            get => _securityFlavors ?? (_securityFlavors = new InputList<Pulumi.GoogleNative.File.V1Beta1.NfsExportOptionsSecurityFlavorsItem>());
+            set => _securityFlavors = value;
+        }
+
         /// <summary>
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         /// </summary>

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// The configuration parameters for the auto scaling feature.
         /// </summary>
         [Output("autoscale")]
         public Output<Outputs.AutoscaleResponse> Autoscale { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// The configuration parameters for the auto scaling feature.
         /// </summary>
         [Input("autoscale")]
         public Input<Inputs.AutoscaleArgs>? Autoscale { get; set; }

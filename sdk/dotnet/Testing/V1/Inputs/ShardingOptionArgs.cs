@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<Inputs.ManualShardingArgs>? ManualSharding { get; set; }
 
         /// <summary>
+        /// Shards test based on previous test case timing records.
+        /// </summary>
+        [Input("smartSharding")]
+        public Input<Inputs.SmartShardingArgs>? SmartSharding { get; set; }
+
+        /// <summary>
         /// Uniformly shards test cases given a total number of shards.
         /// </summary>
         [Input("uniformSharding")]

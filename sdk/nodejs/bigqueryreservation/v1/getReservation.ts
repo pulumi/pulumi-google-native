@@ -28,7 +28,7 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
-     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     * The configuration parameters for the auto scaling feature.
      */
     readonly autoscale: outputs.bigqueryreservation.v1.AutoscaleResponse;
     /**

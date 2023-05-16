@@ -512,6 +512,293 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// Allow the producer to specify which consumers can connect to it.
+type ConsumerPscConfig struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	DisableGlobalAccess *bool `pulumi:"disableGlobalAccess"`
+	// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+	Network *string `pulumi:"network"`
+	// The consumer project where PSC connections are allowed to be created in.
+	Project *string `pulumi:"project"`
+}
+
+// ConsumerPscConfigInput is an input type that accepts ConsumerPscConfigArgs and ConsumerPscConfigOutput values.
+// You can construct a concrete instance of `ConsumerPscConfigInput` via:
+//
+//	ConsumerPscConfigArgs{...}
+type ConsumerPscConfigInput interface {
+	pulumi.Input
+
+	ToConsumerPscConfigOutput() ConsumerPscConfigOutput
+	ToConsumerPscConfigOutputWithContext(context.Context) ConsumerPscConfigOutput
+}
+
+// Allow the producer to specify which consumers can connect to it.
+type ConsumerPscConfigArgs struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	DisableGlobalAccess pulumi.BoolPtrInput `pulumi:"disableGlobalAccess"`
+	// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The consumer project where PSC connections are allowed to be created in.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (ConsumerPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerPscConfig)(nil)).Elem()
+}
+
+func (i ConsumerPscConfigArgs) ToConsumerPscConfigOutput() ConsumerPscConfigOutput {
+	return i.ToConsumerPscConfigOutputWithContext(context.Background())
+}
+
+func (i ConsumerPscConfigArgs) ToConsumerPscConfigOutputWithContext(ctx context.Context) ConsumerPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerPscConfigOutput)
+}
+
+// ConsumerPscConfigArrayInput is an input type that accepts ConsumerPscConfigArray and ConsumerPscConfigArrayOutput values.
+// You can construct a concrete instance of `ConsumerPscConfigArrayInput` via:
+//
+//	ConsumerPscConfigArray{ ConsumerPscConfigArgs{...} }
+type ConsumerPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToConsumerPscConfigArrayOutput() ConsumerPscConfigArrayOutput
+	ToConsumerPscConfigArrayOutputWithContext(context.Context) ConsumerPscConfigArrayOutput
+}
+
+type ConsumerPscConfigArray []ConsumerPscConfigInput
+
+func (ConsumerPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerPscConfig)(nil)).Elem()
+}
+
+func (i ConsumerPscConfigArray) ToConsumerPscConfigArrayOutput() ConsumerPscConfigArrayOutput {
+	return i.ToConsumerPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConsumerPscConfigArray) ToConsumerPscConfigArrayOutputWithContext(ctx context.Context) ConsumerPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerPscConfigArrayOutput)
+}
+
+// Allow the producer to specify which consumers can connect to it.
+type ConsumerPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerPscConfig)(nil)).Elem()
+}
+
+func (o ConsumerPscConfigOutput) ToConsumerPscConfigOutput() ConsumerPscConfigOutput {
+	return o
+}
+
+func (o ConsumerPscConfigOutput) ToConsumerPscConfigOutputWithContext(ctx context.Context) ConsumerPscConfigOutput {
+	return o
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o ConsumerPscConfigOutput) DisableGlobalAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConsumerPscConfig) *bool { return v.DisableGlobalAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+func (o ConsumerPscConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumerPscConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The consumer project where PSC connections are allowed to be created in.
+func (o ConsumerPscConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumerPscConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type ConsumerPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerPscConfig)(nil)).Elem()
+}
+
+func (o ConsumerPscConfigArrayOutput) ToConsumerPscConfigArrayOutput() ConsumerPscConfigArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConfigArrayOutput) ToConsumerPscConfigArrayOutputWithContext(ctx context.Context) ConsumerPscConfigArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConfigArrayOutput) Index(i pulumi.IntInput) ConsumerPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerPscConfig {
+		return vs[0].([]ConsumerPscConfig)[vs[1].(int)]
+	}).(ConsumerPscConfigOutput)
+}
+
+// Allow the producer to specify which consumers can connect to it.
+type ConsumerPscConfigResponse struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	DisableGlobalAccess bool `pulumi:"disableGlobalAccess"`
+	// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+	Network string `pulumi:"network"`
+	// The consumer project where PSC connections are allowed to be created in.
+	Project string `pulumi:"project"`
+}
+
+// Allow the producer to specify which consumers can connect to it.
+type ConsumerPscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerPscConfigResponse)(nil)).Elem()
+}
+
+func (o ConsumerPscConfigResponseOutput) ToConsumerPscConfigResponseOutput() ConsumerPscConfigResponseOutput {
+	return o
+}
+
+func (o ConsumerPscConfigResponseOutput) ToConsumerPscConfigResponseOutputWithContext(ctx context.Context) ConsumerPscConfigResponseOutput {
+	return o
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o ConsumerPscConfigResponseOutput) DisableGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConsumerPscConfigResponse) bool { return v.DisableGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+func (o ConsumerPscConfigResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The consumer project where PSC connections are allowed to be created in.
+func (o ConsumerPscConfigResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConfigResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type ConsumerPscConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerPscConfigResponse)(nil)).Elem()
+}
+
+func (o ConsumerPscConfigResponseArrayOutput) ToConsumerPscConfigResponseArrayOutput() ConsumerPscConfigResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConfigResponseArrayOutput) ToConsumerPscConfigResponseArrayOutputWithContext(ctx context.Context) ConsumerPscConfigResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ConsumerPscConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerPscConfigResponse {
+		return vs[0].([]ConsumerPscConfigResponse)[vs[1].(int)]
+	}).(ConsumerPscConfigResponseOutput)
+}
+
+// PSC connection details on consumer side.
+type ConsumerPscConnectionResponse struct {
+	// The most recent error during operating this connection.
+	Error GoogleRpcStatusResponse `pulumi:"error"`
+	// The error type indicates whether the error is consumer facing, producer facing or system internal.
+	ErrorType string `pulumi:"errorType"`
+	// The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// The last Compute Engine operation to setup PSC connection.
+	GceOperation string `pulumi:"gceOperation"`
+	// The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.
+	Ip string `pulumi:"ip"`
+	// The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).
+	Network string `pulumi:"network"`
+	// The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.
+	Project string `pulumi:"project"`
+	// The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The URI of a service attachment which is the target of the PSC connection.
+	ServiceAttachmentUri string `pulumi:"serviceAttachmentUri"`
+	// The state of the PSC connection.
+	State string `pulumi:"state"`
+}
+
+// PSC connection details on consumer side.
+type ConsumerPscConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerPscConnectionResponse)(nil)).Elem()
+}
+
+func (o ConsumerPscConnectionResponseOutput) ToConsumerPscConnectionResponseOutput() ConsumerPscConnectionResponseOutput {
+	return o
+}
+
+func (o ConsumerPscConnectionResponseOutput) ToConsumerPscConnectionResponseOutputWithContext(ctx context.Context) ConsumerPscConnectionResponseOutput {
+	return o
+}
+
+// The most recent error during operating this connection.
+func (o ConsumerPscConnectionResponseOutput) Error() GoogleRpcStatusResponseOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) GoogleRpcStatusResponse { return v.Error }).(GoogleRpcStatusResponseOutput)
+}
+
+// The error type indicates whether the error is consumer facing, producer facing or system internal.
+func (o ConsumerPscConnectionResponseOutput) ErrorType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.ErrorType }).(pulumi.StringOutput)
+}
+
+// The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
+func (o ConsumerPscConnectionResponseOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// The last Compute Engine operation to setup PSC connection.
+func (o ConsumerPscConnectionResponseOutput) GceOperation() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.GceOperation }).(pulumi.StringOutput)
+}
+
+// The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.
+func (o ConsumerPscConnectionResponseOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).
+func (o ConsumerPscConnectionResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.
+func (o ConsumerPscConnectionResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
+func (o ConsumerPscConnectionResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The URI of a service attachment which is the target of the PSC connection.
+func (o ConsumerPscConnectionResponseOutput) ServiceAttachmentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.ServiceAttachmentUri }).(pulumi.StringOutput)
+}
+
+// The state of the PSC connection.
+func (o ConsumerPscConnectionResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsumerPscConnectionResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type ConsumerPscConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerPscConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerPscConnectionResponse)(nil)).Elem()
+}
+
+func (o ConsumerPscConnectionResponseArrayOutput) ToConsumerPscConnectionResponseArrayOutput() ConsumerPscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConnectionResponseArrayOutput) ToConsumerPscConnectionResponseArrayOutputWithContext(ctx context.Context) ConsumerPscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o ConsumerPscConnectionResponseArrayOutput) Index(i pulumi.IntInput) ConsumerPscConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerPscConnectionResponse {
+		return vs[0].([]ConsumerPscConnectionResponse)[vs[1].(int)]
+	}).(ConsumerPscConnectionResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -754,6 +1041,46 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type GoogleRpcStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleRpcStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleRpcStatusResponse)(nil)).Elem()
+}
+
+func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutput() GoogleRpcStatusResponseOutput {
+	return o
+}
+
+func (o GoogleRpcStatusResponseOutput) ToGoogleRpcStatusResponseOutputWithContext(ctx context.Context) GoogleRpcStatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o GoogleRpcStatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o GoogleRpcStatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
 // A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
@@ -1353,6 +1680,439 @@ func (o LinkedVpnTunnelsResponseOutput) VpcNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LinkedVpnTunnelsResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
 }
 
+// The PSC configurations on producer side.
+type ProducerPscConfig struct {
+	// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+	ServiceAttachmentUri *string `pulumi:"serviceAttachmentUri"`
+}
+
+// ProducerPscConfigInput is an input type that accepts ProducerPscConfigArgs and ProducerPscConfigOutput values.
+// You can construct a concrete instance of `ProducerPscConfigInput` via:
+//
+//	ProducerPscConfigArgs{...}
+type ProducerPscConfigInput interface {
+	pulumi.Input
+
+	ToProducerPscConfigOutput() ProducerPscConfigOutput
+	ToProducerPscConfigOutputWithContext(context.Context) ProducerPscConfigOutput
+}
+
+// The PSC configurations on producer side.
+type ProducerPscConfigArgs struct {
+	// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+	ServiceAttachmentUri pulumi.StringPtrInput `pulumi:"serviceAttachmentUri"`
+}
+
+func (ProducerPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProducerPscConfig)(nil)).Elem()
+}
+
+func (i ProducerPscConfigArgs) ToProducerPscConfigOutput() ProducerPscConfigOutput {
+	return i.ToProducerPscConfigOutputWithContext(context.Background())
+}
+
+func (i ProducerPscConfigArgs) ToProducerPscConfigOutputWithContext(ctx context.Context) ProducerPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProducerPscConfigOutput)
+}
+
+// ProducerPscConfigArrayInput is an input type that accepts ProducerPscConfigArray and ProducerPscConfigArrayOutput values.
+// You can construct a concrete instance of `ProducerPscConfigArrayInput` via:
+//
+//	ProducerPscConfigArray{ ProducerPscConfigArgs{...} }
+type ProducerPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToProducerPscConfigArrayOutput() ProducerPscConfigArrayOutput
+	ToProducerPscConfigArrayOutputWithContext(context.Context) ProducerPscConfigArrayOutput
+}
+
+type ProducerPscConfigArray []ProducerPscConfigInput
+
+func (ProducerPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProducerPscConfig)(nil)).Elem()
+}
+
+func (i ProducerPscConfigArray) ToProducerPscConfigArrayOutput() ProducerPscConfigArrayOutput {
+	return i.ToProducerPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ProducerPscConfigArray) ToProducerPscConfigArrayOutputWithContext(ctx context.Context) ProducerPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProducerPscConfigArrayOutput)
+}
+
+// The PSC configurations on producer side.
+type ProducerPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ProducerPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProducerPscConfig)(nil)).Elem()
+}
+
+func (o ProducerPscConfigOutput) ToProducerPscConfigOutput() ProducerPscConfigOutput {
+	return o
+}
+
+func (o ProducerPscConfigOutput) ToProducerPscConfigOutputWithContext(ctx context.Context) ProducerPscConfigOutput {
+	return o
+}
+
+// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+func (o ProducerPscConfigOutput) ServiceAttachmentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProducerPscConfig) *string { return v.ServiceAttachmentUri }).(pulumi.StringPtrOutput)
+}
+
+type ProducerPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ProducerPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProducerPscConfig)(nil)).Elem()
+}
+
+func (o ProducerPscConfigArrayOutput) ToProducerPscConfigArrayOutput() ProducerPscConfigArrayOutput {
+	return o
+}
+
+func (o ProducerPscConfigArrayOutput) ToProducerPscConfigArrayOutputWithContext(ctx context.Context) ProducerPscConfigArrayOutput {
+	return o
+}
+
+func (o ProducerPscConfigArrayOutput) Index(i pulumi.IntInput) ProducerPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProducerPscConfig {
+		return vs[0].([]ProducerPscConfig)[vs[1].(int)]
+	}).(ProducerPscConfigOutput)
+}
+
+// The PSC configurations on producer side.
+type ProducerPscConfigResponse struct {
+	// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+	ServiceAttachmentUri string `pulumi:"serviceAttachmentUri"`
+}
+
+// The PSC configurations on producer side.
+type ProducerPscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ProducerPscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProducerPscConfigResponse)(nil)).Elem()
+}
+
+func (o ProducerPscConfigResponseOutput) ToProducerPscConfigResponseOutput() ProducerPscConfigResponseOutput {
+	return o
+}
+
+func (o ProducerPscConfigResponseOutput) ToProducerPscConfigResponseOutputWithContext(ctx context.Context) ProducerPscConfigResponseOutput {
+	return o
+}
+
+// The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+func (o ProducerPscConfigResponseOutput) ServiceAttachmentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ProducerPscConfigResponse) string { return v.ServiceAttachmentUri }).(pulumi.StringOutput)
+}
+
+type ProducerPscConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ProducerPscConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProducerPscConfigResponse)(nil)).Elem()
+}
+
+func (o ProducerPscConfigResponseArrayOutput) ToProducerPscConfigResponseArrayOutput() ProducerPscConfigResponseArrayOutput {
+	return o
+}
+
+func (o ProducerPscConfigResponseArrayOutput) ToProducerPscConfigResponseArrayOutputWithContext(ctx context.Context) ProducerPscConfigResponseArrayOutput {
+	return o
+}
+
+func (o ProducerPscConfigResponseArrayOutput) Index(i pulumi.IntInput) ProducerPscConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProducerPscConfigResponse {
+		return vs[0].([]ProducerPscConfigResponse)[vs[1].(int)]
+	}).(ProducerPscConfigResponseOutput)
+}
+
+// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+type PscConfig struct {
+	// Max number of PSC connections for this policy.
+	Limit *string `pulumi:"limit"`
+	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+	Subnetworks []string `pulumi:"subnetworks"`
+}
+
+// PscConfigInput is an input type that accepts PscConfigArgs and PscConfigOutput values.
+// You can construct a concrete instance of `PscConfigInput` via:
+//
+//	PscConfigArgs{...}
+type PscConfigInput interface {
+	pulumi.Input
+
+	ToPscConfigOutput() PscConfigOutput
+	ToPscConfigOutputWithContext(context.Context) PscConfigOutput
+}
+
+// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+type PscConfigArgs struct {
+	// Max number of PSC connections for this policy.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+	Subnetworks pulumi.StringArrayInput `pulumi:"subnetworks"`
+}
+
+func (PscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (i PscConfigArgs) ToPscConfigOutput() PscConfigOutput {
+	return i.ToPscConfigOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput)
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PscConfigArgs) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigOutput).ToPscConfigPtrOutputWithContext(ctx)
+}
+
+// PscConfigPtrInput is an input type that accepts PscConfigArgs, PscConfigPtr and PscConfigPtrOutput values.
+// You can construct a concrete instance of `PscConfigPtrInput` via:
+//
+//	        PscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PscConfigPtrInput interface {
+	pulumi.Input
+
+	ToPscConfigPtrOutput() PscConfigPtrOutput
+	ToPscConfigPtrOutputWithContext(context.Context) PscConfigPtrOutput
+}
+
+type pscConfigPtrType PscConfigArgs
+
+func PscConfigPtr(v *PscConfigArgs) PscConfigPtrInput {
+	return (*pscConfigPtrType)(v)
+}
+
+func (*pscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return i.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pscConfigPtrType) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PscConfigPtrOutput)
+}
+
+// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+type PscConfigOutput struct{ *pulumi.OutputState }
+
+func (PscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigOutput) ToPscConfigOutput() PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigOutputWithContext(ctx context.Context) PscConfigOutput {
+	return o
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o.ToPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PscConfigOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PscConfig) *PscConfig {
+		return &v
+	}).(PscConfigPtrOutput)
+}
+
+// Max number of PSC connections for this policy.
+func (o PscConfigOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+func (o PscConfigOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscConfig) []string { return v.Subnetworks }).(pulumi.StringArrayOutput)
+}
+
+type PscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PscConfig)(nil)).Elem()
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutput() PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) ToPscConfigPtrOutputWithContext(ctx context.Context) PscConfigPtrOutput {
+	return o
+}
+
+func (o PscConfigPtrOutput) Elem() PscConfigOutput {
+	return o.ApplyT(func(v *PscConfig) PscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PscConfig
+		return ret
+	}).(PscConfigOutput)
+}
+
+// Max number of PSC connections for this policy.
+func (o PscConfigPtrOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+func (o PscConfigPtrOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PscConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+type PscConfigResponse struct {
+	// Max number of PSC connections for this policy.
+	Limit string `pulumi:"limit"`
+	// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+	Subnetworks []string `pulumi:"subnetworks"`
+}
+
+// Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+type PscConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConfigResponse)(nil)).Elem()
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutput() PscConfigResponseOutput {
+	return o
+}
+
+func (o PscConfigResponseOutput) ToPscConfigResponseOutputWithContext(ctx context.Context) PscConfigResponseOutput {
+	return o
+}
+
+// Max number of PSC connections for this policy.
+func (o PscConfigResponseOutput) Limit() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConfigResponse) string { return v.Limit }).(pulumi.StringOutput)
+}
+
+// The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+func (o PscConfigResponseOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PscConfigResponse) []string { return v.Subnetworks }).(pulumi.StringArrayOutput)
+}
+
+// Information about a specific Private Service Connect connection.
+type PscConnectionResponse struct {
+	// The resource reference of the consumer address.
+	ConsumerAddress string `pulumi:"consumerAddress"`
+	// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+	ConsumerForwardingRule string `pulumi:"consumerForwardingRule"`
+	// The project where the PSC connection is created.
+	ConsumerTargetProject string `pulumi:"consumerTargetProject"`
+	// The most recent error during operating this connection.
+	Error GoogleRpcStatusResponse `pulumi:"error"`
+	// The error type indicates whether the error is consumer facing, producer facing or system internal.
+	ErrorType string `pulumi:"errorType"`
+	// The last Compute Engine operation to setup PSC connection.
+	GceOperation string `pulumi:"gceOperation"`
+	// The PSC connection id of the PSC forwarding rule.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// State of the PSC Connection
+	State string `pulumi:"state"`
+}
+
+// Information about a specific Private Service Connect connection.
+type PscConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PscConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PscConnectionResponse)(nil)).Elem()
+}
+
+func (o PscConnectionResponseOutput) ToPscConnectionResponseOutput() PscConnectionResponseOutput {
+	return o
+}
+
+func (o PscConnectionResponseOutput) ToPscConnectionResponseOutputWithContext(ctx context.Context) PscConnectionResponseOutput {
+	return o
+}
+
+// The resource reference of the consumer address.
+func (o PscConnectionResponseOutput) ConsumerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.ConsumerAddress }).(pulumi.StringOutput)
+}
+
+// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+func (o PscConnectionResponseOutput) ConsumerForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.ConsumerForwardingRule }).(pulumi.StringOutput)
+}
+
+// The project where the PSC connection is created.
+func (o PscConnectionResponseOutput) ConsumerTargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.ConsumerTargetProject }).(pulumi.StringOutput)
+}
+
+// The most recent error during operating this connection.
+func (o PscConnectionResponseOutput) Error() GoogleRpcStatusResponseOutput {
+	return o.ApplyT(func(v PscConnectionResponse) GoogleRpcStatusResponse { return v.Error }).(GoogleRpcStatusResponseOutput)
+}
+
+// The error type indicates whether the error is consumer facing, producer facing or system internal.
+func (o PscConnectionResponseOutput) ErrorType() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.ErrorType }).(pulumi.StringOutput)
+}
+
+// The last Compute Engine operation to setup PSC connection.
+func (o PscConnectionResponseOutput) GceOperation() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.GceOperation }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC forwarding rule.
+func (o PscConnectionResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// State of the PSC Connection
+func (o PscConnectionResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v PscConnectionResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type PscConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PscConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PscConnectionResponse)(nil)).Elem()
+}
+
+func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutput() PscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PscConnectionResponseArrayOutput) ToPscConnectionResponseArrayOutputWithContext(ctx context.Context) PscConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PscConnectionResponseArrayOutput) Index(i pulumi.IntInput) PscConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PscConnectionResponse {
+		return vs[0].([]PscConnectionResponse)[vs[1].(int)]
+	}).(PscConnectionResponseOutput)
+}
+
 // A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
 type RouterApplianceInstance struct {
 	// The IP address on the VM to use for peering.
@@ -1675,6 +2435,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerPscConfigInput)(nil)).Elem(), ConsumerPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerPscConfigArrayInput)(nil)).Elem(), ConsumerPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedInterconnectAttachmentsInput)(nil)).Elem(), LinkedInterconnectAttachmentsArgs{})
@@ -1683,6 +2445,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), LinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinkedVpnTunnelsPtrInput)(nil)).Elem(), LinkedVpnTunnelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProducerPscConfigInput)(nil)).Elem(), ProducerPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProducerPscConfigArrayInput)(nil)).Elem(), ProducerPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigInput)(nil)).Elem(), PscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PscConfigPtrInput)(nil)).Elem(), PscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceInput)(nil)).Elem(), RouterApplianceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterApplianceInstanceArrayInput)(nil)).Elem(), RouterApplianceInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingVPCInput)(nil)).Elem(), RoutingVPCArgs{})
@@ -1699,9 +2465,16 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConfigOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConfigResponseOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConnectionResponseOutput{})
+	pulumi.RegisterOutputType(ConsumerPscConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedInterconnectAttachmentsResponseOutput{})
@@ -1711,6 +2484,15 @@ func init() {
 	pulumi.RegisterOutputType(LinkedVpnTunnelsOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsPtrOutput{})
 	pulumi.RegisterOutputType(LinkedVpnTunnelsResponseOutput{})
+	pulumi.RegisterOutputType(ProducerPscConfigOutput{})
+	pulumi.RegisterOutputType(ProducerPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(ProducerPscConfigResponseOutput{})
+	pulumi.RegisterOutputType(ProducerPscConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(PscConfigOutput{})
+	pulumi.RegisterOutputType(PscConfigPtrOutput{})
+	pulumi.RegisterOutputType(PscConfigResponseOutput{})
+	pulumi.RegisterOutputType(PscConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PscConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceArrayOutput{})
 	pulumi.RegisterOutputType(RouterApplianceInstanceResponseOutput{})

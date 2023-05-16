@@ -96,6 +96,10 @@ export interface GetJobResult {
      */
     readonly requestedState: string;
     /**
+     * This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+     */
+    readonly runtimeUpdatableParams: outputs.dataflow.v1b3.RuntimeUpdatableParamsResponse;
+    /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
     readonly satisfiesPzs: boolean;

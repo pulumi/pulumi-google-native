@@ -40,6 +40,7 @@ class BareMetalAdminClusterArgs:
         The set of arguments for constructing a BareMetalAdminCluster resource.
         :param pulumi.Input[str] bare_metal_admin_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for the bare metal admin cluster.
         :param pulumi.Input['BareMetalAdminClusterOperationsConfigArgs'] cluster_operations: Cluster operations configuration.
         :param pulumi.Input['BareMetalAdminControlPlaneConfigArgs'] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal admin cluster.
@@ -120,6 +121,9 @@ class BareMetalAdminClusterArgs:
     @property
     @pulumi.getter(name="bareMetalVersion")
     def bare_metal_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Anthos clusters on bare metal version for the bare metal admin cluster.
+        """
         return pulumi.get(self, "bare_metal_version")
 
     @bare_metal_version.setter
@@ -347,6 +351,7 @@ class BareMetalAdminCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] bare_metal_admin_cluster_id: Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
+        :param pulumi.Input[str] bare_metal_version: The Anthos clusters on bare metal version for the bare metal admin cluster.
         :param pulumi.Input[pulumi.InputType['BareMetalAdminClusterOperationsConfigArgs']] cluster_operations: Cluster operations configuration.
         :param pulumi.Input[pulumi.InputType['BareMetalAdminControlPlaneConfigArgs']] control_plane: Control plane configuration.
         :param pulumi.Input[str] description: A human readable description of this bare metal admin cluster.
@@ -525,6 +530,9 @@ class BareMetalAdminCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bareMetalVersion")
     def bare_metal_version(self) -> pulumi.Output[str]:
+        """
+        The Anthos clusters on bare metal version for the bare metal admin cluster.
+        """
         return pulumi.get(self, "bare_metal_version")
 
     @property

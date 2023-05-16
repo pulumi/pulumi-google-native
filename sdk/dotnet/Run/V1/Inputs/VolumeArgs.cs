@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
         /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
+        [Input("emptyDir")]
+        public Input<Inputs.EmptyDirVolumeSourceArgs>? EmptyDir { get; set; }
+
+        /// <summary>
         /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         /// </summary>
         [Input("name")]

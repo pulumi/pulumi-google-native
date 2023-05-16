@@ -57,6 +57,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientGatewayIamMember{}
 	case "google-native:beyondcorp/v1:ClientGatewayIamPolicy":
 		r = &ClientGatewayIamPolicy{}
+	case "google-native:beyondcorp/v1:OrganizationTenantIamBinding":
+		r = &OrganizationTenantIamBinding{}
+	case "google-native:beyondcorp/v1:OrganizationTenantIamMember":
+		r = &OrganizationTenantIamMember{}
+	case "google-native:beyondcorp/v1:OrganizationTenantIamPolicy":
+		r = &OrganizationTenantIamPolicy{}
+	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamBinding":
+		r = &OrganizationTenantProxyConfigIamBinding{}
+	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamMember":
+		r = &OrganizationTenantProxyConfigIamMember{}
+	case "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamPolicy":
+		r = &OrganizationTenantProxyConfigIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

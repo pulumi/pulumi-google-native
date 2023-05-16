@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The number of frames that were reported by the source and contained errors.
+        /// </summary>
+        public readonly int ErrorFrameCount;
+        /// <summary>
         /// If `true`, the source is managed by other service(s).
         /// </summary>
         public readonly bool IsManaged;
@@ -112,6 +116,8 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
 
             string displayName,
 
+            int errorFrameCount,
+
             bool isManaged,
 
             string name,
@@ -129,6 +135,7 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;
+            ErrorFrameCount = errorFrameCount;
             IsManaged = isManaged;
             Name = name;
             PendingFrameCount = pendingFrameCount;

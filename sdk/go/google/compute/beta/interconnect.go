@@ -55,6 +55,8 @@ type Interconnect struct {
 	Project       pulumi.StringOutput `pulumi:"project"`
 	// Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntOutput `pulumi:"provisionedLinkCount"`
+	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+	RemoteLocation pulumi.StringOutput `pulumi:"remoteLocation"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
@@ -129,6 +131,8 @@ type interconnectArgs struct {
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
 	NocContactEmail *string `pulumi:"nocContactEmail"`
 	Project         *string `pulumi:"project"`
+	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+	RemoteLocation *string `pulumi:"remoteLocation"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
@@ -156,6 +160,8 @@ type InterconnectArgs struct {
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
 	NocContactEmail pulumi.StringPtrInput
 	Project         pulumi.StringPtrInput
+	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+	RemoteLocation pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Target number of physical links in the link bundle, as requested by the customer.
@@ -301,6 +307,11 @@ func (o InterconnectOutput) Project() pulumi.StringOutput {
 // Number of links actually provisioned in this interconnect.
 func (o InterconnectOutput) ProvisionedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.IntOutput { return v.ProvisionedLinkCount }).(pulumi.IntOutput)
+}
+
+// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+func (o InterconnectOutput) RemoteLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.RemoteLocation }).(pulumi.StringOutput)
 }
 
 // An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

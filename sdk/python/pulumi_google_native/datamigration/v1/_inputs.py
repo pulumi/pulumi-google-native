@@ -1455,7 +1455,7 @@ class PrivateServiceConnectConnectivityArgs:
     def __init__(__self__, *,
                  service_attachment: pulumi.Input[str]):
         """
-        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
         :param pulumi.Input[str] service_attachment: A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
         """
         pulumi.set(__self__, "service_attachment", service_attachment)

@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
         /// Configures de-identification of text wherever it is found in the source_dataset.
         /// </summary>
         public readonly Outputs.TextConfigResponse Text;
+        /// <summary>
+        /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        /// </summary>
+        public readonly bool UseRegionalDataProcessing;
 
         [OutputConstructor]
         private DeidentifyConfigResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 
             Outputs.ImageConfigResponse image,
 
-            Outputs.TextConfigResponse text)
+            Outputs.TextConfigResponse text,
+
+            bool useRegionalDataProcessing)
         {
             Dicom = dicom;
             Fhir = fhir;
             Image = image;
             Text = text;
+            UseRegionalDataProcessing = useRegionalDataProcessing;
         }
     }
 }

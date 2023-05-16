@@ -10,6 +10,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+type GoogleCloudRunV2EmptyDirVolumeSourceMedium string
+
+const (
+	// When not specified, falls back to the default implementation which is currently in memory (this may change over time).
+	GoogleCloudRunV2EmptyDirVolumeSourceMediumMediumUnspecified = GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEDIUM_UNSPECIFIED")
+	// Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+	GoogleCloudRunV2EmptyDirVolumeSourceMediumMemory = GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEMORY")
+)
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceMedium) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceMedium)(nil)).Elem()
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput)
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput)
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return e.ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return GoogleCloudRunV2EmptyDirVolumeSourceMedium(e).ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutputWithContext(ctx).ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRunV2EmptyDirVolumeSourceMedium) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceMedium)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o.ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2EmptyDirVolumeSourceMedium) *GoogleCloudRunV2EmptyDirVolumeSourceMedium {
+		return &v
+	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2EmptyDirVolumeSourceMedium) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2EmptyDirVolumeSourceMedium) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2EmptyDirVolumeSourceMedium)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) Elem() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2EmptyDirVolumeSourceMedium) GoogleCloudRunV2EmptyDirVolumeSourceMedium {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2EmptyDirVolumeSourceMedium
+		return ret
+	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput)
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunV2EmptyDirVolumeSourceMedium) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudRunV2EmptyDirVolumeSourceMediumInput is an input type that accepts GoogleCloudRunV2EmptyDirVolumeSourceMediumArgs and GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2EmptyDirVolumeSourceMediumInput` via:
+//
+//	GoogleCloudRunV2EmptyDirVolumeSourceMediumArgs{...}
+type GoogleCloudRunV2EmptyDirVolumeSourceMediumInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput
+	ToGoogleCloudRunV2EmptyDirVolumeSourceMediumOutputWithContext(context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput
+}
+
+var googleCloudRunV2EmptyDirVolumeSourceMediumPtrType = reflect.TypeOf((**GoogleCloudRunV2EmptyDirVolumeSourceMedium)(nil)).Elem()
+
+type GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput
+	ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput
+}
+
+type googleCloudRunV2EmptyDirVolumeSourceMediumPtr string
+
+func GoogleCloudRunV2EmptyDirVolumeSourceMediumPtr(v string) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrInput {
+	return (*googleCloudRunV2EmptyDirVolumeSourceMediumPtr)(&v)
+}
+
+func (*googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ElementType() reflect.Type {
+	return googleCloudRunV2EmptyDirVolumeSourceMediumPtrType
+}
+
+func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
+func (in *googleCloudRunV2EmptyDirVolumeSourceMediumPtr) ToGoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
 // The sandbox environment to host this Revision.
 type GoogleCloudRunV2RevisionTemplateExecutionEnvironment string
 
@@ -1387,6 +1554,8 @@ func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutputWithContext(ctx co
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceMediumInput)(nil)).Elem(), GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEDIUM_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrInput)(nil)).Elem(), GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEDIUM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
@@ -1403,6 +1572,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIngressPtrInput)(nil)).Elem(), ServiceIngress("INGRESS_TRAFFIC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStageInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStagePtrInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(GoogleCloudRunV2EmptyDirVolumeSourceMediumOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput{})

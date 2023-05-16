@@ -3876,6 +3876,8 @@ func (o VmUtilizationMetricsResponseOutput) NetworkThroughputMaxKbps() pulumi.St
 type VmwareSourceDetails struct {
 	// Input only. The credentials password. This is write only and can not be read in a GET operation.
 	Password *string `pulumi:"password"`
+	// The hostname of the vcenter.
+	ResolvedVcenterHost *string `pulumi:"resolvedVcenterHost"`
 	// The thumbprint representing the certificate for the vcenter.
 	Thumbprint *string `pulumi:"thumbprint"`
 	// The credentials username.
@@ -3899,6 +3901,8 @@ type VmwareSourceDetailsInput interface {
 type VmwareSourceDetailsArgs struct {
 	// Input only. The credentials password. This is write only and can not be read in a GET operation.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The hostname of the vcenter.
+	ResolvedVcenterHost pulumi.StringPtrInput `pulumi:"resolvedVcenterHost"`
 	// The thumbprint representing the certificate for the vcenter.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
 	// The credentials username.
@@ -3990,6 +3994,11 @@ func (o VmwareSourceDetailsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareSourceDetails) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// The hostname of the vcenter.
+func (o VmwareSourceDetailsOutput) ResolvedVcenterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareSourceDetails) *string { return v.ResolvedVcenterHost }).(pulumi.StringPtrOutput)
+}
+
 // The thumbprint representing the certificate for the vcenter.
 func (o VmwareSourceDetailsOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareSourceDetails) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
@@ -4039,6 +4048,16 @@ func (o VmwareSourceDetailsPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The hostname of the vcenter.
+func (o VmwareSourceDetailsPtrOutput) ResolvedVcenterHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareSourceDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResolvedVcenterHost
+	}).(pulumi.StringPtrOutput)
+}
+
 // The thumbprint representing the certificate for the vcenter.
 func (o VmwareSourceDetailsPtrOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmwareSourceDetails) *string {
@@ -4073,6 +4092,8 @@ func (o VmwareSourceDetailsPtrOutput) VcenterIp() pulumi.StringPtrOutput {
 type VmwareSourceDetailsResponse struct {
 	// Input only. The credentials password. This is write only and can not be read in a GET operation.
 	Password string `pulumi:"password"`
+	// The hostname of the vcenter.
+	ResolvedVcenterHost string `pulumi:"resolvedVcenterHost"`
 	// The thumbprint representing the certificate for the vcenter.
 	Thumbprint string `pulumi:"thumbprint"`
 	// The credentials username.
@@ -4099,6 +4120,11 @@ func (o VmwareSourceDetailsResponseOutput) ToVmwareSourceDetailsResponseOutputWi
 // Input only. The credentials password. This is write only and can not be read in a GET operation.
 func (o VmwareSourceDetailsResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v VmwareSourceDetailsResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The hostname of the vcenter.
+func (o VmwareSourceDetailsResponseOutput) ResolvedVcenterHost() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareSourceDetailsResponse) string { return v.ResolvedVcenterHost }).(pulumi.StringOutput)
 }
 
 // The thumbprint representing the certificate for the vcenter.

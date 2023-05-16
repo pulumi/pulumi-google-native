@@ -2733,6 +2733,8 @@ type AttachedDiskInitializeParams struct {
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType *string `pulumi:"diskType"`
+	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -2796,6 +2798,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
 	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -2937,6 +2941,11 @@ func (o AttachedDiskInitializeParamsOutput) DiskSizeGb() pulumi.StringPtrOutput 
 // Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 func (o AttachedDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+func (o AttachedDiskInitializeParamsOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
 }
 
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
@@ -3105,6 +3114,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) DiskType() pulumi.StringPtrOutput
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+func (o AttachedDiskInitializeParamsPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
@@ -3301,6 +3320,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType string `pulumi:"diskType"`
+	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
 	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -3379,6 +3400,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) DiskSizeGb() pulumi.StringOu
 // Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 func (o AttachedDiskInitializeParamsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+func (o AttachedDiskInitializeParamsResponseOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
@@ -18174,12 +18200,109 @@ func (o FutureReservationSpecificSKUPropertiesResponseOutput) TotalCount() pulum
 	return o.ApplyT(func(v FutureReservationSpecificSKUPropertiesResponse) string { return v.TotalCount }).(pulumi.StringOutput)
 }
 
+// The properties of the last known good state for the Future Reservation.
+type FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse struct {
+	// The previous share settings of the Future Reservation.
+	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
+	// The previous instance related properties of the Future Reservation.
+	SpecificSkuProperties FutureReservationSpecificSKUPropertiesResponse `pulumi:"specificSkuProperties"`
+	// The previous time window of the Future Reservation.
+	TimeWindow FutureReservationTimeWindowResponse `pulumi:"timeWindow"`
+}
+
+// The properties of the last known good state for the Future Reservation.
+type FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput struct{ *pulumi.OutputState }
+
+func (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse)(nil)).Elem()
+}
+
+func (o FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) ToFutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput() FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput {
+	return o
+}
+
+func (o FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) ToFutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutputWithContext(ctx context.Context) FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput {
+	return o
+}
+
+// The previous share settings of the Future Reservation.
+func (o FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse) ShareSettingsResponse {
+		return v.ShareSettings
+	}).(ShareSettingsResponseOutput)
+}
+
+// The previous instance related properties of the Future Reservation.
+func (o FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) SpecificSkuProperties() FutureReservationSpecificSKUPropertiesResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse) FutureReservationSpecificSKUPropertiesResponse {
+		return v.SpecificSkuProperties
+	}).(FutureReservationSpecificSKUPropertiesResponseOutput)
+}
+
+// The previous time window of the Future Reservation.
+func (o FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput) TimeWindow() FutureReservationTimeWindowResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse) FutureReservationTimeWindowResponse {
+		return v.TimeWindow
+	}).(FutureReservationTimeWindowResponseOutput)
+}
+
+// The state that the future reservation will be reverted to should the amendment be declined.
+type FutureReservationStatusLastKnownGoodStateResponse struct {
+	// The description of the FutureReservation before an amendment was requested.
+	Description            string                                                                  `pulumi:"description"`
+	FutureReservationSpecs FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse `pulumi:"futureReservationSpecs"`
+	// The name prefix of the Future Reservation before an amendment was requested.
+	NamePrefix string `pulumi:"namePrefix"`
+	// The status of the last known good state for the Future Reservation.
+	ProcurementStatus string `pulumi:"procurementStatus"`
+}
+
+// The state that the future reservation will be reverted to should the amendment be declined.
+type FutureReservationStatusLastKnownGoodStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FutureReservationStatusLastKnownGoodStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FutureReservationStatusLastKnownGoodStateResponse)(nil)).Elem()
+}
+
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) ToFutureReservationStatusLastKnownGoodStateResponseOutput() FutureReservationStatusLastKnownGoodStateResponseOutput {
+	return o
+}
+
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) ToFutureReservationStatusLastKnownGoodStateResponseOutputWithContext(ctx context.Context) FutureReservationStatusLastKnownGoodStateResponseOutput {
+	return o
+}
+
+// The description of the FutureReservation before an amendment was requested.
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) FutureReservationSpecs() FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
+		return v.FutureReservationSpecs
+	}).(FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput)
+}
+
+// The name prefix of the Future Reservation before an amendment was requested.
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) NamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) string { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+// The status of the last known good state for the Future Reservation.
+func (o FutureReservationStatusLastKnownGoodStateResponseOutput) ProcurementStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusLastKnownGoodStateResponse) string { return v.ProcurementStatus }).(pulumi.StringOutput)
+}
+
 // [Output only] Represents status related to the future reservation.
 type FutureReservationStatusResponse struct {
+	// The current status of the requested amendment.
+	AmendmentStatus string `pulumi:"amendmentStatus"`
 	// Fully qualified urls of the automatically created reservations at start_time.
 	AutoCreatedReservations []string `pulumi:"autoCreatedReservations"`
 	// This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
 	FulfilledCount string `pulumi:"fulfilledCount"`
+	// This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+	LastKnownGoodState FutureReservationStatusLastKnownGoodStateResponse `pulumi:"lastKnownGoodState"`
 	// Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time.
 	LockTime string `pulumi:"lockTime"`
 	// Current state of this Future Reservation
@@ -18202,6 +18325,11 @@ func (o FutureReservationStatusResponseOutput) ToFutureReservationStatusResponse
 	return o
 }
 
+// The current status of the requested amendment.
+func (o FutureReservationStatusResponseOutput) AmendmentStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusResponse) string { return v.AmendmentStatus }).(pulumi.StringOutput)
+}
+
 // Fully qualified urls of the automatically created reservations at start_time.
 func (o FutureReservationStatusResponseOutput) AutoCreatedReservations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FutureReservationStatusResponse) []string { return v.AutoCreatedReservations }).(pulumi.StringArrayOutput)
@@ -18210,6 +18338,13 @@ func (o FutureReservationStatusResponseOutput) AutoCreatedReservations() pulumi.
 // This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
 func (o FutureReservationStatusResponseOutput) FulfilledCount() pulumi.StringOutput {
 	return o.ApplyT(func(v FutureReservationStatusResponse) string { return v.FulfilledCount }).(pulumi.StringOutput)
+}
+
+// This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+func (o FutureReservationStatusResponseOutput) LastKnownGoodState() FutureReservationStatusLastKnownGoodStateResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusResponse) FutureReservationStatusLastKnownGoodStateResponse {
+		return v.LastKnownGoodState
+	}).(FutureReservationStatusLastKnownGoodStateResponseOutput)
 }
 
 // Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time.
@@ -24658,6 +24793,171 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceGroupManagerAutoHealingPolicyResponse {
 		return vs[0].([]InstanceGroupManagerAutoHealingPolicyResponse)[vs[1].(int)]
 	}).(InstanceGroupManagerAutoHealingPolicyResponseOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicy struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+}
+
+// InstanceGroupManagerInstanceFlexibilityPolicyInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs and InstanceGroupManagerInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyInput` via:
+//
+//	InstanceGroupManagerInstanceFlexibilityPolicyArgs{...}
+type InstanceGroupManagerInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceFlexibilityPolicyOutput() InstanceGroupManagerInstanceFlexibilityPolicyOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyOutput
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyArgs struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists pulumi.StringMapInput `pulumi:"instanceSelectionLists"`
+}
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyOutput() InstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyOutput)
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManagerInstanceFlexibilityPolicyArgs) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyOutput).ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// InstanceGroupManagerInstanceFlexibilityPolicyPtrInput is an input type that accepts InstanceGroupManagerInstanceFlexibilityPolicyArgs, InstanceGroupManagerInstanceFlexibilityPolicyPtr and InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        InstanceGroupManagerInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceGroupManagerInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput
+	ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput
+}
+
+type instanceGroupManagerInstanceFlexibilityPolicyPtrType InstanceGroupManagerInstanceFlexibilityPolicyArgs
+
+func InstanceGroupManagerInstanceFlexibilityPolicyPtr(v *InstanceGroupManagerInstanceFlexibilityPolicyArgs) InstanceGroupManagerInstanceFlexibilityPolicyPtrInput {
+	return (*instanceGroupManagerInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*instanceGroupManagerInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *instanceGroupManagerInstanceFlexibilityPolicyPtrType) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return i.ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGroupManagerInstanceFlexibilityPolicyPtrType) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyOutput() InstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return o.ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerInstanceFlexibilityPolicy) *InstanceGroupManagerInstanceFlexibilityPolicy {
+		return &v
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyOutput) InstanceSelectionLists() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+		return v.InstanceSelectionLists
+	}).(pulumi.StringMapOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput() InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) Elem() InstanceGroupManagerInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) InstanceGroupManagerInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerInstanceFlexibilityPolicy
+		return ret
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(pulumi.StringMapOutput)
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyResponse struct {
+	// List of instance selection options that the group will use when creating new VMs.
+	InstanceSelectionLists map[string]string `pulumi:"instanceSelectionLists"`
+}
+
+type InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyResponseOutput() InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+	return o
+}
+
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) ToInstanceGroupManagerInstanceFlexibilityPolicyResponseOutputWithContext(ctx context.Context) InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+	return o
+}
+
+// List of instance selection options that the group will use when creating new VMs.
+func (o InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput) InstanceSelectionLists() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceGroupManagerInstanceFlexibilityPolicyResponse) map[string]string {
+		return v.InstanceSelectionLists
+	}).(pulumi.StringMapOutput)
 }
 
 type InstanceGroupManagerInstanceLifecyclePolicy struct {
@@ -45205,7 +45505,7 @@ type RouterNat struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRule `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat *RouterNatSourceSubnetworkIpRangesToNat `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNat `pulumi:"subnetworks"`
@@ -45259,7 +45559,7 @@ type RouterNatArgs struct {
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules RouterNatRuleArrayInput `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat RouterNatSourceSubnetworkIpRangesToNatPtrInput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatArrayInput `pulumi:"subnetworks"`
@@ -45391,7 +45691,7 @@ func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
 	return o.ApplyT(func(v RouterNat) []RouterNatRule { return v.Rules }).(RouterNatRuleArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatOutput) SourceSubnetworkIpRangesToNat() RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatSourceSubnetworkIpRangesToNat { return v.SourceSubnetworkIpRangesToNat }).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
 }
@@ -45665,7 +45965,7 @@ type RouterNatResponse struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRuleResponse `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNatResponse `pulumi:"subnetworks"`
@@ -45760,7 +46060,7 @@ func (o RouterNatResponseOutput) Rules() RouterNatRuleResponseArrayOutput {
 	return o.ApplyT(func(v RouterNatResponse) []RouterNatRuleResponse { return v.Rules }).(RouterNatRuleResponseArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatResponseOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatResponse) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
 }
@@ -52626,421 +52926,6 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) RateLimitThreshold() Securi
 	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
 }
 
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig struct {
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKeyType *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType `pulumi:"enforceOnKeyType"`
-}
-
-// SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput` via:
-//
-//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{...}
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput
-	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs struct {
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKeyType SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrInput `pulumi:"enforceOnKeyType"`
-}
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
-}
-
-// SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput` via:
-//
-//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{ SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{...} }
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput
-	ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
-	return o
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput) EnforceOnKeyType() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig) *SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType {
-		return v.EnforceOnKeyType
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypePtrOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
-		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig)[vs[1].(int)]
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponse struct {
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-	BanDurationSec int `pulumi:"banDurationSec"`
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
-	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKey string `pulumi:"enforceOnKey"`
-	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedAction string `pulumi:"exceedAction"`
-	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
-	// Threshold at which to begin ratelimiting.
-	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.BanThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
-// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
-}
-
-// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return v.EnforceOnKeyConfigs
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
-}
-
-// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
-		return v.ExceedActionRpcStatus
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
-}
-
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
-		return v.ExceedRedirectOptions
-	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
-}
-
-// Threshold at which to begin ratelimiting.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.RateLimitThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A developer-facing error message, which should be in English.
-	Message *string `pulumi:"message"`
-}
-
-// SecurityPolicyRuleRateLimitOptionsRpcStatusInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs and SecurityPolicyRuleRateLimitOptionsRpcStatusOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusInput` via:
-//
-//	SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
-type SecurityPolicyRuleRateLimitOptionsRpcStatusInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A developer-facing error message, which should be in English.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput).ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx)
-}
-
-// SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs, SecurityPolicyRuleRateLimitOptionsRpcStatusPtr and SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput values.
-// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput` via:
-//
-//	        SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
-//
-//	or:
-//
-//	        nil
-type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput interface {
-	pulumi.Input
-
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
-	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
-}
-
-type securityPolicyRuleRateLimitOptionsRpcStatusPtrType SecurityPolicyRuleRateLimitOptionsRpcStatusArgs
-
-func SecurityPolicyRuleRateLimitOptionsRpcStatusPtr(v *SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput {
-	return (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType)(v)
-}
-
-func (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// Simplified google.rpc.Status type (omitting details).
-type SecurityPolicyRuleRateLimitOptionsRpcStatusOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsRpcStatus) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		return &v
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// A developer-facing error message, which should be in English.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) SecurityPolicyRuleRateLimitOptionsRpcStatus {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityPolicyRuleRateLimitOptionsRpcStatus
-		return ret
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
-}
-
-// The status code, which should be an enum value of google.rpc.Code.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.IntPtrOutput)
-}
-
-// A developer-facing error message, which should be in English.
-func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignatureInput)(nil)).Elem(), AWSV4SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignaturePtrInput)(nil)).Elem(), AWSV4SignatureArgs{})
@@ -53253,6 +53138,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersPtrInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs{})
@@ -53495,10 +53382,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
 	pulumi.RegisterOutputType(AWSV4SignatureOutput{})
 	pulumi.RegisterOutputType(AWSV4SignaturePtrOutput{})
 	pulumi.RegisterOutputType(AWSV4SignatureResponseOutput{})
@@ -53770,6 +53653,8 @@ func init() {
 	pulumi.RegisterOutputType(FutureReservationSpecificSKUPropertiesOutput{})
 	pulumi.RegisterOutputType(FutureReservationSpecificSKUPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FutureReservationSpecificSKUPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseOutput{})
+	pulumi.RegisterOutputType(FutureReservationStatusLastKnownGoodStateResponseOutput{})
 	pulumi.RegisterOutputType(FutureReservationStatusResponseOutput{})
 	pulumi.RegisterOutputType(FutureReservationStatusSpecificSKUPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FutureReservationTimeWindowOutput{})
@@ -53866,6 +53751,9 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalOutput{})
@@ -54322,11 +54210,4 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
 }

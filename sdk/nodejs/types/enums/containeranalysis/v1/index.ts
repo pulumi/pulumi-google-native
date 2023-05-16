@@ -318,6 +318,10 @@ export const DiscoveryNoteAnalysisKind = {
      * This represents a Vulnerability Assessment.
      */
     VulnerabilityAssessment: "VULNERABILITY_ASSESSMENT",
+    /**
+     * This represents an SBOM Reference.
+     */
+    SbomReference: "SBOM_REFERENCE",
 } as const;
 
 /**

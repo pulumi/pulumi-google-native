@@ -51,6 +51,10 @@ export class Source extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * The number of frames that were reported by the source and contained errors.
+     */
+    public /*out*/ readonly errorFrameCount!: pulumi.Output<number>;
+    /**
      * If `true`, the source is managed by other service(s).
      */
     public readonly isManaged!: pulumi.Output<boolean>;
@@ -113,6 +117,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["errorFrameCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pendingFrameCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -121,6 +126,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["errorFrameCount"] = undefined /*out*/;
             resourceInputs["isManaged"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

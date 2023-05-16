@@ -40,7 +40,7 @@ type LookupNetworkAttachmentResult struct {
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// The URL of the network which the Network Attachment belongs to.
+	// The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
 	Network string `pulumi:"network"`
 	// Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
 	ProducerAcceptLists []string `pulumi:"producerAcceptLists"`
@@ -129,7 +129,7 @@ func (o LookupNetworkAttachmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The URL of the network which the Network Attachment belongs to.
+// The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
 func (o LookupNetworkAttachmentResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAttachmentResult) string { return v.Network }).(pulumi.StringOutput)
 }

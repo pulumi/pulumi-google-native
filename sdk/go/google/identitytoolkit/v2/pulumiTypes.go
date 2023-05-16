@@ -1112,6 +1112,318 @@ func (o GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput) TeamId() 
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
+// Custom strength options to enforce on user passwords.
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions struct {
+	// The password must contain a lower case character.
+	ContainsLowercaseCharacter *bool `pulumi:"containsLowercaseCharacter"`
+	// The password must contain a non alpha numeric character.
+	ContainsNonAlphanumericCharacter *bool `pulumi:"containsNonAlphanumericCharacter"`
+	// The password must contain a number.
+	ContainsNumericCharacter *bool `pulumi:"containsNumericCharacter"`
+	// The password must contain an upper case character.
+	ContainsUppercaseCharacter *bool `pulumi:"containsUppercaseCharacter"`
+	// Maximum password length. No default max length
+	MaxPasswordLength *int `pulumi:"maxPasswordLength"`
+	// Minimum password length. Range from 6 to 30
+	MinPasswordLength *int `pulumi:"minPasswordLength"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs and GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput
+	ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput
+}
+
+// Custom strength options to enforce on user passwords.
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs struct {
+	// The password must contain a lower case character.
+	ContainsLowercaseCharacter pulumi.BoolPtrInput `pulumi:"containsLowercaseCharacter"`
+	// The password must contain a non alpha numeric character.
+	ContainsNonAlphanumericCharacter pulumi.BoolPtrInput `pulumi:"containsNonAlphanumericCharacter"`
+	// The password must contain a number.
+	ContainsNumericCharacter pulumi.BoolPtrInput `pulumi:"containsNumericCharacter"`
+	// The password must contain an upper case character.
+	ContainsUppercaseCharacter pulumi.BoolPtrInput `pulumi:"containsUppercaseCharacter"`
+	// Maximum password length. No default max length
+	MaxPasswordLength pulumi.IntPtrInput `pulumi:"maxPasswordLength"`
+	// Minimum password length. Range from 6 to 30
+	MinPasswordLength pulumi.IntPtrInput `pulumi:"minPasswordLength"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput).ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs, GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtr and GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs
+
+func GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtr(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrType) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput)
+}
+
+// Custom strength options to enforce on user passwords.
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput)
+}
+
+// The password must contain a lower case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ContainsLowercaseCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		return v.ContainsLowercaseCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain a non alpha numeric character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ContainsNonAlphanumericCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		return v.ContainsNonAlphanumericCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain a number.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ContainsNumericCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		return v.ContainsNumericCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain an upper case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) ContainsUppercaseCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		return v.ContainsUppercaseCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum password length. No default max length
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) MaxPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *int { return v.MaxPasswordLength }).(pulumi.IntPtrOutput)
+}
+
+// Minimum password length. Range from 6 to 30
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput) MinPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *int { return v.MinPasswordLength }).(pulumi.IntPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput)
+}
+
+// The password must contain a lower case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ContainsLowercaseCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainsLowercaseCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain a non alpha numeric character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ContainsNonAlphanumericCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainsNonAlphanumericCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain a number.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ContainsNumericCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainsNumericCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password must contain an upper case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) ContainsUppercaseCharacter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContainsUppercaseCharacter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum password length. No default max length
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) MaxPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPasswordLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum password length. Range from 6 to 30
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput) MinPasswordLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinPasswordLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Custom strength options to enforce on user passwords.
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse struct {
+	// The password must contain a lower case character.
+	ContainsLowercaseCharacter bool `pulumi:"containsLowercaseCharacter"`
+	// The password must contain a non alpha numeric character.
+	ContainsNonAlphanumericCharacter bool `pulumi:"containsNonAlphanumericCharacter"`
+	// The password must contain a number.
+	ContainsNumericCharacter bool `pulumi:"containsNumericCharacter"`
+	// The password must contain an upper case character.
+	ContainsUppercaseCharacter bool `pulumi:"containsUppercaseCharacter"`
+	// Maximum password length. No default max length
+	MaxPasswordLength int `pulumi:"maxPasswordLength"`
+	// Minimum password length. Range from 6 to 30
+	MinPasswordLength int `pulumi:"minPasswordLength"`
+}
+
+// Custom strength options to enforce on user passwords.
+type GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput {
+	return o
+}
+
+// The password must contain a lower case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ContainsLowercaseCharacter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) bool {
+		return v.ContainsLowercaseCharacter
+	}).(pulumi.BoolOutput)
+}
+
+// The password must contain a non alpha numeric character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ContainsNonAlphanumericCharacter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) bool {
+		return v.ContainsNonAlphanumericCharacter
+	}).(pulumi.BoolOutput)
+}
+
+// The password must contain a number.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ContainsNumericCharacter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) bool {
+		return v.ContainsNumericCharacter
+	}).(pulumi.BoolOutput)
+}
+
+// The password must contain an upper case character.
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) ContainsUppercaseCharacter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) bool {
+		return v.ContainsUppercaseCharacter
+	}).(pulumi.BoolOutput)
+}
+
+// Maximum password length. No default max length
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) MaxPasswordLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) int { return v.MaxPasswordLength }).(pulumi.IntOutput)
+}
+
+// Minimum password length. Range from 6 to 30
+func (o GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput) MinPasswordLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse) int { return v.MinPasswordLength }).(pulumi.IntOutput)
+}
+
 // Configuration for settings related to email privacy and public visibility. Settings in this config protect against email enumeration, but may make some trade-offs in user-friendliness.
 type GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig struct {
 	// Migrates the project to a state of improved email privacy. For example certain error codes are more generic to avoid giving away information on whether the account exists. In addition, this disables certain features that as a side-effect allow user enumeration. Enabling this toggle disables the fetchSignInMethodsForEmail functionality and changing the user's email to an unverified email. It is recommended to remove dependence on this functionality and enable this toggle to improve user privacy.
@@ -2508,6 +2820,398 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) IdToke
 // Do not use. The `token` response type is not supported at the moment.
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) Token() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse) bool { return v.Token }).(pulumi.BoolOutput)
+}
+
+// The configuration for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig struct {
+	// Users must have a password compliant with the password policy to sign-in.
+	ForceUpgradeOnSignin *bool `pulumi:"forceUpgradeOnSignin"`
+	// Which enforcement mode to use for the password policy.
+	PasswordPolicyEnforcementState *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState `pulumi:"passwordPolicyEnforcementState"`
+	// Must be of length 1. Contains the strength attributes for the password policy.
+	PasswordPolicyVersions []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion `pulumi:"passwordPolicyVersions"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput
+}
+
+// The configuration for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs struct {
+	// Users must have a password compliant with the password policy to sign-in.
+	ForceUpgradeOnSignin pulumi.BoolPtrInput `pulumi:"forceUpgradeOnSignin"`
+	// Which enforcement mode to use for the password policy.
+	PasswordPolicyEnforcementState GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrInput `pulumi:"passwordPolicyEnforcementState"`
+	// Must be of length 1. Contains the strength attributes for the password policy.
+	PasswordPolicyVersions GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput `pulumi:"passwordPolicyVersions"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput).ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs, GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtr and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs
+
+func GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtr(v *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput)
+}
+
+// The configuration for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput)
+}
+
+// Users must have a password compliant with the password policy to sign-in.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) ForceUpgradeOnSignin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *bool { return v.ForceUpgradeOnSignin }).(pulumi.BoolPtrOutput)
+}
+
+// Which enforcement mode to use for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) PasswordPolicyEnforcementState() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState {
+		return v.PasswordPolicyEnforcementState
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput)
+}
+
+// Must be of length 1. Contains the strength attributes for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput) PasswordPolicyVersions() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
+		return v.PasswordPolicyVersions
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput)
+}
+
+// Users must have a password compliant with the password policy to sign-in.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) ForceUpgradeOnSignin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceUpgradeOnSignin
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Which enforcement mode to use for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) PasswordPolicyEnforcementState() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordPolicyEnforcementState
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStatePtrOutput)
+}
+
+// Must be of length 1. Contains the strength attributes for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput) PasswordPolicyVersions() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig) []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordPolicyVersions
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput)
+}
+
+// The configuration for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse struct {
+	// Users must have a password compliant with the password policy to sign-in.
+	ForceUpgradeOnSignin bool `pulumi:"forceUpgradeOnSignin"`
+	// The last time the password policy on the project was updated.
+	LastUpdateTime string `pulumi:"lastUpdateTime"`
+	// Which enforcement mode to use for the password policy.
+	PasswordPolicyEnforcementState string `pulumi:"passwordPolicyEnforcementState"`
+	// Must be of length 1. Contains the strength attributes for the password policy.
+	PasswordPolicyVersions []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse `pulumi:"passwordPolicyVersions"`
+}
+
+// The configuration for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput {
+	return o
+}
+
+// Users must have a password compliant with the password policy to sign-in.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) ForceUpgradeOnSignin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse) bool {
+		return v.ForceUpgradeOnSignin
+	}).(pulumi.BoolOutput)
+}
+
+// The last time the password policy on the project was updated.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse) string { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// Which enforcement mode to use for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) PasswordPolicyEnforcementState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse) string {
+		return v.PasswordPolicyEnforcementState
+	}).(pulumi.StringOutput)
+}
+
+// Must be of length 1. Contains the strength attributes for the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput) PasswordPolicyVersions() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse) []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse {
+		return v.PasswordPolicyVersions
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput)
+}
+
+// The strength attributes for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion struct {
+	// The custom strength options enforced by the password policy.
+	CustomStrengthOptions *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions `pulumi:"customStrengthOptions"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput
+}
+
+// The strength attributes for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs struct {
+	// The custom strength options enforced by the password policy.
+	CustomStrengthOptions GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput `pulumi:"customStrengthOptions"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray and GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray{ GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs{...} }
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput
+	ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput
+}
+
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray []GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionInput
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput)
+}
+
+// The strength attributes for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
+	return o
+}
+
+// The custom strength options enforced by the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput) CustomStrengthOptions() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion) *GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
+		return v.CustomStrengthOptions
+	}).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput)
+}
+
+// The strength attributes for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse struct {
+	// The custom strength options enforced by the password policy.
+	CustomStrengthOptions GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse `pulumi:"customStrengthOptions"`
+	// schema version number for the password policy
+	SchemaVersion int `pulumi:"schemaVersion"`
+}
+
+// The strength attributes for the password policy on the project.
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput {
+	return o
+}
+
+// The custom strength options enforced by the password policy.
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) CustomStrengthOptions() GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse) GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
+		return v.CustomStrengthOptions
+	}).(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput)
+}
+
+// schema version number for the password policy
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput) SchemaVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse) int { return v.SchemaVersion }).(pulumi.IntOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) ToGoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse {
+		return vs[0].([]GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse)[vs[1].(int)]
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput)
 }
 
 // ProviderConfig describes the supported MFA providers along with their configurations.
@@ -4675,6 +5379,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ClientPermissionsPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2IdpCertificateInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2IdpCertificateArgs{})
@@ -4689,6 +5395,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2ProviderConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs{})
@@ -4729,6 +5439,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput{})
@@ -4752,6 +5465,13 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponseOutput{})

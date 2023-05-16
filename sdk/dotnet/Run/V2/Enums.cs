@@ -8,6 +8,43 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Run.V2
 {
     /// <summary>
+    /// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRunV2EmptyDirVolumeSourceMedium : IEquatable<GoogleCloudRunV2EmptyDirVolumeSourceMedium>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRunV2EmptyDirVolumeSourceMedium(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// When not specified, falls back to the default implementation which is currently in memory (this may change over time).
+        /// </summary>
+        public static GoogleCloudRunV2EmptyDirVolumeSourceMedium MediumUnspecified { get; } = new GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEDIUM_UNSPECIFIED");
+        /// <summary>
+        /// Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+        /// </summary>
+        public static GoogleCloudRunV2EmptyDirVolumeSourceMedium Memory { get; } = new GoogleCloudRunV2EmptyDirVolumeSourceMedium("MEMORY");
+
+        public static bool operator ==(GoogleCloudRunV2EmptyDirVolumeSourceMedium left, GoogleCloudRunV2EmptyDirVolumeSourceMedium right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRunV2EmptyDirVolumeSourceMedium left, GoogleCloudRunV2EmptyDirVolumeSourceMedium right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRunV2EmptyDirVolumeSourceMedium value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRunV2EmptyDirVolumeSourceMedium other && Equals(other);
+        public bool Equals(GoogleCloudRunV2EmptyDirVolumeSourceMedium other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The sandbox environment to host this Revision.
     /// </summary>
     [EnumType]

@@ -2113,6 +2113,198 @@ func (o DomainMappingStatusResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingStatusResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type EmptyDirVolumeSource struct {
+	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+	Medium *string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// EmptyDirVolumeSourceInput is an input type that accepts EmptyDirVolumeSourceArgs and EmptyDirVolumeSourceOutput values.
+// You can construct a concrete instance of `EmptyDirVolumeSourceInput` via:
+//
+//	EmptyDirVolumeSourceArgs{...}
+type EmptyDirVolumeSourceInput interface {
+	pulumi.Input
+
+	ToEmptyDirVolumeSourceOutput() EmptyDirVolumeSourceOutput
+	ToEmptyDirVolumeSourceOutputWithContext(context.Context) EmptyDirVolumeSourceOutput
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type EmptyDirVolumeSourceArgs struct {
+	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+	Medium pulumi.StringPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (EmptyDirVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourceOutput() EmptyDirVolumeSourceOutput {
+	return i.ToEmptyDirVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourceOutputWithContext(ctx context.Context) EmptyDirVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyDirVolumeSourceOutput)
+}
+
+func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput {
+	return i.ToEmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i EmptyDirVolumeSourceArgs) ToEmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) EmptyDirVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyDirVolumeSourceOutput).ToEmptyDirVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// EmptyDirVolumeSourcePtrInput is an input type that accepts EmptyDirVolumeSourceArgs, EmptyDirVolumeSourcePtr and EmptyDirVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `EmptyDirVolumeSourcePtrInput` via:
+//
+//	        EmptyDirVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmptyDirVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput
+	ToEmptyDirVolumeSourcePtrOutputWithContext(context.Context) EmptyDirVolumeSourcePtrOutput
+}
+
+type emptyDirVolumeSourcePtrType EmptyDirVolumeSourceArgs
+
+func EmptyDirVolumeSourcePtr(v *EmptyDirVolumeSourceArgs) EmptyDirVolumeSourcePtrInput {
+	return (*emptyDirVolumeSourcePtrType)(v)
+}
+
+func (*emptyDirVolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (i *emptyDirVolumeSourcePtrType) ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput {
+	return i.ToEmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *emptyDirVolumeSourcePtrType) ToEmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) EmptyDirVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyDirVolumeSourcePtrOutput)
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type EmptyDirVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (EmptyDirVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (o EmptyDirVolumeSourceOutput) ToEmptyDirVolumeSourceOutput() EmptyDirVolumeSourceOutput {
+	return o
+}
+
+func (o EmptyDirVolumeSourceOutput) ToEmptyDirVolumeSourceOutputWithContext(ctx context.Context) EmptyDirVolumeSourceOutput {
+	return o
+}
+
+func (o EmptyDirVolumeSourceOutput) ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput {
+	return o.ToEmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o EmptyDirVolumeSourceOutput) ToEmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) EmptyDirVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmptyDirVolumeSource) *EmptyDirVolumeSource {
+		return &v
+	}).(EmptyDirVolumeSourcePtrOutput)
+}
+
+// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+func (o EmptyDirVolumeSourceOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmptyDirVolumeSource) *string { return v.Medium }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o EmptyDirVolumeSourceOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmptyDirVolumeSource) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type EmptyDirVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (EmptyDirVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (o EmptyDirVolumeSourcePtrOutput) ToEmptyDirVolumeSourcePtrOutput() EmptyDirVolumeSourcePtrOutput {
+	return o
+}
+
+func (o EmptyDirVolumeSourcePtrOutput) ToEmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) EmptyDirVolumeSourcePtrOutput {
+	return o
+}
+
+func (o EmptyDirVolumeSourcePtrOutput) Elem() EmptyDirVolumeSourceOutput {
+	return o.ApplyT(func(v *EmptyDirVolumeSource) EmptyDirVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret EmptyDirVolumeSource
+		return ret
+	}).(EmptyDirVolumeSourceOutput)
+}
+
+// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+func (o EmptyDirVolumeSourcePtrOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmptyDirVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o EmptyDirVolumeSourcePtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmptyDirVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type EmptyDirVolumeSourceResponse struct {
+	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+	Medium string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit string `pulumi:"sizeLimit"`
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type EmptyDirVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (EmptyDirVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyDirVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o EmptyDirVolumeSourceResponseOutput) ToEmptyDirVolumeSourceResponseOutput() EmptyDirVolumeSourceResponseOutput {
+	return o
+}
+
+func (o EmptyDirVolumeSourceResponseOutput) ToEmptyDirVolumeSourceResponseOutputWithContext(ctx context.Context) EmptyDirVolumeSourceResponseOutput {
+	return o
+}
+
+// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+func (o EmptyDirVolumeSourceResponseOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v EmptyDirVolumeSourceResponse) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o EmptyDirVolumeSourceResponseOutput) SizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v EmptyDirVolumeSourceResponse) string { return v.SizeLimit }).(pulumi.StringOutput)
+}
+
 // Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSource struct {
 	// The ConfigMap to select from
@@ -7984,6 +8176,8 @@ func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTarget
 type Volume struct {
 	// Not supported in Cloud Run.
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir *EmptyDirVolumeSource `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name *string `pulumi:"name"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
@@ -8005,6 +8199,8 @@ type VolumeInput interface {
 type VolumeArgs struct {
 	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir EmptyDirVolumeSourcePtrInput `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
@@ -8066,6 +8262,11 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 // Not supported in Cloud Run.
 func (o VolumeOutput) ConfigMap() ConfigMapVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *ConfigMapVolumeSource { return v.ConfigMap }).(ConfigMapVolumeSourcePtrOutput)
+}
+
+// Ephemeral storage used as a shared volume.
+func (o VolumeOutput) EmptyDir() EmptyDirVolumeSourcePtrOutput {
+	return o.ApplyT(func(v Volume) *EmptyDirVolumeSource { return v.EmptyDir }).(EmptyDirVolumeSourcePtrOutput)
 }
 
 // Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
@@ -8296,6 +8497,8 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 type VolumeResponse struct {
 	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir EmptyDirVolumeSourceResponse `pulumi:"emptyDir"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name string `pulumi:"name"`
 	// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
@@ -8320,6 +8523,11 @@ func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Cont
 // Not supported in Cloud Run.
 func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
+}
+
+// Ephemeral storage used as a shared volume.
+func (o VolumeResponseOutput) EmptyDir() EmptyDirVolumeSourceResponseOutput {
+	return o.ApplyT(func(v VolumeResponse) EmptyDirVolumeSourceResponse { return v.EmptyDir }).(EmptyDirVolumeSourceResponseOutput)
 }
 
 // Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
@@ -8371,6 +8579,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortArrayInput)(nil)).Elem(), ContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecInput)(nil)).Elem(), DomainMappingSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecPtrInput)(nil)).Elem(), DomainMappingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyDirVolumeSourceInput)(nil)).Elem(), EmptyDirVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmptyDirVolumeSourcePtrInput)(nil)).Elem(), EmptyDirVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceInput)(nil)).Elem(), EnvFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceArrayInput)(nil)).Elem(), EnvFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarInput)(nil)).Elem(), EnvVarArgs{})
@@ -8456,6 +8666,9 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingSpecPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecResponseOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusResponseOutput{})
+	pulumi.RegisterOutputType(EmptyDirVolumeSourceOutput{})
+	pulumi.RegisterOutputType(EmptyDirVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(EmptyDirVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceResponseOutput{})

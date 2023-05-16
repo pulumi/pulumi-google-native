@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2RegexArgs>? Regex { get; set; }
 
         /// <summary>
+        /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        /// </summary>
+        [Input("sensitivityScore")]
+        public Input<Inputs.GooglePrivacyDlpV2SensitivityScoreArgs>? SensitivityScore { get; set; }
+
+        /// <summary>
         /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         /// </summary>
         [Input("storedType")]

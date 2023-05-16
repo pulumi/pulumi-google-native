@@ -1801,6 +1801,8 @@ type AttachedDiskInitializeParams struct {
 	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	ProvisionedThroughput *string `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -1848,6 +1850,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	OnUpdateAction AttachedDiskInitializeParamsOnUpdateActionPtrInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	ProvisionedThroughput pulumi.StringPtrInput `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
 	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -1987,6 +1991,11 @@ func (o AttachedDiskInitializeParamsOutput) OnUpdateAction() AttachedDiskInitial
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedIops }).(pulumi.StringPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+func (o AttachedDiskInitializeParamsOutput) ProvisionedThroughput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedThroughput }).(pulumi.StringPtrOutput)
 }
 
 // Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
@@ -2138,6 +2147,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedThroughput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedThroughput
+	}).(pulumi.StringPtrOutput)
+}
+
 // Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
 func (o AttachedDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
@@ -2228,6 +2247,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	OnUpdateAction string `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
@@ -2302,6 +2323,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) OnUpdateAction() pulumi.Stri
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
 
 // Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
@@ -18544,6 +18570,8 @@ type HttpRouteRuleMatch struct {
 	IgnoreCase *bool `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilter `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch *string `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -18573,6 +18601,8 @@ type HttpRouteRuleMatchArgs struct {
 	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters MetadataFilterArrayInput `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch pulumi.StringPtrInput `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -18653,6 +18683,11 @@ func (o HttpRouteRuleMatchOutput) MetadataFilters() MetadataFilterArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) []MetadataFilter { return v.MetadataFilters }).(MetadataFilterArrayOutput)
 }
 
+// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+func (o HttpRouteRuleMatchOutput) PathTemplateMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PathTemplateMatch }).(pulumi.StringPtrOutput)
+}
+
 // For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 func (o HttpRouteRuleMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
@@ -18698,6 +18733,8 @@ type HttpRouteRuleMatchResponse struct {
 	IgnoreCase bool `pulumi:"ignoreCase"`
 	// Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	MetadataFilters []MetadataFilterResponse `pulumi:"metadataFilters"`
+	// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+	PathTemplateMatch string `pulumi:"pathTemplateMatch"`
 	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
 	PrefixMatch string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy.
@@ -18739,6 +18776,11 @@ func (o HttpRouteRuleMatchResponseOutput) IgnoreCase() pulumi.BoolOutput {
 // Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that have loadBalancingScheme set to INTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 func (o HttpRouteRuleMatchResponseOutput) MetadataFilters() MetadataFilterResponseArrayOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchResponse) []MetadataFilterResponse { return v.MetadataFilters }).(MetadataFilterResponseArrayOutput)
+}
+
+// If specified, the route is a pattern match expression that must match the :path header once the query string is removed. A pattern match allows you to match - The value must be between 1 and 1024 characters - The pattern must start with a leading slash ("/") - There may be no more than 5 operators in pattern Precisely one of prefix_match, full_path_match, regex_match or path_template_match must be set.
+func (o HttpRouteRuleMatchResponseOutput) PathTemplateMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchResponse) string { return v.PathTemplateMatch }).(pulumi.StringOutput)
 }
 
 // For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
@@ -21274,6 +21316,86 @@ func (o Int64RangeMatchResponseOutput) RangeEnd() pulumi.StringOutput {
 // The start of the range (inclusive) in signed long integer format.
 func (o Int64RangeMatchResponseOutput) RangeStart() pulumi.StringOutput {
 	return o.ApplyT(func(v Int64RangeMatchResponse) string { return v.RangeStart }).(pulumi.StringOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return vs[0].([]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)[vs[1].(int)]
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponse struct {
+	// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+	BgpMd5 string `pulumi:"bgpMd5"`
+	// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+	BgpPeerAsnRanges []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse `pulumi:"bgpPeerAsnRanges"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutput() InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpMd5() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) string { return v.BgpMd5 }).(pulumi.StringOutput)
+}
+
+// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpPeerAsnRanges() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return v.BgpPeerAsnRanges
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput)
 }
 
 // Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
@@ -33728,7 +33850,7 @@ type RouterNat struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRule `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat *RouterNatSourceSubnetworkIpRangesToNat `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNat `pulumi:"subnetworks"`
@@ -33778,7 +33900,7 @@ type RouterNatArgs struct {
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules RouterNatRuleArrayInput `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat RouterNatSourceSubnetworkIpRangesToNatPtrInput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatArrayInput `pulumi:"subnetworks"`
@@ -33903,7 +34025,7 @@ func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
 	return o.ApplyT(func(v RouterNat) []RouterNatRule { return v.Rules }).(RouterNatRuleArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatOutput) SourceSubnetworkIpRangesToNat() RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatSourceSubnetworkIpRangesToNat { return v.SourceSubnetworkIpRangesToNat }).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
 }
@@ -34170,7 +34292,7 @@ type RouterNatResponse struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRuleResponse `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNatResponse `pulumi:"subnetworks"`
@@ -34258,7 +34380,7 @@ func (o RouterNatResponseOutput) Rules() RouterNatRuleResponseArrayOutput {
 	return o.ApplyT(func(v RouterNatResponse) []RouterNatRuleResponse { return v.Rules }).(RouterNatRuleResponseArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatResponseOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatResponse) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
 }
@@ -42333,7 +42455,7 @@ func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedSt
 type SubnetworkLogConfig struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable *bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr *string `pulumi:"filterExpr"`
@@ -42360,7 +42482,7 @@ type SubnetworkLogConfigInput interface {
 type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
@@ -42455,7 +42577,7 @@ func (o SubnetworkLogConfigOutput) AggregationInterval() SubnetworkLogConfigAggr
 	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval { return v.AggregationInterval }).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -42514,7 +42636,7 @@ func (o SubnetworkLogConfigPtrOutput) AggregationInterval() SubnetworkLogConfigA
 	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *bool {
 		if v == nil {
@@ -42568,7 +42690,7 @@ func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput 
 type SubnetworkLogConfigResponse struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval string `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr string `pulumi:"filterExpr"`
@@ -42600,7 +42722,7 @@ func (o SubnetworkLogConfigResponseOutput) AggregationInterval() pulumi.StringOu
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.AggregationInterval }).(pulumi.StringOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
@@ -43848,6 +43970,8 @@ type UrlRewrite struct {
 	HostRewrite *string `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite *string `pulumi:"pathTemplateRewrite"`
 }
 
 // UrlRewriteInput is an input type that accepts UrlRewriteArgs and UrlRewriteOutput values.
@@ -43867,6 +43991,8 @@ type UrlRewriteArgs struct {
 	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite pulumi.StringPtrInput `pulumi:"pathTemplateRewrite"`
 }
 
 func (UrlRewriteArgs) ElementType() reflect.Type {
@@ -43957,6 +44083,11 @@ func (o UrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
 }
 
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewriteOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlRewrite) *string { return v.PathTemplateRewrite }).(pulumi.StringPtrOutput)
+}
+
 type UrlRewritePtrOutput struct{ *pulumi.OutputState }
 
 func (UrlRewritePtrOutput) ElementType() reflect.Type {
@@ -44001,12 +44132,24 @@ func (o UrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewritePtrOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathTemplateRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
 // The spec for modifying the path before sending the request to the matched backend service.
 type UrlRewriteResponse struct {
 	// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
 	HostRewrite string `pulumi:"hostRewrite"`
 	// Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 	PathPrefixRewrite string `pulumi:"pathPrefixRewrite"`
+	//  If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+	PathTemplateRewrite string `pulumi:"pathTemplateRewrite"`
 }
 
 // The spec for modifying the path before sending the request to the matched backend service.
@@ -44032,6 +44175,11 @@ func (o UrlRewriteResponseOutput) HostRewrite() pulumi.StringOutput {
 // Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be from 1 to 1024 characters.
 func (o UrlRewriteResponseOutput) PathPrefixRewrite() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteResponse) string { return v.PathPrefixRewrite }).(pulumi.StringOutput)
+}
+
+// If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax. A corresponding path_template_match must be specified. Any template variables must exist in the path_template_match field. - -At least one variable must be specified in the path_template_match field - You can omit variables from the rewritten URL - The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}. For example, a path_template_match of /static/{format=**} could be rewritten as /static/content/{format} to prefix /content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be rewritten as /content/{format}/{country}/{suffix}. At least one non-empty routeRules[].matchRules[].path_template_match is required. Only one of path_prefix_rewrite or path_template_rewrite may be specified.
+func (o UrlRewriteResponseOutput) PathTemplateRewrite() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlRewriteResponse) string { return v.PathTemplateRewrite }).(pulumi.StringOutput)
 }
 
 // A VPN gateway interface.
@@ -45079,6 +45227,9 @@ func init() {
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataResponseOutput{})

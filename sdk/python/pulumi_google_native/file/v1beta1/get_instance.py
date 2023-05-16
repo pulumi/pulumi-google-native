@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, protocol=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, directory_services=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, protocol=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -32,6 +32,9 @@ class GetInstanceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if directory_services and not isinstance(directory_services, dict):
+            raise TypeError("Expected argument 'directory_services' to be a dict")
+        pulumi.set(__self__, "directory_services", directory_services)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -109,6 +112,14 @@ class GetInstanceResult:
         The description of the instance (2048 characters or less).
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="directoryServices")
+    def directory_services(self) -> 'outputs.DirectoryServicesConfigResponse':
+        """
+        Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        """
+        return pulumi.get(self, "directory_services")
 
     @property
     @pulumi.getter
@@ -241,6 +252,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             capacity_step_size_gb=self.capacity_step_size_gb,
             create_time=self.create_time,
             description=self.description,
+            directory_services=self.directory_services,
             etag=self.etag,
             file_shares=self.file_shares,
             kms_key_name=self.kms_key_name,
@@ -277,6 +289,7 @@ def get_instance(instance_id: Optional[str] = None,
         capacity_step_size_gb=__ret__.capacity_step_size_gb,
         create_time=__ret__.create_time,
         description=__ret__.description,
+        directory_services=__ret__.directory_services,
         etag=__ret__.etag,
         file_shares=__ret__.file_shares,
         kms_key_name=__ret__.kms_key_name,

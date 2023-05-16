@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, log_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, log_config=None, name=None, node_config=None, service_account=None, service_directory=None, ssl_config=None, status=None, subscription_type=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -71,6 +71,9 @@ class GetConnectionResult:
         if status and not isinstance(status, dict):
             raise TypeError("Expected argument 'status' to be a dict")
         pulumi.set(__self__, "status", status)
+        if subscription_type and not isinstance(subscription_type, str):
+            raise TypeError("Expected argument 'subscription_type' to be a str")
+        pulumi.set(__self__, "subscription_type", subscription_type)
         if suspended and not isinstance(suspended, bool):
             raise TypeError("Expected argument 'suspended' to be a bool")
         pulumi.set(__self__, "suspended", suspended)
@@ -215,6 +218,14 @@ class GetConnectionResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> str:
+        """
+        This subscription type enum states the subscription type of the project.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @property
     @pulumi.getter
     def suspended(self) -> bool:
         """
@@ -254,6 +265,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             service_directory=self.service_directory,
             ssl_config=self.ssl_config,
             status=self.status,
+            subscription_type=self.subscription_type,
             suspended=self.suspended,
             update_time=self.update_time)
 
@@ -292,6 +304,7 @@ def get_connection(connection_id: Optional[str] = None,
         service_directory=__ret__.service_directory,
         ssl_config=__ret__.ssl_config,
         status=__ret__.status,
+        subscription_type=__ret__.subscription_type,
         suspended=__ret__.suspended,
         update_time=__ret__.update_time)
 

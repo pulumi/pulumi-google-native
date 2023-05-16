@@ -3554,6 +3554,8 @@ const (
 	DiscoveryNoteAnalysisKindDsseAttestation = DiscoveryNoteAnalysisKind("DSSE_ATTESTATION")
 	// This represents a Vulnerability Assessment.
 	DiscoveryNoteAnalysisKindVulnerabilityAssessment = DiscoveryNoteAnalysisKind("VULNERABILITY_ASSESSMENT")
+	// This represents an SBOM Reference.
+	DiscoveryNoteAnalysisKindSbomReference = DiscoveryNoteAnalysisKind("SBOM_REFERENCE")
 )
 
 func (DiscoveryNoteAnalysisKind) ElementType() reflect.Type {

@@ -239,6 +239,7 @@ class Source(pulumi.CustomResource):
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["error_frame_count"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pending_frame_count"] = None
             __props__.__dict__["state"] = None
@@ -270,6 +271,7 @@ class Source(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["error_frame_count"] = None
         __props__.__dict__["is_managed"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -306,6 +308,14 @@ class Source(pulumi.CustomResource):
         User-friendly display name.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="errorFrameCount")
+    def error_frame_count(self) -> pulumi.Output[int]:
+        """
+        The number of frames that were reported by the source and contained errors.
+        """
+        return pulumi.get(self, "error_frame_count")
 
     @property
     @pulumi.getter(name="isManaged")

@@ -90,6 +90,10 @@ export class Tenant extends pulumi.CustomResource {
      * Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The tenant-level password policy config
+     */
+    public readonly passwordPolicyConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * The tenant-level reCAPTCHA config.
@@ -126,6 +130,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["inheritance"] = args ? args.inheritance : undefined;
             resourceInputs["mfaConfig"] = args ? args.mfaConfig : undefined;
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
+            resourceInputs["passwordPolicyConfig"] = args ? args.passwordPolicyConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["recaptchaConfig"] = args ? args.recaptchaConfig : undefined;
             resourceInputs["smsRegionConfig"] = args ? args.smsRegionConfig : undefined;
@@ -146,6 +151,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["mfaConfig"] = undefined /*out*/;
             resourceInputs["monitoring"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["passwordPolicyConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["recaptchaConfig"] = undefined /*out*/;
             resourceInputs["smsRegionConfig"] = undefined /*out*/;
@@ -206,6 +212,10 @@ export interface TenantArgs {
      * Configuration related to monitoring project activity.
      */
     monitoring?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>;
+    /**
+     * The tenant-level password policy config
+     */
+    passwordPolicyConfig?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs>;
     project?: pulumi.Input<string>;
     /**
      * The tenant-level reCAPTCHA config.

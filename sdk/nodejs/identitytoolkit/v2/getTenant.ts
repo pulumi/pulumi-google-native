@@ -78,6 +78,10 @@ export interface GetTenantResult {
      */
     readonly name: string;
     /**
+     * The tenant-level password policy config
+     */
+    readonly passwordPolicyConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse;
+    /**
      * The tenant-level reCAPTCHA config.
      */
     readonly recaptchaConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse;

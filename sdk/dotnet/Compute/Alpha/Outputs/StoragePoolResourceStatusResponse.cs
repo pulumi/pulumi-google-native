@@ -37,11 +37,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string NumberOfDisks;
         /// <summary>
-        /// Sum of all the disks' local used bytes. This specifically refers to the amount of bytes used on the disk without any encryption or compression.
+        /// Space used by data stored in disks within the storage pool (in bytes).
         /// </summary>
         public readonly string UsedBytes;
         /// <summary>
-        /// Sum of all the disks' used reduced bytes. This is the actual storage capacity consumed by all of the disks.
+        /// Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
         /// </summary>
         public readonly string UsedReducedBytes;
 

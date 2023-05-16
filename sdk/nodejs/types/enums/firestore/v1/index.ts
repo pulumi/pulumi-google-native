@@ -122,6 +122,46 @@ export const GoogleFirestoreAdminV1IndexFieldOrder = {
  */
 export type GoogleFirestoreAdminV1IndexFieldOrder = (typeof GoogleFirestoreAdminV1IndexFieldOrder)[keyof typeof GoogleFirestoreAdminV1IndexFieldOrder];
 
+export const GoogleFirestoreAdminV1WeeklyRecurrenceDay = {
+    /**
+     * The day of the week is unspecified.
+     */
+    DayOfWeekUnspecified: "DAY_OF_WEEK_UNSPECIFIED",
+    /**
+     * Monday
+     */
+    Monday: "MONDAY",
+    /**
+     * Tuesday
+     */
+    Tuesday: "TUESDAY",
+    /**
+     * Wednesday
+     */
+    Wednesday: "WEDNESDAY",
+    /**
+     * Thursday
+     */
+    Thursday: "THURSDAY",
+    /**
+     * Friday
+     */
+    Friday: "FRIDAY",
+    /**
+     * Saturday
+     */
+    Saturday: "SATURDAY",
+    /**
+     * Sunday
+     */
+    Sunday: "SUNDAY",
+} as const;
+
+/**
+ * The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+ */
+export type GoogleFirestoreAdminV1WeeklyRecurrenceDay = (typeof GoogleFirestoreAdminV1WeeklyRecurrenceDay)[keyof typeof GoogleFirestoreAdminV1WeeklyRecurrenceDay];
+
 export const IndexApiScope = {
     /**
      * The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.

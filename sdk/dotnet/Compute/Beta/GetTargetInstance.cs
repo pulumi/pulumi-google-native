@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The resource URL for the security policy associated with this target instance.
+        /// </summary>
+        public readonly string SecurityPolicy;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string network,
 
+            string securityPolicy,
+
             string selfLink,
 
             string zone)
@@ -127,6 +133,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Name = name;
             NatPolicy = natPolicy;
             Network = network;
+            SecurityPolicy = securityPolicy;
             SelfLink = selfLink;
             Zone = zone;
         }

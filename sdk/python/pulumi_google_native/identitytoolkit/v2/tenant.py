@@ -28,6 +28,7 @@ class TenantArgs:
                  inheritance: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] = None,
                  mfa_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']] = None,
                  monitoring: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']] = None,
+                 password_policy_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recaptcha_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']] = None,
                  sms_region_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']] = None,
@@ -45,6 +46,7 @@ class TenantArgs:
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs'] inheritance: Specify the settings that the tenant could inherit.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs'] mfa_config: The tenant-level configuration of MFA options.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs'] monitoring: Configuration related to monitoring project activity.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs'] password_policy_config: The tenant-level password policy config
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs'] recaptcha_config: The tenant-level reCAPTCHA config.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs'] sms_region_config: Configures which regions are enabled for SMS verification code sending.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -71,6 +73,8 @@ class TenantArgs:
             pulumi.set(__self__, "mfa_config", mfa_config)
         if monitoring is not None:
             pulumi.set(__self__, "monitoring", monitoring)
+        if password_policy_config is not None:
+            pulumi.set(__self__, "password_policy_config", password_policy_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if recaptcha_config is not None:
@@ -213,6 +217,18 @@ class TenantArgs:
         pulumi.set(self, "monitoring", value)
 
     @property
+    @pulumi.getter(name="passwordPolicyConfig")
+    def password_policy_config(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]:
+        """
+        The tenant-level password policy config
+        """
+        return pulumi.get(self, "password_policy_config")
+
+    @password_policy_config.setter
+    def password_policy_config(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]):
+        pulumi.set(self, "password_policy_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -274,6 +290,7 @@ class Tenant(pulumi.CustomResource):
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
                  mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
                  monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
+                 password_policy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recaptcha_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']]] = None,
                  sms_region_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']]] = None,
@@ -296,6 +313,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] inheritance: Specify the settings that the tenant could inherit.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']] mfa_config: The tenant-level configuration of MFA options.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']] monitoring: Configuration related to monitoring project activity.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']] password_policy_config: The tenant-level password policy config
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']] recaptcha_config: The tenant-level reCAPTCHA config.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']] sms_region_config: Configures which regions are enabled for SMS verification code sending.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -336,6 +354,7 @@ class Tenant(pulumi.CustomResource):
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
                  mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
                  monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
+                 password_policy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  recaptcha_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs']]] = None,
                  sms_region_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigArgs']]] = None,
@@ -360,6 +379,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["inheritance"] = inheritance
             __props__.__dict__["mfa_config"] = mfa_config
             __props__.__dict__["monitoring"] = monitoring
+            __props__.__dict__["password_policy_config"] = password_policy_config
             __props__.__dict__["project"] = project
             __props__.__dict__["recaptcha_config"] = recaptcha_config
             __props__.__dict__["sms_region_config"] = sms_region_config
@@ -403,6 +423,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["mfa_config"] = None
         __props__.__dict__["monitoring"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["password_policy_config"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["recaptcha_config"] = None
         __props__.__dict__["sms_region_config"] = None
@@ -512,6 +533,14 @@ class Tenant(pulumi.CustomResource):
         Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="passwordPolicyConfig")
+    def password_policy_config(self) -> pulumi.Output['outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse']:
+        """
+        The tenant-level password policy config
+        """
+        return pulumi.get(self, "password_policy_config")
 
     @property
     @pulumi.getter

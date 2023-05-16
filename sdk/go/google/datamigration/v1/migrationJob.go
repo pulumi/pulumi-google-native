@@ -15,6 +15,8 @@ import (
 type MigrationJob struct {
 	pulumi.CustomResourceState
 
+	// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	CmekKeyName pulumi.StringOutput `pulumi:"cmekKeyName"`
 	// The conversion workspace used by the migration.
 	ConversionWorkspace ConversionWorkspaceInfoResponseOutput `pulumi:"conversionWorkspace"`
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -124,6 +126,8 @@ func (MigrationJobState) ElementType() reflect.Type {
 }
 
 type migrationJobArgs struct {
+	// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	CmekKeyName *string `pulumi:"cmekKeyName"`
 	// The conversion workspace used by the migration.
 	ConversionWorkspace *ConversionWorkspaceInfo `pulumi:"conversionWorkspace"`
 	// The resource name (URI) of the destination connection profile.
@@ -166,6 +170,8 @@ type migrationJobArgs struct {
 
 // The set of arguments for constructing a MigrationJob resource.
 type MigrationJobArgs struct {
+	// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	CmekKeyName pulumi.StringPtrInput
 	// The conversion workspace used by the migration.
 	ConversionWorkspace ConversionWorkspaceInfoPtrInput
 	// The resource name (URI) of the destination connection profile.
@@ -241,6 +247,11 @@ func (o MigrationJobOutput) ToMigrationJobOutput() MigrationJobOutput {
 
 func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context) MigrationJobOutput {
 	return o
+}
+
+// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+func (o MigrationJobOutput) CmekKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.CmekKeyName }).(pulumi.StringOutput)
 }
 
 // The conversion workspace used by the migration.

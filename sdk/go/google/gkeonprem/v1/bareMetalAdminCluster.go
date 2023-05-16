@@ -21,7 +21,8 @@ type BareMetalAdminCluster struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
 	BareMetalAdminClusterId pulumi.StringOutput `pulumi:"bareMetalAdminClusterId"`
-	BareMetalVersion        pulumi.StringOutput `pulumi:"bareMetalVersion"`
+	// The Anthos clusters on bare metal version for the bare metal admin cluster.
+	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigResponseOutput `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -129,8 +130,9 @@ type bareMetalAdminClusterArgs struct {
 	// Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
-	BareMetalAdminClusterId string  `pulumi:"bareMetalAdminClusterId"`
-	BareMetalVersion        *string `pulumi:"bareMetalVersion"`
+	BareMetalAdminClusterId string `pulumi:"bareMetalAdminClusterId"`
+	// The Anthos clusters on bare metal version for the bare metal admin cluster.
+	BareMetalVersion *string `pulumi:"bareMetalVersion"`
 	// Cluster operations configuration.
 	ClusterOperations *BareMetalAdminClusterOperationsConfig `pulumi:"clusterOperations"`
 	// Control plane configuration.
@@ -169,7 +171,8 @@ type BareMetalAdminClusterArgs struct {
 	Annotations pulumi.StringMapInput
 	// Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
 	BareMetalAdminClusterId pulumi.StringInput
-	BareMetalVersion        pulumi.StringPtrInput
+	// The Anthos clusters on bare metal version for the bare metal admin cluster.
+	BareMetalVersion pulumi.StringPtrInput
 	// Cluster operations configuration.
 	ClusterOperations BareMetalAdminClusterOperationsConfigPtrInput
 	// Control plane configuration.
@@ -249,6 +252,7 @@ func (o BareMetalAdminClusterOutput) BareMetalAdminClusterId() pulumi.StringOutp
 	return o.ApplyT(func(v *BareMetalAdminCluster) pulumi.StringOutput { return v.BareMetalAdminClusterId }).(pulumi.StringOutput)
 }
 
+// The Anthos clusters on bare metal version for the bare metal admin cluster.
 func (o BareMetalAdminClusterOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalAdminCluster) pulumi.StringOutput { return v.BareMetalVersion }).(pulumi.StringOutput)
 }

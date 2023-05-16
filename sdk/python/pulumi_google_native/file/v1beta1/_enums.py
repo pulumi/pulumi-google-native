@@ -10,6 +10,7 @@ __all__ = [
     'NetworkConfigConnectMode',
     'NetworkConfigModesItem',
     'NfsExportOptionsAccessMode',
+    'NfsExportOptionsSecurityFlavorsItem',
     'NfsExportOptionsSquashMode',
 ]
 
@@ -64,6 +65,10 @@ class InstanceTier(str, Enum):
     """
     ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
     """
+    ZONAL = "ZONAL"
+    """
+    ZONAL instances offer expanded capacity and performance scaling capabilities.
+    """
 
 
 class NetworkConfigConnectMode(str, Enum):
@@ -110,6 +115,29 @@ class NfsExportOptionsAccessMode(str, Enum):
     READ_WRITE = "READ_WRITE"
     """
     The client can read and write the file share (default).
+    """
+
+
+class NfsExportOptionsSecurityFlavorsItem(str, Enum):
+    SECURITY_FLAVOR_UNSPECIFIED = "SECURITY_FLAVOR_UNSPECIFIED"
+    """
+    SecurityFlavor not set.
+    """
+    AUTH_SYS = "AUTH_SYS"
+    """
+    The user's UNIX user-id and group-ids are transferred "in the clear" (not encrypted) on the network, unauthenticated by the NFS server (default).
+    """
+    KRB5 = "KRB5"
+    """
+    End-user authentication through Kerberos V5.
+    """
+    KRB5I = "KRB5I"
+    """
+    krb5 plus integrity protection (data packets are tamper proof).
+    """
+    KRB5P = "KRB5P"
+    """
+    krb5i plus privacy protection (data packets are tamper proof and encrypted).
     """
 
 

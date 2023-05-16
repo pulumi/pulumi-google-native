@@ -53,10 +53,14 @@ from .get_connection_iam_policy import *
 from .get_connector import *
 from .get_connector_iam_policy import *
 from .get_net_connection_iam_policy import *
+from .get_proxy_config import *
 from .get_subscription import *
+from .get_tenant import *
 from .net_connection_iam_binding import *
 from .net_connection_iam_member import *
 from .net_connection_iam_policy import *
+from .proxy_config import *
 from .subscription import *
+from .tenant import *
 from ._inputs import *
 from . import outputs

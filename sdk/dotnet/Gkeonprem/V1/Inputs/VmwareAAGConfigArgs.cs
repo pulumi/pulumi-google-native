@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
 {
 
     /// <summary>
-    /// Specifies anti affinity group config for the VMware user cluster. 
+    /// Specifies anti affinity group config for the VMware user cluster.
     /// </summary>
     public sealed class VmwareAAGConfigArgs : global::Pulumi.ResourceArgs
     {

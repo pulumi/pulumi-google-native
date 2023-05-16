@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
     public sealed class GoogleCloudApigeeV1ApiCategoryDataResponse
     {
         /// <summary>
+        /// GCP name of api category resource.
+        /// </summary>
+        public readonly string GcpResource;
+        /// <summary>
         /// Name of the category.
         /// </summary>
         public readonly string Name;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudApigeeV1ApiCategoryDataResponse(
+            string gcpResource,
+
             string name,
 
             string siteId,
 
             string updateTime)
         {
+            GcpResource = gcpResource;
             Name = name;
             SiteId = siteId;
             UpdateTime = updateTime;

@@ -2,6 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const GoogleCloudRunV2EmptyDirVolumeSourceMedium = {
+    /**
+     * When not specified, falls back to the default implementation which is currently in memory (this may change over time).
+     */
+    MediumUnspecified: "MEDIUM_UNSPECIFIED",
+    /**
+     * Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+     */
+    Memory: "MEMORY",
+} as const;
+
+/**
+ * The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+ */
+export type GoogleCloudRunV2EmptyDirVolumeSourceMedium = (typeof GoogleCloudRunV2EmptyDirVolumeSourceMedium)[keyof typeof GoogleCloudRunV2EmptyDirVolumeSourceMedium];
+
 export const GoogleCloudRunV2RevisionTemplateExecutionEnvironment = {
     /**
      * Unspecified

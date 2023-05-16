@@ -4273,6 +4273,8 @@ func (o PublicKeyResponseOutput) Key() pulumi.StringOutput {
 
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
 type PublishingOptions struct {
+	// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+	EncodingFormat *PublishingOptionsEncodingFormat `pulumi:"encodingFormat"`
 	// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 	PublishCaCert *bool `pulumi:"publishCaCert"`
 	// Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
@@ -4292,6 +4294,8 @@ type PublishingOptionsInput interface {
 
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
 type PublishingOptionsArgs struct {
+	// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+	EncodingFormat PublishingOptionsEncodingFormatPtrInput `pulumi:"encodingFormat"`
 	// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 	PublishCaCert pulumi.BoolPtrInput `pulumi:"publishCaCert"`
 	// Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
@@ -4376,6 +4380,11 @@ func (o PublishingOptionsOutput) ToPublishingOptionsPtrOutputWithContext(ctx con
 	}).(PublishingOptionsPtrOutput)
 }
 
+// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+func (o PublishingOptionsOutput) EncodingFormat() PublishingOptionsEncodingFormatPtrOutput {
+	return o.ApplyT(func(v PublishingOptions) *PublishingOptionsEncodingFormat { return v.EncodingFormat }).(PublishingOptionsEncodingFormatPtrOutput)
+}
+
 // Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 func (o PublishingOptionsOutput) PublishCaCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PublishingOptions) *bool { return v.PublishCaCert }).(pulumi.BoolPtrOutput)
@@ -4410,6 +4419,16 @@ func (o PublishingOptionsPtrOutput) Elem() PublishingOptionsOutput {
 	}).(PublishingOptionsOutput)
 }
 
+// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+func (o PublishingOptionsPtrOutput) EncodingFormat() PublishingOptionsEncodingFormatPtrOutput {
+	return o.ApplyT(func(v *PublishingOptions) *PublishingOptionsEncodingFormat {
+		if v == nil {
+			return nil
+		}
+		return v.EncodingFormat
+	}).(PublishingOptionsEncodingFormatPtrOutput)
+}
+
 // Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 func (o PublishingOptionsPtrOutput) PublishCaCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PublishingOptions) *bool {
@@ -4432,6 +4451,8 @@ func (o PublishingOptionsPtrOutput) PublishCrl() pulumi.BoolPtrOutput {
 
 // Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
 type PublishingOptionsResponse struct {
+	// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+	EncodingFormat string `pulumi:"encodingFormat"`
 	// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
 	PublishCaCert bool `pulumi:"publishCaCert"`
 	// Optional. When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
@@ -4451,6 +4472,11 @@ func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponseOutput() Pub
 
 func (o PublishingOptionsResponseOutput) ToPublishingOptionsResponseOutputWithContext(ctx context.Context) PublishingOptionsResponseOutput {
 	return o
+}
+
+// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+func (o PublishingOptionsResponseOutput) EncodingFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingOptionsResponse) string { return v.EncodingFormat }).(pulumi.StringOutput)
 }
 
 // Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.

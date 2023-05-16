@@ -750,6 +750,51 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
     /// <summary>
+    /// The score applied to the resource.
+    /// </summary>
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2SensitivityScoreScore : IEquatable<GooglePrivacyDlpV2SensitivityScoreScore>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2SensitivityScoreScore(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unused.
+        /// </summary>
+        public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityScoreUnspecified { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED");
+        /// <summary>
+        /// No sensitive information detected. Limited access.
+        /// </summary>
+        public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityLow { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_LOW");
+        /// <summary>
+        /// Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+        /// </summary>
+        public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityModerate { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_MODERATE");
+        /// <summary>
+        /// High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+        /// </summary>
+        public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityHigh { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_HIGH");
+
+        public static bool operator ==(GooglePrivacyDlpV2SensitivityScoreScore left, GooglePrivacyDlpV2SensitivityScoreScore right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2SensitivityScoreScore left, GooglePrivacyDlpV2SensitivityScoreScore right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2SensitivityScoreScore value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2SensitivityScoreScore other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2SensitivityScoreScore other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The part of the time to keep.
     /// </summary>
     [EnumType]

@@ -2496,8 +2496,6 @@ type UploadFileInfoResponse struct {
 	Headers map[string]string `pulumi:"headers"`
 	// Upload URI for the file.
 	SignedUri string `pulumi:"signedUri"`
-	// Upload URI for the file.
-	Uri string `pulumi:"uri"`
 	// Expiration time of the upload URI.
 	UriExpirationTime string `pulumi:"uriExpirationTime"`
 }
@@ -2525,11 +2523,6 @@ func (o UploadFileInfoResponseOutput) Headers() pulumi.StringMapOutput {
 // Upload URI for the file.
 func (o UploadFileInfoResponseOutput) SignedUri() pulumi.StringOutput {
 	return o.ApplyT(func(v UploadFileInfoResponse) string { return v.SignedUri }).(pulumi.StringOutput)
-}
-
-// Upload URI for the file.
-func (o UploadFileInfoResponseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v UploadFileInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Expiration time of the upload URI.

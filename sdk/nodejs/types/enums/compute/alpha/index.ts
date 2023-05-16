@@ -1927,6 +1927,22 @@ export const InstanceGroupManagerListManagedInstancesResults = {
  */
 export type InstanceGroupManagerListManagedInstancesResults = (typeof InstanceGroupManagerListManagedInstancesResults)[keyof typeof InstanceGroupManagerListManagedInstancesResults];
 
+export const InstanceGroupManagerTargetSizeUnit = {
+    /**
+     * TargetSize is the target count of vCPUs of VMs.
+     */
+    Vcpu: "VCPU",
+    /**
+     * [Default] TargetSize is the target number of VMs.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The unit of measure for the target size.
+ */
+export type InstanceGroupManagerTargetSizeUnit = (typeof InstanceGroupManagerTargetSizeUnit)[keyof typeof InstanceGroupManagerTargetSizeUnit];
+
 export const InstanceGroupManagerUpdatePolicyInstanceRedistributionType = {
     /**
      * No action is being proactively performed in order to bring this IGM to its target instance distribution.
@@ -3108,6 +3124,22 @@ export const RegionInstanceGroupManagerListManagedInstancesResults = {
  */
 export type RegionInstanceGroupManagerListManagedInstancesResults = (typeof RegionInstanceGroupManagerListManagedInstancesResults)[keyof typeof RegionInstanceGroupManagerListManagedInstancesResults];
 
+export const RegionInstanceGroupManagerTargetSizeUnit = {
+    /**
+     * TargetSize is the target count of vCPUs of VMs.
+     */
+    Vcpu: "VCPU",
+    /**
+     * [Default] TargetSize is the target number of VMs.
+     */
+    Vm: "VM",
+} as const;
+
+/**
+ * The unit of measure for the target size.
+ */
+export type RegionInstanceGroupManagerTargetSizeUnit = (typeof RegionInstanceGroupManagerTargetSizeUnit)[keyof typeof RegionInstanceGroupManagerTargetSizeUnit];
+
 export const RegionNetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -3620,7 +3652,7 @@ export const RouterNatSourceSubnetworkIpRangesToNat = {
 } as const;
 
 /**
- * Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+ * Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
  */
 export type RouterNatSourceSubnetworkIpRangesToNat = (typeof RouterNatSourceSubnetworkIpRangesToNat)[keyof typeof RouterNatSourceSubnetworkIpRangesToNat];
 
@@ -4236,7 +4268,7 @@ export const SubnetworkPurpose = {
 } as const;
 
 /**
- * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+ * The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
  */
 export type SubnetworkPurpose = (typeof SubnetworkPurpose)[keyof typeof SubnetworkPurpose];
 
@@ -4252,7 +4284,7 @@ export const SubnetworkRole = {
 } as const;
 
 /**
- * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+ * The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
  */
 export type SubnetworkRole = (typeof SubnetworkRole)[keyof typeof SubnetworkRole];
 
@@ -4466,6 +4498,10 @@ export const VpnGatewayStackType = {
      * Enable VPN gateway with only IPv4 protocol.
      */
     Ipv4Only: "IPV4_ONLY",
+    /**
+     * Enable VPN gateway with only IPv6 protocol.
+     */
+    Ipv6Only: "IPV6_ONLY",
 } as const;
 
 /**

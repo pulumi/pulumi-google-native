@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
         /// </summary>
         public static InstanceTier Enterprise { get; } = new InstanceTier("ENTERPRISE");
+        /// <summary>
+        /// ZONAL instances offer expanded capacity and performance scaling capabilities.
+        /// </summary>
+        public static InstanceTier Zonal { get; } = new InstanceTier("ZONAL");
 
         public static bool operator ==(InstanceTier left, InstanceTier right) => left.Equals(right);
         public static bool operator !=(InstanceTier left, InstanceTier right) => !left.Equals(right);
@@ -214,6 +218,52 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NfsExportOptionsAccessMode other && Equals(other);
         public bool Equals(NfsExportOptionsAccessMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct NfsExportOptionsSecurityFlavorsItem : IEquatable<NfsExportOptionsSecurityFlavorsItem>
+    {
+        private readonly string _value;
+
+        private NfsExportOptionsSecurityFlavorsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// SecurityFlavor not set.
+        /// </summary>
+        public static NfsExportOptionsSecurityFlavorsItem SecurityFlavorUnspecified { get; } = new NfsExportOptionsSecurityFlavorsItem("SECURITY_FLAVOR_UNSPECIFIED");
+        /// <summary>
+        /// The user's UNIX user-id and group-ids are transferred "in the clear" (not encrypted) on the network, unauthenticated by the NFS server (default).
+        /// </summary>
+        public static NfsExportOptionsSecurityFlavorsItem AuthSys { get; } = new NfsExportOptionsSecurityFlavorsItem("AUTH_SYS");
+        /// <summary>
+        /// End-user authentication through Kerberos V5.
+        /// </summary>
+        public static NfsExportOptionsSecurityFlavorsItem Krb5 { get; } = new NfsExportOptionsSecurityFlavorsItem("KRB5");
+        /// <summary>
+        /// krb5 plus integrity protection (data packets are tamper proof).
+        /// </summary>
+        public static NfsExportOptionsSecurityFlavorsItem Krb5i { get; } = new NfsExportOptionsSecurityFlavorsItem("KRB5I");
+        /// <summary>
+        /// krb5i plus privacy protection (data packets are tamper proof and encrypted).
+        /// </summary>
+        public static NfsExportOptionsSecurityFlavorsItem Krb5p { get; } = new NfsExportOptionsSecurityFlavorsItem("KRB5P");
+
+        public static bool operator ==(NfsExportOptionsSecurityFlavorsItem left, NfsExportOptionsSecurityFlavorsItem right) => left.Equals(right);
+        public static bool operator !=(NfsExportOptionsSecurityFlavorsItem left, NfsExportOptionsSecurityFlavorsItem right) => !left.Equals(right);
+
+        public static explicit operator string(NfsExportOptionsSecurityFlavorsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NfsExportOptionsSecurityFlavorsItem other && Equals(other);
+        public bool Equals(NfsExportOptionsSecurityFlavorsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

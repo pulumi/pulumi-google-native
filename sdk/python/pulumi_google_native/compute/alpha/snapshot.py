@@ -19,6 +19,7 @@ class SnapshotArgs:
     def __init__(__self__, *,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class SnapshotArgs:
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
@@ -55,6 +57,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_flush is not None:
             pulumi.set(__self__, "guest_flush", guest_flush)
         if labels is not None:
@@ -107,6 +111,18 @@ class SnapshotArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter(name="guestFlush")
@@ -281,6 +297,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -303,6 +320,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
@@ -343,6 +361,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_hint: Optional[pulumi.Input[str]] = None,
@@ -368,6 +387,7 @@ class Snapshot(pulumi.CustomResource):
 
             __props__.__dict__["chain_name"] = chain_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_hint"] = location_hint
@@ -436,6 +456,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
         __props__.__dict__["download_bytes"] = None
+        __props__.__dict__["enable_confidential_compute"] = None
         __props__.__dict__["guest_flush"] = None
         __props__.__dict__["guest_os_features"] = None
         __props__.__dict__["kind"] = None
@@ -531,6 +552,14 @@ class Snapshot(pulumi.CustomResource):
         Number of bytes downloaded to restore a snapshot to a disk.
         """
         return pulumi.get(self, "download_bytes")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> pulumi.Output[bool]:
+        """
+        Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestFlush")

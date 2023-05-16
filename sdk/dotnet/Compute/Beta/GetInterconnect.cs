@@ -138,6 +138,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int ProvisionedLinkCount;
         /// <summary>
+        /// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+        /// </summary>
+        public readonly string RemoteLocation;
+        /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.
         /// </summary>
         public readonly int RequestedLinkCount;
@@ -196,6 +200,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             int provisionedLinkCount,
 
+            string remoteLocation,
+
             int requestedLinkCount,
 
             bool satisfiesPzs,
@@ -224,6 +230,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             OperationalStatus = operationalStatus;
             PeerIpAddress = peerIpAddress;
             ProvisionedLinkCount = provisionedLinkCount;
+            RemoteLocation = remoteLocation;
             RequestedLinkCount = requestedLinkCount;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;

@@ -174,18 +174,29 @@ class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
     the Api category resource.
     """
     def __init__(__self__, *,
+                 gcp_resource: str,
                  name: str,
                  site_id: str,
                  update_time: str):
         """
         the Api category resource.
+        :param str gcp_resource: GCP name of api category resource.
         :param str name: Name of the category.
         :param str site_id: Name of the portal.
         :param str update_time: Time the category was last modified in milliseconds since epoch.
         """
+        pulumi.set(__self__, "gcp_resource", gcp_resource)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="gcpResource")
+    def gcp_resource(self) -> str:
+        """
+        GCP name of api category resource.
+        """
+        return pulumi.get(self, "gcp_resource")
 
     @property
     @pulumi.getter

@@ -70,6 +70,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
     /**
+     * Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
@@ -200,6 +204,7 @@ export class Snapshot extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["chainName"] = args ? args.chainName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["guestFlush"] = args ? args.guestFlush : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locationHint"] = args ? args.locationHint : undefined;
@@ -245,6 +250,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["enableConfidentialCompute"] = undefined /*out*/;
             resourceInputs["guestFlush"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -295,6 +301,10 @@ export interface SnapshotArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */

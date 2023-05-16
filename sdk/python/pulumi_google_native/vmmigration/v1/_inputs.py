@@ -909,18 +909,22 @@ class VmUtilizationMetricsArgs:
 class VmwareSourceDetailsArgs:
     def __init__(__self__, *,
                  password: Optional[pulumi.Input[str]] = None,
+                 resolved_vcenter_host: Optional[pulumi.Input[str]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  vcenter_ip: Optional[pulumi.Input[str]] = None):
         """
         VmwareSourceDetails message describes a specific source details for the vmware source type.
         :param pulumi.Input[str] password: Input only. The credentials password. This is write only and can not be read in a GET operation.
+        :param pulumi.Input[str] resolved_vcenter_host: The hostname of the vcenter.
         :param pulumi.Input[str] thumbprint: The thumbprint representing the certificate for the vcenter.
         :param pulumi.Input[str] username: The credentials username.
         :param pulumi.Input[str] vcenter_ip: The ip address of the vcenter this Source represents.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if resolved_vcenter_host is not None:
+            pulumi.set(__self__, "resolved_vcenter_host", resolved_vcenter_host)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
         if username is not None:
@@ -939,6 +943,18 @@ class VmwareSourceDetailsArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="resolvedVcenterHost")
+    def resolved_vcenter_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname of the vcenter.
+        """
+        return pulumi.get(self, "resolved_vcenter_host")
+
+    @resolved_vcenter_host.setter
+    def resolved_vcenter_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resolved_vcenter_host", value)
 
     @property
     @pulumi.getter

@@ -96,6 +96,8 @@ __all__ = [
     'FixedOrPercentResponse',
     'ForwardingRuleServiceDirectoryRegistrationResponse',
     'FutureReservationSpecificSKUPropertiesResponse',
+    'FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse',
+    'FutureReservationStatusLastKnownGoodStateResponse',
     'FutureReservationStatusResponse',
     'FutureReservationStatusSpecificSKUPropertiesResponse',
     'FutureReservationTimeWindowResponse',
@@ -128,6 +130,7 @@ __all__ = [
     'InstanceGroupManagerAllInstancesConfigResponse',
     'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
+    'InstanceGroupManagerInstanceFlexibilityPolicyResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse',
     'InstanceGroupManagerInstanceLifecyclePolicyResponse',
     'InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponse',
@@ -1267,6 +1270,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
         elif key == "guestOsFeatures":
             suggest = "guest_os_features"
         elif key == "licenseCodes":
@@ -1315,6 +1320,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  disk_name: str,
                  disk_size_gb: str,
                  disk_type: str,
+                 enable_confidential_compute: bool,
                  guest_os_features: Sequence['outputs.GuestOsFeatureResponse'],
                  interface: str,
                  labels: Mapping[str, str],
@@ -1340,6 +1346,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
         :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
+        :param bool enable_confidential_compute: Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
         :param Sequence['GuestOsFeatureResponse'] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         :param str interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -1364,6 +1371,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "disk_name", disk_name)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
@@ -1422,6 +1430,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -6469,6 +6485,143 @@ class FutureReservationSpecificSKUPropertiesResponse(dict):
 
 
 @pulumi.output_type
+class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse(dict):
+    """
+    The properties of the last known good state for the Future Reservation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shareSettings":
+            suggest = "share_settings"
+        elif key == "specificSkuProperties":
+            suggest = "specific_sku_properties"
+        elif key == "timeWindow":
+            suggest = "time_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 share_settings: 'outputs.ShareSettingsResponse',
+                 specific_sku_properties: 'outputs.FutureReservationSpecificSKUPropertiesResponse',
+                 time_window: 'outputs.FutureReservationTimeWindowResponse'):
+        """
+        The properties of the last known good state for the Future Reservation.
+        :param 'ShareSettingsResponse' share_settings: The previous share settings of the Future Reservation.
+        :param 'FutureReservationSpecificSKUPropertiesResponse' specific_sku_properties: The previous instance related properties of the Future Reservation.
+        :param 'FutureReservationTimeWindowResponse' time_window: The previous time window of the Future Reservation.
+        """
+        pulumi.set(__self__, "share_settings", share_settings)
+        pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
+        pulumi.set(__self__, "time_window", time_window)
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> 'outputs.ShareSettingsResponse':
+        """
+        The previous share settings of the Future Reservation.
+        """
+        return pulumi.get(self, "share_settings")
+
+    @property
+    @pulumi.getter(name="specificSkuProperties")
+    def specific_sku_properties(self) -> 'outputs.FutureReservationSpecificSKUPropertiesResponse':
+        """
+        The previous instance related properties of the Future Reservation.
+        """
+        return pulumi.get(self, "specific_sku_properties")
+
+    @property
+    @pulumi.getter(name="timeWindow")
+    def time_window(self) -> 'outputs.FutureReservationTimeWindowResponse':
+        """
+        The previous time window of the Future Reservation.
+        """
+        return pulumi.get(self, "time_window")
+
+
+@pulumi.output_type
+class FutureReservationStatusLastKnownGoodStateResponse(dict):
+    """
+    The state that the future reservation will be reverted to should the amendment be declined.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "futureReservationSpecs":
+            suggest = "future_reservation_specs"
+        elif key == "namePrefix":
+            suggest = "name_prefix"
+        elif key == "procurementStatus":
+            suggest = "procurement_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FutureReservationStatusLastKnownGoodStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FutureReservationStatusLastKnownGoodStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FutureReservationStatusLastKnownGoodStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 future_reservation_specs: 'outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse',
+                 name_prefix: str,
+                 procurement_status: str):
+        """
+        The state that the future reservation will be reverted to should the amendment be declined.
+        :param str description: The description of the FutureReservation before an amendment was requested.
+        :param str name_prefix: The name prefix of the Future Reservation before an amendment was requested.
+        :param str procurement_status: The status of the last known good state for the Future Reservation.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "future_reservation_specs", future_reservation_specs)
+        pulumi.set(__self__, "name_prefix", name_prefix)
+        pulumi.set(__self__, "procurement_status", procurement_status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the FutureReservation before an amendment was requested.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="futureReservationSpecs")
+    def future_reservation_specs(self) -> 'outputs.FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse':
+        return pulumi.get(self, "future_reservation_specs")
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> str:
+        """
+        The name prefix of the Future Reservation before an amendment was requested.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="procurementStatus")
+    def procurement_status(self) -> str:
+        """
+        The status of the last known good state for the Future Reservation.
+        """
+        return pulumi.get(self, "procurement_status")
+
+
+@pulumi.output_type
 class FutureReservationStatusResponse(dict):
     """
     [Output only] Represents status related to the future reservation.
@@ -6476,10 +6629,14 @@ class FutureReservationStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "autoCreatedReservations":
+        if key == "amendmentStatus":
+            suggest = "amendment_status"
+        elif key == "autoCreatedReservations":
             suggest = "auto_created_reservations"
         elif key == "fulfilledCount":
             suggest = "fulfilled_count"
+        elif key == "lastKnownGoodState":
+            suggest = "last_known_good_state"
         elif key == "lockTime":
             suggest = "lock_time"
         elif key == "procurementStatus":
@@ -6499,23 +6656,37 @@ class FutureReservationStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 amendment_status: str,
                  auto_created_reservations: Sequence[str],
                  fulfilled_count: str,
+                 last_known_good_state: 'outputs.FutureReservationStatusLastKnownGoodStateResponse',
                  lock_time: str,
                  procurement_status: str,
                  specific_sku_properties: 'outputs.FutureReservationStatusSpecificSKUPropertiesResponse'):
         """
         [Output only] Represents status related to the future reservation.
+        :param str amendment_status: The current status of the requested amendment.
         :param Sequence[str] auto_created_reservations: Fully qualified urls of the automatically created reservations at start_time.
         :param str fulfilled_count: This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
+        :param 'FutureReservationStatusLastKnownGoodStateResponse' last_known_good_state: This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
         :param str lock_time: Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time.
         :param str procurement_status: Current state of this Future Reservation
         """
+        pulumi.set(__self__, "amendment_status", amendment_status)
         pulumi.set(__self__, "auto_created_reservations", auto_created_reservations)
         pulumi.set(__self__, "fulfilled_count", fulfilled_count)
+        pulumi.set(__self__, "last_known_good_state", last_known_good_state)
         pulumi.set(__self__, "lock_time", lock_time)
         pulumi.set(__self__, "procurement_status", procurement_status)
         pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
+
+    @property
+    @pulumi.getter(name="amendmentStatus")
+    def amendment_status(self) -> str:
+        """
+        The current status of the requested amendment.
+        """
+        return pulumi.get(self, "amendment_status")
 
     @property
     @pulumi.getter(name="autoCreatedReservations")
@@ -6532,6 +6703,14 @@ class FutureReservationStatusResponse(dict):
         This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
         """
         return pulumi.get(self, "fulfilled_count")
+
+    @property
+    @pulumi.getter(name="lastKnownGoodState")
+    def last_known_good_state(self) -> 'outputs.FutureReservationStatusLastKnownGoodStateResponse':
+        """
+        This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
+        """
+        return pulumi.get(self, "last_known_good_state")
 
     @property
     @pulumi.getter(name="lockTime")
@@ -8852,6 +9031,41 @@ class InstanceGroupManagerAutoHealingPolicyResponse(dict):
         Maximum number of instances that can be unavailable when autohealing. When 'percent' is used, the value is rounded if necessary. The instance is considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2. Instance's currentAction is NONE (in particular its liveness health check result was observed to be HEALTHY at least once as it passed VERIFYING). 3. There is no outgoing action on an instance triggered by IGM. By default, number of concurrently autohealed instances is smaller than the managed instance group target size. However, if a zonal managed instance group has only one instance, or a regional managed instance group has only one instance per zone, autohealing will recreate these instances when they become unhealthy.
         """
         return pulumi.get(self, "max_unavailable")
+
+
+@pulumi.output_type
+class InstanceGroupManagerInstanceFlexibilityPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSelectionLists":
+            suggest = "instance_selection_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerInstanceFlexibilityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerInstanceFlexibilityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerInstanceFlexibilityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_selection_lists: Mapping[str, str]):
+        """
+        :param Mapping[str, str] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        """
+        pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+
+    @property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> Mapping[str, str]:
+        """
+        List of instance selection options that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selection_lists")
 
 
 @pulumi.output_type
@@ -16834,7 +17048,7 @@ class RouterNatResponse(dict):
         :param str nat_ip_allocate_option: Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         :param Sequence[str] nat_ips: A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
         :param Sequence['RouterNatRuleResponse'] rules: A list of rules associated with this NAT.
-        :param str source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        :param str source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
         :param Sequence['RouterNatSubnetworkToNatResponse'] subnetworks: A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
         :param int tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
         :param int tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
@@ -16968,7 +17182,7 @@ class RouterNatResponse(dict):
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> str:
         """
-        Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
         """
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 
@@ -21002,8 +21216,8 @@ class StoragePoolResourceStatusResponse(dict):
         :param str last_resize_timestamp: Timestamp of the last successful resize in RFC3339 text format.
         :param str max_aggregate_disk_size_gb: Maximum allowed aggregate disk size in gigabytes.
         :param str number_of_disks: Number of disks used.
-        :param str used_bytes: Sum of all the disks' local used bytes. This specifically refers to the amount of bytes used on the disk without any encryption or compression.
-        :param str used_reduced_bytes: Sum of all the disks' used reduced bytes. This is the actual storage capacity consumed by all of the disks.
+        :param str used_bytes: Space used by data stored in disks within the storage pool (in bytes).
+        :param str used_reduced_bytes: Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
         """
         pulumi.set(__self__, "aggregate_disk_provisioned_iops", aggregate_disk_provisioned_iops)
         pulumi.set(__self__, "aggregate_disk_size_gb", aggregate_disk_size_gb)
@@ -21057,7 +21271,7 @@ class StoragePoolResourceStatusResponse(dict):
     @pulumi.getter(name="usedBytes")
     def used_bytes(self) -> str:
         """
-        Sum of all the disks' local used bytes. This specifically refers to the amount of bytes used on the disk without any encryption or compression.
+        Space used by data stored in disks within the storage pool (in bytes).
         """
         return pulumi.get(self, "used_bytes")
 
@@ -21065,7 +21279,7 @@ class StoragePoolResourceStatusResponse(dict):
     @pulumi.getter(name="usedReducedBytes")
     def used_reduced_bytes(self) -> str:
         """
-        Sum of all the disks' used reduced bytes. This is the actual storage capacity consumed by all of the disks.
+        Space used by compressed and deduped data stored in disks within the storage pool (in bytes).
         """
         return pulumi.get(self, "used_reduced_bytes")
 
@@ -21108,7 +21322,7 @@ class SubnetworkLogConfigResponse(dict):
         """
         The available logging options for this subnetwork.
         :param str aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         :param str filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param str metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
@@ -21133,7 +21347,7 @@ class SubnetworkLogConfigResponse(dict):
     @pulumi.getter
     def enable(self) -> bool:
         """
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         """
         return pulumi.get(self, "enable")
 

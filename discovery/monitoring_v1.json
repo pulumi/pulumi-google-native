@@ -806,7 +806,7 @@
       }
     }
   },
-  "revision": "20230429",
+  "revision": "20230507",
   "rootUrl": "https://monitoring.googleapis.com/",
   "schemas": {
     "Aggregation": {

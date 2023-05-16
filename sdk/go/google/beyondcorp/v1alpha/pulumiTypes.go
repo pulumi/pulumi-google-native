@@ -1688,6 +1688,526 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseArrayOutput
 	}).(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput)
 }
 
+// Message contains the authentication information to validate against the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo struct {
+	// Optional. Service Account for encrypting the JWT.
+	EncryptionSaEmail *string `pulumi:"encryptionSaEmail"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput
+}
+
+// Message contains the authentication information to validate against the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs struct {
+	// Optional. Service Account for encrypting the JWT.
+	EncryptionSaEmail pulumi.StringPtrInput `pulumi:"encryptionSaEmail"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput)
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput` via:
+//
+//	        GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput
+}
+
+type googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs
+
+func GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput {
+	return (*googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType)(v)
+}
+
+func (*googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput)
+}
+
+// Message contains the authentication information to validate against the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo {
+		return &v
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput)
+}
+
+// Optional. Service Account for encrypting the JWT.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *string {
+		return v.EncryptionSaEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo
+		return ret
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput)
+}
+
+// Optional. Service Account for encrypting the JWT.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput) EncryptionSaEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionSaEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message contains the authentication information to validate against the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse struct {
+	// Optional. Service Account for encrypting the JWT.
+	EncryptionSaEmail string `pulumi:"encryptionSaEmail"`
+}
+
+// Message contains the authentication information to validate against the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput {
+	return o
+}
+
+// Optional. Service Account for encrypting the JWT.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput) EncryptionSaEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponse) string {
+		return v.EncryptionSaEmail
+	}).(pulumi.StringOutput)
+}
+
+// Metadata associated with Tenant and is provided by the Partner.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata struct {
+	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	PartnerTenantId *string `pulumi:"partnerTenantId"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput
+}
+
+// Metadata associated with Tenant and is provided by the Partner.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs struct {
+	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	PartnerTenantId pulumi.StringPtrInput `pulumi:"partnerTenantId"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput)
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput).ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs, GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtr and GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput` via:
+//
+//	        GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput
+}
+
+type googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs
+
+func GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtr(v *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput {
+	return (*googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType)(v)
+}
+
+func (*googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrType) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput)
+}
+
+// Metadata associated with Tenant and is provided by the Partner.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return o.ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
+		return &v
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput)
+}
+
+// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput) PartnerTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string { return v.PartnerTenantId }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) Elem() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata
+		return ret
+	}).(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput)
+}
+
+// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput) PartnerTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartnerTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata associated with Tenant and is provided by the Partner.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse struct {
+	// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+	PartnerTenantId string `pulumi:"partnerTenantId"`
+}
+
+// Metadata associated with Tenant and is provided by the Partner.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput {
+	return o
+}
+
+// Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput) PartnerTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse) string {
+		return v.PartnerTenantId
+	}).(pulumi.StringOutput)
+}
+
+// Message contains the routing information to direct traffic to the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo struct {
+	// Proxy Auto-Configuration (PAC) URI.
+	PacUri string `pulumi:"pacUri"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput
+}
+
+// Message contains the routing information to direct traffic to the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs struct {
+	// Proxy Auto-Configuration (PAC) URI.
+	PacUri pulumi.StringInput `pulumi:"pacUri"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput)
+}
+
+// Message contains the routing information to direct traffic to the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput {
+	return o
+}
+
+// Proxy Auto-Configuration (PAC) URI.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput) PacUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo) string { return v.PacUri }).(pulumi.StringOutput)
+}
+
+// Message contains the routing information to direct traffic to the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse struct {
+	// Proxy Auto-Configuration (PAC) URI.
+	PacUri string `pulumi:"pacUri"`
+}
+
+// Message contains the routing information to direct traffic to the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput {
+	return o
+}
+
+// Proxy Auto-Configuration (PAC) URI.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput) PacUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponse) string { return v.PacUri }).(pulumi.StringOutput)
+}
+
+// Message contains the transport layer information to verify the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo struct {
+	// PEM encoded CA certificate associated with the proxy server certificate.
+	ServerCaCertPem string `pulumi:"serverCaCertPem"`
+	// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+	SslDecryptCaCertPem *string `pulumi:"sslDecryptCaCertPem"`
+}
+
+// GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput is an input type that accepts GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs and GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput values.
+// You can construct a concrete instance of `GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput` via:
+//
+//	GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{...}
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput interface {
+	pulumi.Input
+
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput
+	ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutputWithContext(context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput
+}
+
+// Message contains the transport layer information to verify the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs struct {
+	// PEM encoded CA certificate associated with the proxy server certificate.
+	ServerCaCertPem pulumi.StringInput `pulumi:"serverCaCertPem"`
+	// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+	SslDecryptCaCertPem pulumi.StringPtrInput `pulumi:"sslDecryptCaCertPem"`
+}
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo)(nil)).Elem()
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput {
+	return i.ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput)
+}
+
+// Message contains the transport layer information to verify the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput {
+	return o
+}
+
+// PEM encoded CA certificate associated with the proxy server certificate.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) ServerCaCertPem() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) string { return v.ServerCaCertPem }).(pulumi.StringOutput)
+}
+
+// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput) SslDecryptCaCertPem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo) *string { return v.SslDecryptCaCertPem }).(pulumi.StringPtrOutput)
+}
+
+// Message contains the transport layer information to verify the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse struct {
+	// PEM encoded CA certificate associated with the proxy server certificate.
+	ServerCaCertPem string `pulumi:"serverCaCertPem"`
+	// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+	SslDecryptCaCertPem string `pulumi:"sslDecryptCaCertPem"`
+}
+
+// Message contains the transport layer information to verify the proxy server.
+type GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput() GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) ToGoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutputWithContext(ctx context.Context) GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput {
+	return o
+}
+
+// PEM encoded CA certificate associated with the proxy server certificate.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) ServerCaCertPem() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse) string {
+		return v.ServerCaCertPem
+	}).(pulumi.StringOutput)
+}
+
+// Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+func (o GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput) SslDecryptCaCertPem() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponse) string {
+		return v.SslDecryptCaCertPem
+	}).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -3274,6 +3794,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayInput)(nil)).Elem(), GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoInput)(nil)).Elem(), GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigArrayInput)(nil)).Elem(), GoogleIamV1AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigInput)(nil)).Elem(), GoogleIamV1AuditLogConfigArgs{})
@@ -3322,6 +3848,16 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoOutput{})
+	pulumi.RegisterOutputType(GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})

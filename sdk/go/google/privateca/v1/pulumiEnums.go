@@ -1428,6 +1428,175 @@ func (in *publicKeyFormatPtr) ToPublicKeyFormatPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyFormatPtrOutput)
 }
 
+// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+type PublishingOptionsEncodingFormat string
+
+const (
+	// Not specified. By default, PEM format will be used.
+	PublishingOptionsEncodingFormatEncodingFormatUnspecified = PublishingOptionsEncodingFormat("ENCODING_FORMAT_UNSPECIFIED")
+	// The CertificateAuthority's CA certificate and CRLs will be published in PEM format.
+	PublishingOptionsEncodingFormatPem = PublishingOptionsEncodingFormat("PEM")
+	// The CertificateAuthority's CA certificate and CRLs will be published in DER format.
+	PublishingOptionsEncodingFormatDer = PublishingOptionsEncodingFormat("DER")
+)
+
+func (PublishingOptionsEncodingFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingOptionsEncodingFormat)(nil)).Elem()
+}
+
+func (e PublishingOptionsEncodingFormat) ToPublishingOptionsEncodingFormatOutput() PublishingOptionsEncodingFormatOutput {
+	return pulumi.ToOutput(e).(PublishingOptionsEncodingFormatOutput)
+}
+
+func (e PublishingOptionsEncodingFormat) ToPublishingOptionsEncodingFormatOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublishingOptionsEncodingFormatOutput)
+}
+
+func (e PublishingOptionsEncodingFormat) ToPublishingOptionsEncodingFormatPtrOutput() PublishingOptionsEncodingFormatPtrOutput {
+	return e.ToPublishingOptionsEncodingFormatPtrOutputWithContext(context.Background())
+}
+
+func (e PublishingOptionsEncodingFormat) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
+	return PublishingOptionsEncodingFormat(e).ToPublishingOptionsEncodingFormatOutputWithContext(ctx).ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx)
+}
+
+func (e PublishingOptionsEncodingFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublishingOptionsEncodingFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublishingOptionsEncodingFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublishingOptionsEncodingFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublishingOptionsEncodingFormatOutput struct{ *pulumi.OutputState }
+
+func (PublishingOptionsEncodingFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingOptionsEncodingFormat)(nil)).Elem()
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToPublishingOptionsEncodingFormatOutput() PublishingOptionsEncodingFormatOutput {
+	return o
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToPublishingOptionsEncodingFormatOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatOutput {
+	return o
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToPublishingOptionsEncodingFormatPtrOutput() PublishingOptionsEncodingFormatPtrOutput {
+	return o.ToPublishingOptionsEncodingFormatPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublishingOptionsEncodingFormat) *PublishingOptionsEncodingFormat {
+		return &v
+	}).(PublishingOptionsEncodingFormatPtrOutput)
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublishingOptionsEncodingFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOptionsEncodingFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublishingOptionsEncodingFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublishingOptionsEncodingFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (PublishingOptionsEncodingFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublishingOptionsEncodingFormat)(nil)).Elem()
+}
+
+func (o PublishingOptionsEncodingFormatPtrOutput) ToPublishingOptionsEncodingFormatPtrOutput() PublishingOptionsEncodingFormatPtrOutput {
+	return o
+}
+
+func (o PublishingOptionsEncodingFormatPtrOutput) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
+	return o
+}
+
+func (o PublishingOptionsEncodingFormatPtrOutput) Elem() PublishingOptionsEncodingFormatOutput {
+	return o.ApplyT(func(v *PublishingOptionsEncodingFormat) PublishingOptionsEncodingFormat {
+		if v != nil {
+			return *v
+		}
+		var ret PublishingOptionsEncodingFormat
+		return ret
+	}).(PublishingOptionsEncodingFormatOutput)
+}
+
+func (o PublishingOptionsEncodingFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOptionsEncodingFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublishingOptionsEncodingFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublishingOptionsEncodingFormatInput is an input type that accepts PublishingOptionsEncodingFormatArgs and PublishingOptionsEncodingFormatOutput values.
+// You can construct a concrete instance of `PublishingOptionsEncodingFormatInput` via:
+//
+//	PublishingOptionsEncodingFormatArgs{...}
+type PublishingOptionsEncodingFormatInput interface {
+	pulumi.Input
+
+	ToPublishingOptionsEncodingFormatOutput() PublishingOptionsEncodingFormatOutput
+	ToPublishingOptionsEncodingFormatOutputWithContext(context.Context) PublishingOptionsEncodingFormatOutput
+}
+
+var publishingOptionsEncodingFormatPtrType = reflect.TypeOf((**PublishingOptionsEncodingFormat)(nil)).Elem()
+
+type PublishingOptionsEncodingFormatPtrInput interface {
+	pulumi.Input
+
+	ToPublishingOptionsEncodingFormatPtrOutput() PublishingOptionsEncodingFormatPtrOutput
+	ToPublishingOptionsEncodingFormatPtrOutputWithContext(context.Context) PublishingOptionsEncodingFormatPtrOutput
+}
+
+type publishingOptionsEncodingFormatPtr string
+
+func PublishingOptionsEncodingFormatPtr(v string) PublishingOptionsEncodingFormatPtrInput {
+	return (*publishingOptionsEncodingFormatPtr)(&v)
+}
+
+func (*publishingOptionsEncodingFormatPtr) ElementType() reflect.Type {
+	return publishingOptionsEncodingFormatPtrType
+}
+
+func (in *publishingOptionsEncodingFormatPtr) ToPublishingOptionsEncodingFormatPtrOutput() PublishingOptionsEncodingFormatPtrOutput {
+	return pulumi.ToOutput(in).(PublishingOptionsEncodingFormatPtrOutput)
+}
+
+func (in *publishingOptionsEncodingFormatPtr) ToPublishingOptionsEncodingFormatPtrOutputWithContext(ctx context.Context) PublishingOptionsEncodingFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublishingOptionsEncodingFormatPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -1446,6 +1615,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecAlgorithmPtrInput)(nil)).Elem(), KeyVersionSpecAlgorithm("SIGN_HASH_ALGORITHM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyFormatInput)(nil)).Elem(), PublicKeyFormat("KEY_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyFormatPtrInput)(nil)).Elem(), PublicKeyFormat("KEY_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsEncodingFormatInput)(nil)).Elem(), PublishingOptionsEncodingFormat("ENCODING_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOptionsEncodingFormatPtrInput)(nil)).Elem(), PublishingOptionsEncodingFormat("ENCODING_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CaPoolTierOutput{})
@@ -1463,4 +1634,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyVersionSpecAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(PublicKeyFormatOutput{})
 	pulumi.RegisterOutputType(PublicKeyFormatPtrOutput{})
+	pulumi.RegisterOutputType(PublishingOptionsEncodingFormatOutput{})
+	pulumi.RegisterOutputType(PublishingOptionsEncodingFormatPtrOutput{})
 }

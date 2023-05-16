@@ -16621,6 +16621,173 @@ func (in *instanceGroupManagerListManagedInstancesResultsPtr) ToInstanceGroupMan
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
+// The unit of measure for the target size.
+type InstanceGroupManagerTargetSizeUnit string
+
+const (
+	// TargetSize is the target count of vCPUs of VMs.
+	InstanceGroupManagerTargetSizeUnitVcpu = InstanceGroupManagerTargetSizeUnit("VCPU")
+	// [Default] TargetSize is the target number of VMs.
+	InstanceGroupManagerTargetSizeUnitVm = InstanceGroupManagerTargetSizeUnit("VM")
+)
+
+func (InstanceGroupManagerTargetSizeUnit) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToInstanceGroupManagerTargetSizeUnitOutput() InstanceGroupManagerTargetSizeUnitOutput {
+	return pulumi.ToOutput(e).(InstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToInstanceGroupManagerTargetSizeUnitPtrOutput() InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return e.ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return InstanceGroupManagerTargetSizeUnit(e).ToInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx).ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx)
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupManagerTargetSizeUnit) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceGroupManagerTargetSizeUnitOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerTargetSizeUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToInstanceGroupManagerTargetSizeUnitOutput() InstanceGroupManagerTargetSizeUnitOutput {
+	return o
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitOutput {
+	return o
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToInstanceGroupManagerTargetSizeUnitPtrOutput() InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o.ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerTargetSizeUnit) *InstanceGroupManagerTargetSizeUnit {
+		return &v
+	}).(InstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerTargetSizeUnit) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerTargetSizeUnitOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupManagerTargetSizeUnit) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupManagerTargetSizeUnitPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupManagerTargetSizeUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToInstanceGroupManagerTargetSizeUnitPtrOutput() InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) Elem() InstanceGroupManagerTargetSizeUnitOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerTargetSizeUnit) InstanceGroupManagerTargetSizeUnit {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceGroupManagerTargetSizeUnit
+		return ret
+	}).(InstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupManagerTargetSizeUnitPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupManagerTargetSizeUnit) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceGroupManagerTargetSizeUnitInput is an input type that accepts InstanceGroupManagerTargetSizeUnitArgs and InstanceGroupManagerTargetSizeUnitOutput values.
+// You can construct a concrete instance of `InstanceGroupManagerTargetSizeUnitInput` via:
+//
+//	InstanceGroupManagerTargetSizeUnitArgs{...}
+type InstanceGroupManagerTargetSizeUnitInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerTargetSizeUnitOutput() InstanceGroupManagerTargetSizeUnitOutput
+	ToInstanceGroupManagerTargetSizeUnitOutputWithContext(context.Context) InstanceGroupManagerTargetSizeUnitOutput
+}
+
+var instanceGroupManagerTargetSizeUnitPtrType = reflect.TypeOf((**InstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+
+type InstanceGroupManagerTargetSizeUnitPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerTargetSizeUnitPtrOutput() InstanceGroupManagerTargetSizeUnitPtrOutput
+	ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput
+}
+
+type instanceGroupManagerTargetSizeUnitPtr string
+
+func InstanceGroupManagerTargetSizeUnitPtr(v string) InstanceGroupManagerTargetSizeUnitPtrInput {
+	return (*instanceGroupManagerTargetSizeUnitPtr)(&v)
+}
+
+func (*instanceGroupManagerTargetSizeUnitPtr) ElementType() reflect.Type {
+	return instanceGroupManagerTargetSizeUnitPtrType
+}
+
+func (in *instanceGroupManagerTargetSizeUnitPtr) ToInstanceGroupManagerTargetSizeUnitPtrOutput() InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (in *instanceGroupManagerTargetSizeUnitPtr) ToInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) InstanceGroupManagerTargetSizeUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
 // The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled.
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionType string
 
@@ -27155,6 +27322,173 @@ func (in *regionInstanceGroupManagerListManagedInstancesResultsPtr) ToRegionInst
 	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput)
 }
 
+// The unit of measure for the target size.
+type RegionInstanceGroupManagerTargetSizeUnit string
+
+const (
+	// TargetSize is the target count of vCPUs of VMs.
+	RegionInstanceGroupManagerTargetSizeUnitVcpu = RegionInstanceGroupManagerTargetSizeUnit("VCPU")
+	// [Default] TargetSize is the target number of VMs.
+	RegionInstanceGroupManagerTargetSizeUnitVm = RegionInstanceGroupManagerTargetSizeUnit("VM")
+)
+
+func (RegionInstanceGroupManagerTargetSizeUnit) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToRegionInstanceGroupManagerTargetSizeUnitOutput() RegionInstanceGroupManagerTargetSizeUnitOutput {
+	return pulumi.ToOutput(e).(RegionInstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToRegionInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionInstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutput() RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return e.ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Background())
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return RegionInstanceGroupManagerTargetSizeUnit(e).ToRegionInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx).ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx)
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionInstanceGroupManagerTargetSizeUnit) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionInstanceGroupManagerTargetSizeUnitOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerTargetSizeUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToRegionInstanceGroupManagerTargetSizeUnitOutput() RegionInstanceGroupManagerTargetSizeUnitOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToRegionInstanceGroupManagerTargetSizeUnitOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutput() RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o.ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceGroupManagerTargetSizeUnit) *RegionInstanceGroupManagerTargetSizeUnit {
+		return &v
+	}).(RegionInstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionInstanceGroupManagerTargetSizeUnit) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionInstanceGroupManagerTargetSizeUnit) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceGroupManagerTargetSizeUnitPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutput() RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) Elem() RegionInstanceGroupManagerTargetSizeUnitOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManagerTargetSizeUnit) RegionInstanceGroupManagerTargetSizeUnit {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceGroupManagerTargetSizeUnit
+		return ret
+	}).(RegionInstanceGroupManagerTargetSizeUnitOutput)
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerTargetSizeUnitPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionInstanceGroupManagerTargetSizeUnit) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionInstanceGroupManagerTargetSizeUnitInput is an input type that accepts RegionInstanceGroupManagerTargetSizeUnitArgs and RegionInstanceGroupManagerTargetSizeUnitOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerTargetSizeUnitInput` via:
+//
+//	RegionInstanceGroupManagerTargetSizeUnitArgs{...}
+type RegionInstanceGroupManagerTargetSizeUnitInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerTargetSizeUnitOutput() RegionInstanceGroupManagerTargetSizeUnitOutput
+	ToRegionInstanceGroupManagerTargetSizeUnitOutputWithContext(context.Context) RegionInstanceGroupManagerTargetSizeUnitOutput
+}
+
+var regionInstanceGroupManagerTargetSizeUnitPtrType = reflect.TypeOf((**RegionInstanceGroupManagerTargetSizeUnit)(nil)).Elem()
+
+type RegionInstanceGroupManagerTargetSizeUnitPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerTargetSizeUnitPtrOutput() RegionInstanceGroupManagerTargetSizeUnitPtrOutput
+	ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput
+}
+
+type regionInstanceGroupManagerTargetSizeUnitPtr string
+
+func RegionInstanceGroupManagerTargetSizeUnitPtr(v string) RegionInstanceGroupManagerTargetSizeUnitPtrInput {
+	return (*regionInstanceGroupManagerTargetSizeUnitPtr)(&v)
+}
+
+func (*regionInstanceGroupManagerTargetSizeUnitPtr) ElementType() reflect.Type {
+	return regionInstanceGroupManagerTargetSizeUnitPtrType
+}
+
+func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutput() RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return pulumi.ToOutput(in).(RegionInstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
+func (in *regionInstanceGroupManagerTargetSizeUnitPtr) ToRegionInstanceGroupManagerTargetSizeUnitPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerTargetSizeUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionInstanceGroupManagerTargetSizeUnitPtrOutput)
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
@@ -32493,7 +32827,7 @@ func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatNatIpAllocateOptionPtrOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 type RouterNatSourceSubnetworkIpRangesToNat string
 
 const (
@@ -38914,7 +39248,7 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAcc
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPrivateIpv6GoogleAccessPtrOutput)
 }
 
-// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 type SubnetworkPurpose string
 
 const (
@@ -39095,7 +39429,7 @@ func (in *subnetworkPurposePtr) ToSubnetworkPurposePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPurposePtrOutput)
 }
 
-// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 type SubnetworkRole string
 
 const (
@@ -41283,6 +41617,8 @@ const (
 	VpnGatewayStackTypeIpv4Ipv6 = VpnGatewayStackType("IPV4_IPV6")
 	// Enable VPN gateway with only IPv4 protocol.
 	VpnGatewayStackTypeIpv4Only = VpnGatewayStackType("IPV4_ONLY")
+	// Enable VPN gateway with only IPv6 protocol.
+	VpnGatewayStackTypeIpv6Only = VpnGatewayStackType("IPV6_ONLY")
 )
 
 func (VpnGatewayStackType) ElementType() reflect.Type {
@@ -41639,6 +41975,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrInput)(nil)).Elem(), InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), InstanceGroupManagerListManagedInstancesResults("PAGELESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("VCPU"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), InstanceGroupManagerTargetSizeUnit("VCPU"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyInstanceRedistributionType("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyMinimalActionInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyMinimalAction("NONE"))
@@ -41764,6 +42102,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerListManagedInstancesResultsPtrInput)(nil)).Elem(), RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("VCPU"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerTargetSizeUnitPtrInput)(nil)).Elem(), RegionInstanceGroupManagerTargetSizeUnit("VCPU"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupType("LOAD_BALANCING"))
@@ -42132,6 +42472,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerListManagedInstancesResultsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerTargetSizeUnitOutput{})
+	pulumi.RegisterOutputType(InstanceGroupManagerTargetSizeUnitPtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerUpdatePolicyMinimalActionOutput{})
@@ -42257,6 +42599,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerTargetSizeUnitOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerTargetSizeUnitPtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupTypeOutput{})

@@ -776,6 +776,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// This represents a Vulnerability Assessment.
         /// </summary>
         public static DiscoveryNoteAnalysisKind VulnerabilityAssessment { get; } = new DiscoveryNoteAnalysisKind("VULNERABILITY_ASSESSMENT");
+        /// <summary>
+        /// This represents an SBOM Reference.
+        /// </summary>
+        public static DiscoveryNoteAnalysisKind SbomReference { get; } = new DiscoveryNoteAnalysisKind("SBOM_REFERENCE");
 
         public static bool operator ==(DiscoveryNoteAnalysisKind left, DiscoveryNoteAnalysisKind right) => left.Equals(right);
         public static bool operator !=(DiscoveryNoteAnalysisKind left, DiscoveryNoteAnalysisKind right) => !left.Equals(right);

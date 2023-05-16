@@ -423,6 +423,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["api_version"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["health_description"] = None
+            __props__.__dict__["multislice_node"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["network_endpoints"] = None
             __props__.__dict__["queued_resource"] = None
@@ -464,6 +465,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["metadata"] = None
+        __props__.__dict__["multislice_node"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_endpoints"] = None
@@ -572,6 +574,14 @@ class Node(pulumi.CustomResource):
         Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="multisliceNode")
+    def multislice_node(self) -> pulumi.Output[bool]:
+        """
+        Whether the Node belongs to a Multislice group.
+        """
+        return pulumi.get(self, "multislice_node")
 
     @property
     @pulumi.getter

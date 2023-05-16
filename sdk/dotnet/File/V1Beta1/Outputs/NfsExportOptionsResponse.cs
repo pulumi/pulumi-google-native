@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpRanges;
         /// <summary>
+        /// The security flavors allowed for mount operations. The default is AUTH_SYS.
+        /// </summary>
+        public readonly ImmutableArray<string> SecurityFlavors;
+        /// <summary>
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         /// </summary>
         public readonly string SquashMode;
@@ -47,12 +51,15 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Outputs
 
             ImmutableArray<string> ipRanges,
 
+            ImmutableArray<string> securityFlavors,
+
             string squashMode)
         {
             AccessMode = accessMode;
             AnonGid = anonGid;
             AnonUid = anonUid;
             IpRanges = ipRanges;
+            SecurityFlavors = securityFlavors;
             SquashMode = squashMode;
         }
     }

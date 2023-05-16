@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public Input<string>? Password { get; set; }
 
         /// <summary>
+        /// The hostname of the vcenter.
+        /// </summary>
+        [Input("resolvedVcenterHost")]
+        public Input<string>? ResolvedVcenterHost { get; set; }
+
+        /// <summary>
         /// The thumbprint representing the certificate for the vcenter.
         /// </summary>
         [Input("thumbprint")]

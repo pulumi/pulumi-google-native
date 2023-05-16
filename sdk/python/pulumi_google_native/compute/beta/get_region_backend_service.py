@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, metadatas=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -92,6 +92,9 @@ class GetRegionBackendServiceResult:
         if max_stream_duration and not isinstance(max_stream_duration, dict):
             raise TypeError("Expected argument 'max_stream_duration' to be a dict")
         pulumi.set(__self__, "max_stream_duration", max_stream_duration)
+        if metadatas and not isinstance(metadatas, dict):
+            raise TypeError("Expected argument 'metadatas' to be a dict")
+        pulumi.set(__self__, "metadatas", metadatas)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -327,6 +330,14 @@ class GetRegionBackendServiceResult:
 
     @property
     @pulumi.getter
+    def metadatas(self) -> Mapping[str, str]:
+        """
+        Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+        """
+        return pulumi.get(self, "metadatas")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -465,6 +476,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             locality_lb_policy=self.locality_lb_policy,
             log_config=self.log_config,
             max_stream_duration=self.max_stream_duration,
+            metadatas=self.metadatas,
             name=self.name,
             network=self.network,
             outlier_detection=self.outlier_detection,
@@ -520,6 +532,7 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         locality_lb_policy=__ret__.locality_lb_policy,
         log_config=__ret__.log_config,
         max_stream_duration=__ret__.max_stream_duration,
+        metadatas=__ret__.metadatas,
         name=__ret__.name,
         network=__ret__.network,
         outlier_detection=__ret__.outlier_detection,

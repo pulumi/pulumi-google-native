@@ -21,6 +21,10 @@ __all__ = [
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs',
     'GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs',
+    'GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
@@ -402,6 +406,116 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs:
     @time.setter
     def time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfoArgs:
+    def __init__(__self__, *,
+                 encryption_sa_email: Optional[pulumi.Input[str]] = None):
+        """
+        Message contains the authentication information to validate against the proxy server.
+        :param pulumi.Input[str] encryption_sa_email: Optional. Service Account for encrypting the JWT.
+        """
+        if encryption_sa_email is not None:
+            pulumi.set(__self__, "encryption_sa_email", encryption_sa_email)
+
+    @property
+    @pulumi.getter(name="encryptionSaEmail")
+    def encryption_sa_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Service Account for encrypting the JWT.
+        """
+        return pulumi.get(self, "encryption_sa_email")
+
+    @encryption_sa_email.setter
+    def encryption_sa_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_sa_email", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataArgs:
+    def __init__(__self__, *,
+                 partner_tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Metadata associated with Tenant and is provided by the Partner.
+        :param pulumi.Input[str] partner_tenant_id: Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        """
+        if partner_tenant_id is not None:
+            pulumi.set(__self__, "partner_tenant_id", partner_tenant_id)
+
+    @property
+    @pulumi.getter(name="partnerTenantId")
+    def partner_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. UUID used by the Partner to refer to the Tenant in their internal systems.
+        """
+        return pulumi.get(self, "partner_tenant_id")
+
+    @partner_tenant_id.setter
+    def partner_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partner_tenant_id", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfoArgs:
+    def __init__(__self__, *,
+                 pac_uri: pulumi.Input[str]):
+        """
+        Message contains the routing information to direct traffic to the proxy server.
+        :param pulumi.Input[str] pac_uri: Proxy Auto-Configuration (PAC) URI.
+        """
+        pulumi.set(__self__, "pac_uri", pac_uri)
+
+    @property
+    @pulumi.getter(name="pacUri")
+    def pac_uri(self) -> pulumi.Input[str]:
+        """
+        Proxy Auto-Configuration (PAC) URI.
+        """
+        return pulumi.get(self, "pac_uri")
+
+    @pac_uri.setter
+    def pac_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pac_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfoArgs:
+    def __init__(__self__, *,
+                 server_ca_cert_pem: pulumi.Input[str],
+                 ssl_decrypt_ca_cert_pem: Optional[pulumi.Input[str]] = None):
+        """
+        Message contains the transport layer information to verify the proxy server.
+        :param pulumi.Input[str] server_ca_cert_pem: PEM encoded CA certificate associated with the proxy server certificate.
+        :param pulumi.Input[str] ssl_decrypt_ca_cert_pem: Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+        """
+        pulumi.set(__self__, "server_ca_cert_pem", server_ca_cert_pem)
+        if ssl_decrypt_ca_cert_pem is not None:
+            pulumi.set(__self__, "ssl_decrypt_ca_cert_pem", ssl_decrypt_ca_cert_pem)
+
+    @property
+    @pulumi.getter(name="serverCaCertPem")
+    def server_ca_cert_pem(self) -> pulumi.Input[str]:
+        """
+        PEM encoded CA certificate associated with the proxy server certificate.
+        """
+        return pulumi.get(self, "server_ca_cert_pem")
+
+    @server_ca_cert_pem.setter
+    def server_ca_cert_pem(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_ca_cert_pem", value)
+
+    @property
+    @pulumi.getter(name="sslDecryptCaCertPem")
+    def ssl_decrypt_ca_cert_pem(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
+        """
+        return pulumi.get(self, "ssl_decrypt_ca_cert_pem")
+
+    @ssl_decrypt_ca_cert_pem.setter
+    def ssl_decrypt_ca_cert_pem(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_decrypt_ca_cert_pem", value)
 
 
 @pulumi.input_type

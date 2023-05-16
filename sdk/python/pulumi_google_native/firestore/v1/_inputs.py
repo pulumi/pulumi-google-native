@@ -11,8 +11,19 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleFirestoreAdminV1DailyRecurrenceArgs',
     'GoogleFirestoreAdminV1IndexFieldArgs',
+    'GoogleFirestoreAdminV1WeeklyRecurrenceArgs',
 ]
+
+@pulumi.input_type
+class GoogleFirestoreAdminV1DailyRecurrenceArgs:
+    def __init__(__self__):
+        """
+        Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+        """
+        pass
+
 
 @pulumi.input_type
 class GoogleFirestoreAdminV1IndexFieldArgs:
@@ -68,5 +79,29 @@ class GoogleFirestoreAdminV1IndexFieldArgs:
     @order.setter
     def order(self, value: Optional[pulumi.Input['GoogleFirestoreAdminV1IndexFieldOrder']]):
         pulumi.set(self, "order", value)
+
+
+@pulumi.input_type
+class GoogleFirestoreAdminV1WeeklyRecurrenceArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input['GoogleFirestoreAdminV1WeeklyRecurrenceDay']] = None):
+        """
+        Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
+        :param pulumi.Input['GoogleFirestoreAdminV1WeeklyRecurrenceDay'] day: The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input['GoogleFirestoreAdminV1WeeklyRecurrenceDay']]:
+        """
+        The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input['GoogleFirestoreAdminV1WeeklyRecurrenceDay']]):
+        pulumi.set(self, "day", value)
 
 

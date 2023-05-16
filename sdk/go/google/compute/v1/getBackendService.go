@@ -72,6 +72,8 @@ type LookupBackendServiceResult struct {
 	LogConfig BackendServiceLogConfigResponse `pulumi:"logConfig"`
 	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponse `pulumi:"maxStreamDuration"`
+	// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+	Metadatas map[string]string `pulumi:"metadatas"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -259,6 +261,11 @@ func (o LookupBackendServiceResultOutput) LogConfig() BackendServiceLogConfigRes
 // Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 func (o LookupBackendServiceResultOutput) MaxStreamDuration() DurationResponseOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) DurationResponse { return v.MaxStreamDuration }).(DurationResponseOutput)
+}
+
+// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+func (o LookupBackendServiceResultOutput) Metadatas() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) map[string]string { return v.Metadatas }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

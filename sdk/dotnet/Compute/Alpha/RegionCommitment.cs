@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Source commitment to be splitted into a new commitment.
+        /// Source commitment to be split into a new commitment.
         /// </summary>
         [Output("splitSourceCommitment")]
         public Output<string> SplitSourceCommitment { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Source commitment to be splitted into a new commitment.
+        /// Source commitment to be split into a new commitment.
         /// </summary>
         [Input("splitSourceCommitment")]
         public Input<string>? SplitSourceCommitment { get; set; }

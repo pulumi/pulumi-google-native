@@ -110,6 +110,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public Output<string> ResourceUri { get; private set; } = null!;
 
         /// <summary>
+        /// Describes a specific SBOM reference occurrences.
+        /// </summary>
+        [Output("sbomReference")]
+        public Output<Outputs.SBOMReferenceOccurrenceResponse> SbomReference { get; private set; } = null!;
+
+        /// <summary>
         /// The time this occurrence was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -250,6 +256,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         [Input("resourceUri", required: true)]
         public Input<string> ResourceUri { get; set; } = null!;
+
+        /// <summary>
+        /// Describes a specific SBOM reference occurrences.
+        /// </summary>
+        [Input("sbomReference")]
+        public Input<Inputs.SBOMReferenceOccurrenceArgs>? SbomReference { get; set; }
 
         /// <summary>
         /// Describes an available package upgrade on the linked resource.

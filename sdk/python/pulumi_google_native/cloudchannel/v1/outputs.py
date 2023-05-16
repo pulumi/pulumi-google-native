@@ -643,7 +643,7 @@ class GoogleCloudChannelV1ProvisionedServiceResponse(dict):
         """
         Service provisioned for an entitlement.
         :param str product_id: The product pertaining to the provisioning resource as specified in the Offer.
-        :param str provisioning_id: Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud Platform, this is the Billing Account ID of the billing subaccount."
+        :param str provisioning_id: Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
         :param str sku_id: The SKU pertaining to the provisioning resource as specified in the Offer.
         """
         pulumi.set(__self__, "product_id", product_id)
@@ -662,7 +662,7 @@ class GoogleCloudChannelV1ProvisionedServiceResponse(dict):
     @pulumi.getter(name="provisioningId")
     def provisioning_id(self) -> str:
         """
-        Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud Platform, this is the Billing Account ID of the billing subaccount."
+        Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
         """
         return pulumi.get(self, "provisioning_id")
 

@@ -595,6 +595,8 @@ type AccessConfigResponse struct {
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+	// The resource URL for the security policy associated with this access config.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr bool `pulumi:"setPublicPtr"`
 	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
@@ -649,6 +651,11 @@ func (o AccessConfigResponseOutput) NetworkTier() pulumi.StringOutput {
 // The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
 func (o AccessConfigResponseOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+// The resource URL for the security policy associated with this access config.
+func (o AccessConfigResponseOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessConfigResponse) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 // Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
@@ -14005,12 +14012,16 @@ type FirewallPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags []FirewallPolicyRuleSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 // FirewallPolicyRuleInput is an input type that accepts FirewallPolicyRuleArgs and FirewallPolicyRuleOutput values.
@@ -14042,12 +14053,16 @@ type FirewallPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup pulumi.StringPtrInput `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags FirewallPolicyRuleSecureTagArrayInput `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput `pulumi:"tlsInspect"`
 }
 
 func (FirewallPolicyRuleArgs) ElementType() reflect.Type {
@@ -14142,6 +14157,11 @@ func (o FirewallPolicyRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
+}
+
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
@@ -14155,6 +14175,11 @@ func (o FirewallPolicyRuleOutput) TargetSecureTags() FirewallPolicyRuleSecureTag
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o FirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+func (o FirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *bool { return v.TlsInspect }).(pulumi.BoolPtrOutput)
 }
 
 type FirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }
@@ -14812,12 +14837,16 @@ type FirewallPolicyRuleResponse struct {
 	RuleName string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	SecurityProfileGroup string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags []FirewallPolicyRuleSecureTagResponse `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect bool `pulumi:"tlsInspect"`
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
@@ -14885,6 +14914,11 @@ func (o FirewallPolicyRuleResponseOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+func (o FirewallPolicyRuleResponseOutput) SecurityProfileGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.SecurityProfileGroup }).(pulumi.StringOutput)
+}
+
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleResponseOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
@@ -14898,6 +14932,11 @@ func (o FirewallPolicyRuleResponseOutput) TargetSecureTags() FirewallPolicyRuleS
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o FirewallPolicyRuleResponseOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+func (o FirewallPolicyRuleResponseOutput) TlsInspect() pulumi.BoolOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleResponse) bool { return v.TlsInspect }).(pulumi.BoolOutput)
 }
 
 type FirewallPolicyRuleResponseArrayOutput struct{ *pulumi.OutputState }
@@ -23243,6 +23282,86 @@ func (o Int64RangeMatchResponseOutput) RangeEnd() pulumi.StringOutput {
 // The start of the range (inclusive) in signed long integer format.
 func (o Int64RangeMatchResponseOutput) RangeStart() pulumi.StringOutput {
 	return o.ApplyT(func(v Int64RangeMatchResponse) string { return v.RangeStart }).(pulumi.StringOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) ToInterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput) Index(i pulumi.IntInput) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return vs[0].([]InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse)[vs[1].(int)]
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput)
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponse struct {
+	// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+	BgpMd5 string `pulumi:"bgpMd5"`
+	// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+	BgpPeerAsnRanges []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse `pulumi:"bgpPeerAsnRanges"`
+}
+
+type InterconnectAttachmentConfigurationConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (InterconnectAttachmentConfigurationConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentConfigurationConstraintsResponse)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutput() InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) ToInterconnectAttachmentConfigurationConstraintsResponseOutputWithContext(ctx context.Context) InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o
+}
+
+// Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpMd5() pulumi.StringOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) string { return v.BgpMd5 }).(pulumi.StringOutput)
+}
+
+// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+func (o InterconnectAttachmentConfigurationConstraintsResponseOutput) BgpPeerAsnRanges() InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput {
+	return o.ApplyT(func(v InterconnectAttachmentConfigurationConstraintsResponse) []InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
+		return v.BgpPeerAsnRanges
+	}).(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput)
 }
 
 // Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
@@ -36804,7 +36923,7 @@ type RouterNat struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRule `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat *RouterNatSourceSubnetworkIpRangesToNat `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNat `pulumi:"subnetworks"`
@@ -36856,7 +36975,7 @@ type RouterNatArgs struct {
 	NatIps pulumi.StringArrayInput `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules RouterNatRuleArrayInput `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat RouterNatSourceSubnetworkIpRangesToNatPtrInput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks RouterNatSubnetworkToNatArrayInput `pulumi:"subnetworks"`
@@ -36986,7 +37105,7 @@ func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
 	return o.ApplyT(func(v RouterNat) []RouterNatRule { return v.Rules }).(RouterNatRuleArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatOutput) SourceSubnetworkIpRangesToNat() RouterNatSourceSubnetworkIpRangesToNatPtrOutput {
 	return o.ApplyT(func(v RouterNat) *RouterNatSourceSubnetworkIpRangesToNat { return v.SourceSubnetworkIpRangesToNat }).(RouterNatSourceSubnetworkIpRangesToNatPtrOutput)
 }
@@ -37255,7 +37374,7 @@ type RouterNatResponse struct {
 	NatIps []string `pulumi:"natIps"`
 	// A list of rules associated with this NAT.
 	Rules []RouterNatRuleResponse `pulumi:"rules"`
-	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+	// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
 	Subnetworks []RouterNatSubnetworkToNatResponse `pulumi:"subnetworks"`
@@ -37348,7 +37467,7 @@ func (o RouterNatResponseOutput) Rules() RouterNatRuleResponseArrayOutput {
 	return o.ApplyT(func(v RouterNatResponse) []RouterNatRuleResponse { return v.Rules }).(RouterNatRuleResponseArrayOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 func (o RouterNatResponseOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterNatResponse) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
 }
@@ -40983,6 +41102,8 @@ type SecurityPolicyRule struct {
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch *SecurityPolicyRuleNetworkMatcher `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig *SecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
@@ -41026,6 +41147,8 @@ type SecurityPolicyRuleArgs struct {
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch SecurityPolicyRuleNetworkMatcherPtrInput `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigPtrInput `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
@@ -41124,6 +41247,11 @@ func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderAct
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 func (o SecurityPolicyRuleOutput) Match() SecurityPolicyRuleMatcherPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleMatcher { return v.Match }).(SecurityPolicyRuleMatcherPtrOutput)
+}
+
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+func (o SecurityPolicyRuleOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleNetworkMatcher { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherPtrOutput)
 }
 
 // Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -42098,6 +42226,515 @@ func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcher struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts []string `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns []int `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts []string `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch `pulumi:"userDefinedFields"`
+}
+
+// SecurityPolicyRuleNetworkMatcherInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs and SecurityPolicyRuleNetworkMatcherOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherArgs{...}
+type SecurityPolicyRuleNetworkMatcherInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput
+	ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherOutput
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherArgs struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts pulumi.StringArrayInput `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns pulumi.IntArrayInput `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts pulumi.StringArrayInput `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes pulumi.StringArrayInput `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput `pulumi:"userDefinedFields"`
+}
+
+func (SecurityPolicyRuleNetworkMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput)
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherArgs) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherOutput).ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleNetworkMatcherPtrInput is an input type that accepts SecurityPolicyRuleNetworkMatcherArgs, SecurityPolicyRuleNetworkMatcherPtr and SecurityPolicyRuleNetworkMatcherPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherPtrInput` via:
+//
+//	        SecurityPolicyRuleNetworkMatcherArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleNetworkMatcherPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput
+	ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput
+}
+
+type securityPolicyRuleNetworkMatcherPtrType SecurityPolicyRuleNetworkMatcherArgs
+
+func SecurityPolicyRuleNetworkMatcherPtr(v *SecurityPolicyRuleNetworkMatcherArgs) SecurityPolicyRuleNetworkMatcherPtrInput {
+	return (*securityPolicyRuleNetworkMatcherPtrType)(v)
+}
+
+func (*securityPolicyRuleNetworkMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleNetworkMatcherPtrType) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutput() SecurityPolicyRuleNetworkMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleNetworkMatcherOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleNetworkMatcher) *SecurityPolicyRuleNetworkMatcher {
+		return &v
+	}).(SecurityPolicyRuleNetworkMatcherPtrOutput)
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleNetworkMatcher)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutput() SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) ToSecurityPolicyRuleNetworkMatcherPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) Elem() SecurityPolicyRuleNetworkMatcherOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) SecurityPolicyRuleNetworkMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleNetworkMatcher
+		return ret
+	}).(SecurityPolicyRuleNetworkMatcherOutput)
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []int {
+		if v == nil {
+			return nil
+		}
+		return v.SrcAsns
+	}).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcRegionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherPtrOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleNetworkMatcher) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherResponse struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts []string `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns []int `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts []string `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse `pulumi:"userDefinedFields"`
+}
+
+// Represents a match condition that incoming network traffic is evaluated against.
+type SecurityPolicyRuleNetworkMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutput() SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) ToSecurityPolicyRuleNetworkMatcherResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o SecurityPolicyRuleNetworkMatcherResponseOutput) UserDefinedFields() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherResponse) []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
+		return v.UserDefinedFields
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch struct {
+	// Name of the user-defined field, as given in the definition.
+	Name *string `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values []string `pulumi:"values"`
+}
+
+// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...}
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs struct {
+	// Name of the user-defined field, as given in the definition.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
+}
+
+// SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput is an input type that accepts SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray and SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput` via:
+//
+//	SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{ SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{...} }
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
+	ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray []SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return i.ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return o
+}
+
+// Name of the user-defined field, as given in the definition.
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
+		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch)[vs[1].(int)]
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse struct {
+	// Name of the user-defined field, as given in the definition.
+	Name string `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values []string `pulumi:"values"`
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return o
+}
+
+// Name of the user-defined field, as given in the definition.
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput() SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) ToSecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse {
+		return vs[0].([]SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput)
 }
 
 type SecurityPolicyRulePreconfiguredWafConfig struct {
@@ -43597,6 +44234,8 @@ type SecurityPolicyRuleResponse struct {
 	Kind string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherResponse `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch SecurityPolicyRuleNetworkMatcherResponse `pulumi:"networkMatch"`
 	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigResponse `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
@@ -43667,6 +44306,11 @@ func (o SecurityPolicyRuleResponseOutput) Match() SecurityPolicyRuleMatcherRespo
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleMatcherResponse { return v.Match }).(SecurityPolicyRuleMatcherResponseOutput)
 }
 
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+func (o SecurityPolicyRuleResponseOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleNetworkMatcherResponse { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherResponseOutput)
+}
+
 // Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 func (o SecurityPolicyRuleResponseOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRulePreconfiguredWafConfigResponse {
@@ -43734,6 +44378,211 @@ func (o SecurityPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Security
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleResponse {
 		return vs[0].([]SecurityPolicyRuleResponse)[vs[1].(int)]
 	}).(SecurityPolicyRuleResponseOutput)
+}
+
+type SecurityPolicyUserDefinedField struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base *SecurityPolicyUserDefinedFieldBase `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask *string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name *string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset *int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size *int `pulumi:"size"`
+}
+
+// SecurityPolicyUserDefinedFieldInput is an input type that accepts SecurityPolicyUserDefinedFieldArgs and SecurityPolicyUserDefinedFieldOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldInput` via:
+//
+//	SecurityPolicyUserDefinedFieldArgs{...}
+type SecurityPolicyUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput
+	ToSecurityPolicyUserDefinedFieldOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldOutput
+}
+
+type SecurityPolicyUserDefinedFieldArgs struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base SecurityPolicyUserDefinedFieldBasePtrInput `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (SecurityPolicyUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i SecurityPolicyUserDefinedFieldArgs) ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput {
+	return i.ToSecurityPolicyUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyUserDefinedFieldArgs) ToSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyUserDefinedFieldOutput)
+}
+
+// SecurityPolicyUserDefinedFieldArrayInput is an input type that accepts SecurityPolicyUserDefinedFieldArray and SecurityPolicyUserDefinedFieldArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldArrayInput` via:
+//
+//	SecurityPolicyUserDefinedFieldArray{ SecurityPolicyUserDefinedFieldArgs{...} }
+type SecurityPolicyUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput
+	ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldArrayOutput
+}
+
+type SecurityPolicyUserDefinedFieldArray []SecurityPolicyUserDefinedFieldInput
+
+func (SecurityPolicyUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i SecurityPolicyUserDefinedFieldArray) ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput {
+	return i.ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyUserDefinedFieldArray) ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyUserDefinedFieldArrayOutput)
+}
+
+type SecurityPolicyUserDefinedFieldOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldOutput) ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldOutput) ToSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldOutput) Base() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *SecurityPolicyUserDefinedFieldBase { return v.Base }).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedField {
+		return vs[0].([]SecurityPolicyUserDefinedField)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponse struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base string `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size int `pulumi:"size"`
+}
+
+type SecurityPolicyUserDefinedFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutput() SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Base() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Base }).(pulumi.StringOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Mask() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Mask }).(pulumi.StringOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutput() SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedFieldResponse {
+		return vs[0].([]SecurityPolicyUserDefinedFieldResponse)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldResponseOutput)
 }
 
 // The authentication and authorization settings for a BackendService.
@@ -46833,7 +47682,7 @@ func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedSt
 type SubnetworkLogConfig struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval *SubnetworkLogConfigAggregationInterval `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable *bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr *string `pulumi:"filterExpr"`
@@ -46860,7 +47709,7 @@ type SubnetworkLogConfigInput interface {
 type SubnetworkLogConfigArgs struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval SubnetworkLogConfigAggregationIntervalPtrInput `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
@@ -46955,7 +47804,7 @@ func (o SubnetworkLogConfigOutput) AggregationInterval() SubnetworkLogConfigAggr
 	return o.ApplyT(func(v SubnetworkLogConfig) *SubnetworkLogConfigAggregationInterval { return v.AggregationInterval }).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubnetworkLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -47014,7 +47863,7 @@ func (o SubnetworkLogConfigPtrOutput) AggregationInterval() SubnetworkLogConfigA
 	}).(SubnetworkLogConfigAggregationIntervalPtrOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubnetworkLogConfig) *bool {
 		if v == nil {
@@ -47068,7 +47917,7 @@ func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput 
 type SubnetworkLogConfigResponse struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
 	AggregationInterval string `pulumi:"aggregationInterval"`
-	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 	Enable bool `pulumi:"enable"`
 	// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
 	FilterExpr string `pulumi:"filterExpr"`
@@ -47100,7 +47949,7 @@ func (o SubnetworkLogConfigResponseOutput) AggregationInterval() pulumi.StringOu
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) string { return v.AggregationInterval }).(pulumi.StringOutput)
 }
 
-// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 func (o SubnetworkLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v SubnetworkLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
 }
@@ -49308,6 +50157,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
@@ -49322,6 +50175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldArrayInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingInput)(nil)).Elem(), ServerBindingArgs{})
@@ -49717,6 +50572,9 @@ func init() {
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(InterconnectAttachmentConfigurationConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InterconnectAttachmentPartnerMetadataResponseOutput{})
@@ -50028,6 +50886,13 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
@@ -50054,6 +50919,10 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})

@@ -452,6 +452,7 @@ class BareMetalAdminPortConfigArgs:
                  control_plane_load_balancer_port: Optional[pulumi.Input[int]] = None):
         """
         BareMetalAdminPortConfig is the specification of load balancer ports.
+        :param pulumi.Input[int] control_plane_load_balancer_port: The port that control plane hosted load balancers will listen on.
         """
         if control_plane_load_balancer_port is not None:
             pulumi.set(__self__, "control_plane_load_balancer_port", control_plane_load_balancer_port)
@@ -459,6 +460,9 @@ class BareMetalAdminPortConfigArgs:
     @property
     @pulumi.getter(name="controlPlaneLoadBalancerPort")
     def control_plane_load_balancer_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port that control plane hosted load balancers will listen on.
+        """
         return pulumi.get(self, "control_plane_load_balancer_port")
 
     @control_plane_load_balancer_port.setter
@@ -2013,7 +2017,7 @@ class VmwareAAGConfigArgs:
     def __init__(__self__, *,
                  aag_config_disabled: Optional[pulumi.Input[bool]] = None):
         """
-        Specifies anti affinity group config for the VMware user cluster. 
+        Specifies anti affinity group config for the VMware user cluster.
         :param pulumi.Input[bool] aag_config_disabled: Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
         """
         if aag_config_disabled is not None:
@@ -2614,6 +2618,7 @@ class VmwareManualLbConfigArgs:
                  ingress_https_node_port: Optional[pulumi.Input[int]] = None,
                  konnectivity_server_node_port: Optional[pulumi.Input[int]] = None):
         """
+        Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
         :param pulumi.Input[int] control_plane_node_port: NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
         :param pulumi.Input[int] ingress_http_node_port: NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527).
         :param pulumi.Input[int] ingress_https_node_port: NodePort for ingress service's https. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 30139).

@@ -548,7 +548,7 @@ class GoogleCloudRetailV2alphaLocalInventoryResponse(dict):
 @pulumi.output_type
 class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigResponse(dict):
     """
-    More configs of the frequently-bought-together model type.
+    Additional configs for the frequently-bought-together model type.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -570,8 +570,8 @@ class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigRespons
     def __init__(__self__, *,
                  context_products_type: str):
         """
-        More configs of the frequently-bought-together model type.
-        :param str context_products_type: Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        Additional configs for the frequently-bought-together model type.
+        :param str context_products_type: Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         """
         pulumi.set(__self__, "context_products_type", context_products_type)
 
@@ -579,7 +579,7 @@ class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfigRespons
     @pulumi.getter(name="contextProductsType")
     def context_products_type(self) -> str:
         """
-        Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         """
         return pulumi.get(self, "context_products_type")
 

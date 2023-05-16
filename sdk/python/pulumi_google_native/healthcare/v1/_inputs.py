@@ -378,13 +378,15 @@ class DeidentifyConfigArgs:
                  dicom: Optional[pulumi.Input['DicomConfigArgs']] = None,
                  fhir: Optional[pulumi.Input['FhirConfigArgs']] = None,
                  image: Optional[pulumi.Input['ImageConfigArgs']] = None,
-                 text: Optional[pulumi.Input['TextConfigArgs']] = None):
+                 text: Optional[pulumi.Input['TextConfigArgs']] = None,
+                 use_regional_data_processing: Optional[pulumi.Input[bool]] = None):
         """
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param pulumi.Input['DicomConfigArgs'] dicom: Configures de-id of application/DICOM content.
         :param pulumi.Input['FhirConfigArgs'] fhir: Configures de-id of application/FHIR content.
         :param pulumi.Input['ImageConfigArgs'] image: Configures de-identification of image pixels wherever they are found in the source_dataset.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
+        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
         """
         if dicom is not None:
             pulumi.set(__self__, "dicom", dicom)
@@ -394,6 +396,8 @@ class DeidentifyConfigArgs:
             pulumi.set(__self__, "image", image)
         if text is not None:
             pulumi.set(__self__, "text", text)
+        if use_regional_data_processing is not None:
+            pulumi.set(__self__, "use_regional_data_processing", use_regional_data_processing)
 
     @property
     @pulumi.getter
@@ -442,6 +446,18 @@ class DeidentifyConfigArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['TextConfigArgs']]):
         pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter(name="useRegionalDataProcessing")
+    def use_regional_data_processing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        """
+        return pulumi.get(self, "use_regional_data_processing")
+
+    @use_regional_data_processing.setter
+    def use_regional_data_processing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_regional_data_processing", value)
 
 
 @pulumi.input_type
@@ -1741,15 +1757,47 @@ class TagFilterListArgs:
 @pulumi.input_type
 class TextConfigArgs:
     def __init__(__self__, *,
+                 additional_transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None,
+                 exclude_info_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] additional_transformations: Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_info_types: InfoTypes to skip transforming, overriding `additional_transformations`.
         :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        if additional_transformations is not None:
+            pulumi.set(__self__, "additional_transformations", additional_transformations)
+        if exclude_info_types is not None:
+            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         if transformations is not None:
             warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
             pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
         if transformations is not None:
             pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter(name="additionalTransformations")
+    def additional_transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]:
+        """
+        Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        """
+        return pulumi.get(self, "additional_transformations")
+
+    @additional_transformations.setter
+    def additional_transformations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]):
+        pulumi.set(self, "additional_transformations", value)
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        InfoTypes to skip transforming, overriding `additional_transformations`.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @exclude_info_types.setter
+    def exclude_info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_info_types", value)
 
     @property
     @pulumi.getter

@@ -13,6 +13,7 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse',
+    'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse',
@@ -88,6 +89,71 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
         Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         """
         return pulumi.get(self, "support_non_google_app_store_distribution")
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse(dict):
+    """
+    Contains fields that are required to perform Apple-specific integrity checks.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "teamId":
+            suggest = "team_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_id: str,
+                 private_key: str,
+                 team_id: str):
+        """
+        Contains fields that are required to perform Apple-specific integrity checks.
+        :param str key_id: The Apple developer key ID (10-character string).
+        :param str private_key: Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        :param str team_id: The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "team_id", team_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        """
+        The Apple developer key ID (10-character string).
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        """
+        Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> str:
+        """
+        The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+        """
+        return pulumi.get(self, "team_id")
 
 
 @pulumi.output_type
@@ -276,6 +342,8 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
             suggest = "allow_all_bundle_ids"
         elif key == "allowedBundleIds":
             suggest = "allowed_bundle_ids"
+        elif key == "appleDeveloperId":
+            suggest = "apple_developer_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -290,14 +358,17 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
 
     def __init__(__self__, *,
                  allow_all_bundle_ids: bool,
-                 allowed_bundle_ids: Sequence[str]):
+                 allowed_bundle_ids: Sequence[str],
+                 apple_developer_id: 'outputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse'):
         """
         Settings specific to keys that can be used by iOS apps.
         :param bool allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
         :param Sequence[str] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        :param 'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse' apple_developer_id: Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
         pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+        pulumi.set(__self__, "apple_developer_id", apple_developer_id)
 
     @property
     @pulumi.getter(name="allowAllBundleIds")
@@ -314,6 +385,14 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse(dict):
         iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
         return pulumi.get(self, "allowed_bundle_ids")
+
+    @property
+    @pulumi.getter(name="appleDeveloperId")
+    def apple_developer_id(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse':
+        """
+        Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        """
+        return pulumi.get(self, "apple_developer_id")
 
 
 @pulumi.output_type

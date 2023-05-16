@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly Outputs.ManualShardingResponse ManualSharding;
         /// <summary>
+        /// Shards test based on previous test case timing records.
+        /// </summary>
+        public readonly Outputs.SmartShardingResponse SmartSharding;
+        /// <summary>
         /// Uniformly shards test cases given a total number of shards.
         /// </summary>
         public readonly Outputs.UniformShardingResponse UniformSharding;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         private ShardingOptionResponse(
             Outputs.ManualShardingResponse manualSharding,
 
+            Outputs.SmartShardingResponse smartSharding,
+
             Outputs.UniformShardingResponse uniformSharding)
         {
             ManualSharding = manualSharding;
+            SmartSharding = smartSharding;
             UniformSharding = uniformSharding;
         }
     }

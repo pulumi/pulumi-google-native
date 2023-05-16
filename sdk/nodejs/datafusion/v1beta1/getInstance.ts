@@ -112,6 +112,10 @@ export interface GetInstanceResult {
      */
     readonly privateInstance: boolean;
     /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * Deprecated. Use tenant_project_id instead to extract the tenant project ID.
      *
      * @deprecated Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.

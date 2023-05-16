@@ -32,6 +32,7 @@ __all__ = [
     'PipelineDescriptionResponse',
     'PubSubIODetailsResponse',
     'RuntimeMetadataResponse',
+    'RuntimeUpdatableParamsResponse',
     'SDKInfoResponse',
     'SdkHarnessContainerImageResponse',
     'SdkVersionResponse',
@@ -1603,6 +1604,58 @@ class RuntimeMetadataResponse(dict):
         SDK Info for the template.
         """
         return pulumi.get(self, "sdk_info")
+
+
+@pulumi.output_type
+class RuntimeUpdatableParamsResponse(dict):
+    """
+    Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNumWorkers":
+            suggest = "max_num_workers"
+        elif key == "minNumWorkers":
+            suggest = "min_num_workers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeUpdatableParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeUpdatableParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeUpdatableParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_num_workers: int,
+                 min_num_workers: int):
+        """
+        Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+        :param int max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+        :param int min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        """
+        pulumi.set(__self__, "max_num_workers", max_num_workers)
+        pulumi.set(__self__, "min_num_workers", min_num_workers)
+
+    @property
+    @pulumi.getter(name="maxNumWorkers")
+    def max_num_workers(self) -> int:
+        """
+        The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+        """
+        return pulumi.get(self, "max_num_workers")
+
+    @property
+    @pulumi.getter(name="minNumWorkers")
+    def min_num_workers(self) -> int:
+        """
+        The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        """
+        return pulumi.get(self, "min_num_workers")
 
 
 @pulumi.output_type

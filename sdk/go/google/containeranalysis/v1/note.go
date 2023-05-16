@@ -49,6 +49,8 @@ type Note struct {
 	RelatedNoteNames pulumi.StringArrayOutput `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl RelatedUrlResponseArrayOutput `pulumi:"relatedUrl"`
+	// A note describing an SBOM reference.
+	SbomReference SBOMReferenceNoteResponseOutput `pulumi:"sbomReference"`
 	// A one sentence description of this note.
 	ShortDescription pulumi.StringOutput `pulumi:"shortDescription"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
@@ -135,6 +137,8 @@ type noteArgs struct {
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
+	// A note describing an SBOM reference.
+	SbomReference *SBOMReferenceNote `pulumi:"sbomReference"`
 	// A one sentence description of this note.
 	ShortDescription *string `pulumi:"shortDescription"`
 	// A note describing available package upgrades.
@@ -174,6 +178,8 @@ type NoteArgs struct {
 	RelatedNoteNames pulumi.StringArrayInput
 	// URLs associated with this note.
 	RelatedUrl RelatedUrlArrayInput
+	// A note describing an SBOM reference.
+	SbomReference SBOMReferenceNotePtrInput
 	// A one sentence description of this note.
 	ShortDescription pulumi.StringPtrInput
 	// A note describing available package upgrades.
@@ -303,6 +309,11 @@ func (o NoteOutput) RelatedNoteNames() pulumi.StringArrayOutput {
 // URLs associated with this note.
 func (o NoteOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
 	return o.ApplyT(func(v *Note) RelatedUrlResponseArrayOutput { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
+}
+
+// A note describing an SBOM reference.
+func (o NoteOutput) SbomReference() SBOMReferenceNoteResponseOutput {
+	return o.ApplyT(func(v *Note) SBOMReferenceNoteResponseOutput { return v.SbomReference }).(SBOMReferenceNoteResponseOutput)
 }
 
 // A one sentence description of this note.

@@ -47,7 +47,7 @@ type RegionCommitment struct {
 	Resources ResourceCommitmentResponseArrayOutput `pulumi:"resources"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Source commitment to be splitted into a new commitment.
+	// Source commitment to be split into a new commitment.
 	SplitSourceCommitment pulumi.StringOutput `pulumi:"splitSourceCommitment"`
 	// Commitment start time in RFC3339 text format.
 	StartTimestamp pulumi.StringOutput `pulumi:"startTimestamp"`
@@ -128,7 +128,7 @@ type regionCommitmentArgs struct {
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitment `pulumi:"resources"`
-	// Source commitment to be splitted into a new commitment.
+	// Source commitment to be split into a new commitment.
 	SplitSourceCommitment *string `pulumi:"splitSourceCommitment"`
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 	Type *RegionCommitmentType `pulumi:"type"`
@@ -158,7 +158,7 @@ type RegionCommitmentArgs struct {
 	Reservations ReservationTypeArrayInput
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentArrayInput
-	// Source commitment to be splitted into a new commitment.
+	// Source commitment to be split into a new commitment.
 	SplitSourceCommitment pulumi.StringPtrInput
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
 	Type RegionCommitmentTypePtrInput
@@ -279,7 +279,7 @@ func (o RegionCommitmentOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Source commitment to be splitted into a new commitment.
+// Source commitment to be split into a new commitment.
 func (o RegionCommitmentOutput) SplitSourceCommitment() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.SplitSourceCommitment }).(pulumi.StringOutput)
 }

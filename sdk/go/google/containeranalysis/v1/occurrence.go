@@ -47,6 +47,8 @@ type Occurrence struct {
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
 	// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 	ResourceUri pulumi.StringOutput `pulumi:"resourceUri"`
+	// Describes a specific SBOM reference occurrences.
+	SbomReference SBOMReferenceOccurrenceResponseOutput `pulumi:"sbomReference"`
 	// The time this occurrence was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Describes an available package upgrade on the linked resource.
@@ -129,6 +131,8 @@ type occurrenceArgs struct {
 	Remediation *string `pulumi:"remediation"`
 	// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 	ResourceUri string `pulumi:"resourceUri"`
+	// Describes a specific SBOM reference occurrences.
+	SbomReference *SBOMReferenceOccurrence `pulumi:"sbomReference"`
 	// Describes an available package upgrade on the linked resource.
 	Upgrade *UpgradeOccurrence `pulumi:"upgrade"`
 	// Describes a security vulnerability.
@@ -162,6 +166,8 @@ type OccurrenceArgs struct {
 	Remediation pulumi.StringPtrInput
 	// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 	ResourceUri pulumi.StringInput
+	// Describes a specific SBOM reference occurrences.
+	SbomReference SBOMReferenceOccurrencePtrInput
 	// Describes an available package upgrade on the linked resource.
 	Upgrade UpgradeOccurrencePtrInput
 	// Describes a security vulnerability.
@@ -282,6 +288,11 @@ func (o OccurrenceOutput) Remediation() pulumi.StringOutput {
 // Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 func (o OccurrenceOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.ResourceUri }).(pulumi.StringOutput)
+}
+
+// Describes a specific SBOM reference occurrences.
+func (o OccurrenceOutput) SbomReference() SBOMReferenceOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) SBOMReferenceOccurrenceResponseOutput { return v.SbomReference }).(SBOMReferenceOccurrenceResponseOutput)
 }
 
 // The time this occurrence was last updated.

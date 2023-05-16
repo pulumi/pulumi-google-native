@@ -56,6 +56,8 @@ type LookupNoteResult struct {
 	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
 	// URLs associated with this note.
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
+	// A note describing an SBOM reference.
+	SbomReference SBOMReferenceNoteResponse `pulumi:"sbomReference"`
 	// A one sentence description of this note.
 	ShortDescription string `pulumi:"shortDescription"`
 	// The time this note was last updated. This field can be used as a filter in list requests.
@@ -177,6 +179,11 @@ func (o LookupNoteResultOutput) RelatedNoteNames() pulumi.StringArrayOutput {
 // URLs associated with this note.
 func (o LookupNoteResultOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
 	return o.ApplyT(func(v LookupNoteResult) []RelatedUrlResponse { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
+}
+
+// A note describing an SBOM reference.
+func (o LookupNoteResultOutput) SbomReference() SBOMReferenceNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) SBOMReferenceNoteResponse { return v.SbomReference }).(SBOMReferenceNoteResponseOutput)
 }
 
 // A one sentence description of this note.

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class EventFilterResponse
     {
         /// <summary>
-        /// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+        /// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
         /// </summary>
         public readonly string Attribute;
         /// <summary>

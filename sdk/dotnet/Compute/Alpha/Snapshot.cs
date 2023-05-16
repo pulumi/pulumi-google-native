@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Output("guestFlush")]
@@ -300,6 +306,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
 
         /// <summary>
         /// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.

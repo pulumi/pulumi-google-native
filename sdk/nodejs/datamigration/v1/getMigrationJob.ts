@@ -28,6 +28,10 @@ export interface GetMigrationJobArgs {
 
 export interface GetMigrationJobResult {
     /**
+     * The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+     */
+    readonly cmekKeyName: string;
+    /**
      * The conversion workspace used by the migration.
      */
     readonly conversionWorkspace: outputs.datamigration.v1.ConversionWorkspaceInfoResponse;

@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 

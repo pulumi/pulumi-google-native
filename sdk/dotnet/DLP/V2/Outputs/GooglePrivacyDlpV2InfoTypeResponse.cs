@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2SensitivityScoreResponse SensitivityScore;
+        /// <summary>
         /// Optional version name for this InfoType.
         /// </summary>
         public readonly string Version;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         private GooglePrivacyDlpV2InfoTypeResponse(
             string name,
 
+            Outputs.GooglePrivacyDlpV2SensitivityScoreResponse sensitivityScore,
+
             string version)
         {
             Name = name;
+            SensitivityScore = sensitivityScore;
             Version = version;
         }
     }

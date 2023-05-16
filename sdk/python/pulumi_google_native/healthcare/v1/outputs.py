@@ -433,22 +433,42 @@ class DeidentifyConfigResponse(dict):
     """
     Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useRegionalDataProcessing":
+            suggest = "use_regional_data_processing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeidentifyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeidentifyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeidentifyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dicom: 'outputs.DicomConfigResponse',
                  fhir: 'outputs.FhirConfigResponse',
                  image: 'outputs.ImageConfigResponse',
-                 text: 'outputs.TextConfigResponse'):
+                 text: 'outputs.TextConfigResponse',
+                 use_regional_data_processing: bool):
         """
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param 'DicomConfigResponse' dicom: Configures de-id of application/DICOM content.
         :param 'FhirConfigResponse' fhir: Configures de-id of application/FHIR content.
         :param 'ImageConfigResponse' image: Configures de-identification of image pixels wherever they are found in the source_dataset.
         :param 'TextConfigResponse' text: Configures de-identification of text wherever it is found in the source_dataset.
+        :param bool use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
         """
         pulumi.set(__self__, "dicom", dicom)
         pulumi.set(__self__, "fhir", fhir)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "text", text)
+        pulumi.set(__self__, "use_regional_data_processing", use_regional_data_processing)
 
     @property
     @pulumi.getter
@@ -481,6 +501,14 @@ class DeidentifyConfigResponse(dict):
         Configures de-identification of text wherever it is found in the source_dataset.
         """
         return pulumi.get(self, "text")
+
+    @property
+    @pulumi.getter(name="useRegionalDataProcessing")
+    def use_regional_data_processing(self) -> bool:
+        """
+        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        """
+        return pulumi.get(self, "use_regional_data_processing")
 
 
 @pulumi.output_type
@@ -1958,12 +1986,53 @@ class TagFilterListResponse(dict):
 
 @pulumi.output_type
 class TextConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalTransformations":
+            suggest = "additional_transformations"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TextConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TextConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TextConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 additional_transformations: Sequence['outputs.InfoTypeTransformationResponse'],
+                 exclude_info_types: Sequence[str],
                  transformations: Sequence['outputs.InfoTypeTransformationResponse']):
         """
+        :param Sequence['InfoTypeTransformationResponse'] additional_transformations: Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        :param Sequence[str] exclude_info_types: InfoTypes to skip transforming, overriding `additional_transformations`.
         :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        pulumi.set(__self__, "additional_transformations", additional_transformations)
+        pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter(name="additionalTransformations")
+    def additional_transformations(self) -> Sequence['outputs.InfoTypeTransformationResponse']:
+        """
+        Transformations to apply to the detected data, overridden by `exclude_info_types`.
+        """
+        return pulumi.get(self, "additional_transformations")
+
+    @property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> Sequence[str]:
+        """
+        InfoTypes to skip transforming, overriding `additional_transformations`.
+        """
+        return pulumi.get(self, "exclude_info_types")
 
     @property
     @pulumi.getter

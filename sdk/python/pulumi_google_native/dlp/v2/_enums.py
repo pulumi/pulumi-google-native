@@ -20,6 +20,7 @@ __all__ = [
     'GooglePrivacyDlpV2InspectConfigMinLikelihood',
     'GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood',
     'GooglePrivacyDlpV2OutputStorageConfigOutputSchema',
+    'GooglePrivacyDlpV2SensitivityScoreScore',
     'GooglePrivacyDlpV2TimePartConfigPartToExtract',
     'GooglePrivacyDlpV2ValueDayOfWeekValue',
     'JobTriggerStatus',
@@ -421,6 +422,28 @@ class GooglePrivacyDlpV2OutputStorageConfigOutputSchema(str, Enum):
     ALL_COLUMNS = "ALL_COLUMNS"
     """
     Schema containing all columns.
+    """
+
+
+class GooglePrivacyDlpV2SensitivityScoreScore(str, Enum):
+    """
+    The score applied to the resource.
+    """
+    SENSITIVITY_SCORE_UNSPECIFIED = "SENSITIVITY_SCORE_UNSPECIFIED"
+    """
+    Unused.
+    """
+    SENSITIVITY_LOW = "SENSITIVITY_LOW"
+    """
+    No sensitive information detected. Limited access.
+    """
+    SENSITIVITY_MODERATE = "SENSITIVITY_MODERATE"
+    """
+    Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+    """
+    SENSITIVITY_HIGH = "SENSITIVITY_HIGH"
+    """
+    High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
     """
 
 

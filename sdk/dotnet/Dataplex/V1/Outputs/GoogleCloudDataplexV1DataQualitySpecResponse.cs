@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
     public sealed class GoogleCloudDataplexV1DataQualitySpecResponse
     {
         /// <summary>
+        /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
+        /// </summary>
+        public readonly string RowFilter;
+        /// <summary>
         /// The list of rules to evaluate against a data source. At least one rule is required.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResponse> Rules;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDataplexV1DataQualitySpecResponse(
+            string rowFilter,
+
             ImmutableArray<Outputs.GoogleCloudDataplexV1DataQualityRuleResponse> rules,
 
             double samplingPercent)
         {
+            RowFilter = rowFilter;
             Rules = rules;
             SamplingPercent = samplingPercent;
         }

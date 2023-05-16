@@ -25688,7 +25688,7 @@ func (in *routerNatNatIpAllocateOptionPtr) ToRouterNatNatIpAllocateOptionPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RouterNatNatIpAllocateOptionPtrOutput)
 }
 
-// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
 type RouterNatSourceSubnetworkIpRangesToNat string
 
 const (
@@ -29253,6 +29253,173 @@ func (in *securityPolicyTypePtr) ToSecurityPolicyTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyTypePtrOutput)
 }
 
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+type SecurityPolicyUserDefinedFieldBase string
+
+const (
+	SecurityPolicyUserDefinedFieldBaseIpv4 = SecurityPolicyUserDefinedFieldBase("IPV4")
+	SecurityPolicyUserDefinedFieldBaseIpv6 = SecurityPolicyUserDefinedFieldBase("IPV6")
+	SecurityPolicyUserDefinedFieldBaseTcp  = SecurityPolicyUserDefinedFieldBase("TCP")
+	SecurityPolicyUserDefinedFieldBaseUdp  = SecurityPolicyUserDefinedFieldBase("UDP")
+)
+
+func (SecurityPolicyUserDefinedFieldBase) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return e.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return SecurityPolicyUserDefinedFieldBase(e).ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx).ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyUserDefinedFieldBase) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyUserDefinedFieldBaseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBaseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyUserDefinedFieldBase) *SecurityPolicyUserDefinedFieldBase {
+		return &v
+	}).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyUserDefinedFieldBase) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBaseOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyUserDefinedFieldBase) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyUserDefinedFieldBasePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) Elem() SecurityPolicyUserDefinedFieldBaseOutput {
+	return o.ApplyT(func(v *SecurityPolicyUserDefinedFieldBase) SecurityPolicyUserDefinedFieldBase {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyUserDefinedFieldBase
+		return ret
+	}).(SecurityPolicyUserDefinedFieldBaseOutput)
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyUserDefinedFieldBasePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyUserDefinedFieldBase) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyUserDefinedFieldBaseInput is an input type that accepts SecurityPolicyUserDefinedFieldBaseArgs and SecurityPolicyUserDefinedFieldBaseOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldBaseInput` via:
+//
+//	SecurityPolicyUserDefinedFieldBaseArgs{...}
+type SecurityPolicyUserDefinedFieldBaseInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldBaseOutput() SecurityPolicyUserDefinedFieldBaseOutput
+	ToSecurityPolicyUserDefinedFieldBaseOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldBaseOutput
+}
+
+var securityPolicyUserDefinedFieldBasePtrType = reflect.TypeOf((**SecurityPolicyUserDefinedFieldBase)(nil)).Elem()
+
+type SecurityPolicyUserDefinedFieldBasePtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput
+	ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput
+}
+
+type securityPolicyUserDefinedFieldBasePtr string
+
+func SecurityPolicyUserDefinedFieldBasePtr(v string) SecurityPolicyUserDefinedFieldBasePtrInput {
+	return (*securityPolicyUserDefinedFieldBasePtr)(&v)
+}
+
+func (*securityPolicyUserDefinedFieldBasePtr) ElementType() reflect.Type {
+	return securityPolicyUserDefinedFieldBasePtrType
+}
+
+func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFieldBasePtrOutput() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+func (in *securityPolicyUserDefinedFieldBasePtr) ToSecurityPolicyUserDefinedFieldBasePtrOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
 type ServerBindingType string
 
 const (
@@ -31101,7 +31268,7 @@ func (in *subnetworkPrivateIpv6GoogleAccessPtr) ToSubnetworkPrivateIpv6GoogleAcc
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPrivateIpv6GoogleAccessPtrOutput)
 }
 
-// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+// The purpose of the resource. This field can be either PRIVATE, REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT, or INTERNAL_HTTPS_LOAD_BALANCER. PRIVATE is the default purpose for user-created subnets or subnets that are automatically created in auto mode networks. A subnet with purpose set to REGIONAL_MANAGED_PROXY is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnet with purpose set to PRIVATE_SERVICE_CONNECT is used to publish services using Private Service Connect. A subnet with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a proxy-only subnet that can be used only by regional internal HTTP(S) load balancers. Note that REGIONAL_MANAGED_PROXY is the preferred setting for all regional Envoy load balancers. If unspecified, the subnet purpose defaults to PRIVATE. The enableFlowLogs field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
 type SubnetworkPurpose string
 
 const (
@@ -31274,7 +31441,7 @@ func (in *subnetworkPurposePtr) ToSubnetworkPurposePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkPurposePtrOutput)
 }
 
-// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
 type SubnetworkRole string
 
 const (
@@ -33634,6 +33801,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsTypePtrInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyTypeInput)(nil)).Elem(), SecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyTypePtrInput)(nil)).Elem(), SecurityPolicyType("CLOUD_ARMOR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldBaseInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldBase("IPV4"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldBasePtrInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldBase("IPV4"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingTypeInput)(nil)).Elem(), ServerBindingType("RESTART_NODE_ON_ANY_SERVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingTypePtrInput)(nil)).Elem(), ServerBindingType("RESTART_NODE_ON_ANY_SERVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectionPreferenceInput)(nil)).Elem(), ServiceAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
@@ -34030,6 +34199,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypePtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldBaseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldBasePtrOutput{})
 	pulumi.RegisterOutputType(ServerBindingTypeOutput{})
 	pulumi.RegisterOutputType(ServerBindingTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConnectionPreferenceOutput{})

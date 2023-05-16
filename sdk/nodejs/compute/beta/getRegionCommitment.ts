@@ -84,7 +84,7 @@ export interface GetRegionCommitmentResult {
      */
     readonly selfLink: string;
     /**
-     * Source commitment to be splitted into a new commitment.
+     * Source commitment to be split into a new commitment.
      */
     readonly splitSourceCommitment: string;
     /**

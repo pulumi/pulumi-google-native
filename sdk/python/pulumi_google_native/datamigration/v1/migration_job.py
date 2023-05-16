@@ -21,6 +21,7 @@ class MigrationJobArgs:
                  migration_job_id: pulumi.Input[str],
                  source: pulumi.Input[str],
                  type: pulumi.Input['MigrationJobType'],
+                 cmek_key_name: Optional[pulumi.Input[str]] = None,
                  conversion_workspace: Optional[pulumi.Input['ConversionWorkspaceInfoArgs']] = None,
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class MigrationJobArgs:
         :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
+        :param pulumi.Input[str] cmek_key_name: The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
         :param pulumi.Input['ConversionWorkspaceInfoArgs'] conversion_workspace: The conversion workspace used by the migration.
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
@@ -62,6 +64,8 @@ class MigrationJobArgs:
         pulumi.set(__self__, "migration_job_id", migration_job_id)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
+        if cmek_key_name is not None:
+            pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         if conversion_workspace is not None:
             pulumi.set(__self__, "conversion_workspace", conversion_workspace)
         if destination_database is not None:
@@ -142,6 +146,18 @@ class MigrationJobArgs:
     @type.setter
     def type(self, value: pulumi.Input['MigrationJobType']):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="cmekKeyName")
+    def cmek_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        return pulumi.get(self, "cmek_key_name")
+
+    @cmek_key_name.setter
+    def cmek_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cmek_key_name", value)
 
     @property
     @pulumi.getter(name="conversionWorkspace")
@@ -335,6 +351,7 @@ class MigrationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cmek_key_name: Optional[pulumi.Input[str]] = None,
                  conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
@@ -361,6 +378,7 @@ class MigrationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cmek_key_name: The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
         :param pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']] conversion_workspace: The conversion workspace used by the migration.
         :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
@@ -404,6 +422,7 @@ class MigrationJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cmek_key_name: Optional[pulumi.Input[str]] = None,
                  conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
@@ -433,6 +452,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+            __props__.__dict__["cmek_key_name"] = cmek_key_name
             __props__.__dict__["conversion_workspace"] = conversion_workspace
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
@@ -491,6 +511,7 @@ class MigrationJob(pulumi.CustomResource):
 
         __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+        __props__.__dict__["cmek_key_name"] = None
         __props__.__dict__["conversion_workspace"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["destination"] = None
@@ -518,6 +539,14 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["vpc_peering_connectivity"] = None
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cmekKeyName")
+    def cmek_key_name(self) -> pulumi.Output[str]:
+        """
+        The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        return pulumi.get(self, "cmek_key_name")
 
     @property
     @pulumi.getter(name="conversionWorkspace")

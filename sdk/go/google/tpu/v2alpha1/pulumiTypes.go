@@ -1516,6 +1516,8 @@ type NodeResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 	Metadata map[string]string `pulumi:"metadata"`
+	// Whether the Node belongs to a Multislice group.
+	MultisliceNode bool `pulumi:"multisliceNode"`
 	// Immutable. The name of the TPU.
 	Name string `pulumi:"name"`
 	// Network configurations for the TPU node.
@@ -1608,6 +1610,11 @@ func (o NodeResponseOutput) Labels() pulumi.StringMapOutput {
 // Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
 func (o NodeResponseOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodeResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Whether the Node belongs to a Multislice group.
+func (o NodeResponseOutput) MultisliceNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeResponse) bool { return v.MultisliceNode }).(pulumi.BoolOutput)
 }
 
 // Immutable. The name of the TPU.

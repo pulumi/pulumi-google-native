@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Inputs.GoogleCloudRunV2CloudSqlInstanceArgs>? CloudSqlInstance { get; set; }
 
         /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
+        [Input("emptyDir")]
+        public Input<Inputs.GoogleCloudRunV2EmptyDirVolumeSourceArgs>? EmptyDir { get; set; }
+
+        /// <summary>
         /// Volume's name.
         /// </summary>
         [Input("name", required: true)]

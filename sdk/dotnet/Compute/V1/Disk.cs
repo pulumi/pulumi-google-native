@@ -139,6 +139,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        [Output("provisionedThroughput")]
+        public Output<string> ProvisionedThroughput { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
@@ -433,6 +439,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<string>? ProvisionedThroughput { get; set; }
 
         [Input("replicaZones")]
         private InputList<string>? _replicaZones;

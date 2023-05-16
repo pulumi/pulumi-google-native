@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        public readonly Outputs.DirectoryServicesConfigResponse DirectoryServices;
+        /// <summary>
         /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         /// </summary>
         public readonly string Etag;
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             string description,
 
+            Outputs.DirectoryServicesConfigResponse directoryServices,
+
             string etag,
 
             ImmutableArray<Outputs.FileShareConfigResponse> fileShares,
@@ -184,6 +190,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             CapacityStepSizeGb = capacityStepSizeGb;
             CreateTime = createTime;
             Description = description;
+            DirectoryServices = directoryServices;
             Etag = etag;
             FileShares = fileShares;
             KmsKeyName = kmsKeyName;

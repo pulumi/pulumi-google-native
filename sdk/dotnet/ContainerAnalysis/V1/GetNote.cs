@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.RelatedUrlResponse> RelatedUrl;
         /// <summary>
+        /// A note describing an SBOM reference.
+        /// </summary>
+        public readonly Outputs.SBOMReferenceNoteResponse SbomReference;
+        /// <summary>
         /// A one sentence description of this note.
         /// </summary>
         public readonly string ShortDescription;
@@ -170,6 +174,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
 
             ImmutableArray<Outputs.RelatedUrlResponse> relatedUrl,
 
+            Outputs.SBOMReferenceNoteResponse sbomReference,
+
             string shortDescription,
 
             string updateTime,
@@ -195,6 +201,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
             Package = package;
             RelatedNoteNames = relatedNoteNames;
             RelatedUrl = relatedUrl;
+            SbomReference = sbomReference;
             ShortDescription = shortDescription;
             UpdateTime = updateTime;
             Upgrade = upgrade;

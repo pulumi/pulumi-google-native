@@ -3479,6 +3479,8 @@ type ClusterUpdate struct {
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
 	// Enable/Disable private endpoint for the cluster's master.
 	DesiredEnablePrivateEndpoint *bool `pulumi:"desiredEnablePrivateEndpoint"`
+	// The desired fleet configuration for the cluster.
+	DesiredFleet *Fleet `pulumi:"desiredFleet"`
 	// The desired config of Gateway API on this cluster.
 	DesiredGatewayApiConfig *GatewayAPIConfig `pulumi:"desiredGatewayApiConfig"`
 	// The desired GCFS config for the cluster.

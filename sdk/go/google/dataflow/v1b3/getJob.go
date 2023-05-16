@@ -62,6 +62,8 @@ type LookupJobResult struct {
 	ReplacedByJobId string `pulumi:"replacedByJobId"`
 	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 	RequestedState string `pulumi:"requestedState"`
+	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+	RuntimeUpdatableParams RuntimeUpdatableParamsResponse `pulumi:"runtimeUpdatableParams"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -198,6 +200,11 @@ func (o LookupJobResultOutput) ReplacedByJobId() pulumi.StringOutput {
 // The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 func (o LookupJobResultOutput) RequestedState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.RequestedState }).(pulumi.StringOutput)
+}
+
+// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+func (o LookupJobResultOutput) RuntimeUpdatableParams() RuntimeUpdatableParamsResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) RuntimeUpdatableParamsResponse { return v.RuntimeUpdatableParams }).(RuntimeUpdatableParamsResponseOutput)
 }
 
 // Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.

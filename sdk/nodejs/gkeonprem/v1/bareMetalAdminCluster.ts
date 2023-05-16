@@ -47,6 +47,9 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
      * Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
      */
     public readonly bareMetalAdminClusterId!: pulumi.Output<string>;
+    /**
+     * The Anthos clusters on bare metal version for the bare metal admin cluster.
+     */
     public readonly bareMetalVersion!: pulumi.Output<string>;
     /**
      * Cluster operations configuration.
@@ -252,6 +255,9 @@ export interface BareMetalAdminClusterArgs {
      * Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
      */
     bareMetalAdminClusterId: pulumi.Input<string>;
+    /**
+     * The Anthos clusters on bare metal version for the bare metal admin cluster.
+     */
     bareMetalVersion?: pulumi.Input<string>;
     /**
      * Cluster operations configuration.

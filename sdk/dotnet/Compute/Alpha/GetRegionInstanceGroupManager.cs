@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse InstanceFlexibilityPolicy;
+        /// <summary>
         /// The URL of the Instance Group resource.
         /// </summary>
         public readonly string InstanceGroup;
@@ -164,6 +168,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly int TargetSize;
         /// <summary>
+        /// The unit of measure for the target size.
+        /// </summary>
+        public readonly string TargetSizeUnit;
+        /// <summary>
         /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         /// </summary>
         public readonly int TargetStoppedSize;
@@ -204,6 +212,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string fingerprint,
 
+            Outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse instanceFlexibilityPolicy,
+
             string instanceGroup,
 
             Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse instanceLifecyclePolicy,
@@ -236,6 +246,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             int targetSize,
 
+            string targetSizeUnit,
+
             int targetStoppedSize,
 
             int targetSuspendedSize,
@@ -255,6 +267,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DistributionPolicy = distributionPolicy;
             FailoverAction = failoverAction;
             Fingerprint = fingerprint;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceGroup = instanceGroup;
             InstanceLifecyclePolicy = instanceLifecyclePolicy;
             InstanceTemplate = instanceTemplate;
@@ -271,6 +284,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Status = status;
             TargetPools = targetPools;
             TargetSize = targetSize;
+            TargetSizeUnit = targetSizeUnit;
             TargetStoppedSize = targetStoppedSize;
             TargetSuspendedSize = targetSuspendedSize;
             UpdatePolicy = updatePolicy;

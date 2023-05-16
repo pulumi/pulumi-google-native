@@ -24,6 +24,7 @@ class RegionInstanceGroupManagerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input['DistributionPolicyArgs']] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
@@ -36,6 +37,7 @@ class RegionInstanceGroupManagerArgs:
                  stateful_policy: Optional[pulumi.Input['StatefulPolicyArgs']] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_size_unit: Optional[pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit']] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']] = None,
@@ -48,6 +50,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['DistributionPolicyArgs'] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -59,6 +62,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['StatefulPolicyArgs'] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
+        :param pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit'] target_size_unit: The unit of measure for the target size.
         :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group.
@@ -77,6 +81,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "distribution_policy", distribution_policy)
         if failover_action is not None:
             pulumi.set(__self__, "failover_action", failover_action)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_lifecycle_policy is not None:
             pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if instance_template is not None:
@@ -101,6 +107,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "target_pools", target_pools)
         if target_size is not None:
             pulumi.set(__self__, "target_size", target_size)
+        if target_size_unit is not None:
+            pulumi.set(__self__, "target_size_unit", target_size_unit)
         if target_stopped_size is not None:
             pulumi.set(__self__, "target_stopped_size", target_stopped_size)
         if target_suspended_size is not None:
@@ -190,6 +198,18 @@ class RegionInstanceGroupManagerArgs:
     @failover_action.setter
     def failover_action(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']]):
         pulumi.set(self, "failover_action", value)
+
+    @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
+        """
+        Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
 
     @property
     @pulumi.getter(name="instanceLifecyclePolicy")
@@ -333,6 +353,18 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "target_size", value)
 
     @property
+    @pulumi.getter(name="targetSizeUnit")
+    def target_size_unit(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit']]:
+        """
+        The unit of measure for the target size.
+        """
+        return pulumi.get(self, "target_size_unit")
+
+    @target_size_unit.setter
+    def target_size_unit(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit']]):
+        pulumi.set(self, "target_size_unit", value)
+
+    @property
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -392,6 +424,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
@@ -405,6 +438,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_size_unit: Optional[pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit']] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
@@ -421,6 +455,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[pulumi.InputType['DistributionPolicyArgs']] distribution_policy: Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
         :param pulumi.Input['RegionInstanceGroupManagerFailoverAction'] failover_action: The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']] instance_flexibility_policy: Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']] instance_lifecycle_policy: The repair policy for this managed instance group.
         :param pulumi.Input[str] instance_template: The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
         :param pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults'] list_managed_instances_results: Pagination behavior of the listManagedInstances API method for this managed instance group.
@@ -432,6 +467,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
+        :param pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit'] target_size_unit: The unit of measure for the target size.
         :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group.
@@ -467,6 +503,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy: Optional[pulumi.Input[pulumi.InputType['DistributionPolicyArgs']]] = None,
                  failover_action: Optional[pulumi.Input['RegionInstanceGroupManagerFailoverAction']] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceFlexibilityPolicyArgs']]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerInstanceLifecyclePolicyArgs']]] = None,
                  instance_template: Optional[pulumi.Input[str]] = None,
                  list_managed_instances_results: Optional[pulumi.Input['RegionInstanceGroupManagerListManagedInstancesResults']] = None,
@@ -480,6 +517,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  stateful_policy: Optional[pulumi.Input[pulumi.InputType['StatefulPolicyArgs']]] = None,
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_size: Optional[pulumi.Input[int]] = None,
+                 target_size_unit: Optional[pulumi.Input['RegionInstanceGroupManagerTargetSizeUnit']] = None,
                  target_stopped_size: Optional[pulumi.Input[int]] = None,
                  target_suspended_size: Optional[pulumi.Input[int]] = None,
                  update_policy: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']]] = None,
@@ -499,6 +537,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy"] = distribution_policy
             __props__.__dict__["failover_action"] = failover_action
+            __props__.__dict__["instance_flexibility_policy"] = instance_flexibility_policy
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["instance_template"] = instance_template
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
@@ -514,6 +553,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["stateful_policy"] = stateful_policy
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["target_size"] = target_size
+            __props__.__dict__["target_size_unit"] = target_size_unit
             __props__.__dict__["target_stopped_size"] = target_stopped_size
             __props__.__dict__["target_suspended_size"] = target_suspended_size
             __props__.__dict__["update_policy"] = update_policy
@@ -560,6 +600,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["distribution_policy"] = None
         __props__.__dict__["failover_action"] = None
         __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["instance_flexibility_policy"] = None
         __props__.__dict__["instance_group"] = None
         __props__.__dict__["instance_lifecycle_policy"] = None
         __props__.__dict__["instance_template"] = None
@@ -578,6 +619,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["status"] = None
         __props__.__dict__["target_pools"] = None
         __props__.__dict__["target_size"] = None
+        __props__.__dict__["target_size_unit"] = None
         __props__.__dict__["target_stopped_size"] = None
         __props__.__dict__["target_suspended_size"] = None
         __props__.__dict__["update_policy"] = None
@@ -656,6 +698,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerInstanceFlexibilityPolicyResponse']:
+        """
+        Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
 
     @property
     @pulumi.getter(name="instanceGroup")
@@ -794,6 +844,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
         """
         return pulumi.get(self, "target_size")
+
+    @property
+    @pulumi.getter(name="targetSizeUnit")
+    def target_size_unit(self) -> pulumi.Output[str]:
+        """
+        The unit of measure for the target size.
+        """
+        return pulumi.get(self, "target_size_unit")
 
     @property
     @pulumi.getter(name="targetStoppedSize")

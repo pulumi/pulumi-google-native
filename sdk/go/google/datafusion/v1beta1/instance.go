@@ -62,6 +62,8 @@ type Instance struct {
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolOutput   `pulumi:"privateInstance"`
 	Project         pulumi.StringOutput `pulumi:"project"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
 	//
 	// Deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.
@@ -366,6 +368,11 @@ func (o InstanceOutput) PrivateInstance() pulumi.BoolOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // Deprecated. Use tenant_project_id instead to extract the tenant project ID.

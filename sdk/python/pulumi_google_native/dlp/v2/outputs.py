@@ -130,6 +130,7 @@ __all__ = [
     'GooglePrivacyDlpV2SaveFindingsResponse',
     'GooglePrivacyDlpV2ScheduleResponse',
     'GooglePrivacyDlpV2SelectedInfoTypesResponse',
+    'GooglePrivacyDlpV2SensitivityScoreResponse',
     'GooglePrivacyDlpV2StatisticalTableResponse',
     'GooglePrivacyDlpV2StorageConfigResponse',
     'GooglePrivacyDlpV2StoredInfoTypeConfigResponse',
@@ -1711,6 +1712,8 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
             suggest = "exclusion_type"
         elif key == "infoType":
             suggest = "info_type"
+        elif key == "sensitivityScore":
+            suggest = "sensitivity_score"
         elif key == "storedType":
             suggest = "stored_type"
         elif key == "surrogateType":
@@ -1734,6 +1737,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
                  info_type: 'outputs.GooglePrivacyDlpV2InfoTypeResponse',
                  likelihood: str,
                  regex: 'outputs.GooglePrivacyDlpV2RegexResponse',
+                 sensitivity_score: 'outputs.GooglePrivacyDlpV2SensitivityScoreResponse',
                  stored_type: 'outputs.GooglePrivacyDlpV2StoredTypeResponse',
                  surrogate_type: 'outputs.GooglePrivacyDlpV2SurrogateTypeResponse'):
         """
@@ -1744,6 +1748,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         :param 'GooglePrivacyDlpV2InfoTypeResponse' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
         :param str likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         :param 'GooglePrivacyDlpV2RegexResponse' regex: Regular expression based CustomInfoType.
+        :param 'GooglePrivacyDlpV2SensitivityScoreResponse' sensitivity_score: Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
         :param 'GooglePrivacyDlpV2StoredTypeResponse' stored_type: Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         :param 'GooglePrivacyDlpV2SurrogateTypeResponse' surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
@@ -1753,6 +1758,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         pulumi.set(__self__, "info_type", info_type)
         pulumi.set(__self__, "likelihood", likelihood)
         pulumi.set(__self__, "regex", regex)
+        pulumi.set(__self__, "sensitivity_score", sensitivity_score)
         pulumi.set(__self__, "stored_type", stored_type)
         pulumi.set(__self__, "surrogate_type", surrogate_type)
 
@@ -1803,6 +1809,14 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         Regular expression based CustomInfoType.
         """
         return pulumi.get(self, "regex")
+
+    @property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> 'outputs.GooglePrivacyDlpV2SensitivityScoreResponse':
+        """
+        Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        """
+        return pulumi.get(self, "sensitivity_score")
 
     @property
     @pulumi.getter(name="storedType")
@@ -3570,15 +3584,35 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
     """
     Type of information detected by the API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sensitivityScore":
+            suggest = "sensitivity_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InfoTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InfoTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InfoTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
+                 sensitivity_score: 'outputs.GooglePrivacyDlpV2SensitivityScoreResponse',
                  version: str):
         """
         Type of information detected by the API.
         :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+        :param 'GooglePrivacyDlpV2SensitivityScoreResponse' sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
         :param str version: Optional version name for this InfoType.
         """
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sensitivity_score", sensitivity_score)
         pulumi.set(__self__, "version", version)
 
     @property
@@ -3588,6 +3622,14 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
         Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> 'outputs.GooglePrivacyDlpV2SensitivityScoreResponse':
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        """
+        return pulumi.get(self, "sensitivity_score")
 
     @property
     @pulumi.getter
@@ -6602,6 +6644,28 @@ class GooglePrivacyDlpV2SelectedInfoTypesResponse(dict):
         InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
         """
         return pulumi.get(self, "info_types")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2SensitivityScoreResponse(dict):
+    """
+    Score is a summary of all elements in the data profile. A higher number means more sensitive.
+    """
+    def __init__(__self__, *,
+                 score: str):
+        """
+        Score is a summary of all elements in the data profile. A higher number means more sensitive.
+        :param str score: The score applied to the resource.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter
+    def score(self) -> str:
+        """
+        The score applied to the resource.
+        """
+        return pulumi.get(self, "score")
 
 
 @pulumi.output_type

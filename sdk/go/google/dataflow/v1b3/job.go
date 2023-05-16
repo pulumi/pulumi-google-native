@@ -48,6 +48,8 @@ type Job struct {
 	ReplacedByJobId pulumi.StringOutput `pulumi:"replacedByJobId"`
 	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 	RequestedState pulumi.StringOutput `pulumi:"requestedState"`
+	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+	RuntimeUpdatableParams RuntimeUpdatableParamsResponseOutput `pulumi:"runtimeUpdatableParams"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -148,6 +150,8 @@ type jobArgs struct {
 	ReplacedByJobId *string `pulumi:"replacedByJobId"`
 	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 	RequestedState *JobRequestedState `pulumi:"requestedState"`
+	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+	RuntimeUpdatableParams *RuntimeUpdatableParams `pulumi:"runtimeUpdatableParams"`
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -206,6 +210,8 @@ type JobArgs struct {
 	ReplacedByJobId pulumi.StringPtrInput
 	// The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 	RequestedState JobRequestedStatePtrInput
+	// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+	RuntimeUpdatableParams RuntimeUpdatableParamsPtrInput
 	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
@@ -341,6 +347,11 @@ func (o JobOutput) ReplacedByJobId() pulumi.StringOutput {
 // The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
 func (o JobOutput) RequestedState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.RequestedState }).(pulumi.StringOutput)
+}
+
+// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+func (o JobOutput) RuntimeUpdatableParams() RuntimeUpdatableParamsResponseOutput {
+	return o.ApplyT(func(v *Job) RuntimeUpdatableParamsResponseOutput { return v.RuntimeUpdatableParams }).(RuntimeUpdatableParamsResponseOutput)
 }
 
 // Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.

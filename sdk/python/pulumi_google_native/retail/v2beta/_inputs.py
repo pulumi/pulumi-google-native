@@ -411,8 +411,8 @@ class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs:
     def __init__(__self__, *,
                  context_products_type: Optional[pulumi.Input['GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType']] = None):
         """
-        More configs of the frequently-bought-together model type.
-        :param pulumi.Input['GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType'] context_products_type: Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        Additional configs for the frequently-bought-together model type.
+        :param pulumi.Input['GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType'] context_products_type: Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         """
         if context_products_type is not None:
             pulumi.set(__self__, "context_products_type", context_products_type)
@@ -421,7 +421,7 @@ class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs:
     @pulumi.getter(name="contextProductsType")
     def context_products_type(self) -> Optional[pulumi.Input['GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType']]:
         """
-        Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         """
         return pulumi.get(self, "context_products_type")
 

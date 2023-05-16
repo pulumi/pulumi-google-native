@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, enable_zone_separation=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, satisfies_pzs=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -83,6 +83,9 @@ class GetInstanceResult:
         if private_instance and not isinstance(private_instance, bool):
             raise TypeError("Expected argument 'private_instance' to be a bool")
         pulumi.set(__self__, "private_instance", private_instance)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         if service_account is not None:
@@ -284,6 +287,14 @@ class GetInstanceResult:
         return pulumi.get(self, "private_instance")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
@@ -383,6 +394,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             options=self.options,
             p4_service_account=self.p4_service_account,
             private_instance=self.private_instance,
+            satisfies_pzs=self.satisfies_pzs,
             service_account=self.service_account,
             service_endpoint=self.service_endpoint,
             state=self.state,
@@ -430,6 +442,7 @@ def get_instance(instance_id: Optional[str] = None,
         options=__ret__.options,
         p4_service_account=__ret__.p4_service_account,
         private_instance=__ret__.private_instance,
+        satisfies_pzs=__ret__.satisfies_pzs,
         service_account=__ret__.service_account,
         service_endpoint=__ret__.service_endpoint,
         state=__ret__.state,

@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Outputs
     [OutputType]
     public sealed class BareMetalAdminPortConfigResponse
     {
+        /// <summary>
+        /// The port that control plane hosted load balancers will listen on.
+        /// </summary>
         public readonly int ControlPlaneLoadBalancerPort;
 
         [OutputConstructor]

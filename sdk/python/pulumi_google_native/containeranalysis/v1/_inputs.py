@@ -80,6 +80,10 @@ __all__ = [
     'RelatedUrlArgs',
     'RemediationArgs',
     'RepoIdArgs',
+    'SBOMReferenceNoteArgs',
+    'SBOMReferenceOccurrenceArgs',
+    'SbomReferenceIntotoPayloadArgs',
+    'SbomReferenceIntotoPredicateArgs',
     'SignatureArgs',
     'SlsaBuilderArgs',
     'SlsaCompletenessArgs',
@@ -4352,6 +4356,246 @@ class RepoIdArgs:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
+
+
+@pulumi.input_type
+class SBOMReferenceNoteArgs:
+    def __init__(__self__, *,
+                 format: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        The note representing an SBOM reference.
+        :param pulumi.Input[str] format: The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        :param pulumi.Input[str] version: The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class SBOMReferenceOccurrenceArgs:
+    def __init__(__self__, *,
+                 payload: Optional[pulumi.Input['SbomReferenceIntotoPayloadArgs']] = None,
+                 payload_type: Optional[pulumi.Input[str]] = None,
+                 signatures: Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]] = None):
+        """
+        The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+        :param pulumi.Input['SbomReferenceIntotoPayloadArgs'] payload: The actual payload that contains the SBOM reference data.
+        :param pulumi.Input[str] payload_type: The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        :param pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]] signatures: The signatures over the payload.
+        """
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if payload_type is not None:
+            pulumi.set(__self__, "payload_type", payload_type)
+        if signatures is not None:
+            pulumi.set(__self__, "signatures", signatures)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input['SbomReferenceIntotoPayloadArgs']]:
+        """
+        The actual payload that contains the SBOM reference data.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input['SbomReferenceIntotoPayloadArgs']]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="payloadType")
+    def payload_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        """
+        return pulumi.get(self, "payload_type")
+
+    @payload_type.setter
+    def payload_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_type", value)
+
+    @property
+    @pulumi.getter
+    def signatures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]]:
+        """
+        The signatures over the payload.
+        """
+        return pulumi.get(self, "signatures")
+
+    @signatures.setter
+    def signatures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]]):
+        pulumi.set(self, "signatures", value)
+
+
+@pulumi.input_type
+class SbomReferenceIntotoPayloadArgs:
+    def __init__(__self__, *,
+                 predicate: Optional[pulumi.Input['SbomReferenceIntotoPredicateArgs']] = None,
+                 predicate_type: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+        :param pulumi.Input['SbomReferenceIntotoPredicateArgs'] predicate: Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        :param pulumi.Input[str] predicate_type: URI identifying the type of the Predicate.
+        :param pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]] subject: Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        :param pulumi.Input[str] type: Identifier for the schema of the Statement.
+        """
+        if predicate is not None:
+            pulumi.set(__self__, "predicate", predicate)
+        if predicate_type is not None:
+            pulumi.set(__self__, "predicate_type", predicate_type)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def predicate(self) -> Optional[pulumi.Input['SbomReferenceIntotoPredicateArgs']]:
+        """
+        Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        """
+        return pulumi.get(self, "predicate")
+
+    @predicate.setter
+    def predicate(self, value: Optional[pulumi.Input['SbomReferenceIntotoPredicateArgs']]):
+        pulumi.set(self, "predicate", value)
+
+    @property
+    @pulumi.getter(name="predicateType")
+    def predicate_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI identifying the type of the Predicate.
+        """
+        return pulumi.get(self, "predicate_type")
+
+    @predicate_type.setter
+    def predicate_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predicate_type", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]]:
+        """
+        Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubjectArgs']]]]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for the schema of the Statement.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class SbomReferenceIntotoPredicateArgs:
+    def __init__(__self__, *,
+                 digest: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 mime_type: Optional[pulumi.Input[str]] = None,
+                 referrer_id: Optional[pulumi.Input[str]] = None):
+        """
+        A predicate which describes the SBOM being referenced.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] digest: A map of algorithm to digest of the contents of the SBOM.
+        :param pulumi.Input[str] location: The location of the SBOM.
+        :param pulumi.Input[str] mime_type: The mime type of the SBOM.
+        :param pulumi.Input[str] referrer_id: The person or system referring this predicate to the consumer.
+        """
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if mime_type is not None:
+            pulumi.set(__self__, "mime_type", mime_type)
+        if referrer_id is not None:
+            pulumi.set(__self__, "referrer_id", referrer_id)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of algorithm to digest of the contents of the SBOM.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the SBOM.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mime type of the SBOM.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @mime_type.setter
+    def mime_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mime_type", value)
+
+    @property
+    @pulumi.getter(name="referrerId")
+    def referrer_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The person or system referring this predicate to the consumer.
+        """
+        return pulumi.get(self, "referrer_id")
+
+    @referrer_id.setter
+    def referrer_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "referrer_id", value)
 
 
 @pulumi.input_type

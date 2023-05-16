@@ -11,8 +11,22 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleFirestoreAdminV1DailyRecurrenceResponse',
     'GoogleFirestoreAdminV1IndexFieldResponse',
+    'GoogleFirestoreAdminV1WeeklyRecurrenceResponse',
 ]
+
+@pulumi.output_type
+class GoogleFirestoreAdminV1DailyRecurrenceResponse(dict):
+    """
+    Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+    """
+    def __init__(__self__):
+        """
+        Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
+        """
+        pass
+
 
 @pulumi.output_type
 class GoogleFirestoreAdminV1IndexFieldResponse(dict):
@@ -75,5 +89,27 @@ class GoogleFirestoreAdminV1IndexFieldResponse(dict):
         Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
         """
         return pulumi.get(self, "order")
+
+
+@pulumi.output_type
+class GoogleFirestoreAdminV1WeeklyRecurrenceResponse(dict):
+    """
+    Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
+    """
+    def __init__(__self__, *,
+                 day: str):
+        """
+        Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
+        :param str day: The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+        """
+        pulumi.set(__self__, "day", day)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        """
+        The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+        """
+        return pulumi.get(self, "day")
 
 

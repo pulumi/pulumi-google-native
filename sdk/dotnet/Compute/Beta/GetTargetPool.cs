@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// The resource URL for the security policy associated with this target pool.
+        /// </summary>
+        public readonly string SecurityPolicy;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string region,
 
+            string securityPolicy,
+
             string selfLink,
 
             string sessionAffinity)
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Kind = kind;
             Name = name;
             Region = region;
+            SecurityPolicy = securityPolicy;
             SelfLink = selfLink;
             SessionAffinity = sessionAffinity;
         }

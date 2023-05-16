@@ -42,6 +42,7 @@ __all__ = [
     'RoboDirectiveArgs',
     'RoboStartingIntentArgs',
     'ShardingOptionArgs',
+    'SmartShardingArgs',
     'StartActivityIntentArgs',
     'SystraceSetupArgs',
     'TestSetupArgs',
@@ -1564,14 +1565,18 @@ class RoboStartingIntentArgs:
 class ShardingOptionArgs:
     def __init__(__self__, *,
                  manual_sharding: Optional[pulumi.Input['ManualShardingArgs']] = None,
+                 smart_sharding: Optional[pulumi.Input['SmartShardingArgs']] = None,
                  uniform_sharding: Optional[pulumi.Input['UniformShardingArgs']] = None):
         """
         Options for enabling sharding.
         :param pulumi.Input['ManualShardingArgs'] manual_sharding: Shards test cases into the specified groups of packages, classes, and/or methods.
+        :param pulumi.Input['SmartShardingArgs'] smart_sharding: Shards test based on previous test case timing records.
         :param pulumi.Input['UniformShardingArgs'] uniform_sharding: Uniformly shards test cases given a total number of shards.
         """
         if manual_sharding is not None:
             pulumi.set(__self__, "manual_sharding", manual_sharding)
+        if smart_sharding is not None:
+            pulumi.set(__self__, "smart_sharding", smart_sharding)
         if uniform_sharding is not None:
             pulumi.set(__self__, "uniform_sharding", uniform_sharding)
 
@@ -1588,6 +1593,18 @@ class ShardingOptionArgs:
         pulumi.set(self, "manual_sharding", value)
 
     @property
+    @pulumi.getter(name="smartSharding")
+    def smart_sharding(self) -> Optional[pulumi.Input['SmartShardingArgs']]:
+        """
+        Shards test based on previous test case timing records.
+        """
+        return pulumi.get(self, "smart_sharding")
+
+    @smart_sharding.setter
+    def smart_sharding(self, value: Optional[pulumi.Input['SmartShardingArgs']]):
+        pulumi.set(self, "smart_sharding", value)
+
+    @property
     @pulumi.getter(name="uniformSharding")
     def uniform_sharding(self) -> Optional[pulumi.Input['UniformShardingArgs']]:
         """
@@ -1598,6 +1615,30 @@ class ShardingOptionArgs:
     @uniform_sharding.setter
     def uniform_sharding(self, value: Optional[pulumi.Input['UniformShardingArgs']]):
         pulumi.set(self, "uniform_sharding", value)
+
+
+@pulumi.input_type
+class SmartShardingArgs:
+    def __init__(__self__, *,
+                 targeted_shard_duration: Optional[pulumi.Input[str]] = None):
+        """
+        Shards test based on previous test case timing records.
+        :param pulumi.Input[str] targeted_shard_duration: The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+        """
+        if targeted_shard_duration is not None:
+            pulumi.set(__self__, "targeted_shard_duration", targeted_shard_duration)
+
+    @property
+    @pulumi.getter(name="targetedShardDuration")
+    def targeted_shard_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+        """
+        return pulumi.get(self, "targeted_shard_duration")
+
+    @targeted_shard_duration.setter
+    def targeted_shard_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "targeted_shard_duration", value)
 
 
 @pulumi.input_type

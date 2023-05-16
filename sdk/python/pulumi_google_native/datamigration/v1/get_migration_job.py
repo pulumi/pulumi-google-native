@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigrationJobResult:
-    def __init__(__self__, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+    def __init__(__self__, cmek_key_name=None, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+        if cmek_key_name and not isinstance(cmek_key_name, str):
+            raise TypeError("Expected argument 'cmek_key_name' to be a str")
+        pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         if conversion_workspace and not isinstance(conversion_workspace, dict):
             raise TypeError("Expected argument 'conversion_workspace' to be a dict")
         pulumi.set(__self__, "conversion_workspace", conversion_workspace)
@@ -86,6 +89,14 @@ class GetMigrationJobResult:
         if vpc_peering_connectivity and not isinstance(vpc_peering_connectivity, dict):
             raise TypeError("Expected argument 'vpc_peering_connectivity' to be a dict")
         pulumi.set(__self__, "vpc_peering_connectivity", vpc_peering_connectivity)
+
+    @property
+    @pulumi.getter(name="cmekKeyName")
+    def cmek_key_name(self) -> str:
+        """
+        The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        return pulumi.get(self, "cmek_key_name")
 
     @property
     @pulumi.getter(name="conversionWorkspace")
@@ -270,6 +281,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
         if False:
             yield self
         return GetMigrationJobResult(
+            cmek_key_name=self.cmek_key_name,
             conversion_workspace=self.conversion_workspace,
             create_time=self.create_time,
             destination=self.destination,
@@ -309,6 +321,7 @@ def get_migration_job(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1:getMigrationJob', __args__, opts=opts, typ=GetMigrationJobResult).value
 
     return AwaitableGetMigrationJobResult(
+        cmek_key_name=__ret__.cmek_key_name,
         conversion_workspace=__ret__.conversion_workspace,
         create_time=__ret__.create_time,
         destination=__ret__.destination,

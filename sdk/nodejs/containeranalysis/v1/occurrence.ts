@@ -100,6 +100,10 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly resourceUri!: pulumi.Output<string>;
     /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    public readonly sbomReference!: pulumi.Output<outputs.containeranalysis.v1.SBOMReferenceOccurrenceResponse>;
+    /**
      * The time this occurrence was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -142,6 +146,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["remediation"] = args ? args.remediation : undefined;
             resourceInputs["resourceUri"] = args ? args.resourceUri : undefined;
+            resourceInputs["sbomReference"] = args ? args.sbomReference : undefined;
             resourceInputs["upgrade"] = args ? args.upgrade : undefined;
             resourceInputs["vulnerability"] = args ? args.vulnerability : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -165,6 +170,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["remediation"] = undefined /*out*/;
             resourceInputs["resourceUri"] = undefined /*out*/;
+            resourceInputs["sbomReference"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgrade"] = undefined /*out*/;
             resourceInputs["vulnerability"] = undefined /*out*/;
@@ -229,6 +235,10 @@ export interface OccurrenceArgs {
      * Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
      */
     resourceUri: pulumi.Input<string>;
+    /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    sbomReference?: pulumi.Input<inputs.containeranalysis.v1.SBOMReferenceOccurrenceArgs>;
     /**
      * Describes an available package upgrade on the linked resource.
      */

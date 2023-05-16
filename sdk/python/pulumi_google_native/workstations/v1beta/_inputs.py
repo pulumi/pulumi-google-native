@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AcceleratorArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
@@ -26,6 +27,46 @@ __all__ = [
     'PrivateClusterConfigArgs',
     'ReadinessCheckArgs',
 ]
+
+@pulumi.input_type
+class AcceleratorArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        An accelerator card attached to the instance.
+        :param pulumi.Input[int] count: Number of accelerator cards exposed to the instance.
+        :param pulumi.Input[str] type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -406,6 +447,7 @@ class GceConfidentialInstanceConfigArgs:
 @pulumi.input_type
 class GceInstanceArgs:
     def __init__(__self__, *,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  confidential_instance_config: Optional[pulumi.Input['GceConfidentialInstanceConfigArgs']] = None,
                  disable_public_ip_addresses: Optional[pulumi.Input[bool]] = None,
@@ -416,6 +458,7 @@ class GceInstanceArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A runtime using a Compute Engine instance.
+        :param pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]] accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB. Defaults to 50.
         :param pulumi.Input['GceConfidentialInstanceConfigArgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
         :param pulumi.Input[bool] disable_public_ip_addresses: Whether instances have no public IP address.
@@ -425,6 +468,8 @@ class GceInstanceArgs:
         :param pulumi.Input['GceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if confidential_instance_config is not None:
@@ -441,6 +486,18 @@ class GceInstanceArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]]:
+        """
+        A list of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")

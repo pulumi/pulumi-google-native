@@ -74,6 +74,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    public readonly instanceFlexibilityPolicy!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerInstanceFlexibilityPolicyResponse>;
+    /**
      * The URL of the Instance Group resource.
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
@@ -140,6 +144,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetSize!: pulumi.Output<number>;
     /**
+     * The unit of measure for the target size.
+     */
+    public readonly targetSizeUnit!: pulumi.Output<string>;
+    /**
      * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
      */
     public readonly targetStoppedSize!: pulumi.Output<number>;
@@ -180,6 +188,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicy"] = args ? args.distributionPolicy : undefined;
             resourceInputs["failoverAction"] = args ? args.failoverAction : undefined;
+            resourceInputs["instanceFlexibilityPolicy"] = args ? args.instanceFlexibilityPolicy : undefined;
             resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["instanceTemplate"] = args ? args.instanceTemplate : undefined;
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
@@ -193,6 +202,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["statefulPolicy"] = args ? args.statefulPolicy : undefined;
             resourceInputs["targetPools"] = args ? args.targetPools : undefined;
             resourceInputs["targetSize"] = args ? args.targetSize : undefined;
+            resourceInputs["targetSizeUnit"] = args ? args.targetSizeUnit : undefined;
             resourceInputs["targetStoppedSize"] = args ? args.targetStoppedSize : undefined;
             resourceInputs["targetSuspendedSize"] = args ? args.targetSuspendedSize : undefined;
             resourceInputs["updatePolicy"] = args ? args.updatePolicy : undefined;
@@ -216,6 +226,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicy"] = undefined /*out*/;
             resourceInputs["failoverAction"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["instanceFlexibilityPolicy"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
             resourceInputs["instanceLifecyclePolicy"] = undefined /*out*/;
             resourceInputs["instanceTemplate"] = undefined /*out*/;
@@ -234,6 +245,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["targetPools"] = undefined /*out*/;
             resourceInputs["targetSize"] = undefined /*out*/;
+            resourceInputs["targetSizeUnit"] = undefined /*out*/;
             resourceInputs["targetStoppedSize"] = undefined /*out*/;
             resourceInputs["targetSuspendedSize"] = undefined /*out*/;
             resourceInputs["updatePolicy"] = undefined /*out*/;
@@ -275,6 +287,10 @@ export interface RegionInstanceGroupManagerArgs {
      * The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
      */
     failoverAction?: pulumi.Input<enums.compute.alpha.RegionInstanceGroupManagerFailoverAction>;
+    /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerInstanceFlexibilityPolicyArgs>;
     /**
      * The repair policy for this managed instance group.
      */
@@ -321,6 +337,10 @@ export interface RegionInstanceGroupManagerArgs {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     targetSize?: pulumi.Input<number>;
+    /**
+     * The unit of measure for the target size.
+     */
+    targetSizeUnit?: pulumi.Input<enums.compute.alpha.RegionInstanceGroupManagerTargetSizeUnit>;
     /**
      * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
      */

@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionsArgs',
     'GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs',
+    'GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs',
     'GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2IdpCertificateArgs',
     'GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs',
@@ -24,6 +25,8 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs',
+    'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs',
+    'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigArgs',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleArgs',
@@ -239,6 +242,110 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigArgs:
     @team_id.setter
     def team_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team_id", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs:
+    def __init__(__self__, *,
+                 contains_lowercase_character: Optional[pulumi.Input[bool]] = None,
+                 contains_non_alphanumeric_character: Optional[pulumi.Input[bool]] = None,
+                 contains_numeric_character: Optional[pulumi.Input[bool]] = None,
+                 contains_uppercase_character: Optional[pulumi.Input[bool]] = None,
+                 max_password_length: Optional[pulumi.Input[int]] = None,
+                 min_password_length: Optional[pulumi.Input[int]] = None):
+        """
+        Custom strength options to enforce on user passwords.
+        :param pulumi.Input[bool] contains_lowercase_character: The password must contain a lower case character.
+        :param pulumi.Input[bool] contains_non_alphanumeric_character: The password must contain a non alpha numeric character.
+        :param pulumi.Input[bool] contains_numeric_character: The password must contain a number.
+        :param pulumi.Input[bool] contains_uppercase_character: The password must contain an upper case character.
+        :param pulumi.Input[int] max_password_length: Maximum password length. No default max length
+        :param pulumi.Input[int] min_password_length: Minimum password length. Range from 6 to 30
+        """
+        if contains_lowercase_character is not None:
+            pulumi.set(__self__, "contains_lowercase_character", contains_lowercase_character)
+        if contains_non_alphanumeric_character is not None:
+            pulumi.set(__self__, "contains_non_alphanumeric_character", contains_non_alphanumeric_character)
+        if contains_numeric_character is not None:
+            pulumi.set(__self__, "contains_numeric_character", contains_numeric_character)
+        if contains_uppercase_character is not None:
+            pulumi.set(__self__, "contains_uppercase_character", contains_uppercase_character)
+        if max_password_length is not None:
+            pulumi.set(__self__, "max_password_length", max_password_length)
+        if min_password_length is not None:
+            pulumi.set(__self__, "min_password_length", min_password_length)
+
+    @property
+    @pulumi.getter(name="containsLowercaseCharacter")
+    def contains_lowercase_character(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The password must contain a lower case character.
+        """
+        return pulumi.get(self, "contains_lowercase_character")
+
+    @contains_lowercase_character.setter
+    def contains_lowercase_character(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "contains_lowercase_character", value)
+
+    @property
+    @pulumi.getter(name="containsNonAlphanumericCharacter")
+    def contains_non_alphanumeric_character(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The password must contain a non alpha numeric character.
+        """
+        return pulumi.get(self, "contains_non_alphanumeric_character")
+
+    @contains_non_alphanumeric_character.setter
+    def contains_non_alphanumeric_character(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "contains_non_alphanumeric_character", value)
+
+    @property
+    @pulumi.getter(name="containsNumericCharacter")
+    def contains_numeric_character(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The password must contain a number.
+        """
+        return pulumi.get(self, "contains_numeric_character")
+
+    @contains_numeric_character.setter
+    def contains_numeric_character(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "contains_numeric_character", value)
+
+    @property
+    @pulumi.getter(name="containsUppercaseCharacter")
+    def contains_uppercase_character(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The password must contain an upper case character.
+        """
+        return pulumi.get(self, "contains_uppercase_character")
+
+    @contains_uppercase_character.setter
+    def contains_uppercase_character(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "contains_uppercase_character", value)
+
+    @property
+    @pulumi.getter(name="maxPasswordLength")
+    def max_password_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum password length. No default max length
+        """
+        return pulumi.get(self, "max_password_length")
+
+    @max_password_length.setter
+    def max_password_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_password_length", value)
+
+    @property
+    @pulumi.getter(name="minPasswordLength")
+    def min_password_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum password length. Range from 6 to 30
+        """
+        return pulumi.get(self, "min_password_length")
+
+    @min_password_length.setter
+    def min_password_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_password_length", value)
 
 
 @pulumi.input_type
@@ -519,6 +626,86 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs:
     @token.setter
     def token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "token", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs:
+    def __init__(__self__, *,
+                 force_upgrade_on_signin: Optional[pulumi.Input[bool]] = None,
+                 password_policy_enforcement_state: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState']] = None,
+                 password_policy_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs']]]] = None):
+        """
+        The configuration for the password policy on the project.
+        :param pulumi.Input[bool] force_upgrade_on_signin: Users must have a password compliant with the password policy to sign-in.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState'] password_policy_enforcement_state: Which enforcement mode to use for the password policy.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs']]] password_policy_versions: Must be of length 1. Contains the strength attributes for the password policy.
+        """
+        if force_upgrade_on_signin is not None:
+            pulumi.set(__self__, "force_upgrade_on_signin", force_upgrade_on_signin)
+        if password_policy_enforcement_state is not None:
+            pulumi.set(__self__, "password_policy_enforcement_state", password_policy_enforcement_state)
+        if password_policy_versions is not None:
+            pulumi.set(__self__, "password_policy_versions", password_policy_versions)
+
+    @property
+    @pulumi.getter(name="forceUpgradeOnSignin")
+    def force_upgrade_on_signin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Users must have a password compliant with the password policy to sign-in.
+        """
+        return pulumi.get(self, "force_upgrade_on_signin")
+
+    @force_upgrade_on_signin.setter
+    def force_upgrade_on_signin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_upgrade_on_signin", value)
+
+    @property
+    @pulumi.getter(name="passwordPolicyEnforcementState")
+    def password_policy_enforcement_state(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState']]:
+        """
+        Which enforcement mode to use for the password policy.
+        """
+        return pulumi.get(self, "password_policy_enforcement_state")
+
+    @password_policy_enforcement_state.setter
+    def password_policy_enforcement_state(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState']]):
+        pulumi.set(self, "password_policy_enforcement_state", value)
+
+    @property
+    @pulumi.getter(name="passwordPolicyVersions")
+    def password_policy_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs']]]]:
+        """
+        Must be of length 1. Contains the strength attributes for the password policy.
+        """
+        return pulumi.get(self, "password_policy_versions")
+
+    @password_policy_versions.setter
+    def password_policy_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs']]]]):
+        pulumi.set(self, "password_policy_versions", value)
+
+
+@pulumi.input_type
+class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionArgs:
+    def __init__(__self__, *,
+                 custom_strength_options: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs']] = None):
+        """
+        The strength attributes for the password policy on the project.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs'] custom_strength_options: The custom strength options enforced by the password policy.
+        """
+        if custom_strength_options is not None:
+            pulumi.set(__self__, "custom_strength_options", custom_strength_options)
+
+    @property
+    @pulumi.getter(name="customStrengthOptions")
+    def custom_strength_options(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs']]:
+        """
+        The custom strength options enforced by the password policy.
+        """
+        return pulumi.get(self, "custom_strength_options")
+
+    @custom_strength_options.setter
+    def custom_strength_options(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsArgs']]):
+        pulumi.set(self, "custom_strength_options", value)
 
 
 @pulumi.input_type

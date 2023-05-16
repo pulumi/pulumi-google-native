@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2CloudSqlInstanceResponse CloudSqlInstance;
         /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse EmptyDir;
+        /// <summary>
         /// Volume's name.
         /// </summary>
         public readonly string Name;
@@ -33,11 +37,14 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         private GoogleCloudRunV2VolumeResponse(
             Outputs.GoogleCloudRunV2CloudSqlInstanceResponse cloudSqlInstance,
 
+            Outputs.GoogleCloudRunV2EmptyDirVolumeSourceResponse emptyDir,
+
             string name,
 
             Outputs.GoogleCloudRunV2SecretVolumeSourceResponse secret)
         {
             CloudSqlInstance = cloudSqlInstance;
+            EmptyDir = emptyDir;
             Name = name;
             Secret = secret;
         }

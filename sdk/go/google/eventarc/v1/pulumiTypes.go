@@ -861,7 +861,7 @@ func (o DestinationResponseOutput) Workflow() pulumi.StringOutput {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilter struct {
-	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator *string `pulumi:"operator"`
@@ -882,7 +882,7 @@ type EventFilterInput interface {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilterArgs struct {
-	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
@@ -942,7 +942,7 @@ func (o EventFilterOutput) ToEventFilterOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 func (o EventFilterOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilter) string { return v.Attribute }).(pulumi.StringOutput)
 }
@@ -979,7 +979,7 @@ func (o EventFilterArrayOutput) Index(i pulumi.IntInput) EventFilterOutput {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilterResponse struct {
-	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator string `pulumi:"operator"`
@@ -1002,7 +1002,7 @@ func (o EventFilterResponseOutput) ToEventFilterResponseOutputWithContext(ctx co
 	return o
 }
 
-// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. You can [retrieve a specific provider's supported event types](/eventarc/docs/list-providers#describe-provider). All triggers MUST provide a filter for the 'type' attribute.
 func (o EventFilterResponseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Attribute }).(pulumi.StringOutput)
 }

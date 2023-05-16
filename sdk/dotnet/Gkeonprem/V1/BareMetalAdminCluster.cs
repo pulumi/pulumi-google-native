@@ -29,6 +29,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [Output("bareMetalAdminClusterId")]
         public Output<string> BareMetalAdminClusterId { get; private set; } = null!;
 
+        /// <summary>
+        /// The Anthos clusters on bare metal version for the bare metal admin cluster.
+        /// </summary>
         [Output("bareMetalVersion")]
         public Output<string> BareMetalVersion { get; private set; } = null!;
 
@@ -263,6 +266,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1
         [Input("bareMetalAdminClusterId", required: true)]
         public Input<string> BareMetalAdminClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The Anthos clusters on bare metal version for the bare metal admin cluster.
+        /// </summary>
         [Input("bareMetalVersion")]
         public Input<string>? BareMetalVersion { get; set; }
 

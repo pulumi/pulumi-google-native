@@ -505,6 +505,8 @@ class NodeResponse(dict):
             suggest = "data_disks"
         elif key == "healthDescription":
             suggest = "health_description"
+        elif key == "multisliceNode":
+            suggest = "multislice_node"
         elif key == "networkConfig":
             suggest = "network_config"
         elif key == "networkEndpoints":
@@ -543,6 +545,7 @@ class NodeResponse(dict):
                  health_description: str,
                  labels: Mapping[str, str],
                  metadata: Mapping[str, str],
+                 multislice_node: bool,
                  name: str,
                  network_config: 'outputs.NetworkConfigResponse',
                  network_endpoints: Sequence['outputs.NetworkEndpointResponse'],
@@ -567,6 +570,7 @@ class NodeResponse(dict):
         :param str health_description: If this field is populated, it contains a description of why the TPU Node is unhealthy.
         :param Mapping[str, str] labels: Resource labels to represent user-provided metadata.
         :param Mapping[str, str] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+        :param bool multislice_node: Whether the Node belongs to a Multislice group.
         :param str name: Immutable. The name of the TPU.
         :param 'NetworkConfigResponse' network_config: Network configurations for the TPU node.
         :param Sequence['NetworkEndpointResponse'] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
@@ -590,6 +594,7 @@ class NodeResponse(dict):
         pulumi.set(__self__, "health_description", health_description)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "multislice_node", multislice_node)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_config", network_config)
         pulumi.set(__self__, "network_endpoints", network_endpoints)
@@ -689,6 +694,14 @@ class NodeResponse(dict):
         Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="multisliceNode")
+    def multislice_node(self) -> bool:
+        """
+        Whether the Node belongs to a Multislice group.
+        """
+        return pulumi.get(self, "multislice_node")
 
     @property
     @pulumi.getter

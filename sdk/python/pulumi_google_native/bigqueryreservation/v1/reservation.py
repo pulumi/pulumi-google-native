@@ -29,7 +29,7 @@ class ReservationArgs:
                  slot_capacity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
-        :param pulumi.Input['AutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        :param pulumi.Input['AutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
         :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         :param pulumi.Input['ReservationEdition'] edition: Edition of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -63,7 +63,7 @@ class ReservationArgs:
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input['AutoscaleArgs']]:
         """
-        The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        The configuration parameters for the auto scaling feature.
         """
         return pulumi.get(self, "autoscale")
 
@@ -195,7 +195,7 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        :param pulumi.Input[pulumi.InputType['AutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
         :param pulumi.Input[str] concurrency: Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         :param pulumi.Input['ReservationEdition'] edition: Edition of the reservation.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -301,7 +301,7 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter
     def autoscale(self) -> pulumi.Output['outputs.AutoscaleResponse']:
         """
-        The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        The configuration parameters for the auto scaling feature.
         """
         return pulumi.get(self, "autoscale")
 

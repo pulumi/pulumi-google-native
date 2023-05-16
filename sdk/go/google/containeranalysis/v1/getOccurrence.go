@@ -56,6 +56,8 @@ type LookupOccurrenceResult struct {
 	Remediation string `pulumi:"remediation"`
 	// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 	ResourceUri string `pulumi:"resourceUri"`
+	// Describes a specific SBOM reference occurrences.
+	SbomReference SBOMReferenceOccurrenceResponse `pulumi:"sbomReference"`
 	// The time this occurrence was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 	// Describes an available package upgrade on the linked resource.
@@ -173,6 +175,11 @@ func (o LookupOccurrenceResultOutput) Remediation() pulumi.StringOutput {
 // Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
 func (o LookupOccurrenceResultOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) string { return v.ResourceUri }).(pulumi.StringOutput)
+}
+
+// Describes a specific SBOM reference occurrences.
+func (o LookupOccurrenceResultOutput) SbomReference() SBOMReferenceOccurrenceResponseOutput {
+	return o.ApplyT(func(v LookupOccurrenceResult) SBOMReferenceOccurrenceResponse { return v.SbomReference }).(SBOMReferenceOccurrenceResponseOutput)
 }
 
 // The time this occurrence was last updated.

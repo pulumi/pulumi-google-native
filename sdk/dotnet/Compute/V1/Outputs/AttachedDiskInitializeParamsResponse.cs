@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        public readonly string ProvisionedThroughput;
+        /// <summary>
         /// Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaZones;
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string provisionedIops,
 
+            string provisionedThroughput,
+
             ImmutableArray<string> replicaZones,
 
             ImmutableDictionary<string, string> resourceManagerTags,
@@ -124,6 +130,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             Licenses = licenses;
             OnUpdateAction = onUpdateAction;
             ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             ReplicaZones = replicaZones;
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;

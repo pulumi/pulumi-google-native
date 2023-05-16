@@ -434,6 +434,54 @@ export const EnterpriseCrmEventbusProtoTaskMetadataExternalCategory = {
     UnspecifiedExternalCategory: "UNSPECIFIED_EXTERNAL_CATEGORY",
     Core: "CORE",
     Connectors: "CONNECTORS",
+    /**
+     * HTTP tasks, e.g. rest api call task
+     */
+    ExternalHttp: "EXTERNAL_HTTP",
+    /**
+     * Integration services, e.g. connector task
+     */
+    ExternalIntegrationServices: "EXTERNAL_INTEGRATION_SERVICES",
+    /**
+     * Customer ations, e.g. email task
+     */
+    ExternalCustomerActions: "EXTERNAL_CUSTOMER_ACTIONS",
+    /**
+     * Flow control, e.g. while loop task
+     */
+    ExternalFlowControl: "EXTERNAL_FLOW_CONTROL",
+    /**
+     * Workspace tasks, e.g. list drive task
+     */
+    ExternalWorkspace: "EXTERNAL_WORKSPACE",
+    /**
+     * Security, e.g. kms related tasks
+     */
+    ExternalSecurity: "EXTERNAL_SECURITY",
+    /**
+     * Database operation tasks, e.g. read firestore info tasks
+     */
+    ExternalDatabases: "EXTERNAL_DATABASES",
+    /**
+     * Analytics tasks, e.g. dataflow creattion tasks
+     */
+    ExternalAnalytics: "EXTERNAL_ANALYTICS",
+    /**
+     * BYOC tasks
+     */
+    ExternalByoc: "EXTERNAL_BYOC",
+    /**
+     * BYOT tasks
+     */
+    ExternalByot: "EXTERNAL_BYOT",
+    /**
+     * AI related tasks.
+     */
+    ExternalArtificialInteligence: "EXTERNAL_ARTIFICIAL_INTELIGENCE",
+    /**
+     * Data manipulation related tasks, e.g. data mapping task
+     */
+    ExternalDataManipulation: "EXTERNAL_DATA_MANIPULATION",
 } as const;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataExternalCategory = (typeof EnterpriseCrmEventbusProtoTaskMetadataExternalCategory)[keyof typeof EnterpriseCrmEventbusProtoTaskMetadataExternalCategory];

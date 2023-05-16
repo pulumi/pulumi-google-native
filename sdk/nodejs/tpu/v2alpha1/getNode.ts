@@ -72,6 +72,10 @@ export interface GetNodeResult {
      */
     readonly metadata: {[key: string]: string};
     /**
+     * Whether the Node belongs to a Multislice group.
+     */
+    readonly multisliceNode: boolean;
+    /**
      * Immutable. The name of the TPU.
      */
     readonly name: string;

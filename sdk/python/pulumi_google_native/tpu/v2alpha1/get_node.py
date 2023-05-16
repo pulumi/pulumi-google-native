@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_config=None, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_config=None, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, multislice_node=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -53,6 +53,9 @@ class GetNodeResult:
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
+        if multislice_node and not isinstance(multislice_node, bool):
+            raise TypeError("Expected argument 'multislice_node' to be a bool")
+        pulumi.set(__self__, "multislice_node", multislice_node)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -176,6 +179,14 @@ class GetNodeResult:
         return pulumi.get(self, "metadata")
 
     @property
+    @pulumi.getter(name="multisliceNode")
+    def multislice_node(self) -> bool:
+        """
+        Whether the Node belongs to a Multislice group.
+        """
+        return pulumi.get(self, "multislice_node")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -281,6 +292,7 @@ class AwaitableGetNodeResult(GetNodeResult):
             health_description=self.health_description,
             labels=self.labels,
             metadata=self.metadata,
+            multislice_node=self.multislice_node,
             name=self.name,
             network_config=self.network_config,
             network_endpoints=self.network_endpoints,
@@ -320,6 +332,7 @@ def get_node(location: Optional[str] = None,
         health_description=__ret__.health_description,
         labels=__ret__.labels,
         metadata=__ret__.metadata,
+        multislice_node=__ret__.multislice_node,
         name=__ret__.name,
         network_config=__ret__.network_config,
         network_endpoints=__ret__.network_endpoints,

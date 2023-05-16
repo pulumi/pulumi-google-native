@@ -240,10 +240,20 @@ export const getNetConnectionIamPolicy: typeof import("./getNetConnectionIamPoli
 export const getNetConnectionIamPolicyOutput: typeof import("./getNetConnectionIamPolicy").getNetConnectionIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getNetConnectionIamPolicy","getNetConnectionIamPolicyOutput"], () => require("./getNetConnectionIamPolicy"));
 
+export { GetProxyConfigArgs, GetProxyConfigResult, GetProxyConfigOutputArgs } from "./getProxyConfig";
+export const getProxyConfig: typeof import("./getProxyConfig").getProxyConfig = null as any;
+export const getProxyConfigOutput: typeof import("./getProxyConfig").getProxyConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getProxyConfig","getProxyConfigOutput"], () => require("./getProxyConfig"));
+
 export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
 export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
 export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
 utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
+
+export { GetTenantArgs, GetTenantResult, GetTenantOutputArgs } from "./getTenant";
+export const getTenant: typeof import("./getTenant").getTenant = null as any;
+export const getTenantOutput: typeof import("./getTenant").getTenantOutput = null as any;
+utilities.lazyLoad(exports, ["getTenant","getTenantOutput"], () => require("./getTenant"));
 
 export { NetConnectionIamBindingArgs } from "./netConnectionIamBinding";
 export type NetConnectionIamBinding = import("./netConnectionIamBinding").NetConnectionIamBinding;
@@ -260,10 +270,20 @@ export type NetConnectionIamPolicy = import("./netConnectionIamPolicy").NetConne
 export const NetConnectionIamPolicy: typeof import("./netConnectionIamPolicy").NetConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["NetConnectionIamPolicy"], () => require("./netConnectionIamPolicy"));
 
+export { ProxyConfigArgs } from "./proxyConfig";
+export type ProxyConfig = import("./proxyConfig").ProxyConfig;
+export const ProxyConfig: typeof import("./proxyConfig").ProxyConfig = null as any;
+utilities.lazyLoad(exports, ["ProxyConfig"], () => require("./proxyConfig"));
+
 export { SubscriptionArgs } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
 utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+
+export { TenantArgs } from "./tenant";
+export type Tenant = import("./tenant").Tenant;
+export const Tenant: typeof import("./tenant").Tenant = null as any;
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
 
 
 // Export enums:
@@ -341,8 +361,12 @@ const _module = {
                 return new NetConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy":
                 return new NetConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:ProxyConfig":
+                return new ProxyConfig(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1alpha:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1alpha:Tenant":
+                return new Tenant(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

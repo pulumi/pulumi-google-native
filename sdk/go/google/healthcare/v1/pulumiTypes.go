@@ -1426,6 +1426,8 @@ type DeidentifyConfig struct {
 	Image *ImageConfig `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text *TextConfig `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing *bool `pulumi:"useRegionalDataProcessing"`
 }
 
 // DeidentifyConfigInput is an input type that accepts DeidentifyConfigArgs and DeidentifyConfigOutput values.
@@ -1449,6 +1451,8 @@ type DeidentifyConfigArgs struct {
 	Image ImageConfigPtrInput `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigPtrInput `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing pulumi.BoolPtrInput `pulumi:"useRegionalDataProcessing"`
 }
 
 func (DeidentifyConfigArgs) ElementType() reflect.Type {
@@ -1549,6 +1553,11 @@ func (o DeidentifyConfigOutput) Text() TextConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *TextConfig { return v.Text }).(TextConfigPtrOutput)
 }
 
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *bool { return v.UseRegionalDataProcessing }).(pulumi.BoolPtrOutput)
+}
+
 type DeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DeidentifyConfigPtrOutput) ElementType() reflect.Type {
@@ -1613,6 +1622,16 @@ func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
 	}).(TextConfigPtrOutput)
 }
 
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigPtrOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseRegionalDataProcessing
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
 type DeidentifyConfigResponse struct {
 	// Configures de-id of application/DICOM content.
@@ -1623,6 +1642,8 @@ type DeidentifyConfigResponse struct {
 	Image ImageConfigResponse `pulumi:"image"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigResponse `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing bool `pulumi:"useRegionalDataProcessing"`
 }
 
 // Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
@@ -1658,6 +1679,11 @@ func (o DeidentifyConfigResponseOutput) Image() ImageConfigResponseOutput {
 // Configures de-identification of text wherever it is found in the source_dataset.
 func (o DeidentifyConfigResponseOutput) Text() TextConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) TextConfigResponse { return v.Text }).(TextConfigResponseOutput)
+}
+
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigResponseOutput) UseRegionalDataProcessing() pulumi.BoolOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) bool { return v.UseRegionalDataProcessing }).(pulumi.BoolOutput)
 }
 
 // Specifies the parameters needed for de-identification of DICOM stores.
@@ -6838,6 +6864,10 @@ func (o TagFilterListResponseOutput) Tags() pulumi.StringArrayOutput {
 }
 
 type TextConfig struct {
+	// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+	AdditionalTransformations []InfoTypeTransformation `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `additional_transformations`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -6856,6 +6886,10 @@ type TextConfigInput interface {
 }
 
 type TextConfigArgs struct {
+	// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+	AdditionalTransformations InfoTypeTransformationArrayInput `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `additional_transformations`.
+	ExcludeInfoTypes pulumi.StringArrayInput `pulumi:"excludeInfoTypes"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -6939,6 +6973,16 @@ func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) 
 	}).(TextConfigPtrOutput)
 }
 
+// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+func (o TextConfigOutput) AdditionalTransformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v TextConfig) []InfoTypeTransformation { return v.AdditionalTransformations }).(InfoTypeTransformationArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `additional_transformations`.
+func (o TextConfigOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TextConfig) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
+}
+
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 //
 // Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -6970,6 +7014,26 @@ func (o TextConfigPtrOutput) Elem() TextConfigOutput {
 	}).(TextConfigOutput)
 }
 
+// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+func (o TextConfigPtrOutput) AdditionalTransformations() InfoTypeTransformationArrayOutput {
+	return o.ApplyT(func(v *TextConfig) []InfoTypeTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalTransformations
+	}).(InfoTypeTransformationArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `additional_transformations`.
+func (o TextConfigPtrOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TextConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeInfoTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 //
 // Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -6983,6 +7047,10 @@ func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput
 }
 
 type TextConfigResponse struct {
+	// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+	AdditionalTransformations []InfoTypeTransformationResponse `pulumi:"additionalTransformations"`
+	// InfoTypes to skip transforming, overriding `additional_transformations`.
+	ExcludeInfoTypes []string `pulumi:"excludeInfoTypes"`
 	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	//
 	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
@@ -7001,6 +7069,16 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutput() TextConfigRespons
 
 func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx context.Context) TextConfigResponseOutput {
 	return o
+}
+
+// Transformations to apply to the detected data, overridden by `exclude_info_types`.
+func (o TextConfigResponseOutput) AdditionalTransformations() InfoTypeTransformationResponseArrayOutput {
+	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.AdditionalTransformations }).(InfoTypeTransformationResponseArrayOutput)
+}
+
+// InfoTypes to skip transforming, overriding `additional_transformations`.
+func (o TextConfigResponseOutput) ExcludeInfoTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TextConfigResponse) []string { return v.ExcludeInfoTypes }).(pulumi.StringArrayOutput)
 }
 
 // The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.

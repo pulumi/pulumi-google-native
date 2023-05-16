@@ -449,6 +449,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["gcs_bucket"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["p4_service_account"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["service_account"] = None
             __props__.__dict__["service_endpoint"] = None
             __props__.__dict__["state"] = None
@@ -503,6 +504,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["p4_service_account"] = None
         __props__.__dict__["private_instance"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_endpoint"] = None
         __props__.__dict__["state"] = None
@@ -699,6 +701,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter(name="serviceAccount")

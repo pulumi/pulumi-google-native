@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// </summary>
         public readonly string ResourceUri;
         /// <summary>
+        /// Describes a specific SBOM reference occurrences.
+        /// </summary>
+        public readonly Outputs.SBOMReferenceOccurrenceResponse SbomReference;
+        /// <summary>
         /// The time this occurrence was last updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
 
             string resourceUri,
 
+            Outputs.SBOMReferenceOccurrenceResponse sbomReference,
+
             string updateTime,
 
             Outputs.UpgradeOccurrenceResponse upgrade,
@@ -183,6 +189,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
             Package = package;
             Remediation = remediation;
             ResourceUri = resourceUri;
+            SbomReference = sbomReference;
             UpdateTime = updateTime;
             Upgrade = upgrade;
             Vulnerability = vulnerability;

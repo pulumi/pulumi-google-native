@@ -436,7 +436,7 @@ func (o ControlSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) ControlSol
 	}).(ControlSolutionTypesItemOutput)
 }
 
-// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType string
 
 const (

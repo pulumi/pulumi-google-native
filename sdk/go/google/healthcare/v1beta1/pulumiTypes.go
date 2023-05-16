@@ -3380,6 +3380,8 @@ type DeidentifyConfig struct {
 	OperationMetadata *DeidentifyOperationMetadata `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text *TextConfig `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing *bool `pulumi:"useRegionalDataProcessing"`
 }
 
 // DeidentifyConfigInput is an input type that accepts DeidentifyConfigArgs and DeidentifyConfigOutput values.
@@ -3417,6 +3419,8 @@ type DeidentifyConfigArgs struct {
 	OperationMetadata DeidentifyOperationMetadataPtrInput `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigPtrInput `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing pulumi.BoolPtrInput `pulumi:"useRegionalDataProcessing"`
 }
 
 func (DeidentifyConfigArgs) ElementType() reflect.Type {
@@ -3543,6 +3547,11 @@ func (o DeidentifyConfigOutput) Text() TextConfigPtrOutput {
 	return o.ApplyT(func(v DeidentifyConfig) *TextConfig { return v.Text }).(TextConfigPtrOutput)
 }
 
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeidentifyConfig) *bool { return v.UseRegionalDataProcessing }).(pulumi.BoolPtrOutput)
+}
+
 type DeidentifyConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (DeidentifyConfigPtrOutput) ElementType() reflect.Type {
@@ -3653,6 +3662,16 @@ func (o DeidentifyConfigPtrOutput) Text() TextConfigPtrOutput {
 	}).(TextConfigPtrOutput)
 }
 
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigPtrOutput) UseRegionalDataProcessing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeidentifyConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseRegionalDataProcessing
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
 type DeidentifyConfigResponse struct {
 	// Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
@@ -3677,6 +3696,8 @@ type DeidentifyConfigResponse struct {
 	OperationMetadata DeidentifyOperationMetadataResponse `pulumi:"operationMetadata"`
 	// Configures de-identification of text wherever it is found in the source_dataset.
 	Text TextConfigResponse `pulumi:"text"`
+	// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+	UseRegionalDataProcessing bool `pulumi:"useRegionalDataProcessing"`
 }
 
 // Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
@@ -3738,6 +3759,11 @@ func (o DeidentifyConfigResponseOutput) OperationMetadata() DeidentifyOperationM
 // Configures de-identification of text wherever it is found in the source_dataset.
 func (o DeidentifyConfigResponseOutput) Text() TextConfigResponseOutput {
 	return o.ApplyT(func(v DeidentifyConfigResponse) TextConfigResponse { return v.Text }).(TextConfigResponseOutput)
+}
+
+// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+func (o DeidentifyConfigResponseOutput) UseRegionalDataProcessing() pulumi.BoolOutput {
+	return o.ApplyT(func(v DeidentifyConfigResponse) bool { return v.UseRegionalDataProcessing }).(pulumi.BoolOutput)
 }
 
 // Details about the work the de-identify operation performed.

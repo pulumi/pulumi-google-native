@@ -128,6 +128,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly maxStreamDuration!: pulumi.Output<outputs.compute.beta.DurationResponse>;
     /**
+     * Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+     */
+    public readonly metadatas!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -219,6 +223,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["maxStreamDuration"] = args ? args.maxStreamDuration : undefined;
+            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
@@ -264,6 +269,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["localityLbPolicy"] = undefined /*out*/;
             resourceInputs["logConfig"] = undefined /*out*/;
             resourceInputs["maxStreamDuration"] = undefined /*out*/;
+            resourceInputs["metadatas"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["outlierDetection"] = undefined /*out*/;
@@ -366,6 +372,10 @@ export interface RegionBackendServiceArgs {
      * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
      */
     maxStreamDuration?: pulumi.Input<inputs.compute.beta.DurationArgs>;
+    /**
+     * Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+     */
+    metadatas?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

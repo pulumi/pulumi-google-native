@@ -469,6 +469,8 @@ type GoogleCloudRunV2Container struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
+	// Container names which must start before this container.
+	DependsOn []string `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
 	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
@@ -506,6 +508,8 @@ type GoogleCloudRunV2ContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command pulumi.StringArrayInput `pulumi:"command"`
+	// Container names which must start before this container.
+	DependsOn pulumi.StringArrayInput `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
 	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
@@ -586,6 +590,11 @@ func (o GoogleCloudRunV2ContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 func (o GoogleCloudRunV2ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container names which must start before this container.
+func (o GoogleCloudRunV2ContainerOutput) DependsOn() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Container) []string { return v.DependsOn }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -821,6 +830,8 @@ type GoogleCloudRunV2ContainerResponse struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 	Command []string `pulumi:"command"`
+	// Container names which must start before this container.
+	DependsOn []string `pulumi:"dependsOn"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
 	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
@@ -864,6 +875,11 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Args() pulumi.StringArrayOutput
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
 func (o GoogleCloudRunV2ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container names which must start before this container.
+func (o GoogleCloudRunV2ContainerResponseOutput) DependsOn() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []string { return v.DependsOn }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -931,6 +947,200 @@ func (o GoogleCloudRunV2ContainerResponseArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV2ContainerResponse {
 		return vs[0].([]GoogleCloudRunV2ContainerResponse)[vs[1].(int)]
 	}).(GoogleCloudRunV2ContainerResponseOutput)
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type GoogleCloudRunV2EmptyDirVolumeSource struct {
+	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+	Medium *GoogleCloudRunV2EmptyDirVolumeSourceMedium `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// GoogleCloudRunV2EmptyDirVolumeSourceInput is an input type that accepts GoogleCloudRunV2EmptyDirVolumeSourceArgs and GoogleCloudRunV2EmptyDirVolumeSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2EmptyDirVolumeSourceInput` via:
+//
+//	GoogleCloudRunV2EmptyDirVolumeSourceArgs{...}
+type GoogleCloudRunV2EmptyDirVolumeSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2EmptyDirVolumeSourceOutput() GoogleCloudRunV2EmptyDirVolumeSourceOutput
+	ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(context.Context) GoogleCloudRunV2EmptyDirVolumeSourceOutput
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type GoogleCloudRunV2EmptyDirVolumeSourceArgs struct {
+	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+	Medium GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolumeSourceOutput() GoogleCloudRunV2EmptyDirVolumeSourceOutput {
+	return i.ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EmptyDirVolumeSourceOutput)
+}
+
+func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2EmptyDirVolumeSourceArgs) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EmptyDirVolumeSourceOutput).ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRunV2EmptyDirVolumeSourcePtrInput is an input type that accepts GoogleCloudRunV2EmptyDirVolumeSourceArgs, GoogleCloudRunV2EmptyDirVolumeSourcePtr and GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2EmptyDirVolumeSourcePtrInput` via:
+//
+//	        GoogleCloudRunV2EmptyDirVolumeSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRunV2EmptyDirVolumeSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput
+	ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput
+}
+
+type googleCloudRunV2EmptyDirVolumeSourcePtrType GoogleCloudRunV2EmptyDirVolumeSourceArgs
+
+func GoogleCloudRunV2EmptyDirVolumeSourcePtr(v *GoogleCloudRunV2EmptyDirVolumeSourceArgs) GoogleCloudRunV2EmptyDirVolumeSourcePtrInput {
+	return (*googleCloudRunV2EmptyDirVolumeSourcePtrType)(v)
+}
+
+func (*googleCloudRunV2EmptyDirVolumeSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (i *googleCloudRunV2EmptyDirVolumeSourcePtrType) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return i.ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRunV2EmptyDirVolumeSourcePtrType) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type GoogleCloudRunV2EmptyDirVolumeSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceOutput() GoogleCloudRunV2EmptyDirVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return o.ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2EmptyDirVolumeSource) *GoogleCloudRunV2EmptyDirVolumeSource {
+		return &v
+	}).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
+}
+
+// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) Medium() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSource) *GoogleCloudRunV2EmptyDirVolumeSourceMedium {
+		return v.Medium
+	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourceOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSource) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2EmptyDirVolumeSource)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutput() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) ToGoogleCloudRunV2EmptyDirVolumeSourcePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) Elem() GoogleCloudRunV2EmptyDirVolumeSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2EmptyDirVolumeSource) GoogleCloudRunV2EmptyDirVolumeSource {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2EmptyDirVolumeSource
+		return ret
+	}).(GoogleCloudRunV2EmptyDirVolumeSourceOutput)
+}
+
+// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) Medium() GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2EmptyDirVolumeSource) *GoogleCloudRunV2EmptyDirVolumeSourceMedium {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(GoogleCloudRunV2EmptyDirVolumeSourceMediumPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2EmptyDirVolumeSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type GoogleCloudRunV2EmptyDirVolumeSourceResponse struct {
+	// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+	Medium string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+	SizeLimit string `pulumi:"sizeLimit"`
+}
+
+// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+type GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceResponseOutput() GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) ToGoogleCloudRunV2EmptyDirVolumeSourceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput {
+	return o
+}
+
+// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSourceResponse) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+func (o GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput) SizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2EmptyDirVolumeSourceResponse) string { return v.SizeLimit }).(pulumi.StringOutput)
 }
 
 // EnvVar represents an environment variable present in a Container.
@@ -4274,6 +4484,8 @@ func (o GoogleCloudRunV2VersionToPathResponseArrayOutput) Index(i pulumi.IntInpu
 type GoogleCloudRunV2Volume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstance *GoogleCloudRunV2CloudSqlInstance `pulumi:"cloudSqlInstance"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir *GoogleCloudRunV2EmptyDirVolumeSource `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume.
@@ -4295,6 +4507,8 @@ type GoogleCloudRunV2VolumeInput interface {
 type GoogleCloudRunV2VolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir GoogleCloudRunV2EmptyDirVolumeSourcePtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume.
@@ -4356,6 +4570,11 @@ func (o GoogleCloudRunV2VolumeOutput) ToGoogleCloudRunV2VolumeOutputWithContext(
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 func (o GoogleCloudRunV2VolumeOutput) CloudSqlInstance() GoogleCloudRunV2CloudSqlInstancePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2CloudSqlInstance { return v.CloudSqlInstance }).(GoogleCloudRunV2CloudSqlInstancePtrOutput)
+}
+
+// Ephemeral storage used as a shared volume.
+func (o GoogleCloudRunV2VolumeOutput) EmptyDir() GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Volume) *GoogleCloudRunV2EmptyDirVolumeSource { return v.EmptyDir }).(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput)
 }
 
 // Volume's name.
@@ -4554,6 +4773,8 @@ func (o GoogleCloudRunV2VolumeMountResponseArrayOutput) Index(i pulumi.IntInput)
 type GoogleCloudRunV2VolumeResponse struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstance GoogleCloudRunV2CloudSqlInstanceResponse `pulumi:"cloudSqlInstance"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDir GoogleCloudRunV2EmptyDirVolumeSourceResponse `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume.
@@ -4580,6 +4801,11 @@ func (o GoogleCloudRunV2VolumeResponseOutput) CloudSqlInstance() GoogleCloudRunV
 	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2CloudSqlInstanceResponse {
 		return v.CloudSqlInstance
 	}).(GoogleCloudRunV2CloudSqlInstanceResponseOutput)
+}
+
+// Ephemeral storage used as a shared volume.
+func (o GoogleCloudRunV2VolumeResponseOutput) EmptyDir() GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2VolumeResponse) GoogleCloudRunV2EmptyDirVolumeSourceResponse { return v.EmptyDir }).(GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput)
 }
 
 // Volume's name.
@@ -5559,6 +5785,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ContainerArrayInput)(nil)).Elem(), GoogleCloudRunV2ContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ContainerPortInput)(nil)).Elem(), GoogleCloudRunV2ContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ContainerPortArrayInput)(nil)).Elem(), GoogleCloudRunV2ContainerPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourceInput)(nil)).Elem(), GoogleCloudRunV2EmptyDirVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EmptyDirVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2EmptyDirVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarInput)(nil)).Elem(), GoogleCloudRunV2EnvVarArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarArrayInput)(nil)).Elem(), GoogleCloudRunV2EnvVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
@@ -5618,6 +5846,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2ContainerPortResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ContainerResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ContainerResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2EmptyDirVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2EmptyDirVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2EmptyDirVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarResponseOutput{})

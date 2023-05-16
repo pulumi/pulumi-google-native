@@ -45,6 +45,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 	FailoverAction string `pulumi:"failoverAction"`
 	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint string `pulumi:"fingerprint"`
+	// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+	InstanceFlexibilityPolicy InstanceGroupManagerInstanceFlexibilityPolicyResponse `pulumi:"instanceFlexibilityPolicy"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
 	// The repair policy for this managed instance group.
@@ -77,6 +79,8 @@ type LookupRegionInstanceGroupManagerResult struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize int `pulumi:"targetSize"`
+	// The unit of measure for the target size.
+	TargetSizeUnit string `pulumi:"targetSizeUnit"`
 	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize int `pulumi:"targetStoppedSize"`
 	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
@@ -177,6 +181,13 @@ func (o LookupRegionInstanceGroupManagerResultOutput) Fingerprint() pulumi.Strin
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+func (o LookupRegionInstanceGroupManagerResultOutput) InstanceFlexibilityPolicy() InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) InstanceGroupManagerInstanceFlexibilityPolicyResponse {
+		return v.InstanceFlexibilityPolicy
+	}).(InstanceGroupManagerInstanceFlexibilityPolicyResponseOutput)
+}
+
 // The URL of the Instance Group resource.
 func (o LookupRegionInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
@@ -259,6 +270,11 @@ func (o LookupRegionInstanceGroupManagerResultOutput) TargetPools() pulumi.Strin
 // The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 func (o LookupRegionInstanceGroupManagerResultOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) int { return v.TargetSize }).(pulumi.IntOutput)
+}
+
+// The unit of measure for the target size.
+func (o LookupRegionInstanceGroupManagerResultOutput) TargetSizeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.TargetSizeUnit }).(pulumi.StringOutput)
 }
 
 // The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.

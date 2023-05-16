@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
         /// </summary>
         public readonly string Version;
 

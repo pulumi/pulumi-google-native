@@ -740,7 +740,13 @@ _utilities.register(
    "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy": "ClientConnectorServiceIamPolicy",
    "google-native:beyondcorp/v1:ClientGatewayIamBinding": "ClientGatewayIamBinding",
    "google-native:beyondcorp/v1:ClientGatewayIamMember": "ClientGatewayIamMember",
-   "google-native:beyondcorp/v1:ClientGatewayIamPolicy": "ClientGatewayIamPolicy"
+   "google-native:beyondcorp/v1:ClientGatewayIamPolicy": "ClientGatewayIamPolicy",
+   "google-native:beyondcorp/v1:OrganizationTenantIamBinding": "OrganizationTenantIamBinding",
+   "google-native:beyondcorp/v1:OrganizationTenantIamMember": "OrganizationTenantIamMember",
+   "google-native:beyondcorp/v1:OrganizationTenantIamPolicy": "OrganizationTenantIamPolicy",
+   "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamBinding": "OrganizationTenantProxyConfigIamBinding",
+   "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamMember": "OrganizationTenantProxyConfigIamMember",
+   "google-native:beyondcorp/v1:OrganizationTenantProxyConfigIamPolicy": "OrganizationTenantProxyConfigIamPolicy"
   }
  },
  {
@@ -782,7 +788,9 @@ _utilities.register(
    "google-native:beyondcorp/v1alpha:NetConnectionIamBinding": "NetConnectionIamBinding",
    "google-native:beyondcorp/v1alpha:NetConnectionIamMember": "NetConnectionIamMember",
    "google-native:beyondcorp/v1alpha:NetConnectionIamPolicy": "NetConnectionIamPolicy",
-   "google-native:beyondcorp/v1alpha:Subscription": "Subscription"
+   "google-native:beyondcorp/v1alpha:ProxyConfig": "ProxyConfig",
+   "google-native:beyondcorp/v1alpha:Subscription": "Subscription",
+   "google-native:beyondcorp/v1alpha:Tenant": "Tenant"
   }
  },
  {
@@ -1748,6 +1756,8 @@ _utilities.register(
    "google-native:connectors/v1:ConnectionIamBinding": "ConnectionIamBinding",
    "google-native:connectors/v1:ConnectionIamMember": "ConnectionIamMember",
    "google-native:connectors/v1:ConnectionIamPolicy": "ConnectionIamPolicy",
+   "google-native:connectors/v1:EndpointAttachment": "EndpointAttachment",
+   "google-native:connectors/v1:ManagedZone": "ManagedZone",
    "google-native:connectors/v1:ProviderIamBinding": "ProviderIamBinding",
    "google-native:connectors/v1:ProviderIamMember": "ProviderIamMember",
    "google-native:connectors/v1:ProviderIamPolicy": "ProviderIamPolicy"
@@ -1998,7 +2008,10 @@ _utilities.register(
    "google-native:datamigration/v1:MigrationJobIamBinding": "MigrationJobIamBinding",
    "google-native:datamigration/v1:MigrationJobIamMember": "MigrationJobIamMember",
    "google-native:datamigration/v1:MigrationJobIamPolicy": "MigrationJobIamPolicy",
-   "google-native:datamigration/v1:PrivateConnection": "PrivateConnection"
+   "google-native:datamigration/v1:PrivateConnection": "PrivateConnection",
+   "google-native:datamigration/v1:PrivateConnectionIamBinding": "PrivateConnectionIamBinding",
+   "google-native:datamigration/v1:PrivateConnectionIamMember": "PrivateConnectionIamMember",
+   "google-native:datamigration/v1:PrivateConnectionIamPolicy": "PrivateConnectionIamPolicy"
   }
  },
  {
@@ -2029,6 +2042,9 @@ _utilities.register(
   "mod": "dataplex/v1",
   "fqn": "pulumi_google_native.dataplex.v1",
   "classes": {
+   "google-native:dataplex/v1:AspectTypeIamBinding": "AspectTypeIamBinding",
+   "google-native:dataplex/v1:AspectTypeIamMember": "AspectTypeIamMember",
+   "google-native:dataplex/v1:AspectTypeIamPolicy": "AspectTypeIamPolicy",
    "google-native:dataplex/v1:Asset": "Asset",
    "google-native:dataplex/v1:Attribute": "Attribute",
    "google-native:dataplex/v1:Content": "Content",
@@ -2049,6 +2065,12 @@ _utilities.register(
    "google-native:dataplex/v1:DataTaxonomyIamMember": "DataTaxonomyIamMember",
    "google-native:dataplex/v1:DataTaxonomyIamPolicy": "DataTaxonomyIamPolicy",
    "google-native:dataplex/v1:Entity": "Entity",
+   "google-native:dataplex/v1:EntryGroupIamBinding": "EntryGroupIamBinding",
+   "google-native:dataplex/v1:EntryGroupIamMember": "EntryGroupIamMember",
+   "google-native:dataplex/v1:EntryGroupIamPolicy": "EntryGroupIamPolicy",
+   "google-native:dataplex/v1:EntryTypeIamBinding": "EntryTypeIamBinding",
+   "google-native:dataplex/v1:EntryTypeIamMember": "EntryTypeIamMember",
+   "google-native:dataplex/v1:EntryTypeIamPolicy": "EntryTypeIamPolicy",
    "google-native:dataplex/v1:Environment": "Environment",
    "google-native:dataplex/v1:Lake": "Lake",
    "google-native:dataplex/v1:LakeAssetIamBinding": "LakeAssetIamBinding",
@@ -2536,6 +2558,7 @@ _utilities.register(
   "mod": "firestore/v1",
   "fqn": "pulumi_google_native.firestore.v1",
   "classes": {
+   "google-native:firestore/v1:BackupSchedule": "BackupSchedule",
    "google-native:firestore/v1:Database": "Database",
    "google-native:firestore/v1:Index": "Index"
   }
@@ -3134,15 +3157,19 @@ _utilities.register(
    "google-native:networkconnectivity/v1:PolicyBasedRouteIamBinding": "PolicyBasedRouteIamBinding",
    "google-native:networkconnectivity/v1:PolicyBasedRouteIamMember": "PolicyBasedRouteIamMember",
    "google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy": "PolicyBasedRouteIamPolicy",
+   "google-native:networkconnectivity/v1:ServiceClass": "ServiceClass",
    "google-native:networkconnectivity/v1:ServiceClassIamBinding": "ServiceClassIamBinding",
    "google-native:networkconnectivity/v1:ServiceClassIamMember": "ServiceClassIamMember",
    "google-native:networkconnectivity/v1:ServiceClassIamPolicy": "ServiceClassIamPolicy",
+   "google-native:networkconnectivity/v1:ServiceConnectionMap": "ServiceConnectionMap",
    "google-native:networkconnectivity/v1:ServiceConnectionMapIamBinding": "ServiceConnectionMapIamBinding",
    "google-native:networkconnectivity/v1:ServiceConnectionMapIamMember": "ServiceConnectionMapIamMember",
    "google-native:networkconnectivity/v1:ServiceConnectionMapIamPolicy": "ServiceConnectionMapIamPolicy",
+   "google-native:networkconnectivity/v1:ServiceConnectionPolicy": "ServiceConnectionPolicy",
    "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamBinding": "ServiceConnectionPolicyIamBinding",
    "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamMember": "ServiceConnectionPolicyIamMember",
    "google-native:networkconnectivity/v1:ServiceConnectionPolicyIamPolicy": "ServiceConnectionPolicyIamPolicy",
+   "google-native:networkconnectivity/v1:ServiceConnectionToken": "ServiceConnectionToken",
    "google-native:networkconnectivity/v1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1:SpokeIamBinding": "SpokeIamBinding",
    "google-native:networkconnectivity/v1:SpokeIamMember": "SpokeIamMember",

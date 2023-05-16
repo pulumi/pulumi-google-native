@@ -10,6 +10,168 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An accelerator card attached to the instance.
+type Accelerator struct {
+	// Number of accelerator cards exposed to the instance.
+	Count *int `pulumi:"count"`
+	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	Type *string `pulumi:"type"`
+}
+
+// AcceleratorInput is an input type that accepts AcceleratorArgs and AcceleratorOutput values.
+// You can construct a concrete instance of `AcceleratorInput` via:
+//
+//	AcceleratorArgs{...}
+type AcceleratorInput interface {
+	pulumi.Input
+
+	ToAcceleratorOutput() AcceleratorOutput
+	ToAcceleratorOutputWithContext(context.Context) AcceleratorOutput
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorArgs struct {
+	// Number of accelerator cards exposed to the instance.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Accelerator)(nil)).Elem()
+}
+
+func (i AcceleratorArgs) ToAcceleratorOutput() AcceleratorOutput {
+	return i.ToAcceleratorOutputWithContext(context.Background())
+}
+
+func (i AcceleratorArgs) ToAcceleratorOutputWithContext(ctx context.Context) AcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorOutput)
+}
+
+// AcceleratorArrayInput is an input type that accepts AcceleratorArray and AcceleratorArrayOutput values.
+// You can construct a concrete instance of `AcceleratorArrayInput` via:
+//
+//	AcceleratorArray{ AcceleratorArgs{...} }
+type AcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToAcceleratorArrayOutput() AcceleratorArrayOutput
+	ToAcceleratorArrayOutputWithContext(context.Context) AcceleratorArrayOutput
+}
+
+type AcceleratorArray []AcceleratorInput
+
+func (AcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Accelerator)(nil)).Elem()
+}
+
+func (i AcceleratorArray) ToAcceleratorArrayOutput() AcceleratorArrayOutput {
+	return i.ToAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i AcceleratorArray) ToAcceleratorArrayOutputWithContext(ctx context.Context) AcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorArrayOutput)
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Accelerator)(nil)).Elem()
+}
+
+func (o AcceleratorOutput) ToAcceleratorOutput() AcceleratorOutput {
+	return o
+}
+
+func (o AcceleratorOutput) ToAcceleratorOutputWithContext(ctx context.Context) AcceleratorOutput {
+	return o
+}
+
+// Number of accelerator cards exposed to the instance.
+func (o AcceleratorOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Accelerator) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+func (o AcceleratorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Accelerator) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Accelerator)(nil)).Elem()
+}
+
+func (o AcceleratorArrayOutput) ToAcceleratorArrayOutput() AcceleratorArrayOutput {
+	return o
+}
+
+func (o AcceleratorArrayOutput) ToAcceleratorArrayOutputWithContext(ctx context.Context) AcceleratorArrayOutput {
+	return o
+}
+
+func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Accelerator {
+		return vs[0].([]Accelerator)[vs[1].(int)]
+	}).(AcceleratorOutput)
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorResponse struct {
+	// Number of accelerator cards exposed to the instance.
+	Count int `pulumi:"count"`
+	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	Type string `pulumi:"type"`
+}
+
+// An accelerator card attached to the instance.
+type AcceleratorResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorResponse)(nil)).Elem()
+}
+
+func (o AcceleratorResponseOutput) ToAcceleratorResponseOutput() AcceleratorResponseOutput {
+	return o
+}
+
+func (o AcceleratorResponseOutput) ToAcceleratorResponseOutputWithContext(ctx context.Context) AcceleratorResponseOutput {
+	return o
+}
+
+// Number of accelerator cards exposed to the instance.
+func (o AcceleratorResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v AcceleratorResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+func (o AcceleratorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AcceleratorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorResponse)(nil)).Elem()
+}
+
+func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutput() AcceleratorResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorResponseArrayOutput) ToAcceleratorResponseArrayOutputWithContext(ctx context.Context) AcceleratorResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorResponseArrayOutput) Index(i pulumi.IntInput) AcceleratorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcceleratorResponse {
+		return vs[0].([]AcceleratorResponse)[vs[1].(int)]
+	}).(AcceleratorResponseOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -1412,6 +1574,8 @@ func (o GceConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute()
 
 // A runtime using a Compute Engine instance.
 type GceInstance struct {
+	// A list of the type and count of accelerator cards attached to the instance.
+	Accelerators []Accelerator `pulumi:"accelerators"`
 	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
@@ -1443,6 +1607,8 @@ type GceInstanceInput interface {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceArgs struct {
+	// A list of the type and count of accelerator cards attached to the instance.
+	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
 	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
@@ -1539,6 +1705,11 @@ func (o GceInstanceOutput) ToGceInstancePtrOutputWithContext(ctx context.Context
 	}).(GceInstancePtrOutput)
 }
 
+// A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstanceOutput) Accelerators() AcceleratorArrayOutput {
+	return o.ApplyT(func(v GceInstance) []Accelerator { return v.Accelerators }).(AcceleratorArrayOutput)
+}
+
 // Size of the boot disk in GB. Defaults to 50.
 func (o GceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
@@ -1601,6 +1772,16 @@ func (o GceInstancePtrOutput) Elem() GceInstanceOutput {
 		var ret GceInstance
 		return ret
 	}).(GceInstanceOutput)
+}
+
+// A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstancePtrOutput) Accelerators() AcceleratorArrayOutput {
+	return o.ApplyT(func(v *GceInstance) []Accelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(AcceleratorArrayOutput)
 }
 
 // Size of the boot disk in GB. Defaults to 50.
@@ -1685,6 +1866,8 @@ func (o GceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceResponse struct {
+	// A list of the type and count of accelerator cards attached to the instance.
+	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
 	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
@@ -1718,6 +1901,11 @@ func (o GceInstanceResponseOutput) ToGceInstanceResponseOutput() GceInstanceResp
 
 func (o GceInstanceResponseOutput) ToGceInstanceResponseOutputWithContext(ctx context.Context) GceInstanceResponseOutput {
 	return o
+}
+
+// A list of the type and count of accelerator cards attached to the instance.
+func (o GceInstanceResponseOutput) Accelerators() AcceleratorResponseArrayOutput {
+	return o.ApplyT(func(v GceInstanceResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
 }
 
 // Size of the boot disk in GB. Defaults to 50.
@@ -3010,6 +3198,8 @@ func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorInput)(nil)).Elem(), AcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorArrayInput)(nil)).Elem(), AcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -3038,6 +3228,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckInput)(nil)).Elem(), ReadinessCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReadinessCheckArrayInput)(nil)).Elem(), ReadinessCheckArray{})
+	pulumi.RegisterOutputType(AcceleratorOutput{})
+	pulumi.RegisterOutputType(AcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(AcceleratorResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})

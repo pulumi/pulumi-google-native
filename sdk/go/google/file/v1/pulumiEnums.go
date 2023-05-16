@@ -28,6 +28,8 @@ const (
 	InstanceTierHighScaleSsd = InstanceTier("HIGH_SCALE_SSD")
 	// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
 	InstanceTierEnterprise = InstanceTier("ENTERPRISE")
+	// ZONAL instances offer expanded capacity and performance scaling capabilities.
+	InstanceTierZonal = InstanceTier("ZONAL")
 )
 
 func (InstanceTier) ElementType() reflect.Type {

@@ -234,6 +234,224 @@ func (o GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput) Suppor
 	}).(pulumi.BoolOutput)
 }
 
+// Contains fields that are required to perform Apple-specific integrity checks.
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperId struct {
+	// The Apple developer key ID (10-character string).
+	KeyId string `pulumi:"keyId"`
+	// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+	PrivateKey string `pulumi:"privateKey"`
+	// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+	TeamId string `pulumi:"teamId"`
+}
+
+// GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs and GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdInput` via:
+//
+//	GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs{...}
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput
+	ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput
+}
+
+// Contains fields that are required to perform Apple-specific integrity checks.
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs struct {
+	// The Apple developer key ID (10-character string).
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+	TeamId pulumi.StringInput `pulumi:"teamId"`
+}
+
+func (GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId)(nil)).Elem()
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput)
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput).ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs, GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtr and GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput` via:
+//
+//	        GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput
+	ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput
+}
+
+type googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs
+
+func GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtr(v *GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput {
+	return (*googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType)(v)
+}
+
+func (*googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1AppleDeveloperId)(nil)).Elem()
+}
+
+func (i *googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return i.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrType) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
+}
+
+// Contains fields that are required to perform Apple-specific integrity checks.
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AppleDeveloperId)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o.ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+		return &v
+	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
+}
+
+// The Apple developer key ID (10-character string).
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRecaptchaenterpriseV1AppleDeveloperId)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) Elem() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRecaptchaenterpriseV1AppleDeveloperId
+		return ret
+	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput)
+}
+
+// The Apple developer key ID (10-character string).
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TeamId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains fields that are required to perform Apple-specific integrity checks.
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse struct {
+	// The Apple developer key ID (10-character string).
+	KeyId string `pulumi:"keyId"`
+	// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+	PrivateKey string `pulumi:"privateKey"`
+	// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+	TeamId string `pulumi:"teamId"`
+}
+
+// Contains fields that are required to perform Apple-specific integrity checks.
+type GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) ToGoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutputWithContext(ctx context.Context) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput {
+	return o
+}
+
+// The Apple developer key ID (10-character string).
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+func (o GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
 // An individual action. Each action represents what to do if a policy matches.
 type GoogleCloudRecaptchaenterpriseV1FirewallAction struct {
 	// The user request did not match any policy and should be allowed access to the requested resource.
@@ -1248,6 +1466,8 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettings struct {
 	AllowAllBundleIds *bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
+	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	AppleDeveloperId *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId `pulumi:"appleDeveloperId"`
 }
 
 // GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput values.
@@ -1267,6 +1487,8 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs struct {
 	AllowAllBundleIds pulumi.BoolPtrInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
+	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	AppleDeveloperId GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput `pulumi:"appleDeveloperId"`
 }
 
 func (GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs) ElementType() reflect.Type {
@@ -1357,6 +1579,13 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AllowedBundleIds()
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
 }
 
+// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+		return v.AppleDeveloperId
+	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
+}
+
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) ElementType() reflect.Type {
@@ -1401,12 +1630,24 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowedBundleId
 	}).(pulumi.StringArrayOutput)
 }
 
+// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+		if v == nil {
+			return nil
+		}
+		return v.AppleDeveloperId
+	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput)
+}
+
 // Settings specific to keys that can be used by iOS apps.
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse struct {
 	// If set to true, allowed_bundle_ids are not enforced.
 	AllowAllBundleIds bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
+	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	AppleDeveloperId GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse `pulumi:"appleDeveloperId"`
 }
 
 // Settings specific to keys that can be used by iOS apps.
@@ -1432,6 +1673,13 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowAllBu
 // iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowedBundleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
+}
+
+// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse {
+		return v.AppleDeveloperId
+	}).(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput)
 }
 
 // Options for user acceptance testing.
@@ -2103,6 +2351,8 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput) Integratio
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionArrayInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionInput)(nil)).Elem(), GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs{})
@@ -2126,6 +2376,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionOutput{})

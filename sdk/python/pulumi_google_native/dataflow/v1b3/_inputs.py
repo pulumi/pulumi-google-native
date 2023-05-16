@@ -30,6 +30,7 @@ __all__ = [
     'PipelineDescriptionArgs',
     'PubSubIODetailsArgs',
     'RuntimeEnvironmentArgs',
+    'RuntimeUpdatableParamsArgs',
     'SdkHarnessContainerImageArgs',
     'SdkVersionArgs',
     'SpannerIODetailsArgs',
@@ -1693,6 +1694,46 @@ class RuntimeEnvironmentArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class RuntimeUpdatableParamsArgs:
+    def __init__(__self__, *,
+                 max_num_workers: Optional[pulumi.Input[int]] = None,
+                 min_num_workers: Optional[pulumi.Input[int]] = None):
+        """
+        Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+        :param pulumi.Input[int] max_num_workers: The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+        :param pulumi.Input[int] min_num_workers: The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        """
+        if max_num_workers is not None:
+            pulumi.set(__self__, "max_num_workers", max_num_workers)
+        if min_num_workers is not None:
+            pulumi.set(__self__, "min_num_workers", min_num_workers)
+
+    @property
+    @pulumi.getter(name="maxNumWorkers")
+    def max_num_workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+        """
+        return pulumi.get(self, "max_num_workers")
+
+    @max_num_workers.setter
+    def max_num_workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_num_workers", value)
+
+    @property
+    @pulumi.getter(name="minNumWorkers")
+    def min_num_workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+        """
+        return pulumi.get(self, "min_num_workers")
+
+    @min_num_workers.setter
+    def min_num_workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_num_workers", value)
 
 
 @pulumi.input_type

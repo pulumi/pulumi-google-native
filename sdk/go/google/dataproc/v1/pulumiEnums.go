@@ -569,13 +569,13 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibil
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
-// Required. Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
+// Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information).
 type MetricMetricSource string
 
 const (
 	// Required unspecified metric source.
 	MetricMetricSourceMetricSourceUnspecified = MetricMetricSource("METRIC_SOURCE_UNSPECIFIED")
-	// Default monitoring agent metrics. If this source is enabled, Dataproc enables the monitoring agent in Compute Engine, and collects default monitoring agent metrics, which are published with an agent.googleapis.com prefix.
+	// Monitoring agent metrics. If this source is enabled, Dataproc enables the monitoring agent in Compute Engine, and collects monitoring agent metrics, which are published with an agent.googleapis.com prefix.
 	MetricMetricSourceMonitoringAgentDefaults = MetricMetricSource("MONITORING_AGENT_DEFAULTS")
 	// HDFS metric source.
 	MetricMetricSourceHdfs = MetricMetricSource("HDFS")

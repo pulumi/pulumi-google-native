@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { BackupScheduleArgs } from "./backupSchedule";
+export type BackupSchedule = import("./backupSchedule").BackupSchedule;
+export const BackupSchedule: typeof import("./backupSchedule").BackupSchedule = null as any;
+utilities.lazyLoad(exports, ["BackupSchedule"], () => require("./backupSchedule"));
+
 export { DatabaseArgs } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
+export { GetBackupScheduleArgs, GetBackupScheduleResult, GetBackupScheduleOutputArgs } from "./getBackupSchedule";
+export const getBackupSchedule: typeof import("./getBackupSchedule").getBackupSchedule = null as any;
+export const getBackupScheduleOutput: typeof import("./getBackupSchedule").getBackupScheduleOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupSchedule","getBackupScheduleOutput"], () => require("./getBackupSchedule"));
 
 export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
 export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
@@ -33,6 +43,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:firestore/v1:BackupSchedule":
+                return new BackupSchedule(name, <any>undefined, { urn })
             case "google-native:firestore/v1:Database":
                 return new Database(name, <any>undefined, { urn })
             case "google-native:firestore/v1:Index":

@@ -86,6 +86,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the Node belongs to a Multislice group.
+        /// </summary>
+        [Output("multisliceNode")]
+        public Output<bool> MultisliceNode { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The name of the TPU.
         /// </summary>
         [Output("name")]

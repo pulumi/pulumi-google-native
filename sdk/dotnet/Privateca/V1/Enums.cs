@@ -375,4 +375,45 @@ namespace Pulumi.GoogleNative.Privateca.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is omitted, CA certificates and CRLs will be published in PEM.
+    /// </summary>
+    [EnumType]
+    public readonly struct PublishingOptionsEncodingFormat : IEquatable<PublishingOptionsEncodingFormat>
+    {
+        private readonly string _value;
+
+        private PublishingOptionsEncodingFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified. By default, PEM format will be used.
+        /// </summary>
+        public static PublishingOptionsEncodingFormat EncodingFormatUnspecified { get; } = new PublishingOptionsEncodingFormat("ENCODING_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// The CertificateAuthority's CA certificate and CRLs will be published in PEM format.
+        /// </summary>
+        public static PublishingOptionsEncodingFormat Pem { get; } = new PublishingOptionsEncodingFormat("PEM");
+        /// <summary>
+        /// The CertificateAuthority's CA certificate and CRLs will be published in DER format.
+        /// </summary>
+        public static PublishingOptionsEncodingFormat Der { get; } = new PublishingOptionsEncodingFormat("DER");
+
+        public static bool operator ==(PublishingOptionsEncodingFormat left, PublishingOptionsEncodingFormat right) => left.Equals(right);
+        public static bool operator !=(PublishingOptionsEncodingFormat left, PublishingOptionsEncodingFormat right) => !left.Equals(right);
+
+        public static explicit operator string(PublishingOptionsEncodingFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PublishingOptionsEncodingFormat other && Equals(other);
+        public bool Equals(PublishingOptionsEncodingFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

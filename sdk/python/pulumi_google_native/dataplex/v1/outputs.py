@@ -1383,7 +1383,9 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "samplingPercent":
+        if key == "rowFilter":
+            suggest = "row_filter"
+        elif key == "samplingPercent":
             suggest = "sampling_percent"
 
         if suggest:
@@ -1398,12 +1400,23 @@ class GoogleCloudDataplexV1DataProfileSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 row_filter: str,
                  sampling_percent: float):
         """
         DataProfileScan related setting.
+        :param str row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        pulumi.set(__self__, "row_filter", row_filter)
         pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> str:
+        """
+        Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
 
     @property
     @pulumi.getter(name="samplingPercent")
@@ -2131,7 +2144,9 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "samplingPercent":
+        if key == "rowFilter":
+            suggest = "row_filter"
+        elif key == "samplingPercent":
             suggest = "sampling_percent"
 
         if suggest:
@@ -2146,15 +2161,26 @@ class GoogleCloudDataplexV1DataQualitySpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 row_filter: str,
                  rules: Sequence['outputs.GoogleCloudDataplexV1DataQualityRuleResponse'],
                  sampling_percent: float):
         """
         DataQualityScan related setting.
+        :param str row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param Sequence['GoogleCloudDataplexV1DataQualityRuleResponse'] rules: The list of rules to evaluate against a data source. At least one rule is required.
         :param float sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        pulumi.set(__self__, "row_filter", row_filter)
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> str:
+        """
+        Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
 
     @property
     @pulumi.getter

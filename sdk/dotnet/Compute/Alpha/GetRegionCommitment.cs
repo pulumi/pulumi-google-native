@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// Source commitment to be splitted into a new commitment.
+        /// Source commitment to be split into a new commitment.
         /// </summary>
         public readonly string SplitSourceCommitment;
         /// <summary>

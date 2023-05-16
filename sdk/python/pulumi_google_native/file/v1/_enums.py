@@ -45,6 +45,10 @@ class InstanceTier(str, Enum):
     """
     ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
     """
+    ZONAL = "ZONAL"
+    """
+    ZONAL instances offer expanded capacity and performance scaling capabilities.
+    """
 
 
 class NetworkConfigConnectMode(str, Enum):

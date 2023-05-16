@@ -148,6 +148,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public readonly bool PrivateInstance;
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        public readonly bool SatisfiesPzs;
+        /// <summary>
         /// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
         /// </summary>
         public readonly string ServiceAccount;
@@ -228,6 +232,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 
             bool privateInstance,
 
+            bool satisfiesPzs,
+
             string serviceAccount,
 
             string serviceEndpoint,
@@ -267,6 +273,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             Options = options;
             P4ServiceAccount = p4ServiceAccount;
             PrivateInstance = privateInstance;
+            SatisfiesPzs = satisfiesPzs;
             ServiceAccount = serviceAccount;
             ServiceEndpoint = serviceEndpoint;
             State = state;

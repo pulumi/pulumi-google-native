@@ -39,6 +39,7 @@ class InterconnectAttachmentArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
@@ -63,6 +64,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] router: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
@@ -109,6 +111,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "router", router)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+        if subnet_length is not None:
+            pulumi.set(__self__, "subnet_length", subnet_length)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vlan_tag8021q is not None:
@@ -373,6 +377,18 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "stack_type", value)
 
     @property
+    @pulumi.getter(name="subnetLength")
+    def subnet_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+        """
+        return pulumi.get(self, "subnet_length")
+
+    @subnet_length.setter
+    def subnet_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "subnet_length", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['InterconnectAttachmentType']]:
         """
@@ -424,6 +440,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -452,6 +469,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] router: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
@@ -501,6 +519,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
+                 subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -536,10 +555,12 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["router"] = router
             __props__.__dict__["stack_type"] = stack_type
+            __props__.__dict__["subnet_length"] = subnet_length
             __props__.__dict__["type"] = type
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
             __props__.__dict__["cloud_router_ipv6_address"] = None
+            __props__.__dict__["configuration_constraints"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["customer_router_ip_address"] = None
             __props__.__dict__["customer_router_ipv6_address"] = None
@@ -549,6 +570,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["private_interconnect_info"] = None
+            __props__.__dict__["remote_service"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
@@ -583,6 +605,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["cloud_router_ip_address"] = None
         __props__.__dict__["cloud_router_ipv6_address"] = None
         __props__.__dict__["cloud_router_ipv6_interface_id"] = None
+        __props__.__dict__["configuration_constraints"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["customer_router_ip_address"] = None
         __props__.__dict__["customer_router_ipv6_address"] = None
@@ -606,12 +629,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["private_interconnect_info"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["region"] = None
+        __props__.__dict__["remote_service"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["router"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["stack_type"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["subnet_length"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["vlan_tag8021q"] = None
         return InterconnectAttachment(resource_name, opts=opts, __props__=__props__)
@@ -671,6 +696,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         This field is not available.
         """
         return pulumi.get(self, "cloud_router_ipv6_interface_id")
+
+    @property
+    @pulumi.getter(name="configurationConstraints")
+    def configuration_constraints(self) -> pulumi.Output['outputs.InterconnectAttachmentConfigurationConstraintsResponse']:
+        """
+        Constraints for this attachment, if any. The attachment does not work if these constraints are not met.
+        """
+        return pulumi.get(self, "configuration_constraints")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -851,6 +884,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="remoteService")
+    def remote_service(self) -> pulumi.Output[str]:
+        """
+        If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field.
+        """
+        return pulumi.get(self, "remote_service")
+
+    @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -897,6 +938,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="subnetLength")
+    def subnet_length(self) -> pulumi.Output[int]:
+        """
+        Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
+        """
+        return pulumi.get(self, "subnet_length")
 
     @property
     @pulumi.getter

@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
+        /// Whether the Node belongs to a Multislice group.
+        /// </summary>
+        public readonly bool MultisliceNode;
+        /// <summary>
         /// Immutable. The name of the TPU.
         /// </summary>
         public readonly string Name;
@@ -176,6 +180,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             ImmutableDictionary<string, string> metadata,
 
+            bool multisliceNode,
+
             string name,
 
             Outputs.NetworkConfigResponse networkConfig,
@@ -209,6 +215,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
             HealthDescription = healthDescription;
             Labels = labels;
             Metadata = metadata;
+            MultisliceNode = multisliceNode;
             Name = name;
             NetworkConfig = networkConfig;
             NetworkEndpoints = networkEndpoints;

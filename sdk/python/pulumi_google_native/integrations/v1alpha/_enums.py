@@ -469,6 +469,54 @@ class EnterpriseCrmEventbusProtoTaskMetadataExternalCategory(str, Enum):
     UNSPECIFIED_EXTERNAL_CATEGORY = "UNSPECIFIED_EXTERNAL_CATEGORY"
     CORE = "CORE"
     CONNECTORS = "CONNECTORS"
+    EXTERNAL_HTTP = "EXTERNAL_HTTP"
+    """
+    HTTP tasks, e.g. rest api call task
+    """
+    EXTERNAL_INTEGRATION_SERVICES = "EXTERNAL_INTEGRATION_SERVICES"
+    """
+    Integration services, e.g. connector task
+    """
+    EXTERNAL_CUSTOMER_ACTIONS = "EXTERNAL_CUSTOMER_ACTIONS"
+    """
+    Customer ations, e.g. email task
+    """
+    EXTERNAL_FLOW_CONTROL = "EXTERNAL_FLOW_CONTROL"
+    """
+    Flow control, e.g. while loop task
+    """
+    EXTERNAL_WORKSPACE = "EXTERNAL_WORKSPACE"
+    """
+    Workspace tasks, e.g. list drive task
+    """
+    EXTERNAL_SECURITY = "EXTERNAL_SECURITY"
+    """
+    Security, e.g. kms related tasks
+    """
+    EXTERNAL_DATABASES = "EXTERNAL_DATABASES"
+    """
+    Database operation tasks, e.g. read firestore info tasks
+    """
+    EXTERNAL_ANALYTICS = "EXTERNAL_ANALYTICS"
+    """
+    Analytics tasks, e.g. dataflow creattion tasks
+    """
+    EXTERNAL_BYOC = "EXTERNAL_BYOC"
+    """
+    BYOC tasks
+    """
+    EXTERNAL_BYOT = "EXTERNAL_BYOT"
+    """
+    BYOT tasks
+    """
+    EXTERNAL_ARTIFICIAL_INTELIGENCE = "EXTERNAL_ARTIFICIAL_INTELIGENCE"
+    """
+    AI related tasks.
+    """
+    EXTERNAL_DATA_MANIPULATION = "EXTERNAL_DATA_MANIPULATION"
+    """
+    Data manipulation related tasks, e.g. data mapping task
+    """
 
 
 class EnterpriseCrmEventbusProtoTaskMetadataStatus(str, Enum):

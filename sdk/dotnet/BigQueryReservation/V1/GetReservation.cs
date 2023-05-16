@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public sealed class GetReservationResult
     {
         /// <summary>
-        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// The configuration parameters for the auto scaling feature.
         /// </summary>
         public readonly Outputs.AutoscaleResponse Autoscale;
         /// <summary>

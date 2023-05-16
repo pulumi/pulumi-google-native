@@ -30,6 +30,8 @@ type Snapshot struct {
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
+	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -138,6 +140,8 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
@@ -173,6 +177,8 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute pulumi.BoolPtrInput
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
@@ -277,6 +283,11 @@ func (o SnapshotOutput) DiskSizeGb() pulumi.StringOutput {
 // Number of bytes downloaded to restore a snapshot to a disk.
 func (o SnapshotOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+func (o SnapshotOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.

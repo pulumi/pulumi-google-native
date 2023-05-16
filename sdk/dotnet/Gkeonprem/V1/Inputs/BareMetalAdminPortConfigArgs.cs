@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
     /// </summary>
     public sealed class BareMetalAdminPortConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The port that control plane hosted load balancers will listen on.
+        /// </summary>
         [Input("controlPlaneLoadBalancerPort")]
         public Input<int>? ControlPlaneLoadBalancerPort { get; set; }
 

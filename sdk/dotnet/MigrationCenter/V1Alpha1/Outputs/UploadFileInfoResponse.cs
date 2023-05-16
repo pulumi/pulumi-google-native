@@ -25,10 +25,6 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
         /// </summary>
         public readonly string SignedUri;
         /// <summary>
-        /// Upload URI for the file.
-        /// </summary>
-        public readonly string Uri;
-        /// <summary>
         /// Expiration time of the upload URI.
         /// </summary>
         public readonly string UriExpirationTime;
@@ -39,13 +35,10 @@ namespace Pulumi.GoogleNative.MigrationCenter.V1Alpha1.Outputs
 
             string signedUri,
 
-            string uri,
-
             string uriExpirationTime)
         {
             Headers = headers;
             SignedUri = signedUri;
-            Uri = uri;
             UriExpirationTime = uriExpirationTime;
         }
     }

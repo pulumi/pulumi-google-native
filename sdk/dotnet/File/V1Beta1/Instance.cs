@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        [Output("directoryServices")]
+        public Output<Outputs.DirectoryServicesConfigResponse> DirectoryServices { get; private set; } = null!;
+
+        /// <summary>
         /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         /// </summary>
         [Output("etag")]
@@ -204,6 +210,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+        /// </summary>
+        [Input("directoryServices")]
+        public Input<Inputs.DirectoryServicesConfigArgs>? DirectoryServices { get; set; }
 
         /// <summary>
         /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.

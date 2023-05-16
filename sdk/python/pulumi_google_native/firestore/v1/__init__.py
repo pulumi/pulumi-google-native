@@ -6,7 +6,9 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .backup_schedule import *
 from .database import *
+from .get_backup_schedule import *
 from .get_database import *
 from .get_index import *
 from .index import *

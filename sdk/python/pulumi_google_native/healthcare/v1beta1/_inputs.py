@@ -762,7 +762,8 @@ class DeidentifyConfigArgs:
                  fhir_field_config: Optional[pulumi.Input['FhirFieldConfigArgs']] = None,
                  image: Optional[pulumi.Input['ImageConfigArgs']] = None,
                  operation_metadata: Optional[pulumi.Input['DeidentifyOperationMetadataArgs']] = None,
-                 text: Optional[pulumi.Input['TextConfigArgs']] = None):
+                 text: Optional[pulumi.Input['TextConfigArgs']] = None,
+                 use_regional_data_processing: Optional[pulumi.Input[bool]] = None):
         """
         Configures de-id options specific to different types of content. Each submessage customizes the handling of an https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are applied in a nested manner at runtime.
         :param pulumi.Input['AnnotationConfigArgs'] annotation: Configures how annotations, meaning that the location and infoType of sensitive information findings, are created during de-identification. If unspecified, no annotations are created.
@@ -773,6 +774,7 @@ class DeidentifyConfigArgs:
         :param pulumi.Input['ImageConfigArgs'] image: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         :param pulumi.Input['DeidentifyOperationMetadataArgs'] operation_metadata: Details about the work the de-identify operation performed.
         :param pulumi.Input['TextConfigArgs'] text: Configures de-identification of text wherever it is found in the source_dataset.
+        :param pulumi.Input[bool] use_regional_data_processing: Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
         """
         if annotation is not None:
             pulumi.set(__self__, "annotation", annotation)
@@ -799,6 +801,8 @@ class DeidentifyConfigArgs:
             pulumi.set(__self__, "operation_metadata", operation_metadata)
         if text is not None:
             pulumi.set(__self__, "text", text)
+        if use_regional_data_processing is not None:
+            pulumi.set(__self__, "use_regional_data_processing", use_regional_data_processing)
 
     @property
     @pulumi.getter
@@ -895,6 +899,18 @@ class DeidentifyConfigArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['TextConfigArgs']]):
         pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter(name="useRegionalDataProcessing")
+    def use_regional_data_processing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. If the deprecated [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        """
+        return pulumi.get(self, "use_regional_data_processing")
+
+    @use_regional_data_processing.setter
+    def use_regional_data_processing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_regional_data_processing", value)
 
 
 @pulumi.input_type

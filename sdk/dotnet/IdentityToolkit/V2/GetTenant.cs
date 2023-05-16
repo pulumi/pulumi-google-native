@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The tenant-level password policy config
+        /// </summary>
+        public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse PasswordPolicyConfig;
+        /// <summary>
         /// The tenant-level reCAPTCHA config.
         /// </summary>
         public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse RecaptchaConfig;
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
             string name,
 
+            Outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse passwordPolicyConfig,
+
             Outputs.GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse recaptchaConfig,
 
             Outputs.GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse smsRegionConfig,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
             MfaConfig = mfaConfig;
             Monitoring = monitoring;
             Name = name;
+            PasswordPolicyConfig = passwordPolicyConfig;
             RecaptchaConfig = recaptchaConfig;
             SmsRegionConfig = smsRegionConfig;
             TestPhoneNumbers = testPhoneNumbers;

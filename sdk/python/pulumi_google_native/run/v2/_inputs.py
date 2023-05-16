@@ -15,6 +15,7 @@ __all__ = [
     'GoogleCloudRunV2CloudSqlInstanceArgs',
     'GoogleCloudRunV2ContainerPortArgs',
     'GoogleCloudRunV2ContainerArgs',
+    'GoogleCloudRunV2EmptyDirVolumeSourceArgs',
     'GoogleCloudRunV2EnvVarSourceArgs',
     'GoogleCloudRunV2EnvVarArgs',
     'GoogleCloudRunV2ExecutionTemplateArgs',
@@ -150,6 +151,7 @@ class GoogleCloudRunV2ContainerArgs:
                  image: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  command: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 depends_on: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  env: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]]] = None,
                  liveness_probe: Optional[pulumi.Input['GoogleCloudRunV2ProbeArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,6 +165,7 @@ class GoogleCloudRunV2ContainerArgs:
         :param pulumi.Input[str] image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_on: Container names which must start before this container.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
         :param pulumi.Input['GoogleCloudRunV2ProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL (RFC 1123).
@@ -177,6 +180,8 @@ class GoogleCloudRunV2ContainerArgs:
             pulumi.set(__self__, "args", args)
         if command is not None:
             pulumi.set(__self__, "command", command)
+        if depends_on is not None:
+            pulumi.set(__self__, "depends_on", depends_on)
         if env is not None:
             pulumi.set(__self__, "env", env)
         if liveness_probe is not None:
@@ -229,6 +234,18 @@ class GoogleCloudRunV2ContainerArgs:
     @command.setter
     def command(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "command", value)
+
+    @property
+    @pulumi.getter(name="dependsOn")
+    def depends_on(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Container names which must start before this container.
+        """
+        return pulumi.get(self, "depends_on")
+
+    @depends_on.setter
+    def depends_on(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "depends_on", value)
 
     @property
     @pulumi.getter
@@ -325,6 +342,46 @@ class GoogleCloudRunV2ContainerArgs:
     @working_dir.setter
     def working_dir(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "working_dir", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2EmptyDirVolumeSourceArgs:
+    def __init__(__self__, *,
+                 medium: Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium']] = None,
+                 size_limit: Optional[pulumi.Input[str]] = None):
+        """
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        :param pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium'] medium: The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium']]:
+        """
+        The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+        """
+        return pulumi.get(self, "medium")
+
+    @medium.setter
+    def medium(self, value: Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceMedium']]):
+        pulumi.set(self, "medium", value)
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "size_limit")
+
+    @size_limit.setter
+    def size_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size_limit", value)
 
 
 @pulumi.input_type
@@ -1484,16 +1541,20 @@ class GoogleCloudRunV2VolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  cloud_sql_instance: Optional[pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs']] = None,
+                 empty_dir: Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceArgs']] = None,
                  secret: Optional[pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs']] = None):
         """
         Volume represents a named volume in a container.
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceArgs'] empty_dir: Ephemeral storage used as a shared volume.
         :param pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs'] secret: Secret represents a secret that should populate this volume.
         """
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -1520,6 +1581,18 @@ class GoogleCloudRunV2VolumeArgs:
     @cloud_sql_instance.setter
     def cloud_sql_instance(self, value: Optional[pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs']]):
         pulumi.set(self, "cloud_sql_instance", value)
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceArgs']]:
+        """
+        Ephemeral storage used as a shared volume.
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @empty_dir.setter
+    def empty_dir(self, value: Optional[pulumi.Input['GoogleCloudRunV2EmptyDirVolumeSourceArgs']]):
+        pulumi.set(self, "empty_dir", value)
 
     @property
     @pulumi.getter

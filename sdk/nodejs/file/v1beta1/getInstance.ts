@@ -44,6 +44,10 @@ export interface GetInstanceResult {
      */
     readonly description: string;
     /**
+     * Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+     */
+    readonly directoryServices: outputs.file.v1beta1.DirectoryServicesConfigResponse;
+    /**
      * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
      */
     readonly etag: string;

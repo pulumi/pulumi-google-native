@@ -131,6 +131,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<Outputs.ConnectionStatusResponse> Status { get; private set; } = null!;
 
         /// <summary>
+        /// This subscription type enum states the subscription type of the project.
+        /// </summary>
+        [Output("subscriptionType")]
+        public Output<string> SubscriptionType { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Suspended indicates if a user has suspended a connection or not.
         /// </summary>
         [Output("suspended")]

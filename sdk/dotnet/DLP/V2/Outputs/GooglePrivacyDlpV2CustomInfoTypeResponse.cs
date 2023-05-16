@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2RegexResponse Regex;
         /// <summary>
+        /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2SensitivityScoreResponse SensitivityScore;
+        /// <summary>
         /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2StoredTypeResponse StoredType;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             Outputs.GooglePrivacyDlpV2RegexResponse regex,
 
+            Outputs.GooglePrivacyDlpV2SensitivityScoreResponse sensitivityScore,
+
             Outputs.GooglePrivacyDlpV2StoredTypeResponse storedType,
 
             Outputs.GooglePrivacyDlpV2SurrogateTypeResponse surrogateType)
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
             InfoType = infoType;
             Likelihood = likelihood;
             Regex = regex;
+            SensitivityScore = sensitivityScore;
             StoredType = storedType;
             SurrogateType = surrogateType;
         }

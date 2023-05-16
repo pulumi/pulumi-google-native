@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public partial class MigrationJob : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        /// </summary>
+        [Output("cmekKeyName")]
+        public Output<string> CmekKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// The conversion workspace used by the migration.
         /// </summary>
         [Output("conversionWorkspace")]
@@ -216,6 +222,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
     public sealed class MigrationJobArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        /// </summary>
+        [Input("cmekKeyName")]
+        public Input<string>? CmekKeyName { get; set; }
+
         /// <summary>
         /// The conversion workspace used by the migration.
         /// </summary>

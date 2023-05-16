@@ -52,7 +52,7 @@ class GetReservationResult:
     @pulumi.getter
     def autoscale(self) -> 'outputs.AutoscaleResponse':
         """
-        The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        The configuration parameters for the auto scaling feature.
         """
         return pulumi.get(self, "autoscale")
 

@@ -429,6 +429,30 @@ export const GooglePrivacyDlpV2OutputStorageConfigOutputSchema = {
  */
 export type GooglePrivacyDlpV2OutputStorageConfigOutputSchema = (typeof GooglePrivacyDlpV2OutputStorageConfigOutputSchema)[keyof typeof GooglePrivacyDlpV2OutputStorageConfigOutputSchema];
 
+export const GooglePrivacyDlpV2SensitivityScoreScore = {
+    /**
+     * Unused.
+     */
+    SensitivityScoreUnspecified: "SENSITIVITY_SCORE_UNSPECIFIED",
+    /**
+     * No sensitive information detected. Limited access.
+     */
+    SensitivityLow: "SENSITIVITY_LOW",
+    /**
+     * Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+     */
+    SensitivityModerate: "SENSITIVITY_MODERATE",
+    /**
+     * High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+     */
+    SensitivityHigh: "SENSITIVITY_HIGH",
+} as const;
+
+/**
+ * The score applied to the resource.
+ */
+export type GooglePrivacyDlpV2SensitivityScoreScore = (typeof GooglePrivacyDlpV2SensitivityScoreScore)[keyof typeof GooglePrivacyDlpV2SensitivityScoreScore];
+
 export const GooglePrivacyDlpV2TimePartConfigPartToExtract = {
     /**
      * Unused

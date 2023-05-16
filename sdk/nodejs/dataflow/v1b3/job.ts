@@ -100,6 +100,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly requestedState!: pulumi.Output<string>;
     /**
+     * This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+     */
+    public readonly runtimeUpdatableParams!: pulumi.Output<outputs.dataflow.v1b3.RuntimeUpdatableParamsResponse>;
+    /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */
     public readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -164,6 +168,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["replaceJobId"] = args ? args.replaceJobId : undefined;
             resourceInputs["replacedByJobId"] = args ? args.replacedByJobId : undefined;
             resourceInputs["requestedState"] = args ? args.requestedState : undefined;
+            resourceInputs["runtimeUpdatableParams"] = args ? args.runtimeUpdatableParams : undefined;
             resourceInputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             resourceInputs["stageStates"] = args ? args.stageStates : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
@@ -190,6 +195,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["replaceJobId"] = undefined /*out*/;
             resourceInputs["replacedByJobId"] = undefined /*out*/;
             resourceInputs["requestedState"] = undefined /*out*/;
+            resourceInputs["runtimeUpdatableParams"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["stageStates"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
@@ -281,6 +287,10 @@ export interface JobArgs {
      * The job's requested state. `UpdateJob` may be used to switch between the `JOB_STATE_STOPPED` and `JOB_STATE_RUNNING` states, by setting requested_state. `UpdateJob` may also be used to directly set a job's requested state to `JOB_STATE_CANCELLED` or `JOB_STATE_DONE`, irrevocably terminating the job if it has not already reached a terminal state.
      */
     requestedState?: pulumi.Input<enums.dataflow.v1b3.JobRequestedState>;
+    /**
+     * This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+     */
+    runtimeUpdatableParams?: pulumi.Input<inputs.dataflow.v1b3.RuntimeUpdatableParamsArgs>;
     /**
      * Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
      */

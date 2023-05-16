@@ -42,6 +42,8 @@ type LookupSnapshotResult struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes string `pulumi:"downloadBytes"`
+	// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -174,6 +176,11 @@ func (o LookupSnapshotResultOutput) DiskSizeGb() pulumi.StringOutput {
 // Number of bytes downloaded to restore a snapshot to a disk.
 func (o LookupSnapshotResultOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+func (o LookupSnapshotResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.

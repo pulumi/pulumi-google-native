@@ -254,6 +254,67 @@ namespace Pulumi.GoogleNative.Firestore.V1
     }
 
     /// <summary>
+    /// The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleFirestoreAdminV1WeeklyRecurrenceDay : IEquatable<GoogleFirestoreAdminV1WeeklyRecurrenceDay>
+    {
+        private readonly string _value;
+
+        private GoogleFirestoreAdminV1WeeklyRecurrenceDay(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The day of the week is unspecified.
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay DayOfWeekUnspecified { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("DAY_OF_WEEK_UNSPECIFIED");
+        /// <summary>
+        /// Monday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Monday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("MONDAY");
+        /// <summary>
+        /// Tuesday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Tuesday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("TUESDAY");
+        /// <summary>
+        /// Wednesday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Wednesday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("WEDNESDAY");
+        /// <summary>
+        /// Thursday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Thursday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("THURSDAY");
+        /// <summary>
+        /// Friday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Friday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("FRIDAY");
+        /// <summary>
+        /// Saturday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Saturday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("SATURDAY");
+        /// <summary>
+        /// Sunday
+        /// </summary>
+        public static GoogleFirestoreAdminV1WeeklyRecurrenceDay Sunday { get; } = new GoogleFirestoreAdminV1WeeklyRecurrenceDay("SUNDAY");
+
+        public static bool operator ==(GoogleFirestoreAdminV1WeeklyRecurrenceDay left, GoogleFirestoreAdminV1WeeklyRecurrenceDay right) => left.Equals(right);
+        public static bool operator !=(GoogleFirestoreAdminV1WeeklyRecurrenceDay left, GoogleFirestoreAdminV1WeeklyRecurrenceDay right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleFirestoreAdminV1WeeklyRecurrenceDay value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleFirestoreAdminV1WeeklyRecurrenceDay other && Equals(other);
+        public bool Equals(GoogleFirestoreAdminV1WeeklyRecurrenceDay other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The API scope supported by this index.
     /// </summary>
     [EnumType]

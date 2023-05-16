@@ -81,6 +81,10 @@ __all__ = [
     'RelatedUrlResponse',
     'RemediationResponse',
     'RepoIdResponse',
+    'SBOMReferenceNoteResponse',
+    'SBOMReferenceOccurrenceResponse',
+    'SbomReferenceIntotoPayloadResponse',
+    'SbomReferenceIntotoPredicateResponse',
     'SignatureResponse',
     'SlsaBuilderResponse',
     'SlsaCompletenessResponse',
@@ -4417,6 +4421,246 @@ class RepoIdResponse(dict):
         A server-assigned, globally unique identifier.
         """
         return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class SBOMReferenceNoteResponse(dict):
+    """
+    The note representing an SBOM reference.
+    """
+    def __init__(__self__, *,
+                 format: str,
+                 version: str):
+        """
+        The note representing an SBOM reference.
+        :param str format: The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        :param str version: The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SBOMReferenceOccurrenceResponse(dict):
+    """
+    The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "payloadType":
+            suggest = "payload_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SBOMReferenceOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SBOMReferenceOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SBOMReferenceOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 payload: 'outputs.SbomReferenceIntotoPayloadResponse',
+                 payload_type: str,
+                 signatures: Sequence['outputs.EnvelopeSignatureResponse']):
+        """
+        The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+        :param 'SbomReferenceIntotoPayloadResponse' payload: The actual payload that contains the SBOM reference data.
+        :param str payload_type: The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        :param Sequence['EnvelopeSignatureResponse'] signatures: The signatures over the payload.
+        """
+        pulumi.set(__self__, "payload", payload)
+        pulumi.set(__self__, "payload_type", payload_type)
+        pulumi.set(__self__, "signatures", signatures)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> 'outputs.SbomReferenceIntotoPayloadResponse':
+        """
+        The actual payload that contains the SBOM reference data.
+        """
+        return pulumi.get(self, "payload")
+
+    @property
+    @pulumi.getter(name="payloadType")
+    def payload_type(self) -> str:
+        """
+        The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        """
+        return pulumi.get(self, "payload_type")
+
+    @property
+    @pulumi.getter
+    def signatures(self) -> Sequence['outputs.EnvelopeSignatureResponse']:
+        """
+        The signatures over the payload.
+        """
+        return pulumi.get(self, "signatures")
+
+
+@pulumi.output_type
+class SbomReferenceIntotoPayloadResponse(dict):
+    """
+    The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predicateType":
+            suggest = "predicate_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SbomReferenceIntotoPayloadResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SbomReferenceIntotoPayloadResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SbomReferenceIntotoPayloadResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predicate: 'outputs.SbomReferenceIntotoPredicateResponse',
+                 predicate_type: str,
+                 subject: Sequence['outputs.SubjectResponse'],
+                 type: str):
+        """
+        The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+        :param 'SbomReferenceIntotoPredicateResponse' predicate: Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        :param str predicate_type: URI identifying the type of the Predicate.
+        :param Sequence['SubjectResponse'] subject: Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        :param str type: Identifier for the schema of the Statement.
+        """
+        pulumi.set(__self__, "predicate", predicate)
+        pulumi.set(__self__, "predicate_type", predicate_type)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def predicate(self) -> 'outputs.SbomReferenceIntotoPredicateResponse':
+        """
+        Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        """
+        return pulumi.get(self, "predicate")
+
+    @property
+    @pulumi.getter(name="predicateType")
+    def predicate_type(self) -> str:
+        """
+        URI identifying the type of the Predicate.
+        """
+        return pulumi.get(self, "predicate_type")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Sequence['outputs.SubjectResponse']:
+        """
+        Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Identifier for the schema of the Statement.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class SbomReferenceIntotoPredicateResponse(dict):
+    """
+    A predicate which describes the SBOM being referenced.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+        elif key == "referrerId":
+            suggest = "referrer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SbomReferenceIntotoPredicateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SbomReferenceIntotoPredicateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SbomReferenceIntotoPredicateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 location: str,
+                 mime_type: str,
+                 referrer_id: str):
+        """
+        A predicate which describes the SBOM being referenced.
+        :param Mapping[str, str] digest: A map of algorithm to digest of the contents of the SBOM.
+        :param str location: The location of the SBOM.
+        :param str mime_type: The mime type of the SBOM.
+        :param str referrer_id: The person or system referring this predicate to the consumer.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "mime_type", mime_type)
+        pulumi.set(__self__, "referrer_id", referrer_id)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        A map of algorithm to digest of the contents of the SBOM.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the SBOM.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> str:
+        """
+        The mime type of the SBOM.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @property
+    @pulumi.getter(name="referrerId")
+    def referrer_id(self) -> str:
+        """
+        The person or system referring this predicate to the consumer.
+        """
+        return pulumi.get(self, "referrer_id")
 
 
 @pulumi.output_type

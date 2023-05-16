@@ -54,6 +54,8 @@ type Connection struct {
 	SslConfig SslConfigResponseOutput `pulumi:"sslConfig"`
 	// Current status of the connection.
 	Status ConnectionStatusResponseOutput `pulumi:"status"`
+	// This subscription type enum states the subscription type of the project.
+	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
 	// Optional. Suspended indicates if a user has suspended a connection or not.
 	Suspended pulumi.BoolOutput `pulumi:"suspended"`
 	// Updated time.
@@ -306,6 +308,11 @@ func (o ConnectionOutput) SslConfig() SslConfigResponseOutput {
 // Current status of the connection.
 func (o ConnectionOutput) Status() ConnectionStatusResponseOutput {
 	return o.ApplyT(func(v *Connection) ConnectionStatusResponseOutput { return v.Status }).(ConnectionStatusResponseOutput)
+}
+
+// This subscription type enum states the subscription type of the project.
+func (o ConnectionOutput) SubscriptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.SubscriptionType }).(pulumi.StringOutput)
 }
 
 // Optional. Suspended indicates if a user has suspended a connection or not.

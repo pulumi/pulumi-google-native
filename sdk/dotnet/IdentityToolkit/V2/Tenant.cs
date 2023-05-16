@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The tenant-level password policy config
+        /// </summary>
+        [Output("passwordPolicyConfig")]
+        public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse> PasswordPolicyConfig { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -229,6 +235,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         [Input("monitoring")]
         public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>? Monitoring { get; set; }
+
+        /// <summary>
+        /// The tenant-level password policy config
+        /// </summary>
+        [Input("passwordPolicyConfig")]
+        public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigArgs>? PasswordPolicyConfig { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -449,13 +449,29 @@ class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
 @pulumi.input_type
 class GoogleCloudDataplexV1DataProfileSpecArgs:
     def __init__(__self__, *,
+                 row_filter: Optional[pulumi.Input[str]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataProfileScan related setting.
+        :param pulumi.Input[str] row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_filter", value)
 
     @property
     @pulumi.getter(name="samplingPercent")
@@ -946,17 +962,33 @@ class GoogleCloudDataplexV1DataQualityRuleArgs:
 @pulumi.input_type
 class GoogleCloudDataplexV1DataQualitySpecArgs:
     def __init__(__self__, *,
+                 row_filter: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
         DataQualityScan related setting.
+        :param pulumi.Input[str] row_filter: Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
         :param pulumi.Input[float] sampling_percent: Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
         """
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_filter", value)
 
     @property
     @pulumi.getter

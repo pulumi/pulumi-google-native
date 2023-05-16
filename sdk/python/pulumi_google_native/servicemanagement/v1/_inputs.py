@@ -1365,17 +1365,21 @@ class DocumentationRuleArgs:
     def __init__(__self__, *,
                  deprecation_description: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_replacement_words: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
         """
         A documentation rule provides information about individual API elements.
         :param pulumi.Input[str] deprecation_description: Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
         :param pulumi.Input[str] description: Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field). Defaults to leading & trailing comments taken from the proto source definition of the proto element.
+        :param pulumi.Input[str] disable_replacement_words: String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
         :param pulumi.Input[str] selector: The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
         """
         if deprecation_description is not None:
             pulumi.set(__self__, "deprecation_description", deprecation_description)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_replacement_words is not None:
+            pulumi.set(__self__, "disable_replacement_words", disable_replacement_words)
         if selector is not None:
             pulumi.set(__self__, "selector", selector)
 
@@ -1402,6 +1406,18 @@ class DocumentationRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableReplacementWords")
+    def disable_replacement_words(self) -> Optional[pulumi.Input[str]]:
+        """
+        String of comma or space separated case-sensitive words for which method/field name replacement will be disabled by go/api-docgen.
+        """
+        return pulumi.get(self, "disable_replacement_words")
+
+    @disable_replacement_words.setter
+    def disable_replacement_words(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disable_replacement_words", value)
 
     @property
     @pulumi.getter

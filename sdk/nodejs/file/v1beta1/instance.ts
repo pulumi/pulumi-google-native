@@ -55,6 +55,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+     */
+    public readonly directoryServices!: pulumi.Output<outputs.file.v1beta1.DirectoryServicesConfigResponse>;
+    /**
      * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
      */
     public readonly etag!: pulumi.Output<string>;
@@ -137,6 +141,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["capacityGb"] = args ? args.capacityGb : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["directoryServices"] = args ? args.directoryServices : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
@@ -162,6 +167,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["capacityStepSizeGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["directoryServices"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fileShares"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -200,6 +206,10 @@ export interface InstanceArgs {
      * The description of the instance (2048 characters or less).
      */
     description?: pulumi.Input<string>;
+    /**
+     * Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is "NFS_V4_1".
+     */
+    directoryServices?: pulumi.Input<inputs.file.v1beta1.DirectoryServicesConfigArgs>;
     /**
      * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
      */

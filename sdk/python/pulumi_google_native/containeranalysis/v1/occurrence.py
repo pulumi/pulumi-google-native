@@ -30,6 +30,7 @@ class OccurrenceArgs:
                  package: Optional[pulumi.Input['PackageOccurrenceArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
+                 sbom_reference: Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']] = None,
                  upgrade: Optional[pulumi.Input['UpgradeOccurrenceArgs']] = None,
                  vulnerability: Optional[pulumi.Input['VulnerabilityOccurrenceArgs']] = None):
         """
@@ -46,6 +47,7 @@ class OccurrenceArgs:
         :param pulumi.Input['ImageOccurrenceArgs'] image: Describes how this resource derives from the basis in the associated note.
         :param pulumi.Input['PackageOccurrenceArgs'] package: Describes the installation of a package on the linked resource.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
+        :param pulumi.Input['SBOMReferenceOccurrenceArgs'] sbom_reference: Describes a specific SBOM reference occurrences.
         :param pulumi.Input['UpgradeOccurrenceArgs'] upgrade: Describes an available package upgrade on the linked resource.
         :param pulumi.Input['VulnerabilityOccurrenceArgs'] vulnerability: Describes a security vulnerability.
         """
@@ -73,6 +75,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "project", project)
         if remediation is not None:
             pulumi.set(__self__, "remediation", remediation)
+        if sbom_reference is not None:
+            pulumi.set(__self__, "sbom_reference", sbom_reference)
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
         if vulnerability is not None:
@@ -232,6 +236,18 @@ class OccurrenceArgs:
         pulumi.set(self, "remediation", value)
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']]:
+        """
+        Describes a specific SBOM reference occurrences.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @sbom_reference.setter
+    def sbom_reference(self, value: Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']]):
+        pulumi.set(self, "sbom_reference", value)
+
+    @property
     @pulumi.getter
     def upgrade(self) -> Optional[pulumi.Input['UpgradeOccurrenceArgs']]:
         """
@@ -274,6 +290,7 @@ class Occurrence(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource_uri: Optional[pulumi.Input[str]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityOccurrenceArgs']]] = None,
                  __props__=None):
@@ -295,6 +312,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PackageOccurrenceArgs']] package: Describes the installation of a package on the linked resource.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[str] resource_uri: Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
+        :param pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']] sbom_reference: Describes a specific SBOM reference occurrences.
         :param pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']] upgrade: Describes an available package upgrade on the linked resource.
         :param pulumi.Input[pulumi.InputType['VulnerabilityOccurrenceArgs']] vulnerability: Describes a security vulnerability.
         """
@@ -336,6 +354,7 @@ class Occurrence(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource_uri: Optional[pulumi.Input[str]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeOccurrenceArgs']]] = None,
                  vulnerability: Optional[pulumi.Input[pulumi.InputType['VulnerabilityOccurrenceArgs']]] = None,
                  __props__=None):
@@ -364,6 +383,7 @@ class Occurrence(pulumi.CustomResource):
             if resource_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_uri'")
             __props__.__dict__["resource_uri"] = resource_uri
+            __props__.__dict__["sbom_reference"] = sbom_reference
             __props__.__dict__["upgrade"] = upgrade
             __props__.__dict__["vulnerability"] = vulnerability
             __props__.__dict__["create_time"] = None
@@ -410,6 +430,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource_uri"] = None
+        __props__.__dict__["sbom_reference"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade"] = None
         __props__.__dict__["vulnerability"] = None
@@ -539,6 +560,14 @@ class Occurrence(pulumi.CustomResource):
         Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
         """
         return pulumi.get(self, "resource_uri")
+
+    @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> pulumi.Output['outputs.SBOMReferenceOccurrenceResponse']:
+        """
+        Describes a specific SBOM reference occurrences.
+        """
+        return pulumi.get(self, "sbom_reference")
 
     @property
     @pulumi.getter(name="updateTime")

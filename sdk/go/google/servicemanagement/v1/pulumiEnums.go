@@ -2689,6 +2689,10 @@ const (
 	PublishingOrganizationStreetView = PublishingOrganization("STREET_VIEW")
 	// Shopping Org.
 	PublishingOrganizationShopping = PublishingOrganization("SHOPPING")
+	// Geo Org.
+	PublishingOrganizationGeo = PublishingOrganization("GEO")
+	// Generative AI - https://developers.generativeai.google
+	PublishingOrganizationGenerativeAi = PublishingOrganization("GENERATIVE_AI")
 )
 
 func (PublishingOrganization) ElementType() reflect.Type {

@@ -367,6 +367,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["service_directory"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["subscription_type"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["connection_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -412,6 +413,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["service_directory"] = None
         __props__.__dict__["ssl_config"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["subscription_type"] = None
         __props__.__dict__["suspended"] = None
         __props__.__dict__["update_time"] = None
         return Connection(resource_name, opts=opts, __props__=__props__)
@@ -569,6 +571,14 @@ class Connection(pulumi.CustomResource):
         Current status of the connection.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> pulumi.Output[str]:
+        """
+        This subscription type enum states the subscription type of the project.
+        """
+        return pulumi.get(self, "subscription_type")
 
     @property
     @pulumi.getter

@@ -33,6 +33,8 @@ type LookupSourceResult struct {
 	Description string `pulumi:"description"`
 	// User-friendly display name.
 	DisplayName string `pulumi:"displayName"`
+	// The number of frames that were reported by the source and contained errors.
+	ErrorFrameCount int `pulumi:"errorFrameCount"`
 	// If `true`, the source is managed by other service(s).
 	IsManaged bool `pulumi:"isManaged"`
 	// The full name of the source.
@@ -99,6 +101,11 @@ func (o LookupSourceResultOutput) Description() pulumi.StringOutput {
 // User-friendly display name.
 func (o LookupSourceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The number of frames that were reported by the source and contained errors.
+func (o LookupSourceResultOutput) ErrorFrameCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSourceResult) int { return v.ErrorFrameCount }).(pulumi.IntOutput)
 }
 
 // If `true`, the source is managed by other service(s).

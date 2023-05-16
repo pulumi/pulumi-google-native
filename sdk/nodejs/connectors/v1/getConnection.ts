@@ -98,6 +98,10 @@ export interface GetConnectionResult {
      */
     readonly status: outputs.connectors.v1.ConnectionStatusResponse;
     /**
+     * This subscription type enum states the subscription type of the project.
+     */
+    readonly subscriptionType: string;
+    /**
      * Optional. Suspended indicates if a user has suspended a connection or not.
      */
     readonly suspended: boolean;

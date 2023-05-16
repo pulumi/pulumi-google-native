@@ -2215,6 +2215,8 @@ func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ScannedData() Goog
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpec struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter *string `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
 	SamplingPercent *float64 `pulumi:"samplingPercent"`
 }
@@ -2232,6 +2234,8 @@ type GoogleCloudDataplexV1DataProfileSpecInput interface {
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecArgs struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
 	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
 }
@@ -2314,6 +2318,11 @@ func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataP
 	}).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
 }
 
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
 func (o GoogleCloudDataplexV1DataProfileSpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
@@ -2343,6 +2352,16 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) Elem() GoogleCloudDataple
 	}).(GoogleCloudDataplexV1DataProfileSpecOutput)
 }
 
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RowFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
 func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) *float64 {
@@ -2355,6 +2374,8 @@ func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) SamplingPercent() pulumi.
 
 // DataProfileScan related setting.
 type GoogleCloudDataplexV1DataProfileSpecResponse struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter string `pulumi:"rowFilter"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
 	SamplingPercent float64 `pulumi:"samplingPercent"`
 }
@@ -2372,6 +2393,11 @@ func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecResponseOutput {
 	return o
+}
+
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) RowFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileSpecResponse) string { return v.RowFilter }).(pulumi.StringOutput)
 }
 
 // Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -4405,6 +4431,8 @@ func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput)
 
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpec struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter *string `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules []GoogleCloudDataplexV1DataQualityRule `pulumi:"rules"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -4424,6 +4452,8 @@ type GoogleCloudDataplexV1DataQualitySpecInput interface {
 
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecArgs struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules GoogleCloudDataplexV1DataQualityRuleArrayInput `pulumi:"rules"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -4508,6 +4538,11 @@ func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQ
 	}).(GoogleCloudDataplexV1DataQualitySpecPtrOutput)
 }
 
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
+}
+
 // The list of rules to evaluate against a data source. At least one rule is required.
 func (o GoogleCloudDataplexV1DataQualitySpecOutput) Rules() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) []GoogleCloudDataplexV1DataQualityRule { return v.Rules }).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
@@ -4542,6 +4577,16 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Elem() GoogleCloudDataple
 	}).(GoogleCloudDataplexV1DataQualitySpecOutput)
 }
 
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RowFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 // The list of rules to evaluate against a data source. At least one rule is required.
 func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Rules() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) []GoogleCloudDataplexV1DataQualityRule {
@@ -4564,6 +4609,8 @@ func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) SamplingPercent() pulumi.
 
 // DataQualityScan related setting.
 type GoogleCloudDataplexV1DataQualitySpecResponse struct {
+	// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter string `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	Rules []GoogleCloudDataplexV1DataQualityRuleResponse `pulumi:"rules"`
 	// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100.
@@ -4583,6 +4630,11 @@ func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataple
 
 func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecResponseOutput {
 	return o
+}
+
+// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) RowFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecResponse) string { return v.RowFilter }).(pulumi.StringOutput)
 }
 
 // The list of rules to evaluate against a data source. At least one rule is required.

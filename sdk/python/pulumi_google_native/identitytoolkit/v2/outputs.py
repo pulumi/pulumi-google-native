@@ -18,6 +18,7 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse',
     'GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse',
+    'GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse',
     'GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2HashConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse',
@@ -26,6 +27,8 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse',
+    'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse',
+    'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse',
@@ -304,6 +307,110 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse(dict):
         Apple Developer Team ID.
         """
         return pulumi.get(self, "team_id")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse(dict):
+    """
+    Custom strength options to enforce on user passwords.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containsLowercaseCharacter":
+            suggest = "contains_lowercase_character"
+        elif key == "containsNonAlphanumericCharacter":
+            suggest = "contains_non_alphanumeric_character"
+        elif key == "containsNumericCharacter":
+            suggest = "contains_numeric_character"
+        elif key == "containsUppercaseCharacter":
+            suggest = "contains_uppercase_character"
+        elif key == "maxPasswordLength":
+            suggest = "max_password_length"
+        elif key == "minPasswordLength":
+            suggest = "min_password_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains_lowercase_character: bool,
+                 contains_non_alphanumeric_character: bool,
+                 contains_numeric_character: bool,
+                 contains_uppercase_character: bool,
+                 max_password_length: int,
+                 min_password_length: int):
+        """
+        Custom strength options to enforce on user passwords.
+        :param bool contains_lowercase_character: The password must contain a lower case character.
+        :param bool contains_non_alphanumeric_character: The password must contain a non alpha numeric character.
+        :param bool contains_numeric_character: The password must contain a number.
+        :param bool contains_uppercase_character: The password must contain an upper case character.
+        :param int max_password_length: Maximum password length. No default max length
+        :param int min_password_length: Minimum password length. Range from 6 to 30
+        """
+        pulumi.set(__self__, "contains_lowercase_character", contains_lowercase_character)
+        pulumi.set(__self__, "contains_non_alphanumeric_character", contains_non_alphanumeric_character)
+        pulumi.set(__self__, "contains_numeric_character", contains_numeric_character)
+        pulumi.set(__self__, "contains_uppercase_character", contains_uppercase_character)
+        pulumi.set(__self__, "max_password_length", max_password_length)
+        pulumi.set(__self__, "min_password_length", min_password_length)
+
+    @property
+    @pulumi.getter(name="containsLowercaseCharacter")
+    def contains_lowercase_character(self) -> bool:
+        """
+        The password must contain a lower case character.
+        """
+        return pulumi.get(self, "contains_lowercase_character")
+
+    @property
+    @pulumi.getter(name="containsNonAlphanumericCharacter")
+    def contains_non_alphanumeric_character(self) -> bool:
+        """
+        The password must contain a non alpha numeric character.
+        """
+        return pulumi.get(self, "contains_non_alphanumeric_character")
+
+    @property
+    @pulumi.getter(name="containsNumericCharacter")
+    def contains_numeric_character(self) -> bool:
+        """
+        The password must contain a number.
+        """
+        return pulumi.get(self, "contains_numeric_character")
+
+    @property
+    @pulumi.getter(name="containsUppercaseCharacter")
+    def contains_uppercase_character(self) -> bool:
+        """
+        The password must contain an upper case character.
+        """
+        return pulumi.get(self, "contains_uppercase_character")
+
+    @property
+    @pulumi.getter(name="maxPasswordLength")
+    def max_password_length(self) -> int:
+        """
+        Maximum password length. No default max length
+        """
+        return pulumi.get(self, "max_password_length")
+
+    @property
+    @pulumi.getter(name="minPasswordLength")
+    def min_password_length(self) -> int:
+        """
+        Minimum password length. Range from 6 to 30
+        """
+        return pulumi.get(self, "min_password_length")
 
 
 @pulumi.output_type
@@ -749,6 +856,136 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse(dict):
         Do not use. The `token` response type is not supported at the moment.
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse(dict):
+    """
+    The configuration for the password policy on the project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forceUpgradeOnSignin":
+            suggest = "force_upgrade_on_signin"
+        elif key == "lastUpdateTime":
+            suggest = "last_update_time"
+        elif key == "passwordPolicyEnforcementState":
+            suggest = "password_policy_enforcement_state"
+        elif key == "passwordPolicyVersions":
+            suggest = "password_policy_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 force_upgrade_on_signin: bool,
+                 last_update_time: str,
+                 password_policy_enforcement_state: str,
+                 password_policy_versions: Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse']):
+        """
+        The configuration for the password policy on the project.
+        :param bool force_upgrade_on_signin: Users must have a password compliant with the password policy to sign-in.
+        :param str last_update_time: The last time the password policy on the project was updated.
+        :param str password_policy_enforcement_state: Which enforcement mode to use for the password policy.
+        :param Sequence['GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse'] password_policy_versions: Must be of length 1. Contains the strength attributes for the password policy.
+        """
+        pulumi.set(__self__, "force_upgrade_on_signin", force_upgrade_on_signin)
+        pulumi.set(__self__, "last_update_time", last_update_time)
+        pulumi.set(__self__, "password_policy_enforcement_state", password_policy_enforcement_state)
+        pulumi.set(__self__, "password_policy_versions", password_policy_versions)
+
+    @property
+    @pulumi.getter(name="forceUpgradeOnSignin")
+    def force_upgrade_on_signin(self) -> bool:
+        """
+        Users must have a password compliant with the password policy to sign-in.
+        """
+        return pulumi.get(self, "force_upgrade_on_signin")
+
+    @property
+    @pulumi.getter(name="lastUpdateTime")
+    def last_update_time(self) -> str:
+        """
+        The last time the password policy on the project was updated.
+        """
+        return pulumi.get(self, "last_update_time")
+
+    @property
+    @pulumi.getter(name="passwordPolicyEnforcementState")
+    def password_policy_enforcement_state(self) -> str:
+        """
+        Which enforcement mode to use for the password policy.
+        """
+        return pulumi.get(self, "password_policy_enforcement_state")
+
+    @property
+    @pulumi.getter(name="passwordPolicyVersions")
+    def password_policy_versions(self) -> Sequence['outputs.GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse']:
+        """
+        Must be of length 1. Contains the strength attributes for the password policy.
+        """
+        return pulumi.get(self, "password_policy_versions")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse(dict):
+    """
+    The strength attributes for the password policy on the project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customStrengthOptions":
+            suggest = "custom_strength_options"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_strength_options: 'outputs.GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse',
+                 schema_version: int):
+        """
+        The strength attributes for the password policy on the project.
+        :param 'GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse' custom_strength_options: The custom strength options enforced by the password policy.
+        :param int schema_version: schema version number for the password policy
+        """
+        pulumi.set(__self__, "custom_strength_options", custom_strength_options)
+        pulumi.set(__self__, "schema_version", schema_version)
+
+    @property
+    @pulumi.getter(name="customStrengthOptions")
+    def custom_strength_options(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse':
+        """
+        The custom strength options enforced by the password policy.
+        """
+        return pulumi.get(self, "custom_strength_options")
+
+    @property
+    @pulumi.getter(name="schemaVersion")
+    def schema_version(self) -> int:
+        """
+        schema version number for the password policy
+        """
+        return pulumi.get(self, "schema_version")
 
 
 @pulumi.output_type

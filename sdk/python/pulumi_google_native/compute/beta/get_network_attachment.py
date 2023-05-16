@@ -120,7 +120,7 @@ class GetNetworkAttachmentResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The URL of the network which the Network Attachment belongs to.
+        The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
         """
         return pulumi.get(self, "network")
 

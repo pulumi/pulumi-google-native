@@ -38,7 +38,7 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     * The configuration parameters for the auto scaling feature.
      */
     public readonly autoscale!: pulumi.Output<outputs.bigqueryreservation.v1.AutoscaleResponse>;
     /**
@@ -129,7 +129,7 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationArgs {
     /**
-     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     * The configuration parameters for the auto scaling feature.
      */
     autoscale?: pulumi.Input<inputs.bigqueryreservation.v1.AutoscaleArgs>;
     /**

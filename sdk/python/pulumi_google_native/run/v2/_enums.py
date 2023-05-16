@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'GoogleCloudRunV2EmptyDirVolumeSourceMedium',
     'GoogleCloudRunV2RevisionTemplateExecutionEnvironment',
     'GoogleCloudRunV2TaskTemplateExecutionEnvironment',
     'GoogleCloudRunV2TrafficTargetType',
@@ -14,6 +15,20 @@ __all__ = [
     'ServiceIngress',
     'ServiceLaunchStage',
 ]
+
+
+class GoogleCloudRunV2EmptyDirVolumeSourceMedium(str, Enum):
+    """
+    The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
+    """
+    MEDIUM_UNSPECIFIED = "MEDIUM_UNSPECIFIED"
+    """
+    When not specified, falls back to the default implementation which is currently in memory (this may change over time).
+    """
+    MEMORY = "MEMORY"
+    """
+    Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+    """
 
 
 class GoogleCloudRunV2RevisionTemplateExecutionEnvironment(str, Enum):

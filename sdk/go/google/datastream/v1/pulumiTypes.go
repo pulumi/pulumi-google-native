@@ -1689,7 +1689,7 @@ func (o ForwardSshTunnelConnectivityResponseOutput) Username() pulumi.StringOutp
 type GcsDestinationConfig struct {
 	// AVRO file format configuration.
 	AvroFileFormat *AvroFileFormat `pulumi:"avroFileFormat"`
-	// The maximum duration for which new events are added before a file is closed and a new file is created.
+	// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 	FileRotationInterval *string `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb *int `pulumi:"fileRotationMb"`
@@ -1714,7 +1714,7 @@ type GcsDestinationConfigInput interface {
 type GcsDestinationConfigArgs struct {
 	// AVRO file format configuration.
 	AvroFileFormat AvroFileFormatPtrInput `pulumi:"avroFileFormat"`
-	// The maximum duration for which new events are added before a file is closed and a new file is created.
+	// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 	FileRotationInterval pulumi.StringPtrInput `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb pulumi.IntPtrInput `pulumi:"fileRotationMb"`
@@ -1807,7 +1807,7 @@ func (o GcsDestinationConfigOutput) AvroFileFormat() AvroFileFormatPtrOutput {
 	return o.ApplyT(func(v GcsDestinationConfig) *AvroFileFormat { return v.AvroFileFormat }).(AvroFileFormatPtrOutput)
 }
 
-// The maximum duration for which new events are added before a file is closed and a new file is created.
+// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 func (o GcsDestinationConfigOutput) FileRotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcsDestinationConfig) *string { return v.FileRotationInterval }).(pulumi.StringPtrOutput)
 }
@@ -1861,7 +1861,7 @@ func (o GcsDestinationConfigPtrOutput) AvroFileFormat() AvroFileFormatPtrOutput 
 	}).(AvroFileFormatPtrOutput)
 }
 
-// The maximum duration for which new events are added before a file is closed and a new file is created.
+// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 func (o GcsDestinationConfigPtrOutput) FileRotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsDestinationConfig) *string {
 		if v == nil {
@@ -1905,7 +1905,7 @@ func (o GcsDestinationConfigPtrOutput) Path() pulumi.StringPtrOutput {
 type GcsDestinationConfigResponse struct {
 	// AVRO file format configuration.
 	AvroFileFormat AvroFileFormatResponse `pulumi:"avroFileFormat"`
-	// The maximum duration for which new events are added before a file is closed and a new file is created.
+	// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 	FileRotationInterval string `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb int `pulumi:"fileRotationMb"`
@@ -1935,7 +1935,7 @@ func (o GcsDestinationConfigResponseOutput) AvroFileFormat() AvroFileFormatRespo
 	return o.ApplyT(func(v GcsDestinationConfigResponse) AvroFileFormatResponse { return v.AvroFileFormat }).(AvroFileFormatResponseOutput)
 }
 
-// The maximum duration for which new events are added before a file is closed and a new file is created.
+// The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
 func (o GcsDestinationConfigResponseOutput) FileRotationInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDestinationConfigResponse) string { return v.FileRotationInterval }).(pulumi.StringOutput)
 }

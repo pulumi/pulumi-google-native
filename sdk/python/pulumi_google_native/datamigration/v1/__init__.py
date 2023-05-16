@@ -21,10 +21,14 @@ from .get_conversion_workspace_iam_policy import *
 from .get_migration_job import *
 from .get_migration_job_iam_policy import *
 from .get_private_connection import *
+from .get_private_connection_iam_policy import *
 from .migration_job import *
 from .migration_job_iam_binding import *
 from .migration_job_iam_member import *
 from .migration_job_iam_policy import *
 from .private_connection import *
+from .private_connection_iam_binding import *
+from .private_connection_iam_member import *
+from .private_connection_iam_policy import *
 from ._inputs import *
 from . import outputs

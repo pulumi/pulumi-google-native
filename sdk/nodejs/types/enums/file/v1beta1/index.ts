@@ -51,6 +51,10 @@ export const InstanceTier = {
      * ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
      */
     Enterprise: "ENTERPRISE",
+    /**
+     * ZONAL instances offer expanded capacity and performance scaling capabilities.
+     */
+    Zonal: "ZONAL",
 } as const;
 
 /**
@@ -110,6 +114,31 @@ export const NfsExportOptionsAccessMode = {
  * Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
  */
 export type NfsExportOptionsAccessMode = (typeof NfsExportOptionsAccessMode)[keyof typeof NfsExportOptionsAccessMode];
+
+export const NfsExportOptionsSecurityFlavorsItem = {
+    /**
+     * SecurityFlavor not set.
+     */
+    SecurityFlavorUnspecified: "SECURITY_FLAVOR_UNSPECIFIED",
+    /**
+     * The user's UNIX user-id and group-ids are transferred "in the clear" (not encrypted) on the network, unauthenticated by the NFS server (default).
+     */
+    AuthSys: "AUTH_SYS",
+    /**
+     * End-user authentication through Kerberos V5.
+     */
+    Krb5: "KRB5",
+    /**
+     * krb5 plus integrity protection (data packets are tamper proof).
+     */
+    Krb5i: "KRB5I",
+    /**
+     * krb5i plus privacy protection (data packets are tamper proof and encrypted).
+     */
+    Krb5p: "KRB5P",
+} as const;
+
+export type NfsExportOptionsSecurityFlavorsItem = (typeof NfsExportOptionsSecurityFlavorsItem)[keyof typeof NfsExportOptionsSecurityFlavorsItem];
 
 export const NfsExportOptionsSquashMode = {
     /**

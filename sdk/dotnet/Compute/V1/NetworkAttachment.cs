@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the network which the Network Attachment belongs to.
+        /// The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;

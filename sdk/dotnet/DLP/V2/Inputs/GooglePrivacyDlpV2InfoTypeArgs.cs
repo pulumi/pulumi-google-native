@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// </summary>
+        [Input("sensitivityScore")]
+        public Input<Inputs.GooglePrivacyDlpV2SensitivityScoreArgs>? SensitivityScore { get; set; }
+
+        /// <summary>
         /// Optional version name for this InfoType.
         /// </summary>
         [Input("version")]

@@ -15009,6 +15009,904 @@ func (o RepoIdResponseOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoIdResponse) string { return v.Uid }).(pulumi.StringOutput)
 }
 
+// The note representing an SBOM reference.
+type SBOMReferenceNote struct {
+	// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+	Format *string `pulumi:"format"`
+	// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+	Version *string `pulumi:"version"`
+}
+
+// SBOMReferenceNoteInput is an input type that accepts SBOMReferenceNoteArgs and SBOMReferenceNoteOutput values.
+// You can construct a concrete instance of `SBOMReferenceNoteInput` via:
+//
+//	SBOMReferenceNoteArgs{...}
+type SBOMReferenceNoteInput interface {
+	pulumi.Input
+
+	ToSBOMReferenceNoteOutput() SBOMReferenceNoteOutput
+	ToSBOMReferenceNoteOutputWithContext(context.Context) SBOMReferenceNoteOutput
+}
+
+// The note representing an SBOM reference.
+type SBOMReferenceNoteArgs struct {
+	// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SBOMReferenceNoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceNote)(nil)).Elem()
+}
+
+func (i SBOMReferenceNoteArgs) ToSBOMReferenceNoteOutput() SBOMReferenceNoteOutput {
+	return i.ToSBOMReferenceNoteOutputWithContext(context.Background())
+}
+
+func (i SBOMReferenceNoteArgs) ToSBOMReferenceNoteOutputWithContext(ctx context.Context) SBOMReferenceNoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceNoteOutput)
+}
+
+func (i SBOMReferenceNoteArgs) ToSBOMReferenceNotePtrOutput() SBOMReferenceNotePtrOutput {
+	return i.ToSBOMReferenceNotePtrOutputWithContext(context.Background())
+}
+
+func (i SBOMReferenceNoteArgs) ToSBOMReferenceNotePtrOutputWithContext(ctx context.Context) SBOMReferenceNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceNoteOutput).ToSBOMReferenceNotePtrOutputWithContext(ctx)
+}
+
+// SBOMReferenceNotePtrInput is an input type that accepts SBOMReferenceNoteArgs, SBOMReferenceNotePtr and SBOMReferenceNotePtrOutput values.
+// You can construct a concrete instance of `SBOMReferenceNotePtrInput` via:
+//
+//	        SBOMReferenceNoteArgs{...}
+//
+//	or:
+//
+//	        nil
+type SBOMReferenceNotePtrInput interface {
+	pulumi.Input
+
+	ToSBOMReferenceNotePtrOutput() SBOMReferenceNotePtrOutput
+	ToSBOMReferenceNotePtrOutputWithContext(context.Context) SBOMReferenceNotePtrOutput
+}
+
+type sbomreferenceNotePtrType SBOMReferenceNoteArgs
+
+func SBOMReferenceNotePtr(v *SBOMReferenceNoteArgs) SBOMReferenceNotePtrInput {
+	return (*sbomreferenceNotePtrType)(v)
+}
+
+func (*sbomreferenceNotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMReferenceNote)(nil)).Elem()
+}
+
+func (i *sbomreferenceNotePtrType) ToSBOMReferenceNotePtrOutput() SBOMReferenceNotePtrOutput {
+	return i.ToSBOMReferenceNotePtrOutputWithContext(context.Background())
+}
+
+func (i *sbomreferenceNotePtrType) ToSBOMReferenceNotePtrOutputWithContext(ctx context.Context) SBOMReferenceNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceNotePtrOutput)
+}
+
+// The note representing an SBOM reference.
+type SBOMReferenceNoteOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceNoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceNote)(nil)).Elem()
+}
+
+func (o SBOMReferenceNoteOutput) ToSBOMReferenceNoteOutput() SBOMReferenceNoteOutput {
+	return o
+}
+
+func (o SBOMReferenceNoteOutput) ToSBOMReferenceNoteOutputWithContext(ctx context.Context) SBOMReferenceNoteOutput {
+	return o
+}
+
+func (o SBOMReferenceNoteOutput) ToSBOMReferenceNotePtrOutput() SBOMReferenceNotePtrOutput {
+	return o.ToSBOMReferenceNotePtrOutputWithContext(context.Background())
+}
+
+func (o SBOMReferenceNoteOutput) ToSBOMReferenceNotePtrOutputWithContext(ctx context.Context) SBOMReferenceNotePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SBOMReferenceNote) *SBOMReferenceNote {
+		return &v
+	}).(SBOMReferenceNotePtrOutput)
+}
+
+// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+func (o SBOMReferenceNoteOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SBOMReferenceNote) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+func (o SBOMReferenceNoteOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SBOMReferenceNote) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SBOMReferenceNotePtrOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceNotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMReferenceNote)(nil)).Elem()
+}
+
+func (o SBOMReferenceNotePtrOutput) ToSBOMReferenceNotePtrOutput() SBOMReferenceNotePtrOutput {
+	return o
+}
+
+func (o SBOMReferenceNotePtrOutput) ToSBOMReferenceNotePtrOutputWithContext(ctx context.Context) SBOMReferenceNotePtrOutput {
+	return o
+}
+
+func (o SBOMReferenceNotePtrOutput) Elem() SBOMReferenceNoteOutput {
+	return o.ApplyT(func(v *SBOMReferenceNote) SBOMReferenceNote {
+		if v != nil {
+			return *v
+		}
+		var ret SBOMReferenceNote
+		return ret
+	}).(SBOMReferenceNoteOutput)
+}
+
+// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+func (o SBOMReferenceNotePtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SBOMReferenceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+func (o SBOMReferenceNotePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SBOMReferenceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// The note representing an SBOM reference.
+type SBOMReferenceNoteResponse struct {
+	// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+	Format string `pulumi:"format"`
+	// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+	Version string `pulumi:"version"`
+}
+
+// The note representing an SBOM reference.
+type SBOMReferenceNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceNoteResponse)(nil)).Elem()
+}
+
+func (o SBOMReferenceNoteResponseOutput) ToSBOMReferenceNoteResponseOutput() SBOMReferenceNoteResponseOutput {
+	return o
+}
+
+func (o SBOMReferenceNoteResponseOutput) ToSBOMReferenceNoteResponseOutputWithContext(ctx context.Context) SBOMReferenceNoteResponseOutput {
+	return o
+}
+
+// The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+func (o SBOMReferenceNoteResponseOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v SBOMReferenceNoteResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+func (o SBOMReferenceNoteResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SBOMReferenceNoteResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+type SBOMReferenceOccurrence struct {
+	// The actual payload that contains the SBOM reference data.
+	Payload *SbomReferenceIntotoPayload `pulumi:"payload"`
+	// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+	PayloadType *string `pulumi:"payloadType"`
+	// The signatures over the payload.
+	Signatures []EnvelopeSignature `pulumi:"signatures"`
+}
+
+// SBOMReferenceOccurrenceInput is an input type that accepts SBOMReferenceOccurrenceArgs and SBOMReferenceOccurrenceOutput values.
+// You can construct a concrete instance of `SBOMReferenceOccurrenceInput` via:
+//
+//	SBOMReferenceOccurrenceArgs{...}
+type SBOMReferenceOccurrenceInput interface {
+	pulumi.Input
+
+	ToSBOMReferenceOccurrenceOutput() SBOMReferenceOccurrenceOutput
+	ToSBOMReferenceOccurrenceOutputWithContext(context.Context) SBOMReferenceOccurrenceOutput
+}
+
+// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+type SBOMReferenceOccurrenceArgs struct {
+	// The actual payload that contains the SBOM reference data.
+	Payload SbomReferenceIntotoPayloadPtrInput `pulumi:"payload"`
+	// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+	PayloadType pulumi.StringPtrInput `pulumi:"payloadType"`
+	// The signatures over the payload.
+	Signatures EnvelopeSignatureArrayInput `pulumi:"signatures"`
+}
+
+func (SBOMReferenceOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceOccurrence)(nil)).Elem()
+}
+
+func (i SBOMReferenceOccurrenceArgs) ToSBOMReferenceOccurrenceOutput() SBOMReferenceOccurrenceOutput {
+	return i.ToSBOMReferenceOccurrenceOutputWithContext(context.Background())
+}
+
+func (i SBOMReferenceOccurrenceArgs) ToSBOMReferenceOccurrenceOutputWithContext(ctx context.Context) SBOMReferenceOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceOccurrenceOutput)
+}
+
+func (i SBOMReferenceOccurrenceArgs) ToSBOMReferenceOccurrencePtrOutput() SBOMReferenceOccurrencePtrOutput {
+	return i.ToSBOMReferenceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i SBOMReferenceOccurrenceArgs) ToSBOMReferenceOccurrencePtrOutputWithContext(ctx context.Context) SBOMReferenceOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceOccurrenceOutput).ToSBOMReferenceOccurrencePtrOutputWithContext(ctx)
+}
+
+// SBOMReferenceOccurrencePtrInput is an input type that accepts SBOMReferenceOccurrenceArgs, SBOMReferenceOccurrencePtr and SBOMReferenceOccurrencePtrOutput values.
+// You can construct a concrete instance of `SBOMReferenceOccurrencePtrInput` via:
+//
+//	        SBOMReferenceOccurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SBOMReferenceOccurrencePtrInput interface {
+	pulumi.Input
+
+	ToSBOMReferenceOccurrencePtrOutput() SBOMReferenceOccurrencePtrOutput
+	ToSBOMReferenceOccurrencePtrOutputWithContext(context.Context) SBOMReferenceOccurrencePtrOutput
+}
+
+type sbomreferenceOccurrencePtrType SBOMReferenceOccurrenceArgs
+
+func SBOMReferenceOccurrencePtr(v *SBOMReferenceOccurrenceArgs) SBOMReferenceOccurrencePtrInput {
+	return (*sbomreferenceOccurrencePtrType)(v)
+}
+
+func (*sbomreferenceOccurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMReferenceOccurrence)(nil)).Elem()
+}
+
+func (i *sbomreferenceOccurrencePtrType) ToSBOMReferenceOccurrencePtrOutput() SBOMReferenceOccurrencePtrOutput {
+	return i.ToSBOMReferenceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *sbomreferenceOccurrencePtrType) ToSBOMReferenceOccurrencePtrOutputWithContext(ctx context.Context) SBOMReferenceOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SBOMReferenceOccurrencePtrOutput)
+}
+
+// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+type SBOMReferenceOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceOccurrence)(nil)).Elem()
+}
+
+func (o SBOMReferenceOccurrenceOutput) ToSBOMReferenceOccurrenceOutput() SBOMReferenceOccurrenceOutput {
+	return o
+}
+
+func (o SBOMReferenceOccurrenceOutput) ToSBOMReferenceOccurrenceOutputWithContext(ctx context.Context) SBOMReferenceOccurrenceOutput {
+	return o
+}
+
+func (o SBOMReferenceOccurrenceOutput) ToSBOMReferenceOccurrencePtrOutput() SBOMReferenceOccurrencePtrOutput {
+	return o.ToSBOMReferenceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (o SBOMReferenceOccurrenceOutput) ToSBOMReferenceOccurrencePtrOutputWithContext(ctx context.Context) SBOMReferenceOccurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SBOMReferenceOccurrence) *SBOMReferenceOccurrence {
+		return &v
+	}).(SBOMReferenceOccurrencePtrOutput)
+}
+
+// The actual payload that contains the SBOM reference data.
+func (o SBOMReferenceOccurrenceOutput) Payload() SbomReferenceIntotoPayloadPtrOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrence) *SbomReferenceIntotoPayload { return v.Payload }).(SbomReferenceIntotoPayloadPtrOutput)
+}
+
+// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+func (o SBOMReferenceOccurrenceOutput) PayloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrence) *string { return v.PayloadType }).(pulumi.StringPtrOutput)
+}
+
+// The signatures over the payload.
+func (o SBOMReferenceOccurrenceOutput) Signatures() EnvelopeSignatureArrayOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrence) []EnvelopeSignature { return v.Signatures }).(EnvelopeSignatureArrayOutput)
+}
+
+type SBOMReferenceOccurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceOccurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SBOMReferenceOccurrence)(nil)).Elem()
+}
+
+func (o SBOMReferenceOccurrencePtrOutput) ToSBOMReferenceOccurrencePtrOutput() SBOMReferenceOccurrencePtrOutput {
+	return o
+}
+
+func (o SBOMReferenceOccurrencePtrOutput) ToSBOMReferenceOccurrencePtrOutputWithContext(ctx context.Context) SBOMReferenceOccurrencePtrOutput {
+	return o
+}
+
+func (o SBOMReferenceOccurrencePtrOutput) Elem() SBOMReferenceOccurrenceOutput {
+	return o.ApplyT(func(v *SBOMReferenceOccurrence) SBOMReferenceOccurrence {
+		if v != nil {
+			return *v
+		}
+		var ret SBOMReferenceOccurrence
+		return ret
+	}).(SBOMReferenceOccurrenceOutput)
+}
+
+// The actual payload that contains the SBOM reference data.
+func (o SBOMReferenceOccurrencePtrOutput) Payload() SbomReferenceIntotoPayloadPtrOutput {
+	return o.ApplyT(func(v *SBOMReferenceOccurrence) *SbomReferenceIntotoPayload {
+		if v == nil {
+			return nil
+		}
+		return v.Payload
+	}).(SbomReferenceIntotoPayloadPtrOutput)
+}
+
+// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+func (o SBOMReferenceOccurrencePtrOutput) PayloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SBOMReferenceOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signatures over the payload.
+func (o SBOMReferenceOccurrencePtrOutput) Signatures() EnvelopeSignatureArrayOutput {
+	return o.ApplyT(func(v *SBOMReferenceOccurrence) []EnvelopeSignature {
+		if v == nil {
+			return nil
+		}
+		return v.Signatures
+	}).(EnvelopeSignatureArrayOutput)
+}
+
+// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+type SBOMReferenceOccurrenceResponse struct {
+	// The actual payload that contains the SBOM reference data.
+	Payload SbomReferenceIntotoPayloadResponse `pulumi:"payload"`
+	// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+	PayloadType string `pulumi:"payloadType"`
+	// The signatures over the payload.
+	Signatures []EnvelopeSignatureResponse `pulumi:"signatures"`
+}
+
+// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+type SBOMReferenceOccurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (SBOMReferenceOccurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SBOMReferenceOccurrenceResponse)(nil)).Elem()
+}
+
+func (o SBOMReferenceOccurrenceResponseOutput) ToSBOMReferenceOccurrenceResponseOutput() SBOMReferenceOccurrenceResponseOutput {
+	return o
+}
+
+func (o SBOMReferenceOccurrenceResponseOutput) ToSBOMReferenceOccurrenceResponseOutputWithContext(ctx context.Context) SBOMReferenceOccurrenceResponseOutput {
+	return o
+}
+
+// The actual payload that contains the SBOM reference data.
+func (o SBOMReferenceOccurrenceResponseOutput) Payload() SbomReferenceIntotoPayloadResponseOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrenceResponse) SbomReferenceIntotoPayloadResponse { return v.Payload }).(SbomReferenceIntotoPayloadResponseOutput)
+}
+
+// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+func (o SBOMReferenceOccurrenceResponseOutput) PayloadType() pulumi.StringOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrenceResponse) string { return v.PayloadType }).(pulumi.StringOutput)
+}
+
+// The signatures over the payload.
+func (o SBOMReferenceOccurrenceResponseOutput) Signatures() EnvelopeSignatureResponseArrayOutput {
+	return o.ApplyT(func(v SBOMReferenceOccurrenceResponse) []EnvelopeSignatureResponse { return v.Signatures }).(EnvelopeSignatureResponseArrayOutput)
+}
+
+// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+type SbomReferenceIntotoPayload struct {
+	// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+	Predicate *SbomReferenceIntotoPredicate `pulumi:"predicate"`
+	// URI identifying the type of the Predicate.
+	PredicateType *string `pulumi:"predicateType"`
+	// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+	Subject []Subject `pulumi:"subject"`
+	// Identifier for the schema of the Statement.
+	Type *string `pulumi:"type"`
+}
+
+// SbomReferenceIntotoPayloadInput is an input type that accepts SbomReferenceIntotoPayloadArgs and SbomReferenceIntotoPayloadOutput values.
+// You can construct a concrete instance of `SbomReferenceIntotoPayloadInput` via:
+//
+//	SbomReferenceIntotoPayloadArgs{...}
+type SbomReferenceIntotoPayloadInput interface {
+	pulumi.Input
+
+	ToSbomReferenceIntotoPayloadOutput() SbomReferenceIntotoPayloadOutput
+	ToSbomReferenceIntotoPayloadOutputWithContext(context.Context) SbomReferenceIntotoPayloadOutput
+}
+
+// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+type SbomReferenceIntotoPayloadArgs struct {
+	// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+	Predicate SbomReferenceIntotoPredicatePtrInput `pulumi:"predicate"`
+	// URI identifying the type of the Predicate.
+	PredicateType pulumi.StringPtrInput `pulumi:"predicateType"`
+	// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+	Subject SubjectArrayInput `pulumi:"subject"`
+	// Identifier for the schema of the Statement.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SbomReferenceIntotoPayloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPayload)(nil)).Elem()
+}
+
+func (i SbomReferenceIntotoPayloadArgs) ToSbomReferenceIntotoPayloadOutput() SbomReferenceIntotoPayloadOutput {
+	return i.ToSbomReferenceIntotoPayloadOutputWithContext(context.Background())
+}
+
+func (i SbomReferenceIntotoPayloadArgs) ToSbomReferenceIntotoPayloadOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPayloadOutput)
+}
+
+func (i SbomReferenceIntotoPayloadArgs) ToSbomReferenceIntotoPayloadPtrOutput() SbomReferenceIntotoPayloadPtrOutput {
+	return i.ToSbomReferenceIntotoPayloadPtrOutputWithContext(context.Background())
+}
+
+func (i SbomReferenceIntotoPayloadArgs) ToSbomReferenceIntotoPayloadPtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPayloadOutput).ToSbomReferenceIntotoPayloadPtrOutputWithContext(ctx)
+}
+
+// SbomReferenceIntotoPayloadPtrInput is an input type that accepts SbomReferenceIntotoPayloadArgs, SbomReferenceIntotoPayloadPtr and SbomReferenceIntotoPayloadPtrOutput values.
+// You can construct a concrete instance of `SbomReferenceIntotoPayloadPtrInput` via:
+//
+//	        SbomReferenceIntotoPayloadArgs{...}
+//
+//	or:
+//
+//	        nil
+type SbomReferenceIntotoPayloadPtrInput interface {
+	pulumi.Input
+
+	ToSbomReferenceIntotoPayloadPtrOutput() SbomReferenceIntotoPayloadPtrOutput
+	ToSbomReferenceIntotoPayloadPtrOutputWithContext(context.Context) SbomReferenceIntotoPayloadPtrOutput
+}
+
+type sbomReferenceIntotoPayloadPtrType SbomReferenceIntotoPayloadArgs
+
+func SbomReferenceIntotoPayloadPtr(v *SbomReferenceIntotoPayloadArgs) SbomReferenceIntotoPayloadPtrInput {
+	return (*sbomReferenceIntotoPayloadPtrType)(v)
+}
+
+func (*sbomReferenceIntotoPayloadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SbomReferenceIntotoPayload)(nil)).Elem()
+}
+
+func (i *sbomReferenceIntotoPayloadPtrType) ToSbomReferenceIntotoPayloadPtrOutput() SbomReferenceIntotoPayloadPtrOutput {
+	return i.ToSbomReferenceIntotoPayloadPtrOutputWithContext(context.Background())
+}
+
+func (i *sbomReferenceIntotoPayloadPtrType) ToSbomReferenceIntotoPayloadPtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPayloadPtrOutput)
+}
+
+// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+type SbomReferenceIntotoPayloadOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPayloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPayload)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPayloadOutput) ToSbomReferenceIntotoPayloadOutput() SbomReferenceIntotoPayloadOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPayloadOutput) ToSbomReferenceIntotoPayloadOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPayloadOutput) ToSbomReferenceIntotoPayloadPtrOutput() SbomReferenceIntotoPayloadPtrOutput {
+	return o.ToSbomReferenceIntotoPayloadPtrOutputWithContext(context.Background())
+}
+
+func (o SbomReferenceIntotoPayloadOutput) ToSbomReferenceIntotoPayloadPtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SbomReferenceIntotoPayload) *SbomReferenceIntotoPayload {
+		return &v
+	}).(SbomReferenceIntotoPayloadPtrOutput)
+}
+
+// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+func (o SbomReferenceIntotoPayloadOutput) Predicate() SbomReferenceIntotoPredicatePtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayload) *SbomReferenceIntotoPredicate { return v.Predicate }).(SbomReferenceIntotoPredicatePtrOutput)
+}
+
+// URI identifying the type of the Predicate.
+func (o SbomReferenceIntotoPayloadOutput) PredicateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayload) *string { return v.PredicateType }).(pulumi.StringPtrOutput)
+}
+
+// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+func (o SbomReferenceIntotoPayloadOutput) Subject() SubjectArrayOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayload) []Subject { return v.Subject }).(SubjectArrayOutput)
+}
+
+// Identifier for the schema of the Statement.
+func (o SbomReferenceIntotoPayloadOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayload) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SbomReferenceIntotoPayloadPtrOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPayloadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SbomReferenceIntotoPayload)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPayloadPtrOutput) ToSbomReferenceIntotoPayloadPtrOutput() SbomReferenceIntotoPayloadPtrOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPayloadPtrOutput) ToSbomReferenceIntotoPayloadPtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadPtrOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPayloadPtrOutput) Elem() SbomReferenceIntotoPayloadOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPayload) SbomReferenceIntotoPayload {
+		if v != nil {
+			return *v
+		}
+		var ret SbomReferenceIntotoPayload
+		return ret
+	}).(SbomReferenceIntotoPayloadOutput)
+}
+
+// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+func (o SbomReferenceIntotoPayloadPtrOutput) Predicate() SbomReferenceIntotoPredicatePtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPayload) *SbomReferenceIntotoPredicate {
+		if v == nil {
+			return nil
+		}
+		return v.Predicate
+	}).(SbomReferenceIntotoPredicatePtrOutput)
+}
+
+// URI identifying the type of the Predicate.
+func (o SbomReferenceIntotoPayloadPtrOutput) PredicateType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPayload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredicateType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+func (o SbomReferenceIntotoPayloadPtrOutput) Subject() SubjectArrayOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPayload) []Subject {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(SubjectArrayOutput)
+}
+
+// Identifier for the schema of the Statement.
+func (o SbomReferenceIntotoPayloadPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPayload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+type SbomReferenceIntotoPayloadResponse struct {
+	// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+	Predicate SbomReferenceIntotoPredicateResponse `pulumi:"predicate"`
+	// URI identifying the type of the Predicate.
+	PredicateType string `pulumi:"predicateType"`
+	// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+	Subject []SubjectResponse `pulumi:"subject"`
+	// Identifier for the schema of the Statement.
+	Type string `pulumi:"type"`
+}
+
+// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+type SbomReferenceIntotoPayloadResponseOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPayloadResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPayloadResponse)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPayloadResponseOutput) ToSbomReferenceIntotoPayloadResponseOutput() SbomReferenceIntotoPayloadResponseOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPayloadResponseOutput) ToSbomReferenceIntotoPayloadResponseOutputWithContext(ctx context.Context) SbomReferenceIntotoPayloadResponseOutput {
+	return o
+}
+
+// Additional parameters of the Predicate. Includes the actual data about the SBOM.
+func (o SbomReferenceIntotoPayloadResponseOutput) Predicate() SbomReferenceIntotoPredicateResponseOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayloadResponse) SbomReferenceIntotoPredicateResponse { return v.Predicate }).(SbomReferenceIntotoPredicateResponseOutput)
+}
+
+// URI identifying the type of the Predicate.
+func (o SbomReferenceIntotoPayloadResponseOutput) PredicateType() pulumi.StringOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayloadResponse) string { return v.PredicateType }).(pulumi.StringOutput)
+}
+
+// Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+func (o SbomReferenceIntotoPayloadResponseOutput) Subject() SubjectResponseArrayOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayloadResponse) []SubjectResponse { return v.Subject }).(SubjectResponseArrayOutput)
+}
+
+// Identifier for the schema of the Statement.
+func (o SbomReferenceIntotoPayloadResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPayloadResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A predicate which describes the SBOM being referenced.
+type SbomReferenceIntotoPredicate struct {
+	// A map of algorithm to digest of the contents of the SBOM.
+	Digest map[string]string `pulumi:"digest"`
+	// The location of the SBOM.
+	Location *string `pulumi:"location"`
+	// The mime type of the SBOM.
+	MimeType *string `pulumi:"mimeType"`
+	// The person or system referring this predicate to the consumer.
+	ReferrerId *string `pulumi:"referrerId"`
+}
+
+// SbomReferenceIntotoPredicateInput is an input type that accepts SbomReferenceIntotoPredicateArgs and SbomReferenceIntotoPredicateOutput values.
+// You can construct a concrete instance of `SbomReferenceIntotoPredicateInput` via:
+//
+//	SbomReferenceIntotoPredicateArgs{...}
+type SbomReferenceIntotoPredicateInput interface {
+	pulumi.Input
+
+	ToSbomReferenceIntotoPredicateOutput() SbomReferenceIntotoPredicateOutput
+	ToSbomReferenceIntotoPredicateOutputWithContext(context.Context) SbomReferenceIntotoPredicateOutput
+}
+
+// A predicate which describes the SBOM being referenced.
+type SbomReferenceIntotoPredicateArgs struct {
+	// A map of algorithm to digest of the contents of the SBOM.
+	Digest pulumi.StringMapInput `pulumi:"digest"`
+	// The location of the SBOM.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The mime type of the SBOM.
+	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// The person or system referring this predicate to the consumer.
+	ReferrerId pulumi.StringPtrInput `pulumi:"referrerId"`
+}
+
+func (SbomReferenceIntotoPredicateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPredicate)(nil)).Elem()
+}
+
+func (i SbomReferenceIntotoPredicateArgs) ToSbomReferenceIntotoPredicateOutput() SbomReferenceIntotoPredicateOutput {
+	return i.ToSbomReferenceIntotoPredicateOutputWithContext(context.Background())
+}
+
+func (i SbomReferenceIntotoPredicateArgs) ToSbomReferenceIntotoPredicateOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPredicateOutput)
+}
+
+func (i SbomReferenceIntotoPredicateArgs) ToSbomReferenceIntotoPredicatePtrOutput() SbomReferenceIntotoPredicatePtrOutput {
+	return i.ToSbomReferenceIntotoPredicatePtrOutputWithContext(context.Background())
+}
+
+func (i SbomReferenceIntotoPredicateArgs) ToSbomReferenceIntotoPredicatePtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPredicateOutput).ToSbomReferenceIntotoPredicatePtrOutputWithContext(ctx)
+}
+
+// SbomReferenceIntotoPredicatePtrInput is an input type that accepts SbomReferenceIntotoPredicateArgs, SbomReferenceIntotoPredicatePtr and SbomReferenceIntotoPredicatePtrOutput values.
+// You can construct a concrete instance of `SbomReferenceIntotoPredicatePtrInput` via:
+//
+//	        SbomReferenceIntotoPredicateArgs{...}
+//
+//	or:
+//
+//	        nil
+type SbomReferenceIntotoPredicatePtrInput interface {
+	pulumi.Input
+
+	ToSbomReferenceIntotoPredicatePtrOutput() SbomReferenceIntotoPredicatePtrOutput
+	ToSbomReferenceIntotoPredicatePtrOutputWithContext(context.Context) SbomReferenceIntotoPredicatePtrOutput
+}
+
+type sbomReferenceIntotoPredicatePtrType SbomReferenceIntotoPredicateArgs
+
+func SbomReferenceIntotoPredicatePtr(v *SbomReferenceIntotoPredicateArgs) SbomReferenceIntotoPredicatePtrInput {
+	return (*sbomReferenceIntotoPredicatePtrType)(v)
+}
+
+func (*sbomReferenceIntotoPredicatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SbomReferenceIntotoPredicate)(nil)).Elem()
+}
+
+func (i *sbomReferenceIntotoPredicatePtrType) ToSbomReferenceIntotoPredicatePtrOutput() SbomReferenceIntotoPredicatePtrOutput {
+	return i.ToSbomReferenceIntotoPredicatePtrOutputWithContext(context.Background())
+}
+
+func (i *sbomReferenceIntotoPredicatePtrType) ToSbomReferenceIntotoPredicatePtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SbomReferenceIntotoPredicatePtrOutput)
+}
+
+// A predicate which describes the SBOM being referenced.
+type SbomReferenceIntotoPredicateOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPredicateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPredicate)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPredicateOutput) ToSbomReferenceIntotoPredicateOutput() SbomReferenceIntotoPredicateOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPredicateOutput) ToSbomReferenceIntotoPredicateOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicateOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPredicateOutput) ToSbomReferenceIntotoPredicatePtrOutput() SbomReferenceIntotoPredicatePtrOutput {
+	return o.ToSbomReferenceIntotoPredicatePtrOutputWithContext(context.Background())
+}
+
+func (o SbomReferenceIntotoPredicateOutput) ToSbomReferenceIntotoPredicatePtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SbomReferenceIntotoPredicate) *SbomReferenceIntotoPredicate {
+		return &v
+	}).(SbomReferenceIntotoPredicatePtrOutput)
+}
+
+// A map of algorithm to digest of the contents of the SBOM.
+func (o SbomReferenceIntotoPredicateOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicate) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+// The location of the SBOM.
+func (o SbomReferenceIntotoPredicateOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicate) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The mime type of the SBOM.
+func (o SbomReferenceIntotoPredicateOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicate) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+}
+
+// The person or system referring this predicate to the consumer.
+func (o SbomReferenceIntotoPredicateOutput) ReferrerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicate) *string { return v.ReferrerId }).(pulumi.StringPtrOutput)
+}
+
+type SbomReferenceIntotoPredicatePtrOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPredicatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SbomReferenceIntotoPredicate)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPredicatePtrOutput) ToSbomReferenceIntotoPredicatePtrOutput() SbomReferenceIntotoPredicatePtrOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPredicatePtrOutput) ToSbomReferenceIntotoPredicatePtrOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicatePtrOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPredicatePtrOutput) Elem() SbomReferenceIntotoPredicateOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPredicate) SbomReferenceIntotoPredicate {
+		if v != nil {
+			return *v
+		}
+		var ret SbomReferenceIntotoPredicate
+		return ret
+	}).(SbomReferenceIntotoPredicateOutput)
+}
+
+// A map of algorithm to digest of the contents of the SBOM.
+func (o SbomReferenceIntotoPredicatePtrOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPredicate) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringMapOutput)
+}
+
+// The location of the SBOM.
+func (o SbomReferenceIntotoPredicatePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPredicate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mime type of the SBOM.
+func (o SbomReferenceIntotoPredicatePtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPredicate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The person or system referring this predicate to the consumer.
+func (o SbomReferenceIntotoPredicatePtrOutput) ReferrerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SbomReferenceIntotoPredicate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferrerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A predicate which describes the SBOM being referenced.
+type SbomReferenceIntotoPredicateResponse struct {
+	// A map of algorithm to digest of the contents of the SBOM.
+	Digest map[string]string `pulumi:"digest"`
+	// The location of the SBOM.
+	Location string `pulumi:"location"`
+	// The mime type of the SBOM.
+	MimeType string `pulumi:"mimeType"`
+	// The person or system referring this predicate to the consumer.
+	ReferrerId string `pulumi:"referrerId"`
+}
+
+// A predicate which describes the SBOM being referenced.
+type SbomReferenceIntotoPredicateResponseOutput struct{ *pulumi.OutputState }
+
+func (SbomReferenceIntotoPredicateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SbomReferenceIntotoPredicateResponse)(nil)).Elem()
+}
+
+func (o SbomReferenceIntotoPredicateResponseOutput) ToSbomReferenceIntotoPredicateResponseOutput() SbomReferenceIntotoPredicateResponseOutput {
+	return o
+}
+
+func (o SbomReferenceIntotoPredicateResponseOutput) ToSbomReferenceIntotoPredicateResponseOutputWithContext(ctx context.Context) SbomReferenceIntotoPredicateResponseOutput {
+	return o
+}
+
+// A map of algorithm to digest of the contents of the SBOM.
+func (o SbomReferenceIntotoPredicateResponseOutput) Digest() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicateResponse) map[string]string { return v.Digest }).(pulumi.StringMapOutput)
+}
+
+// The location of the SBOM.
+func (o SbomReferenceIntotoPredicateResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicateResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The mime type of the SBOM.
+func (o SbomReferenceIntotoPredicateResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicateResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// The person or system referring this predicate to the consumer.
+func (o SbomReferenceIntotoPredicateResponseOutput) ReferrerId() pulumi.StringOutput {
+	return o.ApplyT(func(v SbomReferenceIntotoPredicateResponse) string { return v.ReferrerId }).(pulumi.StringOutput)
+}
+
 // Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature).
 type Signature struct {
 	// The identifier for the public key that verifies this signature. * The `public_key_id` is required. * The `public_key_id` SHOULD be an RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an immutable reference, such as a cryptographic digest. Examples of valid `public_key_id`s: OpenPGP V4 public key fingerprint: * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization): * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" * "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
@@ -20643,6 +21541,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RemediationArrayInput)(nil)).Elem(), RemediationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdInput)(nil)).Elem(), RepoIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoIdPtrInput)(nil)).Elem(), RepoIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceNoteInput)(nil)).Elem(), SBOMReferenceNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceNotePtrInput)(nil)).Elem(), SBOMReferenceNoteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceOccurrenceInput)(nil)).Elem(), SBOMReferenceOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SBOMReferenceOccurrencePtrInput)(nil)).Elem(), SBOMReferenceOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPayloadInput)(nil)).Elem(), SbomReferenceIntotoPayloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPayloadPtrInput)(nil)).Elem(), SbomReferenceIntotoPayloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPredicateInput)(nil)).Elem(), SbomReferenceIntotoPredicateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SbomReferenceIntotoPredicatePtrInput)(nil)).Elem(), SbomReferenceIntotoPredicateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureInput)(nil)).Elem(), SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SignatureArrayInput)(nil)).Elem(), SignatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsaBuilderInput)(nil)).Elem(), SlsaBuilderArgs{})
@@ -20916,6 +21822,18 @@ func init() {
 	pulumi.RegisterOutputType(RepoIdOutput{})
 	pulumi.RegisterOutputType(RepoIdPtrOutput{})
 	pulumi.RegisterOutputType(RepoIdResponseOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceNoteOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceNotePtrOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceNoteResponseOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceOccurrenceOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceOccurrencePtrOutput{})
+	pulumi.RegisterOutputType(SBOMReferenceOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadPtrOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPayloadResponseOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPredicateOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPredicatePtrOutput{})
+	pulumi.RegisterOutputType(SbomReferenceIntotoPredicateResponseOutput{})
 	pulumi.RegisterOutputType(SignatureOutput{})
 	pulumi.RegisterOutputType(SignatureArrayOutput{})
 	pulumi.RegisterOutputType(SignatureResponseOutput{})

@@ -108,6 +108,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Output<string> RequestedState { get; private set; } = null!;
 
         /// <summary>
+        /// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        /// </summary>
+        [Output("runtimeUpdatableParams")]
+        public Output<Outputs.RuntimeUpdatableParamsResponse> RuntimeUpdatableParams { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -318,6 +324,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         [Input("requestedState")]
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobRequestedState>? RequestedState { get; set; }
+
+        /// <summary>
+        /// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        /// </summary>
+        [Input("runtimeUpdatableParams")]
+        public Input<Inputs.RuntimeUpdatableParamsArgs>? RuntimeUpdatableParams { get; set; }
 
         /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, execution_info=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
+    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, execution_info=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, runtime_updatable_params=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
         if client_request_id and not isinstance(client_request_id, str):
             raise TypeError("Expected argument 'client_request_id' to be a str")
         pulumi.set(__self__, "client_request_id", client_request_id)
@@ -72,6 +72,9 @@ class GetJobResult:
         if requested_state and not isinstance(requested_state, str):
             raise TypeError("Expected argument 'requested_state' to be a str")
         pulumi.set(__self__, "requested_state", requested_state)
+        if runtime_updatable_params and not isinstance(runtime_updatable_params, dict):
+            raise TypeError("Expected argument 'runtime_updatable_params' to be a dict")
+        pulumi.set(__self__, "runtime_updatable_params", runtime_updatable_params)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -226,6 +229,14 @@ class GetJobResult:
         return pulumi.get(self, "requested_state")
 
     @property
+    @pulumi.getter(name="runtimeUpdatableParams")
+    def runtime_updatable_params(self) -> 'outputs.RuntimeUpdatableParamsResponse':
+        """
+        This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior. This field has no effect when specified at job creation.
+        """
+        return pulumi.get(self, "runtime_updatable_params")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -312,6 +323,7 @@ class AwaitableGetJobResult(GetJobResult):
             replace_job_id=self.replace_job_id,
             replaced_by_job_id=self.replaced_by_job_id,
             requested_state=self.requested_state,
+            runtime_updatable_params=self.runtime_updatable_params,
             satisfies_pzs=self.satisfies_pzs,
             stage_states=self.stage_states,
             start_time=self.start_time,
@@ -355,6 +367,7 @@ def get_job(job_id: Optional[str] = None,
         replace_job_id=__ret__.replace_job_id,
         replaced_by_job_id=__ret__.replaced_by_job_id,
         requested_state=__ret__.requested_state,
+        runtime_updatable_params=__ret__.runtime_updatable_params,
         satisfies_pzs=__ret__.satisfies_pzs,
         stage_states=__ret__.stage_states,
         start_time=__ret__.start_time,

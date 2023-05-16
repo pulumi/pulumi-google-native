@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+        /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

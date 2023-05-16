@@ -487,6 +487,14 @@ class PublishingOrganization(str, Enum):
     """
     Shopping Org.
     """
+    GEO = "GEO"
+    """
+    Geo Org.
+    """
+    GENERATIVE_AI = "GENERATIVE_AI"
+    """
+    Generative AI - https://developers.generativeai.google
+    """
 
 
 class RolloutStatus(str, Enum):

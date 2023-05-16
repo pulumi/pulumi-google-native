@@ -406,7 +406,7 @@ class GcsDestinationConfigArgs:
         """
         Google Cloud Storage destination configuration
         :param pulumi.Input['AvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
-        :param pulumi.Input[str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
+        :param pulumi.Input[str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
         :param pulumi.Input[int] file_rotation_mb: The maximum file size to be saved in the bucket.
         :param pulumi.Input['JsonFileFormatArgs'] json_file_format: JSON file format configuration.
         :param pulumi.Input[str] path: Path inside the Cloud Storage bucket to write data to.
@@ -438,7 +438,7 @@ class GcsDestinationConfigArgs:
     @pulumi.getter(name="fileRotationInterval")
     def file_rotation_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum duration for which new events are added before a file is closed and a new file is created.
+        The maximum duration for which new events are added before a file is closed and a new file is created. Values within the range of 15-60 seconds are allowed.
         """
         return pulumi.get(self, "file_rotation_interval")
 

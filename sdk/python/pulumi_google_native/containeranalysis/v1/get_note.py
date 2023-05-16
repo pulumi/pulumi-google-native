@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNoteResult:
-    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, expiration_time=None, image=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, short_description=None, update_time=None, upgrade=None, vulnerability=None, vulnerability_assessment=None):
+    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, expiration_time=None, image=None, kind=None, long_description=None, name=None, package=None, related_note_names=None, related_url=None, sbom_reference=None, short_description=None, update_time=None, upgrade=None, vulnerability=None, vulnerability_assessment=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -65,6 +65,9 @@ class GetNoteResult:
         if related_url and not isinstance(related_url, list):
             raise TypeError("Expected argument 'related_url' to be a list")
         pulumi.set(__self__, "related_url", related_url)
+        if sbom_reference and not isinstance(sbom_reference, dict):
+            raise TypeError("Expected argument 'sbom_reference' to be a dict")
+        pulumi.set(__self__, "sbom_reference", sbom_reference)
         if short_description and not isinstance(short_description, str):
             raise TypeError("Expected argument 'short_description' to be a str")
         pulumi.set(__self__, "short_description", short_description)
@@ -202,6 +205,14 @@ class GetNoteResult:
         return pulumi.get(self, "related_url")
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> 'outputs.SBOMReferenceNoteResponse':
+        """
+        A note describing an SBOM reference.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> str:
         """
@@ -263,6 +274,7 @@ class AwaitableGetNoteResult(GetNoteResult):
             package=self.package,
             related_note_names=self.related_note_names,
             related_url=self.related_url,
+            sbom_reference=self.sbom_reference,
             short_description=self.short_description,
             update_time=self.update_time,
             upgrade=self.upgrade,
@@ -298,6 +310,7 @@ def get_note(note_id: Optional[str] = None,
         package=__ret__.package,
         related_note_names=__ret__.related_note_names,
         related_url=__ret__.related_url,
+        sbom_reference=__ret__.sbom_reference,
         short_description=__ret__.short_description,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,

@@ -41,6 +41,8 @@ type LookupInterconnectAttachmentResult struct {
 	CloudRouterIpv6Address string `pulumi:"cloudRouterIpv6Address"`
 	// This field is not available.
 	CloudRouterIpv6InterfaceId string `pulumi:"cloudRouterIpv6InterfaceId"`
+	// Constraints for this attachment, if any. The attachment does not work if these constraints are not met.
+	ConfigurationConstraints InterconnectAttachmentConfigurationConstraintsResponse `pulumi:"configurationConstraints"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
@@ -87,6 +89,8 @@ type LookupInterconnectAttachmentResult struct {
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoResponse `pulumi:"privateInterconnectInfo"`
 	// URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
+	// If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field.
+	RemoteService string `pulumi:"remoteService"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router string `pulumi:"router"`
 	// Reserved for future use.
@@ -97,6 +101,8 @@ type LookupInterconnectAttachmentResult struct {
 	StackType string `pulumi:"stackType"`
 	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
 	State string `pulumi:"state"`
+	// Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility.
+	SubnetLength int `pulumi:"subnetLength"`
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
@@ -173,6 +179,13 @@ func (o LookupInterconnectAttachmentResultOutput) CloudRouterIpv6Address() pulum
 // This field is not available.
 func (o LookupInterconnectAttachmentResultOutput) CloudRouterIpv6InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CloudRouterIpv6InterfaceId }).(pulumi.StringOutput)
+}
+
+// Constraints for this attachment, if any. The attachment does not work if these constraints are not met.
+func (o LookupInterconnectAttachmentResultOutput) ConfigurationConstraints() InterconnectAttachmentConfigurationConstraintsResponseOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) InterconnectAttachmentConfigurationConstraintsResponse {
+		return v.ConfigurationConstraints
+	}).(InterconnectAttachmentConfigurationConstraintsResponseOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -291,6 +304,11 @@ func (o LookupInterconnectAttachmentResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// If the attachment is on a Cross-Cloud Interconnect connection, this field contains the interconnect's remote location service provider. Example values: "Amazon Web Services" "Microsoft Azure". The field is set only for attachments on Cross-Cloud Interconnect connections. Its value is copied from the InterconnectRemoteLocation remoteService field.
+func (o LookupInterconnectAttachmentResultOutput) RemoteService() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.RemoteService }).(pulumi.StringOutput)
+}
+
 // URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 func (o LookupInterconnectAttachmentResultOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Router }).(pulumi.StringOutput)
@@ -314,6 +332,11 @@ func (o LookupInterconnectAttachmentResultOutput) StackType() pulumi.StringOutpu
 // The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
 func (o LookupInterconnectAttachmentResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility.
+func (o LookupInterconnectAttachmentResultOutput) SubnetLength() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.SubnetLength }).(pulumi.IntOutput)
 }
 
 // The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.

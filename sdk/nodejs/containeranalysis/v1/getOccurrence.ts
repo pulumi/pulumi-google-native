@@ -86,6 +86,10 @@ export interface GetOccurrenceResult {
      */
     readonly resourceUri: string;
     /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    readonly sbomReference: outputs.containeranalysis.v1.SBOMReferenceOccurrenceResponse;
+    /**
      * The time this occurrence was last updated.
      */
     readonly updateTime: string;

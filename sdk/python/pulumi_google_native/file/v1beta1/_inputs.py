@@ -11,10 +11,36 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'DirectoryServicesConfigArgs',
     'FileShareConfigArgs',
+    'ManagedActiveDirectoryConfigArgs',
     'NetworkConfigArgs',
     'NfsExportOptionsArgs',
 ]
+
+@pulumi.input_type
+class DirectoryServicesConfigArgs:
+    def __init__(__self__, *,
+                 managed_active_directory: Optional[pulumi.Input['ManagedActiveDirectoryConfigArgs']] = None):
+        """
+        Directory Services configuration for Kerberos-based authentication.
+        :param pulumi.Input['ManagedActiveDirectoryConfigArgs'] managed_active_directory: Configuration for Managed Service for Microsoft Active Directory.
+        """
+        if managed_active_directory is not None:
+            pulumi.set(__self__, "managed_active_directory", managed_active_directory)
+
+    @property
+    @pulumi.getter(name="managedActiveDirectory")
+    def managed_active_directory(self) -> Optional[pulumi.Input['ManagedActiveDirectoryConfigArgs']]:
+        """
+        Configuration for Managed Service for Microsoft Active Directory.
+        """
+        return pulumi.get(self, "managed_active_directory")
+
+    @managed_active_directory.setter
+    def managed_active_directory(self, value: Optional[pulumi.Input['ManagedActiveDirectoryConfigArgs']]):
+        pulumi.set(self, "managed_active_directory", value)
+
 
 @pulumi.input_type
 class FileShareConfigArgs:
@@ -86,6 +112,46 @@ class FileShareConfigArgs:
     @source_backup.setter
     def source_backup(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_backup", value)
+
+
+@pulumi.input_type
+class ManagedActiveDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 computer: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None):
+        """
+        ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+        :param pulumi.Input[str] computer: The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        :param pulumi.Input[str] domain: Fully qualified domain name.
+        """
+        if computer is not None:
+            pulumi.set(__self__, "computer", computer)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def computer(self) -> Optional[pulumi.Input[str]]:
+        """
+        The computer name is used as a prefix to the mount remote target. Example: if the computer_name is `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        """
+        return pulumi.get(self, "computer")
+
+    @computer.setter
+    def computer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "computer", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified domain name.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
 
 
 @pulumi.input_type
@@ -167,6 +233,7 @@ class NfsExportOptionsArgs:
                  anon_gid: Optional[pulumi.Input[str]] = None,
                  anon_uid: Optional[pulumi.Input[str]] = None,
                  ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_flavors: Optional[pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsSecurityFlavorsItem']]]] = None,
                  squash_mode: Optional[pulumi.Input['NfsExportOptionsSquashMode']] = None):
         """
         NFS export options specifications.
@@ -174,6 +241,7 @@ class NfsExportOptionsArgs:
         :param pulumi.Input[str] anon_gid: An integer representing the anonymous group id with a default value of 65534. Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param pulumi.Input[str] anon_uid: An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: List of either an IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the file share. Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned. The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+        :param pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsSecurityFlavorsItem']]] security_flavors: The security flavors allowed for mount operations. The default is AUTH_SYS.
         :param pulumi.Input['NfsExportOptionsSquashMode'] squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         """
         if access_mode is not None:
@@ -184,6 +252,8 @@ class NfsExportOptionsArgs:
             pulumi.set(__self__, "anon_uid", anon_uid)
         if ip_ranges is not None:
             pulumi.set(__self__, "ip_ranges", ip_ranges)
+        if security_flavors is not None:
+            pulumi.set(__self__, "security_flavors", security_flavors)
         if squash_mode is not None:
             pulumi.set(__self__, "squash_mode", squash_mode)
 
@@ -234,6 +304,18 @@ class NfsExportOptionsArgs:
     @ip_ranges.setter
     def ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="securityFlavors")
+    def security_flavors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsSecurityFlavorsItem']]]]:
+        """
+        The security flavors allowed for mount operations. The default is AUTH_SYS.
+        """
+        return pulumi.get(self, "security_flavors")
+
+    @security_flavors.setter
+    def security_flavors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsSecurityFlavorsItem']]]]):
+        pulumi.set(self, "security_flavors", value)
 
     @property
     @pulumi.getter(name="squashMode")

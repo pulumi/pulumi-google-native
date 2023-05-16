@@ -57,7 +57,7 @@ type LookupRegionCommitmentResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// Source commitment to be splitted into a new commitment.
+	// Source commitment to be split into a new commitment.
 	SplitSourceCommitment string `pulumi:"splitSourceCommitment"`
 	// Commitment start time in RFC3339 text format.
 	StartTimestamp string `pulumi:"startTimestamp"`
@@ -181,7 +181,7 @@ func (o LookupRegionCommitmentResultOutput) SelfLinkWithId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Source commitment to be splitted into a new commitment.
+// Source commitment to be split into a new commitment.
 func (o LookupRegionCommitmentResultOutput) SplitSourceCommitment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionCommitmentResult) string { return v.SplitSourceCommitment }).(pulumi.StringOutput)
 }

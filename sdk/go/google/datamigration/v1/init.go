@@ -47,6 +47,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MigrationJobIamPolicy{}
 	case "google-native:datamigration/v1:PrivateConnection":
 		r = &PrivateConnection{}
+	case "google-native:datamigration/v1:PrivateConnectionIamBinding":
+		r = &PrivateConnectionIamBinding{}
+	case "google-native:datamigration/v1:PrivateConnectionIamMember":
+		r = &PrivateConnectionIamMember{}
+	case "google-native:datamigration/v1:PrivateConnectionIamPolicy":
+		r = &PrivateConnectionIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -318,6 +318,10 @@ class DiscoveryNoteAnalysisKind(str, Enum):
     """
     This represents a Vulnerability Assessment.
     """
+    SBOM_REFERENCE = "SBOM_REFERENCE"
+    """
+    This represents an SBOM Reference.
+    """
 
 
 class DiscoveryOccurrenceAnalysisStatus(str, Enum):

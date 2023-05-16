@@ -87,6 +87,47 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
     }
 
     /// <summary>
+    /// Which enforcement mode to use for the password policy.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState : IEquatable<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Illegal State, should not be used.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState PasswordPolicyEnforcementStateUnspecified { get; } = new GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState("PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Password Policy will not be used on the project.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState Off { get; } = new GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState("OFF");
+        /// <summary>
+        /// Passwords non-compliant with the password policy will be rejected with an error thrown.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState Enforce { get; } = new GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState("ENFORCE");
+
+        public static bool operator ==(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState left, GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState left, GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState other && Equals(other);
+        public bool Equals(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Describes the state of the MultiFactor Authentication type.
     /// </summary>
     [EnumType]

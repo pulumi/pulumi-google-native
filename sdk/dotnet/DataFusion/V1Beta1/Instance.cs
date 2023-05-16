@@ -155,6 +155,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
         /// </summary>
         [Output("serviceAccount")]

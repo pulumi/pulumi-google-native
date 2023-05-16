@@ -4545,6 +4545,198 @@ func (o RuntimeMetadataResponseOutput) SdkInfo() SDKInfoResponseOutput {
 	return o.ApplyT(func(v RuntimeMetadataResponse) SDKInfoResponse { return v.SdkInfo }).(SDKInfoResponseOutput)
 }
 
+// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+type RuntimeUpdatableParams struct {
+	// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+	MaxNumWorkers *int `pulumi:"maxNumWorkers"`
+	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+	MinNumWorkers *int `pulumi:"minNumWorkers"`
+}
+
+// RuntimeUpdatableParamsInput is an input type that accepts RuntimeUpdatableParamsArgs and RuntimeUpdatableParamsOutput values.
+// You can construct a concrete instance of `RuntimeUpdatableParamsInput` via:
+//
+//	RuntimeUpdatableParamsArgs{...}
+type RuntimeUpdatableParamsInput interface {
+	pulumi.Input
+
+	ToRuntimeUpdatableParamsOutput() RuntimeUpdatableParamsOutput
+	ToRuntimeUpdatableParamsOutputWithContext(context.Context) RuntimeUpdatableParamsOutput
+}
+
+// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+type RuntimeUpdatableParamsArgs struct {
+	// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+	MaxNumWorkers pulumi.IntPtrInput `pulumi:"maxNumWorkers"`
+	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+	MinNumWorkers pulumi.IntPtrInput `pulumi:"minNumWorkers"`
+}
+
+func (RuntimeUpdatableParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeUpdatableParams)(nil)).Elem()
+}
+
+func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsOutput() RuntimeUpdatableParamsOutput {
+	return i.ToRuntimeUpdatableParamsOutputWithContext(context.Background())
+}
+
+func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsOutputWithContext(ctx context.Context) RuntimeUpdatableParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeUpdatableParamsOutput)
+}
+
+func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput {
+	return i.ToRuntimeUpdatableParamsPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeUpdatableParamsArgs) ToRuntimeUpdatableParamsPtrOutputWithContext(ctx context.Context) RuntimeUpdatableParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeUpdatableParamsOutput).ToRuntimeUpdatableParamsPtrOutputWithContext(ctx)
+}
+
+// RuntimeUpdatableParamsPtrInput is an input type that accepts RuntimeUpdatableParamsArgs, RuntimeUpdatableParamsPtr and RuntimeUpdatableParamsPtrOutput values.
+// You can construct a concrete instance of `RuntimeUpdatableParamsPtrInput` via:
+//
+//	        RuntimeUpdatableParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeUpdatableParamsPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput
+	ToRuntimeUpdatableParamsPtrOutputWithContext(context.Context) RuntimeUpdatableParamsPtrOutput
+}
+
+type runtimeUpdatableParamsPtrType RuntimeUpdatableParamsArgs
+
+func RuntimeUpdatableParamsPtr(v *RuntimeUpdatableParamsArgs) RuntimeUpdatableParamsPtrInput {
+	return (*runtimeUpdatableParamsPtrType)(v)
+}
+
+func (*runtimeUpdatableParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeUpdatableParams)(nil)).Elem()
+}
+
+func (i *runtimeUpdatableParamsPtrType) ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput {
+	return i.ToRuntimeUpdatableParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeUpdatableParamsPtrType) ToRuntimeUpdatableParamsPtrOutputWithContext(ctx context.Context) RuntimeUpdatableParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeUpdatableParamsPtrOutput)
+}
+
+// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+type RuntimeUpdatableParamsOutput struct{ *pulumi.OutputState }
+
+func (RuntimeUpdatableParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeUpdatableParams)(nil)).Elem()
+}
+
+func (o RuntimeUpdatableParamsOutput) ToRuntimeUpdatableParamsOutput() RuntimeUpdatableParamsOutput {
+	return o
+}
+
+func (o RuntimeUpdatableParamsOutput) ToRuntimeUpdatableParamsOutputWithContext(ctx context.Context) RuntimeUpdatableParamsOutput {
+	return o
+}
+
+func (o RuntimeUpdatableParamsOutput) ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput {
+	return o.ToRuntimeUpdatableParamsPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeUpdatableParamsOutput) ToRuntimeUpdatableParamsPtrOutputWithContext(ctx context.Context) RuntimeUpdatableParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeUpdatableParams) *RuntimeUpdatableParams {
+		return &v
+	}).(RuntimeUpdatableParamsPtrOutput)
+}
+
+// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsOutput) MaxNumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeUpdatableParams) *int { return v.MaxNumWorkers }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsOutput) MinNumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuntimeUpdatableParams) *int { return v.MinNumWorkers }).(pulumi.IntPtrOutput)
+}
+
+type RuntimeUpdatableParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeUpdatableParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeUpdatableParams)(nil)).Elem()
+}
+
+func (o RuntimeUpdatableParamsPtrOutput) ToRuntimeUpdatableParamsPtrOutput() RuntimeUpdatableParamsPtrOutput {
+	return o
+}
+
+func (o RuntimeUpdatableParamsPtrOutput) ToRuntimeUpdatableParamsPtrOutputWithContext(ctx context.Context) RuntimeUpdatableParamsPtrOutput {
+	return o
+}
+
+func (o RuntimeUpdatableParamsPtrOutput) Elem() RuntimeUpdatableParamsOutput {
+	return o.ApplyT(func(v *RuntimeUpdatableParams) RuntimeUpdatableParams {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeUpdatableParams
+		return ret
+	}).(RuntimeUpdatableParamsOutput)
+}
+
+// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsPtrOutput) MaxNumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeUpdatableParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNumWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsPtrOutput) MinNumWorkers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuntimeUpdatableParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNumWorkers
+	}).(pulumi.IntPtrOutput)
+}
+
+// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+type RuntimeUpdatableParamsResponse struct {
+	// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+	MaxNumWorkers int `pulumi:"maxNumWorkers"`
+	// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+	MinNumWorkers int `pulumi:"minNumWorkers"`
+}
+
+// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation.
+type RuntimeUpdatableParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeUpdatableParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeUpdatableParamsResponse)(nil)).Elem()
+}
+
+func (o RuntimeUpdatableParamsResponseOutput) ToRuntimeUpdatableParamsResponseOutput() RuntimeUpdatableParamsResponseOutput {
+	return o
+}
+
+func (o RuntimeUpdatableParamsResponseOutput) ToRuntimeUpdatableParamsResponseOutputWithContext(ctx context.Context) RuntimeUpdatableParamsResponseOutput {
+	return o
+}
+
+// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsResponseOutput) MaxNumWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) int { return v.MaxNumWorkers }).(pulumi.IntOutput)
+}
+
+// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
+func (o RuntimeUpdatableParamsResponseOutput) MinNumWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v RuntimeUpdatableParamsResponse) int { return v.MinNumWorkers }).(pulumi.IntOutput)
+}
+
 // SDK Information.
 type SDKInfoResponse struct {
 	// The SDK Language.
@@ -7300,6 +7492,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PubSubIODetailsArrayInput)(nil)).Elem(), PubSubIODetailsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeEnvironmentPtrInput)(nil)).Elem(), RuntimeEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeUpdatableParamsInput)(nil)).Elem(), RuntimeUpdatableParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeUpdatableParamsPtrInput)(nil)).Elem(), RuntimeUpdatableParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageInput)(nil)).Elem(), SdkHarnessContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkHarnessContainerImageArrayInput)(nil)).Elem(), SdkHarnessContainerImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SdkVersionInput)(nil)).Elem(), SdkVersionArgs{})
@@ -7389,6 +7583,9 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeEnvironmentOutput{})
 	pulumi.RegisterOutputType(RuntimeEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeMetadataResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeUpdatableParamsOutput{})
+	pulumi.RegisterOutputType(RuntimeUpdatableParamsPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeUpdatableParamsResponseOutput{})
 	pulumi.RegisterOutputType(SDKInfoResponseOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageOutput{})
 	pulumi.RegisterOutputType(SdkHarnessContainerImageArrayOutput{})

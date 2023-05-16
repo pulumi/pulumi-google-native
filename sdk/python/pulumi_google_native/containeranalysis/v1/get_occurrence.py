@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOccurrenceResult:
-    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, envelope=None, image=None, kind=None, name=None, note_name=None, package=None, remediation=None, resource_uri=None, update_time=None, upgrade=None, vulnerability=None):
+    def __init__(__self__, attestation=None, build=None, compliance=None, create_time=None, deployment=None, discovery=None, dsse_attestation=None, envelope=None, image=None, kind=None, name=None, note_name=None, package=None, remediation=None, resource_uri=None, sbom_reference=None, update_time=None, upgrade=None, vulnerability=None):
         if attestation and not isinstance(attestation, dict):
             raise TypeError("Expected argument 'attestation' to be a dict")
         pulumi.set(__self__, "attestation", attestation)
@@ -65,6 +65,9 @@ class GetOccurrenceResult:
         if resource_uri and not isinstance(resource_uri, str):
             raise TypeError("Expected argument 'resource_uri' to be a str")
         pulumi.set(__self__, "resource_uri", resource_uri)
+        if sbom_reference and not isinstance(sbom_reference, dict):
+            raise TypeError("Expected argument 'sbom_reference' to be a dict")
+        pulumi.set(__self__, "sbom_reference", sbom_reference)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -196,6 +199,14 @@ class GetOccurrenceResult:
         return pulumi.get(self, "resource_uri")
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> 'outputs.SBOMReferenceOccurrenceResponse':
+        """
+        Describes a specific SBOM reference occurrences.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -241,6 +252,7 @@ class AwaitableGetOccurrenceResult(GetOccurrenceResult):
             package=self.package,
             remediation=self.remediation,
             resource_uri=self.resource_uri,
+            sbom_reference=self.sbom_reference,
             update_time=self.update_time,
             upgrade=self.upgrade,
             vulnerability=self.vulnerability)
@@ -274,6 +286,7 @@ def get_occurrence(occurrence_id: Optional[str] = None,
         package=__ret__.package,
         remediation=__ret__.remediation,
         resource_uri=__ret__.resource_uri,
+        sbom_reference=__ret__.sbom_reference,
         update_time=__ret__.update_time,
         upgrade=__ret__.upgrade,
         vulnerability=__ret__.vulnerability)

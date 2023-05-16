@@ -20,6 +20,7 @@ __all__ = [
     'ContainerPortArgs',
     'ContainerArgs',
     'DomainMappingSpecArgs',
+    'EmptyDirVolumeSourceArgs',
     'EnvFromSourceArgs',
     'EnvVarSourceArgs',
     'EnvVarArgs',
@@ -770,6 +771,46 @@ class DomainMappingSpecArgs:
     @route_name.setter
     def route_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "route_name", value)
+
+
+@pulumi.input_type
+class EmptyDirVolumeSourceArgs:
+    def __init__(__self__, *,
+                 medium: Optional[pulumi.Input[str]] = None,
+                 size_limit: Optional[pulumi.Input[str]] = None):
+        """
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        :param pulumi.Input[str] medium: The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[pulumi.Input[str]]:
+        """
+        The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "medium")
+
+    @medium.setter
+    def medium(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "medium", value)
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+        """
+        return pulumi.get(self, "size_limit")
+
+    @size_limit.setter
+    def size_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size_limit", value)
 
 
 @pulumi.input_type
@@ -2432,16 +2473,20 @@ class VolumeMountArgs:
 class VolumeArgs:
     def __init__(__self__, *,
                  config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
+                 empty_dir: Optional[pulumi.Input['EmptyDirVolumeSourceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
         """
         Volume represents a named volume in a container.
         :param pulumi.Input['ConfigMapVolumeSourceArgs'] config_map: Not supported in Cloud Run.
+        :param pulumi.Input['EmptyDirVolumeSourceArgs'] empty_dir: Ephemeral storage used as a shared volume.
         :param pulumi.Input[str] name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         :param pulumi.Input['SecretVolumeSourceArgs'] secret: The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         """
         if config_map is not None:
             pulumi.set(__self__, "config_map", config_map)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret is not None:
@@ -2458,6 +2503,18 @@ class VolumeArgs:
     @config_map.setter
     def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
         pulumi.set(self, "config_map", value)
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional[pulumi.Input['EmptyDirVolumeSourceArgs']]:
+        """
+        Ephemeral storage used as a shared volume.
+        """
+        return pulumi.get(self, "empty_dir")
+
+    @empty_dir.setter
+    def empty_dir(self, value: Optional[pulumi.Input['EmptyDirVolumeSourceArgs']]):
+        pulumi.set(self, "empty_dir", value)
 
     @property
     @pulumi.getter

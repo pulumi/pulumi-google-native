@@ -11,6 +11,7 @@ __all__ = [
     'DatabaseType',
     'GoogleFirestoreAdminV1IndexFieldArrayConfig',
     'GoogleFirestoreAdminV1IndexFieldOrder',
+    'GoogleFirestoreAdminV1WeeklyRecurrenceDay',
     'IndexApiScope',
     'IndexQueryScope',
 ]
@@ -121,6 +122,44 @@ class GoogleFirestoreAdminV1IndexFieldOrder(str, Enum):
     DESCENDING = "DESCENDING"
     """
     The field is ordered by descending field value.
+    """
+
+
+class GoogleFirestoreAdminV1WeeklyRecurrenceDay(str, Enum):
+    """
+    The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
+    """
+    DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """
+    The day of the week is unspecified.
+    """
+    MONDAY = "MONDAY"
+    """
+    Monday
+    """
+    TUESDAY = "TUESDAY"
+    """
+    Tuesday
+    """
+    WEDNESDAY = "WEDNESDAY"
+    """
+    Wednesday
+    """
+    THURSDAY = "THURSDAY"
+    """
+    Thursday
+    """
+    FRIDAY = "FRIDAY"
+    """
+    Friday
+    """
+    SATURDAY = "SATURDAY"
+    """
+    Saturday
+    """
+    SUNDAY = "SUNDAY"
+    """
+    Sunday
     """
 
 

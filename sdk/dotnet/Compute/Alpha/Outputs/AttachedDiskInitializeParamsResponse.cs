@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+        /// </summary>
+        public readonly bool EnableConfidentialCompute;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
@@ -121,6 +125,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string diskType,
 
+            bool enableConfidentialCompute,
+
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
             string @interface,
@@ -162,6 +168,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             DiskName = diskName;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Interface = @interface;
             Labels = labels;

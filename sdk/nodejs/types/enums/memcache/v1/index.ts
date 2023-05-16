@@ -3,6 +3,9 @@
 
 
 export const InstanceMemcacheVersion = {
+    /**
+     * Memcache version is not specified by customer
+     */
     MemcacheVersionUnspecified: "MEMCACHE_VERSION_UNSPECIFIED",
     /**
      * Memcached 1.5 version.

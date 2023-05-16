@@ -15,10 +15,16 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'ConsumerPscConfigResponse',
+    'ConsumerPscConnectionResponse',
     'ExprResponse',
+    'GoogleRpcStatusResponse',
     'LinkedInterconnectAttachmentsResponse',
     'LinkedRouterApplianceInstancesResponse',
     'LinkedVpnTunnelsResponse',
+    'ProducerPscConfigResponse',
+    'PscConfigResponse',
+    'PscConnectionResponse',
     'RouterApplianceInstanceResponse',
     'RoutingVPCResponse',
 ]
@@ -170,6 +176,213 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class ConsumerPscConfigResponse(dict):
+    """
+    Allow the producer to specify which consumers can connect to it.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableGlobalAccess":
+            suggest = "disable_global_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConsumerPscConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConsumerPscConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConsumerPscConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_global_access: bool,
+                 network: str,
+                 project: str):
+        """
+        Allow the producer to specify which consumers can connect to it.
+        :param bool disable_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param str network: The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+        :param str project: The consumer project where PSC connections are allowed to be created in.
+        """
+        pulumi.set(__self__, "disable_global_access", disable_global_access)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="disableGlobalAccess")
+    def disable_global_access(self) -> bool:
+        """
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        """
+        return pulumi.get(self, "disable_global_access")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The consumer project where PSC connections are allowed to be created in.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class ConsumerPscConnectionResponse(dict):
+    """
+    PSC connection details on consumer side.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorType":
+            suggest = "error_type"
+        elif key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "gceOperation":
+            suggest = "gce_operation"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+        elif key == "serviceAttachmentUri":
+            suggest = "service_attachment_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConsumerPscConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConsumerPscConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConsumerPscConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error: 'outputs.GoogleRpcStatusResponse',
+                 error_type: str,
+                 forwarding_rule: str,
+                 gce_operation: str,
+                 ip: str,
+                 network: str,
+                 project: str,
+                 psc_connection_id: str,
+                 service_attachment_uri: str,
+                 state: str):
+        """
+        PSC connection details on consumer side.
+        :param 'GoogleRpcStatusResponse' error: The most recent error during operating this connection.
+        :param str error_type: The error type indicates whether the error is consumer facing, producer facing or system internal.
+        :param str forwarding_rule: The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
+        :param str gce_operation: The last Compute Engine operation to setup PSC connection.
+        :param str ip: The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.
+        :param str network: The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).
+        :param str project: The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.
+        :param str psc_connection_id: The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
+        :param str service_attachment_uri: The URI of a service attachment which is the target of the PSC connection.
+        :param str state: The state of the PSC connection.
+        """
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "error_type", error_type)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "gce_operation", gce_operation)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "service_attachment_uri", service_attachment_uri)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.GoogleRpcStatusResponse':
+        """
+        The most recent error during operating this connection.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="errorType")
+    def error_type(self) -> str:
+        """
+        The error type indicates whether the error is consumer facing, producer facing or system internal.
+        """
+        return pulumi.get(self, "error_type")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        The URI of the consumer forwarding rule created. Example: projects/{projectNumOrId}/regions/us-east1/networks/{resourceId}.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="gceOperation")
+    def gce_operation(self) -> str:
+        """
+        The last Compute Engine operation to setup PSC connection.
+        """
+        return pulumi.get(self, "gce_operation")
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IP literal allocated on the consumer network for the PSC forwarding rule that is created to connect to the producer service attachment in this service connection map.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The consumer network whose PSC forwarding rule is connected to the service attachments in this service connection map. Note that the network could be on a different project (shared VPC).
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The consumer project whose PSC forwarding rule is connected to the service attachments in this service connection map.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the PSC forwarding rule connected to the service attachments in this service connection map.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="serviceAttachmentUri")
+    def service_attachment_uri(self) -> str:
+        """
+        The URI of a service attachment which is the target of the PSC connection.
+        """
+        return pulumi.get(self, "service_attachment_uri")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the PSC connection.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -222,6 +435,50 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GoogleRpcStatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type
@@ -411,6 +668,204 @@ class LinkedVpnTunnelsResponse(dict):
         The VPC network where these VPN tunnels are located.
         """
         return pulumi.get(self, "vpc_network")
+
+
+@pulumi.output_type
+class ProducerPscConfigResponse(dict):
+    """
+    The PSC configurations on producer side.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAttachmentUri":
+            suggest = "service_attachment_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProducerPscConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProducerPscConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProducerPscConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_attachment_uri: str):
+        """
+        The PSC configurations on producer side.
+        :param str service_attachment_uri: The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+        """
+        pulumi.set(__self__, "service_attachment_uri", service_attachment_uri)
+
+    @property
+    @pulumi.getter(name="serviceAttachmentUri")
+    def service_attachment_uri(self) -> str:
+        """
+        The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+        """
+        return pulumi.get(self, "service_attachment_uri")
+
+
+@pulumi.output_type
+class PscConfigResponse(dict):
+    """
+    Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+    """
+    def __init__(__self__, *,
+                 limit: str,
+                 subnetworks: Sequence[str]):
+        """
+        Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+        :param str limit: Max number of PSC connections for this policy.
+        :param Sequence[str] subnetworks: The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "subnetworks", subnetworks)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> str:
+        """
+        Max number of PSC connections for this policy.
+        """
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> Sequence[str]:
+        """
+        The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+        """
+        return pulumi.get(self, "subnetworks")
+
+
+@pulumi.output_type
+class PscConnectionResponse(dict):
+    """
+    Information about a specific Private Service Connect connection.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerAddress":
+            suggest = "consumer_address"
+        elif key == "consumerForwardingRule":
+            suggest = "consumer_forwarding_rule"
+        elif key == "consumerTargetProject":
+            suggest = "consumer_target_project"
+        elif key == "errorType":
+            suggest = "error_type"
+        elif key == "gceOperation":
+            suggest = "gce_operation"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PscConnectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PscConnectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PscConnectionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consumer_address: str,
+                 consumer_forwarding_rule: str,
+                 consumer_target_project: str,
+                 error: 'outputs.GoogleRpcStatusResponse',
+                 error_type: str,
+                 gce_operation: str,
+                 psc_connection_id: str,
+                 state: str):
+        """
+        Information about a specific Private Service Connect connection.
+        :param str consumer_address: The resource reference of the consumer address.
+        :param str consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        :param str consumer_target_project: The project where the PSC connection is created.
+        :param 'GoogleRpcStatusResponse' error: The most recent error during operating this connection.
+        :param str error_type: The error type indicates whether the error is consumer facing, producer facing or system internal.
+        :param str gce_operation: The last Compute Engine operation to setup PSC connection.
+        :param str psc_connection_id: The PSC connection id of the PSC forwarding rule.
+        :param str state: State of the PSC Connection
+        """
+        pulumi.set(__self__, "consumer_address", consumer_address)
+        pulumi.set(__self__, "consumer_forwarding_rule", consumer_forwarding_rule)
+        pulumi.set(__self__, "consumer_target_project", consumer_target_project)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "error_type", error_type)
+        pulumi.set(__self__, "gce_operation", gce_operation)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="consumerAddress")
+    def consumer_address(self) -> str:
+        """
+        The resource reference of the consumer address.
+        """
+        return pulumi.get(self, "consumer_address")
+
+    @property
+    @pulumi.getter(name="consumerForwardingRule")
+    def consumer_forwarding_rule(self) -> str:
+        """
+        The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        """
+        return pulumi.get(self, "consumer_forwarding_rule")
+
+    @property
+    @pulumi.getter(name="consumerTargetProject")
+    def consumer_target_project(self) -> str:
+        """
+        The project where the PSC connection is created.
+        """
+        return pulumi.get(self, "consumer_target_project")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.GoogleRpcStatusResponse':
+        """
+        The most recent error during operating this connection.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="errorType")
+    def error_type(self) -> str:
+        """
+        The error type indicates whether the error is consumer facing, producer facing or system internal.
+        """
+        return pulumi.get(self, "error_type")
+
+    @property
+    @pulumi.getter(name="gceOperation")
+    def gce_operation(self) -> str:
+        """
+        The last Compute Engine operation to setup PSC connection.
+        """
+        return pulumi.get(self, "gce_operation")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the PSC forwarding rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the PSC Connection
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

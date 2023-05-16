@@ -58,6 +58,10 @@ export interface GetSnapshotResult {
      */
     readonly downloadBytes: string;
     /**
+     * Whether this snapshot is created from a confidential compute mode disk. see go/confidential-mode-in-arcus for details. [Output Only]: This field is not set by user, but from source disk.
+     */
+    readonly enableConfidentialCompute: boolean;
+    /**
      * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     readonly guestFlush: boolean;

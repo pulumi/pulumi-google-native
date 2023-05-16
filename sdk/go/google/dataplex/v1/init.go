@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:dataplex/v1:AspectTypeIamBinding":
+		r = &AspectTypeIamBinding{}
+	case "google-native:dataplex/v1:AspectTypeIamMember":
+		r = &AspectTypeIamMember{}
+	case "google-native:dataplex/v1:AspectTypeIamPolicy":
+		r = &AspectTypeIamPolicy{}
 	case "google-native:dataplex/v1:Asset":
 		r = &Asset{}
 	case "google-native:dataplex/v1:Attribute":
@@ -61,6 +67,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataTaxonomyIamPolicy{}
 	case "google-native:dataplex/v1:Entity":
 		r = &Entity{}
+	case "google-native:dataplex/v1:EntryGroupIamBinding":
+		r = &EntryGroupIamBinding{}
+	case "google-native:dataplex/v1:EntryGroupIamMember":
+		r = &EntryGroupIamMember{}
+	case "google-native:dataplex/v1:EntryGroupIamPolicy":
+		r = &EntryGroupIamPolicy{}
+	case "google-native:dataplex/v1:EntryTypeIamBinding":
+		r = &EntryTypeIamBinding{}
+	case "google-native:dataplex/v1:EntryTypeIamMember":
+		r = &EntryTypeIamMember{}
+	case "google-native:dataplex/v1:EntryTypeIamPolicy":
+		r = &EntryTypeIamPolicy{}
 	case "google-native:dataplex/v1:Environment":
 		r = &Environment{}
 	case "google-native:dataplex/v1:Lake":

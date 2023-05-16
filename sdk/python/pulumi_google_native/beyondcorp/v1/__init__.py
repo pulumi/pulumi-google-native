@@ -32,5 +32,13 @@ from .get_app_gateway import *
 from .get_app_gateway_iam_policy import *
 from .get_client_connector_service_iam_policy import *
 from .get_client_gateway_iam_policy import *
+from .get_organization_tenant_iam_policy import *
+from .get_organization_tenant_proxy_config_iam_policy import *
+from .organization_tenant_iam_binding import *
+from .organization_tenant_iam_member import *
+from .organization_tenant_iam_policy import *
+from .organization_tenant_proxy_config_iam_binding import *
+from .organization_tenant_proxy_config_iam_member import *
+from .organization_tenant_proxy_config_iam_policy import *
 from ._inputs import *
 from . import outputs

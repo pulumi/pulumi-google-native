@@ -14,6 +14,7 @@ import (
 type InstanceMemcacheVersion string
 
 const (
+	// Memcache version is not specified by customer
 	InstanceMemcacheVersionMemcacheVersionUnspecified = InstanceMemcacheVersion("MEMCACHE_VERSION_UNSPECIFIED")
 	// Memcached 1.5 version.
 	InstanceMemcacheVersionMemcache15 = InstanceMemcacheVersion("MEMCACHE_1_5")

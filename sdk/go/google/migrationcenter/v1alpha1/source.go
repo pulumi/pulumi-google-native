@@ -22,6 +22,8 @@ type Source struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// User-friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The number of frames that were reported by the source and contained errors.
+	ErrorFrameCount pulumi.IntOutput `pulumi:"errorFrameCount"`
 	// If `true`, the source is managed by other service(s).
 	IsManaged pulumi.BoolOutput   `pulumi:"isManaged"`
 	Location  pulumi.StringOutput `pulumi:"location"`
@@ -180,6 +182,11 @@ func (o SourceOutput) Description() pulumi.StringOutput {
 // User-friendly display name.
 func (o SourceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The number of frames that were reported by the source and contained errors.
+func (o SourceOutput) ErrorFrameCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Source) pulumi.IntOutput { return v.ErrorFrameCount }).(pulumi.IntOutput)
 }
 
 // If `true`, the source is managed by other service(s).

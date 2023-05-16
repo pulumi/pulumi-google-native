@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.File.V1
         /// ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
         /// </summary>
         public static InstanceTier Enterprise { get; } = new InstanceTier("ENTERPRISE");
+        /// <summary>
+        /// ZONAL instances offer expanded capacity and performance scaling capabilities.
+        /// </summary>
+        public static InstanceTier Zonal { get; } = new InstanceTier("ZONAL");
 
         public static bool operator ==(InstanceTier left, InstanceTier right) => left.Equals(right);
         public static bool operator !=(InstanceTier left, InstanceTier right) => !left.Equals(right);

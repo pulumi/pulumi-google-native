@@ -14,10 +14,13 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'ConsumerPscConfigArgs',
     'ExprArgs',
     'LinkedInterconnectAttachmentsArgs',
     'LinkedRouterApplianceInstancesArgs',
     'LinkedVpnTunnelsArgs',
+    'ProducerPscConfigArgs',
+    'PscConfigArgs',
     'RouterApplianceInstanceArgs',
     'RoutingVPCArgs',
 ]
@@ -156,6 +159,62 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class ConsumerPscConfigArgs:
+    def __init__(__self__, *,
+                 disable_global_access: Optional[pulumi.Input[bool]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Allow the producer to specify which consumers can connect to it.
+        :param pulumi.Input[bool] disable_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[str] network: The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+        :param pulumi.Input[str] project: The consumer project where PSC connections are allowed to be created in.
+        """
+        if disable_global_access is not None:
+            pulumi.set(__self__, "disable_global_access", disable_global_access)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="disableGlobalAccess")
+    def disable_global_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        """
+        return pulumi.get(self, "disable_global_access")
+
+    @disable_global_access.setter
+    def disable_global_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_global_access", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource path of the consumer network where PSC connections are allowed to be created in. Note, this network does not need be in the ConsumerPscConfig.project in the case of SharedVPC. Example: projects/{projectNumOrId}/global/networks/{networkId}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The consumer project where PSC connections are allowed to be created in.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
@@ -348,6 +407,70 @@ class LinkedVpnTunnelsArgs:
     @uris.setter
     def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class ProducerPscConfigArgs:
+    def __init__(__self__, *,
+                 service_attachment_uri: Optional[pulumi.Input[str]] = None):
+        """
+        The PSC configurations on producer side.
+        :param pulumi.Input[str] service_attachment_uri: The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+        """
+        if service_attachment_uri is not None:
+            pulumi.set(__self__, "service_attachment_uri", service_attachment_uri)
+
+    @property
+    @pulumi.getter(name="serviceAttachmentUri")
+    def service_attachment_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
+        """
+        return pulumi.get(self, "service_attachment_uri")
+
+    @service_attachment_uri.setter
+    def service_attachment_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment_uri", value)
+
+
+@pulumi.input_type
+class PscConfigArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[str]] = None,
+                 subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
+        :param pulumi.Input[str] limit: Max number of PSC connections for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+        """
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if subnetworks is not None:
+            pulumi.set(__self__, "subnetworks", subnetworks)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max number of PSC connections for this policy.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}.
+        """
+        return pulumi.get(self, "subnetworks")
+
+    @subnetworks.setter
+    def subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subnetworks", value)
 
 
 @pulumi.input_type

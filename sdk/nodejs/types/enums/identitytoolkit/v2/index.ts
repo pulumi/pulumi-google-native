@@ -39,6 +39,26 @@ export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState = {
  */
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState = (typeof GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState];
 
+export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState = {
+    /**
+     * Illegal State, should not be used.
+     */
+    PasswordPolicyEnforcementStateUnspecified: "PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED",
+    /**
+     * Password Policy will not be used on the project.
+     */
+    Off: "OFF",
+    /**
+     * Passwords non-compliant with the password policy will be rejected with an error thrown.
+     */
+    Enforce: "ENFORCE",
+} as const;
+
+/**
+ * Which enforcement mode to use for the password policy.
+ */
+export type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState = (typeof GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState];
+
 export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigState = {
     /**
      * Illegal State, should not be used.

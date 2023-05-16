@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState',
+    'GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState',
     'GoogleCloudIdentitytoolkitAdminV2ProviderConfigState',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState',
     'GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction',
@@ -44,6 +45,24 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState(str, Enum):
     MANDATORY = "MANDATORY"
     """
     Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+    """
+
+
+class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState(str, Enum):
+    """
+    Which enforcement mode to use for the password policy.
+    """
+    PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED = "PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
+    """
+    Illegal State, should not be used.
+    """
+    OFF = "OFF"
+    """
+    Password Policy will not be used on the project.
+    """
+    ENFORCE = "ENFORCE"
+    """
+    Passwords non-compliant with the password policy will be rejected with an error thrown.
     """
 
 

@@ -31,6 +31,9 @@ export interface GetBareMetalAdminClusterResult {
      * Annotations on the bare metal admin cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     readonly annotations: {[key: string]: string};
+    /**
+     * The Anthos clusters on bare metal version for the bare metal admin cluster.
+     */
     readonly bareMetalVersion: string;
     /**
      * Cluster operations configuration.

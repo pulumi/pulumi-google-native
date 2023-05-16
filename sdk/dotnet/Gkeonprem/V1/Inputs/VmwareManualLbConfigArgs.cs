@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Gkeonprem.V1.Inputs
 {
 
+    /// <summary>
+    /// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
+    /// </summary>
     public sealed class VmwareManualLbConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>

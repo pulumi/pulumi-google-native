@@ -1574,18 +1574,15 @@ class UploadFileInfoResponse(dict):
     def __init__(__self__, *,
                  headers: Mapping[str, str],
                  signed_uri: str,
-                 uri: str,
                  uri_expiration_time: str):
         """
         A resource that contains a URI to which a data file can be uploaded.
         :param Mapping[str, str] headers: The headers that were used to sign the URL.
         :param str signed_uri: Upload URI for the file.
-        :param str uri: Upload URI for the file.
         :param str uri_expiration_time: Expiration time of the upload URI.
         """
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "signed_uri", signed_uri)
-        pulumi.set(__self__, "uri", uri)
         pulumi.set(__self__, "uri_expiration_time", uri_expiration_time)
 
     @property
@@ -1603,14 +1600,6 @@ class UploadFileInfoResponse(dict):
         Upload URI for the file.
         """
         return pulumi.get(self, "signed_uri")
-
-    @property
-    @pulumi.getter
-    def uri(self) -> str:
-        """
-        Upload URI for the file.
-        """
-        return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter(name="uriExpirationTime")

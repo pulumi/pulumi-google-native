@@ -3148,7 +3148,9 @@ class VmwareSourceDetailsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "vcenterIp":
+        if key == "resolvedVcenterHost":
+            suggest = "resolved_vcenter_host"
+        elif key == "vcenterIp":
             suggest = "vcenter_ip"
 
         if suggest:
@@ -3164,17 +3166,20 @@ class VmwareSourceDetailsResponse(dict):
 
     def __init__(__self__, *,
                  password: str,
+                 resolved_vcenter_host: str,
                  thumbprint: str,
                  username: str,
                  vcenter_ip: str):
         """
         VmwareSourceDetails message describes a specific source details for the vmware source type.
         :param str password: Input only. The credentials password. This is write only and can not be read in a GET operation.
+        :param str resolved_vcenter_host: The hostname of the vcenter.
         :param str thumbprint: The thumbprint representing the certificate for the vcenter.
         :param str username: The credentials username.
         :param str vcenter_ip: The ip address of the vcenter this Source represents.
         """
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "resolved_vcenter_host", resolved_vcenter_host)
         pulumi.set(__self__, "thumbprint", thumbprint)
         pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "vcenter_ip", vcenter_ip)
@@ -3186,6 +3191,14 @@ class VmwareSourceDetailsResponse(dict):
         Input only. The credentials password. This is write only and can not be read in a GET operation.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="resolvedVcenterHost")
+    def resolved_vcenter_host(self) -> str:
+        """
+        The hostname of the vcenter.
+        """
+        return pulumi.get(self, "resolved_vcenter_host")
 
     @property
     @pulumi.getter

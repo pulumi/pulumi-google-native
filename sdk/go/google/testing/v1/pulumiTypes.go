@@ -5863,6 +5863,8 @@ func (o ShardResponseOutput) TestTargetsForShard() TestTargetsForShardResponseOu
 type ShardingOption struct {
 	// Shards test cases into the specified groups of packages, classes, and/or methods.
 	ManualSharding *ManualSharding `pulumi:"manualSharding"`
+	// Shards test based on previous test case timing records.
+	SmartSharding *SmartSharding `pulumi:"smartSharding"`
 	// Uniformly shards test cases given a total number of shards.
 	UniformSharding *UniformSharding `pulumi:"uniformSharding"`
 }
@@ -5882,6 +5884,8 @@ type ShardingOptionInput interface {
 type ShardingOptionArgs struct {
 	// Shards test cases into the specified groups of packages, classes, and/or methods.
 	ManualSharding ManualShardingPtrInput `pulumi:"manualSharding"`
+	// Shards test based on previous test case timing records.
+	SmartSharding SmartShardingPtrInput `pulumi:"smartSharding"`
 	// Uniformly shards test cases given a total number of shards.
 	UniformSharding UniformShardingPtrInput `pulumi:"uniformSharding"`
 }
@@ -5969,6 +5973,11 @@ func (o ShardingOptionOutput) ManualSharding() ManualShardingPtrOutput {
 	return o.ApplyT(func(v ShardingOption) *ManualSharding { return v.ManualSharding }).(ManualShardingPtrOutput)
 }
 
+// Shards test based on previous test case timing records.
+func (o ShardingOptionOutput) SmartSharding() SmartShardingPtrOutput {
+	return o.ApplyT(func(v ShardingOption) *SmartSharding { return v.SmartSharding }).(SmartShardingPtrOutput)
+}
+
 // Uniformly shards test cases given a total number of shards.
 func (o ShardingOptionOutput) UniformSharding() UniformShardingPtrOutput {
 	return o.ApplyT(func(v ShardingOption) *UniformSharding { return v.UniformSharding }).(UniformShardingPtrOutput)
@@ -6008,6 +6017,16 @@ func (o ShardingOptionPtrOutput) ManualSharding() ManualShardingPtrOutput {
 	}).(ManualShardingPtrOutput)
 }
 
+// Shards test based on previous test case timing records.
+func (o ShardingOptionPtrOutput) SmartSharding() SmartShardingPtrOutput {
+	return o.ApplyT(func(v *ShardingOption) *SmartSharding {
+		if v == nil {
+			return nil
+		}
+		return v.SmartSharding
+	}).(SmartShardingPtrOutput)
+}
+
 // Uniformly shards test cases given a total number of shards.
 func (o ShardingOptionPtrOutput) UniformSharding() UniformShardingPtrOutput {
 	return o.ApplyT(func(v *ShardingOption) *UniformSharding {
@@ -6022,6 +6041,8 @@ func (o ShardingOptionPtrOutput) UniformSharding() UniformShardingPtrOutput {
 type ShardingOptionResponse struct {
 	// Shards test cases into the specified groups of packages, classes, and/or methods.
 	ManualSharding ManualShardingResponse `pulumi:"manualSharding"`
+	// Shards test based on previous test case timing records.
+	SmartSharding SmartShardingResponse `pulumi:"smartSharding"`
 	// Uniformly shards test cases given a total number of shards.
 	UniformSharding UniformShardingResponse `pulumi:"uniformSharding"`
 }
@@ -6046,9 +6067,180 @@ func (o ShardingOptionResponseOutput) ManualSharding() ManualShardingResponseOut
 	return o.ApplyT(func(v ShardingOptionResponse) ManualShardingResponse { return v.ManualSharding }).(ManualShardingResponseOutput)
 }
 
+// Shards test based on previous test case timing records.
+func (o ShardingOptionResponseOutput) SmartSharding() SmartShardingResponseOutput {
+	return o.ApplyT(func(v ShardingOptionResponse) SmartShardingResponse { return v.SmartSharding }).(SmartShardingResponseOutput)
+}
+
 // Uniformly shards test cases given a total number of shards.
 func (o ShardingOptionResponseOutput) UniformSharding() UniformShardingResponseOutput {
 	return o.ApplyT(func(v ShardingOptionResponse) UniformShardingResponse { return v.UniformSharding }).(UniformShardingResponseOutput)
+}
+
+// Shards test based on previous test case timing records.
+type SmartSharding struct {
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	TargetedShardDuration *string `pulumi:"targetedShardDuration"`
+}
+
+// SmartShardingInput is an input type that accepts SmartShardingArgs and SmartShardingOutput values.
+// You can construct a concrete instance of `SmartShardingInput` via:
+//
+//	SmartShardingArgs{...}
+type SmartShardingInput interface {
+	pulumi.Input
+
+	ToSmartShardingOutput() SmartShardingOutput
+	ToSmartShardingOutputWithContext(context.Context) SmartShardingOutput
+}
+
+// Shards test based on previous test case timing records.
+type SmartShardingArgs struct {
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	TargetedShardDuration pulumi.StringPtrInput `pulumi:"targetedShardDuration"`
+}
+
+func (SmartShardingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartSharding)(nil)).Elem()
+}
+
+func (i SmartShardingArgs) ToSmartShardingOutput() SmartShardingOutput {
+	return i.ToSmartShardingOutputWithContext(context.Background())
+}
+
+func (i SmartShardingArgs) ToSmartShardingOutputWithContext(ctx context.Context) SmartShardingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartShardingOutput)
+}
+
+func (i SmartShardingArgs) ToSmartShardingPtrOutput() SmartShardingPtrOutput {
+	return i.ToSmartShardingPtrOutputWithContext(context.Background())
+}
+
+func (i SmartShardingArgs) ToSmartShardingPtrOutputWithContext(ctx context.Context) SmartShardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartShardingOutput).ToSmartShardingPtrOutputWithContext(ctx)
+}
+
+// SmartShardingPtrInput is an input type that accepts SmartShardingArgs, SmartShardingPtr and SmartShardingPtrOutput values.
+// You can construct a concrete instance of `SmartShardingPtrInput` via:
+//
+//	        SmartShardingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SmartShardingPtrInput interface {
+	pulumi.Input
+
+	ToSmartShardingPtrOutput() SmartShardingPtrOutput
+	ToSmartShardingPtrOutputWithContext(context.Context) SmartShardingPtrOutput
+}
+
+type smartShardingPtrType SmartShardingArgs
+
+func SmartShardingPtr(v *SmartShardingArgs) SmartShardingPtrInput {
+	return (*smartShardingPtrType)(v)
+}
+
+func (*smartShardingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartSharding)(nil)).Elem()
+}
+
+func (i *smartShardingPtrType) ToSmartShardingPtrOutput() SmartShardingPtrOutput {
+	return i.ToSmartShardingPtrOutputWithContext(context.Background())
+}
+
+func (i *smartShardingPtrType) ToSmartShardingPtrOutputWithContext(ctx context.Context) SmartShardingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmartShardingPtrOutput)
+}
+
+// Shards test based on previous test case timing records.
+type SmartShardingOutput struct{ *pulumi.OutputState }
+
+func (SmartShardingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartSharding)(nil)).Elem()
+}
+
+func (o SmartShardingOutput) ToSmartShardingOutput() SmartShardingOutput {
+	return o
+}
+
+func (o SmartShardingOutput) ToSmartShardingOutputWithContext(ctx context.Context) SmartShardingOutput {
+	return o
+}
+
+func (o SmartShardingOutput) ToSmartShardingPtrOutput() SmartShardingPtrOutput {
+	return o.ToSmartShardingPtrOutputWithContext(context.Background())
+}
+
+func (o SmartShardingOutput) ToSmartShardingPtrOutputWithContext(ctx context.Context) SmartShardingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SmartSharding) *SmartSharding {
+		return &v
+	}).(SmartShardingPtrOutput)
+}
+
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+func (o SmartShardingOutput) TargetedShardDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmartSharding) *string { return v.TargetedShardDuration }).(pulumi.StringPtrOutput)
+}
+
+type SmartShardingPtrOutput struct{ *pulumi.OutputState }
+
+func (SmartShardingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartSharding)(nil)).Elem()
+}
+
+func (o SmartShardingPtrOutput) ToSmartShardingPtrOutput() SmartShardingPtrOutput {
+	return o
+}
+
+func (o SmartShardingPtrOutput) ToSmartShardingPtrOutputWithContext(ctx context.Context) SmartShardingPtrOutput {
+	return o
+}
+
+func (o SmartShardingPtrOutput) Elem() SmartShardingOutput {
+	return o.ApplyT(func(v *SmartSharding) SmartSharding {
+		if v != nil {
+			return *v
+		}
+		var ret SmartSharding
+		return ret
+	}).(SmartShardingOutput)
+}
+
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+func (o SmartShardingPtrOutput) TargetedShardDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmartSharding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetedShardDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Shards test based on previous test case timing records.
+type SmartShardingResponse struct {
+	// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+	TargetedShardDuration string `pulumi:"targetedShardDuration"`
+}
+
+// Shards test based on previous test case timing records.
+type SmartShardingResponseOutput struct{ *pulumi.OutputState }
+
+func (SmartShardingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartShardingResponse)(nil)).Elem()
+}
+
+func (o SmartShardingResponseOutput) ToSmartShardingResponseOutput() SmartShardingResponseOutput {
+	return o
+}
+
+func (o SmartShardingResponseOutput) ToSmartShardingResponseOutputWithContext(ctx context.Context) SmartShardingResponseOutput {
+	return o
+}
+
+// The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has seen a test case in the last 30 days, the record of the latest successful one will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the test case is considered to be 15 seconds long by default. Because the actual shard duration can exceed the targeted shard duration, we recommend setting the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or using the custom test timeout value you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created will count toward daily test quota.
+func (o SmartShardingResponseOutput) TargetedShardDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v SmartShardingResponse) string { return v.TargetedShardDuration }).(pulumi.StringOutput)
 }
 
 // A starting intent specified by an action, uri, and categories.
@@ -7804,6 +7996,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoboStartingIntentArrayInput)(nil)).Elem(), RoboStartingIntentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionInput)(nil)).Elem(), ShardingOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionPtrInput)(nil)).Elem(), ShardingOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartShardingInput)(nil)).Elem(), SmartShardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SmartShardingPtrInput)(nil)).Elem(), SmartShardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentInput)(nil)).Elem(), StartActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentPtrInput)(nil)).Elem(), StartActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystraceSetupInput)(nil)).Elem(), SystraceSetupArgs{})
@@ -7920,6 +8114,9 @@ func init() {
 	pulumi.RegisterOutputType(ShardingOptionOutput{})
 	pulumi.RegisterOutputType(ShardingOptionPtrOutput{})
 	pulumi.RegisterOutputType(ShardingOptionResponseOutput{})
+	pulumi.RegisterOutputType(SmartShardingOutput{})
+	pulumi.RegisterOutputType(SmartShardingPtrOutput{})
+	pulumi.RegisterOutputType(SmartShardingResponseOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentResponseOutput{})

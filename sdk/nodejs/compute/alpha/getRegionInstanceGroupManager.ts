@@ -64,6 +64,10 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly fingerprint: string;
     /**
+     * Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
+     */
+    readonly instanceFlexibilityPolicy: outputs.compute.alpha.InstanceGroupManagerInstanceFlexibilityPolicyResponse;
+    /**
      * The URL of the Instance Group resource.
      */
     readonly instanceGroup: string;
@@ -127,6 +131,10 @@ export interface GetRegionInstanceGroupManagerResult {
      * The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
      */
     readonly targetSize: number;
+    /**
+     * The unit of measure for the target size.
+     */
+    readonly targetSizeUnit: string;
     /**
      * The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
      */

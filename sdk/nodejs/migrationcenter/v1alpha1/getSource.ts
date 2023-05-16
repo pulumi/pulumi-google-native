@@ -37,6 +37,10 @@ export interface GetSourceResult {
      */
     readonly displayName: string;
     /**
+     * The number of frames that were reported by the source and contained errors.
+     */
+    readonly errorFrameCount: number;
+    /**
      * If `true`, the source is managed by other service(s).
      */
     readonly isManaged: boolean;

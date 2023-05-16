@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AcceleratorResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
@@ -28,6 +29,39 @@ __all__ = [
     'ReadinessCheckResponse',
     'StatusResponse',
 ]
+
+@pulumi.output_type
+class AcceleratorResponse(dict):
+    """
+    An accelerator card attached to the instance.
+    """
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        An accelerator card attached to the instance.
+        :param int count: Number of accelerator cards exposed to the instance.
+        :param str type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -454,6 +488,7 @@ class GceInstanceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerators: Sequence['outputs.AcceleratorResponse'],
                  boot_disk_size_gb: int,
                  confidential_instance_config: 'outputs.GceConfidentialInstanceConfigResponse',
                  disable_public_ip_addresses: bool,
@@ -465,6 +500,7 @@ class GceInstanceResponse(dict):
                  tags: Sequence[str]):
         """
         A runtime using a Compute Engine instance.
+        :param Sequence['AcceleratorResponse'] accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param int boot_disk_size_gb: Size of the boot disk in GB. Defaults to 50.
         :param 'GceConfidentialInstanceConfigResponse' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
         :param bool disable_public_ip_addresses: Whether instances have no public IP address.
@@ -475,6 +511,7 @@ class GceInstanceResponse(dict):
         :param 'GceShieldedInstanceConfigResponse' shielded_instance_config: A set of Compute Engine Shielded instance options.
         :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
+        pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
@@ -484,6 +521,14 @@ class GceInstanceResponse(dict):
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Sequence['outputs.AcceleratorResponse']:
+        """
+        A list of the type and count of accelerator cards attached to the instance.
+        """
+        return pulumi.get(self, "accelerators")
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")

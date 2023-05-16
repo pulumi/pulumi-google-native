@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectResult:
-    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
+    def __init__(__self__, admin_enabled=None, circuit_infos=None, creation_timestamp=None, customer_name=None, description=None, expected_outages=None, google_ip_address=None, google_reference_id=None, interconnect_attachments=None, interconnect_type=None, kind=None, label_fingerprint=None, labels=None, link_type=None, location=None, name=None, noc_contact_email=None, operational_status=None, peer_ip_address=None, provisioned_link_count=None, remote_location=None, requested_link_count=None, satisfies_pzs=None, self_link=None, state=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -80,6 +80,9 @@ class GetInterconnectResult:
         if provisioned_link_count and not isinstance(provisioned_link_count, int):
             raise TypeError("Expected argument 'provisioned_link_count' to be a int")
         pulumi.set(__self__, "provisioned_link_count", provisioned_link_count)
+        if remote_location and not isinstance(remote_location, str):
+            raise TypeError("Expected argument 'remote_location' to be a str")
+        pulumi.set(__self__, "remote_location", remote_location)
         if requested_link_count and not isinstance(requested_link_count, int):
             raise TypeError("Expected argument 'requested_link_count' to be a int")
         pulumi.set(__self__, "requested_link_count", requested_link_count)
@@ -254,6 +257,14 @@ class GetInterconnectResult:
         return pulumi.get(self, "provisioned_link_count")
 
     @property
+    @pulumi.getter(name="remoteLocation")
+    def remote_location(self) -> str:
+        """
+        Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.
+        """
+        return pulumi.get(self, "remote_location")
+
+    @property
     @pulumi.getter(name="requestedLinkCount")
     def requested_link_count(self) -> int:
         """
@@ -312,6 +323,7 @@ class AwaitableGetInterconnectResult(GetInterconnectResult):
             operational_status=self.operational_status,
             peer_ip_address=self.peer_ip_address,
             provisioned_link_count=self.provisioned_link_count,
+            remote_location=self.remote_location,
             requested_link_count=self.requested_link_count,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
@@ -351,6 +363,7 @@ def get_interconnect(interconnect: Optional[str] = None,
         operational_status=__ret__.operational_status,
         peer_ip_address=__ret__.peer_ip_address,
         provisioned_link_count=__ret__.provisioned_link_count,
+        remote_location=__ret__.remote_location,
         requested_link_count=__ret__.requested_link_count,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,

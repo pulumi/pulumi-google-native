@@ -121,6 +121,8 @@ __all__ = [
     'InstancePropertiesPatchResponse',
     'InstancePropertiesResponse',
     'Int64RangeMatchResponse',
+    'InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse',
+    'InterconnectAttachmentConfigurationConstraintsResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
     'InterconnectAttachmentPrivateInfoResponse',
     'InterconnectCircuitInfoResponse',
@@ -221,6 +223,8 @@ __all__ = [
     'SecurityPolicyRuleMatcherConfigLayer4ConfigResponse',
     'SecurityPolicyRuleMatcherConfigResponse',
     'SecurityPolicyRuleMatcherResponse',
+    'SecurityPolicyRuleNetworkMatcherResponse',
+    'SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionResponse',
     'SecurityPolicyRulePreconfiguredWafConfigResponse',
@@ -229,6 +233,7 @@ __all__ = [
     'SecurityPolicyRuleRateLimitOptionsThresholdResponse',
     'SecurityPolicyRuleRedirectOptionsResponse',
     'SecurityPolicyRuleResponse',
+    'SecurityPolicyUserDefinedFieldResponse',
     'SecuritySettingsResponse',
     'ServerBindingResponse',
     'ServiceAccountResponse',
@@ -409,6 +414,8 @@ class AccessConfigResponse(dict):
             suggest = "network_tier"
         elif key == "publicPtrDomainName":
             suggest = "public_ptr_domain_name"
+        elif key == "securityPolicy":
+            suggest = "security_policy"
         elif key == "setPublicPtr":
             suggest = "set_public_ptr"
 
@@ -431,6 +438,7 @@ class AccessConfigResponse(dict):
                  nat_ip: str,
                  network_tier: str,
                  public_ptr_domain_name: str,
+                 security_policy: str,
                  set_public_ptr: bool,
                  type: str):
         """
@@ -442,6 +450,7 @@ class AccessConfigResponse(dict):
         :param str nat_ip: Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param str network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         :param str public_ptr_domain_name: The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
+        :param str security_policy: The resource URL for the security policy associated with this access config.
         :param bool set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
         :param str type: The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         """
@@ -452,6 +461,7 @@ class AccessConfigResponse(dict):
         pulumi.set(__self__, "nat_ip", nat_ip)
         pulumi.set(__self__, "network_tier", network_tier)
         pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        pulumi.set(__self__, "security_policy", security_policy)
         pulumi.set(__self__, "set_public_ptr", set_public_ptr)
         pulumi.set(__self__, "type", type)
 
@@ -510,6 +520,14 @@ class AccessConfigResponse(dict):
         The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         """
         return pulumi.get(self, "public_ptr_domain_name")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> str:
+        """
+        The resource URL for the security policy associated with this access config.
+        """
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="setPublicPtr")
@@ -5212,12 +5230,16 @@ class FirewallPolicyRuleResponse(dict):
             suggest = "rule_name"
         elif key == "ruleTupleCount":
             suggest = "rule_tuple_count"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
         elif key == "targetResources":
             suggest = "target_resources"
         elif key == "targetSecureTags":
             suggest = "target_secure_tags"
         elif key == "targetServiceAccounts":
             suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -5241,9 +5263,11 @@ class FirewallPolicyRuleResponse(dict):
                  priority: int,
                  rule_name: str,
                  rule_tuple_count: int,
+                 security_profile_group: str,
                  target_resources: Sequence[str],
                  target_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse'],
-                 target_service_accounts: Sequence[str]):
+                 target_service_accounts: Sequence[str],
+                 tls_inspect: bool):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
         :param str action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
@@ -5256,9 +5280,11 @@ class FirewallPolicyRuleResponse(dict):
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
+        :param bool tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "description", description)
@@ -5270,9 +5296,11 @@ class FirewallPolicyRuleResponse(dict):
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
+        pulumi.set(__self__, "security_profile_group", security_profile_group)
         pulumi.set(__self__, "target_resources", target_resources)
         pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        pulumi.set(__self__, "tls_inspect", tls_inspect)
 
     @property
     @pulumi.getter
@@ -5355,6 +5383,14 @@ class FirewallPolicyRuleResponse(dict):
         return pulumi.get(self, "rule_tuple_count")
 
     @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> str:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
     @pulumi.getter(name="targetResources")
     def target_resources(self) -> Sequence[str]:
         """
@@ -5377,6 +5413,14 @@ class FirewallPolicyRuleResponse(dict):
         A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> bool:
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
 
 
 @pulumi.output_type
@@ -8400,6 +8444,73 @@ class Int64RangeMatchResponse(dict):
         The start of the range (inclusive) in signed long integer format.
         """
         return pulumi.get(self, "range_start")
+
+
+@pulumi.output_type
+class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse(dict):
+    def __init__(__self__, *,
+                 max: int,
+                 min: int):
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> int:
+        return pulumi.get(self, "max")
+
+    @property
+    @pulumi.getter
+    def min(self) -> int:
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class InterconnectAttachmentConfigurationConstraintsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bgpMd5":
+            suggest = "bgp_md5"
+        elif key == "bgpPeerAsnRanges":
+            suggest = "bgp_peer_asn_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentConfigurationConstraintsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentConfigurationConstraintsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentConfigurationConstraintsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bgp_md5: str,
+                 bgp_peer_asn_ranges: Sequence['outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse']):
+        """
+        :param str bgp_md5: Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+        :param Sequence['InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse'] bgp_peer_asn_ranges: List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+        """
+        pulumi.set(__self__, "bgp_md5", bgp_md5)
+        pulumi.set(__self__, "bgp_peer_asn_ranges", bgp_peer_asn_ranges)
+
+    @property
+    @pulumi.getter(name="bgpMd5")
+    def bgp_md5(self) -> str:
+        """
+        Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested.
+        """
+        return pulumi.get(self, "bgp_md5")
+
+    @property
+    @pulumi.getter(name="bgpPeerAsnRanges")
+    def bgp_peer_asn_ranges(self) -> Sequence['outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse']:
+        """
+        List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
+        """
+        return pulumi.get(self, "bgp_peer_asn_ranges")
 
 
 @pulumi.output_type
@@ -13505,7 +13616,7 @@ class RouterNatResponse(dict):
         :param str nat_ip_allocate_option: Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         :param Sequence[str] nat_ips: A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project.
         :param Sequence['RouterNatRuleResponse'] rules: A list of rules associated with this NAT.
-        :param str source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        :param str source_subnetwork_ip_ranges_to_nat: Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
         :param Sequence['RouterNatSubnetworkToNatResponse'] subnetworks: A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.
         :param int tcp_established_idle_timeout_sec: Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
         :param int tcp_time_wait_timeout_sec: Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
@@ -13637,7 +13748,7 @@ class RouterNatResponse(dict):
     @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
     def source_subnetwork_ip_ranges_to_nat(self) -> str:
         """
-        Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES then there should not be any other Router.Nat section in any Router for this network in this region.
         """
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 
@@ -15253,6 +15364,165 @@ class SecurityPolicyRuleMatcherResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyRuleNetworkMatcherResponse(dict):
+    """
+    Represents a match condition that incoming network traffic is evaluated against.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destPorts":
+            suggest = "dest_ports"
+        elif key == "ipProtocols":
+            suggest = "ip_protocols"
+        elif key == "srcAsns":
+            suggest = "src_asns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcPorts":
+            suggest = "src_ports"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "userDefinedFields":
+            suggest = "user_defined_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleNetworkMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleNetworkMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleNetworkMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dest_ip_ranges: Sequence[str],
+                 dest_ports: Sequence[str],
+                 ip_protocols: Sequence[str],
+                 src_asns: Sequence[int],
+                 src_ip_ranges: Sequence[str],
+                 src_ports: Sequence[str],
+                 src_region_codes: Sequence[str],
+                 user_defined_fields: Sequence['outputs.SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse']):
+        """
+        Represents a match condition that incoming network traffic is evaluated against.
+        :param Sequence[str] dest_ip_ranges: Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[str] dest_ports: Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[str] ip_protocols: IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        :param Sequence[int] src_asns: BGP Autonomous System Number associated with the source IP address.
+        :param Sequence[str] src_ip_ranges: Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[str] src_ports: Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[str] src_region_codes: Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        :param Sequence['SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse'] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
+        """
+        pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        pulumi.set(__self__, "dest_ports", dest_ports)
+        pulumi.set(__self__, "ip_protocols", ip_protocols)
+        pulumi.set(__self__, "src_asns", src_asns)
+        pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        pulumi.set(__self__, "src_ports", src_ports)
+        pulumi.set(__self__, "src_region_codes", src_region_codes)
+        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Sequence[str]:
+        """
+        Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destPorts")
+    def dest_ports(self) -> Sequence[str]:
+        """
+        Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "dest_ports")
+
+    @property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Sequence[str]:
+        """
+        IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @property
+    @pulumi.getter(name="srcAsns")
+    def src_asns(self) -> Sequence[int]:
+        """
+        BGP Autonomous System Number associated with the source IP address.
+        """
+        return pulumi.get(self, "src_asns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Sequence[str]:
+        """
+        Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcPorts")
+    def src_ports(self) -> Sequence[str]:
+        """
+        Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "src_ports")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Sequence[str]:
+        """
+        Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Sequence['outputs.SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse']:
+        """
+        User-defined fields. Each element names a defined field and lists the matching values for that field.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+
+@pulumi.output_type
+class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponse(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 values: Sequence[str]):
+        """
+        :param str name: Name of the user-defined field, as given in the definition.
+        :param Sequence[str] values: Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the user-defined field, as given in the definition.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse(dict):
     def __init__(__self__, *,
                  op: str,
@@ -15673,6 +15943,8 @@ class SecurityPolicyRuleResponse(dict):
             suggest = "enable_logging"
         elif key == "headerAction":
             suggest = "header_action"
+        elif key == "networkMatch":
+            suggest = "network_match"
         elif key == "preconfiguredWafConfig":
             suggest = "preconfigured_waf_config"
         elif key == "rateLimitOptions":
@@ -15707,6 +15979,7 @@ class SecurityPolicyRuleResponse(dict):
                  header_action: 'outputs.SecurityPolicyRuleHttpHeaderActionResponse',
                  kind: str,
                  match: 'outputs.SecurityPolicyRuleMatcherResponse',
+                 network_match: 'outputs.SecurityPolicyRuleNetworkMatcherResponse',
                  preconfigured_waf_config: 'outputs.SecurityPolicyRulePreconfiguredWafConfigResponse',
                  preview: bool,
                  priority: int,
@@ -15725,6 +15998,7 @@ class SecurityPolicyRuleResponse(dict):
         :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
         :param str kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param 'SecurityPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param 'SecurityPolicyRuleNetworkMatcherResponse' network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
         :param 'SecurityPolicyRulePreconfiguredWafConfigResponse' preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param bool preview: If set to true, the specified action is not enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -15742,6 +16016,7 @@ class SecurityPolicyRuleResponse(dict):
         pulumi.set(__self__, "header_action", header_action)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "network_match", network_match)
         pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         pulumi.set(__self__, "preview", preview)
         pulumi.set(__self__, "priority", priority)
@@ -15807,6 +16082,14 @@ class SecurityPolicyRuleResponse(dict):
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="networkMatch")
+    def network_match(self) -> 'outputs.SecurityPolicyRuleNetworkMatcherResponse':
+        """
+        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+        """
+        return pulumi.get(self, "network_match")
 
     @property
     @pulumi.getter(name="preconfiguredWafConfig")
@@ -15879,6 +16162,68 @@ class SecurityPolicyRuleResponse(dict):
         A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         return pulumi.get(self, "target_service_accounts")
+
+
+@pulumi.output_type
+class SecurityPolicyUserDefinedFieldResponse(dict):
+    def __init__(__self__, *,
+                 base: str,
+                 mask: str,
+                 name: str,
+                 offset: int,
+                 size: int):
+        """
+        :param str base: The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+        :param str mask: If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        :param str name: The name of this field. Must be unique within the policy.
+        :param int offset: Offset of the first byte of the field (in network byte order) relative to 'base'.
+        :param int size: Size of the field in bytes. Valid values: 1-4.
+        """
+        pulumi.set(__self__, "base", base)
+        pulumi.set(__self__, "mask", mask)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def base(self) -> str:
+        """
+        The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+        """
+        return pulumi.get(self, "base")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> str:
+        """
+        If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        """
+        return pulumi.get(self, "mask")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this field. Must be unique within the policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> int:
+        """
+        Offset of the first byte of the field (in network byte order) relative to 'base'.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        Size of the field in bytes. Valid values: 1-4.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -17001,7 +17346,7 @@ class SubnetworkLogConfigResponse(dict):
         """
         The available logging options for this subnetwork.
         :param str aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
-        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+        :param bool enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         :param str filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         :param float flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param str metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
@@ -17026,7 +17371,7 @@ class SubnetworkLogConfigResponse(dict):
     @pulumi.getter
     def enable(self) -> bool:
         """
-        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
+        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. Flow logging isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.
         """
         return pulumi.get(self, "enable")
 

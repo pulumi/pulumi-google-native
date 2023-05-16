@@ -27,6 +27,8 @@ type LookupMigrationJobArgs struct {
 }
 
 type LookupMigrationJobResult struct {
+	// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	CmekKeyName string `pulumi:"cmekKeyName"`
 	// The conversion workspace used by the migration.
 	ConversionWorkspace ConversionWorkspaceInfoResponse `pulumi:"conversionWorkspace"`
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -108,6 +110,11 @@ func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutput() Looku
 
 func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutputWithContext(ctx context.Context) LookupMigrationJobResultOutput {
 	return o
+}
+
+// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile instead). Each Cloud CMEK key has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+func (o LookupMigrationJobResultOutput) CmekKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.CmekKeyName }).(pulumi.StringOutput)
 }
 
 // The conversion workspace used by the migration.

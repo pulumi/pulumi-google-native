@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs',
+    'GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs',
     'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs',
@@ -78,6 +79,59 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
     @support_non_google_app_store_distribution.setter
     def support_non_google_app_store_distribution(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "support_non_google_app_store_distribution", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[str],
+                 private_key: pulumi.Input[str],
+                 team_id: pulumi.Input[str]):
+        """
+        Contains fields that are required to perform Apple-specific integrity checks.
+        :param pulumi.Input[str] key_id: The Apple developer key ID (10-character string).
+        :param pulumi.Input[str] private_key: Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        :param pulumi.Input[str] team_id: The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "team_id", team_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[str]:
+        """
+        The Apple developer key ID (10-character string).
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        """
+        Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> pulumi.Input[str]:
+        """
+        The Apple team ID (10-character string) owning the provisioning profile used to build your application.
+        """
+        return pulumi.get(self, "team_id")
+
+    @team_id.setter
+    def team_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "team_id", value)
 
 
 @pulumi.input_type
@@ -263,16 +317,20 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
     def __init__(__self__, *,
                  allow_all_bundle_ids: Optional[pulumi.Input[bool]] = None,
-                 allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 apple_developer_id: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs']] = None):
         """
         Settings specific to keys that can be used by iOS apps.
         :param pulumi.Input[bool] allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs'] apple_developer_id: Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         if allow_all_bundle_ids is not None:
             pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
         if allowed_bundle_ids is not None:
             pulumi.set(__self__, "allowed_bundle_ids", allowed_bundle_ids)
+        if apple_developer_id is not None:
+            pulumi.set(__self__, "apple_developer_id", apple_developer_id)
 
     @property
     @pulumi.getter(name="allowAllBundleIds")
@@ -297,6 +355,18 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
     @allowed_bundle_ids.setter
     def allowed_bundle_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_bundle_ids", value)
+
+    @property
+    @pulumi.getter(name="appleDeveloperId")
+    def apple_developer_id(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs']]:
+        """
+        Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        """
+        return pulumi.get(self, "apple_developer_id")
+
+    @apple_developer_id.setter
+    def apple_developer_id(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs']]):
+        pulumi.set(self, "apple_developer_id", value)
 
 
 @pulumi.input_type

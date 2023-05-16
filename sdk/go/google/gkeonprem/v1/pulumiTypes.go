@@ -2280,6 +2280,7 @@ func (o BareMetalAdminOsEnvironmentConfigResponseOutput) PackageRepoExcluded() p
 
 // BareMetalAdminPortConfig is the specification of load balancer ports.
 type BareMetalAdminPortConfig struct {
+	// The port that control plane hosted load balancers will listen on.
 	ControlPlaneLoadBalancerPort *int `pulumi:"controlPlaneLoadBalancerPort"`
 }
 
@@ -2296,6 +2297,7 @@ type BareMetalAdminPortConfigInput interface {
 
 // BareMetalAdminPortConfig is the specification of load balancer ports.
 type BareMetalAdminPortConfigArgs struct {
+	// The port that control plane hosted load balancers will listen on.
 	ControlPlaneLoadBalancerPort pulumi.IntPtrInput `pulumi:"controlPlaneLoadBalancerPort"`
 }
 
@@ -2377,6 +2379,7 @@ func (o BareMetalAdminPortConfigOutput) ToBareMetalAdminPortConfigPtrOutputWithC
 	}).(BareMetalAdminPortConfigPtrOutput)
 }
 
+// The port that control plane hosted load balancers will listen on.
 func (o BareMetalAdminPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminPortConfig) *int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntPtrOutput)
 }
@@ -2405,6 +2408,7 @@ func (o BareMetalAdminPortConfigPtrOutput) Elem() BareMetalAdminPortConfigOutput
 	}).(BareMetalAdminPortConfigOutput)
 }
 
+// The port that control plane hosted load balancers will listen on.
 func (o BareMetalAdminPortConfigPtrOutput) ControlPlaneLoadBalancerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminPortConfig) *int {
 		if v == nil {
@@ -2416,6 +2420,7 @@ func (o BareMetalAdminPortConfigPtrOutput) ControlPlaneLoadBalancerPort() pulumi
 
 // BareMetalAdminPortConfig is the specification of load balancer ports.
 type BareMetalAdminPortConfigResponse struct {
+	// The port that control plane hosted load balancers will listen on.
 	ControlPlaneLoadBalancerPort int `pulumi:"controlPlaneLoadBalancerPort"`
 }
 
@@ -2434,6 +2439,7 @@ func (o BareMetalAdminPortConfigResponseOutput) ToBareMetalAdminPortConfigRespon
 	return o
 }
 
+// The port that control plane hosted load balancers will listen on.
 func (o BareMetalAdminPortConfigResponseOutput) ControlPlaneLoadBalancerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v BareMetalAdminPortConfigResponse) int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntOutput)
 }
@@ -12154,6 +12160,7 @@ func (o VmwareLoadBalancerConfigResponseOutput) VipConfig() VmwareVipConfigRespo
 	return o.ApplyT(func(v VmwareLoadBalancerConfigResponse) VmwareVipConfigResponse { return v.VipConfig }).(VmwareVipConfigResponseOutput)
 }
 
+// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfig struct {
 	// NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
 	ControlPlaneNodePort *int `pulumi:"controlPlaneNodePort"`
@@ -12176,6 +12183,7 @@ type VmwareManualLbConfigInput interface {
 	ToVmwareManualLbConfigOutputWithContext(context.Context) VmwareManualLbConfigOutput
 }
 
+// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfigArgs struct {
 	// NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
 	ControlPlaneNodePort pulumi.IntPtrInput `pulumi:"controlPlaneNodePort"`
@@ -12240,6 +12248,7 @@ func (i *vmwareManualLbConfigPtrType) ToVmwareManualLbConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareManualLbConfigPtrOutput)
 }
 
+// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfigOutput struct{ *pulumi.OutputState }
 
 func (VmwareManualLbConfigOutput) ElementType() reflect.Type {
@@ -12348,6 +12357,7 @@ func (o VmwareManualLbConfigPtrOutput) KonnectivityServerNodePort() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfigResponse struct {
 	// NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
 	ControlPlaneNodePort int `pulumi:"controlPlaneNodePort"`
@@ -12359,6 +12369,7 @@ type VmwareManualLbConfigResponse struct {
 	KonnectivityServerNodePort int `pulumi:"konnectivityServerNodePort"`
 }
 
+// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
 type VmwareManualLbConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (VmwareManualLbConfigResponseOutput) ElementType() reflect.Type {

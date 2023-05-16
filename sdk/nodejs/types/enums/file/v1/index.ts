@@ -31,6 +31,10 @@ export const InstanceTier = {
      * ENTERPRISE instances offer the features and availability needed for mission-critical workloads.
      */
     Enterprise: "ENTERPRISE",
+    /**
+     * ZONAL instances offer expanded capacity and performance scaling capabilities.
+     */
+    Zonal: "ZONAL",
 } as const;
 
 /**

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSourceResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, is_managed=None, name=None, pending_frame_count=None, priority=None, state=None, type=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, error_frame_count=None, is_managed=None, name=None, pending_frame_count=None, priority=None, state=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -28,6 +28,9 @@ class GetSourceResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if error_frame_count and not isinstance(error_frame_count, int):
+            raise TypeError("Expected argument 'error_frame_count' to be a int")
+        pulumi.set(__self__, "error_frame_count", error_frame_count)
         if is_managed and not isinstance(is_managed, bool):
             raise TypeError("Expected argument 'is_managed' to be a bool")
         pulumi.set(__self__, "is_managed", is_managed)
@@ -73,6 +76,14 @@ class GetSourceResult:
         User-friendly display name.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="errorFrameCount")
+    def error_frame_count(self) -> int:
+        """
+        The number of frames that were reported by the source and contained errors.
+        """
+        return pulumi.get(self, "error_frame_count")
 
     @property
     @pulumi.getter(name="isManaged")
@@ -140,6 +151,7 @@ class AwaitableGetSourceResult(GetSourceResult):
             create_time=self.create_time,
             description=self.description,
             display_name=self.display_name,
+            error_frame_count=self.error_frame_count,
             is_managed=self.is_managed,
             name=self.name,
             pending_frame_count=self.pending_frame_count,
@@ -167,6 +179,7 @@ def get_source(location: Optional[str] = None,
         create_time=__ret__.create_time,
         description=__ret__.description,
         display_name=__ret__.display_name,
+        error_frame_count=__ret__.error_frame_count,
         is_managed=__ret__.is_managed,
         name=__ret__.name,
         pending_frame_count=__ret__.pending_frame_count,

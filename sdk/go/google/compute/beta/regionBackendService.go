@@ -61,6 +61,8 @@ type RegionBackendService struct {
 	LogConfig BackendServiceLogConfigResponseOutput `pulumi:"logConfig"`
 	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationResponseOutput `pulumi:"maxStreamDuration"`
+	// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+	Metadatas pulumi.StringMapOutput `pulumi:"metadatas"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -179,6 +181,8 @@ type regionBackendServiceArgs struct {
 	LogConfig *BackendServiceLogConfig `pulumi:"logConfig"`
 	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 	MaxStreamDuration *Duration `pulumi:"maxStreamDuration"`
+	// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+	Metadatas map[string]string `pulumi:"metadatas"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -248,6 +252,8 @@ type RegionBackendServiceArgs struct {
 	LogConfig BackendServiceLogConfigPtrInput
 	// Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 	MaxStreamDuration DurationPtrInput
+	// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+	Metadatas pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -436,6 +442,11 @@ func (o RegionBackendServiceOutput) LogConfig() BackendServiceLogConfigResponseO
 // Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
 func (o RegionBackendServiceOutput) MaxStreamDuration() DurationResponseOutput {
 	return o.ApplyT(func(v *RegionBackendService) DurationResponseOutput { return v.MaxStreamDuration }).(DurationResponseOutput)
+}
+
+// Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+func (o RegionBackendServiceOutput) Metadatas() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringMapOutput { return v.Metadatas }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

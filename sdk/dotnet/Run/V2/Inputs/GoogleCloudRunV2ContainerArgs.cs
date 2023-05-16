@@ -39,6 +39,18 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
             set => _command = value;
         }
 
+        [Input("dependsOn")]
+        private InputList<string>? _dependsOn;
+
+        /// <summary>
+        /// Container names which must start before this container.
+        /// </summary>
+        public InputList<string> DependsOn
+        {
+            get => _dependsOn ?? (_dependsOn = new InputList<string>());
+            set => _dependsOn = value;
+        }
+
         [Input("env")]
         private InputList<Inputs.GoogleCloudRunV2EnvVarArgs>? _env;
 

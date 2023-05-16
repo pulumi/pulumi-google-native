@@ -809,12 +809,16 @@ class BareMetalAdminPortConfigResponse(dict):
                  control_plane_load_balancer_port: int):
         """
         BareMetalAdminPortConfig is the specification of load balancer ports.
+        :param int control_plane_load_balancer_port: The port that control plane hosted load balancers will listen on.
         """
         pulumi.set(__self__, "control_plane_load_balancer_port", control_plane_load_balancer_port)
 
     @property
     @pulumi.getter(name="controlPlaneLoadBalancerPort")
     def control_plane_load_balancer_port(self) -> int:
+        """
+        The port that control plane hosted load balancers will listen on.
+        """
         return pulumi.get(self, "control_plane_load_balancer_port")
 
 
@@ -3099,7 +3103,7 @@ class ValidationCheckStatusResponse(dict):
 @pulumi.output_type
 class VmwareAAGConfigResponse(dict):
     """
-    Specifies anti affinity group config for the VMware user cluster. 
+    Specifies anti affinity group config for the VMware user cluster.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3121,7 +3125,7 @@ class VmwareAAGConfigResponse(dict):
     def __init__(__self__, *,
                  aag_config_disabled: bool):
         """
-        Specifies anti affinity group config for the VMware user cluster. 
+        Specifies anti affinity group config for the VMware user cluster.
         :param bool aag_config_disabled: Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default.
         """
         pulumi.set(__self__, "aag_config_disabled", aag_config_disabled)
@@ -3769,6 +3773,9 @@ class VmwareLoadBalancerConfigResponse(dict):
 
 @pulumi.output_type
 class VmwareManualLbConfigResponse(dict):
+    """
+    Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3798,6 +3805,7 @@ class VmwareManualLbConfigResponse(dict):
                  ingress_https_node_port: int,
                  konnectivity_server_node_port: int):
         """
+        Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.
         :param int control_plane_node_port: NodePort for control plane service. The Kubernetes API server in the admin cluster is implemented as a Service of type NodePort (ex. 30968).
         :param int ingress_http_node_port: NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527).
         :param int ingress_https_node_port: NodePort for ingress service's https. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 30139).

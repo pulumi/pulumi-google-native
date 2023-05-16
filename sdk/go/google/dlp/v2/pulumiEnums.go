@@ -2747,6 +2747,177 @@ func (in *googlePrivacyDlpV2OutputStorageConfigOutputSchemaPtr) ToGooglePrivacyD
 	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput)
 }
 
+// The score applied to the resource.
+type GooglePrivacyDlpV2SensitivityScoreScore string
+
+const (
+	// Unused.
+	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityScoreUnspecified = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED")
+	// No sensitive information detected. Limited access.
+	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityLow = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_LOW")
+	// Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityModerate = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_MODERATE")
+	// High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityHigh = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_HIGH")
+)
+
+func (GooglePrivacyDlpV2SensitivityScoreScore) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScore)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToGooglePrivacyDlpV2SensitivityScoreScoreOutput() GooglePrivacyDlpV2SensitivityScoreScoreOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2SensitivityScoreScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToGooglePrivacyDlpV2SensitivityScoreScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2SensitivityScoreScoreOutput)
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutput() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return e.ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return GooglePrivacyDlpV2SensitivityScoreScore(e).ToGooglePrivacyDlpV2SensitivityScoreScoreOutputWithContext(ctx).ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2SensitivityScoreScore) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2SensitivityScoreScoreOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SensitivityScoreScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreScoreOutput() GooglePrivacyDlpV2SensitivityScoreScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutput() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o.ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2SensitivityScoreScore) *GooglePrivacyDlpV2SensitivityScoreScore {
+		return &v
+	}).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2SensitivityScoreScore) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScoreOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2SensitivityScoreScore) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2SensitivityScoreScorePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2SensitivityScoreScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutput() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) Elem() GooglePrivacyDlpV2SensitivityScoreScoreOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SensitivityScoreScore) GooglePrivacyDlpV2SensitivityScoreScore {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2SensitivityScoreScore
+		return ret
+	}).(GooglePrivacyDlpV2SensitivityScoreScoreOutput)
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreScorePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2SensitivityScoreScore) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2SensitivityScoreScoreInput is an input type that accepts GooglePrivacyDlpV2SensitivityScoreScoreArgs and GooglePrivacyDlpV2SensitivityScoreScoreOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2SensitivityScoreScoreInput` via:
+//
+//	GooglePrivacyDlpV2SensitivityScoreScoreArgs{...}
+type GooglePrivacyDlpV2SensitivityScoreScoreInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SensitivityScoreScoreOutput() GooglePrivacyDlpV2SensitivityScoreScoreOutput
+	ToGooglePrivacyDlpV2SensitivityScoreScoreOutputWithContext(context.Context) GooglePrivacyDlpV2SensitivityScoreScoreOutput
+}
+
+var googlePrivacyDlpV2SensitivityScoreScorePtrType = reflect.TypeOf((**GooglePrivacyDlpV2SensitivityScoreScore)(nil)).Elem()
+
+type GooglePrivacyDlpV2SensitivityScoreScorePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutput() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput
+	ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput
+}
+
+type googlePrivacyDlpV2SensitivityScoreScorePtr string
+
+func GooglePrivacyDlpV2SensitivityScoreScorePtr(v string) GooglePrivacyDlpV2SensitivityScoreScorePtrInput {
+	return (*googlePrivacyDlpV2SensitivityScoreScorePtr)(&v)
+}
+
+func (*googlePrivacyDlpV2SensitivityScoreScorePtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2SensitivityScoreScorePtrType
+}
+
+func (in *googlePrivacyDlpV2SensitivityScoreScorePtr) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutput() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
+}
+
+func (in *googlePrivacyDlpV2SensitivityScoreScorePtr) ToGooglePrivacyDlpV2SensitivityScoreScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
+}
+
 // The part of the time to keep.
 type GooglePrivacyDlpV2TimePartConfigPartToExtract string
 
@@ -3479,6 +3650,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELIHOOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigOutputSchema("OUTPUT_SCHEMA_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrInput)(nil)).Elem(), GooglePrivacyDlpV2OutputStorageConfigOutputSchema("OUTPUT_SCHEMA_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScoreInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreScorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigPartToExtractInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigPartToExtract("TIME_PART_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigPartToExtractPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigPartToExtract("TIME_PART_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ValueDayOfWeekValueInput)(nil)).Elem(), GooglePrivacyDlpV2ValueDayOfWeekValue("DAY_OF_WEEK_UNSPECIFIED"))
@@ -3520,6 +3693,8 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreScoreOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigPartToExtractOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ValueDayOfWeekValueOutput{})

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// The hostname of the vcenter.
+        /// </summary>
+        public readonly string ResolvedVcenterHost;
+        /// <summary>
         /// The thumbprint representing the certificate for the vcenter.
         /// </summary>
         public readonly string Thumbprint;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         private VmwareSourceDetailsResponse(
             string password,
 
+            string resolvedVcenterHost,
+
             string thumbprint,
 
             string username,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
             string vcenterIp)
         {
             Password = password;
+            ResolvedVcenterHost = resolvedVcenterHost;
             Thumbprint = thumbprint;
             Username = username;
             VcenterIp = vcenterIp;

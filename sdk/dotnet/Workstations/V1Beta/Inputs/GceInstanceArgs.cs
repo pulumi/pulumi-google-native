@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     /// </summary>
     public sealed class GceInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.AcceleratorArgs>? _accelerators;
+
+        /// <summary>
+        /// A list of the type and count of accelerator cards attached to the instance.
+        /// </summary>
+        public InputList<Inputs.AcceleratorArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.AcceleratorArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// Size of the boot disk in GB. Defaults to 50.
         /// </summary>

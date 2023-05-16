@@ -99,6 +99,7 @@ __all__ = [
     'GooglePrivacyDlpV2SaveFindingsArgs',
     'GooglePrivacyDlpV2ScheduleArgs',
     'GooglePrivacyDlpV2SelectedInfoTypesArgs',
+    'GooglePrivacyDlpV2SensitivityScoreArgs',
     'GooglePrivacyDlpV2StatisticalTableArgs',
     'GooglePrivacyDlpV2StorageConfigArgs',
     'GooglePrivacyDlpV2StoredInfoTypeConfigArgs',
@@ -1326,6 +1327,7 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None,
                  likelihood: Optional[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood']] = None,
                  regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None,
+                 sensitivity_score: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']] = None,
                  stored_type: Optional[pulumi.Input['GooglePrivacyDlpV2StoredTypeArgs']] = None,
                  surrogate_type: Optional[pulumi.Input['GooglePrivacyDlpV2SurrogateTypeArgs']] = None):
         """
@@ -1336,6 +1338,7 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
         :param pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeLikelihood'] likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not specified.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] regex: Regular expression based CustomInfoType.
+        :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs'] sensitivity_score: Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
         :param pulumi.Input['GooglePrivacyDlpV2StoredTypeArgs'] stored_type: Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
         :param pulumi.Input['GooglePrivacyDlpV2SurrogateTypeArgs'] surrogate_type: Message for detecting output from deidentification transformations that support reversing.
         """
@@ -1351,6 +1354,8 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
             pulumi.set(__self__, "likelihood", likelihood)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
         if stored_type is not None:
             pulumi.set(__self__, "stored_type", stored_type)
         if surrogate_type is not None:
@@ -1427,6 +1432,18 @@ class GooglePrivacyDlpV2CustomInfoTypeArgs:
     @regex.setter
     def regex(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']]):
         pulumi.set(self, "regex", value)
+
+    @property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']]:
+        """
+        Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
 
     @property
     @pulumi.getter(name="storedType")
@@ -2611,14 +2628,18 @@ class GooglePrivacyDlpV2InfoTypeTransformationArgs:
 class GooglePrivacyDlpV2InfoTypeArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
+                 sensitivity_score: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Type of information detected by the API.
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
+        :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
         :param pulumi.Input[str] version: Optional version name for this InfoType.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -2633,6 +2654,18 @@ class GooglePrivacyDlpV2InfoTypeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
 
     @property
     @pulumi.getter
@@ -4227,6 +4260,30 @@ class GooglePrivacyDlpV2SelectedInfoTypesArgs:
     @info_types.setter
     def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]):
         pulumi.set(self, "info_types", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2SensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore']] = None):
+        """
+        Score is a summary of all elements in the data profile. A higher number means more sensitive.
+        :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore'] score: The score applied to the resource.
+        """
+        if score is not None:
+            pulumi.set(__self__, "score", score)
+
+    @property
+    @pulumi.getter
+    def score(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore']]:
+        """
+        The score applied to the resource.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore']]):
+        pulumi.set(self, "score", value)
 
 
 @pulumi.input_type

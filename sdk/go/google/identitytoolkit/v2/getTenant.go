@@ -52,6 +52,8 @@ type LookupTenantResult struct {
 	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name string `pulumi:"name"`
+	// The tenant-level password policy config
+	PasswordPolicyConfig GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse `pulumi:"passwordPolicyConfig"`
 	// The tenant-level reCAPTCHA config.
 	RecaptchaConfig GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigResponse `pulumi:"recaptchaConfig"`
 	// Configures which regions are enabled for SMS verification code sending.
@@ -167,6 +169,13 @@ func (o LookupTenantResultOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 func (o LookupTenantResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tenant-level password policy config
+func (o LookupTenantResultOutput) PasswordPolicyConfig() GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput {
+	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
+		return v.PasswordPolicyConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponseOutput)
 }
 
 // The tenant-level reCAPTCHA config.

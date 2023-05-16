@@ -1521,9 +1521,9 @@ func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) Index(i pulumi
 	}).(GoogleCloudRetailV2betaLocalInventoryResponseOutput)
 }
 
-// More configs of the frequently-bought-together model type.
+// Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig struct {
-	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 	ContextProductsType *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType `pulumi:"contextProductsType"`
 }
 
@@ -1538,9 +1538,9 @@ type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigInput int
 	ToGoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutputWithContext(context.Context) GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput
 }
 
-// More configs of the frequently-bought-together model type.
+// Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigArgs struct {
-	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 	ContextProductsType GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrInput `pulumi:"contextProductsType"`
 }
 
@@ -1597,7 +1597,7 @@ func (i *googleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
 }
 
-// More configs of the frequently-bought-together model type.
+// Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ElementType() reflect.Type {
@@ -1622,7 +1622,7 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput
 	}).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput)
 }
 
-// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput) ContextProductsType() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
 		return v.ContextProductsType
@@ -1653,7 +1653,7 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOut
 	}).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigOutput)
 }
 
-// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOutput) ContextProductsType() GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig) *GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType {
 		if v == nil {
@@ -1663,13 +1663,13 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigPtrOut
 	}).(GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigContextProductsTypePtrOutput)
 }
 
-// More configs of the frequently-bought-together model type.
+// Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse struct {
-	// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+	// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 	ContextProductsType string `pulumi:"contextProductsType"`
 }
 
-// More configs of the frequently-bought-together model type.
+// Additional configs for the frequently-bought-together model type.
 type GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ElementType() reflect.Type {
@@ -1684,7 +1684,7 @@ func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigRespon
 	return o
 }
 
-// Optional. Specifies the context of the model when used in predict requests. Only settable for the `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
 func (o GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponseOutput) ContextProductsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse) string {
 		return v.ContextProductsType

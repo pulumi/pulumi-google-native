@@ -490,6 +490,14 @@ export const PublishingOrganization = {
      * Shopping Org.
      */
     Shopping: "SHOPPING",
+    /**
+     * Geo Org.
+     */
+    Geo: "GEO",
+    /**
+     * Generative AI - https://developers.generativeai.google
+     */
+    GenerativeAi: "GENERATIVE_AI",
 } as const;
 
 /**

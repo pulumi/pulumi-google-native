@@ -62,6 +62,8 @@ type LookupConnectionResult struct {
 	SslConfig SslConfigResponse `pulumi:"sslConfig"`
 	// Current status of the connection.
 	Status ConnectionStatusResponse `pulumi:"status"`
+	// This subscription type enum states the subscription type of the project.
+	SubscriptionType string `pulumi:"subscriptionType"`
 	// Optional. Suspended indicates if a user has suspended a connection or not.
 	Suspended bool `pulumi:"suspended"`
 	// Updated time.
@@ -189,6 +191,11 @@ func (o LookupConnectionResultOutput) SslConfig() SslConfigResponseOutput {
 // Current status of the connection.
 func (o LookupConnectionResultOutput) Status() ConnectionStatusResponseOutput {
 	return o.ApplyT(func(v LookupConnectionResult) ConnectionStatusResponse { return v.Status }).(ConnectionStatusResponseOutput)
+}
+
+// This subscription type enum states the subscription type of the project.
+func (o LookupConnectionResultOutput) SubscriptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.SubscriptionType }).(pulumi.StringOutput)
 }
 
 // Optional. Suspended indicates if a user has suspended a connection or not.

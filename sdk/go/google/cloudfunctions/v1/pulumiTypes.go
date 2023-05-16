@@ -1677,7 +1677,7 @@ func (o SecretEnvVarResponseArrayOutput) Index(i pulumi.IntInput) SecretEnvVarRe
 type SecretVersion struct {
 	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
 	Path *string `pulumi:"path"`
-	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 	Version *string `pulumi:"version"`
 }
 
@@ -1696,7 +1696,7 @@ type SecretVersionInput interface {
 type SecretVersionArgs struct {
 	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1757,7 +1757,7 @@ func (o SecretVersionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretVersion) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 func (o SecretVersionOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1786,7 +1786,7 @@ func (o SecretVersionArrayOutput) Index(i pulumi.IntInput) SecretVersionOutput {
 type SecretVersionResponse struct {
 	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount the secret value file at `/etc/secrets/secret_foo`.
 	Path string `pulumi:"path"`
-	// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 	Version string `pulumi:"version"`
 }
 
@@ -1810,7 +1810,7 @@ func (o SecretVersionResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretVersionResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version with secret volumes as secret value changes are reflected immediately.
+// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately.
 func (o SecretVersionResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretVersionResponse) string { return v.Version }).(pulumi.StringOutput)
 }

@@ -4998,6 +4998,8 @@ type GooglePrivacyDlpV2CustomInfoType struct {
 	Likelihood *GooglePrivacyDlpV2CustomInfoTypeLikelihood `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex *GooglePrivacyDlpV2Regex `pulumi:"regex"`
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	SensitivityScore *GooglePrivacyDlpV2SensitivityScore `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType *GooglePrivacyDlpV2StoredType `pulumi:"storedType"`
 	// Message for detecting output from deidentification transformations that support reversing.
@@ -5029,6 +5031,8 @@ type GooglePrivacyDlpV2CustomInfoTypeArgs struct {
 	Likelihood GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrInput `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex GooglePrivacyDlpV2RegexPtrInput `pulumi:"regex"`
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	SensitivityScore GooglePrivacyDlpV2SensitivityScorePtrInput `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType GooglePrivacyDlpV2StoredTypePtrInput `pulumi:"storedType"`
 	// Message for detecting output from deidentification transformations that support reversing.
@@ -5121,6 +5125,13 @@ func (o GooglePrivacyDlpV2CustomInfoTypeOutput) Regex() GooglePrivacyDlpV2RegexP
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoType) *GooglePrivacyDlpV2Regex { return v.Regex }).(GooglePrivacyDlpV2RegexPtrOutput)
 }
 
+// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+func (o GooglePrivacyDlpV2CustomInfoTypeOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoType) *GooglePrivacyDlpV2SensitivityScore {
+		return v.SensitivityScore
+	}).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
+}
+
 // Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 func (o GooglePrivacyDlpV2CustomInfoTypeOutput) StoredType() GooglePrivacyDlpV2StoredTypePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoType) *GooglePrivacyDlpV2StoredType { return v.StoredType }).(GooglePrivacyDlpV2StoredTypePtrOutput)
@@ -5165,6 +5176,8 @@ type GooglePrivacyDlpV2CustomInfoTypeResponse struct {
 	Likelihood string `pulumi:"likelihood"`
 	// Regular expression based CustomInfoType.
 	Regex GooglePrivacyDlpV2RegexResponse `pulumi:"regex"`
+	// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+	SensitivityScore GooglePrivacyDlpV2SensitivityScoreResponse `pulumi:"sensitivityScore"`
 	// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 	StoredType GooglePrivacyDlpV2StoredTypeResponse `pulumi:"storedType"`
 	// Message for detecting output from deidentification transformations that support reversing.
@@ -5218,6 +5231,13 @@ func (o GooglePrivacyDlpV2CustomInfoTypeResponseOutput) Likelihood() pulumi.Stri
 // Regular expression based CustomInfoType.
 func (o GooglePrivacyDlpV2CustomInfoTypeResponseOutput) Regex() GooglePrivacyDlpV2RegexResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoTypeResponse) GooglePrivacyDlpV2RegexResponse { return v.Regex }).(GooglePrivacyDlpV2RegexResponseOutput)
+}
+
+// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
+func (o GooglePrivacyDlpV2CustomInfoTypeResponseOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScoreResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2CustomInfoTypeResponse) GooglePrivacyDlpV2SensitivityScoreResponse {
+		return v.SensitivityScore
+	}).(GooglePrivacyDlpV2SensitivityScoreResponseOutput)
 }
 
 // Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
@@ -10095,6 +10115,8 @@ func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) Transforms() Googl
 type GooglePrivacyDlpV2InfoType struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name *string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	SensitivityScore *GooglePrivacyDlpV2SensitivityScore `pulumi:"sensitivityScore"`
 	// Optional version name for this InfoType.
 	Version *string `pulumi:"version"`
 }
@@ -10114,6 +10136,8 @@ type GooglePrivacyDlpV2InfoTypeInput interface {
 type GooglePrivacyDlpV2InfoTypeArgs struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	SensitivityScore GooglePrivacyDlpV2SensitivityScorePtrInput `pulumi:"sensitivityScore"`
 	// Optional version name for this InfoType.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -10226,6 +10250,11 @@ func (o GooglePrivacyDlpV2InfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+func (o GooglePrivacyDlpV2InfoTypeOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *GooglePrivacyDlpV2SensitivityScore { return v.SensitivityScore }).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
+}
+
 // Optional version name for this InfoType.
 func (o GooglePrivacyDlpV2InfoTypeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoType) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -10263,6 +10292,16 @@ func (o GooglePrivacyDlpV2InfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+func (o GooglePrivacyDlpV2InfoTypePtrOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoType) *GooglePrivacyDlpV2SensitivityScore {
+		if v == nil {
+			return nil
+		}
+		return v.SensitivityScore
+	}).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
 }
 
 // Optional version name for this InfoType.
@@ -10461,6 +10500,8 @@ func (o GooglePrivacyDlpV2InfoTypeLimitResponseArrayOutput) Index(i pulumi.IntIn
 type GooglePrivacyDlpV2InfoTypeResponse struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 	Name string `pulumi:"name"`
+	// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+	SensitivityScore GooglePrivacyDlpV2SensitivityScoreResponse `pulumi:"sensitivityScore"`
 	// Optional version name for this InfoType.
 	Version string `pulumi:"version"`
 }
@@ -10483,6 +10524,13 @@ func (o GooglePrivacyDlpV2InfoTypeResponseOutput) ToGooglePrivacyDlpV2InfoTypeRe
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
 func (o GooglePrivacyDlpV2InfoTypeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+func (o GooglePrivacyDlpV2InfoTypeResponseOutput) SensitivityScore() GooglePrivacyDlpV2SensitivityScoreResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeResponse) GooglePrivacyDlpV2SensitivityScoreResponse {
+		return v.SensitivityScore
+	}).(GooglePrivacyDlpV2SensitivityScoreResponseOutput)
 }
 
 // Optional version name for this InfoType.
@@ -19232,6 +19280,172 @@ func (o GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) InfoTypes() GooglePri
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
+// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+type GooglePrivacyDlpV2SensitivityScore struct {
+	// The score applied to the resource.
+	Score *GooglePrivacyDlpV2SensitivityScoreScore `pulumi:"score"`
+}
+
+// GooglePrivacyDlpV2SensitivityScoreInput is an input type that accepts GooglePrivacyDlpV2SensitivityScoreArgs and GooglePrivacyDlpV2SensitivityScoreOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2SensitivityScoreInput` via:
+//
+//	GooglePrivacyDlpV2SensitivityScoreArgs{...}
+type GooglePrivacyDlpV2SensitivityScoreInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SensitivityScoreOutput() GooglePrivacyDlpV2SensitivityScoreOutput
+	ToGooglePrivacyDlpV2SensitivityScoreOutputWithContext(context.Context) GooglePrivacyDlpV2SensitivityScoreOutput
+}
+
+// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+type GooglePrivacyDlpV2SensitivityScoreArgs struct {
+	// The score applied to the resource.
+	Score GooglePrivacyDlpV2SensitivityScoreScorePtrInput `pulumi:"score"`
+}
+
+func (GooglePrivacyDlpV2SensitivityScoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScore)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2SensitivityScoreArgs) ToGooglePrivacyDlpV2SensitivityScoreOutput() GooglePrivacyDlpV2SensitivityScoreOutput {
+	return i.ToGooglePrivacyDlpV2SensitivityScoreOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2SensitivityScoreArgs) ToGooglePrivacyDlpV2SensitivityScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SensitivityScoreOutput)
+}
+
+func (i GooglePrivacyDlpV2SensitivityScoreArgs) ToGooglePrivacyDlpV2SensitivityScorePtrOutput() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return i.ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2SensitivityScoreArgs) ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SensitivityScoreOutput).ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2SensitivityScorePtrInput is an input type that accepts GooglePrivacyDlpV2SensitivityScoreArgs, GooglePrivacyDlpV2SensitivityScorePtr and GooglePrivacyDlpV2SensitivityScorePtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2SensitivityScorePtrInput` via:
+//
+//	        GooglePrivacyDlpV2SensitivityScoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2SensitivityScorePtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SensitivityScorePtrOutput() GooglePrivacyDlpV2SensitivityScorePtrOutput
+	ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(context.Context) GooglePrivacyDlpV2SensitivityScorePtrOutput
+}
+
+type googlePrivacyDlpV2SensitivityScorePtrType GooglePrivacyDlpV2SensitivityScoreArgs
+
+func GooglePrivacyDlpV2SensitivityScorePtr(v *GooglePrivacyDlpV2SensitivityScoreArgs) GooglePrivacyDlpV2SensitivityScorePtrInput {
+	return (*googlePrivacyDlpV2SensitivityScorePtrType)(v)
+}
+
+func (*googlePrivacyDlpV2SensitivityScorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2SensitivityScore)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2SensitivityScorePtrType) ToGooglePrivacyDlpV2SensitivityScorePtrOutput() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return i.ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2SensitivityScorePtrType) ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
+}
+
+// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+type GooglePrivacyDlpV2SensitivityScoreOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SensitivityScoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreOutput() GooglePrivacyDlpV2SensitivityScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreOutput) ToGooglePrivacyDlpV2SensitivityScoreOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreOutput) ToGooglePrivacyDlpV2SensitivityScorePtrOutput() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o.ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreOutput) ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2SensitivityScore) *GooglePrivacyDlpV2SensitivityScore {
+		return &v
+	}).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
+}
+
+// The score applied to the resource.
+func (o GooglePrivacyDlpV2SensitivityScoreOutput) Score() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2SensitivityScore) *GooglePrivacyDlpV2SensitivityScoreScore { return v.Score }).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
+}
+
+type GooglePrivacyDlpV2SensitivityScorePtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SensitivityScorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2SensitivityScore)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) ToGooglePrivacyDlpV2SensitivityScorePtrOutput() GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) ToGooglePrivacyDlpV2SensitivityScorePtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScorePtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) Elem() GooglePrivacyDlpV2SensitivityScoreOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SensitivityScore) GooglePrivacyDlpV2SensitivityScore {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2SensitivityScore
+		return ret
+	}).(GooglePrivacyDlpV2SensitivityScoreOutput)
+}
+
+// The score applied to the resource.
+func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) Score() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SensitivityScore) *GooglePrivacyDlpV2SensitivityScoreScore {
+		if v == nil {
+			return nil
+		}
+		return v.Score
+	}).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
+}
+
+// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+type GooglePrivacyDlpV2SensitivityScoreResponse struct {
+	// The score applied to the resource.
+	Score string `pulumi:"score"`
+}
+
+// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+type GooglePrivacyDlpV2SensitivityScoreResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SensitivityScoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreResponseOutput) ToGooglePrivacyDlpV2SensitivityScoreResponseOutput() GooglePrivacyDlpV2SensitivityScoreResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SensitivityScoreResponseOutput) ToGooglePrivacyDlpV2SensitivityScoreResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SensitivityScoreResponseOutput {
+	return o
+}
+
+// The score applied to the resource.
+func (o GooglePrivacyDlpV2SensitivityScoreResponseOutput) Score() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2SensitivityScoreResponse) string { return v.Score }).(pulumi.StringOutput)
+}
+
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTable struct {
 	// Quasi-identifier columns.
@@ -23689,6 +23903,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SchedulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2SelectedInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2SelectedInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScoreInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SensitivityScorePtrInput)(nil)).Elem(), GooglePrivacyDlpV2SensitivityScoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigArgs{})
@@ -24057,6 +24273,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScorePtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SensitivityScoreResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableResponseOutput{})
