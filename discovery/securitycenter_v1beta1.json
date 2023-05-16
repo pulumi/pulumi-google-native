@@ -896,7 +896,7 @@
       }
     }
   },
-  "revision": "20230428",
+  "revision": "20230504",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Access": {

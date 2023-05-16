@@ -478,7 +478,7 @@
       }
     }
   },
-  "revision": "20230417",
+  "revision": "20230503",
   "rootUrl": "https://connectors.googleapis.com/",
   "schemas": {
     "Action": {

@@ -260,6 +260,21 @@
                       "pattern": "^projects/[^/]+/locations/[^/]+/bareMetalAdminClusters/[^/]+$",
                       "required": true,
                       "type": "string"
+                    },
+                    "view": {
+                      "description": "View for bare metal admin cluster. When `BASIC` is specified, only the cluster resource name and membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details.",
+                      "enum": [
+                        "CLUSTER_VIEW_UNSPECIFIED",
+                        "BASIC",
+                        "FULL"
+                      ],
+                      "enumDescriptions": [
+                        "If the value is not set, the default `FULL` view is used.",
+                        "Includes basic information of a cluster resource including cluster resource name and membership.",
+                        "Includes the complete configuration for bare metal admin cluster resource. This is the default value for GetBareMetalAdminClusterRequest method."
+                      ],
+                      "location": "query",
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -723,6 +738,21 @@
                       "location": "path",
                       "pattern": "^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+$",
                       "required": true,
+                      "type": "string"
+                    },
+                    "view": {
+                      "description": "View for bare metal user cluster. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details.",
+                      "enum": [
+                        "CLUSTER_VIEW_UNSPECIFIED",
+                        "BASIC",
+                        "FULL"
+                      ],
+                      "enumDescriptions": [
+                        "If the value is not set, the default `FULL` view is used.",
+                        "Includes basic information of a cluster resource including cluster resource name and admin cluster membership.",
+                        "Includes the complete configuration for bare metal cluster resource. This is the default value for GetBareMetalClusterRequest method."
+                      ],
+                      "location": "query",
                       "type": "string"
                     }
                   },
@@ -2096,6 +2126,21 @@
                       "pattern": "^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+$",
                       "required": true,
                       "type": "string"
+                    },
+                    "view": {
+                      "description": "View for VMware user cluster. When `BASIC` is specified, only the cluster resource name and admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as `FULL', which returns the complete cluster configuration details.",
+                      "enum": [
+                        "CLUSTER_VIEW_UNSPECIFIED",
+                        "BASIC",
+                        "FULL"
+                      ],
+                      "enumDescriptions": [
+                        "If the value is not set, the default `FULL` view is used.",
+                        "Includes basic information of a cluster resource including cluster resource name and admin cluster membership.",
+                        "Includes the complete configuration for VMware cluster resource. This is the default value for GetVmwareClusterRequest method."
+                      ],
+                      "location": "query",
+                      "type": "string"
                     }
                   },
                   "path": "v1/{+name}",
@@ -2861,7 +2906,7 @@
       }
     }
   },
-  "revision": "20230423",
+  "revision": "20230507",
   "rootUrl": "https://gkeonprem.googleapis.com/",
   "schemas": {
     "Authorization": {
@@ -2894,7 +2939,7 @@
       "type": "object"
     },
     "BareMetalAdminCluster": {
-      "description": "Resource that represents a bare metal admin cluster.",
+      "description": "## Resource that represents a bare metal admin cluster.",
       "id": "BareMetalAdminCluster",
       "properties": {
         "annotations": {
@@ -2905,6 +2950,7 @@
           "type": "object"
         },
         "bareMetalVersion": {
+          "description": "The Anthos clusters on bare metal version for the bare metal admin cluster.",
           "type": "string"
         },
         "clusterOperations": {
@@ -3249,6 +3295,7 @@
       "id": "BareMetalAdminPortConfig",
       "properties": {
         "controlPlaneLoadBalancerPort": {
+          "description": "The port that control plane hosted load balancers will listen on.",
           "format": "int32",
           "type": "integer"
         }
@@ -4212,10 +4259,6 @@
           "description": "User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.",
           "type": "string"
         },
-        "localName": {
-          "description": "The object name of the bare metal OnPremAdminCluster custom resource on the associated admin cluster. This field is used to support conflicting resource names when enrolling existing clusters to the API. When not provided, this field will resolve to the bare_metal_admin_cluster_id. Otherwise, it must match the object name of the bare metal OnPremAdminCluster custom resource. It is not modifiable outside / beyond the enrollment operation.",
-          "type": "string"
-        },
         "membership": {
           "description": "Required. This is the full resource name of this admin cluster's fleet membership.",
           "type": "string"
@@ -4981,7 +5024,7 @@
       "type": "object"
     },
     "VmwareAAGConfig": {
-      "description": "Specifies anti affinity group config for the VMware user cluster. ",
+      "description": "Specifies anti affinity group config for the VMware user cluster.",
       "id": "VmwareAAGConfig",
       "properties": {
         "aagConfigDisabled": {
@@ -5739,6 +5782,7 @@
       "type": "object"
     },
     "VmwareManualLbConfig": {
+      "description": "Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.",
       "id": "VmwareManualLbConfig",
       "properties": {
         "controlPlaneNodePort": {
