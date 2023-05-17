@@ -499,7 +499,7 @@
       }
     }
   },
-  "revision": "20230510",
+  "revision": "20230515",
   "rootUrl": "https://resourcesettings.googleapis.com/",
   "schemas": {
     "GoogleCloudResourcesettingsV1ListSettingsResponse": {

@@ -964,7 +964,7 @@
       }
     }
   },
-  "revision": "20230510",
+  "revision": "20230514",
   "rootUrl": "https://serviceusage.googleapis.com/",
   "schemas": {
     "AddEnableRulesMetadata": {

@@ -7007,7 +7007,7 @@
       }
     }
   },
-  "revision": "20230505",
+  "revision": "20230510",
   "rootUrl": "https://logging.googleapis.com/",
   "schemas": {
     "BigQueryDataset": {
