@@ -85,9 +85,12 @@ func buildURL(
 			sdkName = param.SdkName
 		}
 		key := resource.PropertyKey(sdkName)
-		inputString, found := getInputString(inputs, key)
+		inputString, found, err := getInputString(inputs, key)
 		if !found {
 			continue
+		}
+		if err != nil {
+			return "", errors.Wrapf(err, "getting input string for property %q", key)
 		}
 
 		switch param.Kind {
@@ -115,22 +118,22 @@ func buildURL(
 	return uri.String(), nil
 }
 
-func getInputString(inputs resource.PropertyMap, key resource.PropertyKey) (string, bool) {
+func getInputString(inputs resource.PropertyMap, key resource.PropertyKey) (string, bool, error) {
 	val := inputs[key]
 	if !val.HasValue() {
-		return "", false
+		return "", false, nil
 	}
 	if val.IsString() {
-		return val.StringValue(), true
+		return val.StringValue(), true, nil
 	}
 	if val.IsNumber() {
-		return fmt.Sprintf("%v", val.NumberValue()), true
+		return fmt.Sprintf("%v", val.NumberValue()), true, nil
 	}
 	if val.IsBool() {
-		return fmt.Sprintf("%v", val.BoolValue()), true
+		return fmt.Sprintf("%v", val.BoolValue()), true, nil
 	}
-	// Don't panic if we get an unexpected type, just ignore it.
-	return "", false
+
+	return "", true, fmt.Errorf("unexpected input type for property key %q - expected string, number or boolean", key)
 }
 
 var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters allowed
