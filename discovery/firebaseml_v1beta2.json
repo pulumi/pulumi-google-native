@@ -318,7 +318,7 @@
       }
     }
   },
-  "revision": "20230510",
+  "revision": "20230515",
   "rootUrl": "https://firebaseml.googleapis.com/",
   "schemas": {
     "DownloadModelResponse": {

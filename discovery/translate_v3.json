@@ -1286,7 +1286,7 @@
       }
     }
   },
-  "revision": "20230428",
+  "revision": "20230511",
   "rootUrl": "https://translation.googleapis.com/",
   "schemas": {
     "BatchDocumentInputConfig": {
