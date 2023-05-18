@@ -85,16 +85,19 @@ func buildURL(
 			sdkName = param.SdkName
 		}
 		key := resource.PropertyKey(sdkName)
-		if !inputs[key].HasValue() {
+		inputString, found, err := getInputString(inputs, key)
+		if !found {
 			continue
 		}
+		if err != nil {
+			return "", errors.Wrapf(err, "getting input string for property %q", key)
+		}
 
-		value := inputs[key].StringValue()
 		switch param.Kind {
 		case "path":
-			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
+			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(inputString), 1)
 		case "query":
-			queryMap[param.Name] = value
+			queryMap[param.Name] = inputString
 		default:
 			return "", errors.Errorf("unknown param location %q", param.Kind)
 		}
@@ -113,6 +116,24 @@ func buildURL(
 	}
 	uri.RawQuery = query.Encode()
 	return uri.String(), nil
+}
+
+func getInputString(inputs resource.PropertyMap, key resource.PropertyKey) (string, bool, error) {
+	val := inputs[key]
+	if !val.HasValue() {
+		return "", false, nil
+	}
+	if val.IsString() {
+		return val.StringValue(), true, nil
+	}
+	if val.IsNumber() {
+		return fmt.Sprintf("%v", val.NumberValue()), true, nil
+	}
+	if val.IsBool() {
+		return fmt.Sprintf("%v", val.BoolValue()), true, nil
+	}
+
+	return "", true, fmt.Errorf("unexpected input type for property key %q - expected string, number or boolean", key)
 }
 
 var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters allowed
