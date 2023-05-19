@@ -1237,7 +1237,7 @@
       }
     }
   },
-  "revision": "20230508",
+  "revision": "20230516",
   "rootUrl": "https://identitytoolkit.googleapis.com/",
   "schemas": {
     "GoogleCloudIdentitytoolkitV1Argon2Parameters": {
