@@ -23,6 +23,7 @@ func LookupVmwareCluster(ctx *pulumi.Context, args *LookupVmwareClusterArgs, opt
 type LookupVmwareClusterArgs struct {
 	Location        string  `pulumi:"location"`
 	Project         *string `pulumi:"project"`
+	View            *string `pulumi:"view"`
 	VmwareClusterId string  `pulumi:"vmwareClusterId"`
 }
 
@@ -103,6 +104,7 @@ func LookupVmwareClusterOutput(ctx *pulumi.Context, args LookupVmwareClusterOutp
 type LookupVmwareClusterOutputArgs struct {
 	Location        pulumi.StringInput    `pulumi:"location"`
 	Project         pulumi.StringPtrInput `pulumi:"project"`
+	View            pulumi.StringPtrInput `pulumi:"view"`
 	VmwareClusterId pulumi.StringInput    `pulumi:"vmwareClusterId"`
 }
 

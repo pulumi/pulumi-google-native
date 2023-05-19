@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Inputs.GcsDataArgs>? GcsDataSource { get; set; }
 
         /// <summary>
-        /// Cloud Storage intermediate data location.
+        /// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
         /// </summary>
         [Input("gcsIntermediateDataLocation")]
         public Input<Inputs.GcsDataArgs>? GcsIntermediateDataLocation { get; set; }

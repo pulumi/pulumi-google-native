@@ -48,7 +48,7 @@ type LookupInstanceConfigResult struct {
 	Reconciling bool `pulumi:"reconciling"`
 	// The geographic placement of nodes in this instance configuration and their replication properties.
 	Replicas []ReplicaInfoResponse `pulumi:"replicas"`
-	// The current instance config state.
+	// The current instance config state. Applicable only for USER_MANAGED configs.
 	State string `pulumi:"state"`
 }
 
@@ -143,7 +143,7 @@ func (o LookupInstanceConfigResultOutput) Replicas() ReplicaInfoResponseArrayOut
 	return o.ApplyT(func(v LookupInstanceConfigResult) []ReplicaInfoResponse { return v.Replicas }).(ReplicaInfoResponseArrayOutput)
 }
 
-// The current instance config state.
+// The current instance config state. Applicable only for USER_MANAGED configs.
 func (o LookupInstanceConfigResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceConfigResult) string { return v.State }).(pulumi.StringOutput)
 }

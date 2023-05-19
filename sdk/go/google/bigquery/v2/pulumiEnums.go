@@ -1080,12 +1080,14 @@ type RoutineRoutineType string
 
 const (
 	RoutineRoutineTypeRoutineTypeUnspecified = RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED")
-	// Non-builtin permanent scalar function.
+	// Non-built-in persistent scalar function.
 	RoutineRoutineTypeScalarFunction = RoutineRoutineType("SCALAR_FUNCTION")
 	// Stored procedure.
 	RoutineRoutineTypeProcedure = RoutineRoutineType("PROCEDURE")
-	// Non-builtin permanent TVF.
+	// Non-built-in persistent TVF.
 	RoutineRoutineTypeTableValuedFunction = RoutineRoutineType("TABLE_VALUED_FUNCTION")
+	// Non-built-in persistent aggregate function.
+	RoutineRoutineTypeAggregateFunction = RoutineRoutineType("AGGREGATE_FUNCTION")
 )
 
 func (RoutineRoutineType) ElementType() reflect.Type {

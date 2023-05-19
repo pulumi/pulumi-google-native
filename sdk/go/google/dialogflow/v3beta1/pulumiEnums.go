@@ -1895,6 +1895,354 @@ func (in *googleCloudDialogflowCxV3beta1TestCaseResultTestResultPtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput)
 }
 
+// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod string
+
+const (
+	// HTTP method not specified.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodHttpMethodUnspecified = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED")
+	// HTTP POST Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPost = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("POST")
+	// HTTP GET Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodGet = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("GET")
+	// HTTP HEAD Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodHead = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HEAD")
+	// HTTP PUT Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPut = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("PUT")
+	// HTTP DELETE Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodDelete = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("DELETE")
+	// HTTP PATCH Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPatch = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("PATCH")
+	// HTTP OPTIONS Method.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOptions = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("OPTIONS")
+)
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod(e).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodArgs and GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodArgs{...}
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput
+}
+
+var googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr string
+
+func GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr(v string) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrInput {
+	return (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+// Optional. Type of the webhook.
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType string
+
+const (
+	// Default value. This value is unused.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeWebhookTypeUnspecified = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED")
+	// Represents a standard webhook.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeStandard = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("STANDARD")
+	// Represents a flexible webhook.
+	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeFlexible = GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("FLEXIBLE")
+)
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType(e).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeArgs and GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput` via:
+//
+//	GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeArgs{...}
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput
+}
+
+var googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr string
+
+func GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr(v string) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrInput {
+	return (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtr) ToGoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput)
+}
+
 type SecuritySettingPurgeDataTypesItem string
 
 const (
@@ -2632,6 +2980,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingPurgeDataTypesItemInput)(nil)).Elem(), SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingPurgeDataTypesItemPtrInput)(nil)).Elem(), SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingPurgeDataTypesItemArrayInput)(nil)).Elem(), SecuritySettingPurgeDataTypesItemArray{})
@@ -2663,6 +3015,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethodPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookTypePtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemOutput{})
 	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemArrayOutput{})

@@ -57,6 +57,8 @@ type LookupWorkloadResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Partner regime associated with this workload.
 	Partner string `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse `pulumi:"partnerPermissions"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -65,7 +67,7 @@ type LookupWorkloadResult struct {
 	Resources []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse `pulumi:"resources"`
 	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
 	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse `pulumi:"saaEnrollmentResponse"`
-	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled bool `pulumi:"violationNotificationsEnabled"`
 }
 
@@ -184,6 +186,13 @@ func (o LookupWorkloadResultOutput) Partner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.Partner }).(pulumi.StringOutput)
 }
 
+// Optional. Permissions granted to the AW Partner SA account for the customer workload
+func (o LookupWorkloadResultOutput) PartnerPermissions() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse {
+		return v.PartnerPermissions
+	}).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput)
+}
+
 // Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 func (o LookupWorkloadResultOutput) ProvisionedResourcesParent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.ProvisionedResourcesParent }).(pulumi.StringOutput)
@@ -210,7 +219,7 @@ func (o LookupWorkloadResultOutput) SaaEnrollmentResponse() GoogleCloudAssuredwo
 	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
 }
 
-// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 func (o LookupWorkloadResultOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) bool { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
 }

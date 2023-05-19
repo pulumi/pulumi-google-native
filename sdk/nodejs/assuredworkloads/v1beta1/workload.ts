@@ -122,6 +122,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly partner!: pulumi.Output<string>;
     /**
+     * Optional. Permissions granted to the AW Partner SA account for the customer workload
+     */
+    public readonly partnerPermissions!: pulumi.Output<outputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse>;
+    /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string>;
@@ -179,6 +183,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["partner"] = args ? args.partner : undefined;
+            resourceInputs["partnerPermissions"] = args ? args.partnerPermissions : undefined;
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
@@ -212,6 +217,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["partner"] = undefined /*out*/;
+            resourceInputs["partnerPermissions"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
             resourceInputs["resourceSettings"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
@@ -293,6 +299,10 @@ export interface WorkloadArgs {
      * Optional. Partner regime associated with this workload.
      */
     partner?: pulumi.Input<enums.assuredworkloads.v1beta1.WorkloadPartner>;
+    /**
+     * Optional. Permissions granted to the AW Partner SA account for the customer workload
+     */
+    partnerPermissions?: pulumi.Input<inputs.assuredworkloads.v1beta1.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
      */

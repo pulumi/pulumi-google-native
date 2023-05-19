@@ -72,6 +72,10 @@ type LookupSnapshotResult struct {
 	SourceDiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceDiskEncryptionKey"`
 	// The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 	SourceDiskId string `pulumi:"sourceDiskId"`
+	// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot string `pulumi:"sourceInstantSnapshot"`
+	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+	SourceInstantSnapshotId string `pulumi:"sourceInstantSnapshotId"`
 	// URL of the resource policy which created this scheduled snapshot.
 	SourceSnapshotSchedulePolicy string `pulumi:"sourceSnapshotSchedulePolicy"`
 	// ID of the resource policy which created this scheduled snapshot.
@@ -237,6 +241,16 @@ func (o LookupSnapshotResultOutput) SourceDiskEncryptionKey() CustomerEncryption
 // The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
 func (o LookupSnapshotResultOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+func (o LookupSnapshotResultOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+func (o LookupSnapshotResultOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
 }
 
 // URL of the resource policy which created this scheduled snapshot.

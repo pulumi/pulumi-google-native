@@ -67,6 +67,8 @@ type LookupWorkloadResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Partner regime associated with this workload.
 	Partner string `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse `pulumi:"partnerPermissions"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -227,6 +229,13 @@ func (o LookupWorkloadResultOutput) Name() pulumi.StringOutput {
 // Optional. Partner regime associated with this workload.
 func (o LookupWorkloadResultOutput) Partner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.Partner }).(pulumi.StringOutput)
+}
+
+// Optional. Permissions granted to the AW Partner SA account for the customer workload
+func (o LookupWorkloadResultOutput) PartnerPermissions() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse {
+		return v.PartnerPermissions
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput)
 }
 
 // Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}

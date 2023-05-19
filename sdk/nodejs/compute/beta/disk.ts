@@ -201,6 +201,14 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
     /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    public readonly sourceInstantSnapshot!: pulumi.Output<string>;
+    /**
+     * The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+     */
+    public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
+    /**
      * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
      */
     public readonly sourceSnapshot!: pulumi.Output<string>;
@@ -277,6 +285,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
             resourceInputs["sourceImageEncryptionKey"] = args ? args.sourceImageEncryptionKey : undefined;
+            resourceInputs["sourceInstantSnapshot"] = args ? args.sourceInstantSnapshot : undefined;
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
@@ -299,6 +308,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceConsistencyGroupPolicyId"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
@@ -344,6 +354,8 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["sourceImage"] = undefined /*out*/;
             resourceInputs["sourceImageEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshot"] = undefined /*out*/;
+            resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceSnapshot"] = undefined /*out*/;
             resourceInputs["sourceSnapshotEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
@@ -469,6 +481,10 @@ export interface DiskArgs {
      * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
      */
     sourceImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
+    /**
+     * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
     /**
      * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
      */

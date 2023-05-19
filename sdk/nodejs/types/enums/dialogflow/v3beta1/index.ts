@@ -274,6 +274,66 @@ export const GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult = {
  */
 export type GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult = (typeof GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult)[keyof typeof GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult];
 
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod = {
+    /**
+     * HTTP method not specified.
+     */
+    HttpMethodUnspecified: "HTTP_METHOD_UNSPECIFIED",
+    /**
+     * HTTP POST Method.
+     */
+    Post: "POST",
+    /**
+     * HTTP GET Method.
+     */
+    Get: "GET",
+    /**
+     * HTTP HEAD Method.
+     */
+    Head: "HEAD",
+    /**
+     * HTTP PUT Method.
+     */
+    Put: "PUT",
+    /**
+     * HTTP DELETE Method.
+     */
+    Delete: "DELETE",
+    /**
+     * HTTP PATCH Method.
+     */
+    Patch: "PATCH",
+    /**
+     * HTTP OPTIONS Method.
+     */
+    Options: "OPTIONS",
+} as const;
+
+/**
+ * Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+ */
+export type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod = (typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod)[keyof typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod];
+
+export const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType = {
+    /**
+     * Default value. This value is unused.
+     */
+    WebhookTypeUnspecified: "WEBHOOK_TYPE_UNSPECIFIED",
+    /**
+     * Represents a standard webhook.
+     */
+    Standard: "STANDARD",
+    /**
+     * Represents a flexible webhook.
+     */
+    Flexible: "FLEXIBLE",
+} as const;
+
+/**
+ * Optional. Type of the webhook.
+ */
+export type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType = (typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType)[keyof typeof GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType];
+
 export const SecuritySettingPurgeDataTypesItem = {
     /**
      * Unspecified. Do not use.

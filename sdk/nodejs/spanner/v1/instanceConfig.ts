@@ -83,7 +83,7 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     public readonly replicas!: pulumi.Output<outputs.spanner.v1.ReplicaInfoResponse[]>;
     /**
-     * The current instance config state.
+     * The current instance config state. Applicable only for USER_MANAGED configs.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 

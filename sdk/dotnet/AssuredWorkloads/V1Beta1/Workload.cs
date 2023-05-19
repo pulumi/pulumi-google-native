@@ -142,6 +142,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         public Output<string> Partner { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        [Output("partnerPermissions")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse> PartnerPermissions { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Output("provisionedResourcesParent")]
@@ -322,6 +328,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         [Input("partner")]
         public Input<Pulumi.GoogleNative.AssuredWorkloads.V1Beta1.WorkloadPartner>? Partner { get; set; }
+
+        /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        [Input("partnerPermissions")]
+        public Input<Inputs.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs>? PartnerPermissions { get; set; }
 
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}

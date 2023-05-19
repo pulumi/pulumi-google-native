@@ -114,7 +114,7 @@ class ClusterArgs:
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration.
+        :param pulumi.Input['ReleaseChannelArgs'] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input['ResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
         :param pulumi.Input['ShieldedNodesArgs'] shielded_nodes: Shielded Nodes configuration.
@@ -772,7 +772,7 @@ class ClusterArgs:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> Optional[pulumi.Input['ReleaseChannelArgs']]:
         """
-        Release channel configuration.
+        Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         """
         return pulumi.get(self, "release_channel")
 
@@ -971,7 +971,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
-        :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration.
+        :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
@@ -1641,7 +1641,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> pulumi.Output['outputs.ReleaseChannelResponse']:
         """
-        Release channel configuration.
+        Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         """
         return pulumi.get(self, "release_channel")
 

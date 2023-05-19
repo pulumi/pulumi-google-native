@@ -150,6 +150,14 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SourceDiskId;
         /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        /// </summary>
+        public readonly string SourceInstantSnapshotId;
+        /// <summary>
         /// URL of the resource policy which created this scheduled snapshot.
         /// </summary>
         public readonly string SourceSnapshotSchedulePolicy;
@@ -226,6 +234,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string sourceDiskId,
 
+            string sourceInstantSnapshot,
+
+            string sourceInstantSnapshotId,
+
             string sourceSnapshotSchedulePolicy,
 
             string sourceSnapshotSchedulePolicyId,
@@ -263,6 +275,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
             SourceDiskId = sourceDiskId;
+            SourceInstantSnapshot = sourceInstantSnapshot;
+            SourceInstantSnapshotId = sourceInstantSnapshotId;
             SourceSnapshotSchedulePolicy = sourceSnapshotSchedulePolicy;
             SourceSnapshotSchedulePolicyId = sourceSnapshotSchedulePolicyId;
             Status = status;

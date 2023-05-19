@@ -43,6 +43,7 @@ class DiskArgs:
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
@@ -77,6 +78,7 @@ class DiskArgs:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
@@ -139,6 +141,8 @@ class DiskArgs:
             pulumi.set(__self__, "source_image", source_image)
         if source_image_encryption_key is not None:
             pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
         if source_snapshot_encryption_key is not None:
@@ -467,6 +471,18 @@ class DiskArgs:
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @property
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
@@ -579,6 +595,7 @@ class Disk(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
@@ -617,6 +634,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
@@ -674,6 +692,7 @@ class Disk(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
@@ -719,6 +738,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image"] = source_image
             __props__.__dict__["source_image_encryption_key"] = source_image_encryption_key
+            __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["source_snapshot"] = source_snapshot
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_storage_object"] = source_storage_object
@@ -744,6 +764,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_consistency_group_policy_id"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_image_id"] = None
+            __props__.__dict__["source_instant_snapshot_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["users"] = None
@@ -812,6 +833,8 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_image"] = None
         __props__.__dict__["source_image_encryption_key"] = None
         __props__.__dict__["source_image_id"] = None
+        __props__.__dict__["source_instant_snapshot"] = None
+        __props__.__dict__["source_instant_snapshot_id"] = None
         __props__.__dict__["source_snapshot"] = None
         __props__.__dict__["source_snapshot_encryption_key"] = None
         __props__.__dict__["source_snapshot_id"] = None
@@ -1148,6 +1171,22 @@ class Disk(pulumi.CustomResource):
         The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
         """
         return pulumi.get(self, "source_image_id")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[str]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
 
     @property
     @pulumi.getter(name="sourceSnapshot")

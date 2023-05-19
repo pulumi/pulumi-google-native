@@ -270,7 +270,7 @@ export interface GetClusterResult {
      */
     readonly protectConfig: outputs.container.v1beta1.ProtectConfigResponse;
     /**
-     * Release channel configuration.
+     * Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
      */
     readonly releaseChannel: outputs.container.v1beta1.ReleaseChannelResponse;
     /**

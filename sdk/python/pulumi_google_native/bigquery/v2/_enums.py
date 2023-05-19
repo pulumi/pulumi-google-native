@@ -139,7 +139,7 @@ class RoutineRoutineType(str, Enum):
     ROUTINE_TYPE_UNSPECIFIED = "ROUTINE_TYPE_UNSPECIFIED"
     SCALAR_FUNCTION = "SCALAR_FUNCTION"
     """
-    Non-builtin permanent scalar function.
+    Non-built-in persistent scalar function.
     """
     PROCEDURE = "PROCEDURE"
     """
@@ -147,7 +147,11 @@ class RoutineRoutineType(str, Enum):
     """
     TABLE_VALUED_FUNCTION = "TABLE_VALUED_FUNCTION"
     """
-    Non-builtin permanent TVF.
+    Non-built-in persistent TVF.
+    """
+    AGGREGATE_FUNCTION = "AGGREGATE_FUNCTION"
+    """
+    Non-built-in persistent aggregate function.
     """
 
 

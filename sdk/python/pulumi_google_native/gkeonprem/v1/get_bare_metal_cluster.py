@@ -393,6 +393,7 @@ class AwaitableGetBareMetalClusterResult(GetBareMetalClusterResult):
 def get_bare_metal_cluster(bare_metal_cluster_id: Optional[str] = None,
                            location: Optional[str] = None,
                            project: Optional[str] = None,
+                           view: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBareMetalClusterResult:
     """
     Gets details of a single bare metal Cluster.
@@ -401,6 +402,7 @@ def get_bare_metal_cluster(bare_metal_cluster_id: Optional[str] = None,
     __args__['bareMetalClusterId'] = bare_metal_cluster_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['view'] = view
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getBareMetalCluster', __args__, opts=opts, typ=GetBareMetalClusterResult).value
 
@@ -441,6 +443,7 @@ def get_bare_metal_cluster(bare_metal_cluster_id: Optional[str] = None,
 def get_bare_metal_cluster_output(bare_metal_cluster_id: Optional[pulumi.Input[str]] = None,
                                   location: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
+                                  view: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBareMetalClusterResult]:
     """
     Gets details of a single bare metal Cluster.

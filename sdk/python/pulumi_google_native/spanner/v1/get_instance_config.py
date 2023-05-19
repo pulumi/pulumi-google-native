@@ -149,7 +149,7 @@ class GetInstanceConfigResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The current instance config state.
+        The current instance config state. Applicable only for USER_MANAGED configs.
         """
         return pulumi.get(self, "state")
 

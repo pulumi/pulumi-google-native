@@ -323,7 +323,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
         Settings specific to keys that can be used by iOS apps.
         :param pulumi.Input[bool] allow_all_bundle_ids: If set to true, allowed_bundle_ids are not enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs'] apple_developer_id: Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs'] apple_developer_id: Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         if allow_all_bundle_ids is not None:
             pulumi.set(__self__, "allow_all_bundle_ids", allow_all_bundle_ids)
@@ -360,7 +360,7 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs:
     @pulumi.getter(name="appleDeveloperId")
     def apple_developer_id(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdArgs']]:
         """
-        Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         """
         return pulumi.get(self, "apple_developer_id")
 

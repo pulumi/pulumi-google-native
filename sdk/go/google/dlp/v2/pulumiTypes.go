@@ -6179,15 +6179,15 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) TransformationErrorHan
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
 }
 
-// The results of a Deidentify action from an Inspect job.
+// The results of a Deidentify action from an inspect job.
 type GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse struct {
-	// Stats about de-identification.
+	// Stats about the de-identification operation.
 	DeidentifyStats GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse `pulumi:"deidentifyStats"`
 	// De-identification config used for the request.
 	RequestedOptions GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse `pulumi:"requestedOptions"`
 }
 
-// The results of a Deidentify action from an Inspect job.
+// The results of a Deidentify action from an inspect job.
 type GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) ElementType() reflect.Type {
@@ -6202,7 +6202,7 @@ func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) ToGooglePri
 	return o
 }
 
-// Stats about de-identification.
+// Stats about the de-identification operation.
 func (o GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponseOutput) DeidentifyStats() GooglePrivacyDlpV2DeidentifyDataSourceStatsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse) GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
 		return v.DeidentifyStats
@@ -18392,11 +18392,11 @@ func (o GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponseOutput) ToGooglePriva
 
 // De-id options.
 type GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse struct {
-	// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+	// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
 	SnapshotDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotDeidentifyTemplate"`
-	// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+	// Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
 	SnapshotImageRedactTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotImageRedactTemplate"`
-	// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+	// Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
 	SnapshotStructuredDeidentifyTemplate GooglePrivacyDlpV2DeidentifyTemplateResponse `pulumi:"snapshotStructuredDeidentifyTemplate"`
 }
 
@@ -18415,21 +18415,21 @@ func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) ToGooglePriv
 	return o
 }
 
-// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
 func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotDeidentifyTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
 		return v.SnapshotDeidentifyTemplate
 	}).(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput)
 }
 
-// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+// Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
 func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotImageRedactTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
 		return v.SnapshotImageRedactTemplate
 	}).(GooglePrivacyDlpV2DeidentifyTemplateResponseOutput)
 }
 
-// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+// Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
 func (o GooglePrivacyDlpV2RequestedDeidentifyOptionsResponseOutput) SnapshotStructuredDeidentifyTemplate() GooglePrivacyDlpV2DeidentifyTemplateResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse) GooglePrivacyDlpV2DeidentifyTemplateResponse {
 		return v.SnapshotStructuredDeidentifyTemplate
@@ -19280,9 +19280,9 @@ func (o GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) InfoTypes() GooglePri
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
-// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 type GooglePrivacyDlpV2SensitivityScore struct {
-	// The score applied to the resource.
+	// The sensitivity score applied to the resource.
 	Score *GooglePrivacyDlpV2SensitivityScoreScore `pulumi:"score"`
 }
 
@@ -19297,9 +19297,9 @@ type GooglePrivacyDlpV2SensitivityScoreInput interface {
 	ToGooglePrivacyDlpV2SensitivityScoreOutputWithContext(context.Context) GooglePrivacyDlpV2SensitivityScoreOutput
 }
 
-// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 type GooglePrivacyDlpV2SensitivityScoreArgs struct {
-	// The score applied to the resource.
+	// The sensitivity score applied to the resource.
 	Score GooglePrivacyDlpV2SensitivityScoreScorePtrInput `pulumi:"score"`
 }
 
@@ -19356,7 +19356,7 @@ func (i *googlePrivacyDlpV2SensitivityScorePtrType) ToGooglePrivacyDlpV2Sensitiv
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
 }
 
-// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 type GooglePrivacyDlpV2SensitivityScoreOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2SensitivityScoreOutput) ElementType() reflect.Type {
@@ -19381,7 +19381,7 @@ func (o GooglePrivacyDlpV2SensitivityScoreOutput) ToGooglePrivacyDlpV2Sensitivit
 	}).(GooglePrivacyDlpV2SensitivityScorePtrOutput)
 }
 
-// The score applied to the resource.
+// The sensitivity score applied to the resource.
 func (o GooglePrivacyDlpV2SensitivityScoreOutput) Score() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2SensitivityScore) *GooglePrivacyDlpV2SensitivityScoreScore { return v.Score }).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
 }
@@ -19410,7 +19410,7 @@ func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) Elem() GooglePrivacyDlpV2Se
 	}).(GooglePrivacyDlpV2SensitivityScoreOutput)
 }
 
-// The score applied to the resource.
+// The sensitivity score applied to the resource.
 func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) Score() GooglePrivacyDlpV2SensitivityScoreScorePtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2SensitivityScore) *GooglePrivacyDlpV2SensitivityScoreScore {
 		if v == nil {
@@ -19420,13 +19420,13 @@ func (o GooglePrivacyDlpV2SensitivityScorePtrOutput) Score() GooglePrivacyDlpV2S
 	}).(GooglePrivacyDlpV2SensitivityScoreScorePtrOutput)
 }
 
-// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 type GooglePrivacyDlpV2SensitivityScoreResponse struct {
-	// The score applied to the resource.
+	// The sensitivity score applied to the resource.
 	Score string `pulumi:"score"`
 }
 
-// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
 type GooglePrivacyDlpV2SensitivityScoreResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2SensitivityScoreResponseOutput) ElementType() reflect.Type {
@@ -19441,7 +19441,7 @@ func (o GooglePrivacyDlpV2SensitivityScoreResponseOutput) ToGooglePrivacyDlpV2Se
 	return o
 }
 
-// The score applied to the resource.
+// The sensitivity score applied to the resource.
 func (o GooglePrivacyDlpV2SensitivityScoreResponseOutput) Score() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2SensitivityScoreResponse) string { return v.Score }).(pulumi.StringOutput)
 }

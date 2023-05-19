@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<ImmutableArray<Outputs.ReplicaInfoResponse>> Replicas { get; private set; } = null!;
 
         /// <summary>
-        /// The current instance config state.
+        /// The current instance config state. Applicable only for USER_MANAGED configs.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;

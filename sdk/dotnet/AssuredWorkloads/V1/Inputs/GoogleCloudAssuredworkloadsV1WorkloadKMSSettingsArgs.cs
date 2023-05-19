@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
 {
 
     /// <summary>
-    /// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+    /// Settings specific to the Key Management Service.
     /// </summary>
     public sealed class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs : global::Pulumi.ResourceArgs
     {

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -141,6 +141,12 @@ class GetRegionDiskResult:
         if source_image_id and not isinstance(source_image_id, str):
             raise TypeError("Expected argument 'source_image_id' to be a str")
         pulumi.set(__self__, "source_image_id", source_image_id)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
+            raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot and not isinstance(source_snapshot, str):
             raise TypeError("Expected argument 'source_snapshot' to be a str")
         pulumi.set(__self__, "source_snapshot", source_snapshot)
@@ -489,6 +495,22 @@ class GetRegionDiskResult:
         return pulumi.get(self, "source_image_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> str:
+        """
+        The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> str:
         """
@@ -614,6 +636,8 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             source_image=self.source_image,
             source_image_encryption_key=self.source_image_encryption_key,
             source_image_id=self.source_image_id,
+            source_instant_snapshot=self.source_instant_snapshot,
+            source_instant_snapshot_id=self.source_instant_snapshot_id,
             source_snapshot=self.source_snapshot,
             source_snapshot_encryption_key=self.source_snapshot_encryption_key,
             source_snapshot_id=self.source_snapshot_id,
@@ -680,6 +704,8 @@ def get_region_disk(disk: Optional[str] = None,
         source_image=__ret__.source_image,
         source_image_encryption_key=__ret__.source_image_encryption_key,
         source_image_id=__ret__.source_image_id,
+        source_instant_snapshot=__ret__.source_instant_snapshot,
+        source_instant_snapshot_id=__ret__.source_instant_snapshot_id,
         source_snapshot=__ret__.source_snapshot,
         source_snapshot_encryption_key=__ret__.source_snapshot_encryption_key,
         source_snapshot_id=__ret__.source_snapshot_id,

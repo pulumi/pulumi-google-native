@@ -88,7 +88,7 @@ export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType =
      */
     ResourceTypeUnspecified: "RESOURCE_TYPE_UNSPECIFIED",
     /**
-     * Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
+     * Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
      */
     ConsumerProject: "CONSUMER_PROJECT",
     /**
@@ -106,7 +106,7 @@ export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType =
 } as const;
 
 /**
- * Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+ * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
  */
 export type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType = (typeof GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType];
 
@@ -160,11 +160,11 @@ export const WorkloadComplianceRegime = {
      */
     AuRegionsAndUsSupport: "AU_REGIONS_AND_US_SUPPORT",
     /**
-     * Assured Workloads for Partners
+     * Assured Workloads for Partners;
      */
     AssuredWorkloadsForPartners: "ASSURED_WORKLOADS_FOR_PARTNERS",
     /**
-     * Assured Workloads for Israel Regions
+     * Assured Workloads for Israel
      */
     IsrRegions: "ISR_REGIONS",
     /**

@@ -24,6 +24,7 @@ type LookupBareMetalClusterArgs struct {
 	BareMetalClusterId string  `pulumi:"bareMetalClusterId"`
 	Location           string  `pulumi:"location"`
 	Project            *string `pulumi:"project"`
+	View               *string `pulumi:"view"`
 }
 
 type LookupBareMetalClusterResult struct {
@@ -106,6 +107,7 @@ type LookupBareMetalClusterOutputArgs struct {
 	BareMetalClusterId pulumi.StringInput    `pulumi:"bareMetalClusterId"`
 	Location           pulumi.StringInput    `pulumi:"location"`
 	Project            pulumi.StringPtrInput `pulumi:"project"`
+	View               pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupBareMetalClusterOutputArgs) ElementType() reflect.Type {

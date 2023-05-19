@@ -21,9 +21,21 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedCaCerts;
         /// <summary>
+        /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+        /// </summary>
+        public readonly string HttpMethod;
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ParameterMapping;
+        /// <summary>
         /// The password for HTTP Basic authentication.
         /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+        /// </summary>
+        public readonly string RequestBody;
         /// <summary>
         /// The HTTP request headers to send together with webhook requests.
         /// </summary>
@@ -36,24 +48,40 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// The user name for HTTP Basic authentication.
         /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// Optional. Type of the webhook.
+        /// </summary>
+        public readonly string WebhookType;
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse(
             ImmutableArray<string> allowedCaCerts,
 
+            string httpMethod,
+
+            ImmutableDictionary<string, string> parameterMapping,
+
             string password,
+
+            string requestBody,
 
             ImmutableDictionary<string, string> requestHeaders,
 
             string uri,
 
-            string username)
+            string username,
+
+            string webhookType)
         {
             AllowedCaCerts = allowedCaCerts;
+            HttpMethod = httpMethod;
+            ParameterMapping = parameterMapping;
             Password = password;
+            RequestBody = requestBody;
             RequestHeaders = requestHeaders;
             Uri = uri;
             Username = username;
+            WebhookType = webhookType;
         }
     }
 }

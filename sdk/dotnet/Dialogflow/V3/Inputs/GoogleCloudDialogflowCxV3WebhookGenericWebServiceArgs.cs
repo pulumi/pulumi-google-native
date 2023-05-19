@@ -28,10 +28,34 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         }
 
         /// <summary>
+        /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+        /// </summary>
+        [Input("httpMethod")]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod>? HttpMethod { get; set; }
+
+        [Input("parameterMapping")]
+        private InputMap<string>? _parameterMapping;
+
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        public InputMap<string> ParameterMapping
+        {
+            get => _parameterMapping ?? (_parameterMapping = new InputMap<string>());
+            set => _parameterMapping = value;
+        }
+
+        /// <summary>
         /// The password for HTTP Basic authentication.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+        /// </summary>
+        [Input("requestBody")]
+        public Input<string>? RequestBody { get; set; }
 
         [Input("requestHeaders")]
         private InputMap<string>? _requestHeaders;
@@ -56,6 +80,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Optional. Type of the webhook.
+        /// </summary>
+        [Input("webhookType")]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType>? WebhookType { get; set; }
 
         public GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs()
         {

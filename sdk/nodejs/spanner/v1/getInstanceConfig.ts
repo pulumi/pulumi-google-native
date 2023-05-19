@@ -70,7 +70,7 @@ export interface GetInstanceConfigResult {
      */
     readonly replicas: outputs.spanner.v1.ReplicaInfoResponse[];
     /**
-     * The current instance config state.
+     * The current instance config state. Applicable only for USER_MANAGED configs.
      */
     readonly state: string;
 }

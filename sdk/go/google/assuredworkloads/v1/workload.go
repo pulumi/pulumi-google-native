@@ -49,6 +49,8 @@ type Workload struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Optional. Partner regime associated with this workload.
 	Partner pulumi.StringOutput `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput `pulumi:"partnerPermissions"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringOutput `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
@@ -57,7 +59,7 @@ type Workload struct {
 	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
 	// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
 	SaaEnrollmentResponse GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput `pulumi:"saaEnrollmentResponse"`
-	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled pulumi.BoolOutput `pulumi:"violationNotificationsEnabled"`
 }
 
@@ -140,11 +142,13 @@ type workloadArgs struct {
 	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Partner regime associated with this workload.
 	Partner *WorkloadPartner `pulumi:"partner"`
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions `pulumi:"partnerPermissions"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettings `pulumi:"resourceSettings"`
-	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
 }
 
@@ -176,11 +180,13 @@ type WorkloadArgs struct {
 	OrganizationId pulumi.StringInput
 	// Optional. Partner regime associated with this workload.
 	Partner WorkloadPartnerPtrInput
+	// Optional. Permissions granted to the AW Partner SA account for the customer workload
+	PartnerPermissions GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput
-	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled pulumi.BoolPtrInput
 }
 
@@ -310,6 +316,13 @@ func (o WorkloadOutput) Partner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Partner }).(pulumi.StringOutput)
 }
 
+// Optional. Permissions granted to the AW Partner SA account for the customer workload
+func (o WorkloadOutput) PartnerPermissions() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput {
+		return v.PartnerPermissions
+	}).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput)
+}
+
 // Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 func (o WorkloadOutput) ProvisionedResourcesParent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.ProvisionedResourcesParent }).(pulumi.StringOutput)
@@ -336,7 +349,7 @@ func (o WorkloadOutput) SaaEnrollmentResponse() GoogleCloudAssuredworkloadsV1Wor
 	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
 }
 
-// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 func (o WorkloadOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
 }

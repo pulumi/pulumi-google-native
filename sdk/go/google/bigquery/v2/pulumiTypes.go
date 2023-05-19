@@ -14313,6 +14313,861 @@ func (o StreamingbufferResponseOutput) OldestEntryTime() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamingbufferResponse) string { return v.OldestEntryTime }).(pulumi.StringOutput)
 }
 
+type TableConstraints struct {
+	// [Optional] The foreign keys of the tables.
+	ForeignKeys []TableConstraintsForeignKeysItem `pulumi:"foreignKeys"`
+	// [Optional] The primary key of the table.
+	PrimaryKey *TableConstraintsPrimaryKey `pulumi:"primaryKey"`
+}
+
+// TableConstraintsInput is an input type that accepts TableConstraintsArgs and TableConstraintsOutput values.
+// You can construct a concrete instance of `TableConstraintsInput` via:
+//
+//	TableConstraintsArgs{...}
+type TableConstraintsInput interface {
+	pulumi.Input
+
+	ToTableConstraintsOutput() TableConstraintsOutput
+	ToTableConstraintsOutputWithContext(context.Context) TableConstraintsOutput
+}
+
+type TableConstraintsArgs struct {
+	// [Optional] The foreign keys of the tables.
+	ForeignKeys TableConstraintsForeignKeysItemArrayInput `pulumi:"foreignKeys"`
+	// [Optional] The primary key of the table.
+	PrimaryKey TableConstraintsPrimaryKeyPtrInput `pulumi:"primaryKey"`
+}
+
+func (TableConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraints)(nil)).Elem()
+}
+
+func (i TableConstraintsArgs) ToTableConstraintsOutput() TableConstraintsOutput {
+	return i.ToTableConstraintsOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsArgs) ToTableConstraintsOutputWithContext(ctx context.Context) TableConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsOutput)
+}
+
+func (i TableConstraintsArgs) ToTableConstraintsPtrOutput() TableConstraintsPtrOutput {
+	return i.ToTableConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsArgs) ToTableConstraintsPtrOutputWithContext(ctx context.Context) TableConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsOutput).ToTableConstraintsPtrOutputWithContext(ctx)
+}
+
+// TableConstraintsPtrInput is an input type that accepts TableConstraintsArgs, TableConstraintsPtr and TableConstraintsPtrOutput values.
+// You can construct a concrete instance of `TableConstraintsPtrInput` via:
+//
+//	        TableConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToTableConstraintsPtrOutput() TableConstraintsPtrOutput
+	ToTableConstraintsPtrOutputWithContext(context.Context) TableConstraintsPtrOutput
+}
+
+type tableConstraintsPtrType TableConstraintsArgs
+
+func TableConstraintsPtr(v *TableConstraintsArgs) TableConstraintsPtrInput {
+	return (*tableConstraintsPtrType)(v)
+}
+
+func (*tableConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraints)(nil)).Elem()
+}
+
+func (i *tableConstraintsPtrType) ToTableConstraintsPtrOutput() TableConstraintsPtrOutput {
+	return i.ToTableConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableConstraintsPtrType) ToTableConstraintsPtrOutputWithContext(ctx context.Context) TableConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsPtrOutput)
+}
+
+type TableConstraintsOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraints)(nil)).Elem()
+}
+
+func (o TableConstraintsOutput) ToTableConstraintsOutput() TableConstraintsOutput {
+	return o
+}
+
+func (o TableConstraintsOutput) ToTableConstraintsOutputWithContext(ctx context.Context) TableConstraintsOutput {
+	return o
+}
+
+func (o TableConstraintsOutput) ToTableConstraintsPtrOutput() TableConstraintsPtrOutput {
+	return o.ToTableConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o TableConstraintsOutput) ToTableConstraintsPtrOutputWithContext(ctx context.Context) TableConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableConstraints) *TableConstraints {
+		return &v
+	}).(TableConstraintsPtrOutput)
+}
+
+// [Optional] The foreign keys of the tables.
+func (o TableConstraintsOutput) ForeignKeys() TableConstraintsForeignKeysItemArrayOutput {
+	return o.ApplyT(func(v TableConstraints) []TableConstraintsForeignKeysItem { return v.ForeignKeys }).(TableConstraintsForeignKeysItemArrayOutput)
+}
+
+// [Optional] The primary key of the table.
+func (o TableConstraintsOutput) PrimaryKey() TableConstraintsPrimaryKeyPtrOutput {
+	return o.ApplyT(func(v TableConstraints) *TableConstraintsPrimaryKey { return v.PrimaryKey }).(TableConstraintsPrimaryKeyPtrOutput)
+}
+
+type TableConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraints)(nil)).Elem()
+}
+
+func (o TableConstraintsPtrOutput) ToTableConstraintsPtrOutput() TableConstraintsPtrOutput {
+	return o
+}
+
+func (o TableConstraintsPtrOutput) ToTableConstraintsPtrOutputWithContext(ctx context.Context) TableConstraintsPtrOutput {
+	return o
+}
+
+func (o TableConstraintsPtrOutput) Elem() TableConstraintsOutput {
+	return o.ApplyT(func(v *TableConstraints) TableConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret TableConstraints
+		return ret
+	}).(TableConstraintsOutput)
+}
+
+// [Optional] The foreign keys of the tables.
+func (o TableConstraintsPtrOutput) ForeignKeys() TableConstraintsForeignKeysItemArrayOutput {
+	return o.ApplyT(func(v *TableConstraints) []TableConstraintsForeignKeysItem {
+		if v == nil {
+			return nil
+		}
+		return v.ForeignKeys
+	}).(TableConstraintsForeignKeysItemArrayOutput)
+}
+
+// [Optional] The primary key of the table.
+func (o TableConstraintsPtrOutput) PrimaryKey() TableConstraintsPrimaryKeyPtrOutput {
+	return o.ApplyT(func(v *TableConstraints) *TableConstraintsPrimaryKey {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKey
+	}).(TableConstraintsPrimaryKeyPtrOutput)
+}
+
+type TableConstraintsForeignKeysItem struct {
+	ColumnReferences []TableConstraintsForeignKeysItemColumnReferencesItem `pulumi:"columnReferences"`
+	Name             *string                                               `pulumi:"name"`
+	ReferencedTable  *TableConstraintsForeignKeysItemReferencedTable       `pulumi:"referencedTable"`
+}
+
+// TableConstraintsForeignKeysItemInput is an input type that accepts TableConstraintsForeignKeysItemArgs and TableConstraintsForeignKeysItemOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemInput` via:
+//
+//	TableConstraintsForeignKeysItemArgs{...}
+type TableConstraintsForeignKeysItemInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemOutput() TableConstraintsForeignKeysItemOutput
+	ToTableConstraintsForeignKeysItemOutputWithContext(context.Context) TableConstraintsForeignKeysItemOutput
+}
+
+type TableConstraintsForeignKeysItemArgs struct {
+	ColumnReferences TableConstraintsForeignKeysItemColumnReferencesItemArrayInput `pulumi:"columnReferences"`
+	Name             pulumi.StringPtrInput                                         `pulumi:"name"`
+	ReferencedTable  TableConstraintsForeignKeysItemReferencedTablePtrInput        `pulumi:"referencedTable"`
+}
+
+func (TableConstraintsForeignKeysItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItem)(nil)).Elem()
+}
+
+func (i TableConstraintsForeignKeysItemArgs) ToTableConstraintsForeignKeysItemOutput() TableConstraintsForeignKeysItemOutput {
+	return i.ToTableConstraintsForeignKeysItemOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemArgs) ToTableConstraintsForeignKeysItemOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemOutput)
+}
+
+// TableConstraintsForeignKeysItemArrayInput is an input type that accepts TableConstraintsForeignKeysItemArray and TableConstraintsForeignKeysItemArrayOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemArrayInput` via:
+//
+//	TableConstraintsForeignKeysItemArray{ TableConstraintsForeignKeysItemArgs{...} }
+type TableConstraintsForeignKeysItemArrayInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemArrayOutput() TableConstraintsForeignKeysItemArrayOutput
+	ToTableConstraintsForeignKeysItemArrayOutputWithContext(context.Context) TableConstraintsForeignKeysItemArrayOutput
+}
+
+type TableConstraintsForeignKeysItemArray []TableConstraintsForeignKeysItemInput
+
+func (TableConstraintsForeignKeysItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItem)(nil)).Elem()
+}
+
+func (i TableConstraintsForeignKeysItemArray) ToTableConstraintsForeignKeysItemArrayOutput() TableConstraintsForeignKeysItemArrayOutput {
+	return i.ToTableConstraintsForeignKeysItemArrayOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemArray) ToTableConstraintsForeignKeysItemArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemArrayOutput)
+}
+
+type TableConstraintsForeignKeysItemOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItem)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemOutput) ToTableConstraintsForeignKeysItemOutput() TableConstraintsForeignKeysItemOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemOutput) ToTableConstraintsForeignKeysItemOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemOutput) ColumnReferences() TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItem) []TableConstraintsForeignKeysItemColumnReferencesItem {
+		return v.ColumnReferences
+	}).(TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput)
+}
+
+func (o TableConstraintsForeignKeysItemOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItem) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemOutput) ReferencedTable() TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItem) *TableConstraintsForeignKeysItemReferencedTable {
+		return v.ReferencedTable
+	}).(TableConstraintsForeignKeysItemReferencedTablePtrOutput)
+}
+
+type TableConstraintsForeignKeysItemArrayOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItem)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemArrayOutput) ToTableConstraintsForeignKeysItemArrayOutput() TableConstraintsForeignKeysItemArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemArrayOutput) ToTableConstraintsForeignKeysItemArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemArrayOutput) Index(i pulumi.IntInput) TableConstraintsForeignKeysItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableConstraintsForeignKeysItem {
+		return vs[0].([]TableConstraintsForeignKeysItem)[vs[1].(int)]
+	}).(TableConstraintsForeignKeysItemOutput)
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItem struct {
+	ReferencedColumn  *string `pulumi:"referencedColumn"`
+	ReferencingColumn *string `pulumi:"referencingColumn"`
+}
+
+// TableConstraintsForeignKeysItemColumnReferencesItemInput is an input type that accepts TableConstraintsForeignKeysItemColumnReferencesItemArgs and TableConstraintsForeignKeysItemColumnReferencesItemOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemColumnReferencesItemInput` via:
+//
+//	TableConstraintsForeignKeysItemColumnReferencesItemArgs{...}
+type TableConstraintsForeignKeysItemColumnReferencesItemInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemColumnReferencesItemOutput() TableConstraintsForeignKeysItemColumnReferencesItemOutput
+	ToTableConstraintsForeignKeysItemColumnReferencesItemOutputWithContext(context.Context) TableConstraintsForeignKeysItemColumnReferencesItemOutput
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemArgs struct {
+	ReferencedColumn  pulumi.StringPtrInput `pulumi:"referencedColumn"`
+	ReferencingColumn pulumi.StringPtrInput `pulumi:"referencingColumn"`
+}
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemColumnReferencesItem)(nil)).Elem()
+}
+
+func (i TableConstraintsForeignKeysItemColumnReferencesItemArgs) ToTableConstraintsForeignKeysItemColumnReferencesItemOutput() TableConstraintsForeignKeysItemColumnReferencesItemOutput {
+	return i.ToTableConstraintsForeignKeysItemColumnReferencesItemOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemColumnReferencesItemArgs) ToTableConstraintsForeignKeysItemColumnReferencesItemOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemColumnReferencesItemOutput)
+}
+
+// TableConstraintsForeignKeysItemColumnReferencesItemArrayInput is an input type that accepts TableConstraintsForeignKeysItemColumnReferencesItemArray and TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemColumnReferencesItemArrayInput` via:
+//
+//	TableConstraintsForeignKeysItemColumnReferencesItemArray{ TableConstraintsForeignKeysItemColumnReferencesItemArgs{...} }
+type TableConstraintsForeignKeysItemColumnReferencesItemArrayInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutput() TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput
+	ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutputWithContext(context.Context) TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemArray []TableConstraintsForeignKeysItemColumnReferencesItemInput
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItemColumnReferencesItem)(nil)).Elem()
+}
+
+func (i TableConstraintsForeignKeysItemColumnReferencesItemArray) ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutput() TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput {
+	return i.ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemColumnReferencesItemArray) ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput)
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemColumnReferencesItem)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemOutput() TableConstraintsForeignKeysItemColumnReferencesItemOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemOutput) ReferencedColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemColumnReferencesItem) *string { return v.ReferencedColumn }).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemOutput) ReferencingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemColumnReferencesItem) *string { return v.ReferencingColumn }).(pulumi.StringPtrOutput)
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItemColumnReferencesItem)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutput() TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput) Index(i pulumi.IntInput) TableConstraintsForeignKeysItemColumnReferencesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableConstraintsForeignKeysItemColumnReferencesItem {
+		return vs[0].([]TableConstraintsForeignKeysItemColumnReferencesItem)[vs[1].(int)]
+	}).(TableConstraintsForeignKeysItemColumnReferencesItemOutput)
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemResponse struct {
+	ReferencedColumn  string `pulumi:"referencedColumn"`
+	ReferencingColumn string `pulumi:"referencingColumn"`
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemColumnReferencesItemResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemResponseOutput() TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemResponseOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput) ReferencedColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemColumnReferencesItemResponse) string { return v.ReferencedColumn }).(pulumi.StringOutput)
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput) ReferencingColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemColumnReferencesItemResponse) string { return v.ReferencingColumn }).(pulumi.StringOutput)
+}
+
+type TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItemColumnReferencesItemResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput() TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput) ToTableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput) Index(i pulumi.IntInput) TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableConstraintsForeignKeysItemColumnReferencesItemResponse {
+		return vs[0].([]TableConstraintsForeignKeysItemColumnReferencesItemResponse)[vs[1].(int)]
+	}).(TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput)
+}
+
+type TableConstraintsForeignKeysItemReferencedTable struct {
+	DatasetId *string `pulumi:"datasetId"`
+	Project   *string `pulumi:"project"`
+	TableId   *string `pulumi:"tableId"`
+}
+
+// TableConstraintsForeignKeysItemReferencedTableInput is an input type that accepts TableConstraintsForeignKeysItemReferencedTableArgs and TableConstraintsForeignKeysItemReferencedTableOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemReferencedTableInput` via:
+//
+//	TableConstraintsForeignKeysItemReferencedTableArgs{...}
+type TableConstraintsForeignKeysItemReferencedTableInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemReferencedTableOutput() TableConstraintsForeignKeysItemReferencedTableOutput
+	ToTableConstraintsForeignKeysItemReferencedTableOutputWithContext(context.Context) TableConstraintsForeignKeysItemReferencedTableOutput
+}
+
+type TableConstraintsForeignKeysItemReferencedTableArgs struct {
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
+	Project   pulumi.StringPtrInput `pulumi:"project"`
+	TableId   pulumi.StringPtrInput `pulumi:"tableId"`
+}
+
+func (TableConstraintsForeignKeysItemReferencedTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemReferencedTable)(nil)).Elem()
+}
+
+func (i TableConstraintsForeignKeysItemReferencedTableArgs) ToTableConstraintsForeignKeysItemReferencedTableOutput() TableConstraintsForeignKeysItemReferencedTableOutput {
+	return i.ToTableConstraintsForeignKeysItemReferencedTableOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemReferencedTableArgs) ToTableConstraintsForeignKeysItemReferencedTableOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemReferencedTableOutput)
+}
+
+func (i TableConstraintsForeignKeysItemReferencedTableArgs) ToTableConstraintsForeignKeysItemReferencedTablePtrOutput() TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return i.ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsForeignKeysItemReferencedTableArgs) ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemReferencedTableOutput).ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(ctx)
+}
+
+// TableConstraintsForeignKeysItemReferencedTablePtrInput is an input type that accepts TableConstraintsForeignKeysItemReferencedTableArgs, TableConstraintsForeignKeysItemReferencedTablePtr and TableConstraintsForeignKeysItemReferencedTablePtrOutput values.
+// You can construct a concrete instance of `TableConstraintsForeignKeysItemReferencedTablePtrInput` via:
+//
+//	        TableConstraintsForeignKeysItemReferencedTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableConstraintsForeignKeysItemReferencedTablePtrInput interface {
+	pulumi.Input
+
+	ToTableConstraintsForeignKeysItemReferencedTablePtrOutput() TableConstraintsForeignKeysItemReferencedTablePtrOutput
+	ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(context.Context) TableConstraintsForeignKeysItemReferencedTablePtrOutput
+}
+
+type tableConstraintsForeignKeysItemReferencedTablePtrType TableConstraintsForeignKeysItemReferencedTableArgs
+
+func TableConstraintsForeignKeysItemReferencedTablePtr(v *TableConstraintsForeignKeysItemReferencedTableArgs) TableConstraintsForeignKeysItemReferencedTablePtrInput {
+	return (*tableConstraintsForeignKeysItemReferencedTablePtrType)(v)
+}
+
+func (*tableConstraintsForeignKeysItemReferencedTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraintsForeignKeysItemReferencedTable)(nil)).Elem()
+}
+
+func (i *tableConstraintsForeignKeysItemReferencedTablePtrType) ToTableConstraintsForeignKeysItemReferencedTablePtrOutput() TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return i.ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(context.Background())
+}
+
+func (i *tableConstraintsForeignKeysItemReferencedTablePtrType) ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsForeignKeysItemReferencedTablePtrOutput)
+}
+
+type TableConstraintsForeignKeysItemReferencedTableOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemReferencedTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemReferencedTable)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) ToTableConstraintsForeignKeysItemReferencedTableOutput() TableConstraintsForeignKeysItemReferencedTableOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) ToTableConstraintsForeignKeysItemReferencedTableOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTableOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) ToTableConstraintsForeignKeysItemReferencedTablePtrOutput() TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return o.ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(context.Background())
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableConstraintsForeignKeysItemReferencedTable) *TableConstraintsForeignKeysItemReferencedTable {
+		return &v
+	}).(TableConstraintsForeignKeysItemReferencedTablePtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTable) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTable) *string { return v.TableId }).(pulumi.StringPtrOutput)
+}
+
+type TableConstraintsForeignKeysItemReferencedTablePtrOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemReferencedTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraintsForeignKeysItemReferencedTable)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) ToTableConstraintsForeignKeysItemReferencedTablePtrOutput() TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) ToTableConstraintsForeignKeysItemReferencedTablePtrOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTablePtrOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) Elem() TableConstraintsForeignKeysItemReferencedTableOutput {
+	return o.ApplyT(func(v *TableConstraintsForeignKeysItemReferencedTable) TableConstraintsForeignKeysItemReferencedTable {
+		if v != nil {
+			return *v
+		}
+		var ret TableConstraintsForeignKeysItemReferencedTable
+		return ret
+	}).(TableConstraintsForeignKeysItemReferencedTableOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableConstraintsForeignKeysItemReferencedTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableConstraintsForeignKeysItemReferencedTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableConstraintsForeignKeysItemReferencedTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableConstraintsForeignKeysItemReferencedTableResponse struct {
+	DatasetId string `pulumi:"datasetId"`
+	Project   string `pulumi:"project"`
+	TableId   string `pulumi:"tableId"`
+}
+
+type TableConstraintsForeignKeysItemReferencedTableResponseOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemReferencedTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemReferencedTableResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableResponseOutput) ToTableConstraintsForeignKeysItemReferencedTableResponseOutput() TableConstraintsForeignKeysItemReferencedTableResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableResponseOutput) ToTableConstraintsForeignKeysItemReferencedTableResponseOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemReferencedTableResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableResponseOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTableResponse) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTableResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o TableConstraintsForeignKeysItemReferencedTableResponseOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemReferencedTableResponse) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type TableConstraintsForeignKeysItemResponse struct {
+	ColumnReferences []TableConstraintsForeignKeysItemColumnReferencesItemResponse `pulumi:"columnReferences"`
+	Name             string                                                        `pulumi:"name"`
+	ReferencedTable  TableConstraintsForeignKeysItemReferencedTableResponse        `pulumi:"referencedTable"`
+}
+
+type TableConstraintsForeignKeysItemResponseOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsForeignKeysItemResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemResponseOutput) ToTableConstraintsForeignKeysItemResponseOutput() TableConstraintsForeignKeysItemResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemResponseOutput) ToTableConstraintsForeignKeysItemResponseOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemResponseOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemResponseOutput) ColumnReferences() TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemResponse) []TableConstraintsForeignKeysItemColumnReferencesItemResponse {
+		return v.ColumnReferences
+	}).(TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput)
+}
+
+func (o TableConstraintsForeignKeysItemResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o TableConstraintsForeignKeysItemResponseOutput) ReferencedTable() TableConstraintsForeignKeysItemReferencedTableResponseOutput {
+	return o.ApplyT(func(v TableConstraintsForeignKeysItemResponse) TableConstraintsForeignKeysItemReferencedTableResponse {
+		return v.ReferencedTable
+	}).(TableConstraintsForeignKeysItemReferencedTableResponseOutput)
+}
+
+type TableConstraintsForeignKeysItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsForeignKeysItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableConstraintsForeignKeysItemResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsForeignKeysItemResponseArrayOutput) ToTableConstraintsForeignKeysItemResponseArrayOutput() TableConstraintsForeignKeysItemResponseArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemResponseArrayOutput) ToTableConstraintsForeignKeysItemResponseArrayOutputWithContext(ctx context.Context) TableConstraintsForeignKeysItemResponseArrayOutput {
+	return o
+}
+
+func (o TableConstraintsForeignKeysItemResponseArrayOutput) Index(i pulumi.IntInput) TableConstraintsForeignKeysItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableConstraintsForeignKeysItemResponse {
+		return vs[0].([]TableConstraintsForeignKeysItemResponse)[vs[1].(int)]
+	}).(TableConstraintsForeignKeysItemResponseOutput)
+}
+
+// [Optional] The primary key of the table.
+type TableConstraintsPrimaryKey struct {
+	Columns []string `pulumi:"columns"`
+}
+
+// TableConstraintsPrimaryKeyInput is an input type that accepts TableConstraintsPrimaryKeyArgs and TableConstraintsPrimaryKeyOutput values.
+// You can construct a concrete instance of `TableConstraintsPrimaryKeyInput` via:
+//
+//	TableConstraintsPrimaryKeyArgs{...}
+type TableConstraintsPrimaryKeyInput interface {
+	pulumi.Input
+
+	ToTableConstraintsPrimaryKeyOutput() TableConstraintsPrimaryKeyOutput
+	ToTableConstraintsPrimaryKeyOutputWithContext(context.Context) TableConstraintsPrimaryKeyOutput
+}
+
+// [Optional] The primary key of the table.
+type TableConstraintsPrimaryKeyArgs struct {
+	Columns pulumi.StringArrayInput `pulumi:"columns"`
+}
+
+func (TableConstraintsPrimaryKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsPrimaryKey)(nil)).Elem()
+}
+
+func (i TableConstraintsPrimaryKeyArgs) ToTableConstraintsPrimaryKeyOutput() TableConstraintsPrimaryKeyOutput {
+	return i.ToTableConstraintsPrimaryKeyOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsPrimaryKeyArgs) ToTableConstraintsPrimaryKeyOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsPrimaryKeyOutput)
+}
+
+func (i TableConstraintsPrimaryKeyArgs) ToTableConstraintsPrimaryKeyPtrOutput() TableConstraintsPrimaryKeyPtrOutput {
+	return i.ToTableConstraintsPrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i TableConstraintsPrimaryKeyArgs) ToTableConstraintsPrimaryKeyPtrOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsPrimaryKeyOutput).ToTableConstraintsPrimaryKeyPtrOutputWithContext(ctx)
+}
+
+// TableConstraintsPrimaryKeyPtrInput is an input type that accepts TableConstraintsPrimaryKeyArgs, TableConstraintsPrimaryKeyPtr and TableConstraintsPrimaryKeyPtrOutput values.
+// You can construct a concrete instance of `TableConstraintsPrimaryKeyPtrInput` via:
+//
+//	        TableConstraintsPrimaryKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableConstraintsPrimaryKeyPtrInput interface {
+	pulumi.Input
+
+	ToTableConstraintsPrimaryKeyPtrOutput() TableConstraintsPrimaryKeyPtrOutput
+	ToTableConstraintsPrimaryKeyPtrOutputWithContext(context.Context) TableConstraintsPrimaryKeyPtrOutput
+}
+
+type tableConstraintsPrimaryKeyPtrType TableConstraintsPrimaryKeyArgs
+
+func TableConstraintsPrimaryKeyPtr(v *TableConstraintsPrimaryKeyArgs) TableConstraintsPrimaryKeyPtrInput {
+	return (*tableConstraintsPrimaryKeyPtrType)(v)
+}
+
+func (*tableConstraintsPrimaryKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraintsPrimaryKey)(nil)).Elem()
+}
+
+func (i *tableConstraintsPrimaryKeyPtrType) ToTableConstraintsPrimaryKeyPtrOutput() TableConstraintsPrimaryKeyPtrOutput {
+	return i.ToTableConstraintsPrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *tableConstraintsPrimaryKeyPtrType) ToTableConstraintsPrimaryKeyPtrOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableConstraintsPrimaryKeyPtrOutput)
+}
+
+// [Optional] The primary key of the table.
+type TableConstraintsPrimaryKeyOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsPrimaryKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsPrimaryKey)(nil)).Elem()
+}
+
+func (o TableConstraintsPrimaryKeyOutput) ToTableConstraintsPrimaryKeyOutput() TableConstraintsPrimaryKeyOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyOutput) ToTableConstraintsPrimaryKeyOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyOutput) ToTableConstraintsPrimaryKeyPtrOutput() TableConstraintsPrimaryKeyPtrOutput {
+	return o.ToTableConstraintsPrimaryKeyPtrOutputWithContext(context.Background())
+}
+
+func (o TableConstraintsPrimaryKeyOutput) ToTableConstraintsPrimaryKeyPtrOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableConstraintsPrimaryKey) *TableConstraintsPrimaryKey {
+		return &v
+	}).(TableConstraintsPrimaryKeyPtrOutput)
+}
+
+func (o TableConstraintsPrimaryKeyOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableConstraintsPrimaryKey) []string { return v.Columns }).(pulumi.StringArrayOutput)
+}
+
+type TableConstraintsPrimaryKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsPrimaryKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableConstraintsPrimaryKey)(nil)).Elem()
+}
+
+func (o TableConstraintsPrimaryKeyPtrOutput) ToTableConstraintsPrimaryKeyPtrOutput() TableConstraintsPrimaryKeyPtrOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyPtrOutput) ToTableConstraintsPrimaryKeyPtrOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyPtrOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyPtrOutput) Elem() TableConstraintsPrimaryKeyOutput {
+	return o.ApplyT(func(v *TableConstraintsPrimaryKey) TableConstraintsPrimaryKey {
+		if v != nil {
+			return *v
+		}
+		var ret TableConstraintsPrimaryKey
+		return ret
+	}).(TableConstraintsPrimaryKeyOutput)
+}
+
+func (o TableConstraintsPrimaryKeyPtrOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableConstraintsPrimaryKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(pulumi.StringArrayOutput)
+}
+
+// [Optional] The primary key of the table.
+type TableConstraintsPrimaryKeyResponse struct {
+	Columns []string `pulumi:"columns"`
+}
+
+// [Optional] The primary key of the table.
+type TableConstraintsPrimaryKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsPrimaryKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsPrimaryKeyResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsPrimaryKeyResponseOutput) ToTableConstraintsPrimaryKeyResponseOutput() TableConstraintsPrimaryKeyResponseOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyResponseOutput) ToTableConstraintsPrimaryKeyResponseOutputWithContext(ctx context.Context) TableConstraintsPrimaryKeyResponseOutput {
+	return o
+}
+
+func (o TableConstraintsPrimaryKeyResponseOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableConstraintsPrimaryKeyResponse) []string { return v.Columns }).(pulumi.StringArrayOutput)
+}
+
+type TableConstraintsResponse struct {
+	// [Optional] The foreign keys of the tables.
+	ForeignKeys []TableConstraintsForeignKeysItemResponse `pulumi:"foreignKeys"`
+	// [Optional] The primary key of the table.
+	PrimaryKey TableConstraintsPrimaryKeyResponse `pulumi:"primaryKey"`
+}
+
+type TableConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableConstraintsResponse)(nil)).Elem()
+}
+
+func (o TableConstraintsResponseOutput) ToTableConstraintsResponseOutput() TableConstraintsResponseOutput {
+	return o
+}
+
+func (o TableConstraintsResponseOutput) ToTableConstraintsResponseOutputWithContext(ctx context.Context) TableConstraintsResponseOutput {
+	return o
+}
+
+// [Optional] The foreign keys of the tables.
+func (o TableConstraintsResponseOutput) ForeignKeys() TableConstraintsForeignKeysItemResponseArrayOutput {
+	return o.ApplyT(func(v TableConstraintsResponse) []TableConstraintsForeignKeysItemResponse { return v.ForeignKeys }).(TableConstraintsForeignKeysItemResponseArrayOutput)
+}
+
+// [Optional] The primary key of the table.
+func (o TableConstraintsResponseOutput) PrimaryKey() TableConstraintsPrimaryKeyResponseOutput {
+	return o.ApplyT(func(v TableConstraintsResponse) TableConstraintsPrimaryKeyResponse { return v.PrimaryKey }).(TableConstraintsPrimaryKeyResponseOutput)
+}
+
 type TableFieldSchema struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
 	Categories *TableFieldSchemaCategories `pulumi:"categories"`
@@ -16165,6 +17020,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlStructTypePtrInput)(nil)).Elem(), StandardSqlStructTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypeInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlTableTypePtrInput)(nil)).Elem(), StandardSqlTableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsInput)(nil)).Elem(), TableConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsPtrInput)(nil)).Elem(), TableConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemInput)(nil)).Elem(), TableConstraintsForeignKeysItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemArrayInput)(nil)).Elem(), TableConstraintsForeignKeysItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemColumnReferencesItemInput)(nil)).Elem(), TableConstraintsForeignKeysItemColumnReferencesItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemColumnReferencesItemArrayInput)(nil)).Elem(), TableConstraintsForeignKeysItemColumnReferencesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemReferencedTableInput)(nil)).Elem(), TableConstraintsForeignKeysItemReferencedTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsForeignKeysItemReferencedTablePtrInput)(nil)).Elem(), TableConstraintsForeignKeysItemReferencedTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsPrimaryKeyInput)(nil)).Elem(), TableConstraintsPrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableConstraintsPrimaryKeyPtrInput)(nil)).Elem(), TableConstraintsPrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaInput)(nil)).Elem(), TableFieldSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaArrayInput)(nil)).Elem(), TableFieldSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableFieldSchemaCategoriesInput)(nil)).Elem(), TableFieldSchemaCategoriesArgs{})
@@ -16387,6 +17252,23 @@ func init() {
 	pulumi.RegisterOutputType(StandardSqlTableTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlTableTypeResponseOutput{})
 	pulumi.RegisterOutputType(StreamingbufferResponseOutput{})
+	pulumi.RegisterOutputType(TableConstraintsOutput{})
+	pulumi.RegisterOutputType(TableConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemArrayOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemColumnReferencesItemOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemColumnReferencesItemArrayOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemColumnReferencesItemResponseOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemColumnReferencesItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemReferencedTableOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemReferencedTablePtrOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemReferencedTableResponseOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemResponseOutput{})
+	pulumi.RegisterOutputType(TableConstraintsForeignKeysItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(TableConstraintsPrimaryKeyOutput{})
+	pulumi.RegisterOutputType(TableConstraintsPrimaryKeyPtrOutput{})
+	pulumi.RegisterOutputType(TableConstraintsPrimaryKeyResponseOutput{})
+	pulumi.RegisterOutputType(TableConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaArrayOutput{})
 	pulumi.RegisterOutputType(TableFieldSchemaCategoriesOutput{})

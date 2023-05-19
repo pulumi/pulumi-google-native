@@ -24,15 +24,19 @@ __all__ = [
 class CloudRunRewriteArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 tag: Optional[pulumi.Input[str]] = None):
         """
         A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
         :param pulumi.Input[str] service_id: User-defined ID of the Cloud Run service.
         :param pulumi.Input[str] region: Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+        :param pulumi.Input[str] tag: Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
         """
         pulumi.set(__self__, "service_id", service_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -57,6 +61,18 @@ class CloudRunRewriteArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type

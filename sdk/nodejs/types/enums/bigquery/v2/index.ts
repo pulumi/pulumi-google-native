@@ -133,7 +133,7 @@ export type RoutineLanguage = (typeof RoutineLanguage)[keyof typeof RoutineLangu
 export const RoutineRoutineType = {
     RoutineTypeUnspecified: "ROUTINE_TYPE_UNSPECIFIED",
     /**
-     * Non-builtin permanent scalar function.
+     * Non-built-in persistent scalar function.
      */
     ScalarFunction: "SCALAR_FUNCTION",
     /**
@@ -141,9 +141,13 @@ export const RoutineRoutineType = {
      */
     Procedure: "PROCEDURE",
     /**
-     * Non-builtin permanent TVF.
+     * Non-built-in persistent TVF.
      */
     TableValuedFunction: "TABLE_VALUED_FUNCTION",
+    /**
+     * Non-built-in persistent aggregate function.
+     */
+    AggregateFunction: "AGGREGATE_FUNCTION",
 } as const;
 
 /**

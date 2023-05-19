@@ -17,6 +17,7 @@ export function getBareMetalCluster(args: GetBareMetalClusterArgs, opts?: pulumi
         "bareMetalClusterId": args.bareMetalClusterId,
         "location": args.location,
         "project": args.project,
+        "view": args.view,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetBareMetalClusterArgs {
     bareMetalClusterId: string;
     location: string;
     project?: string;
+    view?: string;
 }
 
 export interface GetBareMetalClusterResult {
@@ -159,4 +161,5 @@ export interface GetBareMetalClusterOutputArgs {
     bareMetalClusterId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
 }

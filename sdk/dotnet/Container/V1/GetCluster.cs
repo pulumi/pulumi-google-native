@@ -276,7 +276,7 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
         /// <summary>
-        /// Release channel configuration.
+        /// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         /// </summary>
         public readonly Outputs.ReleaseChannelResponse ReleaseChannel;
         /// <summary>

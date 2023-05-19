@@ -184,14 +184,17 @@ class CloudRunRewriteResponse(dict):
 
     def __init__(__self__, *,
                  region: str,
-                 service_id: str):
+                 service_id: str,
+                 tag: str):
         """
         A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
         :param str region: Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
         :param str service_id: User-defined ID of the Cloud Run service.
+        :param str tag: Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -208,6 +211,14 @@ class CloudRunRewriteResponse(dict):
         User-defined ID of the Cloud Run service.
         """
         return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        """
+        Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+        """
+        return pulumi.get(self, "tag")
 
 
 @pulumi.output_type

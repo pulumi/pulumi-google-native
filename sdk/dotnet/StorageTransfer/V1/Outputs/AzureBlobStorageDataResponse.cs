@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string Container;
         /// <summary>
+        /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        /// </summary>
+        public readonly string CredentialsSecret;
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
         public readonly string Path;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             string container,
 
+            string credentialsSecret,
+
             string path,
 
             string storageAccount)
         {
             AzureCredentials = azureCredentials;
             Container = container;
+            CredentialsSecret = credentialsSecret;
             Path = path;
             StorageAccount = storageAccount;
         }

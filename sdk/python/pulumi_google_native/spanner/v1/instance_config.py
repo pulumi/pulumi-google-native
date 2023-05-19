@@ -404,7 +404,7 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current instance config state.
+        The current instance config state. Applicable only for USER_MANAGED configs.
         """
         return pulumi.get(self, "state")
 

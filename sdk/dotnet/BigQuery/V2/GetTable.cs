@@ -220,6 +220,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.StreamingbufferResponse StreamingBuffer;
         /// <summary>
+        /// [Optional] The table constraints on the table.
+        /// </summary>
+        public readonly Outputs.TableConstraintsResponse TableConstraints;
+        /// <summary>
         /// [Required] Reference describing the ID of this table.
         /// </summary>
         public readonly Outputs.TableReferenceResponse TableReference;
@@ -310,6 +314,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.StreamingbufferResponse streamingBuffer,
 
+            Outputs.TableConstraintsResponse tableConstraints,
+
             Outputs.TableReferenceResponse tableReference,
 
             Outputs.TimePartitioningResponse timePartitioning,
@@ -354,6 +360,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             SelfLink = selfLink;
             SnapshotDefinition = snapshotDefinition;
             StreamingBuffer = streamingBuffer;
+            TableConstraints = tableConstraints;
             TableReference = tableReference;
             TimePartitioning = timePartitioning;
             Type = type;

@@ -3144,26 +3144,42 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
                  allowed_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 http_method: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod']] = None,
+                 parameter_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 request_body: Optional[pulumi.Input[str]] = None,
                  request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 username: Optional[pulumi.Input[str]] = None,
+                 webhook_type: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType']] = None):
         """
         Represents configuration for a generic web service.
         :param pulumi.Input[str] uri: The webhook URI for receiving POST requests. It must use https protocol.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_ca_certs: Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req -days 200 -in example.com.csr \\ -signkey example.com.key \\ -out example.com.crt \\ -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'") ```
+        :param pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod'] http_method: Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameter_mapping: Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
         :param pulumi.Input[str] password: The password for HTTP Basic authentication.
+        :param pulumi.Input[str] request_body: Optional. Defines a custom JSON object as request body to send to flexible webhook.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: The HTTP request headers to send together with webhook requests.
         :param pulumi.Input[str] username: The user name for HTTP Basic authentication.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType'] webhook_type: Optional. Type of the webhook.
         """
         pulumi.set(__self__, "uri", uri)
         if allowed_ca_certs is not None:
             pulumi.set(__self__, "allowed_ca_certs", allowed_ca_certs)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if parameter_mapping is not None:
+            pulumi.set(__self__, "parameter_mapping", parameter_mapping)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
         if request_headers is not None:
             pulumi.set(__self__, "request_headers", request_headers)
         if username is not None:
             pulumi.set(__self__, "username", username)
+        if webhook_type is not None:
+            pulumi.set(__self__, "webhook_type", webhook_type)
 
     @property
     @pulumi.getter
@@ -3190,6 +3206,30 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs:
         pulumi.set(self, "allowed_ca_certs", value)
 
     @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod']]:
+        """
+        Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod']]):
+        pulumi.set(self, "http_method", value)
+
+    @property
+    @pulumi.getter(name="parameterMapping")
+    def parameter_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+        """
+        return pulumi.get(self, "parameter_mapping")
+
+    @parameter_mapping.setter
+    def parameter_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "parameter_mapping", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3200,6 +3240,18 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Defines a custom JSON object as request body to send to flexible webhook.
+        """
+        return pulumi.get(self, "request_body")
+
+    @request_body.setter
+    def request_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_body", value)
 
     @property
     @pulumi.getter(name="requestHeaders")
@@ -3224,6 +3276,18 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="webhookType")
+    def webhook_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType']]:
+        """
+        Optional. Type of the webhook.
+        """
+        return pulumi.get(self, "webhook_type")
+
+    @webhook_type.setter
+    def webhook_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType']]):
+        pulumi.set(self, "webhook_type", value)
 
 
 @pulumi.input_type

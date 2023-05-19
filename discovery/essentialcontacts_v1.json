@@ -850,7 +850,7 @@
       }
     }
   },
-  "revision": "20230505",
+  "revision": "20230517",
   "rootUrl": "https://essentialcontacts.googleapis.com/",
   "schemas": {
     "GoogleCloudEssentialcontactsV1ComputeContactsResponse": {

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -89,6 +89,12 @@ class GetSnapshotResult:
         if source_disk_id and not isinstance(source_disk_id, str):
             raise TypeError("Expected argument 'source_disk_id' to be a str")
         pulumi.set(__self__, "source_disk_id", source_disk_id)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
+        if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
+            raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
         if source_snapshot_schedule_policy and not isinstance(source_snapshot_schedule_policy, str):
             raise TypeError("Expected argument 'source_snapshot_schedule_policy' to be a str")
         pulumi.set(__self__, "source_snapshot_schedule_policy", source_snapshot_schedule_policy)
@@ -296,6 +302,22 @@ class GetSnapshotResult:
         return pulumi.get(self, "source_disk_id")
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> str:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> str:
+        """
+        The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
     @pulumi.getter(name="sourceSnapshotSchedulePolicy")
     def source_snapshot_schedule_policy(self) -> str:
         """
@@ -381,6 +403,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_disk=self.source_disk,
             source_disk_encryption_key=self.source_disk_encryption_key,
             source_disk_id=self.source_disk_id,
+            source_instant_snapshot=self.source_instant_snapshot,
+            source_instant_snapshot_id=self.source_instant_snapshot_id,
             source_snapshot_schedule_policy=self.source_snapshot_schedule_policy,
             source_snapshot_schedule_policy_id=self.source_snapshot_schedule_policy_id,
             status=self.status,
@@ -426,6 +450,8 @@ def get_snapshot(project: Optional[str] = None,
         source_disk=__ret__.source_disk,
         source_disk_encryption_key=__ret__.source_disk_encryption_key,
         source_disk_id=__ret__.source_disk_id,
+        source_instant_snapshot=__ret__.source_instant_snapshot,
+        source_instant_snapshot_id=__ret__.source_instant_snapshot_id,
         source_snapshot_schedule_policy=__ret__.source_snapshot_schedule_policy,
         source_snapshot_schedule_policy_id=__ret__.source_snapshot_schedule_policy_id,
         status=__ret__.status,

@@ -118,6 +118,14 @@ export interface GetSnapshotResult {
      */
     readonly sourceDiskId: string;
     /**
+     * The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+     */
+    readonly sourceInstantSnapshot: string;
+    /**
+     * The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+     */
+    readonly sourceInstantSnapshotId: string;
+    /**
      * URL of the resource policy which created this scheduled snapshot.
      */
     readonly sourceSnapshotSchedulePolicy: string;

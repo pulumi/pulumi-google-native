@@ -463,8 +463,9 @@ class OidcTokenArgs:
                  audience: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None):
         """
-        Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+        Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
         :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
+        :param pulumi.Input[str] service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
         """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
@@ -486,6 +487,9 @@ class OidcTokenArgs:
     @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+        """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter

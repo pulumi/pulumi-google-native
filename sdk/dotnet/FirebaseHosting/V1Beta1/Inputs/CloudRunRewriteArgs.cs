@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
         public CloudRunRewriteArgs()
         {
         }

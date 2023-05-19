@@ -667,11 +667,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static SchemaConfigSchemaType Lossless { get; } = new SchemaConfigSchemaType("LOSSLESS");
         /// <summary>
-        /// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`.
+        /// Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`. Analytics schema does not gracefully handle extensions with one or more occurrences, anaytics schema also does not handle contained resource.
         /// </summary>
         public static SchemaConfigSchemaType Analytics { get; } = new SchemaConfigSchemaType("ANALYTICS");
         /// <summary>
-        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1.
+        /// Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON. Analytics V2 uses more space in the destination table than Analytics V1. It is generally recommended to use Analytics V2 over Analytics.
         /// </summary>
         public static SchemaConfigSchemaType AnalyticsV2 { get; } = new SchemaConfigSchemaType("ANALYTICS_V2");
 

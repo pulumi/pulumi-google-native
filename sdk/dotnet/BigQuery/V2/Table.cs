@@ -239,6 +239,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.StreamingbufferResponse> StreamingBuffer { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] The table constraints on the table.
+        /// </summary>
+        [Output("tableConstraints")]
+        public Output<Outputs.TableConstraintsResponse> TableConstraints { get; private set; } = null!;
+
+        /// <summary>
         /// [Required] Reference describing the ID of this table.
         /// </summary>
         [Output("tableReference")]
@@ -401,6 +407,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("schema")]
         public Input<Inputs.TableSchemaArgs>? Schema { get; set; }
+
+        /// <summary>
+        /// [Optional] The table constraints on the table.
+        /// </summary>
+        [Input("tableConstraints")]
+        public Input<Inputs.TableConstraintsArgs>? TableConstraints { get; set; }
 
         /// <summary>
         /// [Required] Reference describing the ID of this table.

@@ -1702,10 +1702,11 @@ func (o MessageStoragePolicyResponseOutput) AllowedPersistenceRegions() pulumi.S
 	return o.ApplyT(func(v MessageStoragePolicyResponse) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
 }
 
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcToken struct {
 	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-	Audience            *string `pulumi:"audience"`
+	Audience *string `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 }
 
@@ -1720,10 +1721,11 @@ type OidcTokenInput interface {
 	ToOidcTokenOutputWithContext(context.Context) OidcTokenOutput
 }
 
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenArgs struct {
 	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-	Audience            pulumi.StringPtrInput `pulumi:"audience"`
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 }
 
@@ -1780,7 +1782,7 @@ func (i *oidcTokenPtrType) ToOidcTokenPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OidcTokenPtrOutput)
 }
 
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenOutput struct{ *pulumi.OutputState }
 
 func (OidcTokenOutput) ElementType() reflect.Type {
@@ -1810,6 +1812,7 @@ func (o OidcTokenOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
 
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 func (o OidcTokenOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OidcToken) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -1848,6 +1851,7 @@ func (o OidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 func (o OidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OidcToken) *string {
 		if v == nil {
@@ -1857,14 +1861,15 @@ func (o OidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenResponse struct {
 	// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-	Audience            string `pulumi:"audience"`
+	Audience string `pulumi:"audience"`
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
-// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 type OidcTokenResponseOutput struct{ *pulumi.OutputState }
 
 func (OidcTokenResponseOutput) ElementType() reflect.Type {
@@ -1884,6 +1889,7 @@ func (o OidcTokenResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.Audience }).(pulumi.StringOutput)
 }
 
+// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
 func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }

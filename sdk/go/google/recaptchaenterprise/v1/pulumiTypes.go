@@ -1466,7 +1466,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettings struct {
 	AllowAllBundleIds *bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
-	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 	AppleDeveloperId *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId `pulumi:"appleDeveloperId"`
 }
 
@@ -1487,7 +1487,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs struct {
 	AllowAllBundleIds pulumi.BoolPtrInput `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds pulumi.StringArrayInput `pulumi:"allowedBundleIds"`
-	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 	AppleDeveloperId GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrInput `pulumi:"appleDeveloperId"`
 }
 
@@ -1579,7 +1579,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AllowedBundleIds()
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
 }
 
-// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 		return v.AppleDeveloperId
@@ -1630,7 +1630,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AllowedBundleId
 	}).(pulumi.StringArrayOutput)
 }
 
-// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1IOSKeySettings) *GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 		if v == nil {
@@ -1646,7 +1646,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse struct {
 	AllowAllBundleIds bool `pulumi:"allowAllBundleIds"`
 	// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
 	AllowedBundleIds []string `pulumi:"allowedBundleIds"`
-	// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+	// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 	AppleDeveloperId GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse `pulumi:"appleDeveloperId"`
 }
 
@@ -1675,7 +1675,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AllowedBun
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) []string { return v.AllowedBundleIds }).(pulumi.StringArrayOutput)
 }
 
-// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
 func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput) AppleDeveloperId() GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse) GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse {
 		return v.AppleDeveloperId

@@ -29,6 +29,7 @@ class SnapshotArgs:
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
@@ -43,6 +44,7 @@ class SnapshotArgs:
         :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         if chain_name is not None:
@@ -69,6 +71,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
 
@@ -214,6 +218,18 @@ class SnapshotArgs:
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @property
     @pulumi.getter(name="storageLocations")
     def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -243,6 +259,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -261,6 +278,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         ...
@@ -299,6 +317,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -321,6 +340,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["snapshot_type"] = snapshot_type
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
+            __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["architecture"] = None
             __props__.__dict__["auto_created"] = None
@@ -335,6 +355,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
+            __props__.__dict__["source_instant_snapshot_id"] = None
             __props__.__dict__["source_snapshot_schedule_policy"] = None
             __props__.__dict__["source_snapshot_schedule_policy_id"] = None
             __props__.__dict__["status"] = None
@@ -390,6 +411,8 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_encryption_key"] = None
         __props__.__dict__["source_disk_id"] = None
+        __props__.__dict__["source_instant_snapshot"] = None
+        __props__.__dict__["source_instant_snapshot_id"] = None
         __props__.__dict__["source_snapshot_schedule_policy"] = None
         __props__.__dict__["source_snapshot_schedule_policy_id"] = None
         __props__.__dict__["status"] = None
@@ -595,6 +618,22 @@ class Snapshot(pulumi.CustomResource):
         The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[str]:
+        """
+        The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
 
     @property
     @pulumi.getter(name="sourceSnapshotSchedulePolicy")

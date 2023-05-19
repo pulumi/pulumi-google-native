@@ -16,6 +16,8 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1NluSettingsModelType',
     'GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat',
     'GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult',
+    'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod',
+    'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType',
     'SecuritySettingPurgeDataTypesItem',
     'SecuritySettingRedactionScope',
     'SecuritySettingRedactionStrategy',
@@ -270,6 +272,62 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult(str, Enum):
     FAILED = "FAILED"
     """
     The test did not pass.
+    """
+
+
+class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceHttpMethod(str, Enum):
+    """
+    Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+    """
+    HTTP_METHOD_UNSPECIFIED = "HTTP_METHOD_UNSPECIFIED"
+    """
+    HTTP method not specified.
+    """
+    POST = "POST"
+    """
+    HTTP POST Method.
+    """
+    GET = "GET"
+    """
+    HTTP GET Method.
+    """
+    HEAD = "HEAD"
+    """
+    HTTP HEAD Method.
+    """
+    PUT = "PUT"
+    """
+    HTTP PUT Method.
+    """
+    DELETE = "DELETE"
+    """
+    HTTP DELETE Method.
+    """
+    PATCH = "PATCH"
+    """
+    HTTP PATCH Method.
+    """
+    OPTIONS = "OPTIONS"
+    """
+    HTTP OPTIONS Method.
+    """
+
+
+class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceWebhookType(str, Enum):
+    """
+    Optional. Type of the webhook.
+    """
+    WEBHOOK_TYPE_UNSPECIFIED = "WEBHOOK_TYPE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    STANDARD = "STANDARD"
+    """
+    Represents a standard webhook.
+    """
+    FLEXIBLE = "FLEXIBLE"
+    """
+    Represents a flexible webhook.
     """
 
 

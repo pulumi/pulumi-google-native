@@ -55,6 +55,8 @@ from .get_instance_group_manager import *
 from .get_instance_iam_policy import *
 from .get_instance_template import *
 from .get_instance_template_iam_policy import *
+from .get_instant_snapshot import *
+from .get_instant_snapshot_iam_policy import *
 from .get_interconnect import *
 from .get_interconnect_attachment import *
 from .get_license import *
@@ -86,6 +88,8 @@ from .get_region_health_check import *
 from .get_region_health_check_service import *
 from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
+from .get_region_instant_snapshot import *
+from .get_region_instant_snapshot_iam_policy import *
 from .get_region_network_endpoint_group import *
 from .get_region_network_firewall_policy import *
 from .get_region_network_firewall_policy_iam_policy import *
@@ -144,6 +148,10 @@ from .instance_template import *
 from .instance_template_iam_binding import *
 from .instance_template_iam_member import *
 from .instance_template_iam_policy import *
+from .instant_snapshot import *
+from .instant_snapshot_iam_binding import *
+from .instant_snapshot_iam_member import *
+from .instant_snapshot_iam_policy import *
 from .interconnect import *
 from .interconnect_attachment import *
 from .license import *
@@ -191,6 +199,10 @@ from .region_health_check import *
 from .region_health_check_service import *
 from .region_instance_group_manager import *
 from .region_instance_template import *
+from .region_instant_snapshot import *
+from .region_instant_snapshot_iam_binding import *
+from .region_instant_snapshot_iam_member import *
+from .region_instant_snapshot_iam_policy import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_iam_binding import *

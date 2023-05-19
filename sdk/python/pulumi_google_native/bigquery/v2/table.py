@@ -31,6 +31,7 @@ class TableArgs:
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
+                 table_constraints: Optional[pulumi.Input['TableConstraintsArgs']] = None,
                  table_reference: Optional[pulumi.Input['TableReferenceArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TimePartitioningArgs']] = None,
                  view: Optional[pulumi.Input['ViewDefinitionArgs']] = None):
@@ -49,6 +50,7 @@ class TableArgs:
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] Describes the schema of this table.
+        :param pulumi.Input['TableConstraintsArgs'] table_constraints: [Optional] The table constraints on the table.
         :param pulumi.Input['TableReferenceArgs'] table_reference: [Required] Reference describing the ID of this table.
         :param pulumi.Input['TimePartitioningArgs'] time_partitioning: Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input['ViewDefinitionArgs'] view: [Optional] The view definition.
@@ -82,6 +84,8 @@ class TableArgs:
             pulumi.set(__self__, "require_partition_filter", require_partition_filter)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if table_constraints is not None:
+            pulumi.set(__self__, "table_constraints", table_constraints)
         if table_reference is not None:
             pulumi.set(__self__, "table_reference", table_reference)
         if time_partitioning is not None:
@@ -264,6 +268,18 @@ class TableArgs:
         pulumi.set(self, "schema", value)
 
     @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> Optional[pulumi.Input['TableConstraintsArgs']]:
+        """
+        [Optional] The table constraints on the table.
+        """
+        return pulumi.get(self, "table_constraints")
+
+    @table_constraints.setter
+    def table_constraints(self, value: Optional[pulumi.Input['TableConstraintsArgs']]):
+        pulumi.set(self, "table_constraints", value)
+
+    @property
     @pulumi.getter(name="tableReference")
     def table_reference(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
         """
@@ -320,6 +336,7 @@ class Table(pulumi.CustomResource):
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
+                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['ViewDefinitionArgs']]] = None,
@@ -343,6 +360,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RangePartitioningArgs']] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[bool] require_partition_filter: [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
         :param pulumi.Input[pulumi.InputType['TableSchemaArgs']] schema: [Optional] Describes the schema of this table.
+        :param pulumi.Input[pulumi.InputType['TableConstraintsArgs']] table_constraints: [Optional] The table constraints on the table.
         :param pulumi.Input[pulumi.InputType['TableReferenceArgs']] table_reference: [Required] Reference describing the ID of this table.
         :param pulumi.Input[pulumi.InputType['TimePartitioningArgs']] time_partitioning: Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input[pulumi.InputType['ViewDefinitionArgs']] view: [Optional] The view definition.
@@ -387,6 +405,7 @@ class Table(pulumi.CustomResource):
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
+                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableConstraintsArgs']]] = None,
                  table_reference: Optional[pulumi.Input[pulumi.InputType['TableReferenceArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['ViewDefinitionArgs']]] = None,
@@ -416,6 +435,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["table_constraints"] = table_constraints
             __props__.__dict__["table_reference"] = table_reference
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
@@ -505,6 +525,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_definition"] = None
         __props__.__dict__["streaming_buffer"] = None
+        __props__.__dict__["table_constraints"] = None
         __props__.__dict__["table_reference"] = None
         __props__.__dict__["time_partitioning"] = None
         __props__.__dict__["type"] = None
@@ -808,6 +829,14 @@ class Table(pulumi.CustomResource):
         Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
         """
         return pulumi.get(self, "streaming_buffer")
+
+    @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> pulumi.Output['outputs.TableConstraintsResponse']:
+        """
+        [Optional] The table constraints on the table.
+        """
+        return pulumi.get(self, "table_constraints")
 
     @property
     @pulumi.getter(name="tableReference")

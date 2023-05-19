@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse
     {
         /// <summary>
-        /// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse SnapshotDeidentifyTemplate;
         /// <summary>
-        /// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+        /// Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse SnapshotImageRedactTemplate;
         /// <summary>
-        /// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+        /// Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse SnapshotStructuredDeidentifyTemplate;
 

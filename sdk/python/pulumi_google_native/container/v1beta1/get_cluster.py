@@ -725,7 +725,7 @@ class GetClusterResult:
     @pulumi.getter(name="releaseChannel")
     def release_channel(self) -> 'outputs.ReleaseChannelResponse':
         """
-        Release channel configuration.
+        Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         """
         return pulumi.get(self, "release_channel")
 

@@ -18,7 +18,7 @@ type AlertPolicy struct {
 	AlertStrategy AlertStrategyResponseOutput `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner pulumi.StringOutput `pulumi:"combiner"`
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
 	Conditions ConditionResponseArrayOutput `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
 	CreationRecord MutationRecordResponseOutput `pulumi:"creationRecord"`
@@ -88,7 +88,7 @@ type alertPolicyArgs struct {
 	AlertStrategy *AlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner *AlertPolicyCombiner `pulumi:"combiner"`
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
 	Conditions []Condition `pulumi:"conditions"`
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
 	CreationRecord *MutationRecord `pulumi:"creationRecord"`
@@ -117,7 +117,7 @@ type AlertPolicyArgs struct {
 	AlertStrategy AlertStrategyPtrInput
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner AlertPolicyCombinerPtrInput
-	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
 	Conditions ConditionArrayInput
 	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
 	CreationRecord MutationRecordPtrInput
@@ -187,7 +187,7 @@ func (o AlertPolicyOutput) Combiner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.Combiner }).(pulumi.StringOutput)
 }
 
-// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
 func (o AlertPolicyOutput) Conditions() ConditionResponseArrayOutput {
 	return o.ApplyT(func(v *AlertPolicy) ConditionResponseArrayOutput { return v.Conditions }).(ConditionResponseArrayOutput)
 }

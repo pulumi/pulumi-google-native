@@ -2042,7 +2042,7 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(dict):
     """
-    The results of a Deidentify action from an Inspect job.
+    The results of a Deidentify action from an inspect job.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2067,8 +2067,8 @@ class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(dict):
                  deidentify_stats: 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse',
                  requested_options: 'outputs.GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse'):
         """
-        The results of a Deidentify action from an Inspect job.
-        :param 'GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse' deidentify_stats: Stats about de-identification.
+        The results of a Deidentify action from an inspect job.
+        :param 'GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse' deidentify_stats: Stats about the de-identification operation.
         :param 'GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse' requested_options: De-identification config used for the request.
         """
         pulumi.set(__self__, "deidentify_stats", deidentify_stats)
@@ -2078,7 +2078,7 @@ class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(dict):
     @pulumi.getter(name="deidentifyStats")
     def deidentify_stats(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse':
         """
-        Stats about de-identification.
+        Stats about the de-identification operation.
         """
         return pulumi.get(self, "deidentify_stats")
 
@@ -6264,9 +6264,9 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
                  snapshot_structured_deidentify_template: 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse'):
         """
         De-id options.
-        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_deidentify_template: Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
-        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_image_redact_template: Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
-        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_structured_deidentify_template: Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_deidentify_template: Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_image_redact_template: Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
+        :param 'GooglePrivacyDlpV2DeidentifyTemplateResponse' snapshot_structured_deidentify_template: Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         """
         pulumi.set(__self__, "snapshot_deidentify_template", snapshot_deidentify_template)
         pulumi.set(__self__, "snapshot_image_redact_template", snapshot_image_redact_template)
@@ -6276,7 +6276,7 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
     @pulumi.getter(name="snapshotDeidentifyTemplate")
     def snapshot_deidentify_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
         """
-        Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
         """
         return pulumi.get(self, "snapshot_deidentify_template")
 
@@ -6284,7 +6284,7 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
     @pulumi.getter(name="snapshotImageRedactTemplate")
     def snapshot_image_redact_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
         """
-        Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run.
+        Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         """
         return pulumi.get(self, "snapshot_image_redact_template")
 
@@ -6292,7 +6292,7 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse(dict):
     @pulumi.getter(name="snapshotStructuredDeidentifyTemplate")
     def snapshot_structured_deidentify_template(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyTemplateResponse':
         """
-        Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run.
+        Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
         """
         return pulumi.get(self, "snapshot_structured_deidentify_template")
 
@@ -6649,13 +6649,13 @@ class GooglePrivacyDlpV2SelectedInfoTypesResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2SensitivityScoreResponse(dict):
     """
-    Score is a summary of all elements in the data profile. A higher number means more sensitive.
+    Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
     """
     def __init__(__self__, *,
                  score: str):
         """
-        Score is a summary of all elements in the data profile. A higher number means more sensitive.
-        :param str score: The score applied to the resource.
+        Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
+        :param str score: The sensitivity score applied to the resource.
         """
         pulumi.set(__self__, "score", score)
 
@@ -6663,7 +6663,7 @@ class GooglePrivacyDlpV2SensitivityScoreResponse(dict):
     @pulumi.getter
     def score(self) -> str:
         """
-        The score applied to the resource.
+        The sensitivity score applied to the resource.
         """
         return pulumi.get(self, "score")
 

@@ -163,6 +163,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SourceDiskId { get; private set; } = null!;
 
         /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Output("sourceInstantSnapshot")]
+        public Output<string> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        /// </summary>
+        [Output("sourceInstantSnapshotId")]
+        public Output<string> SourceInstantSnapshotId { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the resource policy which created this scheduled snapshot.
         /// </summary>
         [Output("sourceSnapshotSchedulePolicy")]
@@ -327,6 +339,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;

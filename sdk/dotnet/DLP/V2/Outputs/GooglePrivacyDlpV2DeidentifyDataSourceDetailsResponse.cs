@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// The results of a Deidentify action from an Inspect job.
+    /// The results of a Deidentify action from an inspect job.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse
     {
         /// <summary>
-        /// Stats about de-identification.
+        /// Stats about the de-identification operation.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse DeidentifyStats;
         /// <summary>

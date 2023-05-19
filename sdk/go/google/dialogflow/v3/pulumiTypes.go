@@ -12418,14 +12418,22 @@ func (o GoogleCloudDialogflowCxV3WebhookArrayOutput) Index(i pulumi.IntInput) Go
 type GoogleCloudDialogflowCxV3WebhookGenericWebService struct {
 	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+	HttpMethod *GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod `pulumi:"httpMethod"`
+	// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+	ParameterMapping map[string]string `pulumi:"parameterMapping"`
 	// The password for HTTP Basic authentication.
 	Password *string `pulumi:"password"`
+	// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody *string `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
 	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username *string `pulumi:"username"`
+	// Optional. Type of the webhook.
+	WebhookType *GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType `pulumi:"webhookType"`
 }
 
 // GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs and GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput values.
@@ -12443,14 +12451,22 @@ type GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput interface {
 type GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs struct {
 	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
+	// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+	HttpMethod GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrInput `pulumi:"httpMethod"`
+	// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+	ParameterMapping pulumi.StringMapInput `pulumi:"parameterMapping"`
 	// The password for HTTP Basic authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody pulumi.StringPtrInput `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
 	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri pulumi.StringInput `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Optional. Type of the webhook.
+	WebhookType GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrInput `pulumi:"webhookType"`
 }
 
 func (GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs) ElementType() reflect.Type {
@@ -12536,9 +12552,26 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) AllowedCaCerts(
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
 }
 
+// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) HttpMethod() GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) *GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod {
+		return v.HttpMethod
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) map[string]string { return v.ParameterMapping }).(pulumi.StringMapOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) *string { return v.RequestBody }).(pulumi.StringPtrOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -12554,6 +12587,13 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) Uri() pulumi.St
 // The user name for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Type of the webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput) WebhookType() GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebService) *GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType {
+		return v.WebhookType
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrOutput)
 }
 
 type GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput struct{ *pulumi.OutputState }
@@ -12590,6 +12630,26 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) AllowedCaCer
 	}).(pulumi.StringArrayOutput)
 }
 
+// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) HttpMethod() GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3WebhookGenericWebService) *GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethodPtrOutput)
+}
+
+// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3WebhookGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterMapping
+	}).(pulumi.StringMapOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3WebhookGenericWebService) *string {
@@ -12597,6 +12657,16 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) Password() p
 			return nil
 		}
 		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) RequestBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3WebhookGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestBody
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12630,18 +12700,36 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) Username() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Type of the webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput) WebhookType() GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3WebhookGenericWebService) *GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType {
+		if v == nil {
+			return nil
+		}
+		return v.WebhookType
+	}).(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookTypePtrOutput)
+}
+
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse struct {
 	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
+	// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+	HttpMethod string `pulumi:"httpMethod"`
+	// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+	ParameterMapping map[string]string `pulumi:"parameterMapping"`
 	// The password for HTTP Basic authentication.
 	Password string `pulumi:"password"`
+	// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+	RequestBody string `pulumi:"requestBody"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
 	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username string `pulumi:"username"`
+	// Optional. Type of the webhook.
+	WebhookType string `pulumi:"webhookType"`
 }
 
 // Represents configuration for a generic web service.
@@ -12664,9 +12752,26 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Allowed
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
 }
 
+// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// Optional. Maps the values extracted from specific fields of the flexible webhook response into session parameters. - Key: session parameter name - Value: field path in the webhook response
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) ParameterMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) map[string]string {
+		return v.ParameterMapping
+	}).(pulumi.StringMapOutput)
+}
+
 // The password for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Optional. Defines a custom JSON object as request body to send to flexible webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) RequestBody() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.RequestBody }).(pulumi.StringOutput)
 }
 
 // The HTTP request headers to send together with webhook requests.
@@ -12684,6 +12789,11 @@ func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Uri() p
 // The user name for HTTP Basic authentication.
 func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Optional. Type of the webhook.
+func (o GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput) WebhookType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse) string { return v.WebhookType }).(pulumi.StringOutput)
 }
 
 // Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.

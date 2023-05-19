@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly string Combiner;
         /// <summary>
-        /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+        /// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionResponse> Conditions;
         /// <summary>

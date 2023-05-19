@@ -91,6 +91,11 @@ __all__ = [
     'StandardSqlStructTypeResponse',
     'StandardSqlTableTypeResponse',
     'StreamingbufferResponse',
+    'TableConstraintsForeignKeysItemColumnReferencesItemResponse',
+    'TableConstraintsForeignKeysItemReferencedTableResponse',
+    'TableConstraintsForeignKeysItemResponse',
+    'TableConstraintsPrimaryKeyResponse',
+    'TableConstraintsResponse',
     'TableFieldSchemaCategoriesResponse',
     'TableFieldSchemaPolicyTagsResponse',
     'TableFieldSchemaResponse',
@@ -6746,6 +6751,200 @@ class StreamingbufferResponse(dict):
         Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
         """
         return pulumi.get(self, "oldest_entry_time")
+
+
+@pulumi.output_type
+class TableConstraintsForeignKeysItemColumnReferencesItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referencedColumn":
+            suggest = "referenced_column"
+        elif key == "referencingColumn":
+            suggest = "referencing_column"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableConstraintsForeignKeysItemColumnReferencesItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableConstraintsForeignKeysItemColumnReferencesItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableConstraintsForeignKeysItemColumnReferencesItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 referenced_column: str,
+                 referencing_column: str):
+        pulumi.set(__self__, "referenced_column", referenced_column)
+        pulumi.set(__self__, "referencing_column", referencing_column)
+
+    @property
+    @pulumi.getter(name="referencedColumn")
+    def referenced_column(self) -> str:
+        return pulumi.get(self, "referenced_column")
+
+    @property
+    @pulumi.getter(name="referencingColumn")
+    def referencing_column(self) -> str:
+        return pulumi.get(self, "referencing_column")
+
+
+@pulumi.output_type
+class TableConstraintsForeignKeysItemReferencedTableResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableConstraintsForeignKeysItemReferencedTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableConstraintsForeignKeysItemReferencedTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableConstraintsForeignKeysItemReferencedTableResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project: str,
+                 table_id: str):
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> str:
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class TableConstraintsForeignKeysItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnReferences":
+            suggest = "column_references"
+        elif key == "referencedTable":
+            suggest = "referenced_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableConstraintsForeignKeysItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableConstraintsForeignKeysItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableConstraintsForeignKeysItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_references: Sequence['outputs.TableConstraintsForeignKeysItemColumnReferencesItemResponse'],
+                 name: str,
+                 referenced_table: 'outputs.TableConstraintsForeignKeysItemReferencedTableResponse'):
+        pulumi.set(__self__, "column_references", column_references)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "referenced_table", referenced_table)
+
+    @property
+    @pulumi.getter(name="columnReferences")
+    def column_references(self) -> Sequence['outputs.TableConstraintsForeignKeysItemColumnReferencesItemResponse']:
+        return pulumi.get(self, "column_references")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="referencedTable")
+    def referenced_table(self) -> 'outputs.TableConstraintsForeignKeysItemReferencedTableResponse':
+        return pulumi.get(self, "referenced_table")
+
+
+@pulumi.output_type
+class TableConstraintsPrimaryKeyResponse(dict):
+    """
+    [Optional] The primary key of the table.
+    """
+    def __init__(__self__, *,
+                 columns: Sequence[str]):
+        """
+        [Optional] The primary key of the table.
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Sequence[str]:
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class TableConstraintsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "foreignKeys":
+            suggest = "foreign_keys"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableConstraintsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableConstraintsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableConstraintsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 foreign_keys: Sequence['outputs.TableConstraintsForeignKeysItemResponse'],
+                 primary_key: 'outputs.TableConstraintsPrimaryKeyResponse'):
+        """
+        :param Sequence['TableConstraintsForeignKeysItemResponse'] foreign_keys: [Optional] The foreign keys of the tables.
+        :param 'TableConstraintsPrimaryKeyResponse' primary_key: [Optional] The primary key of the table.
+        """
+        pulumi.set(__self__, "foreign_keys", foreign_keys)
+        pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter(name="foreignKeys")
+    def foreign_keys(self) -> Sequence['outputs.TableConstraintsForeignKeysItemResponse']:
+        """
+        [Optional] The foreign keys of the tables.
+        """
+        return pulumi.get(self, "foreign_keys")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> 'outputs.TableConstraintsPrimaryKeyResponse':
+        """
+        [Optional] The primary key of the table.
+        """
+        return pulumi.get(self, "primary_key")
 
 
 @pulumi.output_type

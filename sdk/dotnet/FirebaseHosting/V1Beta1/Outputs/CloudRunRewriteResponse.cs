@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// User-defined ID of the Cloud Run service.
         /// </summary>
         public readonly string ServiceId;
+        /// <summary>
+        /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+        /// </summary>
+        public readonly string Tag;
 
         [OutputConstructor]
         private CloudRunRewriteResponse(
             string region,
 
-            string serviceId)
+            string serviceId,
+
+            string tag)
         {
             Region = region;
             ServiceId = serviceId;
+            Tag = tag;
         }
     }
 }

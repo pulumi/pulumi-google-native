@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedBundleIds;
         /// <summary>
-        /// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        /// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
         /// </summary>
         public readonly Outputs.GoogleCloudRecaptchaenterpriseV1AppleDeveloperIdResponse AppleDeveloperId;
 

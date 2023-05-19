@@ -1236,6 +1236,204 @@ func (o GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput) Rot
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse) string { return v.RotationPeriod }).(pulumi.StringOutput)
 }
 
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer *bool `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations *bool `pulumi:"remediateFolderViolations"`
+}
+
+// GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsInput is an input type that accepts GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs and GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsInput` via:
+//
+//	GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs{...}
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput
+	ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer pulumi.BoolPtrInput `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations pulumi.BoolPtrInput `pulumi:"remediateFolderViolations"`
+}
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput).ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs, GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtr and GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrInput` via:
+//
+//	        GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput
+	ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput
+}
+
+type googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs
+
+func GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtr(v *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrInput {
+	return (*googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType)(v)
+}
+
+func (*googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrType) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *bool { return v.DataLogsViewer }).(pulumi.BoolPtrOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput) RemediateFolderViolations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *bool {
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataLogsViewer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput) RemediateFolderViolations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer bool `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations bool `pulumi:"remediateFolderViolations"`
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput() GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) ToGoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput {
+	return o
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) DataLogsViewer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse) bool {
+		return v.DataLogsViewer
+	}).(pulumi.BoolOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput) RemediateFolderViolations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse) bool {
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolOutput)
+}
+
 // Represent the resources that are children of this Workload.
 type GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse struct {
 	// Resource identifier. For a project this represents project_number.
@@ -1523,6 +1721,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArray{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettingsOutput{})
@@ -1547,6 +1747,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsOutput{})

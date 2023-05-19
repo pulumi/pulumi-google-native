@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfoResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadSaaEnrollmentResponseResponse',
@@ -421,6 +422,58 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsResponse(dict):
         Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
         return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse(dict):
+    """
+    Permissions granted to the AW Partner SA account for the customer workload
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataLogsViewer":
+            suggest = "data_logs_viewer"
+        elif key == "remediateFolderViolations":
+            suggest = "remediate_folder_violations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_logs_viewer: bool,
+                 remediate_folder_violations: bool):
+        """
+        Permissions granted to the AW Partner SA account for the customer workload
+        :param bool data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
+        :param bool remediate_folder_violations: Allow partner to monitor folder and remediate violations
+        """
+        pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
+        pulumi.set(__self__, "remediate_folder_violations", remediate_folder_violations)
+
+    @property
+    @pulumi.getter(name="dataLogsViewer")
+    def data_logs_viewer(self) -> bool:
+        """
+        Allow the partner to view inspectability logs and monitoring violations.
+        """
+        return pulumi.get(self, "data_logs_viewer")
+
+    @property
+    @pulumi.getter(name="remediateFolderViolations")
+    def remediate_folder_violations(self) -> bool:
+        """
+        Allow partner to monitor folder and remediate violations
+        """
+        return pulumi.get(self, "remediate_folder_violations")
 
 
 @pulumi.output_type

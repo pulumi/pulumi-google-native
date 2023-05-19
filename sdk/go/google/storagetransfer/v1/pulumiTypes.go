@@ -478,6 +478,8 @@ type AwsS3Data struct {
 	AwsAccessKey *AwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
@@ -501,6 +503,8 @@ type AwsS3DataArgs struct {
 	AwsAccessKey AwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
@@ -595,6 +599,11 @@ func (o AwsS3DataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3Data) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AwsS3DataOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsS3Data) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AwsS3DataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -649,6 +658,16 @@ func (o AwsS3DataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AwsS3DataPtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3Data) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialsSecret
+	}).(pulumi.StringPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AwsS3DataPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *string {
@@ -675,6 +694,8 @@ type AwsS3DataResponse struct {
 	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
@@ -706,6 +727,11 @@ func (o AwsS3DataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AwsS3DataResponseOutput) CredentialsSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) string { return v.CredentialsSecret }).(pulumi.StringOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AwsS3DataResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -722,6 +748,8 @@ type AzureBlobStorageData struct {
 	AzureCredentials AzureCredentials `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container string `pulumi:"container"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret *string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -745,6 +773,8 @@ type AzureBlobStorageDataArgs struct {
 	AzureCredentials AzureCredentialsInput `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container pulumi.StringInput `pulumi:"container"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret pulumi.StringPtrInput `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -839,6 +869,11 @@ func (o AzureBlobStorageDataOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobStorageData) string { return v.Container }).(pulumi.StringOutput)
 }
 
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AzureBlobStorageDataOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageData) *string { return v.CredentialsSecret }).(pulumi.StringPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AzureBlobStorageDataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureBlobStorageData) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -893,6 +928,16 @@ func (o AzureBlobStorageDataPtrOutput) Container() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AzureBlobStorageDataPtrOutput) CredentialsSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialsSecret
+	}).(pulumi.StringPtrOutput)
+}
+
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AzureBlobStorageDataPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobStorageData) *string {
@@ -919,6 +964,8 @@ type AzureBlobStorageDataResponse struct {
 	AzureCredentials AzureCredentialsResponse `pulumi:"azureCredentials"`
 	// The container to transfer from the Azure Storage account.
 	Container string `pulumi:"container"`
+	// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+	CredentialsSecret string `pulumi:"credentialsSecret"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
 	// The name of the Azure Storage account.
@@ -948,6 +995,11 @@ func (o AzureBlobStorageDataResponseOutput) AzureCredentials() AzureCredentialsR
 // The container to transfer from the Azure Storage account.
 func (o AzureBlobStorageDataResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+func (o AzureBlobStorageDataResponseOutput) CredentialsSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.CredentialsSecret }).(pulumi.StringOutput)
 }
 
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -4564,7 +4616,7 @@ type TransferSpec struct {
 	GcsDataSink *GcsData `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource *GcsData `pulumi:"gcsDataSource"`
-	// Cloud Storage intermediate data location.
+	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation *GcsData `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource *HttpData `pulumi:"httpDataSource"`
@@ -4607,7 +4659,7 @@ type TransferSpecArgs struct {
 	GcsDataSink GcsDataPtrInput `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource GcsDataPtrInput `pulumi:"gcsDataSource"`
-	// Cloud Storage intermediate data location.
+	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation GcsDataPtrInput `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataPtrInput `pulumi:"httpDataSource"`
@@ -4730,7 +4782,7 @@ func (o TransferSpecOutput) GcsDataSource() GcsDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *GcsData { return v.GcsDataSource }).(GcsDataPtrOutput)
 }
 
-// Cloud Storage intermediate data location.
+// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 func (o TransferSpecOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
 	return o.ApplyT(func(v TransferSpec) *GcsData { return v.GcsIntermediateDataLocation }).(GcsDataPtrOutput)
 }
@@ -4849,7 +4901,7 @@ func (o TransferSpecPtrOutput) GcsDataSource() GcsDataPtrOutput {
 	}).(GcsDataPtrOutput)
 }
 
-// Cloud Storage intermediate data location.
+// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 func (o TransferSpecPtrOutput) GcsIntermediateDataLocation() GcsDataPtrOutput {
 	return o.ApplyT(func(v *TransferSpec) *GcsData {
 		if v == nil {
@@ -4951,7 +5003,7 @@ type TransferSpecResponse struct {
 	GcsDataSink GcsDataResponse `pulumi:"gcsDataSink"`
 	// A Cloud Storage data source.
 	GcsDataSource GcsDataResponse `pulumi:"gcsDataSource"`
-	// Cloud Storage intermediate data location.
+	// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 	GcsIntermediateDataLocation GcsDataResponse `pulumi:"gcsIntermediateDataLocation"`
 	// An HTTP URL data source.
 	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
@@ -5011,7 +5063,7 @@ func (o TransferSpecResponseOutput) GcsDataSource() GcsDataResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsDataSource }).(GcsDataResponseOutput)
 }
 
-// Cloud Storage intermediate data location.
+// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
 func (o TransferSpecResponseOutput) GcsIntermediateDataLocation() GcsDataResponseOutput {
 	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsIntermediateDataLocation }).(GcsDataResponseOutput)
 }

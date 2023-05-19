@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse
     {
         /// <summary>
+        /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        /// </summary>
+        public readonly string BaselineModelVersion;
+        /// <summary>
         /// Conversation model resource name. Format: `projects//conversationModels/`.
         /// </summary>
         public readonly string Model;
 
         [OutputConstructor]
-        private GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse(string model)
+        private GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse(
+            string baselineModelVersion,
+
+            string model)
         {
+            BaselineModelVersion = baselineModelVersion;
             Model = model;
         }
     }

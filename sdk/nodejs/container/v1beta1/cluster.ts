@@ -274,7 +274,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly protectConfig!: pulumi.Output<outputs.container.v1beta1.ProtectConfigResponse>;
     /**
-     * Release channel configuration.
+     * Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
      */
     public readonly releaseChannel!: pulumi.Output<outputs.container.v1beta1.ReleaseChannelResponse>;
     /**
@@ -741,7 +741,7 @@ export interface ClusterArgs {
      */
     protectConfig?: pulumi.Input<inputs.container.v1beta1.ProtectConfigArgs>;
     /**
-     * Release channel configuration.
+     * Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
      */
     releaseChannel?: pulumi.Input<inputs.container.v1beta1.ReleaseChannelArgs>;
     /**

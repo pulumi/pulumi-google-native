@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None, violation_notifications_enabled=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, partner_permissions=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None, violation_notifications_enabled=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -66,6 +66,9 @@ class GetWorkloadResult:
         if partner and not isinstance(partner, str):
             raise TypeError("Expected argument 'partner' to be a str")
         pulumi.set(__self__, "partner", partner)
+        if partner_permissions and not isinstance(partner_permissions, dict):
+            raise TypeError("Expected argument 'partner_permissions' to be a dict")
+        pulumi.set(__self__, "partner_permissions", partner_permissions)
         if provisioned_resources_parent and not isinstance(provisioned_resources_parent, str):
             raise TypeError("Expected argument 'provisioned_resources_parent' to be a str")
         pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
@@ -195,6 +198,14 @@ class GetWorkloadResult:
         return pulumi.get(self, "partner")
 
     @property
+    @pulumi.getter(name="partnerPermissions")
+    def partner_permissions(self) -> 'outputs.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse':
+        """
+        Optional. Permissions granted to the AW Partner SA account for the customer workload
+        """
+        return pulumi.get(self, "partner_permissions")
+
+    @property
     @pulumi.getter(name="provisionedResourcesParent")
     def provisioned_resources_parent(self) -> str:
         """
@@ -230,7 +241,7 @@ class GetWorkloadResult:
     @pulumi.getter(name="violationNotificationsEnabled")
     def violation_notifications_enabled(self) -> bool:
         """
-        Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         """
         return pulumi.get(self, "violation_notifications_enabled")
 
@@ -255,6 +266,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             labels=self.labels,
             name=self.name,
             partner=self.partner,
+            partner_permissions=self.partner_permissions,
             provisioned_resources_parent=self.provisioned_resources_parent,
             resource_settings=self.resource_settings,
             resources=self.resources,
@@ -291,6 +303,7 @@ def get_workload(location: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         partner=__ret__.partner,
+        partner_permissions=__ret__.partner_permissions,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,
         resource_settings=__ret__.resource_settings,
         resources=__ret__.resources,

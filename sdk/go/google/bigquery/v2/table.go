@@ -90,6 +90,8 @@ type Table struct {
 	SnapshotDefinition SnapshotDefinitionResponseOutput `pulumi:"snapshotDefinition"`
 	// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferResponseOutput `pulumi:"streamingBuffer"`
+	// [Optional] The table constraints on the table.
+	TableConstraints TableConstraintsResponseOutput `pulumi:"tableConstraints"`
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferenceResponseOutput `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -175,6 +177,8 @@ type tableArgs struct {
 	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
 	// [Optional] Describes the schema of this table.
 	Schema *TableSchema `pulumi:"schema"`
+	// [Optional] The table constraints on the table.
+	TableConstraints *TableConstraints `pulumi:"tableConstraints"`
 	// [Required] Reference describing the ID of this table.
 	TableReference *TableReference `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -213,6 +217,8 @@ type TableArgs struct {
 	RequirePartitionFilter pulumi.BoolPtrInput
 	// [Optional] Describes the schema of this table.
 	Schema TableSchemaPtrInput
+	// [Optional] The table constraints on the table.
+	TableConstraints TableConstraintsPtrInput
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferencePtrInput
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -444,6 +450,11 @@ func (o TableOutput) SnapshotDefinition() SnapshotDefinitionResponseOutput {
 // Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 func (o TableOutput) StreamingBuffer() StreamingbufferResponseOutput {
 	return o.ApplyT(func(v *Table) StreamingbufferResponseOutput { return v.StreamingBuffer }).(StreamingbufferResponseOutput)
+}
+
+// [Optional] The table constraints on the table.
+func (o TableOutput) TableConstraints() TableConstraintsResponseOutput {
+	return o.ApplyT(func(v *Table) TableConstraintsResponseOutput { return v.TableConstraints }).(TableConstraintsResponseOutput)
 }
 
 // [Required] Reference describing the ID of this table.

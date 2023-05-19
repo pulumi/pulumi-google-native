@@ -20945,7 +20945,7 @@ func (o InstanceGroupManagerAllInstancesConfigResponseOutput) Properties() Insta
 type InstanceGroupManagerAutoHealingPolicy struct {
 	// The URL for the health check that signals autohealing.
 	HealthCheck *string `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec *int `pulumi:"initialDelaySec"`
 }
 
@@ -20963,7 +20963,7 @@ type InstanceGroupManagerAutoHealingPolicyInput interface {
 type InstanceGroupManagerAutoHealingPolicyArgs struct {
 	// The URL for the health check that signals autohealing.
 	HealthCheck pulumi.StringPtrInput `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec pulumi.IntPtrInput `pulumi:"initialDelaySec"`
 }
 
@@ -21023,7 +21023,7 @@ func (o InstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.String
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicy) *string { return v.HealthCheck }).(pulumi.StringPtrOutput)
 }
 
-// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicy) *int { return v.InitialDelaySec }).(pulumi.IntPtrOutput)
 }
@@ -21051,7 +21051,7 @@ func (o InstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntInpu
 type InstanceGroupManagerAutoHealingPolicyResponse struct {
 	// The URL for the health check that signals autohealing.
 	HealthCheck string `pulumi:"healthCheck"`
-	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+	// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 	InitialDelaySec int `pulumi:"initialDelaySec"`
 }
 
@@ -21074,7 +21074,7 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseOutput) HealthCheck() pulum
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicyResponse) string { return v.HealthCheck }).(pulumi.StringOutput)
 }
 
-// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+// The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
 func (o InstanceGroupManagerAutoHealingPolicyResponseOutput) InitialDelaySec() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAutoHealingPolicyResponse) int { return v.InitialDelaySec }).(pulumi.IntOutput)
 }
@@ -23090,6 +23090,30 @@ func (o InstancePropertiesResponseOutput) ShieldedVmConfig() ShieldedVmConfigRes
 // A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
 func (o InstancePropertiesResponseOutput) Tags() TagsResponseOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) TagsResponse { return v.Tags }).(TagsResponseOutput)
+}
+
+type InstantSnapshotResourceStatusResponse struct {
+	// The storage size of this instant snapshot.
+	StorageSizeBytes string `pulumi:"storageSizeBytes"`
+}
+
+type InstantSnapshotResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (InstantSnapshotResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstantSnapshotResourceStatusResponse)(nil)).Elem()
+}
+
+func (o InstantSnapshotResourceStatusResponseOutput) ToInstantSnapshotResourceStatusResponseOutput() InstantSnapshotResourceStatusResponseOutput {
+	return o
+}
+
+func (o InstantSnapshotResourceStatusResponseOutput) ToInstantSnapshotResourceStatusResponseOutputWithContext(ctx context.Context) InstantSnapshotResourceStatusResponseOutput {
+	return o
+}
+
+// The storage size of this instant snapshot.
+func (o InstantSnapshotResourceStatusResponseOutput) StorageSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v InstantSnapshotResourceStatusResponse) string { return v.StorageSizeBytes }).(pulumi.StringOutput)
 }
 
 // HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
@@ -41642,6 +41666,8 @@ type SecurityPolicyRuleMatcher struct {
 	Config *SecurityPolicyRuleMatcherConfig `pulumi:"config"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr *Expr `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions *SecurityPolicyRuleMatcherExprOptions `pulumi:"exprOptions"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr *SecurityPolicyRuleMatcherVersionedExpr `pulumi:"versionedExpr"`
 }
@@ -41663,6 +41689,8 @@ type SecurityPolicyRuleMatcherArgs struct {
 	Config SecurityPolicyRuleMatcherConfigPtrInput `pulumi:"config"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprPtrInput `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions SecurityPolicyRuleMatcherExprOptionsPtrInput `pulumi:"exprOptions"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr SecurityPolicyRuleMatcherVersionedExprPtrInput `pulumi:"versionedExpr"`
 }
@@ -41755,6 +41783,11 @@ func (o SecurityPolicyRuleMatcherOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *Expr { return v.Expr }).(ExprPtrOutput)
 }
 
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions { return v.ExprOptions }).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 func (o SecurityPolicyRuleMatcherOutput) VersionedExpr() SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherVersionedExpr { return v.VersionedExpr }).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
@@ -41802,6 +41835,16 @@ func (o SecurityPolicyRuleMatcherPtrOutput) Expr() ExprPtrOutput {
 		}
 		return v.Expr
 	}).(ExprPtrOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherPtrOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcher) *SecurityPolicyRuleMatcherExprOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ExprOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
 }
 
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
@@ -42188,12 +42231,370 @@ func (o SecurityPolicyRuleMatcherConfigResponseOutput) SrcIpRanges() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherConfigResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
 
+type SecurityPolicyRuleMatcherExprOptions struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions `pulumi:"recaptchaOptions"`
+}
+
+// SecurityPolicyRuleMatcherExprOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs and SecurityPolicyRuleMatcherExprOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsInput` via:
+//
+//	SecurityPolicyRuleMatcherExprOptionsArgs{...}
+type SecurityPolicyRuleMatcherExprOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput
+	ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsOutput
+}
+
+type SecurityPolicyRuleMatcherExprOptionsArgs struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput `pulumi:"recaptchaOptions"`
+}
+
+func (SecurityPolicyRuleMatcherExprOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput)
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherExprOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsArgs, SecurityPolicyRuleMatcherExprOptionsPtr and SecurityPolicyRuleMatcherExprOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherExprOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherExprOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput
+}
+
+type securityPolicyRuleMatcherExprOptionsPtrType SecurityPolicyRuleMatcherExprOptionsArgs
+
+func SecurityPolicyRuleMatcherExprOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsArgs) SecurityPolicyRuleMatcherExprOptionsPtrInput {
+	return (*securityPolicyRuleMatcherExprOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherExprOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutput() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptions {
+		return &v
+	}).(SecurityPolicyRuleMatcherExprOptionsPtrOutput)
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) SecurityPolicyRuleMatcherExprOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherExprOptions
+		return ret
+	}).(SecurityPolicyRuleMatcherExprOptionsOutput)
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsPtrOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		if v == nil {
+			return nil
+		}
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys []string `pulumi:"sessionTokenSiteKeys"`
+}
+
+// SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs and SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput` via:
+//
+//	SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{...}
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys pulumi.StringArrayInput `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys pulumi.StringArrayInput `pulumi:"sessionTokenSiteKeys"`
+}
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput)
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput).ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput is an input type that accepts SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs, SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtr and SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput
+	ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput
+}
+
+type securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs
+
+func SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtr(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput {
+	return (*securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrType) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		return &v
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string { return v.ActionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string { return v.SessionTokenSiteKeys }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) Elem() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions
+		return ret
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse struct {
+	// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	ActionTokenSiteKeys []string `pulumi:"actionTokenSiteKeys"`
+	// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+	SessionTokenSiteKeys []string `pulumi:"sessionTokenSiteKeys"`
+}
+
+type SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) ActionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse) []string {
+		return v.ActionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+func (o SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput) SessionTokenSiteKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse) []string {
+		return v.SessionTokenSiteKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleMatcherExprOptionsResponse struct {
+	// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+	RecaptchaOptions SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse `pulumi:"recaptchaOptions"`
+}
+
+type SecurityPolicyRuleMatcherExprOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleMatcherExprOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsResponseOutput() SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) ToSecurityPolicyRuleMatcherExprOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o
+}
+
+// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+func (o SecurityPolicyRuleMatcherExprOptionsResponseOutput) RecaptchaOptions() SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherExprOptionsResponse) SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse {
+		return v.RecaptchaOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput)
+}
+
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
 type SecurityPolicyRuleMatcherResponse struct {
 	// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 	Config SecurityPolicyRuleMatcherConfigResponse `pulumi:"config"`
 	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 	Expr ExprResponse `pulumi:"expr"`
+	// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+	ExprOptions SecurityPolicyRuleMatcherExprOptionsResponse `pulumi:"exprOptions"`
 	// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
 	VersionedExpr string `pulumi:"versionedExpr"`
 }
@@ -42221,6 +42622,13 @@ func (o SecurityPolicyRuleMatcherResponseOutput) Config() SecurityPolicyRuleMatc
 // User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 func (o SecurityPolicyRuleMatcherResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
+}
+
+// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+func (o SecurityPolicyRuleMatcherResponseOutput) ExprOptions() SecurityPolicyRuleMatcherExprOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) SecurityPolicyRuleMatcherExprOptionsResponse {
+		return v.ExprOptions
+	}).(SecurityPolicyRuleMatcherExprOptionsResponseOutput)
 }
 
 // Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
@@ -44593,9 +45001,9 @@ type SecuritySettings struct {
 	Authentication *string `pulumi:"authentication"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication *AWSV4Signature `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
 
@@ -44618,9 +45026,9 @@ type SecuritySettingsArgs struct {
 	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication AWSV4SignaturePtrInput `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
 }
 
@@ -44714,12 +45122,12 @@ func (o SecuritySettingsOutput) AwsV4Authentication() AWSV4SignaturePtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *AWSV4Signature { return v.AwsV4Authentication }).(AWSV4SignaturePtrOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
@@ -44770,7 +45178,7 @@ func (o SecuritySettingsPtrOutput) AwsV4Authentication() AWSV4SignaturePtrOutput
 	}).(AWSV4SignaturePtrOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecuritySettings) *string {
 		if v == nil {
@@ -44780,7 +45188,7 @@ func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecuritySettings) []string {
 		if v == nil {
@@ -44798,9 +45206,9 @@ type SecuritySettingsResponse struct {
 	Authentication string `pulumi:"authentication"`
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
 	AwsV4Authentication AWSV4SignatureResponse `pulumi:"awsV4Authentication"`
-	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
-	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
 
@@ -44831,12 +45239,12 @@ func (o SecuritySettingsResponseOutput) AwsV4Authentication() AWSV4SignatureResp
 	return o.ApplyT(func(v SecuritySettingsResponse) AWSV4SignatureResponse { return v.AwsV4Authentication }).(AWSV4SignatureResponseOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
 func (o SecuritySettingsResponseOutput) ClientTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
 }
 
-// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
 func (o SecuritySettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
@@ -50157,6 +50565,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherPtrInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchInput)(nil)).Elem(), SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs{})
@@ -50569,6 +50981,7 @@ func init() {
 	pulumi.RegisterOutputType(InstancePropertiesPatchPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPatchResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(InstantSnapshotResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchResponseOutput{})
@@ -50885,6 +51298,12 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherExprOptionsResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleNetworkMatcherPtrOutput{})

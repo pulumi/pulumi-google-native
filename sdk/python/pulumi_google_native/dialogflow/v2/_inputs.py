@@ -552,13 +552,29 @@ class GoogleCloudDialogflowV2FulfillmentArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs:
     def __init__(__self__, *,
+                 baseline_model_version: Optional[pulumi.Input[str]] = None,
                  model: Optional[pulumi.Input[str]] = None):
         """
         Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
+        :param pulumi.Input[str] baseline_model_version: Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
         :param pulumi.Input[str] model: Conversation model resource name. Format: `projects//conversationModels/`.
         """
+        if baseline_model_version is not None:
+            pulumi.set(__self__, "baseline_model_version", baseline_model_version)
         if model is not None:
             pulumi.set(__self__, "model", model)
+
+    @property
+    @pulumi.getter(name="baselineModelVersion")
+    def baseline_model_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        """
+        return pulumi.get(self, "baseline_model_version")
+
+    @baseline_model_version.setter
+    def baseline_model_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "baseline_model_version", value)
 
     @property
     @pulumi.getter
@@ -917,7 +933,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
                  max_results: Optional[pulumi.Input[int]] = None):
         """
         Config for suggestion query.
-        :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+        :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
@@ -941,7 +957,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
     @pulumi.getter(name="confidenceThreshold")
     def confidence_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+        Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
         """
         return pulumi.get(self, "confidence_threshold")
 

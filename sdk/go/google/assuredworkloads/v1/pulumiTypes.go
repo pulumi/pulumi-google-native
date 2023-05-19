@@ -277,7 +277,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponseOutp
 	}).(pulumi.StringOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime string `pulumi:"nextRotationTime"`
@@ -296,7 +296,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput interface {
 	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
@@ -357,7 +357,7 @@ func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToGoogleCloudA
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ElementType() reflect.Type {
@@ -436,7 +436,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) RotationPerio
 	}).(pulumi.StringPtrOutput)
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
 	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime string `pulumi:"nextRotationTime"`
@@ -444,7 +444,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
 	RotationPeriod string `pulumi:"rotationPeriod"`
 }
 
-// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+// Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ElementType() reflect.Type {
@@ -467,6 +467,202 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) NextRota
 // Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) RotationPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer *bool `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations *bool `pulumi:"remediateFolderViolations"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs and GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsInput` via:
+//
+//	GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer pulumi.BoolPtrInput `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations pulumi.BoolPtrInput `pulumi:"remediateFolderViolations"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput).ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs, GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtr and GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput` via:
+//
+//	        GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput
+}
+
+type googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs
+
+func GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtr(v *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput {
+	return (*googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType)(v)
+}
+
+func (*googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrType) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *bool { return v.DataLogsViewer }).(pulumi.BoolPtrOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput) RemediateFolderViolations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *bool {
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput)
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) DataLogsViewer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataLogsViewer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput) RemediateFolderViolations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse struct {
+	// Allow the partner to view inspectability logs and monitoring violations.
+	DataLogsViewer bool `pulumi:"dataLogsViewer"`
+	// Allow partner to monitor folder and remediate violations
+	RemediateFolderViolations bool `pulumi:"remediateFolderViolations"`
+}
+
+// Permissions granted to the AW Partner SA account for the customer workload
+type GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput {
+	return o
+}
+
+// Allow the partner to view inspectability logs and monitoring violations.
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) DataLogsViewer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse) bool { return v.DataLogsViewer }).(pulumi.BoolOutput)
+}
+
+// Allow partner to monitor folder and remediate violations
+func (o GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput) RemediateFolderViolations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse) bool {
+		return v.RemediateFolderViolations
+	}).(pulumi.BoolOutput)
 }
 
 // Represent the resources that are children of this Workload.
@@ -528,7 +724,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettings struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId *string `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType `pulumi:"resourceType"`
 }
 
@@ -549,7 +745,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrInput `pulumi:"resourceType"`
 }
 
@@ -615,7 +811,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceId(
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceType() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
 		return v.ResourceType
@@ -648,7 +844,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse struct {
 	DisplayName string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
 	ResourceId string `pulumi:"resourceId"`
-	// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -677,7 +873,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) Res
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -744,6 +940,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponsePtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadComplianceStatusResponseOutput{})
@@ -753,6 +951,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput{})

@@ -97,6 +97,10 @@ type RegionDisk struct {
 	SourceImageEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"sourceImageEncryptionKey"`
 	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot pulumi.StringOutput `pulumi:"sourceInstantSnapshot"`
+	// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+	SourceInstantSnapshotId pulumi.StringOutput `pulumi:"sourceInstantSnapshotId"`
 	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot
 	SourceSnapshot pulumi.StringOutput `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
@@ -222,6 +226,8 @@ type regionDiskArgs struct {
 	SourceImage *string `pulumi:"sourceImage"`
 	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
 	SourceImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceImageEncryptionKey"`
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
 	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
@@ -294,6 +300,8 @@ type RegionDiskArgs struct {
 	SourceImage pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
 	SourceImageEncryptionKey CustomerEncryptionKeyPtrInput
+	// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+	SourceInstantSnapshot pulumi.StringPtrInput
 	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot
 	SourceSnapshot pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
@@ -550,6 +558,16 @@ func (o RegionDiskOutput) SourceImageEncryptionKey() CustomerEncryptionKeyRespon
 // The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
 func (o RegionDiskOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
+func (o RegionDiskOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
+}
+
+// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+func (o RegionDiskOutput) SourceInstantSnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
 }
 
 // The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot

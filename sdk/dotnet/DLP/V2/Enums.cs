@@ -750,7 +750,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
     /// <summary>
-    /// The score applied to the resource.
+    /// The sensitivity score applied to the resource.
     /// </summary>
     [EnumType]
     public readonly struct GooglePrivacyDlpV2SensitivityScoreScore : IEquatable<GooglePrivacyDlpV2SensitivityScoreScore>
@@ -767,15 +767,15 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityScoreUnspecified { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED");
         /// <summary>
-        /// No sensitive information detected. Limited access.
+        /// No sensitive information detected. The resource isn't publicly accessible.
         /// </summary>
         public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityLow { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_LOW");
         /// <summary>
-        /// Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+        /// Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.
         /// </summary>
         public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityModerate { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_MODERATE");
         /// <summary>
-        /// High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+        /// High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII.
         /// </summary>
         public static GooglePrivacyDlpV2SensitivityScoreScore SensitivityHigh { get; } = new GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_HIGH");
 

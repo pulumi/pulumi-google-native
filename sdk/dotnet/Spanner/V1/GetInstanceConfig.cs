@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ReplicaInfoResponse> Replicas;
         /// <summary>
-        /// The current instance config state.
+        /// The current instance config state. Applicable only for USER_MANAGED configs.
         /// </summary>
         public readonly string State;
 

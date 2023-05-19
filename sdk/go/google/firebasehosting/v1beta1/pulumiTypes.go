@@ -115,6 +115,8 @@ type CloudRunRewrite struct {
 	Region *string `pulumi:"region"`
 	// User-defined ID of the Cloud Run service.
 	ServiceId string `pulumi:"serviceId"`
+	// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+	Tag *string `pulumi:"tag"`
 }
 
 // CloudRunRewriteInput is an input type that accepts CloudRunRewriteArgs and CloudRunRewriteOutput values.
@@ -134,6 +136,8 @@ type CloudRunRewriteArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// User-defined ID of the Cloud Run service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+	// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (CloudRunRewriteArgs) ElementType() reflect.Type {
@@ -224,6 +228,11 @@ func (o CloudRunRewriteOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewrite) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
+// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+func (o CloudRunRewriteOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRunRewrite) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
 type CloudRunRewritePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudRunRewritePtrOutput) ElementType() reflect.Type {
@@ -268,12 +277,24 @@ func (o CloudRunRewritePtrOutput) ServiceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+func (o CloudRunRewritePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 type CloudRunRewriteResponse struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 	Region string `pulumi:"region"`
 	// User-defined ID of the Cloud Run service.
 	ServiceId string `pulumi:"serviceId"`
+	// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+	Tag string `pulumi:"tag"`
 }
 
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
@@ -299,6 +320,11 @@ func (o CloudRunRewriteResponseOutput) Region() pulumi.StringOutput {
 // User-defined ID of the Cloud Run service.
 func (o CloudRunRewriteResponseOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI
+func (o CloudRunRewriteResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
 
 // The current certificate provisioning status information for a domain.

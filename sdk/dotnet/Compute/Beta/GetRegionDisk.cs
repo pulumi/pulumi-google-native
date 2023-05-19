@@ -220,6 +220,14 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SourceImageId;
         /// <summary>
+        /// The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        /// </summary>
+        public readonly string SourceInstantSnapshot;
+        /// <summary>
+        /// The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        /// </summary>
+        public readonly string SourceInstantSnapshotId;
+        /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         /// </summary>
         public readonly string SourceSnapshot;
@@ -340,6 +348,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string sourceImageId,
 
+            string sourceInstantSnapshot,
+
+            string sourceInstantSnapshotId,
+
             string sourceSnapshot,
 
             Outputs.CustomerEncryptionKeyResponse sourceSnapshotEncryptionKey,
@@ -399,6 +411,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SourceImage = sourceImage;
             SourceImageEncryptionKey = sourceImageEncryptionKey;
             SourceImageId = sourceImageId;
+            SourceInstantSnapshot = sourceInstantSnapshot;
+            SourceInstantSnapshotId = sourceInstantSnapshotId;
             SourceSnapshot = sourceSnapshot;
             SourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             SourceSnapshotId = sourceSnapshotId;

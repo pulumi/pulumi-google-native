@@ -2747,17 +2747,17 @@ func (in *googlePrivacyDlpV2OutputStorageConfigOutputSchemaPtr) ToGooglePrivacyD
 	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput)
 }
 
-// The score applied to the resource.
+// The sensitivity score applied to the resource.
 type GooglePrivacyDlpV2SensitivityScoreScore string
 
 const (
 	// Unused.
 	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityScoreUnspecified = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_SCORE_UNSPECIFIED")
-	// No sensitive information detected. Limited access.
+	// No sensitive information detected. The resource isn't publicly accessible.
 	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityLow = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_LOW")
-	// Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+	// Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.
 	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityModerate = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_MODERATE")
-	// High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+	// High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII.
 	GooglePrivacyDlpV2SensitivityScoreScoreSensitivityHigh = GooglePrivacyDlpV2SensitivityScoreScore("SENSITIVITY_HIGH")
 )
 

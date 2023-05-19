@@ -122,7 +122,7 @@ type Cluster struct {
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponseOutput `pulumi:"privateClusterConfig"`
 	Project              pulumi.StringOutput                `pulumi:"project"`
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelResponseOutput `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
@@ -293,7 +293,7 @@ type clusterArgs struct {
 	//
 	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
@@ -410,7 +410,7 @@ type ClusterArgs struct {
 	//
 	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels pulumi.StringMapInput
@@ -757,7 +757,7 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Release channel configuration.
+// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 func (o ClusterOutput) ReleaseChannel() ReleaseChannelResponseOutput {
 	return o.ApplyT(func(v *Cluster) ReleaseChannelResponseOutput { return v.ReleaseChannel }).(ReleaseChannelResponseOutput)
 }

@@ -276,7 +276,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         public static RoutineRoutineType RoutineTypeUnspecified { get; } = new RoutineRoutineType("ROUTINE_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Non-builtin permanent scalar function.
+        /// Non-built-in persistent scalar function.
         /// </summary>
         public static RoutineRoutineType ScalarFunction { get; } = new RoutineRoutineType("SCALAR_FUNCTION");
         /// <summary>
@@ -284,9 +284,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public static RoutineRoutineType Procedure { get; } = new RoutineRoutineType("PROCEDURE");
         /// <summary>
-        /// Non-builtin permanent TVF.
+        /// Non-built-in persistent TVF.
         /// </summary>
         public static RoutineRoutineType TableValuedFunction { get; } = new RoutineRoutineType("TABLE_VALUED_FUNCTION");
+        /// <summary>
+        /// Non-built-in persistent aggregate function.
+        /// </summary>
+        public static RoutineRoutineType AggregateFunction { get; } = new RoutineRoutineType("AGGREGATE_FUNCTION");
 
         public static bool operator ==(RoutineRoutineType left, RoutineRoutineType right) => left.Equals(right);
         public static bool operator !=(RoutineRoutineType left, RoutineRoutineType right) => !left.Equals(right);

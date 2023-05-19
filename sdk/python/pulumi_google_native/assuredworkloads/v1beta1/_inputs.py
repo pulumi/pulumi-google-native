@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadIL4SettingsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs',
+    'GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs',
     'GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs',
 ]
 
@@ -208,6 +209,46 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs:
     @rotation_period.setter
     def rotation_period(self, value: pulumi.Input[str]):
         pulumi.set(self, "rotation_period", value)
+
+
+@pulumi.input_type
+class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsArgs:
+    def __init__(__self__, *,
+                 data_logs_viewer: Optional[pulumi.Input[bool]] = None,
+                 remediate_folder_violations: Optional[pulumi.Input[bool]] = None):
+        """
+        Permissions granted to the AW Partner SA account for the customer workload
+        :param pulumi.Input[bool] data_logs_viewer: Allow the partner to view inspectability logs and monitoring violations.
+        :param pulumi.Input[bool] remediate_folder_violations: Allow partner to monitor folder and remediate violations
+        """
+        if data_logs_viewer is not None:
+            pulumi.set(__self__, "data_logs_viewer", data_logs_viewer)
+        if remediate_folder_violations is not None:
+            pulumi.set(__self__, "remediate_folder_violations", remediate_folder_violations)
+
+    @property
+    @pulumi.getter(name="dataLogsViewer")
+    def data_logs_viewer(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow the partner to view inspectability logs and monitoring violations.
+        """
+        return pulumi.get(self, "data_logs_viewer")
+
+    @data_logs_viewer.setter
+    def data_logs_viewer(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_logs_viewer", value)
+
+    @property
+    @pulumi.getter(name="remediateFolderViolations")
+    def remediate_folder_violations(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow partner to monitor folder and remediate violations
+        """
+        return pulumi.get(self, "remediate_folder_violations")
+
+    @remediate_folder_violations.setter
+    def remediate_folder_violations(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remediate_folder_violations", value)
 
 
 @pulumi.input_type

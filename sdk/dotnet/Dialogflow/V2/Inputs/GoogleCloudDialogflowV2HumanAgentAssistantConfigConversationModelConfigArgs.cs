@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        /// </summary>
+        [Input("baselineModelVersion")]
+        public Input<string>? BaselineModelVersion { get; set; }
+
+        /// <summary>
         /// Conversation model resource name. Format: `projects//conversationModels/`.
         /// </summary>
         [Input("model")]

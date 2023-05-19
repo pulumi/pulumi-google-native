@@ -2320,6 +2320,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) NotificationC
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion *string `pulumi:"baselineModelVersion"`
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model *string `pulumi:"model"`
 }
@@ -2337,6 +2339,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigInpu
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion pulumi.StringPtrInput `pulumi:"baselineModelVersion"`
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model pulumi.StringPtrInput `pulumi:"model"`
 }
@@ -2419,6 +2423,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigO
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput)
 }
 
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Conversation model resource name. Format: `projects//conversationModels/`.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
@@ -2450,6 +2461,16 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigP
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput)
 }
 
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput) BaselineModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Conversation model resource name. Format: `projects//conversationModels/`.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
@@ -2462,6 +2483,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigP
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse struct {
+	// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+	BaselineModelVersion string `pulumi:"baselineModelVersion"`
 	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model string `pulumi:"model"`
 }
@@ -2479,6 +2502,13 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigR
 
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput) ToGoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput {
 	return o
+}
+
+// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput) BaselineModelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse) string {
+		return v.BaselineModelVersion
+	}).(pulumi.StringOutput)
 }
 
 // Conversation model resource name. Format: `projects//conversationModels/`.
@@ -3365,7 +3395,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigR
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 	ConfidenceThreshold *float64 `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings `pulumi:"contextFilterSettings"`
@@ -3392,7 +3422,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigInput 
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 	ConfidenceThreshold pulumi.Float64PtrInput `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput `pulumi:"contextFilterSettings"`
@@ -3484,7 +3514,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOut
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput)
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
 		return v.ConfidenceThreshold
@@ -3550,7 +3580,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtr
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigOutput)
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput) ConfidenceThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig) *float64 {
 		if v == nil {
@@ -4352,7 +4382,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 
 // Config for suggestion query.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse struct {
-	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+	// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 	ConfidenceThreshold float64 `pulumi:"confidenceThreshold"`
 	// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
 	ContextFilterSettings GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse `pulumi:"contextFilterSettings"`
@@ -4381,7 +4411,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigRes
 	return o
 }
 
-// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponseOutput) ConfidenceThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigResponse) float64 {
 		return v.ConfidenceThreshold

@@ -24,6 +24,7 @@ type LookupBareMetalAdminClusterArgs struct {
 	BareMetalAdminClusterId string  `pulumi:"bareMetalAdminClusterId"`
 	Location                string  `pulumi:"location"`
 	Project                 *string `pulumi:"project"`
+	View                    *string `pulumi:"view"`
 }
 
 type LookupBareMetalAdminClusterResult struct {
@@ -102,6 +103,7 @@ type LookupBareMetalAdminClusterOutputArgs struct {
 	BareMetalAdminClusterId pulumi.StringInput    `pulumi:"bareMetalAdminClusterId"`
 	Location                pulumi.StringInput    `pulumi:"location"`
 	Project                 pulumi.StringPtrInput `pulumi:"project"`
+	View                    pulumi.StringPtrInput `pulumi:"view"`
 }
 
 func (LookupBareMetalAdminClusterOutputArgs) ElementType() reflect.Type {

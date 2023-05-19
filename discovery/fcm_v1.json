@@ -146,7 +146,7 @@
       }
     }
   },
-  "revision": "20230421",
+  "revision": "20230515",
   "rootUrl": "https://fcm.googleapis.com/",
   "schemas": {
     "AndroidConfig": {

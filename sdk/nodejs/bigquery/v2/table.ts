@@ -185,6 +185,10 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly streamingBuffer!: pulumi.Output<outputs.bigquery.v2.StreamingbufferResponse>;
     /**
+     * [Optional] The table constraints on the table.
+     */
+    public readonly tableConstraints!: pulumi.Output<outputs.bigquery.v2.TableConstraintsResponse>;
+    /**
      * [Required] Reference describing the ID of this table.
      */
     public readonly tableReference!: pulumi.Output<outputs.bigquery.v2.TableReferenceResponse>;
@@ -230,6 +234,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             resourceInputs["requirePartitionFilter"] = args ? args.requirePartitionFilter : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableReference"] = args ? args.tableReference : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
@@ -296,6 +301,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
             resourceInputs["streamingBuffer"] = undefined /*out*/;
+            resourceInputs["tableConstraints"] = undefined /*out*/;
             resourceInputs["tableReference"] = undefined /*out*/;
             resourceInputs["timePartitioning"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -366,6 +372,10 @@ export interface TableArgs {
      * [Optional] Describes the schema of this table.
      */
     schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
+    /**
+     * [Optional] The table constraints on the table.
+     */
+    tableConstraints?: pulumi.Input<inputs.bigquery.v2.TableConstraintsArgs>;
     /**
      * [Required] Reference describing the ID of this table.
      */

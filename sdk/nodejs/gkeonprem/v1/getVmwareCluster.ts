@@ -16,6 +16,7 @@ export function getVmwareCluster(args: GetVmwareClusterArgs, opts?: pulumi.Invok
     return pulumi.runtime.invoke("google-native:gkeonprem/v1:getVmwareCluster", {
         "location": args.location,
         "project": args.project,
+        "view": args.view,
         "vmwareClusterId": args.vmwareClusterId,
     }, opts);
 }
@@ -23,6 +24,7 @@ export function getVmwareCluster(args: GetVmwareClusterArgs, opts?: pulumi.Invok
 export interface GetVmwareClusterArgs {
     location: string;
     project?: string;
+    view?: string;
     vmwareClusterId: string;
 }
 
@@ -154,5 +156,6 @@ export function getVmwareClusterOutput(args: GetVmwareClusterOutputArgs, opts?: 
 export interface GetVmwareClusterOutputArgs {
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    view?: pulumi.Input<string>;
     vmwareClusterId: pulumi.Input<string>;
 }

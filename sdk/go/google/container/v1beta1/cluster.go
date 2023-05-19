@@ -140,7 +140,7 @@ type Cluster struct {
 	Project              pulumi.StringOutput                `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster.
 	ProtectConfig ProtectConfigResponseOutput `pulumi:"protectConfig"`
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelResponseOutput `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
@@ -335,7 +335,7 @@ type clusterArgs struct {
 	Project *string `pulumi:"project"`
 	// Enable/Disable Protect API features for the cluster.
 	ProtectConfig *ProtectConfig `pulumi:"protectConfig"`
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
@@ -476,7 +476,7 @@ type ClusterArgs struct {
 	Project pulumi.StringPtrInput
 	// Enable/Disable Protect API features for the cluster.
 	ProtectConfig ProtectConfigPtrInput
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels pulumi.StringMapInput
@@ -865,7 +865,7 @@ func (o ClusterOutput) ProtectConfig() ProtectConfigResponseOutput {
 	return o.ApplyT(func(v *Cluster) ProtectConfigResponseOutput { return v.ProtectConfig }).(ProtectConfigResponseOutput)
 }
 
-// Release channel configuration.
+// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 func (o ClusterOutput) ReleaseChannel() ReleaseChannelResponseOutput {
 	return o.ApplyT(func(v *Cluster) ReleaseChannelResponseOutput { return v.ReleaseChannel }).(ReleaseChannelResponseOutput)
 }

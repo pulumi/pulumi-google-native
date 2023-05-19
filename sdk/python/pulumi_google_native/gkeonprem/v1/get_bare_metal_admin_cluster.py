@@ -369,6 +369,7 @@ class AwaitableGetBareMetalAdminClusterResult(GetBareMetalAdminClusterResult):
 def get_bare_metal_admin_cluster(bare_metal_admin_cluster_id: Optional[str] = None,
                                  location: Optional[str] = None,
                                  project: Optional[str] = None,
+                                 view: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBareMetalAdminClusterResult:
     """
     Gets details of a single bare metal admin cluster.
@@ -377,6 +378,7 @@ def get_bare_metal_admin_cluster(bare_metal_admin_cluster_id: Optional[str] = No
     __args__['bareMetalAdminClusterId'] = bare_metal_admin_cluster_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['view'] = view
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getBareMetalAdminCluster', __args__, opts=opts, typ=GetBareMetalAdminClusterResult).value
 
@@ -415,6 +417,7 @@ def get_bare_metal_admin_cluster(bare_metal_admin_cluster_id: Optional[str] = No
 def get_bare_metal_admin_cluster_output(bare_metal_admin_cluster_id: Optional[pulumi.Input[str]] = None,
                                         location: Optional[pulumi.Input[str]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                                        view: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBareMetalAdminClusterResult]:
     """
     Gets details of a single bare metal admin cluster.

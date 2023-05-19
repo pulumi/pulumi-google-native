@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// Score is a summary of all elements in the data profile. A higher number means more sensitive.
+    /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2SensitivityScoreResponse
     {
         /// <summary>
-        /// The score applied to the resource.
+        /// The sensitivity score applied to the resource.
         /// </summary>
         public readonly string Score;
 

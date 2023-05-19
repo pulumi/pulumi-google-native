@@ -105,6 +105,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceTemplateIamMember{}
 	case "google-native:compute/beta:InstanceTemplateIamPolicy":
 		r = &InstanceTemplateIamPolicy{}
+	case "google-native:compute/beta:InstantSnapshot":
+		r = &InstantSnapshot{}
+	case "google-native:compute/beta:InstantSnapshotIamBinding":
+		r = &InstantSnapshotIamBinding{}
+	case "google-native:compute/beta:InstantSnapshotIamMember":
+		r = &InstantSnapshotIamMember{}
+	case "google-native:compute/beta:InstantSnapshotIamPolicy":
+		r = &InstantSnapshotIamPolicy{}
 	case "google-native:compute/beta:Interconnect":
 		r = &Interconnect{}
 	case "google-native:compute/beta:InterconnectAttachment":
@@ -199,6 +207,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "google-native:compute/beta:RegionInstanceTemplate":
 		r = &RegionInstanceTemplate{}
+	case "google-native:compute/beta:RegionInstantSnapshot":
+		r = &RegionInstantSnapshot{}
+	case "google-native:compute/beta:RegionInstantSnapshotIamBinding":
+		r = &RegionInstantSnapshotIamBinding{}
+	case "google-native:compute/beta:RegionInstantSnapshotIamMember":
+		r = &RegionInstantSnapshotIamMember{}
+	case "google-native:compute/beta:RegionInstantSnapshotIamPolicy":
+		r = &RegionInstantSnapshotIamPolicy{}
 	case "google-native:compute/beta:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "google-native:compute/beta:RegionNetworkFirewallPolicy":

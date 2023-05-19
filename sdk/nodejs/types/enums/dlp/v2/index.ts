@@ -435,21 +435,21 @@ export const GooglePrivacyDlpV2SensitivityScoreScore = {
      */
     SensitivityScoreUnspecified: "SENSITIVITY_SCORE_UNSPECIFIED",
     /**
-     * No sensitive information detected. Limited access.
+     * No sensitive information detected. The resource isn't publicly accessible.
      */
     SensitivityLow: "SENSITIVITY_LOW",
     /**
-     * Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+     * Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.
      */
     SensitivityModerate: "SENSITIVITY_MODERATE",
     /**
-     * High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+     * High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII.
      */
     SensitivityHigh: "SENSITIVITY_HIGH",
 } as const;
 
 /**
- * The score applied to the resource.
+ * The sensitivity score applied to the resource.
  */
 export type GooglePrivacyDlpV2SensitivityScoreScore = (typeof GooglePrivacyDlpV2SensitivityScoreScore)[keyof typeof GooglePrivacyDlpV2SensitivityScoreScore];
 

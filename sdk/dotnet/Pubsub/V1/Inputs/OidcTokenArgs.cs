@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
 {
 
     /// <summary>
-    /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+    /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
     /// </summary>
     public sealed class OidcTokenArgs : global::Pulumi.ResourceArgs
     {
@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         [Input("audience")]
         public Input<string>? Audience { get; set; }
 
+        /// <summary>
+        /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+        /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 

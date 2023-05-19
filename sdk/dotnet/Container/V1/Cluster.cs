@@ -316,7 +316,7 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Release channel configuration.
+        /// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         /// </summary>
         [Output("releaseChannel")]
         public Output<Outputs.ReleaseChannelResponse> ReleaseChannel { get; private set; } = null!;
@@ -742,7 +742,7 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Release channel configuration.
+        /// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
         /// </summary>
         [Input("releaseChannel")]
         public Input<Inputs.ReleaseChannelArgs>? ReleaseChannel { get; set; }

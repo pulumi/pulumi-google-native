@@ -140,6 +140,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly string Partner;
         /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        public readonly Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse PartnerPermissions;
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         public readonly string ProvisionedResourcesParent;
@@ -200,6 +204,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
 
             string partner,
 
+            Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissionsResponse partnerPermissions,
+
             string provisionedResourcesParent,
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResponse> resourceSettings,
@@ -229,6 +235,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             Labels = labels;
             Name = name;
             Partner = partner;
+            PartnerPermissions = partnerPermissions;
             ProvisionedResourcesParent = provisionedResourcesParent;
             ResourceSettings = resourceSettings;
             Resources = resources;

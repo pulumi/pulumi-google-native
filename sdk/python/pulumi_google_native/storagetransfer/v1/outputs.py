@@ -184,6 +184,8 @@ class AwsS3DataResponse(dict):
             suggest = "aws_access_key"
         elif key == "bucketName":
             suggest = "bucket_name"
+        elif key == "credentialsSecret":
+            suggest = "credentials_secret"
         elif key == "roleArn":
             suggest = "role_arn"
 
@@ -201,17 +203,20 @@ class AwsS3DataResponse(dict):
     def __init__(__self__, *,
                  aws_access_key: 'outputs.AwsAccessKeyResponse',
                  bucket_name: str,
+                 credentials_secret: str,
                  path: str,
                  role_arn: str):
         """
         An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
         :param 'AwsAccessKeyResponse' aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         :param str bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        :param str credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
         """
         pulumi.set(__self__, "aws_access_key", aws_access_key)
         pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "credentials_secret", credentials_secret)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "role_arn", role_arn)
 
@@ -230,6 +235,14 @@ class AwsS3DataResponse(dict):
         S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         """
         return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="credentialsSecret")
+    def credentials_secret(self) -> str:
+        """
+        Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        """
+        return pulumi.get(self, "credentials_secret")
 
     @property
     @pulumi.getter
@@ -258,6 +271,8 @@ class AzureBlobStorageDataResponse(dict):
         suggest = None
         if key == "azureCredentials":
             suggest = "azure_credentials"
+        elif key == "credentialsSecret":
+            suggest = "credentials_secret"
         elif key == "storageAccount":
             suggest = "storage_account"
 
@@ -275,17 +290,20 @@ class AzureBlobStorageDataResponse(dict):
     def __init__(__self__, *,
                  azure_credentials: 'outputs.AzureCredentialsResponse',
                  container: str,
+                 credentials_secret: str,
                  path: str,
                  storage_account: str):
         """
         An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
         :param 'AzureCredentialsResponse' azure_credentials: Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         :param str container: The container to transfer from the Azure Storage account.
+        :param str credentials_secret: Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param str storage_account: The name of the Azure Storage account.
         """
         pulumi.set(__self__, "azure_credentials", azure_credentials)
         pulumi.set(__self__, "container", container)
+        pulumi.set(__self__, "credentials_secret", credentials_secret)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_account", storage_account)
 
@@ -304,6 +322,14 @@ class AzureBlobStorageDataResponse(dict):
         The container to transfer from the Azure Storage account.
         """
         return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter(name="credentialsSecret")
+    def credentials_secret(self) -> str:
+        """
+        Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`
+        """
+        return pulumi.get(self, "credentials_secret")
 
     @property
     @pulumi.getter
@@ -1407,7 +1433,7 @@ class TransferSpecResponse(dict):
         :param 'AzureBlobStorageDataResponse' azure_blob_storage_data_source: An Azure Blob Storage data source.
         :param 'GcsDataResponse' gcs_data_sink: A Cloud Storage data sink.
         :param 'GcsDataResponse' gcs_data_source: A Cloud Storage data source.
-        :param 'GcsDataResponse' gcs_intermediate_data_location: Cloud Storage intermediate data location.
+        :param 'GcsDataResponse' gcs_intermediate_data_location: For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
         :param 'HttpDataResponse' http_data_source: An HTTP URL data source.
         :param 'ObjectConditionsResponse' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
         :param 'PosixFilesystemResponse' posix_data_sink: A POSIX Filesystem data sink.
@@ -1476,7 +1502,7 @@ class TransferSpecResponse(dict):
     @pulumi.getter(name="gcsIntermediateDataLocation")
     def gcs_intermediate_data_location(self) -> 'outputs.GcsDataResponse':
         """
-        Cloud Storage intermediate data location.
+        For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
         """
         return pulumi.get(self, "gcs_intermediate_data_location")
 

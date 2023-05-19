@@ -137,7 +137,7 @@ type LookupClusterResult struct {
 	NotificationConfig NotificationConfigResponse `pulumi:"notificationConfig"`
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
-	// Release channel configuration.
+	// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 	ReleaseChannel ReleaseChannelResponse `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
@@ -468,7 +468,7 @@ func (o LookupClusterResultOutput) PrivateClusterConfig() PrivateClusterConfigRe
 	return o.ApplyT(func(v LookupClusterResult) PrivateClusterConfigResponse { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
 }
 
-// Release channel configuration.
+// Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version.
 func (o LookupClusterResultOutput) ReleaseChannel() ReleaseChannelResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ReleaseChannelResponse { return v.ReleaseChannel }).(ReleaseChannelResponseOutput)
 }

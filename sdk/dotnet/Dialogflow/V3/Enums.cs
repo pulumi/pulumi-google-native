@@ -510,6 +510,108 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod : IEquatable<GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// HTTP method not specified.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod HttpMethodUnspecified { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("HTTP_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// HTTP POST Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Post { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("POST");
+        /// <summary>
+        /// HTTP GET Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Get { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("GET");
+        /// <summary>
+        /// HTTP HEAD Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Head { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("HEAD");
+        /// <summary>
+        /// HTTP PUT Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Put { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("PUT");
+        /// <summary>
+        /// HTTP DELETE Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Delete { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("DELETE");
+        /// <summary>
+        /// HTTP PATCH Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Patch { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("PATCH");
+        /// <summary>
+        /// HTTP OPTIONS Method.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod Options { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod("OPTIONS");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod left, GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod left, GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3WebhookGenericWebServiceHttpMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Type of the webhook.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType : IEquatable<GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This value is unused.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType WebhookTypeUnspecified { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType("WEBHOOK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Represents a standard webhook.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType Standard { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType("STANDARD");
+        /// <summary>
+        /// Represents a flexible webhook.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType Flexible { get; } = new GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType("FLEXIBLE");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType left, GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType left, GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3WebhookGenericWebServiceWebhookType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     [EnumType]
     public readonly struct SecuritySettingPurgeDataTypesItem : IEquatable<SecuritySettingPurgeDataTypesItem>
     {

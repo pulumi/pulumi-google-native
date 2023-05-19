@@ -120,6 +120,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string Partner;
         /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse PartnerPermissions;
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         public readonly string ProvisionedResourcesParent;
@@ -136,7 +140,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse SaaEnrollmentResponse;
         /// <summary>
-        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         /// </summary>
         public readonly bool ViolationNotificationsEnabled;
 
@@ -170,6 +174,8 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             string partner,
 
+            Outputs.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse partnerPermissions,
+
             string provisionedResourcesParent,
 
             ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse> resourceSettings,
@@ -194,6 +200,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             Labels = labels;
             Name = name;
             Partner = partner;
+            PartnerPermissions = partnerPermissions;
             ProvisionedResourcesParent = provisionedResourcesParent;
             ResourceSettings = resourceSettings;
             Resources = resources;

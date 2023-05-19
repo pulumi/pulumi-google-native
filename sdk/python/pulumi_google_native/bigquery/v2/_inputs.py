@@ -59,6 +59,11 @@ __all__ = [
     'StandardSqlFieldArgs',
     'StandardSqlStructTypeArgs',
     'StandardSqlTableTypeArgs',
+    'TableConstraintsForeignKeysItemColumnReferencesItemArgs',
+    'TableConstraintsForeignKeysItemReferencedTableArgs',
+    'TableConstraintsForeignKeysItemArgs',
+    'TableConstraintsPrimaryKeyArgs',
+    'TableConstraintsArgs',
     'TableFieldSchemaCategoriesArgs',
     'TableFieldSchemaPolicyTagsArgs',
     'TableFieldSchemaArgs',
@@ -4266,6 +4271,176 @@ class StandardSqlTableTypeArgs:
     @columns.setter
     def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StandardSqlFieldArgs']]]]):
         pulumi.set(self, "columns", value)
+
+
+@pulumi.input_type
+class TableConstraintsForeignKeysItemColumnReferencesItemArgs:
+    def __init__(__self__, *,
+                 referenced_column: Optional[pulumi.Input[str]] = None,
+                 referencing_column: Optional[pulumi.Input[str]] = None):
+        if referenced_column is not None:
+            pulumi.set(__self__, "referenced_column", referenced_column)
+        if referencing_column is not None:
+            pulumi.set(__self__, "referencing_column", referencing_column)
+
+    @property
+    @pulumi.getter(name="referencedColumn")
+    def referenced_column(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "referenced_column")
+
+    @referenced_column.setter
+    def referenced_column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "referenced_column", value)
+
+    @property
+    @pulumi.getter(name="referencingColumn")
+    def referencing_column(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "referencing_column")
+
+    @referencing_column.setter
+    def referencing_column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "referencing_column", value)
+
+
+@pulumi.input_type
+class TableConstraintsForeignKeysItemReferencedTableArgs:
+    def __init__(__self__, *,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 table_id: Optional[pulumi.Input[str]] = None):
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_id", value)
+
+
+@pulumi.input_type
+class TableConstraintsForeignKeysItemArgs:
+    def __init__(__self__, *,
+                 column_references: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 referenced_table: Optional[pulumi.Input['TableConstraintsForeignKeysItemReferencedTableArgs']] = None):
+        if column_references is not None:
+            pulumi.set(__self__, "column_references", column_references)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if referenced_table is not None:
+            pulumi.set(__self__, "referenced_table", referenced_table)
+
+    @property
+    @pulumi.getter(name="columnReferences")
+    def column_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]]:
+        return pulumi.get(self, "column_references")
+
+    @column_references.setter
+    def column_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemColumnReferencesItemArgs']]]]):
+        pulumi.set(self, "column_references", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="referencedTable")
+    def referenced_table(self) -> Optional[pulumi.Input['TableConstraintsForeignKeysItemReferencedTableArgs']]:
+        return pulumi.get(self, "referenced_table")
+
+    @referenced_table.setter
+    def referenced_table(self, value: Optional[pulumi.Input['TableConstraintsForeignKeysItemReferencedTableArgs']]):
+        pulumi.set(self, "referenced_table", value)
+
+
+@pulumi.input_type
+class TableConstraintsPrimaryKeyArgs:
+    def __init__(__self__, *,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        [Optional] The primary key of the table.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "columns", value)
+
+
+@pulumi.input_type
+class TableConstraintsArgs:
+    def __init__(__self__, *,
+                 foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]]] = None,
+                 primary_key: Optional[pulumi.Input['TableConstraintsPrimaryKeyArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]] foreign_keys: [Optional] The foreign keys of the tables.
+        :param pulumi.Input['TableConstraintsPrimaryKeyArgs'] primary_key: [Optional] The primary key of the table.
+        """
+        if foreign_keys is not None:
+            pulumi.set(__self__, "foreign_keys", foreign_keys)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter(name="foreignKeys")
+    def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]]]:
+        """
+        [Optional] The foreign keys of the tables.
+        """
+        return pulumi.get(self, "foreign_keys")
+
+    @foreign_keys.setter
+    def foreign_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableConstraintsForeignKeysItemArgs']]]]):
+        pulumi.set(self, "foreign_keys", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input['TableConstraintsPrimaryKeyArgs']]:
+        """
+        [Optional] The primary key of the table.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input['TableConstraintsPrimaryKeyArgs']]):
+        pulumi.set(self, "primary_key", value)
 
 
 @pulumi.input_type

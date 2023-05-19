@@ -101,6 +101,8 @@ type LookupTableResult struct {
 	SnapshotDefinition SnapshotDefinitionResponse `pulumi:"snapshotDefinition"`
 	// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 	StreamingBuffer StreamingbufferResponse `pulumi:"streamingBuffer"`
+	// [Optional] The table constraints on the table.
+	TableConstraints TableConstraintsResponse `pulumi:"tableConstraints"`
 	// [Required] Reference describing the ID of this table.
 	TableReference TableReferenceResponse `pulumi:"tableReference"`
 	// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -328,6 +330,11 @@ func (o LookupTableResultOutput) SnapshotDefinition() SnapshotDefinitionResponse
 // Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
 func (o LookupTableResultOutput) StreamingBuffer() StreamingbufferResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) StreamingbufferResponse { return v.StreamingBuffer }).(StreamingbufferResponseOutput)
+}
+
+// [Optional] The table constraints on the table.
+func (o LookupTableResultOutput) TableConstraints() TableConstraintsResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TableConstraintsResponse { return v.TableConstraints }).(TableConstraintsResponseOutput)
 }
 
 // [Required] Reference describing the ID of this table.

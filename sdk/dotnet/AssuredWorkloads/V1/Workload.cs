@@ -112,6 +112,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> Partner { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        [Output("partnerPermissions")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse> PartnerPermissions { get; private set; } = null!;
+
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Output("provisionedResourcesParent")]
@@ -136,7 +142,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponse> SaaEnrollmentResponse { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         /// </summary>
         [Output("violationNotificationsEnabled")]
         public Output<bool> ViolationNotificationsEnabled { get; private set; } = null!;
@@ -270,6 +276,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadPartner>? Partner { get; set; }
 
         /// <summary>
+        /// Optional. Permissions granted to the AW Partner SA account for the customer workload
+        /// </summary>
+        [Input("partnerPermissions")]
+        public Input<Inputs.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsArgs>? PartnerPermissions { get; set; }
+
+        /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Input("provisionedResourcesParent")]
@@ -288,7 +300,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         }
 
         /// <summary>
-        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         /// </summary>
         [Input("violationNotificationsEnabled")]
         public Input<bool>? ViolationNotificationsEnabled { get; set; }

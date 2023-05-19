@@ -176,6 +176,10 @@ export interface GetTableResult {
      */
     readonly streamingBuffer: outputs.bigquery.v2.StreamingbufferResponse;
     /**
+     * [Optional] The table constraints on the table.
+     */
+    readonly tableConstraints: outputs.bigquery.v2.TableConstraintsResponse;
+    /**
      * [Required] Reference describing the ID of this table.
      */
     readonly tableReference: outputs.bigquery.v2.TableReferenceResponse;

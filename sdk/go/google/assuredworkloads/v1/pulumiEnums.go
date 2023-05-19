@@ -527,13 +527,13 @@ func (in *googleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisi
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningStatePtrOutput)
 }
 
-// Indicates the type of resource. This field should be specified to correspond the id to the right resource type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType string
 
 const (
 	// Unknown resource type.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeResourceTypeUnspecified = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("RESOURCE_TYPE_UNSPECIFIED")
-	// Consumer project. AssuredWorkloads Projects are no longer supported. This field will be ignored only in CreateWorkload requests. ListWorkloads and GetWorkload will continue to provide projects information. Use CONSUMER_FOLDER instead.
+	// Deprecated. Existing workloads will continue to support this, but new CreateWorkloadRequests should not specify this as an input value.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerProject = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_PROJECT")
 	// Consumer Folder.
 	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeConsumerFolder = GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType("CONSUMER_FOLDER")
@@ -728,9 +728,9 @@ const (
 	WorkloadComplianceRegimeItar = WorkloadComplianceRegime("ITAR")
 	// Assured Workloads for Australia Regions and Support controls Available for public preview consumption. Don't create production workloads.
 	WorkloadComplianceRegimeAuRegionsAndUsSupport = WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT")
-	// Assured Workloads for Partners
+	// Assured Workloads for Partners;
 	WorkloadComplianceRegimeAssuredWorkloadsForPartners = WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS")
-	// Assured Workloads for Israel Regions
+	// Assured Workloads for Israel
 	WorkloadComplianceRegimeIsrRegions = WorkloadComplianceRegime("ISR_REGIONS")
 	// Assured Workloads for Israel Regions
 	WorkloadComplianceRegimeIsrRegionsAndSupport = WorkloadComplianceRegime("ISR_REGIONS_AND_SUPPORT")

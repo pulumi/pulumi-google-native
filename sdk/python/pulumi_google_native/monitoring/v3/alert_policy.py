@@ -34,7 +34,7 @@ class AlertPolicyArgs:
         The set of arguments for constructing a AlertPolicy resource.
         :param pulumi.Input['AlertStrategyArgs'] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         :param pulumi.Input['MutationRecordArgs'] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
         :param pulumi.Input['DocumentationArgs'] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
@@ -100,7 +100,7 @@ class AlertPolicyArgs:
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
         """
-        A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+        A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         """
         return pulumi.get(self, "conditions")
 
@@ -252,7 +252,7 @@ class AlertPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AlertStrategyArgs']] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
         :param pulumi.Input[pulumi.InputType['DocumentationArgs']] documentation: Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
@@ -381,7 +381,7 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Sequence['outputs.ConditionResponse']]:
         """
-        A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
+        A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition.
         """
         return pulumi.get(self, "conditions")
 

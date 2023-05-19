@@ -427,7 +427,7 @@ class GooglePrivacyDlpV2OutputStorageConfigOutputSchema(str, Enum):
 
 class GooglePrivacyDlpV2SensitivityScoreScore(str, Enum):
     """
-    The score applied to the resource.
+    The sensitivity score applied to the resource.
     """
     SENSITIVITY_SCORE_UNSPECIFIED = "SENSITIVITY_SCORE_UNSPECIFIED"
     """
@@ -435,15 +435,15 @@ class GooglePrivacyDlpV2SensitivityScoreScore(str, Enum):
     """
     SENSITIVITY_LOW = "SENSITIVITY_LOW"
     """
-    No sensitive information detected. Limited access.
+    No sensitive information detected. The resource isn't publicly accessible.
     """
     SENSITIVITY_MODERATE = "SENSITIVITY_MODERATE"
     """
-    Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.
+    Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.
     """
     SENSITIVITY_HIGH = "SENSITIVITY_HIGH"
     """
-    High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII.
+    High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII.
     """
 
 

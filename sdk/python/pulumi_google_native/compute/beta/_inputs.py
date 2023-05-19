@@ -192,6 +192,8 @@ __all__ = [
     'SecurityPolicyRuleHttpHeaderActionArgs',
     'SecurityPolicyRuleMatcherConfigLayer4ConfigArgs',
     'SecurityPolicyRuleMatcherConfigArgs',
+    'SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs',
+    'SecurityPolicyRuleMatcherExprOptionsArgs',
     'SecurityPolicyRuleMatcherArgs',
     'SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchArgs',
     'SecurityPolicyRuleNetworkMatcherArgs',
@@ -6832,7 +6834,7 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
                  initial_delay_sec: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] health_check: The URL for the health check that signals autohealing.
-        :param pulumi.Input[int] initial_delay_sec: The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+        :param pulumi.Input[int] initial_delay_sec: The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
         """
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
@@ -6855,7 +6857,7 @@ class InstanceGroupManagerAutoHealingPolicyArgs:
     @pulumi.getter(name="initialDelaySec")
     def initial_delay_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].
+        The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
         """
         return pulumi.get(self, "initial_delay_sec")
 
@@ -12644,21 +12646,87 @@ class SecurityPolicyRuleMatcherConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs:
+    def __init__(__self__, *,
+                 action_token_site_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 session_token_site_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] action_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] session_token_site_keys: A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        if action_token_site_keys is not None:
+            pulumi.set(__self__, "action_token_site_keys", action_token_site_keys)
+        if session_token_site_keys is not None:
+            pulumi.set(__self__, "session_token_site_keys", session_token_site_keys)
+
+    @property
+    @pulumi.getter(name="actionTokenSiteKeys")
+    def action_token_site_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "action_token_site_keys")
+
+    @action_token_site_keys.setter
+    def action_token_site_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "action_token_site_keys", value)
+
+    @property
+    @pulumi.getter(name="sessionTokenSiteKeys")
+    def session_token_site_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
+        """
+        return pulumi.get(self, "session_token_site_keys")
+
+    @session_token_site_keys.setter
+    def session_token_site_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "session_token_site_keys", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRuleMatcherExprOptionsArgs:
+    def __init__(__self__, *,
+                 recaptcha_options: Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs']] = None):
+        """
+        :param pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs'] recaptcha_options: reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+        """
+        if recaptcha_options is not None:
+            pulumi.set(__self__, "recaptcha_options", recaptcha_options)
+
+    @property
+    @pulumi.getter(name="recaptchaOptions")
+    def recaptcha_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs']]:
+        """
+        reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+        """
+        return pulumi.get(self, "recaptcha_options")
+
+    @recaptcha_options.setter
+    def recaptcha_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsArgs']]):
+        pulumi.set(self, "recaptcha_options", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleMatcherArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input['SecurityPolicyRuleMatcherConfigArgs']] = None,
                  expr: Optional[pulumi.Input['ExprArgs']] = None,
+                 expr_options: Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsArgs']] = None,
                  versioned_expr: Optional[pulumi.Input['SecurityPolicyRuleMatcherVersionedExpr']] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input['SecurityPolicyRuleMatcherConfigArgs'] config: The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
         :param pulumi.Input['ExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
+        :param pulumi.Input['SecurityPolicyRuleMatcherExprOptionsArgs'] expr_options: The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
         :param pulumi.Input['SecurityPolicyRuleMatcherVersionedExpr'] versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
         if expr is not None:
             pulumi.set(__self__, "expr", expr)
+        if expr_options is not None:
+            pulumi.set(__self__, "expr_options", expr_options)
         if versioned_expr is not None:
             pulumi.set(__self__, "versioned_expr", versioned_expr)
 
@@ -12685,6 +12753,18 @@ class SecurityPolicyRuleMatcherArgs:
     @expr.setter
     def expr(self, value: Optional[pulumi.Input['ExprArgs']]):
         pulumi.set(self, "expr", value)
+
+    @property
+    @pulumi.getter(name="exprOptions")
+    def expr_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsArgs']]:
+        """
+        The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
+        """
+        return pulumi.get(self, "expr_options")
+
+    @expr_options.setter
+    def expr_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatcherExprOptionsArgs']]):
+        pulumi.set(self, "expr_options", value)
 
     @property
     @pulumi.getter(name="versionedExpr")
@@ -13653,8 +13733,8 @@ class SecuritySettingsArgs:
         The authentication and authorization settings for a BackendService.
         :param pulumi.Input[str] authentication: [Deprecated] Use clientTlsPolicy instead.
         :param pulumi.Input['AWSV4SignatureArgs'] aws_v4_authentication: The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
-        :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+        :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
         """
         if authentication is not None:
             warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
@@ -13696,7 +13776,7 @@ class SecuritySettingsArgs:
     @pulumi.getter(name="clientTlsPolicy")
     def client_tls_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.
         """
         return pulumi.get(self, "client_tls_policy")
 
@@ -13708,7 +13788,7 @@ class SecuritySettingsArgs:
     @pulumi.getter(name="subjectAltNames")
     def subject_alt_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+        Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).
         """
         return pulumi.get(self, "subject_alt_names")
 

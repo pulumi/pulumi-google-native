@@ -4267,8 +4267,8 @@ class GooglePrivacyDlpV2SensitivityScoreArgs:
     def __init__(__self__, *,
                  score: Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore']] = None):
         """
-        Score is a summary of all elements in the data profile. A higher number means more sensitive.
-        :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore'] score: The score applied to the resource.
+        Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
+        :param pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore'] score: The sensitivity score applied to the resource.
         """
         if score is not None:
             pulumi.set(__self__, "score", score)
@@ -4277,7 +4277,7 @@ class GooglePrivacyDlpV2SensitivityScoreArgs:
     @pulumi.getter
     def score(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2SensitivityScoreScore']]:
         """
-        The score applied to the resource.
+        The sensitivity score applied to the resource.
         """
         return pulumi.get(self, "score")
 
