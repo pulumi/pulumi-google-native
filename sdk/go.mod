@@ -4,5 +4,5 @@ go 1.16
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.67.1
+	github.com/pulumi/pulumi/sdk/v3 v3.69.0
 )
