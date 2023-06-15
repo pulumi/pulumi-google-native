@@ -413,11 +413,11 @@ class NodePool(pulumi.CustomResource):
             __props__ = NodePoolInitArgs.__new__(NodePoolInitArgs)
 
             __props__.__dict__["autoscaling"] = autoscaling
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
             if cluster_id is not None and not opts.urn:
                 warnings.warn("""Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""cluster_id is deprecated: Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
