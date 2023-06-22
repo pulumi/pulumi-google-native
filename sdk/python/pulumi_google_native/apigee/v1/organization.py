@@ -393,11 +393,11 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["addons_config"] = addons_config
-            if analytics_region is None and not opts.urn:
-                raise TypeError("Missing required property 'analytics_region'")
             if analytics_region is not None and not opts.urn:
                 warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
                 pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+            if analytics_region is None and not opts.urn:
+                raise TypeError("Missing required property 'analytics_region'")
             __props__.__dict__["analytics_region"] = analytics_region
             __props__.__dict__["api_consumer_data_encryption_key_name"] = api_consumer_data_encryption_key_name
             __props__.__dict__["api_consumer_data_location"] = api_consumer_data_location
