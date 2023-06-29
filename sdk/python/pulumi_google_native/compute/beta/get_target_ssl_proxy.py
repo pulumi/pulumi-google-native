@@ -162,16 +162,16 @@ def get_target_ssl_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getTargetSslProxy', __args__, opts=opts, typ=GetTargetSslProxyResult).value
 
     return AwaitableGetTargetSslProxyResult(
-        certificate_map=__ret__.certificate_map,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        proxy_header=__ret__.proxy_header,
-        self_link=__ret__.self_link,
-        service=__ret__.service,
-        ssl_certificates=__ret__.ssl_certificates,
-        ssl_policy=__ret__.ssl_policy)
+        certificate_map=pulumi.get(__ret__, 'certificate_map'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_header=pulumi.get(__ret__, 'proxy_header'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service=pulumi.get(__ret__, 'service'),
+        ssl_certificates=pulumi.get(__ret__, 'ssl_certificates'),
+        ssl_policy=pulumi.get(__ret__, 'ssl_policy'))
 
 
 @_utilities.lift_output_func(get_target_ssl_proxy)

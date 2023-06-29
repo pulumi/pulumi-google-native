@@ -173,6 +173,9 @@ class ExecutionReportResponse(dict):
         """
         List of job-level errors. Deprecated, use the job errors under execution_errors instead.
         """
+        warnings.warn("""List of job-level errors. Deprecated, use the job errors under execution_errors instead.""", DeprecationWarning)
+        pulumi.log.warn("""job_errors is deprecated: List of job-level errors. Deprecated, use the job errors under execution_errors instead.""")
+
         return pulumi.get(self, "job_errors")
 
     @property

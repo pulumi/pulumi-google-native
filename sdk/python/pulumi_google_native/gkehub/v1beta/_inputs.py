@@ -961,6 +961,9 @@ class MultiClusterIngressFeatureSpecArgs:
         """
         Deprecated: This field will be ignored and should not be set. Customer's billing structure.
         """
+        warnings.warn("""Deprecated: This field will be ignored and should not be set. Customer's billing structure.""", DeprecationWarning)
+        pulumi.log.warn("""billing is deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.""")
+
         return pulumi.get(self, "billing")
 
     @billing.setter

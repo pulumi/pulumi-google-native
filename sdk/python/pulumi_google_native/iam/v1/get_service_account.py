@@ -33,10 +33,6 @@ class GetServiceAccountResult:
         pulumi.set(__self__, "email", email)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
-        if etag is not None:
-            warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
-            pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
-
         pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -89,6 +85,9 @@ class GetServiceAccountResult:
         """
         Deprecated. Do not use.
         """
+        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+
         return pulumi.get(self, "etag")
 
     @property
@@ -154,15 +153,15 @@ def get_service_account(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getServiceAccount', __args__, opts=opts, typ=GetServiceAccountResult).value
 
     return AwaitableGetServiceAccountResult(
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        email=__ret__.email,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        oauth2_client_id=__ret__.oauth2_client_id,
-        project=__ret__.project,
-        unique_id=__ret__.unique_id)
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        email=pulumi.get(__ret__, 'email'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        oauth2_client_id=pulumi.get(__ret__, 'oauth2_client_id'),
+        project=pulumi.get(__ret__, 'project'),
+        unique_id=pulumi.get(__ret__, 'unique_id'))
 
 
 @_utilities.lift_output_func(get_service_account)

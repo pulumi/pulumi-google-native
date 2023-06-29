@@ -119,12 +119,12 @@ def get_server_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:container/v1:getServerConfig', __args__, opts=opts, typ=GetServerConfigResult).value
 
     return AwaitableGetServerConfigResult(
-        channels=__ret__.channels,
-        default_cluster_version=__ret__.default_cluster_version,
-        default_image_type=__ret__.default_image_type,
-        valid_image_types=__ret__.valid_image_types,
-        valid_master_versions=__ret__.valid_master_versions,
-        valid_node_versions=__ret__.valid_node_versions)
+        channels=pulumi.get(__ret__, 'channels'),
+        default_cluster_version=pulumi.get(__ret__, 'default_cluster_version'),
+        default_image_type=pulumi.get(__ret__, 'default_image_type'),
+        valid_image_types=pulumi.get(__ret__, 'valid_image_types'),
+        valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
+        valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'))
 
 
 @_utilities.lift_output_func(get_server_config)

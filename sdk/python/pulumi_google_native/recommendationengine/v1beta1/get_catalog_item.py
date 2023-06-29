@@ -34,10 +34,6 @@ class GetCatalogItemResult:
         pulumi.set(__self__, "item_group_id", item_group_id)
         if language_code and not isinstance(language_code, str):
             raise TypeError("Expected argument 'language_code' to be a str")
-        if language_code is not None:
-            warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
-            pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
-
         pulumi.set(__self__, "language_code", language_code)
         if product_metadata and not isinstance(product_metadata, dict):
             raise TypeError("Expected argument 'product_metadata' to be a dict")
@@ -87,6 +83,9 @@ class GetCatalogItemResult:
         """
         Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
         """
+        warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
+        pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
+
         return pulumi.get(self, "language_code")
 
     @property
@@ -147,14 +146,14 @@ def get_catalog_item(catalog_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:recommendationengine/v1beta1:getCatalogItem', __args__, opts=opts, typ=GetCatalogItemResult).value
 
     return AwaitableGetCatalogItemResult(
-        category_hierarchies=__ret__.category_hierarchies,
-        description=__ret__.description,
-        item_attributes=__ret__.item_attributes,
-        item_group_id=__ret__.item_group_id,
-        language_code=__ret__.language_code,
-        product_metadata=__ret__.product_metadata,
-        tags=__ret__.tags,
-        title=__ret__.title)
+        category_hierarchies=pulumi.get(__ret__, 'category_hierarchies'),
+        description=pulumi.get(__ret__, 'description'),
+        item_attributes=pulumi.get(__ret__, 'item_attributes'),
+        item_group_id=pulumi.get(__ret__, 'item_group_id'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        product_metadata=pulumi.get(__ret__, 'product_metadata'),
+        tags=pulumi.get(__ret__, 'tags'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_catalog_item)

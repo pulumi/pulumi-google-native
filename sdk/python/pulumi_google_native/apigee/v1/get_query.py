@@ -201,19 +201,19 @@ def get_query(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getQuery', __args__, opts=opts, typ=GetQueryResult).value
 
     return AwaitableGetQueryResult(
-        created=__ret__.created,
-        envgroup_hostname=__ret__.envgroup_hostname,
-        error=__ret__.error,
-        execution_time=__ret__.execution_time,
-        name=__ret__.name,
-        query_params=__ret__.query_params,
-        report_definition_id=__ret__.report_definition_id,
-        result=__ret__.result,
-        result_file_size=__ret__.result_file_size,
-        result_rows=__ret__.result_rows,
-        self=__ret__.self,
-        state=__ret__.state,
-        updated=__ret__.updated)
+        created=pulumi.get(__ret__, 'created'),
+        envgroup_hostname=pulumi.get(__ret__, 'envgroup_hostname'),
+        error=pulumi.get(__ret__, 'error'),
+        execution_time=pulumi.get(__ret__, 'execution_time'),
+        name=pulumi.get(__ret__, 'name'),
+        query_params=pulumi.get(__ret__, 'query_params'),
+        report_definition_id=pulumi.get(__ret__, 'report_definition_id'),
+        result=pulumi.get(__ret__, 'result'),
+        result_file_size=pulumi.get(__ret__, 'result_file_size'),
+        result_rows=pulumi.get(__ret__, 'result_rows'),
+        self=pulumi.get(__ret__, 'self'),
+        state=pulumi.get(__ret__, 'state'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_query)

@@ -200,6 +200,9 @@ class SubnetworkArgs:
         """
         Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         """
+        warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
+        pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
+
         return pulumi.get(self, "enable_private_v6_access")
 
     @enable_private_v6_access.setter
@@ -692,6 +695,9 @@ class Subnetwork(pulumi.CustomResource):
         """
         Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         """
+        warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
+        pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
+
         return pulumi.get(self, "enable_private_v6_access")
 
     @property

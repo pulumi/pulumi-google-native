@@ -200,18 +200,18 @@ def get_default_object_access_control(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getDefaultObjectAccessControl', __args__, opts=opts, typ=GetDefaultObjectAccessControlResult).value
 
     return AwaitableGetDefaultObjectAccessControlResult(
-        bucket=__ret__.bucket,
-        domain=__ret__.domain,
-        email=__ret__.email,
-        entity=__ret__.entity,
-        entity_id=__ret__.entity_id,
-        etag=__ret__.etag,
-        generation=__ret__.generation,
-        kind=__ret__.kind,
-        object=__ret__.object,
-        project_team=__ret__.project_team,
-        role=__ret__.role,
-        self_link=__ret__.self_link)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        domain=pulumi.get(__ret__, 'domain'),
+        email=pulumi.get(__ret__, 'email'),
+        entity=pulumi.get(__ret__, 'entity'),
+        entity_id=pulumi.get(__ret__, 'entity_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        generation=pulumi.get(__ret__, 'generation'),
+        kind=pulumi.get(__ret__, 'kind'),
+        object=pulumi.get(__ret__, 'object'),
+        project_team=pulumi.get(__ret__, 'project_team'),
+        role=pulumi.get(__ret__, 'role'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_default_object_access_control)

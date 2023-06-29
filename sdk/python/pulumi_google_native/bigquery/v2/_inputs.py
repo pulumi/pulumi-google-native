@@ -2441,6 +2441,9 @@ class JobConfigurationLoadArgs:
         """
         [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
         """
+        warnings.warn("""[Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""", DeprecationWarning)
+        pulumi.log.warn("""schema_inline is deprecated: [Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""")
+
         return pulumi.get(self, "schema_inline")
 
     @schema_inline.setter
@@ -2453,6 +2456,9 @@ class JobConfigurationLoadArgs:
         """
         [Deprecated] The format of the schemaInline property.
         """
+        warnings.warn("""[Deprecated] The format of the schemaInline property.""", DeprecationWarning)
+        pulumi.log.warn("""schema_inline_format is deprecated: [Deprecated] The format of the schemaInline property.""")
+
         return pulumi.get(self, "schema_inline_format")
 
     @schema_inline_format.setter
@@ -2815,6 +2821,9 @@ class JobConfigurationQueryArgs:
         """
         [Deprecated] This property is deprecated.
         """
+        warnings.warn("""[Deprecated] This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""preserve_nulls is deprecated: [Deprecated] This property is deprecated.""")
+
         return pulumi.get(self, "preserve_nulls")
 
     @preserve_nulls.setter

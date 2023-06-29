@@ -139,14 +139,14 @@ def get_membership(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1beta1:getMembership', __args__, opts=opts, typ=GetMembershipResult).value
 
     return AwaitableGetMembershipResult(
-        create_time=__ret__.create_time,
-        delivery_setting=__ret__.delivery_setting,
-        member_key=__ret__.member_key,
-        name=__ret__.name,
-        preferred_member_key=__ret__.preferred_member_key,
-        roles=__ret__.roles,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delivery_setting=pulumi.get(__ret__, 'delivery_setting'),
+        member_key=pulumi.get(__ret__, 'member_key'),
+        name=pulumi.get(__ret__, 'name'),
+        preferred_member_key=pulumi.get(__ret__, 'preferred_member_key'),
+        roles=pulumi.get(__ret__, 'roles'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_membership)

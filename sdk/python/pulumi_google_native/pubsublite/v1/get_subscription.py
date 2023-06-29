@@ -93,10 +93,10 @@ def get_subscription(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsublite/v1:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        delivery_config=__ret__.delivery_config,
-        export_config=__ret__.export_config,
-        name=__ret__.name,
-        topic=__ret__.topic)
+        delivery_config=pulumi.get(__ret__, 'delivery_config'),
+        export_config=pulumi.get(__ret__, 'export_config'),
+        name=pulumi.get(__ret__, 'name'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_subscription)

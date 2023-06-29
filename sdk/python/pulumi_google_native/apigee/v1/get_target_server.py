@@ -129,13 +129,13 @@ def get_target_server(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getTargetServer', __args__, opts=opts, typ=GetTargetServerResult).value
 
     return AwaitableGetTargetServerResult(
-        description=__ret__.description,
-        host=__ret__.host,
-        is_enabled=__ret__.is_enabled,
-        name=__ret__.name,
-        port=__ret__.port,
-        protocol=__ret__.protocol,
-        s_sl_info=__ret__.s_sl_info)
+        description=pulumi.get(__ret__, 'description'),
+        host=pulumi.get(__ret__, 'host'),
+        is_enabled=pulumi.get(__ret__, 'is_enabled'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        s_sl_info=pulumi.get(__ret__, 's_sl_info'))
 
 
 @_utilities.lift_output_func(get_target_server)

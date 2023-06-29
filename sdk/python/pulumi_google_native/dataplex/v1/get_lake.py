@@ -189,18 +189,18 @@ def get_lake(lake_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getLake', __args__, opts=opts, typ=GetLakeResult).value
 
     return AwaitableGetLakeResult(
-        asset_status=__ret__.asset_status,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        metastore=__ret__.metastore,
-        metastore_status=__ret__.metastore_status,
-        name=__ret__.name,
-        service_account=__ret__.service_account,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        asset_status=pulumi.get(__ret__, 'asset_status'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metastore=pulumi.get(__ret__, 'metastore'),
+        metastore_status=pulumi.get(__ret__, 'metastore_status'),
+        name=pulumi.get(__ret__, 'name'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_lake)

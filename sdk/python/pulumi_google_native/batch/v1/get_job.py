@@ -177,17 +177,17 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:batch/v1:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        allocation_policy=__ret__.allocation_policy,
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        logs_policy=__ret__.logs_policy,
-        name=__ret__.name,
-        notifications=__ret__.notifications,
-        priority=__ret__.priority,
-        status=__ret__.status,
-        task_groups=__ret__.task_groups,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        allocation_policy=pulumi.get(__ret__, 'allocation_policy'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        logs_policy=pulumi.get(__ret__, 'logs_policy'),
+        name=pulumi.get(__ret__, 'name'),
+        notifications=pulumi.get(__ret__, 'notifications'),
+        priority=pulumi.get(__ret__, 'priority'),
+        status=pulumi.get(__ret__, 'status'),
+        task_groups=pulumi.get(__ret__, 'task_groups'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_job)

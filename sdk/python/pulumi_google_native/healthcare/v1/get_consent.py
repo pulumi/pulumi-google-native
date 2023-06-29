@@ -169,16 +169,16 @@ def get_consent(consent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getConsent', __args__, opts=opts, typ=GetConsentResult).value
 
     return AwaitableGetConsentResult(
-        consent_artifact=__ret__.consent_artifact,
-        expire_time=__ret__.expire_time,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        policies=__ret__.policies,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        state=__ret__.state,
-        ttl=__ret__.ttl,
-        user_id=__ret__.user_id)
+        consent_artifact=pulumi.get(__ret__, 'consent_artifact'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        policies=pulumi.get(__ret__, 'policies'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        state=pulumi.get(__ret__, 'state'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_consent)

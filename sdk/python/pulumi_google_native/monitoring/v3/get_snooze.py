@@ -91,10 +91,10 @@ def get_snooze(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getSnooze', __args__, opts=opts, typ=GetSnoozeResult).value
 
     return AwaitableGetSnoozeResult(
-        criteria=__ret__.criteria,
-        display_name=__ret__.display_name,
-        interval=__ret__.interval,
-        name=__ret__.name)
+        criteria=pulumi.get(__ret__, 'criteria'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        interval=pulumi.get(__ret__, 'interval'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_snooze)

@@ -237,22 +237,22 @@ def get_case(case_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudsupport/v2beta:getCase', __args__, opts=opts, typ=GetCaseResult).value
 
     return AwaitableGetCaseResult(
-        classification=__ret__.classification,
-        contact_email=__ret__.contact_email,
-        create_time=__ret__.create_time,
-        creator=__ret__.creator,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        escalated=__ret__.escalated,
-        language_code=__ret__.language_code,
-        name=__ret__.name,
-        priority=__ret__.priority,
-        severity=__ret__.severity,
-        state=__ret__.state,
-        subscriber_email_addresses=__ret__.subscriber_email_addresses,
-        test_case=__ret__.test_case,
-        time_zone=__ret__.time_zone,
-        update_time=__ret__.update_time)
+        classification=pulumi.get(__ret__, 'classification'),
+        contact_email=pulumi.get(__ret__, 'contact_email'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        creator=pulumi.get(__ret__, 'creator'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        escalated=pulumi.get(__ret__, 'escalated'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        name=pulumi.get(__ret__, 'name'),
+        priority=pulumi.get(__ret__, 'priority'),
+        severity=pulumi.get(__ret__, 'severity'),
+        state=pulumi.get(__ret__, 'state'),
+        subscriber_email_addresses=pulumi.get(__ret__, 'subscriber_email_addresses'),
+        test_case=pulumi.get(__ret__, 'test_case'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_case)

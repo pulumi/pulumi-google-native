@@ -201,19 +201,19 @@ def get_entitlement(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudchannel/v1:getEntitlement', __args__, opts=opts, typ=GetEntitlementResult).value
 
     return AwaitableGetEntitlementResult(
-        association_info=__ret__.association_info,
-        billing_account=__ret__.billing_account,
-        commitment_settings=__ret__.commitment_settings,
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        offer=__ret__.offer,
-        parameters=__ret__.parameters,
-        provisioned_service=__ret__.provisioned_service,
-        provisioning_state=__ret__.provisioning_state,
-        purchase_order_id=__ret__.purchase_order_id,
-        suspension_reasons=__ret__.suspension_reasons,
-        trial_settings=__ret__.trial_settings,
-        update_time=__ret__.update_time)
+        association_info=pulumi.get(__ret__, 'association_info'),
+        billing_account=pulumi.get(__ret__, 'billing_account'),
+        commitment_settings=pulumi.get(__ret__, 'commitment_settings'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        offer=pulumi.get(__ret__, 'offer'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        provisioned_service=pulumi.get(__ret__, 'provisioned_service'),
+        provisioning_state=pulumi.get(__ret__, 'provisioning_state'),
+        purchase_order_id=pulumi.get(__ret__, 'purchase_order_id'),
+        suspension_reasons=pulumi.get(__ret__, 'suspension_reasons'),
+        trial_settings=pulumi.get(__ret__, 'trial_settings'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_entitlement)

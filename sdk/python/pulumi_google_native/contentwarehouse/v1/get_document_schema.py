@@ -129,13 +129,13 @@ def get_document_schema(document_schema_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contentwarehouse/v1:getDocumentSchema', __args__, opts=opts, typ=GetDocumentSchemaResult).value
 
     return AwaitableGetDocumentSchemaResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        document_is_folder=__ret__.document_is_folder,
-        name=__ret__.name,
-        property_definitions=__ret__.property_definitions,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        document_is_folder=pulumi.get(__ret__, 'document_is_folder'),
+        name=pulumi.get(__ret__, 'name'),
+        property_definitions=pulumi.get(__ret__, 'property_definitions'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_document_schema)

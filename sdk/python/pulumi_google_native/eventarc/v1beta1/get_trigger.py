@@ -153,15 +153,15 @@ def get_trigger(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:eventarc/v1beta1:getTrigger', __args__, opts=opts, typ=GetTriggerResult).value
 
     return AwaitableGetTriggerResult(
-        create_time=__ret__.create_time,
-        destination=__ret__.destination,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        matching_criteria=__ret__.matching_criteria,
-        name=__ret__.name,
-        service_account=__ret__.service_account,
-        transport=__ret__.transport,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        destination=pulumi.get(__ret__, 'destination'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        matching_criteria=pulumi.get(__ret__, 'matching_criteria'),
+        name=pulumi.get(__ret__, 'name'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        transport=pulumi.get(__ret__, 'transport'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_trigger)

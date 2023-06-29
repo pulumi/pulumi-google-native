@@ -92,10 +92,10 @@ def get_tag_template(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1:getTagTemplate', __args__, opts=opts, typ=GetTagTemplateResult).value
 
     return AwaitableGetTagTemplateResult(
-        display_name=__ret__.display_name,
-        fields=__ret__.fields,
-        is_publicly_readable=__ret__.is_publicly_readable,
-        name=__ret__.name)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        fields=pulumi.get(__ret__, 'fields'),
+        is_publicly_readable=pulumi.get(__ret__, 'is_publicly_readable'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_tag_template)

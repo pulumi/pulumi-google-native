@@ -40,10 +40,6 @@ class GetJobResult:
         pulumi.set(__self__, "environment", environment)
         if execution_info and not isinstance(execution_info, dict):
             raise TypeError("Expected argument 'execution_info' to be a dict")
-        if execution_info is not None:
-            warnings.warn("""Deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
-
         pulumi.set(__self__, "execution_info", execution_info)
         if job_metadata and not isinstance(job_metadata, dict):
             raise TypeError("Expected argument 'job_metadata' to be a dict")
@@ -154,6 +150,9 @@ class GetJobResult:
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
+
         return pulumi.get(self, "execution_info")
 
     @property
@@ -351,31 +350,31 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataflow/v1b3:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        client_request_id=__ret__.client_request_id,
-        create_time=__ret__.create_time,
-        created_from_snapshot_id=__ret__.created_from_snapshot_id,
-        current_state=__ret__.current_state,
-        current_state_time=__ret__.current_state_time,
-        environment=__ret__.environment,
-        execution_info=__ret__.execution_info,
-        job_metadata=__ret__.job_metadata,
-        labels=__ret__.labels,
-        location=__ret__.location,
-        name=__ret__.name,
-        pipeline_description=__ret__.pipeline_description,
-        project=__ret__.project,
-        replace_job_id=__ret__.replace_job_id,
-        replaced_by_job_id=__ret__.replaced_by_job_id,
-        requested_state=__ret__.requested_state,
-        runtime_updatable_params=__ret__.runtime_updatable_params,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        stage_states=__ret__.stage_states,
-        start_time=__ret__.start_time,
-        steps=__ret__.steps,
-        steps_location=__ret__.steps_location,
-        temp_files=__ret__.temp_files,
-        transform_name_mapping=__ret__.transform_name_mapping,
-        type=__ret__.type)
+        client_request_id=pulumi.get(__ret__, 'client_request_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        created_from_snapshot_id=pulumi.get(__ret__, 'created_from_snapshot_id'),
+        current_state=pulumi.get(__ret__, 'current_state'),
+        current_state_time=pulumi.get(__ret__, 'current_state_time'),
+        environment=pulumi.get(__ret__, 'environment'),
+        execution_info=pulumi.get(__ret__, 'execution_info'),
+        job_metadata=pulumi.get(__ret__, 'job_metadata'),
+        labels=pulumi.get(__ret__, 'labels'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        pipeline_description=pulumi.get(__ret__, 'pipeline_description'),
+        project=pulumi.get(__ret__, 'project'),
+        replace_job_id=pulumi.get(__ret__, 'replace_job_id'),
+        replaced_by_job_id=pulumi.get(__ret__, 'replaced_by_job_id'),
+        requested_state=pulumi.get(__ret__, 'requested_state'),
+        runtime_updatable_params=pulumi.get(__ret__, 'runtime_updatable_params'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        stage_states=pulumi.get(__ret__, 'stage_states'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        steps=pulumi.get(__ret__, 'steps'),
+        steps_location=pulumi.get(__ret__, 'steps_location'),
+        temp_files=pulumi.get(__ret__, 'temp_files'),
+        transform_name_mapping=pulumi.get(__ret__, 'transform_name_mapping'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_job)

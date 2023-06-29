@@ -2748,6 +2748,9 @@ class WorkerPoolResponse(dict):
         """
         Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
         """
+        warnings.warn("""Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.""", DeprecationWarning)
+        pulumi.log.warn("""worker_harness_container_image is deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.""")
+
         return pulumi.get(self, "worker_harness_container_image")
 
     @property

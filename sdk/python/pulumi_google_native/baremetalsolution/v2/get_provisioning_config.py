@@ -28,10 +28,6 @@ class GetProvisioningConfigResult:
         pulumi.set(__self__, "custom_id", custom_id)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
-        if email is not None:
-            warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
-            pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
-
         pulumi.set(__self__, "email", email)
         if handover_service_account and not isinstance(handover_service_account, str):
             raise TypeError("Expected argument 'handover_service_account' to be a str")
@@ -89,6 +85,9 @@ class GetProvisioningConfigResult:
         """
         Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
         """
+        warnings.warn("""Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""", DeprecationWarning)
+        pulumi.log.warn("""email is deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.""")
+
         return pulumi.get(self, "email")
 
     @property
@@ -217,20 +216,20 @@ def get_provisioning_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:baremetalsolution/v2:getProvisioningConfig', __args__, opts=opts, typ=GetProvisioningConfigResult).value
 
     return AwaitableGetProvisioningConfigResult(
-        cloud_console_uri=__ret__.cloud_console_uri,
-        custom_id=__ret__.custom_id,
-        email=__ret__.email,
-        handover_service_account=__ret__.handover_service_account,
-        instances=__ret__.instances,
-        location=__ret__.location,
-        name=__ret__.name,
-        networks=__ret__.networks,
-        state=__ret__.state,
-        status_message=__ret__.status_message,
-        ticket_id=__ret__.ticket_id,
-        update_time=__ret__.update_time,
-        volumes=__ret__.volumes,
-        vpc_sc_enabled=__ret__.vpc_sc_enabled)
+        cloud_console_uri=pulumi.get(__ret__, 'cloud_console_uri'),
+        custom_id=pulumi.get(__ret__, 'custom_id'),
+        email=pulumi.get(__ret__, 'email'),
+        handover_service_account=pulumi.get(__ret__, 'handover_service_account'),
+        instances=pulumi.get(__ret__, 'instances'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        networks=pulumi.get(__ret__, 'networks'),
+        state=pulumi.get(__ret__, 'state'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        ticket_id=pulumi.get(__ret__, 'ticket_id'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        volumes=pulumi.get(__ret__, 'volumes'),
+        vpc_sc_enabled=pulumi.get(__ret__, 'vpc_sc_enabled'))
 
 
 @_utilities.lift_output_func(get_provisioning_config)

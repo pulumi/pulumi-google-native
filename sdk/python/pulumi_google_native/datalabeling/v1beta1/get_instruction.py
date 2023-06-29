@@ -28,10 +28,6 @@ class GetInstructionResult:
         pulumi.set(__self__, "create_time", create_time)
         if csv_instruction and not isinstance(csv_instruction, dict):
             raise TypeError("Expected argument 'csv_instruction' to be a dict")
-        if csv_instruction is not None:
-            warnings.warn("""Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""", DeprecationWarning)
-            pulumi.log.warn("""csv_instruction is deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""")
-
         pulumi.set(__self__, "csv_instruction", csv_instruction)
         if data_type and not isinstance(data_type, str):
             raise TypeError("Expected argument 'data_type' to be a str")
@@ -74,6 +70,9 @@ class GetInstructionResult:
         """
         Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         """
+        warnings.warn("""Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""", DeprecationWarning)
+        pulumi.log.warn("""csv_instruction is deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""")
+
         return pulumi.get(self, "csv_instruction")
 
     @property
@@ -155,15 +154,15 @@ def get_instruction(instruction_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getInstruction', __args__, opts=opts, typ=GetInstructionResult).value
 
     return AwaitableGetInstructionResult(
-        blocking_resources=__ret__.blocking_resources,
-        create_time=__ret__.create_time,
-        csv_instruction=__ret__.csv_instruction,
-        data_type=__ret__.data_type,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        pdf_instruction=__ret__.pdf_instruction,
-        update_time=__ret__.update_time)
+        blocking_resources=pulumi.get(__ret__, 'blocking_resources'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        csv_instruction=pulumi.get(__ret__, 'csv_instruction'),
+        data_type=pulumi.get(__ret__, 'data_type'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        pdf_instruction=pulumi.get(__ret__, 'pdf_instruction'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_instruction)

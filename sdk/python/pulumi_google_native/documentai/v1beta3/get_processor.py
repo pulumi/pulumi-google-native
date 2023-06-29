@@ -140,14 +140,14 @@ def get_processor(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:documentai/v1beta3:getProcessor', __args__, opts=opts, typ=GetProcessorResult).value
 
     return AwaitableGetProcessorResult(
-        create_time=__ret__.create_time,
-        default_processor_version=__ret__.default_processor_version,
-        display_name=__ret__.display_name,
-        kms_key_name=__ret__.kms_key_name,
-        name=__ret__.name,
-        process_endpoint=__ret__.process_endpoint,
-        state=__ret__.state,
-        type=__ret__.type)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        default_processor_version=pulumi.get(__ret__, 'default_processor_version'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        name=pulumi.get(__ret__, 'name'),
+        process_endpoint=pulumi.get(__ret__, 'process_endpoint'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_processor)

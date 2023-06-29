@@ -90,10 +90,10 @@ def get_brand(brand_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iap/v1:getBrand', __args__, opts=opts, typ=GetBrandResult).value
 
     return AwaitableGetBrandResult(
-        application_title=__ret__.application_title,
-        name=__ret__.name,
-        org_internal_only=__ret__.org_internal_only,
-        support_email=__ret__.support_email)
+        application_title=pulumi.get(__ret__, 'application_title'),
+        name=pulumi.get(__ret__, 'name'),
+        org_internal_only=pulumi.get(__ret__, 'org_internal_only'),
+        support_email=pulumi.get(__ret__, 'support_email'))
 
 
 @_utilities.lift_output_func(get_brand)

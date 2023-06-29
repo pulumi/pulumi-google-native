@@ -201,19 +201,19 @@ def get_backup_plan(backup_plan_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkebackup/v1:getBackupPlan', __args__, opts=opts, typ=GetBackupPlanResult).value
 
     return AwaitableGetBackupPlanResult(
-        backup_config=__ret__.backup_config,
-        backup_schedule=__ret__.backup_schedule,
-        cluster=__ret__.cluster,
-        create_time=__ret__.create_time,
-        deactivated=__ret__.deactivated,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        protected_pod_count=__ret__.protected_pod_count,
-        retention_policy=__ret__.retention_policy,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        backup_config=pulumi.get(__ret__, 'backup_config'),
+        backup_schedule=pulumi.get(__ret__, 'backup_schedule'),
+        cluster=pulumi.get(__ret__, 'cluster'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        deactivated=pulumi.get(__ret__, 'deactivated'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        protected_pod_count=pulumi.get(__ret__, 'protected_pod_count'),
+        retention_policy=pulumi.get(__ret__, 'retention_policy'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_backup_plan)

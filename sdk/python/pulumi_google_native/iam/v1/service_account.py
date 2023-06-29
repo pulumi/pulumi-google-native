@@ -85,6 +85,9 @@ class ServiceAccountArgs:
         """
         Deprecated. Do not use.
         """
+        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -265,6 +268,9 @@ class ServiceAccount(pulumi.CustomResource):
         """
         Deprecated. Do not use.
         """
+        warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+
         return pulumi.get(self, "etag")
 
     @property

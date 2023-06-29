@@ -177,17 +177,17 @@ def get_bucket(bucket_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getBucket', __args__, opts=opts, typ=GetBucketResult).value
 
     return AwaitableGetBucketResult(
-        analytics_enabled=__ret__.analytics_enabled,
-        cmek_settings=__ret__.cmek_settings,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        index_configs=__ret__.index_configs,
-        lifecycle_state=__ret__.lifecycle_state,
-        locked=__ret__.locked,
-        name=__ret__.name,
-        restricted_fields=__ret__.restricted_fields,
-        retention_days=__ret__.retention_days,
-        update_time=__ret__.update_time)
+        analytics_enabled=pulumi.get(__ret__, 'analytics_enabled'),
+        cmek_settings=pulumi.get(__ret__, 'cmek_settings'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        index_configs=pulumi.get(__ret__, 'index_configs'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        locked=pulumi.get(__ret__, 'locked'),
+        name=pulumi.get(__ret__, 'name'),
+        restricted_fields=pulumi.get(__ret__, 'restricted_fields'),
+        retention_days=pulumi.get(__ret__, 'retention_days'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_bucket)

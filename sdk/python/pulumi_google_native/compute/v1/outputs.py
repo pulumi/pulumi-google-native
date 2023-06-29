@@ -6675,6 +6675,9 @@ class ImageRawDiskResponse(dict):
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
+        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
+        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
+
         return pulumi.get(self, "sha1_checksum")
 
     @property

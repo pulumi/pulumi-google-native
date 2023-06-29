@@ -95,10 +95,10 @@ def get_service_class_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getServiceClassIamPolicy', __args__, opts=opts, typ=GetServiceClassIamPolicyResult).value
 
     return AwaitableGetServiceClassIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_service_class_iam_policy)

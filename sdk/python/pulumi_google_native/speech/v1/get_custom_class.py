@@ -105,11 +105,11 @@ def get_custom_class(custom_class_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:speech/v1:getCustomClass', __args__, opts=opts, typ=GetCustomClassResult).value
 
     return AwaitableGetCustomClassResult(
-        custom_class_id=__ret__.custom_class_id,
-        items=__ret__.items,
-        kms_key_name=__ret__.kms_key_name,
-        kms_key_version_name=__ret__.kms_key_version_name,
-        name=__ret__.name)
+        custom_class_id=pulumi.get(__ret__, 'custom_class_id'),
+        items=pulumi.get(__ret__, 'items'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        kms_key_version_name=pulumi.get(__ret__, 'kms_key_version_name'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_custom_class)

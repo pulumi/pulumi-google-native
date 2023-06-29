@@ -261,24 +261,24 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:baremetalsolution/v2:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        create_time=__ret__.create_time,
-        firmware_version=__ret__.firmware_version,
-        hyperthreading_enabled=__ret__.hyperthreading_enabled,
-        interactive_serial_console_enabled=__ret__.interactive_serial_console_enabled,
-        labels=__ret__.labels,
-        logical_interfaces=__ret__.logical_interfaces,
-        login_info=__ret__.login_info,
-        luns=__ret__.luns,
-        machine_type=__ret__.machine_type,
-        name=__ret__.name,
-        network_template=__ret__.network_template,
-        networks=__ret__.networks,
-        os_image=__ret__.os_image,
-        pod=__ret__.pod,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        volumes=__ret__.volumes,
-        workload_profile=__ret__.workload_profile)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        firmware_version=pulumi.get(__ret__, 'firmware_version'),
+        hyperthreading_enabled=pulumi.get(__ret__, 'hyperthreading_enabled'),
+        interactive_serial_console_enabled=pulumi.get(__ret__, 'interactive_serial_console_enabled'),
+        labels=pulumi.get(__ret__, 'labels'),
+        logical_interfaces=pulumi.get(__ret__, 'logical_interfaces'),
+        login_info=pulumi.get(__ret__, 'login_info'),
+        luns=pulumi.get(__ret__, 'luns'),
+        machine_type=pulumi.get(__ret__, 'machine_type'),
+        name=pulumi.get(__ret__, 'name'),
+        network_template=pulumi.get(__ret__, 'network_template'),
+        networks=pulumi.get(__ret__, 'networks'),
+        os_image=pulumi.get(__ret__, 'os_image'),
+        pod=pulumi.get(__ret__, 'pod'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        volumes=pulumi.get(__ret__, 'volumes'),
+        workload_profile=pulumi.get(__ret__, 'workload_profile'))
 
 
 @_utilities.lift_output_func(get_instance)

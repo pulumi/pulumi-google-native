@@ -116,12 +116,12 @@ def get_service_binding(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1beta1:getServiceBinding', __args__, opts=opts, typ=GetServiceBindingResult).value
 
     return AwaitableGetServiceBindingResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        service=__ret__.service,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        service=pulumi.get(__ret__, 'service'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_service_binding)

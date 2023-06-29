@@ -98,10 +98,10 @@ def get_partition(entity_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getPartition', __args__, opts=opts, typ=GetPartitionResult).value
 
     return AwaitableGetPartitionResult(
-        etag=__ret__.etag,
-        location=__ret__.location,
-        name=__ret__.name,
-        values=__ret__.values)
+        etag=pulumi.get(__ret__, 'etag'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        values=pulumi.get(__ret__, 'values'))
 
 
 @_utilities.lift_output_func(get_partition)

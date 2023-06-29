@@ -107,11 +107,11 @@ def get_object_iam_policy(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getObjectIamPolicy', __args__, opts=opts, typ=GetObjectIamPolicyResult).value
 
     return AwaitableGetObjectIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        kind=__ret__.kind,
-        resource_id=__ret__.resource_id,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        kind=pulumi.get(__ret__, 'kind'),
+        resource_id=pulumi.get(__ret__, 'resource_id'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_object_iam_policy)

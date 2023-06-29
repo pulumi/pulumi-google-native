@@ -88,10 +88,10 @@ def get_billing_account(billing_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbilling/v1:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult).value
 
     return AwaitableGetBillingAccountResult(
-        display_name=__ret__.display_name,
-        master_billing_account=__ret__.master_billing_account,
-        name=__ret__.name,
-        open=__ret__.open)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        master_billing_account=pulumi.get(__ret__, 'master_billing_account'),
+        name=pulumi.get(__ret__, 'name'),
+        open=pulumi.get(__ret__, 'open'))
 
 
 @_utilities.lift_output_func(get_billing_account)

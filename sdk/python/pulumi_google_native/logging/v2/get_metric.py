@@ -55,10 +55,6 @@ class GetMetricResult:
         pulumi.set(__self__, "value_extractor", value_extractor)
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
-        if version is not None:
-            warnings.warn("""Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""", DeprecationWarning)
-            pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
-
         pulumi.set(__self__, "version", version)
 
     @property
@@ -155,6 +151,9 @@ class GetMetricResult:
         """
         Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.
         """
+        warnings.warn("""Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
+
         return pulumi.get(self, "version")
 
 
@@ -191,18 +190,18 @@ def get_metric(metric_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getMetric', __args__, opts=opts, typ=GetMetricResult).value
 
     return AwaitableGetMetricResult(
-        bucket_name=__ret__.bucket_name,
-        bucket_options=__ret__.bucket_options,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        filter=__ret__.filter,
-        label_extractors=__ret__.label_extractors,
-        metric_descriptor=__ret__.metric_descriptor,
-        name=__ret__.name,
-        update_time=__ret__.update_time,
-        value_extractor=__ret__.value_extractor,
-        version=__ret__.version)
+        bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        bucket_options=pulumi.get(__ret__, 'bucket_options'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        filter=pulumi.get(__ret__, 'filter'),
+        label_extractors=pulumi.get(__ret__, 'label_extractors'),
+        metric_descriptor=pulumi.get(__ret__, 'metric_descriptor'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        value_extractor=pulumi.get(__ret__, 'value_extractor'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_metric)

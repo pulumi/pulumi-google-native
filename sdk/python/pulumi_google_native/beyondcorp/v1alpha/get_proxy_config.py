@@ -141,14 +141,14 @@ def get_proxy_config(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1alpha:getProxyConfig', __args__, opts=opts, typ=GetProxyConfigResult).value
 
     return AwaitableGetProxyConfigResult(
-        authentication_info=__ret__.authentication_info,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        proxy_uri=__ret__.proxy_uri,
-        routing_info=__ret__.routing_info,
-        transport_info=__ret__.transport_info,
-        update_time=__ret__.update_time)
+        authentication_info=pulumi.get(__ret__, 'authentication_info'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_uri=pulumi.get(__ret__, 'proxy_uri'),
+        routing_info=pulumi.get(__ret__, 'routing_info'),
+        transport_info=pulumi.get(__ret__, 'transport_info'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_proxy_config)

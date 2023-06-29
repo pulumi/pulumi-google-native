@@ -139,14 +139,14 @@ def get_dataset(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getDataset', __args__, opts=opts, typ=GetDatasetResult).value
 
     return AwaitableGetDatasetResult(
-        blocking_resources=__ret__.blocking_resources,
-        create_time=__ret__.create_time,
-        data_item_count=__ret__.data_item_count,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        input_configs=__ret__.input_configs,
-        last_migrate_time=__ret__.last_migrate_time,
-        name=__ret__.name)
+        blocking_resources=pulumi.get(__ret__, 'blocking_resources'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data_item_count=pulumi.get(__ret__, 'data_item_count'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        input_configs=pulumi.get(__ret__, 'input_configs'),
+        last_migrate_time=pulumi.get(__ret__, 'last_migrate_time'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_dataset)

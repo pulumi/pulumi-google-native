@@ -177,17 +177,17 @@ def get_app_connection(app_connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1:getAppConnection', __args__, opts=opts, typ=GetAppConnectionResult).value
 
     return AwaitableGetAppConnectionResult(
-        application_endpoint=__ret__.application_endpoint,
-        connectors=__ret__.connectors,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        gateway=__ret__.gateway,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        application_endpoint=pulumi.get(__ret__, 'application_endpoint'),
+        connectors=pulumi.get(__ret__, 'connectors'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        gateway=pulumi.get(__ret__, 'gateway'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_app_connection)

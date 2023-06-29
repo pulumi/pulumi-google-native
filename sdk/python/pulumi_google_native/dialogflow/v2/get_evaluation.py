@@ -119,12 +119,12 @@ def get_evaluation(conversation_model_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getEvaluation', __args__, opts=opts, typ=GetEvaluationResult).value
 
     return AwaitableGetEvaluationResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        evaluation_config=__ret__.evaluation_config,
-        name=__ret__.name,
-        raw_human_eval_template_csv=__ret__.raw_human_eval_template_csv,
-        smart_reply_metrics=__ret__.smart_reply_metrics)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        evaluation_config=pulumi.get(__ret__, 'evaluation_config'),
+        name=pulumi.get(__ret__, 'name'),
+        raw_human_eval_template_csv=pulumi.get(__ret__, 'raw_human_eval_template_csv'),
+        smart_reply_metrics=pulumi.get(__ret__, 'smart_reply_metrics'))
 
 
 @_utilities.lift_output_func(get_evaluation)

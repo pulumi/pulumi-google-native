@@ -118,12 +118,12 @@ def get_snapshot(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1beta1:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        filesystem_used_bytes=__ret__.filesystem_used_bytes,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        filesystem_used_bytes=pulumi.get(__ret__, 'filesystem_used_bytes'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_snapshot)

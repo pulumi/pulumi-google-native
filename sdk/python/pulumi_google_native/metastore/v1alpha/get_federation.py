@@ -164,16 +164,16 @@ def get_federation(federation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:metastore/v1alpha:getFederation', __args__, opts=opts, typ=GetFederationResult).value
 
     return AwaitableGetFederationResult(
-        backend_metastores=__ret__.backend_metastores,
-        create_time=__ret__.create_time,
-        endpoint_uri=__ret__.endpoint_uri,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        state_message=__ret__.state_message,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time,
-        version=__ret__.version)
+        backend_metastores=pulumi.get(__ret__, 'backend_metastores'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        endpoint_uri=pulumi.get(__ret__, 'endpoint_uri'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        state_message=pulumi.get(__ret__, 'state_message'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_federation)

@@ -105,11 +105,11 @@ def get_default_supported_idp_config(default_supported_idp_config_id: Optional[s
     __ret__ = pulumi.runtime.invoke('google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig', __args__, opts=opts, typ=GetDefaultSupportedIdpConfigResult).value
 
     return AwaitableGetDefaultSupportedIdpConfigResult(
-        apple_sign_in_config=__ret__.apple_sign_in_config,
-        client_id=__ret__.client_id,
-        client_secret=__ret__.client_secret,
-        enabled=__ret__.enabled,
-        name=__ret__.name)
+        apple_sign_in_config=pulumi.get(__ret__, 'apple_sign_in_config'),
+        client_id=pulumi.get(__ret__, 'client_id'),
+        client_secret=pulumi.get(__ret__, 'client_secret'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_default_supported_idp_config)

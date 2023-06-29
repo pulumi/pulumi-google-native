@@ -95,10 +95,10 @@ def get_certificate_template_iam_policy(certificate_template_id: Optional[str] =
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCertificateTemplateIamPolicy', __args__, opts=opts, typ=GetCertificateTemplateIamPolicyResult).value
 
     return AwaitableGetCertificateTemplateIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_certificate_template_iam_policy)

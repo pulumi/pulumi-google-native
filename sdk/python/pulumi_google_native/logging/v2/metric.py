@@ -189,6 +189,9 @@ class MetricArgs:
         """
         Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.
         """
+        warnings.warn("""Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
+
         return pulumi.get(self, "version")
 
     @version.setter
@@ -429,5 +432,8 @@ class Metric(pulumi.CustomResource):
         """
         Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.
         """
+        warnings.warn("""Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
+
         return pulumi.get(self, "version")
 

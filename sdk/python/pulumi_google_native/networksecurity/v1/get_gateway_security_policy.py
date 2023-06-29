@@ -104,11 +104,11 @@ def get_gateway_security_policy(gateway_security_policy_id: Optional[str] = None
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getGatewaySecurityPolicy', __args__, opts=opts, typ=GetGatewaySecurityPolicyResult).value
 
     return AwaitableGetGatewaySecurityPolicyResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        name=__ret__.name,
-        tls_inspection_policy=__ret__.tls_inspection_policy,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        tls_inspection_policy=pulumi.get(__ret__, 'tls_inspection_policy'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_gateway_security_policy)

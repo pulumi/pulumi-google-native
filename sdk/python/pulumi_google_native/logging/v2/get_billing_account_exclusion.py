@@ -114,12 +114,12 @@ def get_billing_account_exclusion(billing_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getBillingAccountExclusion', __args__, opts=opts, typ=GetBillingAccountExclusionResult).value
 
     return AwaitableGetBillingAccountExclusionResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        filter=__ret__.filter,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        filter=pulumi.get(__ret__, 'filter'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_billing_account_exclusion)

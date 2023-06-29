@@ -93,10 +93,10 @@ def get_process(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalineage/v1:getProcess', __args__, opts=opts, typ=GetProcessResult).value
 
     return AwaitableGetProcessResult(
-        attributes=__ret__.attributes,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        origin=__ret__.origin)
+        attributes=pulumi.get(__ret__, 'attributes'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        origin=pulumi.get(__ret__, 'origin'))
 
 
 @_utilities.lift_output_func(get_process)

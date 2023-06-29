@@ -132,13 +132,13 @@ def get_debug_session(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getDebugSession', __args__, opts=opts, typ=GetDebugSessionResult).value
 
     return AwaitableGetDebugSessionResult(
-        count=__ret__.count,
-        create_time=__ret__.create_time,
-        filter=__ret__.filter,
-        name=__ret__.name,
-        timeout=__ret__.timeout,
-        tracesize=__ret__.tracesize,
-        validity=__ret__.validity)
+        count=pulumi.get(__ret__, 'count'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        filter=pulumi.get(__ret__, 'filter'),
+        name=pulumi.get(__ret__, 'name'),
+        timeout=pulumi.get(__ret__, 'timeout'),
+        tracesize=pulumi.get(__ret__, 'tracesize'),
+        validity=pulumi.get(__ret__, 'validity'))
 
 
 @_utilities.lift_output_func(get_debug_session)

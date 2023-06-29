@@ -68,8 +68,8 @@ def get_keystore(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getKeystore', __args__, opts=opts, typ=GetKeystoreResult).value
 
     return AwaitableGetKeystoreResult(
-        aliases=__ret__.aliases,
-        name=__ret__.name)
+        aliases=pulumi.get(__ret__, 'aliases'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_keystore)

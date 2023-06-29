@@ -91,10 +91,10 @@ def get_sharedflow(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getSharedflow', __args__, opts=opts, typ=GetSharedflowResult).value
 
     return AwaitableGetSharedflowResult(
-        latest_revision_id=__ret__.latest_revision_id,
-        meta_data=__ret__.meta_data,
-        name=__ret__.name,
-        revision=__ret__.revision)
+        latest_revision_id=pulumi.get(__ret__, 'latest_revision_id'),
+        meta_data=pulumi.get(__ret__, 'meta_data'),
+        name=pulumi.get(__ret__, 'name'),
+        revision=pulumi.get(__ret__, 'revision'))
 
 
 @_utilities.lift_output_func(get_sharedflow)

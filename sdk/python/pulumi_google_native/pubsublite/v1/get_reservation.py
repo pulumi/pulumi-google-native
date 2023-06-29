@@ -68,8 +68,8 @@ def get_reservation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsublite/v1:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
-        name=__ret__.name,
-        throughput_capacity=__ret__.throughput_capacity)
+        name=pulumi.get(__ret__, 'name'),
+        throughput_capacity=pulumi.get(__ret__, 'throughput_capacity'))
 
 
 @_utilities.lift_output_func(get_reservation)

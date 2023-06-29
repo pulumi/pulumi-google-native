@@ -141,14 +141,14 @@ def get_saved_query(saved_query_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudasset/v1:getSavedQuery', __args__, opts=opts, typ=GetSavedQueryResult).value
 
     return AwaitableGetSavedQueryResult(
-        content=__ret__.content,
-        create_time=__ret__.create_time,
-        creator=__ret__.creator,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        last_update_time=__ret__.last_update_time,
-        last_updater=__ret__.last_updater,
-        name=__ret__.name)
+        content=pulumi.get(__ret__, 'content'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        creator=pulumi.get(__ret__, 'creator'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        last_update_time=pulumi.get(__ret__, 'last_update_time'),
+        last_updater=pulumi.get(__ret__, 'last_updater'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_saved_query)

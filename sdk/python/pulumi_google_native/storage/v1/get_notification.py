@@ -140,14 +140,14 @@ def get_notification(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getNotification', __args__, opts=opts, typ=GetNotificationResult).value
 
     return AwaitableGetNotificationResult(
-        custom_attributes=__ret__.custom_attributes,
-        etag=__ret__.etag,
-        event_types=__ret__.event_types,
-        kind=__ret__.kind,
-        object_name_prefix=__ret__.object_name_prefix,
-        payload_format=__ret__.payload_format,
-        self_link=__ret__.self_link,
-        topic=__ret__.topic)
+        custom_attributes=pulumi.get(__ret__, 'custom_attributes'),
+        etag=pulumi.get(__ret__, 'etag'),
+        event_types=pulumi.get(__ret__, 'event_types'),
+        kind=pulumi.get(__ret__, 'kind'),
+        object_name_prefix=pulumi.get(__ret__, 'object_name_prefix'),
+        payload_format=pulumi.get(__ret__, 'payload_format'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_notification)

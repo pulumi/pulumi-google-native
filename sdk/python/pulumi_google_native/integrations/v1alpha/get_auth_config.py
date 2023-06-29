@@ -251,23 +251,23 @@ def get_auth_config(auth_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getAuthConfig', __args__, opts=opts, typ=GetAuthConfigResult).value
 
     return AwaitableGetAuthConfigResult(
-        certificate_id=__ret__.certificate_id,
-        create_time=__ret__.create_time,
-        creator_email=__ret__.creator_email,
-        credential_type=__ret__.credential_type,
-        decrypted_credential=__ret__.decrypted_credential,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        encrypted_credential=__ret__.encrypted_credential,
-        expiry_notification_duration=__ret__.expiry_notification_duration,
-        last_modifier_email=__ret__.last_modifier_email,
-        name=__ret__.name,
-        override_valid_time=__ret__.override_valid_time,
-        reason=__ret__.reason,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        valid_time=__ret__.valid_time,
-        visibility=__ret__.visibility)
+        certificate_id=pulumi.get(__ret__, 'certificate_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        creator_email=pulumi.get(__ret__, 'creator_email'),
+        credential_type=pulumi.get(__ret__, 'credential_type'),
+        decrypted_credential=pulumi.get(__ret__, 'decrypted_credential'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        encrypted_credential=pulumi.get(__ret__, 'encrypted_credential'),
+        expiry_notification_duration=pulumi.get(__ret__, 'expiry_notification_duration'),
+        last_modifier_email=pulumi.get(__ret__, 'last_modifier_email'),
+        name=pulumi.get(__ret__, 'name'),
+        override_valid_time=pulumi.get(__ret__, 'override_valid_time'),
+        reason=pulumi.get(__ret__, 'reason'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        valid_time=pulumi.get(__ret__, 'valid_time'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_auth_config)

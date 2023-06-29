@@ -165,16 +165,16 @@ def get_http_route(http_route_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1:getHttpRoute', __args__, opts=opts, typ=GetHttpRouteResult).value
 
     return AwaitableGetHttpRouteResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        gateways=__ret__.gateways,
-        hostnames=__ret__.hostnames,
-        labels=__ret__.labels,
-        meshes=__ret__.meshes,
-        name=__ret__.name,
-        rules=__ret__.rules,
-        self_link=__ret__.self_link,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        gateways=pulumi.get(__ret__, 'gateways'),
+        hostnames=pulumi.get(__ret__, 'hostnames'),
+        labels=pulumi.get(__ret__, 'labels'),
+        meshes=pulumi.get(__ret__, 'meshes'),
+        name=pulumi.get(__ret__, 'name'),
+        rules=pulumi.get(__ret__, 'rules'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_http_route)

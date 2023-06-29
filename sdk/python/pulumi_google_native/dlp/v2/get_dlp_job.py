@@ -177,17 +177,17 @@ def get_dlp_job(dlp_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dlp/v2:getDlpJob', __args__, opts=opts, typ=GetDlpJobResult).value
 
     return AwaitableGetDlpJobResult(
-        action_details=__ret__.action_details,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        errors=__ret__.errors,
-        inspect_details=__ret__.inspect_details,
-        job_trigger_name=__ret__.job_trigger_name,
-        name=__ret__.name,
-        risk_details=__ret__.risk_details,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        type=__ret__.type)
+        action_details=pulumi.get(__ret__, 'action_details'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        errors=pulumi.get(__ret__, 'errors'),
+        inspect_details=pulumi.get(__ret__, 'inspect_details'),
+        job_trigger_name=pulumi.get(__ret__, 'job_trigger_name'),
+        name=pulumi.get(__ret__, 'name'),
+        risk_details=pulumi.get(__ret__, 'risk_details'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_dlp_job)

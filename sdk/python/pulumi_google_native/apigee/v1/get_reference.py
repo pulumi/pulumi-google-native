@@ -92,10 +92,10 @@ def get_reference(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getReference', __args__, opts=opts, typ=GetReferenceResult).value
 
     return AwaitableGetReferenceResult(
-        description=__ret__.description,
-        name=__ret__.name,
-        refers=__ret__.refers,
-        resource_type=__ret__.resource_type)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        refers=pulumi.get(__ret__, 'refers'),
+        resource_type=pulumi.get(__ret__, 'resource_type'))
 
 
 @_utilities.lift_output_func(get_reference)

@@ -165,16 +165,16 @@ def get_bitbucket_server_config(bitbucket_server_config_id: Optional[str] = None
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1:getBitbucketServerConfig', __args__, opts=opts, typ=GetBitbucketServerConfigResult).value
 
     return AwaitableGetBitbucketServerConfigResult(
-        api_key=__ret__.api_key,
-        connected_repositories=__ret__.connected_repositories,
-        create_time=__ret__.create_time,
-        host_uri=__ret__.host_uri,
-        name=__ret__.name,
-        peered_network=__ret__.peered_network,
-        secrets=__ret__.secrets,
-        ssl_ca=__ret__.ssl_ca,
-        username=__ret__.username,
-        webhook_key=__ret__.webhook_key)
+        api_key=pulumi.get(__ret__, 'api_key'),
+        connected_repositories=pulumi.get(__ret__, 'connected_repositories'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        host_uri=pulumi.get(__ret__, 'host_uri'),
+        name=pulumi.get(__ret__, 'name'),
+        peered_network=pulumi.get(__ret__, 'peered_network'),
+        secrets=pulumi.get(__ret__, 'secrets'),
+        ssl_ca=pulumi.get(__ret__, 'ssl_ca'),
+        username=pulumi.get(__ret__, 'username'),
+        webhook_key=pulumi.get(__ret__, 'webhook_key'))
 
 
 @_utilities.lift_output_func(get_bitbucket_server_config)

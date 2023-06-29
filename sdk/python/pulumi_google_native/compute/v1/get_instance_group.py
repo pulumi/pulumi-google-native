@@ -189,18 +189,18 @@ def get_instance_group(instance_group: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getInstanceGroup', __args__, opts=opts, typ=GetInstanceGroupResult).value
 
     return AwaitableGetInstanceGroupResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        named_ports=__ret__.named_ports,
-        network=__ret__.network,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        size=__ret__.size,
-        subnetwork=__ret__.subnetwork,
-        zone=__ret__.zone)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        named_ports=pulumi.get(__ret__, 'named_ports'),
+        network=pulumi.get(__ret__, 'network'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_group)

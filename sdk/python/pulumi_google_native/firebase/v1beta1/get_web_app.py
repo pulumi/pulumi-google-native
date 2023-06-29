@@ -162,16 +162,16 @@ def get_web_app(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebase/v1beta1:getWebApp', __args__, opts=opts, typ=GetWebAppResult).value
 
     return AwaitableGetWebAppResult(
-        api_key_id=__ret__.api_key_id,
-        app_id=__ret__.app_id,
-        app_urls=__ret__.app_urls,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        expire_time=__ret__.expire_time,
-        name=__ret__.name,
-        project=__ret__.project,
-        state=__ret__.state,
-        web_id=__ret__.web_id)
+        api_key_id=pulumi.get(__ret__, 'api_key_id'),
+        app_id=pulumi.get(__ret__, 'app_id'),
+        app_urls=pulumi.get(__ret__, 'app_urls'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        web_id=pulumi.get(__ret__, 'web_id'))
 
 
 @_utilities.lift_output_func(get_web_app)

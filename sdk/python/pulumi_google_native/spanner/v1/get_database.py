@@ -189,18 +189,18 @@ def get_database(database_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getDatabase', __args__, opts=opts, typ=GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        create_time=__ret__.create_time,
-        database_dialect=__ret__.database_dialect,
-        default_leader=__ret__.default_leader,
-        earliest_version_time=__ret__.earliest_version_time,
-        enable_drop_protection=__ret__.enable_drop_protection,
-        encryption_config=__ret__.encryption_config,
-        encryption_info=__ret__.encryption_info,
-        name=__ret__.name,
-        reconciling=__ret__.reconciling,
-        restore_info=__ret__.restore_info,
-        state=__ret__.state,
-        version_retention_period=__ret__.version_retention_period)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        database_dialect=pulumi.get(__ret__, 'database_dialect'),
+        default_leader=pulumi.get(__ret__, 'default_leader'),
+        earliest_version_time=pulumi.get(__ret__, 'earliest_version_time'),
+        enable_drop_protection=pulumi.get(__ret__, 'enable_drop_protection'),
+        encryption_config=pulumi.get(__ret__, 'encryption_config'),
+        encryption_info=pulumi.get(__ret__, 'encryption_info'),
+        name=pulumi.get(__ret__, 'name'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        restore_info=pulumi.get(__ret__, 'restore_info'),
+        state=pulumi.get(__ret__, 'state'),
+        version_retention_period=pulumi.get(__ret__, 'version_retention_period'))
 
 
 @_utilities.lift_output_func(get_database)

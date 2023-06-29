@@ -199,19 +199,19 @@ def get_domain(domain_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:managedidentities/v1alpha1:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        audit_logs_enabled=__ret__.audit_logs_enabled,
-        authorized_networks=__ret__.authorized_networks,
-        create_time=__ret__.create_time,
-        fqdn=__ret__.fqdn,
-        labels=__ret__.labels,
-        locations=__ret__.locations,
-        managed_identities_admin_name=__ret__.managed_identities_admin_name,
-        name=__ret__.name,
-        reserved_ip_range=__ret__.reserved_ip_range,
-        state=__ret__.state,
-        status_message=__ret__.status_message,
-        trusts=__ret__.trusts,
-        update_time=__ret__.update_time)
+        audit_logs_enabled=pulumi.get(__ret__, 'audit_logs_enabled'),
+        authorized_networks=pulumi.get(__ret__, 'authorized_networks'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        fqdn=pulumi.get(__ret__, 'fqdn'),
+        labels=pulumi.get(__ret__, 'labels'),
+        locations=pulumi.get(__ret__, 'locations'),
+        managed_identities_admin_name=pulumi.get(__ret__, 'managed_identities_admin_name'),
+        name=pulumi.get(__ret__, 'name'),
+        reserved_ip_range=pulumi.get(__ret__, 'reserved_ip_range'),
+        state=pulumi.get(__ret__, 'state'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        trusts=pulumi.get(__ret__, 'trusts'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_domain)

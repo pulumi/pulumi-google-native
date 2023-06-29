@@ -225,21 +225,21 @@ def get_service(service_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        app_engine=__ret__.app_engine,
-        basic_service=__ret__.basic_service,
-        cloud_endpoints=__ret__.cloud_endpoints,
-        cloud_run=__ret__.cloud_run,
-        cluster_istio=__ret__.cluster_istio,
-        custom=__ret__.custom,
-        display_name=__ret__.display_name,
-        gke_namespace=__ret__.gke_namespace,
-        gke_service=__ret__.gke_service,
-        gke_workload=__ret__.gke_workload,
-        istio_canonical_service=__ret__.istio_canonical_service,
-        mesh_istio=__ret__.mesh_istio,
-        name=__ret__.name,
-        telemetry=__ret__.telemetry,
-        user_labels=__ret__.user_labels)
+        app_engine=pulumi.get(__ret__, 'app_engine'),
+        basic_service=pulumi.get(__ret__, 'basic_service'),
+        cloud_endpoints=pulumi.get(__ret__, 'cloud_endpoints'),
+        cloud_run=pulumi.get(__ret__, 'cloud_run'),
+        cluster_istio=pulumi.get(__ret__, 'cluster_istio'),
+        custom=pulumi.get(__ret__, 'custom'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        gke_namespace=pulumi.get(__ret__, 'gke_namespace'),
+        gke_service=pulumi.get(__ret__, 'gke_service'),
+        gke_workload=pulumi.get(__ret__, 'gke_workload'),
+        istio_canonical_service=pulumi.get(__ret__, 'istio_canonical_service'),
+        mesh_istio=pulumi.get(__ret__, 'mesh_istio'),
+        name=pulumi.get(__ret__, 'name'),
+        telemetry=pulumi.get(__ret__, 'telemetry'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_service)

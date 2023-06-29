@@ -106,6 +106,9 @@ class NodePoolInitArgs:
         """
         Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         """
+        warnings.warn("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+        pulumi.log.warn("""cluster_id is deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
+
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -271,6 +274,9 @@ class NodePoolInitArgs:
         """
         Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         """
+        warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
+
         return pulumi.get(self, "project")
 
     @project.setter
@@ -307,6 +313,9 @@ class NodePoolInitArgs:
         """
         Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
+        warnings.warn("""Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
+
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -413,11 +422,11 @@ class NodePool(pulumi.CustomResource):
             __props__ = NodePoolInitArgs.__new__(NodePoolInitArgs)
 
             __props__.__dict__["autoscaling"] = autoscaling
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
             if cluster_id is not None and not opts.urn:
                 warnings.warn("""Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""cluster_id is deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
@@ -636,6 +645,9 @@ class NodePool(pulumi.CustomResource):
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
+        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
+        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
+
         return pulumi.get(self, "status_message")
 
     @property

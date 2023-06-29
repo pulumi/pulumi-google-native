@@ -104,11 +104,11 @@ def get_schema(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getSchema', __args__, opts=opts, typ=GetSchemaResult).value
 
     return AwaitableGetSchemaResult(
-        definition=__ret__.definition,
-        name=__ret__.name,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        type=__ret__.type)
+        definition=pulumi.get(__ret__, 'definition'),
+        name=pulumi.get(__ret__, 'name'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_schema)

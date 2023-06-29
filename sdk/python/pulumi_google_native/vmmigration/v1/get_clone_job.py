@@ -145,14 +145,14 @@ def get_clone_job(clone_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getCloneJob', __args__, opts=opts, typ=GetCloneJobResult).value
 
     return AwaitableGetCloneJobResult(
-        compute_engine_target_details=__ret__.compute_engine_target_details,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        error=__ret__.error,
-        name=__ret__.name,
-        state=__ret__.state,
-        state_time=__ret__.state_time,
-        steps=__ret__.steps)
+        compute_engine_target_details=pulumi.get(__ret__, 'compute_engine_target_details'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error=pulumi.get(__ret__, 'error'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        steps=pulumi.get(__ret__, 'steps'))
 
 
 @_utilities.lift_output_func(get_clone_job)

@@ -164,16 +164,16 @@ def get_api(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getApi', __args__, opts=opts, typ=GetApiResult).value
 
     return AwaitableGetApiResult(
-        annotations=__ret__.annotations,
-        availability=__ret__.availability,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        recommended_deployment=__ret__.recommended_deployment,
-        recommended_version=__ret__.recommended_version,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        availability=pulumi.get(__ret__, 'availability'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        recommended_deployment=pulumi.get(__ret__, 'recommended_deployment'),
+        recommended_version=pulumi.get(__ret__, 'recommended_version'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_api)

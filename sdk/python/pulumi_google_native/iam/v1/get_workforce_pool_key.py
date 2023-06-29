@@ -107,11 +107,11 @@ def get_workforce_pool_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getWorkforcePoolKey', __args__, opts=opts, typ=GetWorkforcePoolKeyResult).value
 
     return AwaitableGetWorkforcePoolKeyResult(
-        expire_time=__ret__.expire_time,
-        key_data=__ret__.key_data,
-        name=__ret__.name,
-        state=__ret__.state,
-        use=__ret__.use)
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        key_data=pulumi.get(__ret__, 'key_data'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        use=pulumi.get(__ret__, 'use'))
 
 
 @_utilities.lift_output_func(get_workforce_pool_key)

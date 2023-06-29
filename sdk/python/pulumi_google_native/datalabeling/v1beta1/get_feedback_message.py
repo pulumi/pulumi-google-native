@@ -115,12 +115,12 @@ def get_feedback_message(annotated_dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getFeedbackMessage', __args__, opts=opts, typ=GetFeedbackMessageResult).value
 
     return AwaitableGetFeedbackMessageResult(
-        body=__ret__.body,
-        create_time=__ret__.create_time,
-        image=__ret__.image,
-        name=__ret__.name,
-        operator_feedback_metadata=__ret__.operator_feedback_metadata,
-        requester_feedback_metadata=__ret__.requester_feedback_metadata)
+        body=pulumi.get(__ret__, 'body'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        image=pulumi.get(__ret__, 'image'),
+        name=pulumi.get(__ret__, 'name'),
+        operator_feedback_metadata=pulumi.get(__ret__, 'operator_feedback_metadata'),
+        requester_feedback_metadata=pulumi.get(__ret__, 'requester_feedback_metadata'))
 
 
 @_utilities.lift_output_func(get_feedback_message)

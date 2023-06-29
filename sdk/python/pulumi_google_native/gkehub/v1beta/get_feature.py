@@ -201,19 +201,19 @@ def get_feature(feature_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1beta:getFeature', __args__, opts=opts, typ=GetFeatureResult).value
 
     return AwaitableGetFeatureResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        fleet_default_member_config=__ret__.fleet_default_member_config,
-        labels=__ret__.labels,
-        membership_specs=__ret__.membership_specs,
-        membership_states=__ret__.membership_states,
-        name=__ret__.name,
-        resource_state=__ret__.resource_state,
-        scope_specs=__ret__.scope_specs,
-        scope_states=__ret__.scope_states,
-        spec=__ret__.spec,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        fleet_default_member_config=pulumi.get(__ret__, 'fleet_default_member_config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        membership_specs=pulumi.get(__ret__, 'membership_specs'),
+        membership_states=pulumi.get(__ret__, 'membership_states'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_state=pulumi.get(__ret__, 'resource_state'),
+        scope_specs=pulumi.get(__ret__, 'scope_specs'),
+        scope_states=pulumi.get(__ret__, 'scope_states'),
+        spec=pulumi.get(__ret__, 'spec'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_feature)

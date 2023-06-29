@@ -106,11 +106,11 @@ def get_session(database_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getSession', __args__, opts=opts, typ=GetSessionResult).value
 
     return AwaitableGetSessionResult(
-        approximate_last_use_time=__ret__.approximate_last_use_time,
-        create_time=__ret__.create_time,
-        creator_role=__ret__.creator_role,
-        labels=__ret__.labels,
-        name=__ret__.name)
+        approximate_last_use_time=pulumi.get(__ret__, 'approximate_last_use_time'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        creator_role=pulumi.get(__ret__, 'creator_role'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_session)

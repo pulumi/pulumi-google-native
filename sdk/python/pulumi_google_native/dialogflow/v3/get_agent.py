@@ -225,21 +225,21 @@ def get_agent(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getAgent', __args__, opts=opts, typ=GetAgentResult).value
 
     return AwaitableGetAgentResult(
-        advanced_settings=__ret__.advanced_settings,
-        avatar_uri=__ret__.avatar_uri,
-        default_language_code=__ret__.default_language_code,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        enable_spell_correction=__ret__.enable_spell_correction,
-        enable_stackdriver_logging=__ret__.enable_stackdriver_logging,
-        locked=__ret__.locked,
-        name=__ret__.name,
-        security_settings=__ret__.security_settings,
-        speech_to_text_settings=__ret__.speech_to_text_settings,
-        start_flow=__ret__.start_flow,
-        supported_language_codes=__ret__.supported_language_codes,
-        text_to_speech_settings=__ret__.text_to_speech_settings,
-        time_zone=__ret__.time_zone)
+        advanced_settings=pulumi.get(__ret__, 'advanced_settings'),
+        avatar_uri=pulumi.get(__ret__, 'avatar_uri'),
+        default_language_code=pulumi.get(__ret__, 'default_language_code'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_spell_correction=pulumi.get(__ret__, 'enable_spell_correction'),
+        enable_stackdriver_logging=pulumi.get(__ret__, 'enable_stackdriver_logging'),
+        locked=pulumi.get(__ret__, 'locked'),
+        name=pulumi.get(__ret__, 'name'),
+        security_settings=pulumi.get(__ret__, 'security_settings'),
+        speech_to_text_settings=pulumi.get(__ret__, 'speech_to_text_settings'),
+        start_flow=pulumi.get(__ret__, 'start_flow'),
+        supported_language_codes=pulumi.get(__ret__, 'supported_language_codes'),
+        text_to_speech_settings=pulumi.get(__ret__, 'text_to_speech_settings'),
+        time_zone=pulumi.get(__ret__, 'time_zone'))
 
 
 @_utilities.lift_output_func(get_agent)

@@ -91,10 +91,10 @@ def get_ruleset(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaserules/v1:getRuleset', __args__, opts=opts, typ=GetRulesetResult).value
 
     return AwaitableGetRulesetResult(
-        create_time=__ret__.create_time,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        source=__ret__.source)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        source=pulumi.get(__ret__, 'source'))
 
 
 @_utilities.lift_output_func(get_ruleset)

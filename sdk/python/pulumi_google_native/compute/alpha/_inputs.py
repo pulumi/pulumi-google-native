@@ -1197,6 +1197,9 @@ class AttachedDiskInitializeParamsArgs:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -3171,6 +3174,9 @@ class BackendServiceLogConfigArgs:
         """
         Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
         """
+        warnings.warn("""Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""", DeprecationWarning)
+        pulumi.log.warn("""optional is deprecated: Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""")
+
         return pulumi.get(self, "optional")
 
     @optional.setter
@@ -7701,6 +7707,9 @@ class ImageRawDiskArgs:
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
+        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
+        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
+
         return pulumi.get(self, "sha1_checksum")
 
     @sha1_checksum.setter
@@ -8217,6 +8226,9 @@ class InstanceGroupManagerVersionArgs:
         """
         Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
         """
+        warnings.warn("""Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.""", DeprecationWarning)
+        pulumi.log.warn("""tag is deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.""")
+
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -9865,6 +9877,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "default_port")
 
     @default_port.setter
@@ -9877,6 +9892,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "network")
 
     @network.setter
@@ -9889,6 +9907,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
@@ -16340,6 +16361,9 @@ class SecuritySettingsArgs:
         """
         [Deprecated] Use clientTlsPolicy instead.
         """
+        warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
+        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
+
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -16352,6 +16376,9 @@ class SecuritySettingsArgs:
         """
         [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
         """
+        warnings.warn("""[Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.""", DeprecationWarning)
+        pulumi.log.warn("""authentication_policy is deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.""")
+
         return pulumi.get(self, "authentication_policy")
 
     @authentication_policy.setter
@@ -16364,6 +16391,9 @@ class SecuritySettingsArgs:
         """
         [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
         """
+        warnings.warn("""[Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""", DeprecationWarning)
+        pulumi.log.warn("""authorization_config is deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""")
+
         return pulumi.get(self, "authorization_config")
 
     @authorization_config.setter
@@ -16400,6 +16430,9 @@ class SecuritySettingsArgs:
         """
         [Deprecated] TLS Settings for the backend service.
         """
+        warnings.warn("""[Deprecated] TLS Settings for the backend service.""", DeprecationWarning)
+        pulumi.log.warn("""client_tls_settings is deprecated: [Deprecated] TLS Settings for the backend service.""")
+
         return pulumi.get(self, "client_tls_settings")
 
     @client_tls_settings.setter
@@ -17745,6 +17778,9 @@ class UrlMapTestArgs:
         """
         The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
         """
+        warnings.warn("""The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.""", DeprecationWarning)
+        pulumi.log.warn("""expected_url_redirect is deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.""")
+
         return pulumi.get(self, "expected_url_redirect")
 
     @expected_url_redirect.setter

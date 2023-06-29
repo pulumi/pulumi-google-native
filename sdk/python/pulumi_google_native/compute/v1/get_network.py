@@ -43,10 +43,6 @@ class GetNetworkResult:
         pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if ipv4_range and not isinstance(ipv4_range, str):
             raise TypeError("Expected argument 'ipv4_range' to be a str")
-        if ipv4_range is not None:
-            warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
-            pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
-
         pulumi.set(__self__, "ipv4_range", ipv4_range)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -138,6 +134,9 @@ class GetNetworkResult:
         """
         Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
         """
+        warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
+        pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
+
         return pulumi.get(self, "ipv4_range")
 
     @property
@@ -251,23 +250,23 @@ def get_network(network: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
-        auto_create_subnetworks=__ret__.auto_create_subnetworks,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        enable_ula_internal_ipv6=__ret__.enable_ula_internal_ipv6,
-        firewall_policy=__ret__.firewall_policy,
-        gateway_i_pv4=__ret__.gateway_i_pv4,
-        internal_ipv6_range=__ret__.internal_ipv6_range,
-        ipv4_range=__ret__.ipv4_range,
-        kind=__ret__.kind,
-        mtu=__ret__.mtu,
-        name=__ret__.name,
-        network_firewall_policy_enforcement_order=__ret__.network_firewall_policy_enforcement_order,
-        peerings=__ret__.peerings,
-        routing_config=__ret__.routing_config,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        subnetworks=__ret__.subnetworks)
+        auto_create_subnetworks=pulumi.get(__ret__, 'auto_create_subnetworks'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        enable_ula_internal_ipv6=pulumi.get(__ret__, 'enable_ula_internal_ipv6'),
+        firewall_policy=pulumi.get(__ret__, 'firewall_policy'),
+        gateway_i_pv4=pulumi.get(__ret__, 'gateway_i_pv4'),
+        internal_ipv6_range=pulumi.get(__ret__, 'internal_ipv6_range'),
+        ipv4_range=pulumi.get(__ret__, 'ipv4_range'),
+        kind=pulumi.get(__ret__, 'kind'),
+        mtu=pulumi.get(__ret__, 'mtu'),
+        name=pulumi.get(__ret__, 'name'),
+        network_firewall_policy_enforcement_order=pulumi.get(__ret__, 'network_firewall_policy_enforcement_order'),
+        peerings=pulumi.get(__ret__, 'peerings'),
+        routing_config=pulumi.get(__ret__, 'routing_config'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        subnetworks=pulumi.get(__ret__, 'subnetworks'))
 
 
 @_utilities.lift_output_func(get_network)

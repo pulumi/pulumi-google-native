@@ -171,17 +171,17 @@ def get_resource_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        group_placement_policy=__ret__.group_placement_policy,
-        instance_schedule_policy=__ret__.instance_schedule_policy,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        region=__ret__.region,
-        resource_status=__ret__.resource_status,
-        self_link=__ret__.self_link,
-        snapshot_schedule_policy=__ret__.snapshot_schedule_policy,
-        status=__ret__.status)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        group_placement_policy=pulumi.get(__ret__, 'group_placement_policy'),
+        instance_schedule_policy=pulumi.get(__ret__, 'instance_schedule_policy'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        snapshot_schedule_policy=pulumi.get(__ret__, 'snapshot_schedule_policy'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_resource_policy)

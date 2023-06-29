@@ -79,9 +79,9 @@ def get_trace_sink(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtrace/v2beta1:getTraceSink', __args__, opts=opts, typ=GetTraceSinkResult).value
 
     return AwaitableGetTraceSinkResult(
-        name=__ret__.name,
-        output_config=__ret__.output_config,
-        writer_identity=__ret__.writer_identity)
+        name=pulumi.get(__ret__, 'name'),
+        output_config=pulumi.get(__ret__, 'output_config'),
+        writer_identity=pulumi.get(__ret__, 'writer_identity'))
 
 
 @_utilities.lift_output_func(get_trace_sink)

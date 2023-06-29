@@ -227,21 +227,21 @@ def get_step(execution_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:toolresults/v1beta3:getStep', __args__, opts=opts, typ=GetStepResult).value
 
     return AwaitableGetStepResult(
-        completion_time=__ret__.completion_time,
-        creation_time=__ret__.creation_time,
-        description=__ret__.description,
-        device_usage_duration=__ret__.device_usage_duration,
-        dimension_value=__ret__.dimension_value,
-        has_images=__ret__.has_images,
-        labels=__ret__.labels,
-        multi_step=__ret__.multi_step,
-        name=__ret__.name,
-        outcome=__ret__.outcome,
-        run_duration=__ret__.run_duration,
-        state=__ret__.state,
-        step_id=__ret__.step_id,
-        test_execution_step=__ret__.test_execution_step,
-        tool_execution_step=__ret__.tool_execution_step)
+        completion_time=pulumi.get(__ret__, 'completion_time'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        description=pulumi.get(__ret__, 'description'),
+        device_usage_duration=pulumi.get(__ret__, 'device_usage_duration'),
+        dimension_value=pulumi.get(__ret__, 'dimension_value'),
+        has_images=pulumi.get(__ret__, 'has_images'),
+        labels=pulumi.get(__ret__, 'labels'),
+        multi_step=pulumi.get(__ret__, 'multi_step'),
+        name=pulumi.get(__ret__, 'name'),
+        outcome=pulumi.get(__ret__, 'outcome'),
+        run_duration=pulumi.get(__ret__, 'run_duration'),
+        state=pulumi.get(__ret__, 'state'),
+        step_id=pulumi.get(__ret__, 'step_id'),
+        test_execution_step=pulumi.get(__ret__, 'test_execution_step'),
+        tool_execution_step=pulumi.get(__ret__, 'tool_execution_step'))
 
 
 @_utilities.lift_output_func(get_step)

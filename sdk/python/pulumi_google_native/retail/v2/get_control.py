@@ -119,12 +119,12 @@ def get_control(catalog_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:retail/v2:getControl', __args__, opts=opts, typ=GetControlResult).value
 
     return AwaitableGetControlResult(
-        associated_serving_config_ids=__ret__.associated_serving_config_ids,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        rule=__ret__.rule,
-        search_solution_use_case=__ret__.search_solution_use_case,
-        solution_types=__ret__.solution_types)
+        associated_serving_config_ids=pulumi.get(__ret__, 'associated_serving_config_ids'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        rule=pulumi.get(__ret__, 'rule'),
+        search_solution_use_case=pulumi.get(__ret__, 'search_solution_use_case'),
+        solution_types=pulumi.get(__ret__, 'solution_types'))
 
 
 @_utilities.lift_output_func(get_control)

@@ -225,21 +225,21 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudscheduler/v1beta1:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        app_engine_http_target=__ret__.app_engine_http_target,
-        attempt_deadline=__ret__.attempt_deadline,
-        description=__ret__.description,
-        http_target=__ret__.http_target,
-        last_attempt_time=__ret__.last_attempt_time,
-        legacy_app_engine_cron=__ret__.legacy_app_engine_cron,
-        name=__ret__.name,
-        pubsub_target=__ret__.pubsub_target,
-        retry_config=__ret__.retry_config,
-        schedule=__ret__.schedule,
-        schedule_time=__ret__.schedule_time,
-        state=__ret__.state,
-        status=__ret__.status,
-        time_zone=__ret__.time_zone,
-        user_update_time=__ret__.user_update_time)
+        app_engine_http_target=pulumi.get(__ret__, 'app_engine_http_target'),
+        attempt_deadline=pulumi.get(__ret__, 'attempt_deadline'),
+        description=pulumi.get(__ret__, 'description'),
+        http_target=pulumi.get(__ret__, 'http_target'),
+        last_attempt_time=pulumi.get(__ret__, 'last_attempt_time'),
+        legacy_app_engine_cron=pulumi.get(__ret__, 'legacy_app_engine_cron'),
+        name=pulumi.get(__ret__, 'name'),
+        pubsub_target=pulumi.get(__ret__, 'pubsub_target'),
+        retry_config=pulumi.get(__ret__, 'retry_config'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        schedule_time=pulumi.get(__ret__, 'schedule_time'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        user_update_time=pulumi.get(__ret__, 'user_update_time'))
 
 
 @_utilities.lift_output_func(get_job)

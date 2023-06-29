@@ -171,6 +171,9 @@ class NetworkEndpointGroupArgs:
         """
         This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
@@ -544,6 +547,9 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         """
         This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "load_balancer")
 
     @property

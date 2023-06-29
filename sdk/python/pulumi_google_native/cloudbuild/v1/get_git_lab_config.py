@@ -129,13 +129,13 @@ def get_git_lab_config(git_lab_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1:getGitLabConfig', __args__, opts=opts, typ=GetGitLabConfigResult).value
 
     return AwaitableGetGitLabConfigResult(
-        connected_repositories=__ret__.connected_repositories,
-        create_time=__ret__.create_time,
-        enterprise_config=__ret__.enterprise_config,
-        name=__ret__.name,
-        secrets=__ret__.secrets,
-        username=__ret__.username,
-        webhook_key=__ret__.webhook_key)
+        connected_repositories=pulumi.get(__ret__, 'connected_repositories'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        enterprise_config=pulumi.get(__ret__, 'enterprise_config'),
+        name=pulumi.get(__ret__, 'name'),
+        secrets=pulumi.get(__ret__, 'secrets'),
+        username=pulumi.get(__ret__, 'username'),
+        webhook_key=pulumi.get(__ret__, 'webhook_key'))
 
 
 @_utilities.lift_output_func(get_git_lab_config)

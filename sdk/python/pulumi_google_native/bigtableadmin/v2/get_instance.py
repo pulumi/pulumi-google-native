@@ -126,13 +126,13 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        state=__ret__.state,
-        type=__ret__.type)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_instance)

@@ -210,6 +210,9 @@ class JobArgs:
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
+
         return pulumi.get(self, "execution_info")
 
     @execution_info.setter
@@ -723,6 +726,9 @@ class Job(pulumi.CustomResource):
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
+
         return pulumi.get(self, "execution_info")
 
     @property

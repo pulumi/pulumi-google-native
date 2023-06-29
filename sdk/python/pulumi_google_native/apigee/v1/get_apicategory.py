@@ -105,11 +105,11 @@ def get_apicategory(apicategory_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getApicategory', __args__, opts=opts, typ=GetApicategoryResult).value
 
     return AwaitableGetApicategoryResult(
-        data=__ret__.data,
-        error_code=__ret__.error_code,
-        message=__ret__.message,
-        request_id=__ret__.request_id,
-        status=__ret__.status)
+        data=pulumi.get(__ret__, 'data'),
+        error_code=pulumi.get(__ret__, 'error_code'),
+        message=pulumi.get(__ret__, 'message'),
+        request_id=pulumi.get(__ret__, 'request_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_apicategory)

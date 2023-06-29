@@ -119,12 +119,12 @@ def get_workflow_invocation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getWorkflowInvocation', __args__, opts=opts, typ=GetWorkflowInvocationResult).value
 
     return AwaitableGetWorkflowInvocationResult(
-        compilation_result=__ret__.compilation_result,
-        invocation_config=__ret__.invocation_config,
-        invocation_timing=__ret__.invocation_timing,
-        name=__ret__.name,
-        state=__ret__.state,
-        workflow_config=__ret__.workflow_config)
+        compilation_result=pulumi.get(__ret__, 'compilation_result'),
+        invocation_config=pulumi.get(__ret__, 'invocation_config'),
+        invocation_timing=pulumi.get(__ret__, 'invocation_timing'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        workflow_config=pulumi.get(__ret__, 'workflow_config'))
 
 
 @_utilities.lift_output_func(get_workflow_invocation)

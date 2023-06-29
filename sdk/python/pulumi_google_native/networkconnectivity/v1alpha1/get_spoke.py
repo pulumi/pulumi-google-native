@@ -177,17 +177,17 @@ def get_spoke(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1alpha1:getSpoke', __args__, opts=opts, typ=GetSpokeResult).value
 
     return AwaitableGetSpokeResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        hub=__ret__.hub,
-        labels=__ret__.labels,
-        linked_interconnect_attachments=__ret__.linked_interconnect_attachments,
-        linked_router_appliance_instances=__ret__.linked_router_appliance_instances,
-        linked_vpn_tunnels=__ret__.linked_vpn_tunnels,
-        name=__ret__.name,
-        state=__ret__.state,
-        unique_id=__ret__.unique_id,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        hub=pulumi.get(__ret__, 'hub'),
+        labels=pulumi.get(__ret__, 'labels'),
+        linked_interconnect_attachments=pulumi.get(__ret__, 'linked_interconnect_attachments'),
+        linked_router_appliance_instances=pulumi.get(__ret__, 'linked_router_appliance_instances'),
+        linked_vpn_tunnels=pulumi.get(__ret__, 'linked_vpn_tunnels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        unique_id=pulumi.get(__ret__, 'unique_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_spoke)

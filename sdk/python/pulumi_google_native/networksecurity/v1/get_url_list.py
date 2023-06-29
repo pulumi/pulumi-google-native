@@ -104,11 +104,11 @@ def get_url_list(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getUrlList', __args__, opts=opts, typ=GetUrlListResult).value
 
     return AwaitableGetUrlListResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        name=__ret__.name,
-        update_time=__ret__.update_time,
-        values=__ret__.values)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        values=pulumi.get(__ret__, 'values'))
 
 
 @_utilities.lift_output_func(get_url_list)

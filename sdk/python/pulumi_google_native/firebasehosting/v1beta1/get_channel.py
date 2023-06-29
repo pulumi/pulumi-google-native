@@ -153,15 +153,15 @@ def get_channel(channel_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasehosting/v1beta1:getChannel', __args__, opts=opts, typ=GetChannelResult).value
 
     return AwaitableGetChannelResult(
-        create_time=__ret__.create_time,
-        expire_time=__ret__.expire_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        release=__ret__.release,
-        retained_release_count=__ret__.retained_release_count,
-        ttl=__ret__.ttl,
-        update_time=__ret__.update_time,
-        url=__ret__.url)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        release=pulumi.get(__ret__, 'release'),
+        retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_channel)

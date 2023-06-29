@@ -103,11 +103,11 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:remotebuildexecution/v1alpha:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        feature_policy=__ret__.feature_policy,
-        location=__ret__.location,
-        logging_enabled=__ret__.logging_enabled,
-        name=__ret__.name,
-        state=__ret__.state)
+        feature_policy=pulumi.get(__ret__, 'feature_policy'),
+        location=pulumi.get(__ret__, 'location'),
+        logging_enabled=pulumi.get(__ret__, 'logging_enabled'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_instance)

@@ -49,10 +49,6 @@ class GetInstanceResult:
         pulumi.set(__self__, "disk_encryption_status", disk_encryption_status)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
-        if etag is not None:
-            warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
-            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
-
         pulumi.set(__self__, "etag", etag)
         if failover_replica and not isinstance(failover_replica, dict):
             raise TypeError("Expected argument 'failover_replica' to be a dict")
@@ -68,10 +64,6 @@ class GetInstanceResult:
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         if ipv6_address and not isinstance(ipv6_address, str):
             raise TypeError("Expected argument 'ipv6_address' to be a str")
-        if ipv6_address is not None:
-            warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
-            pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
-
         pulumi.set(__self__, "ipv6_address", ipv6_address)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -215,6 +207,9 @@ class GetInstanceResult:
         """
         This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
         """
+        warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
+
         return pulumi.get(self, "etag")
 
     @property
@@ -255,6 +250,9 @@ class GetInstanceResult:
         """
         The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
         """
+        warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
+        pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
+
         return pulumi.get(self, "ipv6_address")
 
     @property
@@ -483,42 +481,42 @@ def get_instance(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1beta4:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        available_maintenance_versions=__ret__.available_maintenance_versions,
-        backend_type=__ret__.backend_type,
-        connection_name=__ret__.connection_name,
-        create_time=__ret__.create_time,
-        current_disk_size=__ret__.current_disk_size,
-        database_installed_version=__ret__.database_installed_version,
-        database_version=__ret__.database_version,
-        disk_encryption_configuration=__ret__.disk_encryption_configuration,
-        disk_encryption_status=__ret__.disk_encryption_status,
-        etag=__ret__.etag,
-        failover_replica=__ret__.failover_replica,
-        gce_zone=__ret__.gce_zone,
-        instance_type=__ret__.instance_type,
-        ip_addresses=__ret__.ip_addresses,
-        ipv6_address=__ret__.ipv6_address,
-        kind=__ret__.kind,
-        maintenance_version=__ret__.maintenance_version,
-        master_instance_name=__ret__.master_instance_name,
-        max_disk_size=__ret__.max_disk_size,
-        name=__ret__.name,
-        on_premises_configuration=__ret__.on_premises_configuration,
-        out_of_disk_report=__ret__.out_of_disk_report,
-        project=__ret__.project,
-        region=__ret__.region,
-        replica_configuration=__ret__.replica_configuration,
-        replica_names=__ret__.replica_names,
-        root_password=__ret__.root_password,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        scheduled_maintenance=__ret__.scheduled_maintenance,
-        secondary_gce_zone=__ret__.secondary_gce_zone,
-        self_link=__ret__.self_link,
-        server_ca_cert=__ret__.server_ca_cert,
-        service_account_email_address=__ret__.service_account_email_address,
-        settings=__ret__.settings,
-        state=__ret__.state,
-        suspension_reason=__ret__.suspension_reason)
+        available_maintenance_versions=pulumi.get(__ret__, 'available_maintenance_versions'),
+        backend_type=pulumi.get(__ret__, 'backend_type'),
+        connection_name=pulumi.get(__ret__, 'connection_name'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        current_disk_size=pulumi.get(__ret__, 'current_disk_size'),
+        database_installed_version=pulumi.get(__ret__, 'database_installed_version'),
+        database_version=pulumi.get(__ret__, 'database_version'),
+        disk_encryption_configuration=pulumi.get(__ret__, 'disk_encryption_configuration'),
+        disk_encryption_status=pulumi.get(__ret__, 'disk_encryption_status'),
+        etag=pulumi.get(__ret__, 'etag'),
+        failover_replica=pulumi.get(__ret__, 'failover_replica'),
+        gce_zone=pulumi.get(__ret__, 'gce_zone'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        ip_addresses=pulumi.get(__ret__, 'ip_addresses'),
+        ipv6_address=pulumi.get(__ret__, 'ipv6_address'),
+        kind=pulumi.get(__ret__, 'kind'),
+        maintenance_version=pulumi.get(__ret__, 'maintenance_version'),
+        master_instance_name=pulumi.get(__ret__, 'master_instance_name'),
+        max_disk_size=pulumi.get(__ret__, 'max_disk_size'),
+        name=pulumi.get(__ret__, 'name'),
+        on_premises_configuration=pulumi.get(__ret__, 'on_premises_configuration'),
+        out_of_disk_report=pulumi.get(__ret__, 'out_of_disk_report'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        replica_configuration=pulumi.get(__ret__, 'replica_configuration'),
+        replica_names=pulumi.get(__ret__, 'replica_names'),
+        root_password=pulumi.get(__ret__, 'root_password'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        scheduled_maintenance=pulumi.get(__ret__, 'scheduled_maintenance'),
+        secondary_gce_zone=pulumi.get(__ret__, 'secondary_gce_zone'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        server_ca_cert=pulumi.get(__ret__, 'server_ca_cert'),
+        service_account_email_address=pulumi.get(__ret__, 'service_account_email_address'),
+        settings=pulumi.get(__ret__, 'settings'),
+        state=pulumi.get(__ret__, 'state'),
+        suspension_reason=pulumi.get(__ret__, 'suspension_reason'))
 
 
 @_utilities.lift_output_func(get_instance)

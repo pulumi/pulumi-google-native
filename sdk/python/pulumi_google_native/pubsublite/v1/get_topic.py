@@ -93,10 +93,10 @@ def get_topic(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsublite/v1:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
-        name=__ret__.name,
-        partition_config=__ret__.partition_config,
-        reservation_config=__ret__.reservation_config,
-        retention_config=__ret__.retention_config)
+        name=pulumi.get(__ret__, 'name'),
+        partition_config=pulumi.get(__ret__, 'partition_config'),
+        reservation_config=pulumi.get(__ret__, 'reservation_config'),
+        retention_config=pulumi.get(__ret__, 'retention_config'))
 
 
 @_utilities.lift_output_func(get_topic)

@@ -156,15 +156,15 @@ def get_sfdc_channel(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getSfdcChannel', __args__, opts=opts, typ=GetSfdcChannelResult).value
 
     return AwaitableGetSfdcChannelResult(
-        channel_topic=__ret__.channel_topic,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        is_active=__ret__.is_active,
-        last_replay_id=__ret__.last_replay_id,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        channel_topic=pulumi.get(__ret__, 'channel_topic'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        is_active=pulumi.get(__ret__, 'is_active'),
+        last_replay_id=pulumi.get(__ret__, 'last_replay_id'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_sfdc_channel)

@@ -163,16 +163,16 @@ def get_worker_pool(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1alpha1:getWorkerPool', __args__, opts=opts, typ=GetWorkerPoolResult).value
 
     return AwaitableGetWorkerPoolResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        name=__ret__.name,
-        project=__ret__.project,
-        regions=__ret__.regions,
-        service_account_email=__ret__.service_account_email,
-        status=__ret__.status,
-        update_time=__ret__.update_time,
-        worker_config=__ret__.worker_config,
-        worker_count=__ret__.worker_count)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        regions=pulumi.get(__ret__, 'regions'),
+        service_account_email=pulumi.get(__ret__, 'service_account_email'),
+        status=pulumi.get(__ret__, 'status'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        worker_config=pulumi.get(__ret__, 'worker_config'),
+        worker_count=pulumi.get(__ret__, 'worker_count'))
 
 
 @_utilities.lift_output_func(get_worker_pool)

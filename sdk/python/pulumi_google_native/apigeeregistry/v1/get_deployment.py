@@ -214,20 +214,20 @@ def get_deployment(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getDeployment', __args__, opts=opts, typ=GetDeploymentResult).value
 
     return AwaitableGetDeploymentResult(
-        access_guidance=__ret__.access_guidance,
-        annotations=__ret__.annotations,
-        api_spec_revision=__ret__.api_spec_revision,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        endpoint_uri=__ret__.endpoint_uri,
-        external_channel_uri=__ret__.external_channel_uri,
-        intended_audience=__ret__.intended_audience,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        revision_update_time=__ret__.revision_update_time)
+        access_guidance=pulumi.get(__ret__, 'access_guidance'),
+        annotations=pulumi.get(__ret__, 'annotations'),
+        api_spec_revision=pulumi.get(__ret__, 'api_spec_revision'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        endpoint_uri=pulumi.get(__ret__, 'endpoint_uri'),
+        external_channel_uri=pulumi.get(__ret__, 'external_channel_uri'),
+        intended_audience=pulumi.get(__ret__, 'intended_audience'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        revision_update_time=pulumi.get(__ret__, 'revision_update_time'))
 
 
 @_utilities.lift_output_func(get_deployment)

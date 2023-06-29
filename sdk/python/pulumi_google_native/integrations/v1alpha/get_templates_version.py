@@ -229,21 +229,21 @@ def get_templates_version(integrationtemplate_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getTemplatesVersion', __args__, opts=opts, typ=GetTemplatesVersionResult).value
 
     return AwaitableGetTemplatesVersionResult(
-        create_time=__ret__.create_time,
-        database_persistence_policy=__ret__.database_persistence_policy,
-        description=__ret__.description,
-        error_catcher_configs=__ret__.error_catcher_configs,
-        last_modifier_email=__ret__.last_modifier_email,
-        name=__ret__.name,
-        parent_integration_version_id=__ret__.parent_integration_version_id,
-        snapshot_number=__ret__.snapshot_number,
-        status=__ret__.status,
-        task_configs=__ret__.task_configs,
-        teardown=__ret__.teardown,
-        template_parameters=__ret__.template_parameters,
-        trigger_configs=__ret__.trigger_configs,
-        update_time=__ret__.update_time,
-        user_label=__ret__.user_label)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        database_persistence_policy=pulumi.get(__ret__, 'database_persistence_policy'),
+        description=pulumi.get(__ret__, 'description'),
+        error_catcher_configs=pulumi.get(__ret__, 'error_catcher_configs'),
+        last_modifier_email=pulumi.get(__ret__, 'last_modifier_email'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_integration_version_id=pulumi.get(__ret__, 'parent_integration_version_id'),
+        snapshot_number=pulumi.get(__ret__, 'snapshot_number'),
+        status=pulumi.get(__ret__, 'status'),
+        task_configs=pulumi.get(__ret__, 'task_configs'),
+        teardown=pulumi.get(__ret__, 'teardown'),
+        template_parameters=pulumi.get(__ret__, 'template_parameters'),
+        trigger_configs=pulumi.get(__ret__, 'trigger_configs'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user_label=pulumi.get(__ret__, 'user_label'))
 
 
 @_utilities.lift_output_func(get_templates_version)

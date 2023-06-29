@@ -176,17 +176,17 @@ def get_source(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:migrationcenter/v1alpha1:getSource', __args__, opts=opts, typ=GetSourceResult).value
 
     return AwaitableGetSourceResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        error_frame_count=__ret__.error_frame_count,
-        is_managed=__ret__.is_managed,
-        name=__ret__.name,
-        pending_frame_count=__ret__.pending_frame_count,
-        priority=__ret__.priority,
-        state=__ret__.state,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        error_frame_count=pulumi.get(__ret__, 'error_frame_count'),
+        is_managed=pulumi.get(__ret__, 'is_managed'),
+        name=pulumi.get(__ret__, 'name'),
+        pending_frame_count=pulumi.get(__ret__, 'pending_frame_count'),
+        priority=pulumi.get(__ret__, 'priority'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_source)

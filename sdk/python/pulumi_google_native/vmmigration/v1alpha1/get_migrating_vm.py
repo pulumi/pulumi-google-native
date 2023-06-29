@@ -28,10 +28,6 @@ class GetMigratingVmResult:
         pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
         if compute_engine_vm_defaults and not isinstance(compute_engine_vm_defaults, dict):
             raise TypeError("Expected argument 'compute_engine_vm_defaults' to be a dict")
-        if compute_engine_vm_defaults is not None:
-            warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
-
         pulumi.set(__self__, "compute_engine_vm_defaults", compute_engine_vm_defaults)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
@@ -86,10 +82,6 @@ class GetMigratingVmResult:
         pulumi.set(__self__, "state_time", state_time)
         if target_defaults and not isinstance(target_defaults, dict):
             raise TypeError("Expected argument 'target_defaults' to be a dict")
-        if target_defaults is not None:
-            warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
-
         pulumi.set(__self__, "target_defaults", target_defaults)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
@@ -117,6 +109,9 @@ class GetMigratingVmResult:
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         """
+        warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+        pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
+
         return pulumi.get(self, "compute_engine_vm_defaults")
 
     @property
@@ -261,6 +256,9 @@ class GetMigratingVmResult:
         """
         The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
+        warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+        pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+
         return pulumi.get(self, "target_defaults")
 
     @property
@@ -321,28 +319,28 @@ def get_migrating_vm(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getMigratingVm', __args__, opts=opts, typ=GetMigratingVmResult).value
 
     return AwaitableGetMigratingVmResult(
-        aws_source_vm_details=__ret__.aws_source_vm_details,
-        compute_engine_target_defaults=__ret__.compute_engine_target_defaults,
-        compute_engine_vm_defaults=__ret__.compute_engine_vm_defaults,
-        create_time=__ret__.create_time,
-        current_sync_info=__ret__.current_sync_info,
-        cutover_forecast=__ret__.cutover_forecast,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        error=__ret__.error,
-        group=__ret__.group,
-        labels=__ret__.labels,
-        last_replication_cycle=__ret__.last_replication_cycle,
-        last_sync=__ret__.last_sync,
-        name=__ret__.name,
-        policy=__ret__.policy,
-        recent_clone_jobs=__ret__.recent_clone_jobs,
-        recent_cutover_jobs=__ret__.recent_cutover_jobs,
-        source_vm_id=__ret__.source_vm_id,
-        state=__ret__.state,
-        state_time=__ret__.state_time,
-        target_defaults=__ret__.target_defaults,
-        update_time=__ret__.update_time)
+        aws_source_vm_details=pulumi.get(__ret__, 'aws_source_vm_details'),
+        compute_engine_target_defaults=pulumi.get(__ret__, 'compute_engine_target_defaults'),
+        compute_engine_vm_defaults=pulumi.get(__ret__, 'compute_engine_vm_defaults'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        current_sync_info=pulumi.get(__ret__, 'current_sync_info'),
+        cutover_forecast=pulumi.get(__ret__, 'cutover_forecast'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        error=pulumi.get(__ret__, 'error'),
+        group=pulumi.get(__ret__, 'group'),
+        labels=pulumi.get(__ret__, 'labels'),
+        last_replication_cycle=pulumi.get(__ret__, 'last_replication_cycle'),
+        last_sync=pulumi.get(__ret__, 'last_sync'),
+        name=pulumi.get(__ret__, 'name'),
+        policy=pulumi.get(__ret__, 'policy'),
+        recent_clone_jobs=pulumi.get(__ret__, 'recent_clone_jobs'),
+        recent_cutover_jobs=pulumi.get(__ret__, 'recent_cutover_jobs'),
+        source_vm_id=pulumi.get(__ret__, 'source_vm_id'),
+        state=pulumi.get(__ret__, 'state'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        target_defaults=pulumi.get(__ret__, 'target_defaults'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_migrating_vm)

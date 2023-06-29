@@ -128,13 +128,13 @@ def get_reservation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigqueryreservation/v1beta1:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
-        concurrency=__ret__.concurrency,
-        creation_time=__ret__.creation_time,
-        ignore_idle_slots=__ret__.ignore_idle_slots,
-        multi_region_auxiliary=__ret__.multi_region_auxiliary,
-        name=__ret__.name,
-        slot_capacity=__ret__.slot_capacity,
-        update_time=__ret__.update_time)
+        concurrency=pulumi.get(__ret__, 'concurrency'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        ignore_idle_slots=pulumi.get(__ret__, 'ignore_idle_slots'),
+        multi_region_auxiliary=pulumi.get(__ret__, 'multi_region_auxiliary'),
+        name=pulumi.get(__ret__, 'name'),
+        slot_capacity=pulumi.get(__ret__, 'slot_capacity'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_reservation)

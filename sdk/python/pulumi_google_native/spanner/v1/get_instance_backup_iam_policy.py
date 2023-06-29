@@ -81,9 +81,9 @@ def get_instance_backup_iam_policy(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getInstanceBackupIamPolicy', __args__, opts=opts, typ=GetInstanceBackupIamPolicyResult).value
 
     return AwaitableGetInstanceBackupIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_instance_backup_iam_policy)

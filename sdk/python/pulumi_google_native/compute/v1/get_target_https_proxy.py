@@ -222,21 +222,21 @@ def get_target_https_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getTargetHttpsProxy', __args__, opts=opts, typ=GetTargetHttpsProxyResult).value
 
     return AwaitableGetTargetHttpsProxyResult(
-        authorization_policy=__ret__.authorization_policy,
-        certificate_map=__ret__.certificate_map,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        proxy_bind=__ret__.proxy_bind,
-        quic_override=__ret__.quic_override,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        server_tls_policy=__ret__.server_tls_policy,
-        ssl_certificates=__ret__.ssl_certificates,
-        ssl_policy=__ret__.ssl_policy,
-        url_map=__ret__.url_map)
+        authorization_policy=pulumi.get(__ret__, 'authorization_policy'),
+        certificate_map=pulumi.get(__ret__, 'certificate_map'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_bind=pulumi.get(__ret__, 'proxy_bind'),
+        quic_override=pulumi.get(__ret__, 'quic_override'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        server_tls_policy=pulumi.get(__ret__, 'server_tls_policy'),
+        ssl_certificates=pulumi.get(__ret__, 'ssl_certificates'),
+        ssl_policy=pulumi.get(__ret__, 'ssl_policy'),
+        url_map=pulumi.get(__ret__, 'url_map'))
 
 
 @_utilities.lift_output_func(get_target_https_proxy)

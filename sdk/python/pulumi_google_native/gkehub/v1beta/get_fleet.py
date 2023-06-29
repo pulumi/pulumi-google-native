@@ -129,13 +129,13 @@ def get_fleet(fleet_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1beta:getFleet', __args__, opts=opts, typ=GetFleetResult).value
 
     return AwaitableGetFleetResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_fleet)

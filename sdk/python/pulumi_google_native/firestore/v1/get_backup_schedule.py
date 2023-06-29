@@ -117,12 +117,12 @@ def get_backup_schedule(backup_schedule_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firestore/v1:getBackupSchedule', __args__, opts=opts, typ=GetBackupScheduleResult).value
 
     return AwaitableGetBackupScheduleResult(
-        create_time=__ret__.create_time,
-        daily_recurrence=__ret__.daily_recurrence,
-        name=__ret__.name,
-        retention=__ret__.retention,
-        update_time=__ret__.update_time,
-        weekly_recurrence=__ret__.weekly_recurrence)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        daily_recurrence=pulumi.get(__ret__, 'daily_recurrence'),
+        name=pulumi.get(__ret__, 'name'),
+        retention=pulumi.get(__ret__, 'retention'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        weekly_recurrence=pulumi.get(__ret__, 'weekly_recurrence'))
 
 
 @_utilities.lift_output_func(get_backup_schedule)

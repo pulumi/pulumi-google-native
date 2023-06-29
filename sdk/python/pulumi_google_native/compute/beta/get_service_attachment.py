@@ -261,24 +261,24 @@ def get_service_attachment(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getServiceAttachment', __args__, opts=opts, typ=GetServiceAttachmentResult).value
 
     return AwaitableGetServiceAttachmentResult(
-        connected_endpoints=__ret__.connected_endpoints,
-        connection_preference=__ret__.connection_preference,
-        consumer_accept_lists=__ret__.consumer_accept_lists,
-        consumer_reject_lists=__ret__.consumer_reject_lists,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        domain_names=__ret__.domain_names,
-        enable_proxy_protocol=__ret__.enable_proxy_protocol,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        nat_subnets=__ret__.nat_subnets,
-        producer_forwarding_rule=__ret__.producer_forwarding_rule,
-        psc_service_attachment_id=__ret__.psc_service_attachment_id,
-        reconcile_connections=__ret__.reconcile_connections,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        target_service=__ret__.target_service)
+        connected_endpoints=pulumi.get(__ret__, 'connected_endpoints'),
+        connection_preference=pulumi.get(__ret__, 'connection_preference'),
+        consumer_accept_lists=pulumi.get(__ret__, 'consumer_accept_lists'),
+        consumer_reject_lists=pulumi.get(__ret__, 'consumer_reject_lists'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        domain_names=pulumi.get(__ret__, 'domain_names'),
+        enable_proxy_protocol=pulumi.get(__ret__, 'enable_proxy_protocol'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        nat_subnets=pulumi.get(__ret__, 'nat_subnets'),
+        producer_forwarding_rule=pulumi.get(__ret__, 'producer_forwarding_rule'),
+        psc_service_attachment_id=pulumi.get(__ret__, 'psc_service_attachment_id'),
+        reconcile_connections=pulumi.get(__ret__, 'reconcile_connections'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        target_service=pulumi.get(__ret__, 'target_service'))
 
 
 @_utilities.lift_output_func(get_service_attachment)

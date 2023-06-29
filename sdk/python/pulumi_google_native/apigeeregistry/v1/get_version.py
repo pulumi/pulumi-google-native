@@ -154,15 +154,15 @@ def get_version(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
-        annotations=__ret__.annotations,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        primary_spec=__ret__.primary_spec,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        primary_spec=pulumi.get(__ret__, 'primary_spec'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_version)

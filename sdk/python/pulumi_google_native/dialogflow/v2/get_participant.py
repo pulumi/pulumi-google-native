@@ -106,11 +106,11 @@ def get_participant(conversation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getParticipant', __args__, opts=opts, typ=GetParticipantResult).value
 
     return AwaitableGetParticipantResult(
-        documents_metadata_filters=__ret__.documents_metadata_filters,
-        name=__ret__.name,
-        obfuscated_external_user_id=__ret__.obfuscated_external_user_id,
-        role=__ret__.role,
-        sip_recording_media_label=__ret__.sip_recording_media_label)
+        documents_metadata_filters=pulumi.get(__ret__, 'documents_metadata_filters'),
+        name=pulumi.get(__ret__, 'name'),
+        obfuscated_external_user_id=pulumi.get(__ret__, 'obfuscated_external_user_id'),
+        role=pulumi.get(__ret__, 'role'),
+        sip_recording_media_label=pulumi.get(__ret__, 'sip_recording_media_label'))
 
 
 @_utilities.lift_output_func(get_participant)

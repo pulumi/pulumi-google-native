@@ -141,14 +141,14 @@ def get_issue_model(issue_model_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contactcenterinsights/v1:getIssueModel', __args__, opts=opts, typ=GetIssueModelResult).value
 
     return AwaitableGetIssueModelResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        input_data_config=__ret__.input_data_config,
-        issue_count=__ret__.issue_count,
-        name=__ret__.name,
-        state=__ret__.state,
-        training_stats=__ret__.training_stats,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        input_data_config=pulumi.get(__ret__, 'input_data_config'),
+        issue_count=pulumi.get(__ret__, 'issue_count'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        training_stats=pulumi.get(__ret__, 'training_stats'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_issue_model)

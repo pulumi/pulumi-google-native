@@ -93,10 +93,10 @@ def get_rule_set(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contentwarehouse/v1:getRuleSet', __args__, opts=opts, typ=GetRuleSetResult).value
 
     return AwaitableGetRuleSetResult(
-        description=__ret__.description,
-        name=__ret__.name,
-        rules=__ret__.rules,
-        source=__ret__.source)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        rules=pulumi.get(__ret__, 'rules'),
+        source=pulumi.get(__ret__, 'source'))
 
 
 @_utilities.lift_output_func(get_rule_set)

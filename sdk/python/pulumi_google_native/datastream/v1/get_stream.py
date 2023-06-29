@@ -189,18 +189,18 @@ def get_stream(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastream/v1:getStream', __args__, opts=opts, typ=GetStreamResult).value
 
     return AwaitableGetStreamResult(
-        backfill_all=__ret__.backfill_all,
-        backfill_none=__ret__.backfill_none,
-        create_time=__ret__.create_time,
-        customer_managed_encryption_key=__ret__.customer_managed_encryption_key,
-        destination_config=__ret__.destination_config,
-        display_name=__ret__.display_name,
-        errors=__ret__.errors,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        source_config=__ret__.source_config,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        backfill_all=pulumi.get(__ret__, 'backfill_all'),
+        backfill_none=pulumi.get(__ret__, 'backfill_none'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        customer_managed_encryption_key=pulumi.get(__ret__, 'customer_managed_encryption_key'),
+        destination_config=pulumi.get(__ret__, 'destination_config'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        errors=pulumi.get(__ret__, 'errors'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        source_config=pulumi.get(__ret__, 'source_config'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_stream)

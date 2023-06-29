@@ -129,13 +129,13 @@ def get_registry(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudiot/v1:getRegistry', __args__, opts=opts, typ=GetRegistryResult).value
 
     return AwaitableGetRegistryResult(
-        credentials=__ret__.credentials,
-        event_notification_configs=__ret__.event_notification_configs,
-        http_config=__ret__.http_config,
-        log_level=__ret__.log_level,
-        mqtt_config=__ret__.mqtt_config,
-        name=__ret__.name,
-        state_notification_config=__ret__.state_notification_config)
+        credentials=pulumi.get(__ret__, 'credentials'),
+        event_notification_configs=pulumi.get(__ret__, 'event_notification_configs'),
+        http_config=pulumi.get(__ret__, 'http_config'),
+        log_level=pulumi.get(__ret__, 'log_level'),
+        mqtt_config=pulumi.get(__ret__, 'mqtt_config'),
+        name=pulumi.get(__ret__, 'name'),
+        state_notification_config=pulumi.get(__ret__, 'state_notification_config'))
 
 
 @_utilities.lift_output_func(get_registry)

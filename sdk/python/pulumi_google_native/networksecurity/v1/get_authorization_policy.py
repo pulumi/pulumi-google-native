@@ -129,13 +129,13 @@ def get_authorization_policy(authorization_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getAuthorizationPolicy', __args__, opts=opts, typ=GetAuthorizationPolicyResult).value
 
     return AwaitableGetAuthorizationPolicyResult(
-        action=__ret__.action,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        rules=__ret__.rules,
-        update_time=__ret__.update_time)
+        action=pulumi.get(__ret__, 'action'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        rules=pulumi.get(__ret__, 'rules'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_authorization_policy)

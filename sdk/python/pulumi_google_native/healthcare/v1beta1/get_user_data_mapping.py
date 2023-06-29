@@ -121,12 +121,12 @@ def get_user_data_mapping(consent_store_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getUserDataMapping', __args__, opts=opts, typ=GetUserDataMappingResult).value
 
     return AwaitableGetUserDataMappingResult(
-        archive_time=__ret__.archive_time,
-        archived=__ret__.archived,
-        data_id=__ret__.data_id,
-        name=__ret__.name,
-        resource_attributes=__ret__.resource_attributes,
-        user_id=__ret__.user_id)
+        archive_time=pulumi.get(__ret__, 'archive_time'),
+        archived=pulumi.get(__ret__, 'archived'),
+        data_id=pulumi.get(__ret__, 'data_id'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_attributes=pulumi.get(__ret__, 'resource_attributes'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_user_data_mapping)

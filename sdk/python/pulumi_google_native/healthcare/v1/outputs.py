@@ -2040,6 +2040,9 @@ class TextConfigResponse(dict):
         """
         The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
+        pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
+
         return pulumi.get(self, "transformations")
 
 

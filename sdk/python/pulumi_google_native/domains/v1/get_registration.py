@@ -213,20 +213,20 @@ def get_registration(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:domains/v1:getRegistration', __args__, opts=opts, typ=GetRegistrationResult).value
 
     return AwaitableGetRegistrationResult(
-        contact_settings=__ret__.contact_settings,
-        create_time=__ret__.create_time,
-        dns_settings=__ret__.dns_settings,
-        domain_name=__ret__.domain_name,
-        expire_time=__ret__.expire_time,
-        issues=__ret__.issues,
-        labels=__ret__.labels,
-        management_settings=__ret__.management_settings,
-        name=__ret__.name,
-        pending_contact_settings=__ret__.pending_contact_settings,
-        register_failure_reason=__ret__.register_failure_reason,
-        state=__ret__.state,
-        supported_privacy=__ret__.supported_privacy,
-        transfer_failure_reason=__ret__.transfer_failure_reason)
+        contact_settings=pulumi.get(__ret__, 'contact_settings'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        dns_settings=pulumi.get(__ret__, 'dns_settings'),
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        issues=pulumi.get(__ret__, 'issues'),
+        labels=pulumi.get(__ret__, 'labels'),
+        management_settings=pulumi.get(__ret__, 'management_settings'),
+        name=pulumi.get(__ret__, 'name'),
+        pending_contact_settings=pulumi.get(__ret__, 'pending_contact_settings'),
+        register_failure_reason=pulumi.get(__ret__, 'register_failure_reason'),
+        state=pulumi.get(__ret__, 'state'),
+        supported_privacy=pulumi.get(__ret__, 'supported_privacy'),
+        transfer_failure_reason=pulumi.get(__ret__, 'transfer_failure_reason'))
 
 
 @_utilities.lift_output_func(get_registration)

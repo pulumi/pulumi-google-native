@@ -141,14 +141,14 @@ def get_client_tls_policy(client_tls_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getClientTlsPolicy', __args__, opts=opts, typ=GetClientTlsPolicyResult).value
 
     return AwaitableGetClientTlsPolicyResult(
-        client_certificate=__ret__.client_certificate,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        server_validation_ca=__ret__.server_validation_ca,
-        sni=__ret__.sni,
-        update_time=__ret__.update_time)
+        client_certificate=pulumi.get(__ret__, 'client_certificate'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        server_validation_ca=pulumi.get(__ret__, 'server_validation_ca'),
+        sni=pulumi.get(__ret__, 'sni'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_client_tls_policy)

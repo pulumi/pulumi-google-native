@@ -83,9 +83,9 @@ def get_reference_image(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vision/v1:getReferenceImage', __args__, opts=opts, typ=GetReferenceImageResult).value
 
     return AwaitableGetReferenceImageResult(
-        bounding_polys=__ret__.bounding_polys,
-        name=__ret__.name,
-        uri=__ret__.uri)
+        bounding_polys=pulumi.get(__ret__, 'bounding_polys'),
+        name=pulumi.get(__ret__, 'name'),
+        uri=pulumi.get(__ret__, 'uri'))
 
 
 @_utilities.lift_output_func(get_reference_image)

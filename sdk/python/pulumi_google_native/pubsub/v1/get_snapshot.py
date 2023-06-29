@@ -90,10 +90,10 @@ def get_snapshot(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        expire_time=__ret__.expire_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        topic=__ret__.topic)
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_snapshot)

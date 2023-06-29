@@ -117,12 +117,12 @@ def get_organization_inspect_template(inspect_template_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dlp/v2:getOrganizationInspectTemplate', __args__, opts=opts, typ=GetOrganizationInspectTemplateResult).value
 
     return AwaitableGetOrganizationInspectTemplateResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        inspect_config=__ret__.inspect_config,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        inspect_config=pulumi.get(__ret__, 'inspect_config'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_organization_inspect_template)

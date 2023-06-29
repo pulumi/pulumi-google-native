@@ -129,13 +129,13 @@ def get_taxonomy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1:getTaxonomy', __args__, opts=opts, typ=GetTaxonomyResult).value
 
     return AwaitableGetTaxonomyResult(
-        activated_policy_types=__ret__.activated_policy_types,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        policy_tag_count=__ret__.policy_tag_count,
-        service=__ret__.service,
-        taxonomy_timestamps=__ret__.taxonomy_timestamps)
+        activated_policy_types=pulumi.get(__ret__, 'activated_policy_types'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_tag_count=pulumi.get(__ret__, 'policy_tag_count'),
+        service=pulumi.get(__ret__, 'service'),
+        taxonomy_timestamps=pulumi.get(__ret__, 'taxonomy_timestamps'))
 
 
 @_utilities.lift_output_func(get_taxonomy)

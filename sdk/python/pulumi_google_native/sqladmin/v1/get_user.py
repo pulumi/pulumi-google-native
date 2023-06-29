@@ -25,10 +25,6 @@ class GetUserResult:
         pulumi.set(__self__, "dual_password_type", dual_password_type)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
-        if etag is not None:
-            warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
-
         pulumi.set(__self__, "etag", etag)
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
@@ -72,6 +68,9 @@ class GetUserResult:
         """
         This field is deprecated and will be removed from a future version of the API.
         """
+        warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
+
         return pulumi.get(self, "etag")
 
     @property
@@ -180,17 +179,17 @@ def get_user(host: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        dual_password_type=__ret__.dual_password_type,
-        etag=__ret__.etag,
-        host=__ret__.host,
-        instance=__ret__.instance,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        password=__ret__.password,
-        password_policy=__ret__.password_policy,
-        project=__ret__.project,
-        sqlserver_user_details=__ret__.sqlserver_user_details,
-        type=__ret__.type)
+        dual_password_type=pulumi.get(__ret__, 'dual_password_type'),
+        etag=pulumi.get(__ret__, 'etag'),
+        host=pulumi.get(__ret__, 'host'),
+        instance=pulumi.get(__ret__, 'instance'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        password=pulumi.get(__ret__, 'password'),
+        password_policy=pulumi.get(__ret__, 'password_policy'),
+        project=pulumi.get(__ret__, 'project'),
+        sqlserver_user_details=pulumi.get(__ret__, 'sqlserver_user_details'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_user)

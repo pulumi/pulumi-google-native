@@ -106,10 +106,6 @@ class GetRegionBackendServiceResult:
         pulumi.set(__self__, "outlier_detection", outlier_detection)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
-        if port is not None:
-            warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
-            pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
-
         pulumi.set(__self__, "port", port)
         if port_name and not isinstance(port_name, str):
             raise TypeError("Expected argument 'port_name' to be a str")
@@ -366,6 +362,9 @@ class GetRegionBackendServiceResult:
         """
         Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
         """
+        warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
+        pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+
         return pulumi.get(self, "port")
 
     @property
@@ -508,45 +507,45 @@ def get_region_backend_service(backend_service: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getRegionBackendService', __args__, opts=opts, typ=GetRegionBackendServiceResult).value
 
     return AwaitableGetRegionBackendServiceResult(
-        affinity_cookie_ttl_sec=__ret__.affinity_cookie_ttl_sec,
-        backends=__ret__.backends,
-        cdn_policy=__ret__.cdn_policy,
-        circuit_breakers=__ret__.circuit_breakers,
-        compression_mode=__ret__.compression_mode,
-        connection_draining=__ret__.connection_draining,
-        connection_tracking_policy=__ret__.connection_tracking_policy,
-        consistent_hash=__ret__.consistent_hash,
-        creation_timestamp=__ret__.creation_timestamp,
-        custom_request_headers=__ret__.custom_request_headers,
-        custom_response_headers=__ret__.custom_response_headers,
-        description=__ret__.description,
-        edge_security_policy=__ret__.edge_security_policy,
-        enable_cdn=__ret__.enable_cdn,
-        failover_policy=__ret__.failover_policy,
-        fingerprint=__ret__.fingerprint,
-        health_checks=__ret__.health_checks,
-        iap=__ret__.iap,
-        kind=__ret__.kind,
-        load_balancing_scheme=__ret__.load_balancing_scheme,
-        locality_lb_policies=__ret__.locality_lb_policies,
-        locality_lb_policy=__ret__.locality_lb_policy,
-        log_config=__ret__.log_config,
-        max_stream_duration=__ret__.max_stream_duration,
-        metadatas=__ret__.metadatas,
-        name=__ret__.name,
-        network=__ret__.network,
-        outlier_detection=__ret__.outlier_detection,
-        port=__ret__.port,
-        port_name=__ret__.port_name,
-        protocol=__ret__.protocol,
-        region=__ret__.region,
-        security_policy=__ret__.security_policy,
-        security_settings=__ret__.security_settings,
-        self_link=__ret__.self_link,
-        service_bindings=__ret__.service_bindings,
-        session_affinity=__ret__.session_affinity,
-        subsetting=__ret__.subsetting,
-        timeout_sec=__ret__.timeout_sec)
+        affinity_cookie_ttl_sec=pulumi.get(__ret__, 'affinity_cookie_ttl_sec'),
+        backends=pulumi.get(__ret__, 'backends'),
+        cdn_policy=pulumi.get(__ret__, 'cdn_policy'),
+        circuit_breakers=pulumi.get(__ret__, 'circuit_breakers'),
+        compression_mode=pulumi.get(__ret__, 'compression_mode'),
+        connection_draining=pulumi.get(__ret__, 'connection_draining'),
+        connection_tracking_policy=pulumi.get(__ret__, 'connection_tracking_policy'),
+        consistent_hash=pulumi.get(__ret__, 'consistent_hash'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        custom_request_headers=pulumi.get(__ret__, 'custom_request_headers'),
+        custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
+        description=pulumi.get(__ret__, 'description'),
+        edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
+        enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
+        failover_policy=pulumi.get(__ret__, 'failover_policy'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        health_checks=pulumi.get(__ret__, 'health_checks'),
+        iap=pulumi.get(__ret__, 'iap'),
+        kind=pulumi.get(__ret__, 'kind'),
+        load_balancing_scheme=pulumi.get(__ret__, 'load_balancing_scheme'),
+        locality_lb_policies=pulumi.get(__ret__, 'locality_lb_policies'),
+        locality_lb_policy=pulumi.get(__ret__, 'locality_lb_policy'),
+        log_config=pulumi.get(__ret__, 'log_config'),
+        max_stream_duration=pulumi.get(__ret__, 'max_stream_duration'),
+        metadatas=pulumi.get(__ret__, 'metadatas'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        outlier_detection=pulumi.get(__ret__, 'outlier_detection'),
+        port=pulumi.get(__ret__, 'port'),
+        port_name=pulumi.get(__ret__, 'port_name'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        region=pulumi.get(__ret__, 'region'),
+        security_policy=pulumi.get(__ret__, 'security_policy'),
+        security_settings=pulumi.get(__ret__, 'security_settings'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service_bindings=pulumi.get(__ret__, 'service_bindings'),
+        session_affinity=pulumi.get(__ret__, 'session_affinity'),
+        subsetting=pulumi.get(__ret__, 'subsetting'),
+        timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
 
 
 @_utilities.lift_output_func(get_region_backend_service)

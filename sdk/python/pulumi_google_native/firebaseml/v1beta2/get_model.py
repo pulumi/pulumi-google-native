@@ -163,16 +163,16 @@ def get_model(model_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaseml/v1beta2:getModel', __args__, opts=opts, typ=GetModelResult).value
 
     return AwaitableGetModelResult(
-        active_operations=__ret__.active_operations,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        model_hash=__ret__.model_hash,
-        name=__ret__.name,
-        state=__ret__.state,
-        tags=__ret__.tags,
-        tflite_model=__ret__.tflite_model,
-        update_time=__ret__.update_time)
+        active_operations=pulumi.get(__ret__, 'active_operations'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        model_hash=pulumi.get(__ret__, 'model_hash'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tflite_model=pulumi.get(__ret__, 'tflite_model'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_model)

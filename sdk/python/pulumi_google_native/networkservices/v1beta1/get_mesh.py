@@ -128,13 +128,13 @@ def get_mesh(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1beta1:getMesh', __args__, opts=opts, typ=GetMeshResult).value
 
     return AwaitableGetMeshResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        interception_port=__ret__.interception_port,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        self_link=__ret__.self_link,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        interception_port=pulumi.get(__ret__, 'interception_port'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_mesh)

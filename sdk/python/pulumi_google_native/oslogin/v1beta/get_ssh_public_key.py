@@ -90,10 +90,10 @@ def get_ssh_public_key(ssh_public_key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:oslogin/v1beta:getSshPublicKey', __args__, opts=opts, typ=GetSshPublicKeyResult).value
 
     return AwaitableGetSshPublicKeyResult(
-        expiration_time_usec=__ret__.expiration_time_usec,
-        fingerprint=__ret__.fingerprint,
-        key=__ret__.key,
-        name=__ret__.name)
+        expiration_time_usec=pulumi.get(__ret__, 'expiration_time_usec'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        key=pulumi.get(__ret__, 'key'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_ssh_public_key)

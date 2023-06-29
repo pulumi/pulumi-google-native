@@ -201,19 +201,19 @@ def get_router(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRouter', __args__, opts=opts, typ=GetRouterResult).value
 
     return AwaitableGetRouterResult(
-        bgp=__ret__.bgp,
-        bgp_peers=__ret__.bgp_peers,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        encrypted_interconnect_router=__ret__.encrypted_interconnect_router,
-        interfaces=__ret__.interfaces,
-        kind=__ret__.kind,
-        md5_authentication_keys=__ret__.md5_authentication_keys,
-        name=__ret__.name,
-        nats=__ret__.nats,
-        network=__ret__.network,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        bgp=pulumi.get(__ret__, 'bgp'),
+        bgp_peers=pulumi.get(__ret__, 'bgp_peers'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        encrypted_interconnect_router=pulumi.get(__ret__, 'encrypted_interconnect_router'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
+        kind=pulumi.get(__ret__, 'kind'),
+        md5_authentication_keys=pulumi.get(__ret__, 'md5_authentication_keys'),
+        name=pulumi.get(__ret__, 'name'),
+        nats=pulumi.get(__ret__, 'nats'),
+        network=pulumi.get(__ret__, 'network'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_router)

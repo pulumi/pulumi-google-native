@@ -186,18 +186,18 @@ def get_https_health_check(https_health_check: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getHttpsHealthCheck', __args__, opts=opts, typ=GetHttpsHealthCheckResult).value
 
     return AwaitableGetHttpsHealthCheckResult(
-        check_interval_sec=__ret__.check_interval_sec,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        healthy_threshold=__ret__.healthy_threshold,
-        host=__ret__.host,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        port=__ret__.port,
-        request_path=__ret__.request_path,
-        self_link=__ret__.self_link,
-        timeout_sec=__ret__.timeout_sec,
-        unhealthy_threshold=__ret__.unhealthy_threshold)
+        check_interval_sec=pulumi.get(__ret__, 'check_interval_sec'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        healthy_threshold=pulumi.get(__ret__, 'healthy_threshold'),
+        host=pulumi.get(__ret__, 'host'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        request_path=pulumi.get(__ret__, 'request_path'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
+        unhealthy_threshold=pulumi.get(__ret__, 'unhealthy_threshold'))
 
 
 @_utilities.lift_output_func(get_https_health_check)

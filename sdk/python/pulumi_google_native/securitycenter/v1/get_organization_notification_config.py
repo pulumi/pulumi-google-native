@@ -103,11 +103,11 @@ def get_organization_notification_config(notification_config_id: Optional[str] =
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getOrganizationNotificationConfig', __args__, opts=opts, typ=GetOrganizationNotificationConfigResult).value
 
     return AwaitableGetOrganizationNotificationConfigResult(
-        description=__ret__.description,
-        name=__ret__.name,
-        pubsub_topic=__ret__.pubsub_topic,
-        service_account=__ret__.service_account,
-        streaming_config=__ret__.streaming_config)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        pubsub_topic=pulumi.get(__ret__, 'pubsub_topic'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        streaming_config=pulumi.get(__ret__, 'streaming_config'))
 
 
 @_utilities.lift_output_func(get_organization_notification_config)

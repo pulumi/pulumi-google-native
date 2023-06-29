@@ -136,14 +136,14 @@ def get_composite_type(composite_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:deploymentmanager/v2beta:getCompositeType', __args__, opts=opts, typ=GetCompositeTypeResult).value
 
     return AwaitableGetCompositeTypeResult(
-        description=__ret__.description,
-        insert_time=__ret__.insert_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        self_link=__ret__.self_link,
-        status=__ret__.status,
-        template_contents=__ret__.template_contents)
+        description=pulumi.get(__ret__, 'description'),
+        insert_time=pulumi.get(__ret__, 'insert_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        status=pulumi.get(__ret__, 'status'),
+        template_contents=pulumi.get(__ret__, 'template_contents'))
 
 
 @_utilities.lift_output_func(get_composite_type)

@@ -92,10 +92,10 @@ def get_envgroup_attachment(attachment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEnvgroupAttachment', __args__, opts=opts, typ=GetEnvgroupAttachmentResult).value
 
     return AwaitableGetEnvgroupAttachmentResult(
-        created_at=__ret__.created_at,
-        environment=__ret__.environment,
-        environment_group_id=__ret__.environment_group_id,
-        name=__ret__.name)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        environment=pulumi.get(__ret__, 'environment'),
+        environment_group_id=pulumi.get(__ret__, 'environment_group_id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_envgroup_attachment)

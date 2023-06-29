@@ -107,11 +107,11 @@ def get_analysis(analysis_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contactcenterinsights/v1:getAnalysis', __args__, opts=opts, typ=GetAnalysisResult).value
 
     return AwaitableGetAnalysisResult(
-        analysis_result=__ret__.analysis_result,
-        annotator_selector=__ret__.annotator_selector,
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        request_time=__ret__.request_time)
+        analysis_result=pulumi.get(__ret__, 'analysis_result'),
+        annotator_selector=pulumi.get(__ret__, 'annotator_selector'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        request_time=pulumi.get(__ret__, 'request_time'))
 
 
 @_utilities.lift_output_func(get_analysis)

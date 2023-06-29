@@ -255,23 +255,23 @@ def get_entity(entity_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getEntity', __args__, opts=opts, typ=GetEntityResult).value
 
     return AwaitableGetEntityResult(
-        access=__ret__.access,
-        asset=__ret__.asset,
-        catalog_entry=__ret__.catalog_entry,
-        compatibility=__ret__.compatibility,
-        create_time=__ret__.create_time,
-        data_path=__ret__.data_path,
-        data_path_pattern=__ret__.data_path_pattern,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        format=__ret__.format,
-        name=__ret__.name,
-        schema=__ret__.schema,
-        system=__ret__.system,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        access=pulumi.get(__ret__, 'access'),
+        asset=pulumi.get(__ret__, 'asset'),
+        catalog_entry=pulumi.get(__ret__, 'catalog_entry'),
+        compatibility=pulumi.get(__ret__, 'compatibility'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data_path=pulumi.get(__ret__, 'data_path'),
+        data_path_pattern=pulumi.get(__ret__, 'data_path_pattern'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        format=pulumi.get(__ret__, 'format'),
+        name=pulumi.get(__ret__, 'name'),
+        schema=pulumi.get(__ret__, 'schema'),
+        system=pulumi.get(__ret__, 'system'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_entity)

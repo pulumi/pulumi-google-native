@@ -164,16 +164,16 @@ def get_target_instance(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getTargetInstance', __args__, opts=opts, typ=GetTargetInstanceResult).value
 
     return AwaitableGetTargetInstanceResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        instance=__ret__.instance,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        nat_policy=__ret__.nat_policy,
-        network=__ret__.network,
-        security_policy=__ret__.security_policy,
-        self_link=__ret__.self_link,
-        zone=__ret__.zone)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        instance=pulumi.get(__ret__, 'instance'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        nat_policy=pulumi.get(__ret__, 'nat_policy'),
+        network=pulumi.get(__ret__, 'network'),
+        security_policy=pulumi.get(__ret__, 'security_policy'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_target_instance)

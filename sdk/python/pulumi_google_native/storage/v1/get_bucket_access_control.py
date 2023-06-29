@@ -176,16 +176,16 @@ def get_bucket_access_control(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getBucketAccessControl', __args__, opts=opts, typ=GetBucketAccessControlResult).value
 
     return AwaitableGetBucketAccessControlResult(
-        bucket=__ret__.bucket,
-        domain=__ret__.domain,
-        email=__ret__.email,
-        entity=__ret__.entity,
-        entity_id=__ret__.entity_id,
-        etag=__ret__.etag,
-        kind=__ret__.kind,
-        project_team=__ret__.project_team,
-        role=__ret__.role,
-        self_link=__ret__.self_link)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        domain=pulumi.get(__ret__, 'domain'),
+        email=pulumi.get(__ret__, 'email'),
+        entity=pulumi.get(__ret__, 'entity'),
+        entity_id=pulumi.get(__ret__, 'entity_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        kind=pulumi.get(__ret__, 'kind'),
+        project_team=pulumi.get(__ret__, 'project_team'),
+        role=pulumi.get(__ret__, 'role'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_bucket_access_control)

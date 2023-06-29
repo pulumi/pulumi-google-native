@@ -151,15 +151,15 @@ def get_external_vpn_gateway(external_vpn_gateway: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getExternalVpnGateway', __args__, opts=opts, typ=GetExternalVpnGatewayResult).value
 
     return AwaitableGetExternalVpnGatewayResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        interfaces=__ret__.interfaces,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        redundancy_type=__ret__.redundancy_type,
-        self_link=__ret__.self_link)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        redundancy_type=pulumi.get(__ret__, 'redundancy_type'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_external_vpn_gateway)

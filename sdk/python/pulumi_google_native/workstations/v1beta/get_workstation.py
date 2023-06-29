@@ -204,19 +204,19 @@ def get_workstation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workstations/v1beta:getWorkstation', __args__, opts=opts, typ=GetWorkstationResult).value
 
     return AwaitableGetWorkstationResult(
-        annotations=__ret__.annotations,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        env=__ret__.env,
-        etag=__ret__.etag,
-        host=__ret__.host,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        reconciling=__ret__.reconciling,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        env=pulumi.get(__ret__, 'env'),
+        etag=pulumi.get(__ret__, 'etag'),
+        host=pulumi.get(__ret__, 'host'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_workstation)

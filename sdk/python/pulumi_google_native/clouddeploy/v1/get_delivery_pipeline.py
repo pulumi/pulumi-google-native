@@ -177,17 +177,17 @@ def get_delivery_pipeline(delivery_pipeline_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:clouddeploy/v1:getDeliveryPipeline', __args__, opts=opts, typ=GetDeliveryPipelineResult).value
 
     return AwaitableGetDeliveryPipelineResult(
-        annotations=__ret__.annotations,
-        condition=__ret__.condition,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        serial_pipeline=__ret__.serial_pipeline,
-        suspended=__ret__.suspended,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        condition=pulumi.get(__ret__, 'condition'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        serial_pipeline=pulumi.get(__ret__, 'serial_pipeline'),
+        suspended=pulumi.get(__ret__, 'suspended'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_delivery_pipeline)

@@ -168,6 +168,9 @@ class SinkArgs:
         """
         Deprecated. This field is unused.
         """
+        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+
         return pulumi.get(self, "output_version_format")
 
     @output_version_format.setter
@@ -410,6 +413,9 @@ class Sink(pulumi.CustomResource):
         """
         Deprecated. This field is unused.
         """
+        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+
         return pulumi.get(self, "output_version_format")
 
     @property

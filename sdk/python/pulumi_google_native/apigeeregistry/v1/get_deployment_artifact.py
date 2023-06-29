@@ -156,15 +156,15 @@ def get_deployment_artifact(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getDeploymentArtifact', __args__, opts=opts, typ=GetDeploymentArtifactResult).value
 
     return AwaitableGetDeploymentArtifactResult(
-        annotations=__ret__.annotations,
-        contents=__ret__.contents,
-        create_time=__ret__.create_time,
-        hash=__ret__.hash,
-        labels=__ret__.labels,
-        mime_type=__ret__.mime_type,
-        name=__ret__.name,
-        size_bytes=__ret__.size_bytes,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        contents=pulumi.get(__ret__, 'contents'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        hash=pulumi.get(__ret__, 'hash'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mime_type=pulumi.get(__ret__, 'mime_type'),
+        name=pulumi.get(__ret__, 'name'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_deployment_artifact)
