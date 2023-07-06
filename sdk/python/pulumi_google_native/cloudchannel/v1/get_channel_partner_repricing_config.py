@@ -81,9 +81,9 @@ def get_channel_partner_repricing_config(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudchannel/v1:getChannelPartnerRepricingConfig', __args__, opts=opts, typ=GetChannelPartnerRepricingConfigResult).value
 
     return AwaitableGetChannelPartnerRepricingConfigResult(
-        name=__ret__.name,
-        repricing_config=__ret__.repricing_config,
-        update_time=__ret__.update_time)
+        name=pulumi.get(__ret__, 'name'),
+        repricing_config=pulumi.get(__ret__, 'repricing_config'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_channel_partner_repricing_config)

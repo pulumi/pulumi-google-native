@@ -216,21 +216,21 @@ def get_node_group(node_group: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getNodeGroup', __args__, opts=opts, typ=GetNodeGroupResult).value
 
     return AwaitableGetNodeGroupResult(
-        autoscaling_policy=__ret__.autoscaling_policy,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        location_hint=__ret__.location_hint,
-        maintenance_policy=__ret__.maintenance_policy,
-        maintenance_window=__ret__.maintenance_window,
-        name=__ret__.name,
-        node_template=__ret__.node_template,
-        self_link=__ret__.self_link,
-        share_settings=__ret__.share_settings,
-        size=__ret__.size,
-        status=__ret__.status,
-        zone=__ret__.zone)
+        autoscaling_policy=pulumi.get(__ret__, 'autoscaling_policy'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        location_hint=pulumi.get(__ret__, 'location_hint'),
+        maintenance_policy=pulumi.get(__ret__, 'maintenance_policy'),
+        maintenance_window=pulumi.get(__ret__, 'maintenance_window'),
+        name=pulumi.get(__ret__, 'name'),
+        node_template=pulumi.get(__ret__, 'node_template'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        share_settings=pulumi.get(__ret__, 'share_settings'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_node_group)

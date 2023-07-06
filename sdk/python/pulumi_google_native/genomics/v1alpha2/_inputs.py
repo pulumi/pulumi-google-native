@@ -84,6 +84,9 @@ class DiskArgs:
         """
         Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
         """
+        warnings.warn("""Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.""", DeprecationWarning)
+        pulumi.log.warn("""auto_delete is deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.""")
+
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter

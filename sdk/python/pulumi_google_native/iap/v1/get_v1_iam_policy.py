@@ -77,9 +77,9 @@ def get_v1_iam_policy(v1_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iap/v1:getV1IamPolicy', __args__, opts=opts, typ=GetV1IamPolicyResult).value
 
     return AwaitableGetV1IamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_v1_iam_policy)

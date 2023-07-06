@@ -116,12 +116,12 @@ def get_change(change_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1:getChange', __args__, opts=opts, typ=GetChangeResult).value
 
     return AwaitableGetChangeResult(
-        additions=__ret__.additions,
-        deletions=__ret__.deletions,
-        is_serving=__ret__.is_serving,
-        kind=__ret__.kind,
-        start_time=__ret__.start_time,
-        status=__ret__.status)
+        additions=pulumi.get(__ret__, 'additions'),
+        deletions=pulumi.get(__ret__, 'deletions'),
+        is_serving=pulumi.get(__ret__, 'is_serving'),
+        kind=pulumi.get(__ret__, 'kind'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_change)

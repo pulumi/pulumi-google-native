@@ -105,11 +105,11 @@ def get_domain_mapping(domainmapping_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:run/v1:getDomainMapping', __args__, opts=opts, typ=GetDomainMappingResult).value
 
     return AwaitableGetDomainMappingResult(
-        api_version=__ret__.api_version,
-        kind=__ret__.kind,
-        metadata=__ret__.metadata,
-        spec=__ret__.spec,
-        status=__ret__.status)
+        api_version=pulumi.get(__ret__, 'api_version'),
+        kind=pulumi.get(__ret__, 'kind'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        spec=pulumi.get(__ret__, 'spec'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_domain_mapping)

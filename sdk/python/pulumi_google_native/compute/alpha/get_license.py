@@ -22,10 +22,6 @@ class GetLicenseResult:
     def __init__(__self__, charges_use_fee=None, creation_timestamp=None, description=None, kind=None, license_code=None, name=None, resource_requirements=None, self_link=None, self_link_with_id=None, transferable=None):
         if charges_use_fee and not isinstance(charges_use_fee, bool):
             raise TypeError("Expected argument 'charges_use_fee' to be a bool")
-        if charges_use_fee is not None:
-            warnings.warn("""[Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""", DeprecationWarning)
-            pulumi.log.warn("""charges_use_fee is deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""")
-
         pulumi.set(__self__, "charges_use_fee", charges_use_fee)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
@@ -61,6 +57,9 @@ class GetLicenseResult:
         """
         Deprecated. This field no longer reflects whether a license charges a usage fee.
         """
+        warnings.warn("""[Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""", DeprecationWarning)
+        pulumi.log.warn("""charges_use_fee is deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""")
+
         return pulumi.get(self, "charges_use_fee")
 
     @property
@@ -164,16 +163,16 @@ def get_license(license: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getLicense', __args__, opts=opts, typ=GetLicenseResult).value
 
     return AwaitableGetLicenseResult(
-        charges_use_fee=__ret__.charges_use_fee,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        license_code=__ret__.license_code,
-        name=__ret__.name,
-        resource_requirements=__ret__.resource_requirements,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        transferable=__ret__.transferable)
+        charges_use_fee=pulumi.get(__ret__, 'charges_use_fee'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        license_code=pulumi.get(__ret__, 'license_code'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_requirements=pulumi.get(__ret__, 'resource_requirements'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        transferable=pulumi.get(__ret__, 'transferable'))
 
 
 @_utilities.lift_output_func(get_license)

@@ -302,6 +302,9 @@ class ExecutionTemplateArgs:
         """
         Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
         """
+        warnings.warn("""Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.""", DeprecationWarning)
+        pulumi.log.warn("""scale_tier is deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.""")
+
         return pulumi.get(self, "scale_tier")
 
     @scale_tier.setter

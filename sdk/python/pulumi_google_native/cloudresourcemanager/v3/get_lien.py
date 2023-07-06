@@ -112,12 +112,12 @@ def get_lien(lien_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudresourcemanager/v3:getLien', __args__, opts=opts, typ=GetLienResult).value
 
     return AwaitableGetLienResult(
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        origin=__ret__.origin,
-        parent=__ret__.parent,
-        reason=__ret__.reason,
-        restrictions=__ret__.restrictions)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        origin=pulumi.get(__ret__, 'origin'),
+        parent=pulumi.get(__ret__, 'parent'),
+        reason=pulumi.get(__ret__, 'reason'),
+        restrictions=pulumi.get(__ret__, 'restrictions'))
 
 
 @_utilities.lift_output_func(get_lien)

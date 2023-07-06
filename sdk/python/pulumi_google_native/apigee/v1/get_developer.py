@@ -213,20 +213,20 @@ def get_developer(action: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getDeveloper', __args__, opts=opts, typ=GetDeveloperResult).value
 
     return AwaitableGetDeveloperResult(
-        access_type=__ret__.access_type,
-        app_family=__ret__.app_family,
-        apps=__ret__.apps,
-        attributes=__ret__.attributes,
-        companies=__ret__.companies,
-        created_at=__ret__.created_at,
-        developer_id=__ret__.developer_id,
-        email=__ret__.email,
-        first_name=__ret__.first_name,
-        last_modified_at=__ret__.last_modified_at,
-        last_name=__ret__.last_name,
-        organization_name=__ret__.organization_name,
-        status=__ret__.status,
-        user_name=__ret__.user_name)
+        access_type=pulumi.get(__ret__, 'access_type'),
+        app_family=pulumi.get(__ret__, 'app_family'),
+        apps=pulumi.get(__ret__, 'apps'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        companies=pulumi.get(__ret__, 'companies'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        developer_id=pulumi.get(__ret__, 'developer_id'),
+        email=pulumi.get(__ret__, 'email'),
+        first_name=pulumi.get(__ret__, 'first_name'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        last_name=pulumi.get(__ret__, 'last_name'),
+        organization_name=pulumi.get(__ret__, 'organization_name'),
+        status=pulumi.get(__ret__, 'status'),
+        user_name=pulumi.get(__ret__, 'user_name'))
 
 
 @_utilities.lift_output_func(get_developer)

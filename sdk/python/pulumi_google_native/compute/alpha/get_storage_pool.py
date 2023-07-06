@@ -213,20 +213,20 @@ def get_storage_pool(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getStoragePool', __args__, opts=opts, typ=GetStoragePoolResult).value
 
     return AwaitableGetStoragePoolResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        provisioned_iops=__ret__.provisioned_iops,
-        resource_status=__ret__.resource_status,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        size_gb=__ret__.size_gb,
-        state=__ret__.state,
-        type=__ret__.type,
-        zone=__ret__.zone)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        size_gb=pulumi.get(__ret__, 'size_gb'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_storage_pool)

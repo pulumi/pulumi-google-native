@@ -162,16 +162,16 @@ def get_schedule(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:notebooks/v1:getSchedule', __args__, opts=opts, typ=GetScheduleResult).value
 
     return AwaitableGetScheduleResult(
-        create_time=__ret__.create_time,
-        cron_schedule=__ret__.cron_schedule,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        execution_template=__ret__.execution_template,
-        name=__ret__.name,
-        recent_executions=__ret__.recent_executions,
-        state=__ret__.state,
-        time_zone=__ret__.time_zone,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        execution_template=pulumi.get(__ret__, 'execution_template'),
+        name=pulumi.get(__ret__, 'name'),
+        recent_executions=pulumi.get(__ret__, 'recent_executions'),
+        state=pulumi.get(__ret__, 'state'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_schedule)

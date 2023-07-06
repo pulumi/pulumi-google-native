@@ -129,13 +129,13 @@ def get_waiter(config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:runtimeconfig/v1beta1:getWaiter', __args__, opts=opts, typ=GetWaiterResult).value
 
     return AwaitableGetWaiterResult(
-        create_time=__ret__.create_time,
-        done=__ret__.done,
-        error=__ret__.error,
-        failure=__ret__.failure,
-        name=__ret__.name,
-        success=__ret__.success,
-        timeout=__ret__.timeout)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        done=pulumi.get(__ret__, 'done'),
+        error=pulumi.get(__ret__, 'error'),
+        failure=pulumi.get(__ret__, 'failure'),
+        name=pulumi.get(__ret__, 'name'),
+        success=pulumi.get(__ret__, 'success'),
+        timeout=pulumi.get(__ret__, 'timeout'))
 
 
 @_utilities.lift_output_func(get_waiter)

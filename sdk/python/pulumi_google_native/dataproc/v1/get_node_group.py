@@ -95,10 +95,10 @@ def get_node_group(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getNodeGroup', __args__, opts=opts, typ=GetNodeGroupResult).value
 
     return AwaitableGetNodeGroupResult(
-        labels=__ret__.labels,
-        name=__ret__.name,
-        node_group_config=__ret__.node_group_config,
-        roles=__ret__.roles)
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        node_group_config=pulumi.get(__ret__, 'node_group_config'),
+        roles=pulumi.get(__ret__, 'roles'))
 
 
 @_utilities.lift_output_func(get_node_group)

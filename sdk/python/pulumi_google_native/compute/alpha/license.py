@@ -226,6 +226,9 @@ class License(pulumi.CustomResource):
         """
         Deprecated. This field no longer reflects whether a license charges a usage fee.
         """
+        warnings.warn("""[Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""", DeprecationWarning)
+        pulumi.log.warn("""charges_use_fee is deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""")
+
         return pulumi.get(self, "charges_use_fee")
 
     @property

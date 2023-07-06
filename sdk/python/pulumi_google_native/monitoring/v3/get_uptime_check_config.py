@@ -211,20 +211,20 @@ def get_uptime_check_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getUptimeCheckConfig', __args__, opts=opts, typ=GetUptimeCheckConfigResult).value
 
     return AwaitableGetUptimeCheckConfigResult(
-        checker_type=__ret__.checker_type,
-        content_matchers=__ret__.content_matchers,
-        display_name=__ret__.display_name,
-        http_check=__ret__.http_check,
-        internal_checkers=__ret__.internal_checkers,
-        is_internal=__ret__.is_internal,
-        monitored_resource=__ret__.monitored_resource,
-        name=__ret__.name,
-        period=__ret__.period,
-        resource_group=__ret__.resource_group,
-        selected_regions=__ret__.selected_regions,
-        tcp_check=__ret__.tcp_check,
-        timeout=__ret__.timeout,
-        user_labels=__ret__.user_labels)
+        checker_type=pulumi.get(__ret__, 'checker_type'),
+        content_matchers=pulumi.get(__ret__, 'content_matchers'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        http_check=pulumi.get(__ret__, 'http_check'),
+        internal_checkers=pulumi.get(__ret__, 'internal_checkers'),
+        is_internal=pulumi.get(__ret__, 'is_internal'),
+        monitored_resource=pulumi.get(__ret__, 'monitored_resource'),
+        name=pulumi.get(__ret__, 'name'),
+        period=pulumi.get(__ret__, 'period'),
+        resource_group=pulumi.get(__ret__, 'resource_group'),
+        selected_regions=pulumi.get(__ret__, 'selected_regions'),
+        tcp_check=pulumi.get(__ret__, 'tcp_check'),
+        timeout=pulumi.get(__ret__, 'timeout'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_uptime_check_config)

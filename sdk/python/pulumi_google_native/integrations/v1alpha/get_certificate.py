@@ -155,15 +155,15 @@ def get_certificate(certificate_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        certificate_status=__ret__.certificate_status,
-        credential_id=__ret__.credential_id,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        raw_certificate=__ret__.raw_certificate,
-        requestor_id=__ret__.requestor_id,
-        valid_end_time=__ret__.valid_end_time,
-        valid_start_time=__ret__.valid_start_time)
+        certificate_status=pulumi.get(__ret__, 'certificate_status'),
+        credential_id=pulumi.get(__ret__, 'credential_id'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        raw_certificate=pulumi.get(__ret__, 'raw_certificate'),
+        requestor_id=pulumi.get(__ret__, 'requestor_id'),
+        valid_end_time=pulumi.get(__ret__, 'valid_end_time'),
+        valid_start_time=pulumi.get(__ret__, 'valid_start_time'))
 
 
 @_utilities.lift_output_func(get_certificate)

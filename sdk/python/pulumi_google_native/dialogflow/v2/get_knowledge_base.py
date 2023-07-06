@@ -80,9 +80,9 @@ def get_knowledge_base(knowledge_base_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getKnowledgeBase', __args__, opts=opts, typ=GetKnowledgeBaseResult).value
 
     return AwaitableGetKnowledgeBaseResult(
-        display_name=__ret__.display_name,
-        language_code=__ret__.language_code,
-        name=__ret__.name)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_knowledge_base)

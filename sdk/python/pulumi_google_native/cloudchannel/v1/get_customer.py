@@ -201,19 +201,19 @@ def get_customer(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudchannel/v1:getCustomer', __args__, opts=opts, typ=GetCustomerResult).value
 
     return AwaitableGetCustomerResult(
-        alternate_email=__ret__.alternate_email,
-        channel_partner_id=__ret__.channel_partner_id,
-        cloud_identity_id=__ret__.cloud_identity_id,
-        cloud_identity_info=__ret__.cloud_identity_info,
-        correlation_id=__ret__.correlation_id,
-        create_time=__ret__.create_time,
-        domain=__ret__.domain,
-        language_code=__ret__.language_code,
-        name=__ret__.name,
-        org_display_name=__ret__.org_display_name,
-        org_postal_address=__ret__.org_postal_address,
-        primary_contact_info=__ret__.primary_contact_info,
-        update_time=__ret__.update_time)
+        alternate_email=pulumi.get(__ret__, 'alternate_email'),
+        channel_partner_id=pulumi.get(__ret__, 'channel_partner_id'),
+        cloud_identity_id=pulumi.get(__ret__, 'cloud_identity_id'),
+        cloud_identity_info=pulumi.get(__ret__, 'cloud_identity_info'),
+        correlation_id=pulumi.get(__ret__, 'correlation_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        domain=pulumi.get(__ret__, 'domain'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        name=pulumi.get(__ret__, 'name'),
+        org_display_name=pulumi.get(__ret__, 'org_display_name'),
+        org_postal_address=pulumi.get(__ret__, 'org_postal_address'),
+        primary_contact_info=pulumi.get(__ret__, 'primary_contact_info'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_customer)

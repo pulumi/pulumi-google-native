@@ -66,8 +66,8 @@ def get_config(config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:runtimeconfig/v1beta1:getConfig', __args__, opts=opts, typ=GetConfigResult).value
 
     return AwaitableGetConfigResult(
-        description=__ret__.description,
-        name=__ret__.name)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_config)

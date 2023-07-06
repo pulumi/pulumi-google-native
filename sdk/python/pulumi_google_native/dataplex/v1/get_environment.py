@@ -191,18 +191,18 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        endpoints=__ret__.endpoints,
-        infrastructure_spec=__ret__.infrastructure_spec,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        session_spec=__ret__.session_spec,
-        session_status=__ret__.session_status,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        endpoints=pulumi.get(__ret__, 'endpoints'),
+        infrastructure_spec=pulumi.get(__ret__, 'infrastructure_spec'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        session_spec=pulumi.get(__ret__, 'session_spec'),
+        session_status=pulumi.get(__ret__, 'session_status'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_environment)

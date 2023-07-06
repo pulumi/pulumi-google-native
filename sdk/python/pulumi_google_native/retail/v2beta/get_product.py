@@ -97,10 +97,6 @@ class GetProductResult:
         pulumi.set(__self__, "rating", rating)
         if retrievable_fields and not isinstance(retrievable_fields, str):
             raise TypeError("Expected argument 'retrievable_fields' to be a str")
-        if retrievable_fields is not None:
-            warnings.warn("""Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.""", DeprecationWarning)
-            pulumi.log.warn("""retrievable_fields is deprecated: Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.""")
-
         pulumi.set(__self__, "retrievable_fields", retrievable_fields)
         if sizes and not isinstance(sizes, list):
             raise TypeError("Expected argument 'sizes' to be a list")
@@ -330,6 +326,9 @@ class GetProductResult:
         """
         Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.
         """
+        warnings.warn("""Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.""", DeprecationWarning)
+        pulumi.log.warn("""retrievable_fields is deprecated: Indicates which fields in the Products are returned in SearchResponse. Supported fields for all types: * audience * availability * brands * color_info * conditions * gtin * materials * name * patterns * price_info * rating * sizes * title * uri Supported fields only for Type.PRIMARY and Type.COLLECTION: * categories * description * images Supported fields only for Type.VARIANT: * Only the first image in images To mark attributes as retrievable, include paths of the form \"attributes.key\" where \"key\" is the key of a custom attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in by default: * name * color_info The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is returned. Note: Returning more fields in SearchResponse can increase response payload size and serving latency. This field is deprecated. Use the retrievable site-wide control instead.""")
+
         return pulumi.get(self, "retrievable_fields")
 
     @property
@@ -449,39 +448,39 @@ def get_product(branch_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:retail/v2beta:getProduct', __args__, opts=opts, typ=GetProductResult).value
 
     return AwaitableGetProductResult(
-        attributes=__ret__.attributes,
-        audience=__ret__.audience,
-        availability=__ret__.availability,
-        available_quantity=__ret__.available_quantity,
-        available_time=__ret__.available_time,
-        brands=__ret__.brands,
-        categories=__ret__.categories,
-        collection_member_ids=__ret__.collection_member_ids,
-        color_info=__ret__.color_info,
-        conditions=__ret__.conditions,
-        description=__ret__.description,
-        expire_time=__ret__.expire_time,
-        fulfillment_info=__ret__.fulfillment_info,
-        gtin=__ret__.gtin,
-        images=__ret__.images,
-        language_code=__ret__.language_code,
-        local_inventories=__ret__.local_inventories,
-        materials=__ret__.materials,
-        name=__ret__.name,
-        patterns=__ret__.patterns,
-        price_info=__ret__.price_info,
-        primary_product_id=__ret__.primary_product_id,
-        promotions=__ret__.promotions,
-        publish_time=__ret__.publish_time,
-        rating=__ret__.rating,
-        retrievable_fields=__ret__.retrievable_fields,
-        sizes=__ret__.sizes,
-        tags=__ret__.tags,
-        title=__ret__.title,
-        ttl=__ret__.ttl,
-        type=__ret__.type,
-        uri=__ret__.uri,
-        variants=__ret__.variants)
+        attributes=pulumi.get(__ret__, 'attributes'),
+        audience=pulumi.get(__ret__, 'audience'),
+        availability=pulumi.get(__ret__, 'availability'),
+        available_quantity=pulumi.get(__ret__, 'available_quantity'),
+        available_time=pulumi.get(__ret__, 'available_time'),
+        brands=pulumi.get(__ret__, 'brands'),
+        categories=pulumi.get(__ret__, 'categories'),
+        collection_member_ids=pulumi.get(__ret__, 'collection_member_ids'),
+        color_info=pulumi.get(__ret__, 'color_info'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        fulfillment_info=pulumi.get(__ret__, 'fulfillment_info'),
+        gtin=pulumi.get(__ret__, 'gtin'),
+        images=pulumi.get(__ret__, 'images'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        local_inventories=pulumi.get(__ret__, 'local_inventories'),
+        materials=pulumi.get(__ret__, 'materials'),
+        name=pulumi.get(__ret__, 'name'),
+        patterns=pulumi.get(__ret__, 'patterns'),
+        price_info=pulumi.get(__ret__, 'price_info'),
+        primary_product_id=pulumi.get(__ret__, 'primary_product_id'),
+        promotions=pulumi.get(__ret__, 'promotions'),
+        publish_time=pulumi.get(__ret__, 'publish_time'),
+        rating=pulumi.get(__ret__, 'rating'),
+        retrievable_fields=pulumi.get(__ret__, 'retrievable_fields'),
+        sizes=pulumi.get(__ret__, 'sizes'),
+        tags=pulumi.get(__ret__, 'tags'),
+        title=pulumi.get(__ret__, 'title'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'),
+        uri=pulumi.get(__ret__, 'uri'),
+        variants=pulumi.get(__ret__, 'variants'))
 
 
 @_utilities.lift_output_func(get_product)

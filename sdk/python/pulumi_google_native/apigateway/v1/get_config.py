@@ -181,17 +181,17 @@ def get_config(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigateway/v1:getConfig', __args__, opts=opts, typ=GetConfigResult).value
 
     return AwaitableGetConfigResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        gateway_service_account=__ret__.gateway_service_account,
-        grpc_services=__ret__.grpc_services,
-        labels=__ret__.labels,
-        managed_service_configs=__ret__.managed_service_configs,
-        name=__ret__.name,
-        openapi_documents=__ret__.openapi_documents,
-        service_config_id=__ret__.service_config_id,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        gateway_service_account=pulumi.get(__ret__, 'gateway_service_account'),
+        grpc_services=pulumi.get(__ret__, 'grpc_services'),
+        labels=pulumi.get(__ret__, 'labels'),
+        managed_service_configs=pulumi.get(__ret__, 'managed_service_configs'),
+        name=pulumi.get(__ret__, 'name'),
+        openapi_documents=pulumi.get(__ret__, 'openapi_documents'),
+        service_config_id=pulumi.get(__ret__, 'service_config_id'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_config)

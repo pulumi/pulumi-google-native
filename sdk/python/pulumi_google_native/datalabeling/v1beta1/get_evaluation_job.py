@@ -163,16 +163,16 @@ def get_evaluation_job(evaluation_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getEvaluationJob', __args__, opts=opts, typ=GetEvaluationJobResult).value
 
     return AwaitableGetEvaluationJobResult(
-        annotation_spec_set=__ret__.annotation_spec_set,
-        attempts=__ret__.attempts,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        evaluation_job_config=__ret__.evaluation_job_config,
-        label_missing_ground_truth=__ret__.label_missing_ground_truth,
-        model_version=__ret__.model_version,
-        name=__ret__.name,
-        schedule=__ret__.schedule,
-        state=__ret__.state)
+        annotation_spec_set=pulumi.get(__ret__, 'annotation_spec_set'),
+        attempts=pulumi.get(__ret__, 'attempts'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        evaluation_job_config=pulumi.get(__ret__, 'evaluation_job_config'),
+        label_missing_ground_truth=pulumi.get(__ret__, 'label_missing_ground_truth'),
+        model_version=pulumi.get(__ret__, 'model_version'),
+        name=pulumi.get(__ret__, 'name'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_evaluation_job)

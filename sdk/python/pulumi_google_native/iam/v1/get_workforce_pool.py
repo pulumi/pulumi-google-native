@@ -126,13 +126,13 @@ def get_workforce_pool(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getWorkforcePool', __args__, opts=opts, typ=GetWorkforcePoolResult).value
 
     return AwaitableGetWorkforcePoolResult(
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        session_duration=__ret__.session_duration,
-        state=__ret__.state)
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        session_duration=pulumi.get(__ret__, 'session_duration'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_workforce_pool)

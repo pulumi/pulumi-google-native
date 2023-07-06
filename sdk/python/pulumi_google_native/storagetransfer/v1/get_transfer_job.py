@@ -199,19 +199,19 @@ def get_transfer_job(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storagetransfer/v1:getTransferJob', __args__, opts=opts, typ=GetTransferJobResult).value
 
     return AwaitableGetTransferJobResult(
-        creation_time=__ret__.creation_time,
-        deletion_time=__ret__.deletion_time,
-        description=__ret__.description,
-        event_stream=__ret__.event_stream,
-        last_modification_time=__ret__.last_modification_time,
-        latest_operation_name=__ret__.latest_operation_name,
-        logging_config=__ret__.logging_config,
-        name=__ret__.name,
-        notification_config=__ret__.notification_config,
-        project=__ret__.project,
-        schedule=__ret__.schedule,
-        status=__ret__.status,
-        transfer_spec=__ret__.transfer_spec)
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        deletion_time=pulumi.get(__ret__, 'deletion_time'),
+        description=pulumi.get(__ret__, 'description'),
+        event_stream=pulumi.get(__ret__, 'event_stream'),
+        last_modification_time=pulumi.get(__ret__, 'last_modification_time'),
+        latest_operation_name=pulumi.get(__ret__, 'latest_operation_name'),
+        logging_config=pulumi.get(__ret__, 'logging_config'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_config=pulumi.get(__ret__, 'notification_config'),
+        project=pulumi.get(__ret__, 'project'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        status=pulumi.get(__ret__, 'status'),
+        transfer_spec=pulumi.get(__ret__, 'transfer_spec'))
 
 
 @_utilities.lift_output_func(get_transfer_job)

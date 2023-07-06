@@ -103,11 +103,11 @@ def get_repo(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sourcerepo/v1:getRepo', __args__, opts=opts, typ=GetRepoResult).value
 
     return AwaitableGetRepoResult(
-        mirror_config=__ret__.mirror_config,
-        name=__ret__.name,
-        pubsub_configs=__ret__.pubsub_configs,
-        size=__ret__.size,
-        url=__ret__.url)
+        mirror_config=pulumi.get(__ret__, 'mirror_config'),
+        name=pulumi.get(__ret__, 'name'),
+        pubsub_configs=pulumi.get(__ret__, 'pubsub_configs'),
+        size=pulumi.get(__ret__, 'size'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_repo)

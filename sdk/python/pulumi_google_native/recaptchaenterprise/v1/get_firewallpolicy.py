@@ -103,11 +103,11 @@ def get_firewallpolicy(firewallpolicy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:recaptchaenterprise/v1:getFirewallpolicy', __args__, opts=opts, typ=GetFirewallpolicyResult).value
 
     return AwaitableGetFirewallpolicyResult(
-        actions=__ret__.actions,
-        condition=__ret__.condition,
-        description=__ret__.description,
-        name=__ret__.name,
-        path=__ret__.path)
+        actions=pulumi.get(__ret__, 'actions'),
+        condition=pulumi.get(__ret__, 'condition'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        path=pulumi.get(__ret__, 'path'))
 
 
 @_utilities.lift_output_func(get_firewallpolicy)

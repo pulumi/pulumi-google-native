@@ -107,11 +107,11 @@ def get_instant_snapshot_iam_policy(options_requested_policy_version: Optional[i
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getInstantSnapshotIamPolicy', __args__, opts=opts, typ=GetInstantSnapshotIamPolicyResult).value
 
     return AwaitableGetInstantSnapshotIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        rules=__ret__.rules,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        rules=pulumi.get(__ret__, 'rules'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_instant_snapshot_iam_policy)

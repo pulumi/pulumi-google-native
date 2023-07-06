@@ -109,10 +109,6 @@ class GetJobResult:
         pulumi.set(__self__, "title", title)
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
-        if visibility is not None:
-            warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
-            pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
-
         pulumi.set(__self__, "visibility", visibility)
 
     @property
@@ -353,6 +349,9 @@ class GetJobResult:
         """
         Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
         """
+        warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
+        pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
+
         return pulumi.get(self, "visibility")
 
 
@@ -407,36 +406,36 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:jobs/v3:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        addresses=__ret__.addresses,
-        application_info=__ret__.application_info,
-        company_display_name=__ret__.company_display_name,
-        company_name=__ret__.company_name,
-        compensation_info=__ret__.compensation_info,
-        custom_attributes=__ret__.custom_attributes,
-        degree_types=__ret__.degree_types,
-        department=__ret__.department,
-        derived_info=__ret__.derived_info,
-        description=__ret__.description,
-        employment_types=__ret__.employment_types,
-        incentives=__ret__.incentives,
-        job_benefits=__ret__.job_benefits,
-        job_end_time=__ret__.job_end_time,
-        job_level=__ret__.job_level,
-        job_start_time=__ret__.job_start_time,
-        language_code=__ret__.language_code,
-        name=__ret__.name,
-        posting_create_time=__ret__.posting_create_time,
-        posting_expire_time=__ret__.posting_expire_time,
-        posting_publish_time=__ret__.posting_publish_time,
-        posting_region=__ret__.posting_region,
-        posting_update_time=__ret__.posting_update_time,
-        processing_options=__ret__.processing_options,
-        promotion_value=__ret__.promotion_value,
-        qualifications=__ret__.qualifications,
-        requisition_id=__ret__.requisition_id,
-        responsibilities=__ret__.responsibilities,
-        title=__ret__.title,
-        visibility=__ret__.visibility)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        application_info=pulumi.get(__ret__, 'application_info'),
+        company_display_name=pulumi.get(__ret__, 'company_display_name'),
+        company_name=pulumi.get(__ret__, 'company_name'),
+        compensation_info=pulumi.get(__ret__, 'compensation_info'),
+        custom_attributes=pulumi.get(__ret__, 'custom_attributes'),
+        degree_types=pulumi.get(__ret__, 'degree_types'),
+        department=pulumi.get(__ret__, 'department'),
+        derived_info=pulumi.get(__ret__, 'derived_info'),
+        description=pulumi.get(__ret__, 'description'),
+        employment_types=pulumi.get(__ret__, 'employment_types'),
+        incentives=pulumi.get(__ret__, 'incentives'),
+        job_benefits=pulumi.get(__ret__, 'job_benefits'),
+        job_end_time=pulumi.get(__ret__, 'job_end_time'),
+        job_level=pulumi.get(__ret__, 'job_level'),
+        job_start_time=pulumi.get(__ret__, 'job_start_time'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        name=pulumi.get(__ret__, 'name'),
+        posting_create_time=pulumi.get(__ret__, 'posting_create_time'),
+        posting_expire_time=pulumi.get(__ret__, 'posting_expire_time'),
+        posting_publish_time=pulumi.get(__ret__, 'posting_publish_time'),
+        posting_region=pulumi.get(__ret__, 'posting_region'),
+        posting_update_time=pulumi.get(__ret__, 'posting_update_time'),
+        processing_options=pulumi.get(__ret__, 'processing_options'),
+        promotion_value=pulumi.get(__ret__, 'promotion_value'),
+        qualifications=pulumi.get(__ret__, 'qualifications'),
+        requisition_id=pulumi.get(__ret__, 'requisition_id'),
+        responsibilities=pulumi.get(__ret__, 'responsibilities'),
+        title=pulumi.get(__ret__, 'title'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_job)

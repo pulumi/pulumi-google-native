@@ -129,13 +129,13 @@ def get_conversation(conversation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2beta1:getConversation', __args__, opts=opts, typ=GetConversationResult).value
 
     return AwaitableGetConversationResult(
-        conversation_profile=__ret__.conversation_profile,
-        conversation_stage=__ret__.conversation_stage,
-        end_time=__ret__.end_time,
-        lifecycle_state=__ret__.lifecycle_state,
-        name=__ret__.name,
-        phone_number=__ret__.phone_number,
-        start_time=__ret__.start_time)
+        conversation_profile=pulumi.get(__ret__, 'conversation_profile'),
+        conversation_stage=pulumi.get(__ret__, 'conversation_stage'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        name=pulumi.get(__ret__, 'name'),
+        phone_number=pulumi.get(__ret__, 'phone_number'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_conversation)

@@ -100,11 +100,11 @@ def get_folder(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudresourcemanager/v2:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        lifecycle_state=__ret__.lifecycle_state,
-        name=__ret__.name,
-        parent=__ret__.parent)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'))
 
 
 @_utilities.lift_output_func(get_folder)

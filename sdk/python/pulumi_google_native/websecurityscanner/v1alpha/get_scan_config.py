@@ -163,16 +163,16 @@ def get_scan_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:websecurityscanner/v1alpha:getScanConfig', __args__, opts=opts, typ=GetScanConfigResult).value
 
     return AwaitableGetScanConfigResult(
-        authentication=__ret__.authentication,
-        blacklist_patterns=__ret__.blacklist_patterns,
-        display_name=__ret__.display_name,
-        latest_run=__ret__.latest_run,
-        max_qps=__ret__.max_qps,
-        name=__ret__.name,
-        schedule=__ret__.schedule,
-        starting_urls=__ret__.starting_urls,
-        target_platforms=__ret__.target_platforms,
-        user_agent=__ret__.user_agent)
+        authentication=pulumi.get(__ret__, 'authentication'),
+        blacklist_patterns=pulumi.get(__ret__, 'blacklist_patterns'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        latest_run=pulumi.get(__ret__, 'latest_run'),
+        max_qps=pulumi.get(__ret__, 'max_qps'),
+        name=pulumi.get(__ret__, 'name'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        starting_urls=pulumi.get(__ret__, 'starting_urls'),
+        target_platforms=pulumi.get(__ret__, 'target_platforms'),
+        user_agent=pulumi.get(__ret__, 'user_agent'))
 
 
 @_utilities.lift_output_func(get_scan_config)

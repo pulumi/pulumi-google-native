@@ -261,24 +261,24 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:memcache/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        authorized_network=__ret__.authorized_network,
-        create_time=__ret__.create_time,
-        discovery_endpoint=__ret__.discovery_endpoint,
-        display_name=__ret__.display_name,
-        instance_messages=__ret__.instance_messages,
-        labels=__ret__.labels,
-        maintenance_policy=__ret__.maintenance_policy,
-        maintenance_schedule=__ret__.maintenance_schedule,
-        memcache_full_version=__ret__.memcache_full_version,
-        memcache_nodes=__ret__.memcache_nodes,
-        memcache_version=__ret__.memcache_version,
-        name=__ret__.name,
-        node_config=__ret__.node_config,
-        node_count=__ret__.node_count,
-        parameters=__ret__.parameters,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        zones=__ret__.zones)
+        authorized_network=pulumi.get(__ret__, 'authorized_network'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        discovery_endpoint=pulumi.get(__ret__, 'discovery_endpoint'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        instance_messages=pulumi.get(__ret__, 'instance_messages'),
+        labels=pulumi.get(__ret__, 'labels'),
+        maintenance_policy=pulumi.get(__ret__, 'maintenance_policy'),
+        maintenance_schedule=pulumi.get(__ret__, 'maintenance_schedule'),
+        memcache_full_version=pulumi.get(__ret__, 'memcache_full_version'),
+        memcache_nodes=pulumi.get(__ret__, 'memcache_nodes'),
+        memcache_version=pulumi.get(__ret__, 'memcache_version'),
+        name=pulumi.get(__ret__, 'name'),
+        node_config=pulumi.get(__ret__, 'node_config'),
+        node_count=pulumi.get(__ret__, 'node_count'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_instance)

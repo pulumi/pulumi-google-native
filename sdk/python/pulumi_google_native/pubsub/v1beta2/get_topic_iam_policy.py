@@ -81,9 +81,9 @@ def get_topic_iam_policy(options_requested_policy_version: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1beta2:getTopicIamPolicy', __args__, opts=opts, typ=GetTopicIamPolicyResult).value
 
     return AwaitableGetTopicIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_topic_iam_policy)

@@ -175,17 +175,17 @@ def get_deployment(deployment: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:deploymentmanager/v2beta:getDeployment', __args__, opts=opts, typ=GetDeploymentResult).value
 
     return AwaitableGetDeploymentResult(
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        insert_time=__ret__.insert_time,
-        labels=__ret__.labels,
-        manifest=__ret__.manifest,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        self_link=__ret__.self_link,
-        target=__ret__.target,
-        update=__ret__.update,
-        update_time=__ret__.update_time)
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        insert_time=pulumi.get(__ret__, 'insert_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        manifest=pulumi.get(__ret__, 'manifest'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        target=pulumi.get(__ret__, 'target'),
+        update=pulumi.get(__ret__, 'update'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_deployment)

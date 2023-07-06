@@ -126,13 +126,13 @@ def get_role(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        deleted=__ret__.deleted,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        included_permissions=__ret__.included_permissions,
-        name=__ret__.name,
-        stage=__ret__.stage,
-        title=__ret__.title)
+        deleted=pulumi.get(__ret__, 'deleted'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        included_permissions=pulumi.get(__ret__, 'included_permissions'),
+        name=pulumi.get(__ret__, 'name'),
+        stage=pulumi.get(__ret__, 'stage'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_role)

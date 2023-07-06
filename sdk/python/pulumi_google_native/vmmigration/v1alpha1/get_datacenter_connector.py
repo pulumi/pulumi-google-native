@@ -215,20 +215,20 @@ def get_datacenter_connector(datacenter_connector_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getDatacenterConnector', __args__, opts=opts, typ=GetDatacenterConnectorResult).value
 
     return AwaitableGetDatacenterConnectorResult(
-        appliance_infrastructure_version=__ret__.appliance_infrastructure_version,
-        appliance_software_version=__ret__.appliance_software_version,
-        available_versions=__ret__.available_versions,
-        bucket=__ret__.bucket,
-        create_time=__ret__.create_time,
-        error=__ret__.error,
-        name=__ret__.name,
-        registration_id=__ret__.registration_id,
-        service_account=__ret__.service_account,
-        state=__ret__.state,
-        state_time=__ret__.state_time,
-        update_time=__ret__.update_time,
-        upgrade_status=__ret__.upgrade_status,
-        version=__ret__.version)
+        appliance_infrastructure_version=pulumi.get(__ret__, 'appliance_infrastructure_version'),
+        appliance_software_version=pulumi.get(__ret__, 'appliance_software_version'),
+        available_versions=pulumi.get(__ret__, 'available_versions'),
+        bucket=pulumi.get(__ret__, 'bucket'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        error=pulumi.get(__ret__, 'error'),
+        name=pulumi.get(__ret__, 'name'),
+        registration_id=pulumi.get(__ret__, 'registration_id'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        state=pulumi.get(__ret__, 'state'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        upgrade_status=pulumi.get(__ret__, 'upgrade_status'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_datacenter_connector)

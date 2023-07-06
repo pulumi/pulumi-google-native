@@ -141,14 +141,14 @@ def get_conversation_model(conversation_model_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getConversationModel', __args__, opts=opts, typ=GetConversationModelResult).value
 
     return AwaitableGetConversationModelResult(
-        article_suggestion_model_metadata=__ret__.article_suggestion_model_metadata,
-        create_time=__ret__.create_time,
-        datasets=__ret__.datasets,
-        display_name=__ret__.display_name,
-        language_code=__ret__.language_code,
-        name=__ret__.name,
-        smart_reply_model_metadata=__ret__.smart_reply_model_metadata,
-        state=__ret__.state)
+        article_suggestion_model_metadata=pulumi.get(__ret__, 'article_suggestion_model_metadata'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        datasets=pulumi.get(__ret__, 'datasets'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        name=pulumi.get(__ret__, 'name'),
+        smart_reply_model_metadata=pulumi.get(__ret__, 'smart_reply_model_metadata'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_conversation_model)

@@ -235,22 +235,22 @@ def get_machine_image(machine_image: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getMachineImage', __args__, opts=opts, typ=GetMachineImageResult).value
 
     return AwaitableGetMachineImageResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        guest_flush=__ret__.guest_flush,
-        instance_properties=__ret__.instance_properties,
-        kind=__ret__.kind,
-        machine_image_encryption_key=__ret__.machine_image_encryption_key,
-        name=__ret__.name,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        saved_disks=__ret__.saved_disks,
-        self_link=__ret__.self_link,
-        source_disk_encryption_keys=__ret__.source_disk_encryption_keys,
-        source_instance=__ret__.source_instance,
-        source_instance_properties=__ret__.source_instance_properties,
-        status=__ret__.status,
-        storage_locations=__ret__.storage_locations,
-        total_storage_bytes=__ret__.total_storage_bytes)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        guest_flush=pulumi.get(__ret__, 'guest_flush'),
+        instance_properties=pulumi.get(__ret__, 'instance_properties'),
+        kind=pulumi.get(__ret__, 'kind'),
+        machine_image_encryption_key=pulumi.get(__ret__, 'machine_image_encryption_key'),
+        name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        saved_disks=pulumi.get(__ret__, 'saved_disks'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        source_disk_encryption_keys=pulumi.get(__ret__, 'source_disk_encryption_keys'),
+        source_instance=pulumi.get(__ret__, 'source_instance'),
+        source_instance_properties=pulumi.get(__ret__, 'source_instance_properties'),
+        status=pulumi.get(__ret__, 'status'),
+        storage_locations=pulumi.get(__ret__, 'storage_locations'),
+        total_storage_bytes=pulumi.get(__ret__, 'total_storage_bytes'))
 
 
 @_utilities.lift_output_func(get_machine_image)

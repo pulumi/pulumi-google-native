@@ -177,17 +177,17 @@ def get_function(function_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudfunctions/v2:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
     return AwaitableGetFunctionResult(
-        build_config=__ret__.build_config,
-        description=__ret__.description,
-        environment=__ret__.environment,
-        event_trigger=__ret__.event_trigger,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        service_config=__ret__.service_config,
-        state=__ret__.state,
-        state_messages=__ret__.state_messages,
-        update_time=__ret__.update_time)
+        build_config=pulumi.get(__ret__, 'build_config'),
+        description=pulumi.get(__ret__, 'description'),
+        environment=pulumi.get(__ret__, 'environment'),
+        event_trigger=pulumi.get(__ret__, 'event_trigger'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        service_config=pulumi.get(__ret__, 'service_config'),
+        state=pulumi.get(__ret__, 'state'),
+        state_messages=pulumi.get(__ret__, 'state_messages'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_function)

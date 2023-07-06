@@ -152,15 +152,15 @@ def get_channel(channel_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:eventarc/v1:getChannel', __args__, opts=opts, typ=GetChannelResult).value
 
     return AwaitableGetChannelResult(
-        activation_token=__ret__.activation_token,
-        create_time=__ret__.create_time,
-        crypto_key_name=__ret__.crypto_key_name,
-        name=__ret__.name,
-        provider=__ret__.provider,
-        pubsub_topic=__ret__.pubsub_topic,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        activation_token=pulumi.get(__ret__, 'activation_token'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        crypto_key_name=pulumi.get(__ret__, 'crypto_key_name'),
+        name=pulumi.get(__ret__, 'name'),
+        provider=pulumi.get(__ret__, 'provider'),
+        pubsub_topic=pulumi.get(__ret__, 'pubsub_topic'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_channel)

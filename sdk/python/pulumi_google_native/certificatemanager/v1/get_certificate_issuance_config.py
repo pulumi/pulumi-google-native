@@ -153,15 +153,15 @@ def get_certificate_issuance_config(certificate_issuance_config_id: Optional[str
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getCertificateIssuanceConfig', __args__, opts=opts, typ=GetCertificateIssuanceConfigResult).value
 
     return AwaitableGetCertificateIssuanceConfigResult(
-        certificate_authority_config=__ret__.certificate_authority_config,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        key_algorithm=__ret__.key_algorithm,
-        labels=__ret__.labels,
-        lifetime=__ret__.lifetime,
-        name=__ret__.name,
-        rotation_window_percentage=__ret__.rotation_window_percentage,
-        update_time=__ret__.update_time)
+        certificate_authority_config=pulumi.get(__ret__, 'certificate_authority_config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        key_algorithm=pulumi.get(__ret__, 'key_algorithm'),
+        labels=pulumi.get(__ret__, 'labels'),
+        lifetime=pulumi.get(__ret__, 'lifetime'),
+        name=pulumi.get(__ret__, 'name'),
+        rotation_window_percentage=pulumi.get(__ret__, 'rotation_window_percentage'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate_issuance_config)

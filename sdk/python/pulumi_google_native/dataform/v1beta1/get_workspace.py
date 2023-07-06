@@ -58,7 +58,7 @@ def get_workspace(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getWorkspace', __args__, opts=opts, typ=GetWorkspaceResult).value
 
     return AwaitableGetWorkspaceResult(
-        name=__ret__.name)
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_workspace)

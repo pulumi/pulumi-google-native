@@ -225,21 +225,21 @@ def get_conversation_profile(conversation_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getConversationProfile', __args__, opts=opts, typ=GetConversationProfileResult).value
 
     return AwaitableGetConversationProfileResult(
-        automated_agent_config=__ret__.automated_agent_config,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        human_agent_assistant_config=__ret__.human_agent_assistant_config,
-        human_agent_handoff_config=__ret__.human_agent_handoff_config,
-        language_code=__ret__.language_code,
-        logging_config=__ret__.logging_config,
-        name=__ret__.name,
-        new_message_event_notification_config=__ret__.new_message_event_notification_config,
-        notification_config=__ret__.notification_config,
-        security_settings=__ret__.security_settings,
-        stt_config=__ret__.stt_config,
-        time_zone=__ret__.time_zone,
-        tts_config=__ret__.tts_config,
-        update_time=__ret__.update_time)
+        automated_agent_config=pulumi.get(__ret__, 'automated_agent_config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        human_agent_assistant_config=pulumi.get(__ret__, 'human_agent_assistant_config'),
+        human_agent_handoff_config=pulumi.get(__ret__, 'human_agent_handoff_config'),
+        language_code=pulumi.get(__ret__, 'language_code'),
+        logging_config=pulumi.get(__ret__, 'logging_config'),
+        name=pulumi.get(__ret__, 'name'),
+        new_message_event_notification_config=pulumi.get(__ret__, 'new_message_event_notification_config'),
+        notification_config=pulumi.get(__ret__, 'notification_config'),
+        security_settings=pulumi.get(__ret__, 'security_settings'),
+        stt_config=pulumi.get(__ret__, 'stt_config'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        tts_config=pulumi.get(__ret__, 'tts_config'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_conversation_profile)

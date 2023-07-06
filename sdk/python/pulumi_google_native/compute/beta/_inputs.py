@@ -6713,6 +6713,9 @@ class ImageRawDiskArgs:
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
+        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
+        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
+
         return pulumi.get(self, "sha1_checksum")
 
     @sha1_checksum.setter
@@ -8366,6 +8369,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "default_port")
 
     @default_port.setter
@@ -8378,6 +8384,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "network")
 
     @network.setter
@@ -8390,6 +8399,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
         """
         Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
@@ -13754,6 +13766,9 @@ class SecuritySettingsArgs:
         """
         [Deprecated] Use clientTlsPolicy instead.
         """
+        warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
+        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
+
         return pulumi.get(self, "authentication")
 
     @authentication.setter

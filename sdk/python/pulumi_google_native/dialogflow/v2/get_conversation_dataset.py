@@ -129,13 +129,13 @@ def get_conversation_dataset(conversation_dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getConversationDataset', __args__, opts=opts, typ=GetConversationDatasetResult).value
 
     return AwaitableGetConversationDatasetResult(
-        conversation_count=__ret__.conversation_count,
-        conversation_info=__ret__.conversation_info,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        input_config=__ret__.input_config,
-        name=__ret__.name)
+        conversation_count=pulumi.get(__ret__, 'conversation_count'),
+        conversation_info=pulumi.get(__ret__, 'conversation_info'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        input_config=pulumi.get(__ret__, 'input_config'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_conversation_dataset)

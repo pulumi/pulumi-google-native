@@ -169,16 +169,16 @@ def get_execution(execution_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workflowexecutions/v1beta:getExecution', __args__, opts=opts, typ=GetExecutionResult).value
 
     return AwaitableGetExecutionResult(
-        argument=__ret__.argument,
-        call_log_level=__ret__.call_log_level,
-        end_time=__ret__.end_time,
-        error=__ret__.error,
-        name=__ret__.name,
-        result=__ret__.result,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        status=__ret__.status,
-        workflow_revision_id=__ret__.workflow_revision_id)
+        argument=pulumi.get(__ret__, 'argument'),
+        call_log_level=pulumi.get(__ret__, 'call_log_level'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error=pulumi.get(__ret__, 'error'),
+        name=pulumi.get(__ret__, 'name'),
+        result=pulumi.get(__ret__, 'result'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        workflow_revision_id=pulumi.get(__ret__, 'workflow_revision_id'))
 
 
 @_utilities.lift_output_func(get_execution)

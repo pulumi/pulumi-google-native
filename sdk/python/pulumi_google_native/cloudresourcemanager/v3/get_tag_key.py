@@ -160,16 +160,16 @@ def get_tag_key(tag_key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudresourcemanager/v3:getTagKey', __args__, opts=opts, typ=GetTagKeyResult).value
 
     return AwaitableGetTagKeyResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        namespaced_name=__ret__.namespaced_name,
-        parent=__ret__.parent,
-        purpose=__ret__.purpose,
-        purpose_data=__ret__.purpose_data,
-        short_name=__ret__.short_name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        namespaced_name=pulumi.get(__ret__, 'namespaced_name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        purpose_data=pulumi.get(__ret__, 'purpose_data'),
+        short_name=pulumi.get(__ret__, 'short_name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_tag_key)

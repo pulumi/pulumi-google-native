@@ -201,19 +201,19 @@ def get_contact_center(contact_center_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contactcenteraiplatform/v1alpha1:getContactCenter', __args__, opts=opts, typ=GetContactCenterResult).value
 
     return AwaitableGetContactCenterResult(
-        admin_user=__ret__.admin_user,
-        ccaip_managed_users=__ret__.ccaip_managed_users,
-        create_time=__ret__.create_time,
-        customer_domain_prefix=__ret__.customer_domain_prefix,
-        display_name=__ret__.display_name,
-        instance_config=__ret__.instance_config,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        saml_params=__ret__.saml_params,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        uris=__ret__.uris,
-        user_email=__ret__.user_email)
+        admin_user=pulumi.get(__ret__, 'admin_user'),
+        ccaip_managed_users=pulumi.get(__ret__, 'ccaip_managed_users'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        customer_domain_prefix=pulumi.get(__ret__, 'customer_domain_prefix'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        instance_config=pulumi.get(__ret__, 'instance_config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        saml_params=pulumi.get(__ret__, 'saml_params'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        uris=pulumi.get(__ret__, 'uris'),
+        user_email=pulumi.get(__ret__, 'user_email'))
 
 
 @_utilities.lift_output_func(get_contact_center)

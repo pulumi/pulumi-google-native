@@ -175,17 +175,17 @@ def get_metric_descriptor(metric_descriptor_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getMetricDescriptor', __args__, opts=opts, typ=GetMetricDescriptorResult).value
 
     return AwaitableGetMetricDescriptorResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        launch_stage=__ret__.launch_stage,
-        metadata=__ret__.metadata,
-        metric_kind=__ret__.metric_kind,
-        monitored_resource_types=__ret__.monitored_resource_types,
-        name=__ret__.name,
-        type=__ret__.type,
-        unit=__ret__.unit,
-        value_type=__ret__.value_type)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        launch_stage=pulumi.get(__ret__, 'launch_stage'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        metric_kind=pulumi.get(__ret__, 'metric_kind'),
+        monitored_resource_types=pulumi.get(__ret__, 'monitored_resource_types'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
+        unit=pulumi.get(__ret__, 'unit'),
+        value_type=pulumi.get(__ret__, 'value_type'))
 
 
 @_utilities.lift_output_func(get_metric_descriptor)

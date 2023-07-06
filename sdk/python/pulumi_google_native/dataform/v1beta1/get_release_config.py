@@ -131,13 +131,13 @@ def get_release_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getReleaseConfig', __args__, opts=opts, typ=GetReleaseConfigResult).value
 
     return AwaitableGetReleaseConfigResult(
-        code_compilation_config=__ret__.code_compilation_config,
-        cron_schedule=__ret__.cron_schedule,
-        git_commitish=__ret__.git_commitish,
-        name=__ret__.name,
-        recent_scheduled_release_records=__ret__.recent_scheduled_release_records,
-        release_compilation_result=__ret__.release_compilation_result,
-        time_zone=__ret__.time_zone)
+        code_compilation_config=pulumi.get(__ret__, 'code_compilation_config'),
+        cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
+        git_commitish=pulumi.get(__ret__, 'git_commitish'),
+        name=pulumi.get(__ret__, 'name'),
+        recent_scheduled_release_records=pulumi.get(__ret__, 'recent_scheduled_release_records'),
+        release_compilation_result=pulumi.get(__ret__, 'release_compilation_result'),
+        time_zone=pulumi.get(__ret__, 'time_zone'))
 
 
 @_utilities.lift_output_func(get_release_config)

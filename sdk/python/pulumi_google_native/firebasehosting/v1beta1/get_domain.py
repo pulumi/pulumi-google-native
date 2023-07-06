@@ -117,12 +117,12 @@ def get_domain(domain_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasehosting/v1beta1:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        domain_name=__ret__.domain_name,
-        domain_redirect=__ret__.domain_redirect,
-        provisioning=__ret__.provisioning,
-        site=__ret__.site,
-        status=__ret__.status,
-        update_time=__ret__.update_time)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        domain_redirect=pulumi.get(__ret__, 'domain_redirect'),
+        provisioning=pulumi.get(__ret__, 'provisioning'),
+        site=pulumi.get(__ret__, 'site'),
+        status=pulumi.get(__ret__, 'status'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_domain)

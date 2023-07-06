@@ -177,17 +177,17 @@ def get_zone_queued_resource(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getZoneQueuedResource', __args__, opts=opts, typ=GetZoneQueuedResourceResult).value
 
     return AwaitableGetZoneQueuedResourceResult(
-        bulk_insert_instance_resource=__ret__.bulk_insert_instance_resource,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        queuing_policy=__ret__.queuing_policy,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        state=__ret__.state,
-        status=__ret__.status,
-        zone=__ret__.zone)
+        bulk_insert_instance_resource=pulumi.get(__ret__, 'bulk_insert_instance_resource'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        queuing_policy=pulumi.get(__ret__, 'queuing_policy'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_zone_queued_resource)

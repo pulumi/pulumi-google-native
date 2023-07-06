@@ -154,15 +154,15 @@ def get_sfdc_instance(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:integrations/v1alpha:getSfdcInstance', __args__, opts=opts, typ=GetSfdcInstanceResult).value
 
     return AwaitableGetSfdcInstanceResult(
-        auth_config_id=__ret__.auth_config_id,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        service_authority=__ret__.service_authority,
-        sfdc_org_id=__ret__.sfdc_org_id,
-        update_time=__ret__.update_time)
+        auth_config_id=pulumi.get(__ret__, 'auth_config_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        service_authority=pulumi.get(__ret__, 'service_authority'),
+        sfdc_org_id=pulumi.get(__ret__, 'sfdc_org_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_sfdc_instance)

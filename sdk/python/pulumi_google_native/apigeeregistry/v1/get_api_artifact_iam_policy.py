@@ -85,9 +85,9 @@ def get_api_artifact_iam_policy(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getApiArtifactIamPolicy', __args__, opts=opts, typ=GetApiArtifactIamPolicyResult).value
 
     return AwaitableGetApiArtifactIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_api_artifact_iam_policy)

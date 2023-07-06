@@ -241,22 +241,22 @@ def get_crypto_key_version(crypto_key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudkms/v1:getCryptoKeyVersion', __args__, opts=opts, typ=GetCryptoKeyVersionResult).value
 
     return AwaitableGetCryptoKeyVersionResult(
-        algorithm=__ret__.algorithm,
-        attestation=__ret__.attestation,
-        create_time=__ret__.create_time,
-        destroy_event_time=__ret__.destroy_event_time,
-        destroy_time=__ret__.destroy_time,
-        external_destruction_failure_reason=__ret__.external_destruction_failure_reason,
-        external_protection_level_options=__ret__.external_protection_level_options,
-        generate_time=__ret__.generate_time,
-        generation_failure_reason=__ret__.generation_failure_reason,
-        import_failure_reason=__ret__.import_failure_reason,
-        import_job=__ret__.import_job,
-        import_time=__ret__.import_time,
-        name=__ret__.name,
-        protection_level=__ret__.protection_level,
-        reimport_eligible=__ret__.reimport_eligible,
-        state=__ret__.state)
+        algorithm=pulumi.get(__ret__, 'algorithm'),
+        attestation=pulumi.get(__ret__, 'attestation'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        destroy_event_time=pulumi.get(__ret__, 'destroy_event_time'),
+        destroy_time=pulumi.get(__ret__, 'destroy_time'),
+        external_destruction_failure_reason=pulumi.get(__ret__, 'external_destruction_failure_reason'),
+        external_protection_level_options=pulumi.get(__ret__, 'external_protection_level_options'),
+        generate_time=pulumi.get(__ret__, 'generate_time'),
+        generation_failure_reason=pulumi.get(__ret__, 'generation_failure_reason'),
+        import_failure_reason=pulumi.get(__ret__, 'import_failure_reason'),
+        import_job=pulumi.get(__ret__, 'import_job'),
+        import_time=pulumi.get(__ret__, 'import_time'),
+        name=pulumi.get(__ret__, 'name'),
+        protection_level=pulumi.get(__ret__, 'protection_level'),
+        reimport_eligible=pulumi.get(__ret__, 'reimport_eligible'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_crypto_key_version)

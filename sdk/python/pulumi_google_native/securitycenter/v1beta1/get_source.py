@@ -78,9 +78,9 @@ def get_source(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1beta1:getSource', __args__, opts=opts, typ=GetSourceResult).value
 
     return AwaitableGetSourceResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_source)

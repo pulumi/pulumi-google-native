@@ -247,23 +247,23 @@ def get_api_product(apiproduct_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getApiProduct', __args__, opts=opts, typ=GetApiProductResult).value
 
     return AwaitableGetApiProductResult(
-        api_resources=__ret__.api_resources,
-        approval_type=__ret__.approval_type,
-        attributes=__ret__.attributes,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        environments=__ret__.environments,
-        graphql_operation_group=__ret__.graphql_operation_group,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        operation_group=__ret__.operation_group,
-        proxies=__ret__.proxies,
-        quota=__ret__.quota,
-        quota_counter_scope=__ret__.quota_counter_scope,
-        quota_interval=__ret__.quota_interval,
-        quota_time_unit=__ret__.quota_time_unit,
-        scopes=__ret__.scopes)
+        api_resources=pulumi.get(__ret__, 'api_resources'),
+        approval_type=pulumi.get(__ret__, 'approval_type'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        environments=pulumi.get(__ret__, 'environments'),
+        graphql_operation_group=pulumi.get(__ret__, 'graphql_operation_group'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        operation_group=pulumi.get(__ret__, 'operation_group'),
+        proxies=pulumi.get(__ret__, 'proxies'),
+        quota=pulumi.get(__ret__, 'quota'),
+        quota_counter_scope=pulumi.get(__ret__, 'quota_counter_scope'),
+        quota_interval=pulumi.get(__ret__, 'quota_interval'),
+        quota_time_unit=pulumi.get(__ret__, 'quota_time_unit'),
+        scopes=pulumi.get(__ret__, 'scopes'))
 
 
 @_utilities.lift_output_func(get_api_product)

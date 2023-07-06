@@ -169,16 +169,16 @@ def get_cutover_job(cutover_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getCutoverJob', __args__, opts=opts, typ=GetCutoverJobResult).value
 
     return AwaitableGetCutoverJobResult(
-        compute_engine_target_details=__ret__.compute_engine_target_details,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        error=__ret__.error,
-        name=__ret__.name,
-        progress_percent=__ret__.progress_percent,
-        state=__ret__.state,
-        state_message=__ret__.state_message,
-        state_time=__ret__.state_time,
-        steps=__ret__.steps)
+        compute_engine_target_details=pulumi.get(__ret__, 'compute_engine_target_details'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error=pulumi.get(__ret__, 'error'),
+        name=pulumi.get(__ret__, 'name'),
+        progress_percent=pulumi.get(__ret__, 'progress_percent'),
+        state=pulumi.get(__ret__, 'state'),
+        state_message=pulumi.get(__ret__, 'state_message'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        steps=pulumi.get(__ret__, 'steps'))
 
 
 @_utilities.lift_output_func(get_cutover_job)

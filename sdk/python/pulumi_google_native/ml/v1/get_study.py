@@ -105,11 +105,11 @@ def get_study(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:ml/v1:getStudy', __args__, opts=opts, typ=GetStudyResult).value
 
     return AwaitableGetStudyResult(
-        create_time=__ret__.create_time,
-        inactive_reason=__ret__.inactive_reason,
-        name=__ret__.name,
-        state=__ret__.state,
-        study_config=__ret__.study_config)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        inactive_reason=pulumi.get(__ret__, 'inactive_reason'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        study_config=pulumi.get(__ret__, 'study_config'))
 
 
 @_utilities.lift_output_func(get_study)

@@ -129,13 +129,13 @@ def get_source(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getSource', __args__, opts=opts, typ=GetSourceResult).value
 
     return AwaitableGetSourceResult(
-        aws=__ret__.aws,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        update_time=__ret__.update_time,
-        vmware=__ret__.vmware)
+        aws=pulumi.get(__ret__, 'aws'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        vmware=pulumi.get(__ret__, 'vmware'))
 
 
 @_utilities.lift_output_func(get_source)

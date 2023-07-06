@@ -237,22 +237,22 @@ def get_backup_run(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1beta4:getBackupRun', __args__, opts=opts, typ=GetBackupRunResult).value
 
     return AwaitableGetBackupRunResult(
-        backup_kind=__ret__.backup_kind,
-        description=__ret__.description,
-        disk_encryption_configuration=__ret__.disk_encryption_configuration,
-        disk_encryption_status=__ret__.disk_encryption_status,
-        end_time=__ret__.end_time,
-        enqueued_time=__ret__.enqueued_time,
-        error=__ret__.error,
-        instance=__ret__.instance,
-        kind=__ret__.kind,
-        location=__ret__.location,
-        self_link=__ret__.self_link,
-        start_time=__ret__.start_time,
-        status=__ret__.status,
-        time_zone=__ret__.time_zone,
-        type=__ret__.type,
-        window_start_time=__ret__.window_start_time)
+        backup_kind=pulumi.get(__ret__, 'backup_kind'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_encryption_configuration=pulumi.get(__ret__, 'disk_encryption_configuration'),
+        disk_encryption_status=pulumi.get(__ret__, 'disk_encryption_status'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        enqueued_time=pulumi.get(__ret__, 'enqueued_time'),
+        error=pulumi.get(__ret__, 'error'),
+        instance=pulumi.get(__ret__, 'instance'),
+        kind=pulumi.get(__ret__, 'kind'),
+        location=pulumi.get(__ret__, 'location'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        status=pulumi.get(__ret__, 'status'),
+        time_zone=pulumi.get(__ret__, 'time_zone'),
+        type=pulumi.get(__ret__, 'type'),
+        window_start_time=pulumi.get(__ret__, 'window_start_time'))
 
 
 @_utilities.lift_output_func(get_backup_run)

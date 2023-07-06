@@ -205,19 +205,19 @@ def get_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getApp', __args__, opts=opts, typ=GetAppResult).value
 
     return AwaitableGetAppResult(
-        api_products=__ret__.api_products,
-        app_family=__ret__.app_family,
-        app_id=__ret__.app_id,
-        attributes=__ret__.attributes,
-        callback_url=__ret__.callback_url,
-        created_at=__ret__.created_at,
-        credentials=__ret__.credentials,
-        developer_id=__ret__.developer_id,
-        key_expires_in=__ret__.key_expires_in,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        scopes=__ret__.scopes,
-        status=__ret__.status)
+        api_products=pulumi.get(__ret__, 'api_products'),
+        app_family=pulumi.get(__ret__, 'app_family'),
+        app_id=pulumi.get(__ret__, 'app_id'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        callback_url=pulumi.get(__ret__, 'callback_url'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        credentials=pulumi.get(__ret__, 'credentials'),
+        developer_id=pulumi.get(__ret__, 'developer_id'),
+        key_expires_in=pulumi.get(__ret__, 'key_expires_in'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        scopes=pulumi.get(__ret__, 'scopes'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_app)

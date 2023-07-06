@@ -549,6 +549,9 @@ class BuildOccurrenceArgs:
         """
         Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         """
+        warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
+        pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
+
         return pulumi.get(self, "intoto_provenance")
 
     @intoto_provenance.setter
@@ -3420,6 +3423,9 @@ class LocationArgs:
         """
         Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         """
+        warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""", DeprecationWarning)
+        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""")
+
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
@@ -3444,6 +3450,9 @@ class LocationArgs:
         """
         Deprecated. The version installed at this location.
         """
+        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
+
         return pulumi.get(self, "version")
 
     @version.setter
@@ -3875,6 +3884,9 @@ class PackageNoteArgs:
         """
         Deprecated. The various channels by which a package is distributed.
         """
+        warnings.warn("""Deprecated. The various channels by which a package is distributed.""", DeprecationWarning)
+        pulumi.log.warn("""distribution is deprecated: Deprecated. The various channels by which a package is distributed.""")
+
         return pulumi.get(self, "distribution")
 
     @distribution.setter

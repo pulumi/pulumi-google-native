@@ -90,10 +90,10 @@ def get_ingress_rule(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getIngressRule', __args__, opts=opts, typ=GetIngressRuleResult).value
 
     return AwaitableGetIngressRuleResult(
-        action=__ret__.action,
-        description=__ret__.description,
-        priority=__ret__.priority,
-        source_range=__ret__.source_range)
+        action=pulumi.get(__ret__, 'action'),
+        description=pulumi.get(__ret__, 'description'),
+        priority=pulumi.get(__ret__, 'priority'),
+        source_range=pulumi.get(__ret__, 'source_range'))
 
 
 @_utilities.lift_output_func(get_ingress_rule)

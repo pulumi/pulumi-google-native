@@ -143,14 +143,14 @@ def get_test_case(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getTestCase', __args__, opts=opts, typ=GetTestCaseResult).value
 
     return AwaitableGetTestCaseResult(
-        creation_time=__ret__.creation_time,
-        display_name=__ret__.display_name,
-        last_test_result=__ret__.last_test_result,
-        name=__ret__.name,
-        notes=__ret__.notes,
-        tags=__ret__.tags,
-        test_case_conversation_turns=__ret__.test_case_conversation_turns,
-        test_config=__ret__.test_config)
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        last_test_result=pulumi.get(__ret__, 'last_test_result'),
+        name=pulumi.get(__ret__, 'name'),
+        notes=pulumi.get(__ret__, 'notes'),
+        tags=pulumi.get(__ret__, 'tags'),
+        test_case_conversation_turns=pulumi.get(__ret__, 'test_case_conversation_turns'),
+        test_config=pulumi.get(__ret__, 'test_config'))
 
 
 @_utilities.lift_output_func(get_test_case)

@@ -104,11 +104,11 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasedatabase/v1beta:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        database_url=__ret__.database_url,
-        name=__ret__.name,
-        project=__ret__.project,
-        state=__ret__.state,
-        type=__ret__.type)
+        database_url=pulumi.get(__ret__, 'database_url'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_instance)

@@ -1914,6 +1914,9 @@ class DiscoveredArgs:
         """
         The last time continuous analysis was done for this resource. Deprecated, do not use.
         """
+        warnings.warn("""The last time continuous analysis was done for this resource. Deprecated, do not use.""", DeprecationWarning)
+        pulumi.log.warn("""last_analysis_time is deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.""")
+
         return pulumi.get(self, "last_analysis_time")
 
     @last_analysis_time.setter
@@ -3675,6 +3678,9 @@ class LocationArgs:
         """
         Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
+        warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""", DeprecationWarning)
+        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
+
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
@@ -3699,6 +3705,9 @@ class LocationArgs:
         """
         Deprecated. The version installed at this location.
         """
+        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
+
         return pulumi.get(self, "version")
 
     @version.setter
@@ -4141,6 +4150,9 @@ class PackageIssueArgs:
         """
         Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
         """
+        warnings.warn("""Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.""", DeprecationWarning)
+        pulumi.log.warn("""severity_name is deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.""")
+
         return pulumi.get(self, "severity_name")
 
     @severity_name.setter
@@ -4796,6 +4808,9 @@ class ResourceArgs:
         """
         Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
         """
+        warnings.warn("""Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.""", DeprecationWarning)
+        pulumi.log.warn("""content_hash is deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.""")
+
         return pulumi.get(self, "content_hash")
 
     @content_hash.setter
@@ -4808,6 +4823,9 @@ class ResourceArgs:
         """
         Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
         """
+        warnings.warn("""Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - \"Debian\".""")
+
         return pulumi.get(self, "name")
 
     @name.setter

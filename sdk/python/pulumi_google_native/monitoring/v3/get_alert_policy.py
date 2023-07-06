@@ -187,18 +187,18 @@ def get_alert_policy(alert_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getAlertPolicy', __args__, opts=opts, typ=GetAlertPolicyResult).value
 
     return AwaitableGetAlertPolicyResult(
-        alert_strategy=__ret__.alert_strategy,
-        combiner=__ret__.combiner,
-        conditions=__ret__.conditions,
-        creation_record=__ret__.creation_record,
-        display_name=__ret__.display_name,
-        documentation=__ret__.documentation,
-        enabled=__ret__.enabled,
-        mutation_record=__ret__.mutation_record,
-        name=__ret__.name,
-        notification_channels=__ret__.notification_channels,
-        user_labels=__ret__.user_labels,
-        validity=__ret__.validity)
+        alert_strategy=pulumi.get(__ret__, 'alert_strategy'),
+        combiner=pulumi.get(__ret__, 'combiner'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        creation_record=pulumi.get(__ret__, 'creation_record'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        documentation=pulumi.get(__ret__, 'documentation'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        mutation_record=pulumi.get(__ret__, 'mutation_record'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_channels=pulumi.get(__ret__, 'notification_channels'),
+        user_labels=pulumi.get(__ret__, 'user_labels'),
+        validity=pulumi.get(__ret__, 'validity'))
 
 
 @_utilities.lift_output_func(get_alert_policy)

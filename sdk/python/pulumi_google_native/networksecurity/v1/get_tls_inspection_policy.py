@@ -104,11 +104,11 @@ def get_tls_inspection_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getTlsInspectionPolicy', __args__, opts=opts, typ=GetTlsInspectionPolicyResult).value
 
     return AwaitableGetTlsInspectionPolicyResult(
-        ca_pool=__ret__.ca_pool,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        ca_pool=pulumi.get(__ret__, 'ca_pool'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_tls_inspection_policy)

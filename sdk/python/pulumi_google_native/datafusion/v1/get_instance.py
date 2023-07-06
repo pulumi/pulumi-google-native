@@ -88,10 +88,6 @@ class GetInstanceResult:
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
-        if service_account is not None:
-            warnings.warn("""Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""", DeprecationWarning)
-            pulumi.log.warn("""service_account is deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""")
-
         pulumi.set(__self__, "service_account", service_account)
         if service_endpoint and not isinstance(service_endpoint, str):
             raise TypeError("Expected argument 'service_endpoint' to be a str")
@@ -300,6 +296,9 @@ class GetInstanceResult:
         """
         Deprecated. Use tenant_project_id instead to extract the tenant project ID.
         """
+        warnings.warn("""Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""", DeprecationWarning)
+        pulumi.log.warn("""service_account is deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""")
+
         return pulumi.get(self, "service_account")
 
     @property
@@ -421,37 +420,37 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datafusion/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        accelerators=__ret__.accelerators,
-        api_endpoint=__ret__.api_endpoint,
-        available_version=__ret__.available_version,
-        create_time=__ret__.create_time,
-        crypto_key_config=__ret__.crypto_key_config,
-        dataproc_service_account=__ret__.dataproc_service_account,
-        description=__ret__.description,
-        disabled_reason=__ret__.disabled_reason,
-        display_name=__ret__.display_name,
-        enable_rbac=__ret__.enable_rbac,
-        enable_stackdriver_logging=__ret__.enable_stackdriver_logging,
-        enable_stackdriver_monitoring=__ret__.enable_stackdriver_monitoring,
-        enable_zone_separation=__ret__.enable_zone_separation,
-        event_publish_config=__ret__.event_publish_config,
-        gcs_bucket=__ret__.gcs_bucket,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network_config=__ret__.network_config,
-        options=__ret__.options,
-        p4_service_account=__ret__.p4_service_account,
-        private_instance=__ret__.private_instance,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        service_account=__ret__.service_account,
-        service_endpoint=__ret__.service_endpoint,
-        state=__ret__.state,
-        state_message=__ret__.state_message,
-        tenant_project_id=__ret__.tenant_project_id,
-        type=__ret__.type,
-        update_time=__ret__.update_time,
-        version=__ret__.version,
-        zone=__ret__.zone)
+        accelerators=pulumi.get(__ret__, 'accelerators'),
+        api_endpoint=pulumi.get(__ret__, 'api_endpoint'),
+        available_version=pulumi.get(__ret__, 'available_version'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        crypto_key_config=pulumi.get(__ret__, 'crypto_key_config'),
+        dataproc_service_account=pulumi.get(__ret__, 'dataproc_service_account'),
+        description=pulumi.get(__ret__, 'description'),
+        disabled_reason=pulumi.get(__ret__, 'disabled_reason'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_rbac=pulumi.get(__ret__, 'enable_rbac'),
+        enable_stackdriver_logging=pulumi.get(__ret__, 'enable_stackdriver_logging'),
+        enable_stackdriver_monitoring=pulumi.get(__ret__, 'enable_stackdriver_monitoring'),
+        enable_zone_separation=pulumi.get(__ret__, 'enable_zone_separation'),
+        event_publish_config=pulumi.get(__ret__, 'event_publish_config'),
+        gcs_bucket=pulumi.get(__ret__, 'gcs_bucket'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network_config=pulumi.get(__ret__, 'network_config'),
+        options=pulumi.get(__ret__, 'options'),
+        p4_service_account=pulumi.get(__ret__, 'p4_service_account'),
+        private_instance=pulumi.get(__ret__, 'private_instance'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        service_endpoint=pulumi.get(__ret__, 'service_endpoint'),
+        state=pulumi.get(__ret__, 'state'),
+        state_message=pulumi.get(__ret__, 'state_message'),
+        tenant_project_id=pulumi.get(__ret__, 'tenant_project_id'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version=pulumi.get(__ret__, 'version'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance)

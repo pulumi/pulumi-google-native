@@ -21,17 +21,9 @@ class GetTargetHttpsProxyResult:
     def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         if authentication and not isinstance(authentication, str):
             raise TypeError("Expected argument 'authentication' to be a str")
-        if authentication is not None:
-            warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
-            pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
-
         pulumi.set(__self__, "authentication", authentication)
         if authorization and not isinstance(authorization, str):
             raise TypeError("Expected argument 'authorization' to be a str")
-        if authorization is not None:
-            warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
-            pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
-
         pulumi.set(__self__, "authorization", authorization)
         if authorization_policy and not isinstance(authorization_policy, str):
             raise TypeError("Expected argument 'authorization_policy' to be a str")
@@ -88,6 +80,9 @@ class GetTargetHttpsProxyResult:
         """
         [Deprecated] Use serverTlsPolicy instead.
         """
+        warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
+        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
+
         return pulumi.get(self, "authentication")
 
     @property
@@ -96,6 +91,9 @@ class GetTargetHttpsProxyResult:
         """
         [Deprecated] Use authorizationPolicy instead.
         """
+        warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
+        pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
+
         return pulumi.get(self, "authorization")
 
     @property
@@ -266,24 +264,24 @@ def get_target_https_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getTargetHttpsProxy', __args__, opts=opts, typ=GetTargetHttpsProxyResult).value
 
     return AwaitableGetTargetHttpsProxyResult(
-        authentication=__ret__.authentication,
-        authorization=__ret__.authorization,
-        authorization_policy=__ret__.authorization_policy,
-        certificate_map=__ret__.certificate_map,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        http_filters=__ret__.http_filters,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        proxy_bind=__ret__.proxy_bind,
-        quic_override=__ret__.quic_override,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        server_tls_policy=__ret__.server_tls_policy,
-        ssl_certificates=__ret__.ssl_certificates,
-        ssl_policy=__ret__.ssl_policy,
-        url_map=__ret__.url_map)
+        authentication=pulumi.get(__ret__, 'authentication'),
+        authorization=pulumi.get(__ret__, 'authorization'),
+        authorization_policy=pulumi.get(__ret__, 'authorization_policy'),
+        certificate_map=pulumi.get(__ret__, 'certificate_map'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        http_filters=pulumi.get(__ret__, 'http_filters'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_bind=pulumi.get(__ret__, 'proxy_bind'),
+        quic_override=pulumi.get(__ret__, 'quic_override'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        server_tls_policy=pulumi.get(__ret__, 'server_tls_policy'),
+        ssl_certificates=pulumi.get(__ret__, 'ssl_certificates'),
+        ssl_policy=pulumi.get(__ret__, 'ssl_policy'),
+        url_map=pulumi.get(__ret__, 'url_map'))
 
 
 @_utilities.lift_output_func(get_target_https_proxy)

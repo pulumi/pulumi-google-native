@@ -176,17 +176,17 @@ def get_region_health_check_service(health_check_service: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRegionHealthCheckService', __args__, opts=opts, typ=GetRegionHealthCheckServiceResult).value
 
     return AwaitableGetRegionHealthCheckServiceResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        health_checks=__ret__.health_checks,
-        health_status_aggregation_policy=__ret__.health_status_aggregation_policy,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        network_endpoint_groups=__ret__.network_endpoint_groups,
-        notification_endpoints=__ret__.notification_endpoints,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        health_checks=pulumi.get(__ret__, 'health_checks'),
+        health_status_aggregation_policy=pulumi.get(__ret__, 'health_status_aggregation_policy'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        network_endpoint_groups=pulumi.get(__ret__, 'network_endpoint_groups'),
+        notification_endpoints=pulumi.get(__ret__, 'notification_endpoints'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_region_health_check_service)

@@ -128,13 +128,13 @@ def get_data_exchange(data_exchange_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:analyticshub/v1:getDataExchange', __args__, opts=opts, typ=GetDataExchangeResult).value
 
     return AwaitableGetDataExchangeResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        documentation=__ret__.documentation,
-        icon=__ret__.icon,
-        listing_count=__ret__.listing_count,
-        name=__ret__.name,
-        primary_contact=__ret__.primary_contact)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        documentation=pulumi.get(__ret__, 'documentation'),
+        icon=pulumi.get(__ret__, 'icon'),
+        listing_count=pulumi.get(__ret__, 'listing_count'),
+        name=pulumi.get(__ret__, 'name'),
+        primary_contact=pulumi.get(__ret__, 'primary_contact'))
 
 
 @_utilities.lift_output_func(get_data_exchange)

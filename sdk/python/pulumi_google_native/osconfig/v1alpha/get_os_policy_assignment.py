@@ -201,19 +201,19 @@ def get_os_policy_assignment(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:osconfig/v1alpha:getOsPolicyAssignment', __args__, opts=opts, typ=GetOsPolicyAssignmentResult).value
 
     return AwaitableGetOsPolicyAssignmentResult(
-        baseline=__ret__.baseline,
-        deleted=__ret__.deleted,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        instance_filter=__ret__.instance_filter,
-        name=__ret__.name,
-        os_policies=__ret__.os_policies,
-        reconciling=__ret__.reconciling,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        rollout=__ret__.rollout,
-        rollout_state=__ret__.rollout_state,
-        uid=__ret__.uid)
+        baseline=pulumi.get(__ret__, 'baseline'),
+        deleted=pulumi.get(__ret__, 'deleted'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        instance_filter=pulumi.get(__ret__, 'instance_filter'),
+        name=pulumi.get(__ret__, 'name'),
+        os_policies=pulumi.get(__ret__, 'os_policies'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        rollout=pulumi.get(__ret__, 'rollout'),
+        rollout_state=pulumi.get(__ret__, 'rollout_state'),
+        uid=pulumi.get(__ret__, 'uid'))
 
 
 @_utilities.lift_output_func(get_os_policy_assignment)

@@ -55,10 +55,6 @@ class GetIntentResult:
         pulumi.set(__self__, "ml_disabled", ml_disabled)
         if ml_enabled and not isinstance(ml_enabled, bool):
             raise TypeError("Expected argument 'ml_enabled' to be a bool")
-        if ml_enabled is not None:
-            warnings.warn("""Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""", DeprecationWarning)
-            pulumi.log.warn("""ml_enabled is deprecated: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""")
-
         pulumi.set(__self__, "ml_enabled", ml_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -182,6 +178,9 @@ class GetIntentResult:
         """
         Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
         """
+        warnings.warn("""Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""", DeprecationWarning)
+        pulumi.log.warn("""ml_enabled is deprecated: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""")
+
         return pulumi.get(self, "ml_enabled")
 
     @property
@@ -305,27 +304,27 @@ def get_intent(intent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2beta1:getIntent', __args__, opts=opts, typ=GetIntentResult).value
 
     return AwaitableGetIntentResult(
-        action=__ret__.action,
-        default_response_platforms=__ret__.default_response_platforms,
-        display_name=__ret__.display_name,
-        end_interaction=__ret__.end_interaction,
-        events=__ret__.events,
-        followup_intent_info=__ret__.followup_intent_info,
-        input_context_names=__ret__.input_context_names,
-        is_fallback=__ret__.is_fallback,
-        live_agent_handoff=__ret__.live_agent_handoff,
-        messages=__ret__.messages,
-        ml_disabled=__ret__.ml_disabled,
-        ml_enabled=__ret__.ml_enabled,
-        name=__ret__.name,
-        output_contexts=__ret__.output_contexts,
-        parameters=__ret__.parameters,
-        parent_followup_intent_name=__ret__.parent_followup_intent_name,
-        priority=__ret__.priority,
-        reset_contexts=__ret__.reset_contexts,
-        root_followup_intent_name=__ret__.root_followup_intent_name,
-        training_phrases=__ret__.training_phrases,
-        webhook_state=__ret__.webhook_state)
+        action=pulumi.get(__ret__, 'action'),
+        default_response_platforms=pulumi.get(__ret__, 'default_response_platforms'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        end_interaction=pulumi.get(__ret__, 'end_interaction'),
+        events=pulumi.get(__ret__, 'events'),
+        followup_intent_info=pulumi.get(__ret__, 'followup_intent_info'),
+        input_context_names=pulumi.get(__ret__, 'input_context_names'),
+        is_fallback=pulumi.get(__ret__, 'is_fallback'),
+        live_agent_handoff=pulumi.get(__ret__, 'live_agent_handoff'),
+        messages=pulumi.get(__ret__, 'messages'),
+        ml_disabled=pulumi.get(__ret__, 'ml_disabled'),
+        ml_enabled=pulumi.get(__ret__, 'ml_enabled'),
+        name=pulumi.get(__ret__, 'name'),
+        output_contexts=pulumi.get(__ret__, 'output_contexts'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        parent_followup_intent_name=pulumi.get(__ret__, 'parent_followup_intent_name'),
+        priority=pulumi.get(__ret__, 'priority'),
+        reset_contexts=pulumi.get(__ret__, 'reset_contexts'),
+        root_followup_intent_name=pulumi.get(__ret__, 'root_followup_intent_name'),
+        training_phrases=pulumi.get(__ret__, 'training_phrases'),
+        webhook_state=pulumi.get(__ret__, 'webhook_state'))
 
 
 @_utilities.lift_output_func(get_intent)

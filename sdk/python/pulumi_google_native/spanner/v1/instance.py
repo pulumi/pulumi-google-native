@@ -106,6 +106,9 @@ class InstanceArgs:
         """
         Deprecated. This field is not populated.
         """
+        warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+        pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+
         return pulumi.get(self, "endpoint_uris")
 
     @endpoint_uris.setter
@@ -363,6 +366,9 @@ class Instance(pulumi.CustomResource):
         """
         Deprecated. This field is not populated.
         """
+        warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+        pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+
         return pulumi.get(self, "endpoint_uris")
 
     @property

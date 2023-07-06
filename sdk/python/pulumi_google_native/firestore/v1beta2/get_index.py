@@ -95,10 +95,10 @@ def get_index(collection_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firestore/v1beta2:getIndex', __args__, opts=opts, typ=GetIndexResult).value
 
     return AwaitableGetIndexResult(
-        fields=__ret__.fields,
-        name=__ret__.name,
-        query_scope=__ret__.query_scope,
-        state=__ret__.state)
+        fields=pulumi.get(__ret__, 'fields'),
+        name=pulumi.get(__ret__, 'name'),
+        query_scope=pulumi.get(__ret__, 'query_scope'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_index)

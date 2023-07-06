@@ -102,11 +102,11 @@ def get_site(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasehosting/v1beta1:getSite', __args__, opts=opts, typ=GetSiteResult).value
 
     return AwaitableGetSiteResult(
-        app_id=__ret__.app_id,
-        default_url=__ret__.default_url,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        type=__ret__.type)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        default_url=pulumi.get(__ret__, 'default_url'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_site)

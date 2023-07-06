@@ -153,15 +153,15 @@ def get_execution(execution_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:notebooks/v1:getExecution', __args__, opts=opts, typ=GetExecutionResult).value
 
     return AwaitableGetExecutionResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        execution_template=__ret__.execution_template,
-        job_uri=__ret__.job_uri,
-        name=__ret__.name,
-        output_notebook_file=__ret__.output_notebook_file,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        execution_template=pulumi.get(__ret__, 'execution_template'),
+        job_uri=pulumi.get(__ret__, 'job_uri'),
+        name=pulumi.get(__ret__, 'name'),
+        output_notebook_file=pulumi.get(__ret__, 'output_notebook_file'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_execution)

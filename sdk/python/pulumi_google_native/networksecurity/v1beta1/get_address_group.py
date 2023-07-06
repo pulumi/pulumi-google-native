@@ -152,15 +152,15 @@ def get_address_group(address_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1beta1:getAddressGroup', __args__, opts=opts, typ=GetAddressGroupResult).value
 
     return AwaitableGetAddressGroupResult(
-        capacity=__ret__.capacity,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        items=__ret__.items,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        self_link=__ret__.self_link,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        capacity=pulumi.get(__ret__, 'capacity'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        items=pulumi.get(__ret__, 'items'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_address_group)

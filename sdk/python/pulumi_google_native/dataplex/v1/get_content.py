@@ -169,16 +169,16 @@ def get_content(content_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getContent', __args__, opts=opts, typ=GetContentResult).value
 
     return AwaitableGetContentResult(
-        create_time=__ret__.create_time,
-        data_text=__ret__.data_text,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        notebook=__ret__.notebook,
-        path=__ret__.path,
-        sql_script=__ret__.sql_script,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data_text=pulumi.get(__ret__, 'data_text'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        notebook=pulumi.get(__ret__, 'notebook'),
+        path=pulumi.get(__ret__, 'path'),
+        sql_script=pulumi.get(__ret__, 'sql_script'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_content)

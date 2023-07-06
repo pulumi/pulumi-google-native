@@ -107,11 +107,11 @@ def get_game_server_deployment_iam_policy(game_server_deployment_id: Optional[st
     __ret__ = pulumi.runtime.invoke('google-native:gameservices/v1beta:getGameServerDeploymentIamPolicy', __args__, opts=opts, typ=GetGameServerDeploymentIamPolicyResult).value
 
     return AwaitableGetGameServerDeploymentIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        rules=__ret__.rules,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        rules=pulumi.get(__ret__, 'rules'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_game_server_deployment_iam_policy)

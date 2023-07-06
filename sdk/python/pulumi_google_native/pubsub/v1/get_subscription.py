@@ -259,24 +259,24 @@ def get_subscription(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        ack_deadline_seconds=__ret__.ack_deadline_seconds,
-        bigquery_config=__ret__.bigquery_config,
-        cloud_storage_config=__ret__.cloud_storage_config,
-        dead_letter_policy=__ret__.dead_letter_policy,
-        detached=__ret__.detached,
-        enable_exactly_once_delivery=__ret__.enable_exactly_once_delivery,
-        enable_message_ordering=__ret__.enable_message_ordering,
-        expiration_policy=__ret__.expiration_policy,
-        filter=__ret__.filter,
-        labels=__ret__.labels,
-        message_retention_duration=__ret__.message_retention_duration,
-        name=__ret__.name,
-        push_config=__ret__.push_config,
-        retain_acked_messages=__ret__.retain_acked_messages,
-        retry_policy=__ret__.retry_policy,
-        state=__ret__.state,
-        topic=__ret__.topic,
-        topic_message_retention_duration=__ret__.topic_message_retention_duration)
+        ack_deadline_seconds=pulumi.get(__ret__, 'ack_deadline_seconds'),
+        bigquery_config=pulumi.get(__ret__, 'bigquery_config'),
+        cloud_storage_config=pulumi.get(__ret__, 'cloud_storage_config'),
+        dead_letter_policy=pulumi.get(__ret__, 'dead_letter_policy'),
+        detached=pulumi.get(__ret__, 'detached'),
+        enable_exactly_once_delivery=pulumi.get(__ret__, 'enable_exactly_once_delivery'),
+        enable_message_ordering=pulumi.get(__ret__, 'enable_message_ordering'),
+        expiration_policy=pulumi.get(__ret__, 'expiration_policy'),
+        filter=pulumi.get(__ret__, 'filter'),
+        labels=pulumi.get(__ret__, 'labels'),
+        message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
+        name=pulumi.get(__ret__, 'name'),
+        push_config=pulumi.get(__ret__, 'push_config'),
+        retain_acked_messages=pulumi.get(__ret__, 'retain_acked_messages'),
+        retry_policy=pulumi.get(__ret__, 'retry_policy'),
+        state=pulumi.get(__ret__, 'state'),
+        topic=pulumi.get(__ret__, 'topic'),
+        topic_message_retention_duration=pulumi.get(__ret__, 'topic_message_retention_duration'))
 
 
 @_utilities.lift_output_func(get_subscription)

@@ -133,13 +133,13 @@ def get_flow(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getFlow', __args__, opts=opts, typ=GetFlowResult).value
 
     return AwaitableGetFlowResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        event_handlers=__ret__.event_handlers,
-        name=__ret__.name,
-        nlu_settings=__ret__.nlu_settings,
-        transition_route_groups=__ret__.transition_route_groups,
-        transition_routes=__ret__.transition_routes)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        event_handlers=pulumi.get(__ret__, 'event_handlers'),
+        name=pulumi.get(__ret__, 'name'),
+        nlu_settings=pulumi.get(__ret__, 'nlu_settings'),
+        transition_route_groups=pulumi.get(__ret__, 'transition_route_groups'),
+        transition_routes=pulumi.get(__ret__, 'transition_routes'))
 
 
 @_utilities.lift_output_func(get_flow)

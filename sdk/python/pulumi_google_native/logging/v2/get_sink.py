@@ -49,10 +49,6 @@ class GetSinkResult:
         pulumi.set(__self__, "name", name)
         if output_version_format and not isinstance(output_version_format, str):
             raise TypeError("Expected argument 'output_version_format' to be a str")
-        if output_version_format is not None:
-            warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
-            pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
-
         pulumi.set(__self__, "output_version_format", output_version_format)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
@@ -139,6 +135,9 @@ class GetSinkResult:
         """
         Deprecated. This field is unused.
         """
+        warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+        pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+
         return pulumi.get(self, "output_version_format")
 
     @property
@@ -191,18 +190,18 @@ def get_sink(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getSink', __args__, opts=opts, typ=GetSinkResult).value
 
     return AwaitableGetSinkResult(
-        bigquery_options=__ret__.bigquery_options,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        destination=__ret__.destination,
-        disabled=__ret__.disabled,
-        exclusions=__ret__.exclusions,
-        filter=__ret__.filter,
-        include_children=__ret__.include_children,
-        name=__ret__.name,
-        output_version_format=__ret__.output_version_format,
-        update_time=__ret__.update_time,
-        writer_identity=__ret__.writer_identity)
+        bigquery_options=pulumi.get(__ret__, 'bigquery_options'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        destination=pulumi.get(__ret__, 'destination'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        exclusions=pulumi.get(__ret__, 'exclusions'),
+        filter=pulumi.get(__ret__, 'filter'),
+        include_children=pulumi.get(__ret__, 'include_children'),
+        name=pulumi.get(__ret__, 'name'),
+        output_version_format=pulumi.get(__ret__, 'output_version_format'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        writer_identity=pulumi.get(__ret__, 'writer_identity'))
 
 
 @_utilities.lift_output_func(get_sink)

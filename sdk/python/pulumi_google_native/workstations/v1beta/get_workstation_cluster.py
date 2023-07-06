@@ -237,22 +237,22 @@ def get_workstation_cluster(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workstations/v1beta:getWorkstationCluster', __args__, opts=opts, typ=GetWorkstationClusterResult).value
 
     return AwaitableGetWorkstationClusterResult(
-        annotations=__ret__.annotations,
-        conditions=__ret__.conditions,
-        control_plane_ip=__ret__.control_plane_ip,
-        create_time=__ret__.create_time,
-        degraded=__ret__.degraded,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        private_cluster_config=__ret__.private_cluster_config,
-        reconciling=__ret__.reconciling,
-        subnetwork=__ret__.subnetwork,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        control_plane_ip=pulumi.get(__ret__, 'control_plane_ip'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        degraded=pulumi.get(__ret__, 'degraded'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        private_cluster_config=pulumi.get(__ret__, 'private_cluster_config'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_workstation_cluster)

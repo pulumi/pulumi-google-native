@@ -120,12 +120,12 @@ def get_attribute_definition(attribute_definition_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getAttributeDefinition', __args__, opts=opts, typ=GetAttributeDefinitionResult).value
 
     return AwaitableGetAttributeDefinitionResult(
-        allowed_values=__ret__.allowed_values,
-        category=__ret__.category,
-        consent_default_values=__ret__.consent_default_values,
-        data_mapping_default_value=__ret__.data_mapping_default_value,
-        description=__ret__.description,
-        name=__ret__.name)
+        allowed_values=pulumi.get(__ret__, 'allowed_values'),
+        category=pulumi.get(__ret__, 'category'),
+        consent_default_values=pulumi.get(__ret__, 'consent_default_values'),
+        data_mapping_default_value=pulumi.get(__ret__, 'data_mapping_default_value'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_attribute_definition)

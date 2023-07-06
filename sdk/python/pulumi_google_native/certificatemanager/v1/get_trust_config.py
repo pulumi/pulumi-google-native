@@ -129,13 +129,13 @@ def get_trust_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getTrustConfig', __args__, opts=opts, typ=GetTrustConfigResult).value
 
     return AwaitableGetTrustConfigResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        trust_stores=__ret__.trust_stores,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        trust_stores=pulumi.get(__ret__, 'trust_stores'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_trust_config)

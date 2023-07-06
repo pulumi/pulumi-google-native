@@ -213,20 +213,20 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:artifactregistry/v1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        docker_config=__ret__.docker_config,
-        format=__ret__.format,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        maven_config=__ret__.maven_config,
-        mode=__ret__.mode,
-        name=__ret__.name,
-        remote_repository_config=__ret__.remote_repository_config,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        size_bytes=__ret__.size_bytes,
-        update_time=__ret__.update_time,
-        virtual_repository_config=__ret__.virtual_repository_config)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        docker_config=pulumi.get(__ret__, 'docker_config'),
+        format=pulumi.get(__ret__, 'format'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        maven_config=pulumi.get(__ret__, 'maven_config'),
+        mode=pulumi.get(__ret__, 'mode'),
+        name=pulumi.get(__ret__, 'name'),
+        remote_repository_config=pulumi.get(__ret__, 'remote_repository_config'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        virtual_repository_config=pulumi.get(__ret__, 'virtual_repository_config'))
 
 
 @_utilities.lift_output_func(get_repository)

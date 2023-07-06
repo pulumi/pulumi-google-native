@@ -117,12 +117,12 @@ def get_ekm_connection(ekm_connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudkms/v1:getEkmConnection', __args__, opts=opts, typ=GetEkmConnectionResult).value
 
     return AwaitableGetEkmConnectionResult(
-        create_time=__ret__.create_time,
-        crypto_space_path=__ret__.crypto_space_path,
-        etag=__ret__.etag,
-        key_management_mode=__ret__.key_management_mode,
-        name=__ret__.name,
-        service_resolvers=__ret__.service_resolvers)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        crypto_space_path=pulumi.get(__ret__, 'crypto_space_path'),
+        etag=pulumi.get(__ret__, 'etag'),
+        key_management_mode=pulumi.get(__ret__, 'key_management_mode'),
+        name=pulumi.get(__ret__, 'name'),
+        service_resolvers=pulumi.get(__ret__, 'service_resolvers'))
 
 
 @_utilities.lift_output_func(get_ekm_connection)

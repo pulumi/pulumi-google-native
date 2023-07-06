@@ -201,19 +201,19 @@ def get_region_ssl_certificate(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRegionSslCertificate', __args__, opts=opts, typ=GetRegionSslCertificateResult).value
 
     return AwaitableGetRegionSslCertificateResult(
-        certificate=__ret__.certificate,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        expire_time=__ret__.expire_time,
-        kind=__ret__.kind,
-        managed=__ret__.managed,
-        name=__ret__.name,
-        private_key=__ret__.private_key,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_managed=__ret__.self_managed,
-        subject_alternative_names=__ret__.subject_alternative_names,
-        type=__ret__.type)
+        certificate=pulumi.get(__ret__, 'certificate'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        kind=pulumi.get(__ret__, 'kind'),
+        managed=pulumi.get(__ret__, 'managed'),
+        name=pulumi.get(__ret__, 'name'),
+        private_key=pulumi.get(__ret__, 'private_key'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_managed=pulumi.get(__ret__, 'self_managed'),
+        subject_alternative_names=pulumi.get(__ret__, 'subject_alternative_names'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_region_ssl_certificate)

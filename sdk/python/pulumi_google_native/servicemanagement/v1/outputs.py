@@ -657,6 +657,9 @@ class BackendRuleResponse(dict):
         """
         Deprecated, do not use.
         """
+        warnings.warn("""Deprecated, do not use.""", DeprecationWarning)
+        pulumi.log.warn("""min_deadline is deprecated: Deprecated, do not use.""")
+
         return pulumi.get(self, "min_deadline")
 
     @property
@@ -1643,6 +1646,9 @@ class EndpointResponse(dict):
         """
         Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
         """
+        warnings.warn("""Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.""", DeprecationWarning)
+        pulumi.log.warn("""aliases is deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.""")
+
         return pulumi.get(self, "aliases")
 
     @property
@@ -2882,6 +2888,9 @@ class MetricDescriptorMetadataResponse(dict):
         """
         Deprecated. Must use the MetricDescriptor.launch_stage instead.
         """
+        warnings.warn("""Deprecated. Must use the MetricDescriptor.launch_stage instead.""", DeprecationWarning)
+        pulumi.log.warn("""launch_stage is deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.""")
+
         return pulumi.get(self, "launch_stage")
 
     @property

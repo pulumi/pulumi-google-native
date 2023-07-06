@@ -151,15 +151,15 @@ def get_data_source(datasource_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudsearch/v1:getDataSource', __args__, opts=opts, typ=GetDataSourceResult).value
 
     return AwaitableGetDataSourceResult(
-        disable_modifications=__ret__.disable_modifications,
-        disable_serving=__ret__.disable_serving,
-        display_name=__ret__.display_name,
-        indexing_service_accounts=__ret__.indexing_service_accounts,
-        items_visibility=__ret__.items_visibility,
-        name=__ret__.name,
-        operation_ids=__ret__.operation_ids,
-        return_thumbnail_urls=__ret__.return_thumbnail_urls,
-        short_name=__ret__.short_name)
+        disable_modifications=pulumi.get(__ret__, 'disable_modifications'),
+        disable_serving=pulumi.get(__ret__, 'disable_serving'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        indexing_service_accounts=pulumi.get(__ret__, 'indexing_service_accounts'),
+        items_visibility=pulumi.get(__ret__, 'items_visibility'),
+        name=pulumi.get(__ret__, 'name'),
+        operation_ids=pulumi.get(__ret__, 'operation_ids'),
+        return_thumbnail_urls=pulumi.get(__ret__, 'return_thumbnail_urls'),
+        short_name=pulumi.get(__ret__, 'short_name'))
 
 
 @_utilities.lift_output_func(get_data_source)

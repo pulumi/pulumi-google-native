@@ -131,13 +131,13 @@ def get_backup(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:metastore/v1alpha:getBackup', __args__, opts=opts, typ=GetBackupResult).value
 
     return AwaitableGetBackupResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        end_time=__ret__.end_time,
-        name=__ret__.name,
-        restoring_services=__ret__.restoring_services,
-        service_revision=__ret__.service_revision,
-        state=__ret__.state)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        name=pulumi.get(__ret__, 'name'),
+        restoring_services=pulumi.get(__ret__, 'restoring_services'),
+        service_revision=pulumi.get(__ret__, 'service_revision'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_backup)

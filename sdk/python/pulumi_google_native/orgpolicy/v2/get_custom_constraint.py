@@ -138,14 +138,14 @@ def get_custom_constraint(custom_constraint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:orgpolicy/v2:getCustomConstraint', __args__, opts=opts, typ=GetCustomConstraintResult).value
 
     return AwaitableGetCustomConstraintResult(
-        action_type=__ret__.action_type,
-        condition=__ret__.condition,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        method_types=__ret__.method_types,
-        name=__ret__.name,
-        resource_types=__ret__.resource_types,
-        update_time=__ret__.update_time)
+        action_type=pulumi.get(__ret__, 'action_type'),
+        condition=pulumi.get(__ret__, 'condition'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        method_types=pulumi.get(__ret__, 'method_types'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_types=pulumi.get(__ret__, 'resource_types'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_custom_constraint)

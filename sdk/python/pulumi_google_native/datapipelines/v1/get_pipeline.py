@@ -177,17 +177,17 @@ def get_pipeline(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datapipelines/v1:getPipeline', __args__, opts=opts, typ=GetPipelineResult).value
 
     return AwaitableGetPipelineResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        job_count=__ret__.job_count,
-        last_update_time=__ret__.last_update_time,
-        name=__ret__.name,
-        pipeline_sources=__ret__.pipeline_sources,
-        schedule_info=__ret__.schedule_info,
-        scheduler_service_account_email=__ret__.scheduler_service_account_email,
-        state=__ret__.state,
-        type=__ret__.type,
-        workload=__ret__.workload)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        job_count=pulumi.get(__ret__, 'job_count'),
+        last_update_time=pulumi.get(__ret__, 'last_update_time'),
+        name=pulumi.get(__ret__, 'name'),
+        pipeline_sources=pulumi.get(__ret__, 'pipeline_sources'),
+        schedule_info=pulumi.get(__ret__, 'schedule_info'),
+        scheduler_service_account_email=pulumi.get(__ret__, 'scheduler_service_account_email'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        workload=pulumi.get(__ret__, 'workload'))
 
 
 @_utilities.lift_output_func(get_pipeline)

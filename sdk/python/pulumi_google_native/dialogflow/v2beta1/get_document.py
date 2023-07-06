@@ -179,17 +179,17 @@ def get_document(document_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2beta1:getDocument', __args__, opts=opts, typ=GetDocumentResult).value
 
     return AwaitableGetDocumentResult(
-        content=__ret__.content,
-        content_uri=__ret__.content_uri,
-        display_name=__ret__.display_name,
-        enable_auto_reload=__ret__.enable_auto_reload,
-        knowledge_types=__ret__.knowledge_types,
-        latest_reload_status=__ret__.latest_reload_status,
-        metadata=__ret__.metadata,
-        mime_type=__ret__.mime_type,
-        name=__ret__.name,
-        raw_content=__ret__.raw_content,
-        state=__ret__.state)
+        content=pulumi.get(__ret__, 'content'),
+        content_uri=pulumi.get(__ret__, 'content_uri'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_auto_reload=pulumi.get(__ret__, 'enable_auto_reload'),
+        knowledge_types=pulumi.get(__ret__, 'knowledge_types'),
+        latest_reload_status=pulumi.get(__ret__, 'latest_reload_status'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        mime_type=pulumi.get(__ret__, 'mime_type'),
+        name=pulumi.get(__ret__, 'name'),
+        raw_content=pulumi.get(__ret__, 'raw_content'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_document)

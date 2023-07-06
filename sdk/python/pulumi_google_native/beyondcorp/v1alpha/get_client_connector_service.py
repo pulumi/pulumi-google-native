@@ -129,13 +129,13 @@ def get_client_connector_service(client_connector_service_id: Optional[str] = No
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1alpha:getClientConnectorService', __args__, opts=opts, typ=GetClientConnectorServiceResult).value
 
     return AwaitableGetClientConnectorServiceResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        egress=__ret__.egress,
-        ingress=__ret__.ingress,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        egress=pulumi.get(__ret__, 'egress'),
+        ingress=pulumi.get(__ret__, 'ingress'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_client_connector_service)

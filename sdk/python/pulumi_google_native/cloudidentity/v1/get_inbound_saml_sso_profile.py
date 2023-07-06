@@ -101,11 +101,11 @@ def get_inbound_saml_sso_profile(inbound_saml_sso_profile_id: Optional[str] = No
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1:getInboundSamlSsoProfile', __args__, opts=opts, typ=GetInboundSamlSsoProfileResult).value
 
     return AwaitableGetInboundSamlSsoProfileResult(
-        customer=__ret__.customer,
-        display_name=__ret__.display_name,
-        idp_config=__ret__.idp_config,
-        name=__ret__.name,
-        sp_config=__ret__.sp_config)
+        customer=pulumi.get(__ret__, 'customer'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        idp_config=pulumi.get(__ret__, 'idp_config'),
+        name=pulumi.get(__ret__, 'name'),
+        sp_config=pulumi.get(__ret__, 'sp_config'))
 
 
 @_utilities.lift_output_func(get_inbound_saml_sso_profile)

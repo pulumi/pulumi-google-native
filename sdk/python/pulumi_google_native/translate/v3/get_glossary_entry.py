@@ -95,10 +95,10 @@ def get_glossary_entry(glossary_entry_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:translate/v3:getGlossaryEntry', __args__, opts=opts, typ=GetGlossaryEntryResult).value
 
     return AwaitableGetGlossaryEntryResult(
-        description=__ret__.description,
-        name=__ret__.name,
-        terms_pair=__ret__.terms_pair,
-        terms_set=__ret__.terms_set)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        terms_pair=pulumi.get(__ret__, 'terms_pair'),
+        terms_set=pulumi.get(__ret__, 'terms_set'))
 
 
 @_utilities.lift_output_func(get_glossary_entry)

@@ -128,13 +128,13 @@ def get_service_class(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getServiceClass', __args__, opts=opts, typ=GetServiceClassResult).value
 
     return AwaitableGetServiceClassResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        service_class=__ret__.service_class,
-        service_connection_maps=__ret__.service_connection_maps,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        service_class=pulumi.get(__ret__, 'service_class'),
+        service_connection_maps=pulumi.get(__ret__, 'service_connection_maps'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_service_class)

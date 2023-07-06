@@ -93,10 +93,10 @@ def get_folder_replay(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:policysimulator/v1:getFolderReplay', __args__, opts=opts, typ=GetFolderReplayResult).value
 
     return AwaitableGetFolderReplayResult(
-        config=__ret__.config,
-        name=__ret__.name,
-        results_summary=__ret__.results_summary,
-        state=__ret__.state)
+        config=pulumi.get(__ret__, 'config'),
+        name=pulumi.get(__ret__, 'name'),
+        results_summary=pulumi.get(__ret__, 'results_summary'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_folder_replay)

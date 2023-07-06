@@ -144,14 +144,14 @@ def get_endpoint(endpoint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicedirectory/v1beta1:getEndpoint', __args__, opts=opts, typ=GetEndpointResult).value
 
     return AwaitableGetEndpointResult(
-        address=__ret__.address,
-        create_time=__ret__.create_time,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        network=__ret__.network,
-        port=__ret__.port,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        address=pulumi.get(__ret__, 'address'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        port=pulumi.get(__ret__, 'port'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_endpoint)

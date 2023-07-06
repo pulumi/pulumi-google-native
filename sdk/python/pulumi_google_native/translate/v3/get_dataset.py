@@ -164,16 +164,16 @@ def get_dataset(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:translate/v3:getDataset', __args__, opts=opts, typ=GetDatasetResult).value
 
     return AwaitableGetDatasetResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        example_count=__ret__.example_count,
-        name=__ret__.name,
-        source_language_code=__ret__.source_language_code,
-        target_language_code=__ret__.target_language_code,
-        test_example_count=__ret__.test_example_count,
-        train_example_count=__ret__.train_example_count,
-        update_time=__ret__.update_time,
-        validate_example_count=__ret__.validate_example_count)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        example_count=pulumi.get(__ret__, 'example_count'),
+        name=pulumi.get(__ret__, 'name'),
+        source_language_code=pulumi.get(__ret__, 'source_language_code'),
+        target_language_code=pulumi.get(__ret__, 'target_language_code'),
+        test_example_count=pulumi.get(__ret__, 'test_example_count'),
+        train_example_count=pulumi.get(__ret__, 'train_example_count'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        validate_example_count=pulumi.get(__ret__, 'validate_example_count'))
 
 
 @_utilities.lift_output_func(get_dataset)

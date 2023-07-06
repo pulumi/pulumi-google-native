@@ -102,11 +102,11 @@ def get_data_collector(datacollector_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getDataCollector', __args__, opts=opts, typ=GetDataCollectorResult).value
 
     return AwaitableGetDataCollectorResult(
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        type=__ret__.type)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_data_collector)

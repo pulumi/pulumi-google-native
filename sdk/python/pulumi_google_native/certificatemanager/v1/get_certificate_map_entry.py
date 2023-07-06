@@ -154,15 +154,15 @@ def get_certificate_map_entry(certificate_map_entry_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getCertificateMapEntry', __args__, opts=opts, typ=GetCertificateMapEntryResult).value
 
     return AwaitableGetCertificateMapEntryResult(
-        certificates=__ret__.certificates,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        hostname=__ret__.hostname,
-        labels=__ret__.labels,
-        matcher=__ret__.matcher,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        certificates=pulumi.get(__ret__, 'certificates'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        labels=pulumi.get(__ret__, 'labels'),
+        matcher=pulumi.get(__ret__, 'matcher'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate_map_entry)

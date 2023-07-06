@@ -106,11 +106,11 @@ def get_snapshot(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:baremetalsolution/v2:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        name=__ret__.name,
-        storage_volume=__ret__.storage_volume,
-        type=__ret__.type)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        storage_volume=pulumi.get(__ret__, 'storage_volume'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_snapshot)

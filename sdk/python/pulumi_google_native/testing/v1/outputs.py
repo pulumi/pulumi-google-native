@@ -2456,6 +2456,9 @@ class TestSetupResponse(dict):
         """
         Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
         """
+        warnings.warn("""Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.""", DeprecationWarning)
+        pulumi.log.warn("""systrace is deprecated: Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.""")
+
         return pulumi.get(self, "systrace")
 
 

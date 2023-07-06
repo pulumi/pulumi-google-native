@@ -140,14 +140,14 @@ def get_service_connection_token(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getServiceConnectionToken', __args__, opts=opts, typ=GetServiceConnectionTokenResult).value
 
     return AwaitableGetServiceConnectionTokenResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        expire_time=__ret__.expire_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        token=__ret__.token,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        token=pulumi.get(__ret__, 'token'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_service_connection_token)

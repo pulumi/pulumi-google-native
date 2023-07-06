@@ -119,12 +119,12 @@ def get_webhook(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getWebhook', __args__, opts=opts, typ=GetWebhookResult).value
 
     return AwaitableGetWebhookResult(
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        generic_web_service=__ret__.generic_web_service,
-        name=__ret__.name,
-        service_directory=__ret__.service_directory,
-        timeout=__ret__.timeout)
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        generic_web_service=pulumi.get(__ret__, 'generic_web_service'),
+        name=pulumi.get(__ret__, 'name'),
+        service_directory=pulumi.get(__ret__, 'service_directory'),
+        timeout=pulumi.get(__ret__, 'timeout'))
 
 
 @_utilities.lift_output_func(get_webhook)

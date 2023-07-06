@@ -94,10 +94,10 @@ def get_consent_store(consent_store_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getConsentStore', __args__, opts=opts, typ=GetConsentStoreResult).value
 
     return AwaitableGetConsentStoreResult(
-        default_consent_ttl=__ret__.default_consent_ttl,
-        enable_consent_create_on_update=__ret__.enable_consent_create_on_update,
-        labels=__ret__.labels,
-        name=__ret__.name)
+        default_consent_ttl=pulumi.get(__ret__, 'default_consent_ttl'),
+        enable_consent_create_on_update=pulumi.get(__ret__, 'enable_consent_create_on_update'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_consent_store)

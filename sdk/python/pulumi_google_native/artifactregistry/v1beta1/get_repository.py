@@ -152,15 +152,15 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:artifactregistry/v1beta1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        format=__ret__.format,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        size_bytes=__ret__.size_bytes,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        format=pulumi.get(__ret__, 'format'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_repository)

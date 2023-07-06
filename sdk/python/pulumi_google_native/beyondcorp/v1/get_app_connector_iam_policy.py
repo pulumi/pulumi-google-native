@@ -95,10 +95,10 @@ def get_app_connector_iam_policy(app_connector_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1:getAppConnectorIamPolicy', __args__, opts=opts, typ=GetAppConnectorIamPolicyResult).value
 
     return AwaitableGetAppConnectorIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_app_connector_iam_policy)

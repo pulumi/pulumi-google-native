@@ -175,17 +175,17 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        api_proxy_type=__ret__.api_proxy_type,
-        created_at=__ret__.created_at,
-        deployment_type=__ret__.deployment_type,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        forward_proxy_uri=__ret__.forward_proxy_uri,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        node_config=__ret__.node_config,
-        properties=__ret__.properties,
-        state=__ret__.state)
+        api_proxy_type=pulumi.get(__ret__, 'api_proxy_type'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        deployment_type=pulumi.get(__ret__, 'deployment_type'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        forward_proxy_uri=pulumi.get(__ret__, 'forward_proxy_uri'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        node_config=pulumi.get(__ret__, 'node_config'),
+        properties=pulumi.get(__ret__, 'properties'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_environment)

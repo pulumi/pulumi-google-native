@@ -83,9 +83,9 @@ def get_alias(alias_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getAlias', __args__, opts=opts, typ=GetAliasResult).value
 
     return AwaitableGetAliasResult(
-        alias=__ret__.alias,
-        certs_info=__ret__.certs_info,
-        type=__ret__.type)
+        alias=pulumi.get(__ret__, 'alias'),
+        certs_info=pulumi.get(__ret__, 'certs_info'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_alias)

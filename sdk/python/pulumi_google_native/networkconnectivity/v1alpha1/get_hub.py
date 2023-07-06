@@ -33,10 +33,6 @@ class GetHubResult:
         pulumi.set(__self__, "name", name)
         if spokes and not isinstance(spokes, list):
             raise TypeError("Expected argument 'spokes' to be a list")
-        if spokes is not None:
-            warnings.warn("""Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""", DeprecationWarning)
-            pulumi.log.warn("""spokes is deprecated: Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""")
-
         pulumi.set(__self__, "spokes", spokes)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
@@ -86,6 +82,9 @@ class GetHubResult:
         """
         A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
         """
+        warnings.warn("""Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""", DeprecationWarning)
+        pulumi.log.warn("""spokes is deprecated: Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.""")
+
         return pulumi.get(self, "spokes")
 
     @property
@@ -142,14 +141,14 @@ def get_hub(hub_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1alpha1:getHub', __args__, opts=opts, typ=GetHubResult).value
 
     return AwaitableGetHubResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        spokes=__ret__.spokes,
-        state=__ret__.state,
-        unique_id=__ret__.unique_id,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        spokes=pulumi.get(__ret__, 'spokes'),
+        state=pulumi.get(__ret__, 'state'),
+        unique_id=pulumi.get(__ret__, 'unique_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_hub)

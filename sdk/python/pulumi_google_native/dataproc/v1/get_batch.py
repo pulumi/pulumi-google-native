@@ -249,23 +249,23 @@ def get_batch(batch_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getBatch', __args__, opts=opts, typ=GetBatchResult).value
 
     return AwaitableGetBatchResult(
-        create_time=__ret__.create_time,
-        creator=__ret__.creator,
-        environment_config=__ret__.environment_config,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        pyspark_batch=__ret__.pyspark_batch,
-        runtime_config=__ret__.runtime_config,
-        runtime_info=__ret__.runtime_info,
-        spark_batch=__ret__.spark_batch,
-        spark_r_batch=__ret__.spark_r_batch,
-        spark_sql_batch=__ret__.spark_sql_batch,
-        state=__ret__.state,
-        state_history=__ret__.state_history,
-        state_message=__ret__.state_message,
-        state_time=__ret__.state_time,
-        uuid=__ret__.uuid)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        creator=pulumi.get(__ret__, 'creator'),
+        environment_config=pulumi.get(__ret__, 'environment_config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        pyspark_batch=pulumi.get(__ret__, 'pyspark_batch'),
+        runtime_config=pulumi.get(__ret__, 'runtime_config'),
+        runtime_info=pulumi.get(__ret__, 'runtime_info'),
+        spark_batch=pulumi.get(__ret__, 'spark_batch'),
+        spark_r_batch=pulumi.get(__ret__, 'spark_r_batch'),
+        spark_sql_batch=pulumi.get(__ret__, 'spark_sql_batch'),
+        state=pulumi.get(__ret__, 'state'),
+        state_history=pulumi.get(__ret__, 'state_history'),
+        state_message=pulumi.get(__ret__, 'state_message'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_batch)

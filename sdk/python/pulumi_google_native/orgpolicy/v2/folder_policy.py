@@ -56,6 +56,9 @@ class FolderPolicyArgs:
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
+
         return pulumi.get(self, "alternate")
 
     @alternate.setter
@@ -207,6 +210,9 @@ class FolderPolicy(pulumi.CustomResource):
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
+
         return pulumi.get(self, "alternate")
 
     @property

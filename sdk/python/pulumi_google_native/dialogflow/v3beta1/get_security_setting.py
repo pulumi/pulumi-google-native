@@ -165,16 +165,16 @@ def get_security_setting(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getSecuritySetting', __args__, opts=opts, typ=GetSecuritySettingResult).value
 
     return AwaitableGetSecuritySettingResult(
-        audio_export_settings=__ret__.audio_export_settings,
-        deidentify_template=__ret__.deidentify_template,
-        display_name=__ret__.display_name,
-        insights_export_settings=__ret__.insights_export_settings,
-        inspect_template=__ret__.inspect_template,
-        name=__ret__.name,
-        purge_data_types=__ret__.purge_data_types,
-        redaction_scope=__ret__.redaction_scope,
-        redaction_strategy=__ret__.redaction_strategy,
-        retention_window_days=__ret__.retention_window_days)
+        audio_export_settings=pulumi.get(__ret__, 'audio_export_settings'),
+        deidentify_template=pulumi.get(__ret__, 'deidentify_template'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        insights_export_settings=pulumi.get(__ret__, 'insights_export_settings'),
+        inspect_template=pulumi.get(__ret__, 'inspect_template'),
+        name=pulumi.get(__ret__, 'name'),
+        purge_data_types=pulumi.get(__ret__, 'purge_data_types'),
+        redaction_scope=pulumi.get(__ret__, 'redaction_scope'),
+        redaction_strategy=pulumi.get(__ret__, 'redaction_strategy'),
+        retention_window_days=pulumi.get(__ret__, 'retention_window_days'))
 
 
 @_utilities.lift_output_func(get_security_setting)

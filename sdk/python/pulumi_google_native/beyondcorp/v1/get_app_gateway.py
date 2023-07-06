@@ -177,17 +177,17 @@ def get_app_gateway(app_gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1:getAppGateway', __args__, opts=opts, typ=GetAppGatewayResult).value
 
     return AwaitableGetAppGatewayResult(
-        allocated_connections=__ret__.allocated_connections,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        host_type=__ret__.host_type,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time,
-        uri=__ret__.uri)
+        allocated_connections=pulumi.get(__ret__, 'allocated_connections'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        host_type=pulumi.get(__ret__, 'host_type'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        uri=pulumi.get(__ret__, 'uri'))
 
 
 @_utilities.lift_output_func(get_app_gateway)

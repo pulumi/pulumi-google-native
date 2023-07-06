@@ -102,11 +102,11 @@ def get_authorized_orgs_desc(access_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:accesscontextmanager/v1:getAuthorizedOrgsDesc', __args__, opts=opts, typ=GetAuthorizedOrgsDescResult).value
 
     return AwaitableGetAuthorizedOrgsDescResult(
-        asset_type=__ret__.asset_type,
-        authorization_direction=__ret__.authorization_direction,
-        authorization_type=__ret__.authorization_type,
-        name=__ret__.name,
-        orgs=__ret__.orgs)
+        asset_type=pulumi.get(__ret__, 'asset_type'),
+        authorization_direction=pulumi.get(__ret__, 'authorization_direction'),
+        authorization_type=pulumi.get(__ret__, 'authorization_type'),
+        name=pulumi.get(__ret__, 'name'),
+        orgs=pulumi.get(__ret__, 'orgs'))
 
 
 @_utilities.lift_output_func(get_authorized_orgs_desc)

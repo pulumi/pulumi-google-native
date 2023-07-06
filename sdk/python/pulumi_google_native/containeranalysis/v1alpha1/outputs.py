@@ -191,6 +191,9 @@ class ArtifactResponse(dict):
         """
         Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         """
+        warnings.warn("""Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -557,6 +560,9 @@ class BuildDetailsResponse(dict):
         """
         Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         """
+        warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
+        pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
+
         return pulumi.get(self, "intoto_provenance")
 
     @property
@@ -2122,6 +2128,9 @@ class DiscoveredResponse(dict):
         """
         An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
+        warnings.warn("""Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.""", DeprecationWarning)
+        pulumi.log.warn("""operation is deprecated: Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.""")
+
         return pulumi.get(self, "operation")
 
 
@@ -4118,6 +4127,9 @@ class LocationResponse(dict):
         """
         Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
+        warnings.warn("""Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""", DeprecationWarning)
+        pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
+
         return pulumi.get(self, "cpe_uri")
 
     @property
@@ -4134,6 +4146,9 @@ class LocationResponse(dict):
         """
         Deprecated. The version installed at this location.
         """
+        warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
+
         return pulumi.get(self, "version")
 
 

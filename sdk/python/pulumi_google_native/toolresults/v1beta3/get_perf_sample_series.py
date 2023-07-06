@@ -121,12 +121,12 @@ def get_perf_sample_series(execution_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:toolresults/v1beta3:getPerfSampleSeries', __args__, opts=opts, typ=GetPerfSampleSeriesResult).value
 
     return AwaitableGetPerfSampleSeriesResult(
-        basic_perf_sample_series=__ret__.basic_perf_sample_series,
-        execution_id=__ret__.execution_id,
-        history_id=__ret__.history_id,
-        project=__ret__.project,
-        sample_series_id=__ret__.sample_series_id,
-        step_id=__ret__.step_id)
+        basic_perf_sample_series=pulumi.get(__ret__, 'basic_perf_sample_series'),
+        execution_id=pulumi.get(__ret__, 'execution_id'),
+        history_id=pulumi.get(__ret__, 'history_id'),
+        project=pulumi.get(__ret__, 'project'),
+        sample_series_id=pulumi.get(__ret__, 'sample_series_id'),
+        step_id=pulumi.get(__ret__, 'step_id'))
 
 
 @_utilities.lift_output_func(get_perf_sample_series)

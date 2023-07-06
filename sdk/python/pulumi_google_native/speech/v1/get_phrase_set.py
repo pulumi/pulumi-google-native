@@ -105,11 +105,11 @@ def get_phrase_set(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:speech/v1:getPhraseSet', __args__, opts=opts, typ=GetPhraseSetResult).value
 
     return AwaitableGetPhraseSetResult(
-        boost=__ret__.boost,
-        kms_key_name=__ret__.kms_key_name,
-        kms_key_version_name=__ret__.kms_key_version_name,
-        name=__ret__.name,
-        phrases=__ret__.phrases)
+        boost=pulumi.get(__ret__, 'boost'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        kms_key_version_name=pulumi.get(__ret__, 'kms_key_version_name'),
+        name=pulumi.get(__ret__, 'name'),
+        phrases=pulumi.get(__ret__, 'phrases'))
 
 
 @_utilities.lift_output_func(get_phrase_set)

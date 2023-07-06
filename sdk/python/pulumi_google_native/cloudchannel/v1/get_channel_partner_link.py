@@ -141,14 +141,14 @@ def get_channel_partner_link(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudchannel/v1:getChannelPartnerLink', __args__, opts=opts, typ=GetChannelPartnerLinkResult).value
 
     return AwaitableGetChannelPartnerLinkResult(
-        channel_partner_cloud_identity_info=__ret__.channel_partner_cloud_identity_info,
-        create_time=__ret__.create_time,
-        invite_link_uri=__ret__.invite_link_uri,
-        link_state=__ret__.link_state,
-        name=__ret__.name,
-        public_id=__ret__.public_id,
-        reseller_cloud_identity_id=__ret__.reseller_cloud_identity_id,
-        update_time=__ret__.update_time)
+        channel_partner_cloud_identity_info=pulumi.get(__ret__, 'channel_partner_cloud_identity_info'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        invite_link_uri=pulumi.get(__ret__, 'invite_link_uri'),
+        link_state=pulumi.get(__ret__, 'link_state'),
+        name=pulumi.get(__ret__, 'name'),
+        public_id=pulumi.get(__ret__, 'public_id'),
+        reseller_cloud_identity_id=pulumi.get(__ret__, 'reseller_cloud_identity_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_channel_partner_link)

@@ -189,18 +189,18 @@ def get_version(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasehosting/v1beta1:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        create_user=__ret__.create_user,
-        delete_time=__ret__.delete_time,
-        delete_user=__ret__.delete_user,
-        file_count=__ret__.file_count,
-        finalize_time=__ret__.finalize_time,
-        finalize_user=__ret__.finalize_user,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        status=__ret__.status,
-        version_bytes=__ret__.version_bytes)
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        create_user=pulumi.get(__ret__, 'create_user'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        delete_user=pulumi.get(__ret__, 'delete_user'),
+        file_count=pulumi.get(__ret__, 'file_count'),
+        finalize_time=pulumi.get(__ret__, 'finalize_time'),
+        finalize_user=pulumi.get(__ret__, 'finalize_user'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        status=pulumi.get(__ret__, 'status'),
+        version_bytes=pulumi.get(__ret__, 'version_bytes'))
 
 
 @_utilities.lift_output_func(get_version)

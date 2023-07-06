@@ -145,14 +145,14 @@ def get_intent(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getIntent', __args__, opts=opts, typ=GetIntentResult).value
 
     return AwaitableGetIntentResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        is_fallback=__ret__.is_fallback,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        parameters=__ret__.parameters,
-        priority=__ret__.priority,
-        training_phrases=__ret__.training_phrases)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        is_fallback=pulumi.get(__ret__, 'is_fallback'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        priority=pulumi.get(__ret__, 'priority'),
+        training_phrases=pulumi.get(__ret__, 'training_phrases'))
 
 
 @_utilities.lift_output_func(get_intent)

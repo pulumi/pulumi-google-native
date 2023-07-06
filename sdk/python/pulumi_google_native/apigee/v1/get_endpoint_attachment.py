@@ -114,12 +114,12 @@ def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEndpointAttachment', __args__, opts=opts, typ=GetEndpointAttachmentResult).value
 
     return AwaitableGetEndpointAttachmentResult(
-        connection_state=__ret__.connection_state,
-        host=__ret__.host,
-        location=__ret__.location,
-        name=__ret__.name,
-        service_attachment=__ret__.service_attachment,
-        state=__ret__.state)
+        connection_state=pulumi.get(__ret__, 'connection_state'),
+        host=pulumi.get(__ret__, 'host'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        service_attachment=pulumi.get(__ret__, 'service_attachment'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_endpoint_attachment)

@@ -93,10 +93,10 @@ def get_product_set(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vision/v1:getProductSet', __args__, opts=opts, typ=GetProductSetResult).value
 
     return AwaitableGetProductSetResult(
-        display_name=__ret__.display_name,
-        index_error=__ret__.index_error,
-        index_time=__ret__.index_time,
-        name=__ret__.name)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        index_error=pulumi.get(__ret__, 'index_error'),
+        index_time=pulumi.get(__ret__, 'index_time'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_product_set)

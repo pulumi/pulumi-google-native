@@ -616,6 +616,9 @@ class VersionArgs:
         """
         The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
+        warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+
         return pulumi.get(self, "zones")
 
     @zones.setter
@@ -1228,5 +1231,8 @@ class Version(pulumi.CustomResource):
         """
         The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
+        warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+
         return pulumi.get(self, "zones")
 

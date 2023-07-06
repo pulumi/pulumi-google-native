@@ -90,10 +90,10 @@ def get_history(history_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:toolresults/v1beta3:getHistory', __args__, opts=opts, typ=GetHistoryResult).value
 
     return AwaitableGetHistoryResult(
-        display_name=__ret__.display_name,
-        history_id=__ret__.history_id,
-        name=__ret__.name,
-        test_platform=__ret__.test_platform)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        history_id=pulumi.get(__ret__, 'history_id'),
+        name=pulumi.get(__ret__, 'name'),
+        test_platform=pulumi.get(__ret__, 'test_platform'))
 
 
 @_utilities.lift_output_func(get_history)

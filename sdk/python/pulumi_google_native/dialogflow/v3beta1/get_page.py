@@ -135,13 +135,13 @@ def get_page(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getPage', __args__, opts=opts, typ=GetPageResult).value
 
     return AwaitableGetPageResult(
-        display_name=__ret__.display_name,
-        entry_fulfillment=__ret__.entry_fulfillment,
-        event_handlers=__ret__.event_handlers,
-        form=__ret__.form,
-        name=__ret__.name,
-        transition_route_groups=__ret__.transition_route_groups,
-        transition_routes=__ret__.transition_routes)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        entry_fulfillment=pulumi.get(__ret__, 'entry_fulfillment'),
+        event_handlers=pulumi.get(__ret__, 'event_handlers'),
+        form=pulumi.get(__ret__, 'form'),
+        name=pulumi.get(__ret__, 'name'),
+        transition_route_groups=pulumi.get(__ret__, 'transition_route_groups'),
+        transition_routes=pulumi.get(__ret__, 'transition_routes'))
 
 
 @_utilities.lift_output_func(get_page)

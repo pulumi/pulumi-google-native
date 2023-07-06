@@ -79,9 +79,9 @@ def get_domain_mapping(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1alpha:getDomainMapping', __args__, opts=opts, typ=GetDomainMappingResult).value
 
     return AwaitableGetDomainMappingResult(
-        name=__ret__.name,
-        resource_records=__ret__.resource_records,
-        ssl_settings=__ret__.ssl_settings)
+        name=pulumi.get(__ret__, 'name'),
+        resource_records=pulumi.get(__ret__, 'resource_records'),
+        ssl_settings=pulumi.get(__ret__, 'ssl_settings'))
 
 
 @_utilities.lift_output_func(get_domain_mapping)
