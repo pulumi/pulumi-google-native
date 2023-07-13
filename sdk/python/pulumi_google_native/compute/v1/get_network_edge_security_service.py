@@ -152,15 +152,15 @@ def get_network_edge_security_service(network_edge_security_service: Optional[st
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getNetworkEdgeSecurityService', __args__, opts=opts, typ=GetNetworkEdgeSecurityServiceResult).value
 
     return AwaitableGetNetworkEdgeSecurityServiceResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        region=__ret__.region,
-        security_policy=__ret__.security_policy,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        security_policy=pulumi.get(__ret__, 'security_policy'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'))
 
 
 @_utilities.lift_output_func(get_network_edge_security_service)

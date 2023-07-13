@@ -28,10 +28,6 @@ class GetDatabaseResult:
         pulumi.set(__self__, "collation", collation)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
-        if etag is not None:
-            warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
-            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
-
         pulumi.set(__self__, "etag", etag)
         if instance and not isinstance(instance, str):
             raise TypeError("Expected argument 'instance' to be a str")
@@ -74,6 +70,9 @@ class GetDatabaseResult:
         """
         This field is deprecated and will be removed from a future version of the API.
         """
+        warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
+        pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
+
         return pulumi.get(self, "etag")
 
     @property
@@ -154,15 +153,15 @@ def get_database(database: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1beta4:getDatabase', __args__, opts=opts, typ=GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        charset=__ret__.charset,
-        collation=__ret__.collation,
-        etag=__ret__.etag,
-        instance=__ret__.instance,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        sqlserver_database_details=__ret__.sqlserver_database_details)
+        charset=pulumi.get(__ret__, 'charset'),
+        collation=pulumi.get(__ret__, 'collation'),
+        etag=pulumi.get(__ret__, 'etag'),
+        instance=pulumi.get(__ret__, 'instance'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        sqlserver_database_details=pulumi.get(__ret__, 'sqlserver_database_details'))
 
 
 @_utilities.lift_output_func(get_database)

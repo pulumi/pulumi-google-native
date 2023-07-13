@@ -81,9 +81,9 @@ def get_registration_policy_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy', __args__, opts=opts, typ=GetRegistrationPolicyIamPolicyResult).value
 
     return AwaitableGetRegistrationPolicyIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_registration_policy_iam_policy)

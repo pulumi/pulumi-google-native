@@ -191,18 +191,18 @@ def get_queue(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2beta3:getQueue', __args__, opts=opts, typ=GetQueueResult).value
 
     return AwaitableGetQueueResult(
-        app_engine_http_queue=__ret__.app_engine_http_queue,
-        http_target=__ret__.http_target,
-        name=__ret__.name,
-        purge_time=__ret__.purge_time,
-        rate_limits=__ret__.rate_limits,
-        retry_config=__ret__.retry_config,
-        stackdriver_logging_config=__ret__.stackdriver_logging_config,
-        state=__ret__.state,
-        stats=__ret__.stats,
-        task_ttl=__ret__.task_ttl,
-        tombstone_ttl=__ret__.tombstone_ttl,
-        type=__ret__.type)
+        app_engine_http_queue=pulumi.get(__ret__, 'app_engine_http_queue'),
+        http_target=pulumi.get(__ret__, 'http_target'),
+        name=pulumi.get(__ret__, 'name'),
+        purge_time=pulumi.get(__ret__, 'purge_time'),
+        rate_limits=pulumi.get(__ret__, 'rate_limits'),
+        retry_config=pulumi.get(__ret__, 'retry_config'),
+        stackdriver_logging_config=pulumi.get(__ret__, 'stackdriver_logging_config'),
+        state=pulumi.get(__ret__, 'state'),
+        stats=pulumi.get(__ret__, 'stats'),
+        task_ttl=pulumi.get(__ret__, 'task_ttl'),
+        tombstone_ttl=pulumi.get(__ret__, 'tombstone_ttl'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_queue)

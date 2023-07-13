@@ -88,7 +88,7 @@ def get_client_token(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('google-native:authorization:getClientToken', __args__, opts=opts, typ=GetClientTokenResult).value
 
     return AwaitableGetClientTokenResult(
-        access_token=__ret__.access_token,
-        expiry=__ret__.expiry,
-        refresh_token=__ret__.refresh_token,
-        token_type=__ret__.token_type)
+        access_token=pulumi.get(__ret__, 'access_token'),
+        expiry=pulumi.get(__ret__, 'expiry'),
+        refresh_token=pulumi.get(__ret__, 'refresh_token'),
+        token_type=pulumi.get(__ret__, 'token_type'))

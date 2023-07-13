@@ -70,8 +70,8 @@ def get_entry(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEntry', __args__, opts=opts, typ=GetEntryResult).value
 
     return AwaitableGetEntryResult(
-        name=__ret__.name,
-        value=__ret__.value)
+        name=pulumi.get(__ret__, 'name'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_entry)

@@ -104,11 +104,11 @@ def get_namespace(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicedirectory/v1beta1:getNamespace', __args__, opts=opts, typ=GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_namespace)

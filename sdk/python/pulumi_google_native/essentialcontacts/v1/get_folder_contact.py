@@ -114,12 +114,12 @@ def get_folder_contact(contact_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:essentialcontacts/v1:getFolderContact', __args__, opts=opts, typ=GetFolderContactResult).value
 
     return AwaitableGetFolderContactResult(
-        email=__ret__.email,
-        language_tag=__ret__.language_tag,
-        name=__ret__.name,
-        notification_category_subscriptions=__ret__.notification_category_subscriptions,
-        validate_time=__ret__.validate_time,
-        validation_state=__ret__.validation_state)
+        email=pulumi.get(__ret__, 'email'),
+        language_tag=pulumi.get(__ret__, 'language_tag'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_category_subscriptions=pulumi.get(__ret__, 'notification_category_subscriptions'),
+        validate_time=pulumi.get(__ret__, 'validate_time'),
+        validation_state=pulumi.get(__ret__, 'validation_state'))
 
 
 @_utilities.lift_output_func(get_folder_contact)

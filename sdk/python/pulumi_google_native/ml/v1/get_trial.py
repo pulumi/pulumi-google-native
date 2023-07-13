@@ -167,16 +167,16 @@ def get_trial(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:ml/v1:getTrial', __args__, opts=opts, typ=GetTrialResult).value
 
     return AwaitableGetTrialResult(
-        client_id=__ret__.client_id,
-        end_time=__ret__.end_time,
-        final_measurement=__ret__.final_measurement,
-        infeasible_reason=__ret__.infeasible_reason,
-        measurements=__ret__.measurements,
-        name=__ret__.name,
-        parameters=__ret__.parameters,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        trial_infeasible=__ret__.trial_infeasible)
+        client_id=pulumi.get(__ret__, 'client_id'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        final_measurement=pulumi.get(__ret__, 'final_measurement'),
+        infeasible_reason=pulumi.get(__ret__, 'infeasible_reason'),
+        measurements=pulumi.get(__ret__, 'measurements'),
+        name=pulumi.get(__ret__, 'name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        trial_infeasible=pulumi.get(__ret__, 'trial_infeasible'))
 
 
 @_utilities.lift_output_func(get_trial)

@@ -129,13 +129,13 @@ def get_glossary(glossary_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:translate/v3beta1:getGlossary', __args__, opts=opts, typ=GetGlossaryResult).value
 
     return AwaitableGetGlossaryResult(
-        end_time=__ret__.end_time,
-        entry_count=__ret__.entry_count,
-        input_config=__ret__.input_config,
-        language_codes_set=__ret__.language_codes_set,
-        language_pair=__ret__.language_pair,
-        name=__ret__.name,
-        submit_time=__ret__.submit_time)
+        end_time=pulumi.get(__ret__, 'end_time'),
+        entry_count=pulumi.get(__ret__, 'entry_count'),
+        input_config=pulumi.get(__ret__, 'input_config'),
+        language_codes_set=pulumi.get(__ret__, 'language_codes_set'),
+        language_pair=pulumi.get(__ret__, 'language_pair'),
+        name=pulumi.get(__ret__, 'name'),
+        submit_time=pulumi.get(__ret__, 'submit_time'))
 
 
 @_utilities.lift_output_func(get_glossary)

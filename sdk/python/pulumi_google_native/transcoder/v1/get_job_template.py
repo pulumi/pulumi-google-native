@@ -81,9 +81,9 @@ def get_job_template(job_template_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:transcoder/v1:getJobTemplate', __args__, opts=opts, typ=GetJobTemplateResult).value
 
     return AwaitableGetJobTemplateResult(
-        config=__ret__.config,
-        labels=__ret__.labels,
-        name=__ret__.name)
+        config=pulumi.get(__ret__, 'config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_job_template)

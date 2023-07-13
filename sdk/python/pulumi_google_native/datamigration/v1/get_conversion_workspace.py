@@ -165,16 +165,16 @@ def get_conversion_workspace(conversion_workspace_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1:getConversionWorkspace', __args__, opts=opts, typ=GetConversionWorkspaceResult).value
 
     return AwaitableGetConversionWorkspaceResult(
-        create_time=__ret__.create_time,
-        destination=__ret__.destination,
-        display_name=__ret__.display_name,
-        global_settings=__ret__.global_settings,
-        has_uncommitted_changes=__ret__.has_uncommitted_changes,
-        latest_commit_id=__ret__.latest_commit_id,
-        latest_commit_time=__ret__.latest_commit_time,
-        name=__ret__.name,
-        source=__ret__.source,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        destination=pulumi.get(__ret__, 'destination'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        global_settings=pulumi.get(__ret__, 'global_settings'),
+        has_uncommitted_changes=pulumi.get(__ret__, 'has_uncommitted_changes'),
+        latest_commit_id=pulumi.get(__ret__, 'latest_commit_id'),
+        latest_commit_time=pulumi.get(__ret__, 'latest_commit_time'),
+        name=pulumi.get(__ret__, 'name'),
+        source=pulumi.get(__ret__, 'source'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_conversion_workspace)

@@ -127,13 +127,13 @@ def get_datastore(datastore_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getDatastore', __args__, opts=opts, typ=GetDatastoreResult).value
 
     return AwaitableGetDatastoreResult(
-        create_time=__ret__.create_time,
-        datastore_config=__ret__.datastore_config,
-        display_name=__ret__.display_name,
-        last_update_time=__ret__.last_update_time,
-        org=__ret__.org,
-        self=__ret__.self,
-        target_type=__ret__.target_type)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        datastore_config=pulumi.get(__ret__, 'datastore_config'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        last_update_time=pulumi.get(__ret__, 'last_update_time'),
+        org=pulumi.get(__ret__, 'org'),
+        self=pulumi.get(__ret__, 'self'),
+        target_type=pulumi.get(__ret__, 'target_type'))
 
 
 @_utilities.lift_output_func(get_datastore)

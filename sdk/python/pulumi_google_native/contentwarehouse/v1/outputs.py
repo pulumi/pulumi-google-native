@@ -1782,6 +1782,9 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse(dict):
         """
         Optional. Deprecated. Use `id` field instead.
         """
+        warnings.warn("""Optional. Deprecated. Use `id` field instead.""", DeprecationWarning)
+        pulumi.log.warn("""mention_id is deprecated: Optional. Deprecated. Use `id` field instead.""")
+
         return pulumi.get(self, "mention_id")
 
     @property
@@ -1917,6 +1920,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse(dict):
         """
         Optional. Deprecated. Use PageRef.bounding_poly instead.
         """
+        warnings.warn("""Optional. Deprecated. Use PageRef.bounding_poly instead.""", DeprecationWarning)
+        pulumi.log.warn("""layout_id is deprecated: Optional. Deprecated. Use PageRef.bounding_poly instead.""")
+
         return pulumi.get(self, "layout_id")
 
     @property

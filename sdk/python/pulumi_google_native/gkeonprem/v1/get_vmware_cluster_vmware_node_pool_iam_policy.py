@@ -85,9 +85,9 @@ def get_vmware_cluster_vmware_node_pool_iam_policy(location: Optional[str] = Non
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getVmwareClusterVmwareNodePoolIamPolicy', __args__, opts=opts, typ=GetVmwareClusterVmwareNodePoolIamPolicyResult).value
 
     return AwaitableGetVmwareClusterVmwareNodePoolIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_vmware_cluster_vmware_node_pool_iam_policy)

@@ -139,14 +139,14 @@ def get_model(model_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:ml/v1:getModel', __args__, opts=opts, typ=GetModelResult).value
 
     return AwaitableGetModelResult(
-        default_version=__ret__.default_version,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        online_prediction_console_logging=__ret__.online_prediction_console_logging,
-        online_prediction_logging=__ret__.online_prediction_logging,
-        regions=__ret__.regions)
+        default_version=pulumi.get(__ret__, 'default_version'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        online_prediction_console_logging=pulumi.get(__ret__, 'online_prediction_console_logging'),
+        online_prediction_logging=pulumi.get(__ret__, 'online_prediction_logging'),
+        regions=pulumi.get(__ret__, 'regions'))
 
 
 @_utilities.lift_output_func(get_model)

@@ -229,21 +229,21 @@ def get_experiment(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getExperiment', __args__, opts=opts, typ=GetExperimentResult).value
 
     return AwaitableGetExperimentResult(
-        create_time=__ret__.create_time,
-        definition=__ret__.definition,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        end_time=__ret__.end_time,
-        experiment_length=__ret__.experiment_length,
-        last_update_time=__ret__.last_update_time,
-        name=__ret__.name,
-        result=__ret__.result,
-        rollout_config=__ret__.rollout_config,
-        rollout_failure_reason=__ret__.rollout_failure_reason,
-        rollout_state=__ret__.rollout_state,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        variants_history=__ret__.variants_history)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        definition=pulumi.get(__ret__, 'definition'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        experiment_length=pulumi.get(__ret__, 'experiment_length'),
+        last_update_time=pulumi.get(__ret__, 'last_update_time'),
+        name=pulumi.get(__ret__, 'name'),
+        result=pulumi.get(__ret__, 'result'),
+        rollout_config=pulumi.get(__ret__, 'rollout_config'),
+        rollout_failure_reason=pulumi.get(__ret__, 'rollout_failure_reason'),
+        rollout_state=pulumi.get(__ret__, 'rollout_state'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        variants_history=pulumi.get(__ret__, 'variants_history'))
 
 
 @_utilities.lift_output_func(get_experiment)

@@ -91,10 +91,10 @@ def get_secret(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:secretmanager/v1beta1:getSecret', __args__, opts=opts, typ=GetSecretResult).value
 
     return AwaitableGetSecretResult(
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        replication=__ret__.replication)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        replication=pulumi.get(__ret__, 'replication'))
 
 
 @_utilities.lift_output_func(get_secret)

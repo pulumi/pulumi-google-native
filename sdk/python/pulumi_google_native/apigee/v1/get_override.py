@@ -81,9 +81,9 @@ def get_override(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getOverride', __args__, opts=opts, typ=GetOverrideResult).value
 
     return AwaitableGetOverrideResult(
-        api_proxy=__ret__.api_proxy,
-        name=__ret__.name,
-        sampling_config=__ret__.sampling_config)
+        api_proxy=pulumi.get(__ret__, 'api_proxy'),
+        name=pulumi.get(__ret__, 'name'),
+        sampling_config=pulumi.get(__ret__, 'sampling_config'))
 
 
 @_utilities.lift_output_func(get_override)

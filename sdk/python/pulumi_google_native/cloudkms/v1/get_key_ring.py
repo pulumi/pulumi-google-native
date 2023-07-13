@@ -68,8 +68,8 @@ def get_key_ring(key_ring_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudkms/v1:getKeyRing', __args__, opts=opts, typ=GetKeyRingResult).value
 
     return AwaitableGetKeyRingResult(
-        create_time=__ret__.create_time,
-        name=__ret__.name)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_key_ring)

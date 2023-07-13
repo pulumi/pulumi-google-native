@@ -119,12 +119,12 @@ def get_hl7_v2_store(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getHl7V2Store', __args__, opts=opts, typ=GetHl7V2StoreResult).value
 
     return AwaitableGetHl7V2StoreResult(
-        labels=__ret__.labels,
-        name=__ret__.name,
-        notification_config=__ret__.notification_config,
-        notification_configs=__ret__.notification_configs,
-        parser_config=__ret__.parser_config,
-        reject_duplicate_message=__ret__.reject_duplicate_message)
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_config=pulumi.get(__ret__, 'notification_config'),
+        notification_configs=pulumi.get(__ret__, 'notification_configs'),
+        parser_config=pulumi.get(__ret__, 'parser_config'),
+        reject_duplicate_message=pulumi.get(__ret__, 'reject_duplicate_message'))
 
 
 @_utilities.lift_output_func(get_hl7_v2_store)

@@ -3833,6 +3833,9 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         """
         Deprecated and unused.
         """
+        warnings.warn("""Deprecated and unused.""", DeprecationWarning)
+        pulumi.log.warn("""content_options is deprecated: Deprecated and unused.""")
+
         return pulumi.get(self, "content_options")
 
     @property

@@ -215,20 +215,20 @@ def get_vmware_node_pool(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getVmwareNodePool', __args__, opts=opts, typ=GetVmwareNodePoolResult).value
 
     return AwaitableGetVmwareNodePoolResult(
-        annotations=__ret__.annotations,
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        node_pool_autoscaling=__ret__.node_pool_autoscaling,
-        on_prem_version=__ret__.on_prem_version,
-        reconciling=__ret__.reconciling,
-        state=__ret__.state,
-        status=__ret__.status,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        node_pool_autoscaling=pulumi.get(__ret__, 'node_pool_autoscaling'),
+        on_prem_version=pulumi.get(__ret__, 'on_prem_version'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_vmware_node_pool)

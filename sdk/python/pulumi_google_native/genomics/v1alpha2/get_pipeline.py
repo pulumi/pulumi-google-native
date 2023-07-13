@@ -137,14 +137,14 @@ def get_pipeline(pipeline_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:genomics/v1alpha2:getPipeline', __args__, opts=opts, typ=GetPipelineResult).value
 
     return AwaitableGetPipelineResult(
-        description=__ret__.description,
-        docker=__ret__.docker,
-        input_parameters=__ret__.input_parameters,
-        name=__ret__.name,
-        output_parameters=__ret__.output_parameters,
-        pipeline_id=__ret__.pipeline_id,
-        project=__ret__.project,
-        resources=__ret__.resources)
+        description=pulumi.get(__ret__, 'description'),
+        docker=pulumi.get(__ret__, 'docker'),
+        input_parameters=pulumi.get(__ret__, 'input_parameters'),
+        name=pulumi.get(__ret__, 'name'),
+        output_parameters=pulumi.get(__ret__, 'output_parameters'),
+        pipeline_id=pulumi.get(__ret__, 'pipeline_id'),
+        project=pulumi.get(__ret__, 'project'),
+        resources=pulumi.get(__ret__, 'resources'))
 
 
 @_utilities.lift_output_func(get_pipeline)

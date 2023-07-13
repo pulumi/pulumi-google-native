@@ -90,10 +90,10 @@ def get_gcp_user_access_binding(gcp_user_access_binding_id: Optional[str] = None
     __ret__ = pulumi.runtime.invoke('google-native:accesscontextmanager/v1:getGcpUserAccessBinding', __args__, opts=opts, typ=GetGcpUserAccessBindingResult).value
 
     return AwaitableGetGcpUserAccessBindingResult(
-        access_levels=__ret__.access_levels,
-        dry_run_access_levels=__ret__.dry_run_access_levels,
-        group_key=__ret__.group_key,
-        name=__ret__.name)
+        access_levels=pulumi.get(__ret__, 'access_levels'),
+        dry_run_access_levels=pulumi.get(__ret__, 'dry_run_access_levels'),
+        group_key=pulumi.get(__ret__, 'group_key'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_gcp_user_access_binding)

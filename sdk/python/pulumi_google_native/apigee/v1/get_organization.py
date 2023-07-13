@@ -25,10 +25,6 @@ class GetOrganizationResult:
         pulumi.set(__self__, "addons_config", addons_config)
         if analytics_region and not isinstance(analytics_region, str):
             raise TypeError("Expected argument 'analytics_region' to be a str")
-        if analytics_region is not None:
-            warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
-            pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
-
         pulumi.set(__self__, "analytics_region", analytics_region)
         if api_consumer_data_encryption_key_name and not isinstance(api_consumer_data_encryption_key_name, str):
             raise TypeError("Expected argument 'api_consumer_data_encryption_key_name' to be a str")
@@ -98,10 +94,6 @@ class GetOrganizationResult:
         pulumi.set(__self__, "state", state)
         if subscription_type and not isinstance(subscription_type, str):
             raise TypeError("Expected argument 'subscription_type' to be a str")
-        if subscription_type is not None:
-            warnings.warn("""Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""", DeprecationWarning)
-            pulumi.log.warn("""subscription_type is deprecated: Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""")
-
         pulumi.set(__self__, "subscription_type", subscription_type)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -121,6 +113,9 @@ class GetOrganizationResult:
         """
         DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
+        warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+        pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+
         return pulumi.get(self, "analytics_region")
 
     @property
@@ -305,6 +300,9 @@ class GetOrganizationResult:
         """
         DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
         """
+        warnings.warn("""Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""", DeprecationWarning)
+        pulumi.log.warn("""subscription_type is deprecated: Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""")
+
         return pulumi.get(self, "subscription_type")
 
     @property
@@ -361,32 +359,32 @@ def get_organization(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        addons_config=__ret__.addons_config,
-        analytics_region=__ret__.analytics_region,
-        api_consumer_data_encryption_key_name=__ret__.api_consumer_data_encryption_key_name,
-        api_consumer_data_location=__ret__.api_consumer_data_location,
-        apigee_project_id=__ret__.apigee_project_id,
-        attributes=__ret__.attributes,
-        authorized_network=__ret__.authorized_network,
-        billing_type=__ret__.billing_type,
-        ca_certificate=__ret__.ca_certificate,
-        control_plane_encryption_key_name=__ret__.control_plane_encryption_key_name,
-        created_at=__ret__.created_at,
-        customer_name=__ret__.customer_name,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        environments=__ret__.environments,
-        expires_at=__ret__.expires_at,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        portal_disabled=__ret__.portal_disabled,
-        project=__ret__.project,
-        properties=__ret__.properties,
-        runtime_database_encryption_key_name=__ret__.runtime_database_encryption_key_name,
-        runtime_type=__ret__.runtime_type,
-        state=__ret__.state,
-        subscription_type=__ret__.subscription_type,
-        type=__ret__.type)
+        addons_config=pulumi.get(__ret__, 'addons_config'),
+        analytics_region=pulumi.get(__ret__, 'analytics_region'),
+        api_consumer_data_encryption_key_name=pulumi.get(__ret__, 'api_consumer_data_encryption_key_name'),
+        api_consumer_data_location=pulumi.get(__ret__, 'api_consumer_data_location'),
+        apigee_project_id=pulumi.get(__ret__, 'apigee_project_id'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        authorized_network=pulumi.get(__ret__, 'authorized_network'),
+        billing_type=pulumi.get(__ret__, 'billing_type'),
+        ca_certificate=pulumi.get(__ret__, 'ca_certificate'),
+        control_plane_encryption_key_name=pulumi.get(__ret__, 'control_plane_encryption_key_name'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        customer_name=pulumi.get(__ret__, 'customer_name'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        environments=pulumi.get(__ret__, 'environments'),
+        expires_at=pulumi.get(__ret__, 'expires_at'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        portal_disabled=pulumi.get(__ret__, 'portal_disabled'),
+        project=pulumi.get(__ret__, 'project'),
+        properties=pulumi.get(__ret__, 'properties'),
+        runtime_database_encryption_key_name=pulumi.get(__ret__, 'runtime_database_encryption_key_name'),
+        runtime_type=pulumi.get(__ret__, 'runtime_type'),
+        state=pulumi.get(__ret__, 'state'),
+        subscription_type=pulumi.get(__ret__, 'subscription_type'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_organization)

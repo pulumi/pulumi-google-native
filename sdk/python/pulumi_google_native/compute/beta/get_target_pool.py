@@ -188,18 +188,18 @@ def get_target_pool(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getTargetPool', __args__, opts=opts, typ=GetTargetPoolResult).value
 
     return AwaitableGetTargetPoolResult(
-        backup_pool=__ret__.backup_pool,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        failover_ratio=__ret__.failover_ratio,
-        health_checks=__ret__.health_checks,
-        instances=__ret__.instances,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        region=__ret__.region,
-        security_policy=__ret__.security_policy,
-        self_link=__ret__.self_link,
-        session_affinity=__ret__.session_affinity)
+        backup_pool=pulumi.get(__ret__, 'backup_pool'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        failover_ratio=pulumi.get(__ret__, 'failover_ratio'),
+        health_checks=pulumi.get(__ret__, 'health_checks'),
+        instances=pulumi.get(__ret__, 'instances'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        security_policy=pulumi.get(__ret__, 'security_policy'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        session_affinity=pulumi.get(__ret__, 'session_affinity'))
 
 
 @_utilities.lift_output_func(get_target_pool)

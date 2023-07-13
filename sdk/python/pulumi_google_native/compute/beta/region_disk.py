@@ -247,6 +247,9 @@ class RegionDiskArgs:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -532,6 +535,9 @@ class RegionDiskArgs:
         """
         [Deprecated] Storage type of the persistent disk.
         """
+        warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+        pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
@@ -918,6 +924,9 @@ class RegionDisk(pulumi.CustomResource):
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+
         return pulumi.get(self, "interface")
 
     @property
@@ -1232,6 +1241,9 @@ class RegionDisk(pulumi.CustomResource):
         """
         [Deprecated] Storage type of the persistent disk.
         """
+        warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+        pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+
         return pulumi.get(self, "storage_type")
 
     @property

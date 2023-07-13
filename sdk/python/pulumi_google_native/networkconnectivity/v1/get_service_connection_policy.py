@@ -165,16 +165,16 @@ def get_service_connection_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getServiceConnectionPolicy', __args__, opts=opts, typ=GetServiceConnectionPolicyResult).value
 
     return AwaitableGetServiceConnectionPolicyResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        infrastructure=__ret__.infrastructure,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        psc_config=__ret__.psc_config,
-        psc_connections=__ret__.psc_connections,
-        service_class=__ret__.service_class,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        infrastructure=pulumi.get(__ret__, 'infrastructure'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        psc_config=pulumi.get(__ret__, 'psc_config'),
+        psc_connections=pulumi.get(__ret__, 'psc_connections'),
+        service_class=pulumi.get(__ret__, 'service_class'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_service_connection_policy)

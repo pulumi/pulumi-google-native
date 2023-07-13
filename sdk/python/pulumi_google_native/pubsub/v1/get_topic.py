@@ -127,13 +127,13 @@ def get_topic(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        message_retention_duration=__ret__.message_retention_duration,
-        message_storage_policy=__ret__.message_storage_policy,
-        name=__ret__.name,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        schema_settings=__ret__.schema_settings)
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
+        message_storage_policy=pulumi.get(__ret__, 'message_storage_policy'),
+        name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        schema_settings=pulumi.get(__ret__, 'schema_settings'))
 
 
 @_utilities.lift_output_func(get_topic)

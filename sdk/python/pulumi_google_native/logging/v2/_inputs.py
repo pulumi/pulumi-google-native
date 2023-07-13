@@ -494,6 +494,9 @@ class MetricDescriptorMetadataArgs:
         """
         Deprecated. Must use the MetricDescriptor.launch_stage instead.
         """
+        warnings.warn("""Deprecated. Must use the MetricDescriptor.launch_stage instead.""", DeprecationWarning)
+        pulumi.log.warn("""launch_stage is deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.""")
+
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter

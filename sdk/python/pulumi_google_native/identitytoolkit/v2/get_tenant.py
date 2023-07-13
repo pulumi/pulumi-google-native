@@ -247,23 +247,23 @@ def get_tenant(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:identitytoolkit/v2:getTenant', __args__, opts=opts, typ=GetTenantResult).value
 
     return AwaitableGetTenantResult(
-        allow_password_signup=__ret__.allow_password_signup,
-        autodelete_anonymous_users=__ret__.autodelete_anonymous_users,
-        client=__ret__.client,
-        disable_auth=__ret__.disable_auth,
-        display_name=__ret__.display_name,
-        email_privacy_config=__ret__.email_privacy_config,
-        enable_anonymous_user=__ret__.enable_anonymous_user,
-        enable_email_link_signin=__ret__.enable_email_link_signin,
-        hash_config=__ret__.hash_config,
-        inheritance=__ret__.inheritance,
-        mfa_config=__ret__.mfa_config,
-        monitoring=__ret__.monitoring,
-        name=__ret__.name,
-        password_policy_config=__ret__.password_policy_config,
-        recaptcha_config=__ret__.recaptcha_config,
-        sms_region_config=__ret__.sms_region_config,
-        test_phone_numbers=__ret__.test_phone_numbers)
+        allow_password_signup=pulumi.get(__ret__, 'allow_password_signup'),
+        autodelete_anonymous_users=pulumi.get(__ret__, 'autodelete_anonymous_users'),
+        client=pulumi.get(__ret__, 'client'),
+        disable_auth=pulumi.get(__ret__, 'disable_auth'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        email_privacy_config=pulumi.get(__ret__, 'email_privacy_config'),
+        enable_anonymous_user=pulumi.get(__ret__, 'enable_anonymous_user'),
+        enable_email_link_signin=pulumi.get(__ret__, 'enable_email_link_signin'),
+        hash_config=pulumi.get(__ret__, 'hash_config'),
+        inheritance=pulumi.get(__ret__, 'inheritance'),
+        mfa_config=pulumi.get(__ret__, 'mfa_config'),
+        monitoring=pulumi.get(__ret__, 'monitoring'),
+        name=pulumi.get(__ret__, 'name'),
+        password_policy_config=pulumi.get(__ret__, 'password_policy_config'),
+        recaptcha_config=pulumi.get(__ret__, 'recaptcha_config'),
+        sms_region_config=pulumi.get(__ret__, 'sms_region_config'),
+        test_phone_numbers=pulumi.get(__ret__, 'test_phone_numbers'))
 
 
 @_utilities.lift_output_func(get_tenant)

@@ -81,9 +81,9 @@ def get_tag_template_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1:getTagTemplateIamPolicy', __args__, opts=opts, typ=GetTagTemplateIamPolicyResult).value
 
     return AwaitableGetTagTemplateIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_tag_template_iam_policy)

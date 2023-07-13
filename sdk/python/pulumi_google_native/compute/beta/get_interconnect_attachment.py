@@ -70,10 +70,6 @@ class GetInterconnectAttachmentResult:
         pulumi.set(__self__, "encryption", encryption)
         if google_reference_id and not isinstance(google_reference_id, str):
             raise TypeError("Expected argument 'google_reference_id' to be a str")
-        if google_reference_id is not None:
-            warnings.warn("""[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""", DeprecationWarning)
-            pulumi.log.warn("""google_reference_id is deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
-
         pulumi.set(__self__, "google_reference_id", google_reference_id)
         if interconnect and not isinstance(interconnect, str):
             raise TypeError("Expected argument 'interconnect' to be a str")
@@ -276,6 +272,9 @@ class GetInterconnectAttachmentResult:
         """
         Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
         """
+        warnings.warn("""[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""", DeprecationWarning)
+        pulumi.log.warn("""google_reference_id is deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
+
         return pulumi.get(self, "google_reference_id")
 
     @property
@@ -517,45 +516,45 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getInterconnectAttachment', __args__, opts=opts, typ=GetInterconnectAttachmentResult).value
 
     return AwaitableGetInterconnectAttachmentResult(
-        admin_enabled=__ret__.admin_enabled,
-        bandwidth=__ret__.bandwidth,
-        candidate_ipv6_subnets=__ret__.candidate_ipv6_subnets,
-        candidate_subnets=__ret__.candidate_subnets,
-        cloud_router_ip_address=__ret__.cloud_router_ip_address,
-        cloud_router_ipv6_address=__ret__.cloud_router_ipv6_address,
-        cloud_router_ipv6_interface_id=__ret__.cloud_router_ipv6_interface_id,
-        configuration_constraints=__ret__.configuration_constraints,
-        creation_timestamp=__ret__.creation_timestamp,
-        customer_router_ip_address=__ret__.customer_router_ip_address,
-        customer_router_ipv6_address=__ret__.customer_router_ipv6_address,
-        customer_router_ipv6_interface_id=__ret__.customer_router_ipv6_interface_id,
-        dataplane_version=__ret__.dataplane_version,
-        description=__ret__.description,
-        edge_availability_domain=__ret__.edge_availability_domain,
-        encryption=__ret__.encryption,
-        google_reference_id=__ret__.google_reference_id,
-        interconnect=__ret__.interconnect,
-        ipsec_internal_addresses=__ret__.ipsec_internal_addresses,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        mtu=__ret__.mtu,
-        name=__ret__.name,
-        operational_status=__ret__.operational_status,
-        pairing_key=__ret__.pairing_key,
-        partner_asn=__ret__.partner_asn,
-        partner_metadata=__ret__.partner_metadata,
-        private_interconnect_info=__ret__.private_interconnect_info,
-        region=__ret__.region,
-        remote_service=__ret__.remote_service,
-        router=__ret__.router,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        self_link=__ret__.self_link,
-        stack_type=__ret__.stack_type,
-        state=__ret__.state,
-        subnet_length=__ret__.subnet_length,
-        type=__ret__.type,
-        vlan_tag8021q=__ret__.vlan_tag8021q)
+        admin_enabled=pulumi.get(__ret__, 'admin_enabled'),
+        bandwidth=pulumi.get(__ret__, 'bandwidth'),
+        candidate_ipv6_subnets=pulumi.get(__ret__, 'candidate_ipv6_subnets'),
+        candidate_subnets=pulumi.get(__ret__, 'candidate_subnets'),
+        cloud_router_ip_address=pulumi.get(__ret__, 'cloud_router_ip_address'),
+        cloud_router_ipv6_address=pulumi.get(__ret__, 'cloud_router_ipv6_address'),
+        cloud_router_ipv6_interface_id=pulumi.get(__ret__, 'cloud_router_ipv6_interface_id'),
+        configuration_constraints=pulumi.get(__ret__, 'configuration_constraints'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        customer_router_ip_address=pulumi.get(__ret__, 'customer_router_ip_address'),
+        customer_router_ipv6_address=pulumi.get(__ret__, 'customer_router_ipv6_address'),
+        customer_router_ipv6_interface_id=pulumi.get(__ret__, 'customer_router_ipv6_interface_id'),
+        dataplane_version=pulumi.get(__ret__, 'dataplane_version'),
+        description=pulumi.get(__ret__, 'description'),
+        edge_availability_domain=pulumi.get(__ret__, 'edge_availability_domain'),
+        encryption=pulumi.get(__ret__, 'encryption'),
+        google_reference_id=pulumi.get(__ret__, 'google_reference_id'),
+        interconnect=pulumi.get(__ret__, 'interconnect'),
+        ipsec_internal_addresses=pulumi.get(__ret__, 'ipsec_internal_addresses'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mtu=pulumi.get(__ret__, 'mtu'),
+        name=pulumi.get(__ret__, 'name'),
+        operational_status=pulumi.get(__ret__, 'operational_status'),
+        pairing_key=pulumi.get(__ret__, 'pairing_key'),
+        partner_asn=pulumi.get(__ret__, 'partner_asn'),
+        partner_metadata=pulumi.get(__ret__, 'partner_metadata'),
+        private_interconnect_info=pulumi.get(__ret__, 'private_interconnect_info'),
+        region=pulumi.get(__ret__, 'region'),
+        remote_service=pulumi.get(__ret__, 'remote_service'),
+        router=pulumi.get(__ret__, 'router'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
+        state=pulumi.get(__ret__, 'state'),
+        subnet_length=pulumi.get(__ret__, 'subnet_length'),
+        type=pulumi.get(__ret__, 'type'),
+        vlan_tag8021q=pulumi.get(__ret__, 'vlan_tag8021q'))
 
 
 @_utilities.lift_output_func(get_interconnect_attachment)

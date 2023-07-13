@@ -143,14 +143,14 @@ def get_binding(binding_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1alpha:getBinding', __args__, opts=opts, typ=GetBindingResult).value
 
     return AwaitableGetBindingResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        fleet=__ret__.fleet,
-        name=__ret__.name,
-        scope=__ret__.scope,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        fleet=pulumi.get(__ret__, 'fleet'),
+        name=pulumi.get(__ret__, 'name'),
+        scope=pulumi.get(__ret__, 'scope'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_binding)

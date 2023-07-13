@@ -258,24 +258,24 @@ def get_region_network_endpoint_group(network_endpoint_group: Optional[str] = No
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRegionNetworkEndpointGroup', __args__, opts=opts, typ=GetRegionNetworkEndpointGroupResult).value
 
     return AwaitableGetRegionNetworkEndpointGroupResult(
-        annotations=__ret__.annotations,
-        app_engine=__ret__.app_engine,
-        cloud_function=__ret__.cloud_function,
-        cloud_run=__ret__.cloud_run,
-        creation_timestamp=__ret__.creation_timestamp,
-        default_port=__ret__.default_port,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_endpoint_type=__ret__.network_endpoint_type,
-        psc_data=__ret__.psc_data,
-        psc_target_service=__ret__.psc_target_service,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        size=__ret__.size,
-        subnetwork=__ret__.subnetwork,
-        zone=__ret__.zone)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        app_engine=pulumi.get(__ret__, 'app_engine'),
+        cloud_function=pulumi.get(__ret__, 'cloud_function'),
+        cloud_run=pulumi.get(__ret__, 'cloud_run'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        default_port=pulumi.get(__ret__, 'default_port'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_endpoint_type=pulumi.get(__ret__, 'network_endpoint_type'),
+        psc_data=pulumi.get(__ret__, 'psc_data'),
+        psc_target_service=pulumi.get(__ret__, 'psc_target_service'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_region_network_endpoint_group)

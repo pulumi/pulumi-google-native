@@ -152,15 +152,15 @@ def get_region_target_http_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getRegionTargetHttpProxy', __args__, opts=opts, typ=GetRegionTargetHttpProxyResult).value
 
     return AwaitableGetRegionTargetHttpProxyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        proxy_bind=__ret__.proxy_bind,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        url_map=__ret__.url_map)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_bind=pulumi.get(__ret__, 'proxy_bind'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        url_map=pulumi.get(__ret__, 'url_map'))
 
 
 @_utilities.lift_output_func(get_region_target_http_proxy)

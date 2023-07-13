@@ -91,10 +91,10 @@ def get_workforce_pool_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getWorkforcePoolIamPolicy', __args__, opts=opts, typ=GetWorkforcePoolIamPolicyResult).value
 
     return AwaitableGetWorkforcePoolIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_workforce_pool_iam_policy)

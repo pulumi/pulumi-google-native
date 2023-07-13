@@ -86,9 +86,9 @@ def get_fhir(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getFhir', __args__, opts=opts, typ=GetFhirResult).value
 
     return AwaitableGetFhirResult(
-        content_type=__ret__.content_type,
-        data=__ret__.data,
-        extensions=__ret__.extensions)
+        content_type=pulumi.get(__ret__, 'content_type'),
+        data=pulumi.get(__ret__, 'data'),
+        extensions=pulumi.get(__ret__, 'extensions'))
 
 
 @_utilities.lift_output_func(get_fhir)

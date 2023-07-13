@@ -177,17 +177,17 @@ def get_certificate(certificate_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        expire_time=__ret__.expire_time,
-        labels=__ret__.labels,
-        managed=__ret__.managed,
-        name=__ret__.name,
-        pem_certificate=__ret__.pem_certificate,
-        san_dnsnames=__ret__.san_dnsnames,
-        scope=__ret__.scope,
-        self_managed=__ret__.self_managed,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        managed=pulumi.get(__ret__, 'managed'),
+        name=pulumi.get(__ret__, 'name'),
+        pem_certificate=pulumi.get(__ret__, 'pem_certificate'),
+        san_dnsnames=pulumi.get(__ret__, 'san_dnsnames'),
+        scope=pulumi.get(__ret__, 'scope'),
+        self_managed=pulumi.get(__ret__, 'self_managed'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate)

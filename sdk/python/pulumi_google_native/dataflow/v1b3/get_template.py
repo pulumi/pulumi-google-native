@@ -95,10 +95,10 @@ def get_template(gcs_path: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataflow/v1b3:getTemplate', __args__, opts=opts, typ=GetTemplateResult).value
 
     return AwaitableGetTemplateResult(
-        metadata=__ret__.metadata,
-        runtime_metadata=__ret__.runtime_metadata,
-        status=__ret__.status,
-        template_type=__ret__.template_type)
+        metadata=pulumi.get(__ret__, 'metadata'),
+        runtime_metadata=pulumi.get(__ret__, 'runtime_metadata'),
+        status=pulumi.get(__ret__, 'status'),
+        template_type=pulumi.get(__ret__, 'template_type'))
 
 
 @_utilities.lift_output_func(get_template)

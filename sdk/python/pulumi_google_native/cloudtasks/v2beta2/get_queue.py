@@ -179,17 +179,17 @@ def get_queue(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2beta2:getQueue', __args__, opts=opts, typ=GetQueueResult).value
 
     return AwaitableGetQueueResult(
-        app_engine_http_target=__ret__.app_engine_http_target,
-        http_target=__ret__.http_target,
-        name=__ret__.name,
-        pull_target=__ret__.pull_target,
-        purge_time=__ret__.purge_time,
-        rate_limits=__ret__.rate_limits,
-        retry_config=__ret__.retry_config,
-        state=__ret__.state,
-        stats=__ret__.stats,
-        task_ttl=__ret__.task_ttl,
-        tombstone_ttl=__ret__.tombstone_ttl)
+        app_engine_http_target=pulumi.get(__ret__, 'app_engine_http_target'),
+        http_target=pulumi.get(__ret__, 'http_target'),
+        name=pulumi.get(__ret__, 'name'),
+        pull_target=pulumi.get(__ret__, 'pull_target'),
+        purge_time=pulumi.get(__ret__, 'purge_time'),
+        rate_limits=pulumi.get(__ret__, 'rate_limits'),
+        retry_config=pulumi.get(__ret__, 'retry_config'),
+        state=pulumi.get(__ret__, 'state'),
+        stats=pulumi.get(__ret__, 'stats'),
+        task_ttl=pulumi.get(__ret__, 'task_ttl'),
+        tombstone_ttl=pulumi.get(__ret__, 'tombstone_ttl'))
 
 
 @_utilities.lift_output_func(get_queue)

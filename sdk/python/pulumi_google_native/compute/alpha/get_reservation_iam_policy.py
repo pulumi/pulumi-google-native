@@ -107,11 +107,11 @@ def get_reservation_iam_policy(options_requested_policy_version: Optional[int] =
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getReservationIamPolicy', __args__, opts=opts, typ=GetReservationIamPolicyResult).value
 
     return AwaitableGetReservationIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        rules=__ret__.rules,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        rules=pulumi.get(__ret__, 'rules'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_reservation_iam_policy)

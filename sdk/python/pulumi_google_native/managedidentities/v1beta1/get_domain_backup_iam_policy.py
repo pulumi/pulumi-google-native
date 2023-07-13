@@ -83,9 +83,9 @@ def get_domain_backup_iam_policy(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:managedidentities/v1beta1:getDomainBackupIamPolicy', __args__, opts=opts, typ=GetDomainBackupIamPolicyResult).value
 
     return AwaitableGetDomainBackupIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_domain_backup_iam_policy)

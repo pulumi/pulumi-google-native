@@ -231,22 +231,22 @@ def get_managed_zone(client_operation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1beta2:getManagedZone', __args__, opts=opts, typ=GetManagedZoneResult).value
 
     return AwaitableGetManagedZoneResult(
-        cloud_logging_config=__ret__.cloud_logging_config,
-        creation_time=__ret__.creation_time,
-        description=__ret__.description,
-        dns_name=__ret__.dns_name,
-        dnssec_config=__ret__.dnssec_config,
-        forwarding_config=__ret__.forwarding_config,
-        kind=__ret__.kind,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        name_server_set=__ret__.name_server_set,
-        name_servers=__ret__.name_servers,
-        peering_config=__ret__.peering_config,
-        private_visibility_config=__ret__.private_visibility_config,
-        reverse_lookup_config=__ret__.reverse_lookup_config,
-        service_directory_config=__ret__.service_directory_config,
-        visibility=__ret__.visibility)
+        cloud_logging_config=pulumi.get(__ret__, 'cloud_logging_config'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        description=pulumi.get(__ret__, 'description'),
+        dns_name=pulumi.get(__ret__, 'dns_name'),
+        dnssec_config=pulumi.get(__ret__, 'dnssec_config'),
+        forwarding_config=pulumi.get(__ret__, 'forwarding_config'),
+        kind=pulumi.get(__ret__, 'kind'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        name_server_set=pulumi.get(__ret__, 'name_server_set'),
+        name_servers=pulumi.get(__ret__, 'name_servers'),
+        peering_config=pulumi.get(__ret__, 'peering_config'),
+        private_visibility_config=pulumi.get(__ret__, 'private_visibility_config'),
+        reverse_lookup_config=pulumi.get(__ret__, 'reverse_lookup_config'),
+        service_directory_config=pulumi.get(__ret__, 'service_directory_config'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_managed_zone)

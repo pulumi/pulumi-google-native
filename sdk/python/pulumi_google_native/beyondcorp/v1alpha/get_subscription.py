@@ -152,15 +152,15 @@ def get_subscription(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1alpha:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        auto_renew_enabled=__ret__.auto_renew_enabled,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        name=__ret__.name,
-        seat_count=__ret__.seat_count,
-        sku=__ret__.sku,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        type=__ret__.type)
+        auto_renew_enabled=pulumi.get(__ret__, 'auto_renew_enabled'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        name=pulumi.get(__ret__, 'name'),
+        seat_count=pulumi.get(__ret__, 'seat_count'),
+        sku=pulumi.get(__ret__, 'sku'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_subscription)

@@ -129,13 +129,13 @@ def get_cluster(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        cluster_config=__ret__.cluster_config,
-        default_storage_type=__ret__.default_storage_type,
-        encryption_config=__ret__.encryption_config,
-        location=__ret__.location,
-        name=__ret__.name,
-        serve_nodes=__ret__.serve_nodes,
-        state=__ret__.state)
+        cluster_config=pulumi.get(__ret__, 'cluster_config'),
+        default_storage_type=pulumi.get(__ret__, 'default_storage_type'),
+        encryption_config=pulumi.get(__ret__, 'encryption_config'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        serve_nodes=pulumi.get(__ret__, 'serve_nodes'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_cluster)

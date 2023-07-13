@@ -86,9 +86,9 @@ def get_context(context_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getContext', __args__, opts=opts, typ=GetContextResult).value
 
     return AwaitableGetContextResult(
-        lifespan_count=__ret__.lifespan_count,
-        name=__ret__.name,
-        parameters=__ret__.parameters)
+        lifespan_count=pulumi.get(__ret__, 'lifespan_count'),
+        name=pulumi.get(__ret__, 'name'),
+        parameters=pulumi.get(__ret__, 'parameters'))
 
 
 @_utilities.lift_output_func(get_context)

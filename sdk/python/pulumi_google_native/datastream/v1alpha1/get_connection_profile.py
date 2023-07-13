@@ -189,18 +189,18 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastream/v1alpha1:getConnectionProfile', __args__, opts=opts, typ=GetConnectionProfileResult).value
 
     return AwaitableGetConnectionProfileResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        forward_ssh_connectivity=__ret__.forward_ssh_connectivity,
-        gcs_profile=__ret__.gcs_profile,
-        labels=__ret__.labels,
-        mysql_profile=__ret__.mysql_profile,
-        name=__ret__.name,
-        no_connectivity=__ret__.no_connectivity,
-        oracle_profile=__ret__.oracle_profile,
-        private_connectivity=__ret__.private_connectivity,
-        static_service_ip_connectivity=__ret__.static_service_ip_connectivity,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        forward_ssh_connectivity=pulumi.get(__ret__, 'forward_ssh_connectivity'),
+        gcs_profile=pulumi.get(__ret__, 'gcs_profile'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mysql_profile=pulumi.get(__ret__, 'mysql_profile'),
+        name=pulumi.get(__ret__, 'name'),
+        no_connectivity=pulumi.get(__ret__, 'no_connectivity'),
+        oracle_profile=pulumi.get(__ret__, 'oracle_profile'),
+        private_connectivity=pulumi.get(__ret__, 'private_connectivity'),
+        static_service_ip_connectivity=pulumi.get(__ret__, 'static_service_ip_connectivity'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_connection_profile)

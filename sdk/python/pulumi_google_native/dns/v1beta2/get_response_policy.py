@@ -114,12 +114,12 @@ def get_response_policy(client_operation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1beta2:getResponsePolicy', __args__, opts=opts, typ=GetResponsePolicyResult).value
 
     return AwaitableGetResponsePolicyResult(
-        description=__ret__.description,
-        gke_clusters=__ret__.gke_clusters,
-        kind=__ret__.kind,
-        labels=__ret__.labels,
-        networks=__ret__.networks,
-        response_policy_name=__ret__.response_policy_name)
+        description=pulumi.get(__ret__, 'description'),
+        gke_clusters=pulumi.get(__ret__, 'gke_clusters'),
+        kind=pulumi.get(__ret__, 'kind'),
+        labels=pulumi.get(__ret__, 'labels'),
+        networks=pulumi.get(__ret__, 'networks'),
+        response_policy_name=pulumi.get(__ret__, 'response_policy_name'))
 
 
 @_utilities.lift_output_func(get_response_policy)

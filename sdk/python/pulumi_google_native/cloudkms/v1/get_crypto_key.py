@@ -179,17 +179,17 @@ def get_crypto_key(crypto_key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudkms/v1:getCryptoKey', __args__, opts=opts, typ=GetCryptoKeyResult).value
 
     return AwaitableGetCryptoKeyResult(
-        create_time=__ret__.create_time,
-        crypto_key_backend=__ret__.crypto_key_backend,
-        destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
-        import_only=__ret__.import_only,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        next_rotation_time=__ret__.next_rotation_time,
-        primary=__ret__.primary,
-        purpose=__ret__.purpose,
-        rotation_period=__ret__.rotation_period,
-        version_template=__ret__.version_template)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        crypto_key_backend=pulumi.get(__ret__, 'crypto_key_backend'),
+        destroy_scheduled_duration=pulumi.get(__ret__, 'destroy_scheduled_duration'),
+        import_only=pulumi.get(__ret__, 'import_only'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        next_rotation_time=pulumi.get(__ret__, 'next_rotation_time'),
+        primary=pulumi.get(__ret__, 'primary'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        rotation_period=pulumi.get(__ret__, 'rotation_period'),
+        version_template=pulumi.get(__ret__, 'version_template'))
 
 
 @_utilities.lift_output_func(get_crypto_key)

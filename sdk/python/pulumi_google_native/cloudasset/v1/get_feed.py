@@ -129,13 +129,13 @@ def get_feed(feed_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudasset/v1:getFeed', __args__, opts=opts, typ=GetFeedResult).value
 
     return AwaitableGetFeedResult(
-        asset_names=__ret__.asset_names,
-        asset_types=__ret__.asset_types,
-        condition=__ret__.condition,
-        content_type=__ret__.content_type,
-        feed_output_config=__ret__.feed_output_config,
-        name=__ret__.name,
-        relationship_types=__ret__.relationship_types)
+        asset_names=pulumi.get(__ret__, 'asset_names'),
+        asset_types=pulumi.get(__ret__, 'asset_types'),
+        condition=pulumi.get(__ret__, 'condition'),
+        content_type=pulumi.get(__ret__, 'content_type'),
+        feed_output_config=pulumi.get(__ret__, 'feed_output_config'),
+        name=pulumi.get(__ret__, 'name'),
+        relationship_types=pulumi.get(__ret__, 'relationship_types'))
 
 
 @_utilities.lift_output_func(get_feed)

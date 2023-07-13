@@ -165,16 +165,16 @@ def get_capacity_commitment(capacity_commitment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigqueryreservation/v1:getCapacityCommitment', __args__, opts=opts, typ=GetCapacityCommitmentResult).value
 
     return AwaitableGetCapacityCommitmentResult(
-        commitment_end_time=__ret__.commitment_end_time,
-        commitment_start_time=__ret__.commitment_start_time,
-        edition=__ret__.edition,
-        failure_status=__ret__.failure_status,
-        multi_region_auxiliary=__ret__.multi_region_auxiliary,
-        name=__ret__.name,
-        plan=__ret__.plan,
-        renewal_plan=__ret__.renewal_plan,
-        slot_count=__ret__.slot_count,
-        state=__ret__.state)
+        commitment_end_time=pulumi.get(__ret__, 'commitment_end_time'),
+        commitment_start_time=pulumi.get(__ret__, 'commitment_start_time'),
+        edition=pulumi.get(__ret__, 'edition'),
+        failure_status=pulumi.get(__ret__, 'failure_status'),
+        multi_region_auxiliary=pulumi.get(__ret__, 'multi_region_auxiliary'),
+        name=pulumi.get(__ret__, 'name'),
+        plan=pulumi.get(__ret__, 'plan'),
+        renewal_plan=pulumi.get(__ret__, 'renewal_plan'),
+        slot_count=pulumi.get(__ret__, 'slot_count'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_capacity_commitment)

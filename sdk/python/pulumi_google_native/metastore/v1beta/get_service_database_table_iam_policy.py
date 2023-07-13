@@ -99,10 +99,10 @@ def get_service_database_table_iam_policy(database_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:metastore/v1beta:getServiceDatabaseTableIamPolicy', __args__, opts=opts, typ=GetServiceDatabaseTableIamPolicyResult).value
 
     return AwaitableGetServiceDatabaseTableIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_service_database_table_iam_policy)

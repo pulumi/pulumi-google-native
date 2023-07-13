@@ -145,14 +145,14 @@ def get_task(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2beta2:getTask', __args__, opts=opts, typ=GetTaskResult).value
 
     return AwaitableGetTaskResult(
-        app_engine_http_request=__ret__.app_engine_http_request,
-        create_time=__ret__.create_time,
-        http_request=__ret__.http_request,
-        name=__ret__.name,
-        pull_message=__ret__.pull_message,
-        schedule_time=__ret__.schedule_time,
-        status=__ret__.status,
-        view=__ret__.view)
+        app_engine_http_request=pulumi.get(__ret__, 'app_engine_http_request'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        http_request=pulumi.get(__ret__, 'http_request'),
+        name=pulumi.get(__ret__, 'name'),
+        pull_message=pulumi.get(__ret__, 'pull_message'),
+        schedule_time=pulumi.get(__ret__, 'schedule_time'),
+        status=pulumi.get(__ret__, 'status'),
+        view=pulumi.get(__ret__, 'view'))
 
 
 @_utilities.lift_output_func(get_task)

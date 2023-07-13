@@ -216,20 +216,20 @@ def get_spec(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getSpec', __args__, opts=opts, typ=GetSpecResult).value
 
     return AwaitableGetSpecResult(
-        annotations=__ret__.annotations,
-        contents=__ret__.contents,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        filename=__ret__.filename,
-        hash=__ret__.hash,
-        labels=__ret__.labels,
-        mime_type=__ret__.mime_type,
-        name=__ret__.name,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        revision_update_time=__ret__.revision_update_time,
-        size_bytes=__ret__.size_bytes,
-        source_uri=__ret__.source_uri)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        contents=pulumi.get(__ret__, 'contents'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        filename=pulumi.get(__ret__, 'filename'),
+        hash=pulumi.get(__ret__, 'hash'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mime_type=pulumi.get(__ret__, 'mime_type'),
+        name=pulumi.get(__ret__, 'name'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        revision_update_time=pulumi.get(__ret__, 'revision_update_time'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        source_uri=pulumi.get(__ret__, 'source_uri'))
 
 
 @_utilities.lift_output_func(get_spec)

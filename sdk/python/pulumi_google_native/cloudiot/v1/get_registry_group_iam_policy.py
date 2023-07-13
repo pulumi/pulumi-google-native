@@ -83,9 +83,9 @@ def get_registry_group_iam_policy(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudiot/v1:getRegistryGroupIamPolicy', __args__, opts=opts, typ=GetRegistryGroupIamPolicyResult).value
 
     return AwaitableGetRegistryGroupIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_registry_group_iam_policy)

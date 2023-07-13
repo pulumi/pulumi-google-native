@@ -251,23 +251,23 @@ def get_restore(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkebackup/v1:getRestore', __args__, opts=opts, typ=GetRestoreResult).value
 
     return AwaitableGetRestoreResult(
-        backup=__ret__.backup,
-        cluster=__ret__.cluster,
-        complete_time=__ret__.complete_time,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        resources_excluded_count=__ret__.resources_excluded_count,
-        resources_failed_count=__ret__.resources_failed_count,
-        resources_restored_count=__ret__.resources_restored_count,
-        restore_config=__ret__.restore_config,
-        state=__ret__.state,
-        state_reason=__ret__.state_reason,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time,
-        volumes_restored_count=__ret__.volumes_restored_count)
+        backup=pulumi.get(__ret__, 'backup'),
+        cluster=pulumi.get(__ret__, 'cluster'),
+        complete_time=pulumi.get(__ret__, 'complete_time'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        resources_excluded_count=pulumi.get(__ret__, 'resources_excluded_count'),
+        resources_failed_count=pulumi.get(__ret__, 'resources_failed_count'),
+        resources_restored_count=pulumi.get(__ret__, 'resources_restored_count'),
+        restore_config=pulumi.get(__ret__, 'restore_config'),
+        state=pulumi.get(__ret__, 'state'),
+        state_reason=pulumi.get(__ret__, 'state_reason'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        volumes_restored_count=pulumi.get(__ret__, 'volumes_restored_count'))
 
 
 @_utilities.lift_output_func(get_restore)

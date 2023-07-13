@@ -102,11 +102,11 @@ def get_group(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        display_name=__ret__.display_name,
-        filter=__ret__.filter,
-        is_cluster=__ret__.is_cluster,
-        name=__ret__.name,
-        parent_name=__ret__.parent_name)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        filter=pulumi.get(__ret__, 'filter'),
+        is_cluster=pulumi.get(__ret__, 'is_cluster'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_name=pulumi.get(__ret__, 'parent_name'))
 
 
 @_utilities.lift_output_func(get_group)

@@ -106,11 +106,11 @@ def get_organization_bucket_view(bucket_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getOrganizationBucketView', __args__, opts=opts, typ=GetOrganizationBucketViewResult).value
 
     return AwaitableGetOrganizationBucketViewResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        filter=__ret__.filter,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_organization_bucket_view)

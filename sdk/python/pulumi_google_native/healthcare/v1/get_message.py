@@ -171,16 +171,16 @@ def get_message(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getMessage', __args__, opts=opts, typ=GetMessageResult).value
 
     return AwaitableGetMessageResult(
-        create_time=__ret__.create_time,
-        data=__ret__.data,
-        labels=__ret__.labels,
-        message_type=__ret__.message_type,
-        name=__ret__.name,
-        parsed_data=__ret__.parsed_data,
-        patient_ids=__ret__.patient_ids,
-        schematized_data=__ret__.schematized_data,
-        send_facility=__ret__.send_facility,
-        send_time=__ret__.send_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data=pulumi.get(__ret__, 'data'),
+        labels=pulumi.get(__ret__, 'labels'),
+        message_type=pulumi.get(__ret__, 'message_type'),
+        name=pulumi.get(__ret__, 'name'),
+        parsed_data=pulumi.get(__ret__, 'parsed_data'),
+        patient_ids=pulumi.get(__ret__, 'patient_ids'),
+        schematized_data=pulumi.get(__ret__, 'schematized_data'),
+        send_facility=pulumi.get(__ret__, 'send_facility'),
+        send_time=pulumi.get(__ret__, 'send_time'))
 
 
 @_utilities.lift_output_func(get_message)

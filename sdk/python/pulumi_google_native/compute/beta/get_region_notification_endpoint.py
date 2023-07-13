@@ -129,13 +129,13 @@ def get_region_notification_endpoint(notification_endpoint: Optional[str] = None
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getRegionNotificationEndpoint', __args__, opts=opts, typ=GetRegionNotificationEndpointResult).value
 
     return AwaitableGetRegionNotificationEndpointResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        grpc_settings=__ret__.grpc_settings,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        grpc_settings=pulumi.get(__ret__, 'grpc_settings'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_region_notification_endpoint)

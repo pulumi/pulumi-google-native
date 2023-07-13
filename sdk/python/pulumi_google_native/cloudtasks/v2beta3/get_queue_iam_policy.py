@@ -81,9 +81,9 @@ def get_queue_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2beta3:getQueueIamPolicy', __args__, opts=opts, typ=GetQueueIamPolicyResult).value
 
     return AwaitableGetQueueIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_queue_iam_policy)

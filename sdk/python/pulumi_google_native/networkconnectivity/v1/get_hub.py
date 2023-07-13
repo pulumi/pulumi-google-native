@@ -139,14 +139,14 @@ def get_hub(hub_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getHub', __args__, opts=opts, typ=GetHubResult).value
 
     return AwaitableGetHubResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        routing_vpcs=__ret__.routing_vpcs,
-        state=__ret__.state,
-        unique_id=__ret__.unique_id,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        routing_vpcs=pulumi.get(__ret__, 'routing_vpcs'),
+        state=pulumi.get(__ret__, 'state'),
+        unique_id=pulumi.get(__ret__, 'unique_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_hub)

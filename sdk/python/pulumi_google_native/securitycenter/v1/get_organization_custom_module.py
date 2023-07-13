@@ -127,13 +127,13 @@ def get_organization_custom_module(custom_module_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getOrganizationCustomModule', __args__, opts=opts, typ=GetOrganizationCustomModuleResult).value
 
     return AwaitableGetOrganizationCustomModuleResult(
-        ancestor_module=__ret__.ancestor_module,
-        custom_config=__ret__.custom_config,
-        display_name=__ret__.display_name,
-        enablement_state=__ret__.enablement_state,
-        last_editor=__ret__.last_editor,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        ancestor_module=pulumi.get(__ret__, 'ancestor_module'),
+        custom_config=pulumi.get(__ret__, 'custom_config'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enablement_state=pulumi.get(__ret__, 'enablement_state'),
+        last_editor=pulumi.get(__ret__, 'last_editor'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_organization_custom_module)

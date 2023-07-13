@@ -215,20 +215,20 @@ def get_entry(entry_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1beta1:getEntry', __args__, opts=opts, typ=GetEntryResult).value
 
     return AwaitableGetEntryResult(
-        bigquery_date_sharded_spec=__ret__.bigquery_date_sharded_spec,
-        bigquery_table_spec=__ret__.bigquery_table_spec,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        gcs_fileset_spec=__ret__.gcs_fileset_spec,
-        integrated_system=__ret__.integrated_system,
-        linked_resource=__ret__.linked_resource,
-        name=__ret__.name,
-        schema=__ret__.schema,
-        source_system_timestamps=__ret__.source_system_timestamps,
-        type=__ret__.type,
-        usage_signal=__ret__.usage_signal,
-        user_specified_system=__ret__.user_specified_system,
-        user_specified_type=__ret__.user_specified_type)
+        bigquery_date_sharded_spec=pulumi.get(__ret__, 'bigquery_date_sharded_spec'),
+        bigquery_table_spec=pulumi.get(__ret__, 'bigquery_table_spec'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        gcs_fileset_spec=pulumi.get(__ret__, 'gcs_fileset_spec'),
+        integrated_system=pulumi.get(__ret__, 'integrated_system'),
+        linked_resource=pulumi.get(__ret__, 'linked_resource'),
+        name=pulumi.get(__ret__, 'name'),
+        schema=pulumi.get(__ret__, 'schema'),
+        source_system_timestamps=pulumi.get(__ret__, 'source_system_timestamps'),
+        type=pulumi.get(__ret__, 'type'),
+        usage_signal=pulumi.get(__ret__, 'usage_signal'),
+        user_specified_system=pulumi.get(__ret__, 'user_specified_system'),
+        user_specified_type=pulumi.get(__ret__, 'user_specified_type'))
 
 
 @_utilities.lift_output_func(get_entry)

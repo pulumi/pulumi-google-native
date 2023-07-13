@@ -175,17 +175,17 @@ def get_connectivity_test(connectivity_test_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkmanagement/v1:getConnectivityTest', __args__, opts=opts, typ=GetConnectivityTestResult).value
 
     return AwaitableGetConnectivityTestResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        destination=__ret__.destination,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        protocol=__ret__.protocol,
-        reachability_details=__ret__.reachability_details,
-        related_projects=__ret__.related_projects,
-        source=__ret__.source,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        destination=pulumi.get(__ret__, 'destination'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        protocol=pulumi.get(__ret__, 'protocol'),
+        reachability_details=pulumi.get(__ret__, 'reachability_details'),
+        related_projects=pulumi.get(__ret__, 'related_projects'),
+        source=pulumi.get(__ret__, 'source'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_connectivity_test)

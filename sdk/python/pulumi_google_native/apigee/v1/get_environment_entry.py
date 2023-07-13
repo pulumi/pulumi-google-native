@@ -70,8 +70,8 @@ def get_environment_entry(entry_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEnvironmentEntry', __args__, opts=opts, typ=GetEnvironmentEntryResult).value
 
     return AwaitableGetEnvironmentEntryResult(
-        name=__ret__.name,
-        value=__ret__.value)
+        name=pulumi.get(__ret__, 'name'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_environment_entry)

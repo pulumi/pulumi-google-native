@@ -213,20 +213,20 @@ def get_reservation(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
-        commitment=__ret__.commitment,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        resource_policies=__ret__.resource_policies,
-        resource_status=__ret__.resource_status,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        self_link=__ret__.self_link,
-        share_settings=__ret__.share_settings,
-        specific_reservation=__ret__.specific_reservation,
-        specific_reservation_required=__ret__.specific_reservation_required,
-        status=__ret__.status,
-        zone=__ret__.zone)
+        commitment=pulumi.get(__ret__, 'commitment'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_policies=pulumi.get(__ret__, 'resource_policies'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        share_settings=pulumi.get(__ret__, 'share_settings'),
+        specific_reservation=pulumi.get(__ret__, 'specific_reservation'),
+        specific_reservation_required=pulumi.get(__ret__, 'specific_reservation_required'),
+        status=pulumi.get(__ret__, 'status'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_reservation)

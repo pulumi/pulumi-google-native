@@ -97,10 +97,10 @@ def get_workstation_cluster_workstation_config_iam_policy(location: Optional[str
     __ret__ = pulumi.runtime.invoke('google-native:workstations/v1beta:getWorkstationClusterWorkstationConfigIamPolicy', __args__, opts=opts, typ=GetWorkstationClusterWorkstationConfigIamPolicyResult).value
 
     return AwaitableGetWorkstationClusterWorkstationConfigIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_workstation_cluster_workstation_config_iam_policy)

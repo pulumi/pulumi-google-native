@@ -166,16 +166,16 @@ def get_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
-        disabled=__ret__.disabled,
-        key_algorithm=__ret__.key_algorithm,
-        key_origin=__ret__.key_origin,
-        key_type=__ret__.key_type,
-        name=__ret__.name,
-        private_key_data=__ret__.private_key_data,
-        private_key_type=__ret__.private_key_type,
-        public_key_data=__ret__.public_key_data,
-        valid_after_time=__ret__.valid_after_time,
-        valid_before_time=__ret__.valid_before_time)
+        disabled=pulumi.get(__ret__, 'disabled'),
+        key_algorithm=pulumi.get(__ret__, 'key_algorithm'),
+        key_origin=pulumi.get(__ret__, 'key_origin'),
+        key_type=pulumi.get(__ret__, 'key_type'),
+        name=pulumi.get(__ret__, 'name'),
+        private_key_data=pulumi.get(__ret__, 'private_key_data'),
+        private_key_type=pulumi.get(__ret__, 'private_key_type'),
+        public_key_data=pulumi.get(__ret__, 'public_key_data'),
+        valid_after_time=pulumi.get(__ret__, 'valid_after_time'),
+        valid_before_time=pulumi.get(__ret__, 'valid_before_time'))
 
 
 @_utilities.lift_output_func(get_key)

@@ -95,10 +95,10 @@ def get_connection_profile_iam_policy(connection_profile_id: Optional[str] = Non
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1beta1:getConnectionProfileIamPolicy', __args__, opts=opts, typ=GetConnectionProfileIamPolicyResult).value
 
     return AwaitableGetConnectionProfileIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_connection_profile_iam_policy)

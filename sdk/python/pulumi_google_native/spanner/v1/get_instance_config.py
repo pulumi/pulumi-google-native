@@ -187,18 +187,18 @@ def get_instance_config(instance_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getInstanceConfig', __args__, opts=opts, typ=GetInstanceConfigResult).value
 
     return AwaitableGetInstanceConfigResult(
-        base_config=__ret__.base_config,
-        config_type=__ret__.config_type,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        free_instance_availability=__ret__.free_instance_availability,
-        labels=__ret__.labels,
-        leader_options=__ret__.leader_options,
-        name=__ret__.name,
-        optional_replicas=__ret__.optional_replicas,
-        reconciling=__ret__.reconciling,
-        replicas=__ret__.replicas,
-        state=__ret__.state)
+        base_config=pulumi.get(__ret__, 'base_config'),
+        config_type=pulumi.get(__ret__, 'config_type'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        free_instance_availability=pulumi.get(__ret__, 'free_instance_availability'),
+        labels=pulumi.get(__ret__, 'labels'),
+        leader_options=pulumi.get(__ret__, 'leader_options'),
+        name=pulumi.get(__ret__, 'name'),
+        optional_replicas=pulumi.get(__ret__, 'optional_replicas'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        replicas=pulumi.get(__ret__, 'replicas'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_instance_config)

@@ -102,11 +102,11 @@ def get_envgroup(envgroup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEnvgroup', __args__, opts=opts, typ=GetEnvgroupResult).value
 
     return AwaitableGetEnvgroupResult(
-        created_at=__ret__.created_at,
-        hostnames=__ret__.hostnames,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        state=__ret__.state)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        hostnames=pulumi.get(__ret__, 'hostnames'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_envgroup)

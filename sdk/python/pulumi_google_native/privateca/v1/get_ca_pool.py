@@ -105,11 +105,11 @@ def get_ca_pool(ca_pool_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCaPool', __args__, opts=opts, typ=GetCaPoolResult).value
 
     return AwaitableGetCaPoolResult(
-        issuance_policy=__ret__.issuance_policy,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        publishing_options=__ret__.publishing_options,
-        tier=__ret__.tier)
+        issuance_policy=pulumi.get(__ret__, 'issuance_policy'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        publishing_options=pulumi.get(__ret__, 'publishing_options'),
+        tier=pulumi.get(__ret__, 'tier'))
 
 
 @_utilities.lift_output_func(get_ca_pool)

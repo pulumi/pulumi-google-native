@@ -68,8 +68,8 @@ def get_dataset(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getDataset', __args__, opts=opts, typ=GetDatasetResult).value
 
     return AwaitableGetDatasetResult(
-        name=__ret__.name,
-        time_zone=__ret__.time_zone)
+        name=pulumi.get(__ret__, 'name'),
+        time_zone=pulumi.get(__ret__, 'time_zone'))
 
 
 @_utilities.lift_output_func(get_dataset)

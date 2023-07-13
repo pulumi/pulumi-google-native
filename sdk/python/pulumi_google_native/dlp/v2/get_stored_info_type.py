@@ -81,9 +81,9 @@ def get_stored_info_type(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dlp/v2:getStoredInfoType', __args__, opts=opts, typ=GetStoredInfoTypeResult).value
 
     return AwaitableGetStoredInfoTypeResult(
-        current_version=__ret__.current_version,
-        name=__ret__.name,
-        pending_versions=__ret__.pending_versions)
+        current_version=pulumi.get(__ret__, 'current_version'),
+        name=pulumi.get(__ret__, 'name'),
+        pending_versions=pulumi.get(__ret__, 'pending_versions'))
 
 
 @_utilities.lift_output_func(get_stored_info_type)

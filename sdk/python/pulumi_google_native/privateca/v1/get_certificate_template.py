@@ -141,14 +141,14 @@ def get_certificate_template(certificate_template_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCertificateTemplate', __args__, opts=opts, typ=GetCertificateTemplateResult).value
 
     return AwaitableGetCertificateTemplateResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        identity_constraints=__ret__.identity_constraints,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        passthrough_extensions=__ret__.passthrough_extensions,
-        predefined_values=__ret__.predefined_values,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        identity_constraints=pulumi.get(__ret__, 'identity_constraints'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        passthrough_extensions=pulumi.get(__ret__, 'passthrough_extensions'),
+        predefined_values=pulumi.get(__ret__, 'predefined_values'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate_template)

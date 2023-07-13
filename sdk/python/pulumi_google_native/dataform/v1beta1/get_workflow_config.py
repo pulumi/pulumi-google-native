@@ -119,12 +119,12 @@ def get_workflow_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getWorkflowConfig', __args__, opts=opts, typ=GetWorkflowConfigResult).value
 
     return AwaitableGetWorkflowConfigResult(
-        cron_schedule=__ret__.cron_schedule,
-        invocation_config=__ret__.invocation_config,
-        name=__ret__.name,
-        recent_scheduled_execution_records=__ret__.recent_scheduled_execution_records,
-        release_config=__ret__.release_config,
-        time_zone=__ret__.time_zone)
+        cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
+        invocation_config=pulumi.get(__ret__, 'invocation_config'),
+        name=pulumi.get(__ret__, 'name'),
+        recent_scheduled_execution_records=pulumi.get(__ret__, 'recent_scheduled_execution_records'),
+        release_config=pulumi.get(__ret__, 'release_config'),
+        time_zone=pulumi.get(__ret__, 'time_zone'))
 
 
 @_utilities.lift_output_func(get_workflow_config)

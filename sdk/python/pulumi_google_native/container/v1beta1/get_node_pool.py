@@ -67,10 +67,6 @@ class GetNodePoolResult:
         pulumi.set(__self__, "status", status)
         if status_message and not isinstance(status_message, str):
             raise TypeError("Expected argument 'status_message' to be a str")
-        if status_message is not None:
-            warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
-            pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
-
         pulumi.set(__self__, "status_message", status_message)
         if update_info and not isinstance(update_info, dict):
             raise TypeError("Expected argument 'update_info' to be a dict")
@@ -208,6 +204,9 @@ class GetNodePoolResult:
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         """
+        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
+        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
+
         return pulumi.get(self, "status_message")
 
     @property
@@ -283,25 +282,25 @@ def get_node_pool(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:container/v1beta1:getNodePool', __args__, opts=opts, typ=GetNodePoolResult).value
 
     return AwaitableGetNodePoolResult(
-        autoscaling=__ret__.autoscaling,
-        conditions=__ret__.conditions,
-        config=__ret__.config,
-        etag=__ret__.etag,
-        initial_node_count=__ret__.initial_node_count,
-        instance_group_urls=__ret__.instance_group_urls,
-        locations=__ret__.locations,
-        management=__ret__.management,
-        max_pods_constraint=__ret__.max_pods_constraint,
-        name=__ret__.name,
-        network_config=__ret__.network_config,
-        placement_policy=__ret__.placement_policy,
-        pod_ipv4_cidr_size=__ret__.pod_ipv4_cidr_size,
-        self_link=__ret__.self_link,
-        status=__ret__.status,
-        status_message=__ret__.status_message,
-        update_info=__ret__.update_info,
-        upgrade_settings=__ret__.upgrade_settings,
-        version=__ret__.version)
+        autoscaling=pulumi.get(__ret__, 'autoscaling'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        config=pulumi.get(__ret__, 'config'),
+        etag=pulumi.get(__ret__, 'etag'),
+        initial_node_count=pulumi.get(__ret__, 'initial_node_count'),
+        instance_group_urls=pulumi.get(__ret__, 'instance_group_urls'),
+        locations=pulumi.get(__ret__, 'locations'),
+        management=pulumi.get(__ret__, 'management'),
+        max_pods_constraint=pulumi.get(__ret__, 'max_pods_constraint'),
+        name=pulumi.get(__ret__, 'name'),
+        network_config=pulumi.get(__ret__, 'network_config'),
+        placement_policy=pulumi.get(__ret__, 'placement_policy'),
+        pod_ipv4_cidr_size=pulumi.get(__ret__, 'pod_ipv4_cidr_size'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        status=pulumi.get(__ret__, 'status'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        update_info=pulumi.get(__ret__, 'update_info'),
+        upgrade_settings=pulumi.get(__ret__, 'upgrade_settings'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_node_pool)

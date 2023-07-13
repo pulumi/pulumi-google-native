@@ -165,16 +165,16 @@ def get_restore_plan(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkebackup/v1:getRestorePlan', __args__, opts=opts, typ=GetRestorePlanResult).value
 
     return AwaitableGetRestorePlanResult(
-        backup_plan=__ret__.backup_plan,
-        cluster=__ret__.cluster,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        restore_config=__ret__.restore_config,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        backup_plan=pulumi.get(__ret__, 'backup_plan'),
+        cluster=pulumi.get(__ret__, 'cluster'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        restore_config=pulumi.get(__ret__, 'restore_config'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_restore_plan)

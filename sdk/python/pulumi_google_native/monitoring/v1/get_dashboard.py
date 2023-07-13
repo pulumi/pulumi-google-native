@@ -151,15 +151,15 @@ def get_dashboard(dashboard_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v1:getDashboard', __args__, opts=opts, typ=GetDashboardResult).value
 
     return AwaitableGetDashboardResult(
-        column_layout=__ret__.column_layout,
-        dashboard_filters=__ret__.dashboard_filters,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        grid_layout=__ret__.grid_layout,
-        labels=__ret__.labels,
-        mosaic_layout=__ret__.mosaic_layout,
-        name=__ret__.name,
-        row_layout=__ret__.row_layout)
+        column_layout=pulumi.get(__ret__, 'column_layout'),
+        dashboard_filters=pulumi.get(__ret__, 'dashboard_filters'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        grid_layout=pulumi.get(__ret__, 'grid_layout'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mosaic_layout=pulumi.get(__ret__, 'mosaic_layout'),
+        name=pulumi.get(__ret__, 'name'),
+        row_layout=pulumi.get(__ret__, 'row_layout'))
 
 
 @_utilities.lift_output_func(get_dashboard)

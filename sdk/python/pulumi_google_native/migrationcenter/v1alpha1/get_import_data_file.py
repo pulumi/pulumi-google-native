@@ -119,12 +119,12 @@ def get_import_data_file(import_data_file_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:migrationcenter/v1alpha1:getImportDataFile', __args__, opts=opts, typ=GetImportDataFileResult).value
 
     return AwaitableGetImportDataFileResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        format=__ret__.format,
-        name=__ret__.name,
-        state=__ret__.state,
-        upload_file_info=__ret__.upload_file_info)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        format=pulumi.get(__ret__, 'format'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        upload_file_info=pulumi.get(__ret__, 'upload_file_info'))
 
 
 @_utilities.lift_output_func(get_import_data_file)

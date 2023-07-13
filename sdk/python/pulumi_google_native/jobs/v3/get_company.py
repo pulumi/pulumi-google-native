@@ -46,10 +46,6 @@ class GetCompanyResult:
         pulumi.set(__self__, "image_uri", image_uri)
         if keyword_searchable_job_custom_attributes and not isinstance(keyword_searchable_job_custom_attributes, list):
             raise TypeError("Expected argument 'keyword_searchable_job_custom_attributes' to be a list")
-        if keyword_searchable_job_custom_attributes is not None:
-            warnings.warn("""Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.""", DeprecationWarning)
-            pulumi.log.warn("""keyword_searchable_job_custom_attributes is deprecated: Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.""")
-
         pulumi.set(__self__, "keyword_searchable_job_custom_attributes", keyword_searchable_job_custom_attributes)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -134,6 +130,9 @@ class GetCompanyResult:
         """
         Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.
         """
+        warnings.warn("""Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.""", DeprecationWarning)
+        pulumi.log.warn("""keyword_searchable_job_custom_attributes is deprecated: Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.""")
+
         return pulumi.get(self, "keyword_searchable_job_custom_attributes")
 
     @property
@@ -203,19 +202,19 @@ def get_company(company_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:jobs/v3:getCompany', __args__, opts=opts, typ=GetCompanyResult).value
 
     return AwaitableGetCompanyResult(
-        career_site_uri=__ret__.career_site_uri,
-        derived_info=__ret__.derived_info,
-        display_name=__ret__.display_name,
-        eeo_text=__ret__.eeo_text,
-        external_id=__ret__.external_id,
-        headquarters_address=__ret__.headquarters_address,
-        hiring_agency=__ret__.hiring_agency,
-        image_uri=__ret__.image_uri,
-        keyword_searchable_job_custom_attributes=__ret__.keyword_searchable_job_custom_attributes,
-        name=__ret__.name,
-        size=__ret__.size,
-        suspended=__ret__.suspended,
-        website_uri=__ret__.website_uri)
+        career_site_uri=pulumi.get(__ret__, 'career_site_uri'),
+        derived_info=pulumi.get(__ret__, 'derived_info'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        eeo_text=pulumi.get(__ret__, 'eeo_text'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        headquarters_address=pulumi.get(__ret__, 'headquarters_address'),
+        hiring_agency=pulumi.get(__ret__, 'hiring_agency'),
+        image_uri=pulumi.get(__ret__, 'image_uri'),
+        keyword_searchable_job_custom_attributes=pulumi.get(__ret__, 'keyword_searchable_job_custom_attributes'),
+        name=pulumi.get(__ret__, 'name'),
+        size=pulumi.get(__ret__, 'size'),
+        suspended=pulumi.get(__ret__, 'suspended'),
+        website_uri=pulumi.get(__ret__, 'website_uri'))
 
 
 @_utilities.lift_output_func(get_company)

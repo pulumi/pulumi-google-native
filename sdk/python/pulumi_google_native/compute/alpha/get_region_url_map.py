@@ -225,21 +225,21 @@ def get_region_url_map(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionUrlMap', __args__, opts=opts, typ=GetRegionUrlMapResult).value
 
     return AwaitableGetRegionUrlMapResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        default_custom_error_response_policy=__ret__.default_custom_error_response_policy,
-        default_route_action=__ret__.default_route_action,
-        default_service=__ret__.default_service,
-        default_url_redirect=__ret__.default_url_redirect,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        header_action=__ret__.header_action,
-        host_rules=__ret__.host_rules,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        path_matchers=__ret__.path_matchers,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        tests=__ret__.tests)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        default_custom_error_response_policy=pulumi.get(__ret__, 'default_custom_error_response_policy'),
+        default_route_action=pulumi.get(__ret__, 'default_route_action'),
+        default_service=pulumi.get(__ret__, 'default_service'),
+        default_url_redirect=pulumi.get(__ret__, 'default_url_redirect'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        header_action=pulumi.get(__ret__, 'header_action'),
+        host_rules=pulumi.get(__ret__, 'host_rules'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        path_matchers=pulumi.get(__ret__, 'path_matchers'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        tests=pulumi.get(__ret__, 'tests'))
 
 
 @_utilities.lift_output_func(get_region_url_map)

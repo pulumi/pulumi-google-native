@@ -115,12 +115,12 @@ def get_index(index_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastore/v1:getIndex', __args__, opts=opts, typ=GetIndexResult).value
 
     return AwaitableGetIndexResult(
-        ancestor=__ret__.ancestor,
-        index_id=__ret__.index_id,
-        kind=__ret__.kind,
-        project=__ret__.project,
-        properties=__ret__.properties,
-        state=__ret__.state)
+        ancestor=pulumi.get(__ret__, 'ancestor'),
+        index_id=pulumi.get(__ret__, 'index_id'),
+        kind=pulumi.get(__ret__, 'kind'),
+        project=pulumi.get(__ret__, 'project'),
+        properties=pulumi.get(__ret__, 'properties'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_index)

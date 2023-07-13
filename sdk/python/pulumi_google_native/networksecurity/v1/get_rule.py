@@ -166,16 +166,16 @@ def get_rule(gateway_security_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networksecurity/v1:getRule', __args__, opts=opts, typ=GetRuleResult).value
 
     return AwaitableGetRuleResult(
-        application_matcher=__ret__.application_matcher,
-        basic_profile=__ret__.basic_profile,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        enabled=__ret__.enabled,
-        name=__ret__.name,
-        priority=__ret__.priority,
-        session_matcher=__ret__.session_matcher,
-        tls_inspection_enabled=__ret__.tls_inspection_enabled,
-        update_time=__ret__.update_time)
+        application_matcher=pulumi.get(__ret__, 'application_matcher'),
+        basic_profile=pulumi.get(__ret__, 'basic_profile'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        name=pulumi.get(__ret__, 'name'),
+        priority=pulumi.get(__ret__, 'priority'),
+        session_matcher=pulumi.get(__ret__, 'session_matcher'),
+        tls_inspection_enabled=pulumi.get(__ret__, 'tls_inspection_enabled'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_rule)

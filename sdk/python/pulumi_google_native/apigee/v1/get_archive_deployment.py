@@ -116,12 +116,12 @@ def get_archive_deployment(archive_deployment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getArchiveDeployment', __args__, opts=opts, typ=GetArchiveDeploymentResult).value
 
     return AwaitableGetArchiveDeploymentResult(
-        created_at=__ret__.created_at,
-        gcs_uri=__ret__.gcs_uri,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        updated_at=__ret__.updated_at)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        gcs_uri=pulumi.get(__ret__, 'gcs_uri'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 
 
 @_utilities.lift_output_func(get_archive_deployment)

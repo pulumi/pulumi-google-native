@@ -241,22 +241,22 @@ def get_device(device_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudiot/v1:getDevice', __args__, opts=opts, typ=GetDeviceResult).value
 
     return AwaitableGetDeviceResult(
-        blocked=__ret__.blocked,
-        config=__ret__.config,
-        credentials=__ret__.credentials,
-        gateway_config=__ret__.gateway_config,
-        last_config_ack_time=__ret__.last_config_ack_time,
-        last_config_send_time=__ret__.last_config_send_time,
-        last_error_status=__ret__.last_error_status,
-        last_error_time=__ret__.last_error_time,
-        last_event_time=__ret__.last_event_time,
-        last_heartbeat_time=__ret__.last_heartbeat_time,
-        last_state_time=__ret__.last_state_time,
-        log_level=__ret__.log_level,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        num_id=__ret__.num_id,
-        state=__ret__.state)
+        blocked=pulumi.get(__ret__, 'blocked'),
+        config=pulumi.get(__ret__, 'config'),
+        credentials=pulumi.get(__ret__, 'credentials'),
+        gateway_config=pulumi.get(__ret__, 'gateway_config'),
+        last_config_ack_time=pulumi.get(__ret__, 'last_config_ack_time'),
+        last_config_send_time=pulumi.get(__ret__, 'last_config_send_time'),
+        last_error_status=pulumi.get(__ret__, 'last_error_status'),
+        last_error_time=pulumi.get(__ret__, 'last_error_time'),
+        last_event_time=pulumi.get(__ret__, 'last_event_time'),
+        last_heartbeat_time=pulumi.get(__ret__, 'last_heartbeat_time'),
+        last_state_time=pulumi.get(__ret__, 'last_state_time'),
+        log_level=pulumi.get(__ret__, 'log_level'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        num_id=pulumi.get(__ret__, 'num_id'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_device)

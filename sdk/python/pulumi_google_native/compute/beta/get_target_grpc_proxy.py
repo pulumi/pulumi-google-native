@@ -150,15 +150,15 @@ def get_target_grpc_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getTargetGrpcProxy', __args__, opts=opts, typ=GetTargetGrpcProxyResult).value
 
     return AwaitableGetTargetGrpcProxyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        url_map=__ret__.url_map,
-        validate_for_proxyless=__ret__.validate_for_proxyless)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        url_map=pulumi.get(__ret__, 'url_map'),
+        validate_for_proxyless=pulumi.get(__ret__, 'validate_for_proxyless'))
 
 
 @_utilities.lift_output_func(get_target_grpc_proxy)

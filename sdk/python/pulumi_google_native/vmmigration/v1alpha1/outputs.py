@@ -560,6 +560,9 @@ class CloneJobResponse(dict):
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "compute_engine_vm_details")
 
     @property
@@ -624,6 +627,9 @@ class CloneJobResponse(dict):
         """
         Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "target_details")
 
 
@@ -1440,6 +1446,9 @@ class CutoverJobResponse(dict):
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "compute_engine_vm_details")
 
     @property
@@ -1528,6 +1537,9 @@ class CutoverJobResponse(dict):
         """
         Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "target_details")
 
 

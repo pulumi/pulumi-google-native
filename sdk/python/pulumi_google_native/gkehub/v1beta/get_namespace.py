@@ -129,13 +129,13 @@ def get_namespace(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1beta:getNamespace', __args__, opts=opts, typ=GetNamespaceResult).value
 
     return AwaitableGetNamespaceResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        name=__ret__.name,
-        scope=__ret__.scope,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        name=pulumi.get(__ret__, 'name'),
+        scope=pulumi.get(__ret__, 'scope'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_namespace)

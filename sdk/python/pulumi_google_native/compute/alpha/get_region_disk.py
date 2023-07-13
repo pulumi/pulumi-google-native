@@ -49,10 +49,6 @@ class GetRegionDiskResult:
         pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface and not isinstance(interface, str):
             raise TypeError("Expected argument 'interface' to be a str")
-        if interface is not None:
-            warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
-            pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
-
         pulumi.set(__self__, "interface", interface)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -173,10 +169,6 @@ class GetRegionDiskResult:
         pulumi.set(__self__, "storage_pool", storage_pool)
         if storage_type and not isinstance(storage_type, str):
             raise TypeError("Expected argument 'storage_type' to be a str")
-        if storage_type is not None:
-            warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
-            pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
-
         pulumi.set(__self__, "storage_type", storage_type)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
@@ -269,6 +261,9 @@ class GetRegionDiskResult:
         """
         [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+
         return pulumi.get(self, "interface")
 
     @property
@@ -589,6 +584,9 @@ class GetRegionDiskResult:
         """
         [Deprecated] Storage type of the persistent disk.
         """
+        warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+        pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+
         return pulumi.get(self, "storage_type")
 
     @property
@@ -701,60 +699,60 @@ def get_region_disk(disk: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionDisk', __args__, opts=opts, typ=GetRegionDiskResult).value
 
     return AwaitableGetRegionDiskResult(
-        architecture=__ret__.architecture,
-        async_primary_disk=__ret__.async_primary_disk,
-        async_secondary_disks=__ret__.async_secondary_disks,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        disk_encryption_key=__ret__.disk_encryption_key,
-        enable_confidential_compute=__ret__.enable_confidential_compute,
-        erase_windows_vss_signature=__ret__.erase_windows_vss_signature,
-        guest_os_features=__ret__.guest_os_features,
-        interface=__ret__.interface,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        last_attach_timestamp=__ret__.last_attach_timestamp,
-        last_detach_timestamp=__ret__.last_detach_timestamp,
-        license_codes=__ret__.license_codes,
-        licenses=__ret__.licenses,
-        location_hint=__ret__.location_hint,
-        locked=__ret__.locked,
-        multi_writer=__ret__.multi_writer,
-        name=__ret__.name,
-        options=__ret__.options,
-        params=__ret__.params,
-        physical_block_size_bytes=__ret__.physical_block_size_bytes,
-        provisioned_iops=__ret__.provisioned_iops,
-        provisioned_throughput=__ret__.provisioned_throughput,
-        region=__ret__.region,
-        replica_zones=__ret__.replica_zones,
-        resource_policies=__ret__.resource_policies,
-        resource_status=__ret__.resource_status,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        size_gb=__ret__.size_gb,
-        source_consistency_group_policy=__ret__.source_consistency_group_policy,
-        source_consistency_group_policy_id=__ret__.source_consistency_group_policy_id,
-        source_disk=__ret__.source_disk,
-        source_disk_id=__ret__.source_disk_id,
-        source_image=__ret__.source_image,
-        source_image_encryption_key=__ret__.source_image_encryption_key,
-        source_image_id=__ret__.source_image_id,
-        source_instant_snapshot=__ret__.source_instant_snapshot,
-        source_instant_snapshot_id=__ret__.source_instant_snapshot_id,
-        source_snapshot=__ret__.source_snapshot,
-        source_snapshot_encryption_key=__ret__.source_snapshot_encryption_key,
-        source_snapshot_id=__ret__.source_snapshot_id,
-        source_storage_object=__ret__.source_storage_object,
-        status=__ret__.status,
-        storage_pool=__ret__.storage_pool,
-        storage_type=__ret__.storage_type,
-        type=__ret__.type,
-        user_licenses=__ret__.user_licenses,
-        users=__ret__.users,
-        zone=__ret__.zone)
+        architecture=pulumi.get(__ret__, 'architecture'),
+        async_primary_disk=pulumi.get(__ret__, 'async_primary_disk'),
+        async_secondary_disks=pulumi.get(__ret__, 'async_secondary_disks'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_encryption_key=pulumi.get(__ret__, 'disk_encryption_key'),
+        enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
+        erase_windows_vss_signature=pulumi.get(__ret__, 'erase_windows_vss_signature'),
+        guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
+        interface=pulumi.get(__ret__, 'interface'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        last_attach_timestamp=pulumi.get(__ret__, 'last_attach_timestamp'),
+        last_detach_timestamp=pulumi.get(__ret__, 'last_detach_timestamp'),
+        license_codes=pulumi.get(__ret__, 'license_codes'),
+        licenses=pulumi.get(__ret__, 'licenses'),
+        location_hint=pulumi.get(__ret__, 'location_hint'),
+        locked=pulumi.get(__ret__, 'locked'),
+        multi_writer=pulumi.get(__ret__, 'multi_writer'),
+        name=pulumi.get(__ret__, 'name'),
+        options=pulumi.get(__ret__, 'options'),
+        params=pulumi.get(__ret__, 'params'),
+        physical_block_size_bytes=pulumi.get(__ret__, 'physical_block_size_bytes'),
+        provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
+        region=pulumi.get(__ret__, 'region'),
+        replica_zones=pulumi.get(__ret__, 'replica_zones'),
+        resource_policies=pulumi.get(__ret__, 'resource_policies'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        size_gb=pulumi.get(__ret__, 'size_gb'),
+        source_consistency_group_policy=pulumi.get(__ret__, 'source_consistency_group_policy'),
+        source_consistency_group_policy_id=pulumi.get(__ret__, 'source_consistency_group_policy_id'),
+        source_disk=pulumi.get(__ret__, 'source_disk'),
+        source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
+        source_image=pulumi.get(__ret__, 'source_image'),
+        source_image_encryption_key=pulumi.get(__ret__, 'source_image_encryption_key'),
+        source_image_id=pulumi.get(__ret__, 'source_image_id'),
+        source_instant_snapshot=pulumi.get(__ret__, 'source_instant_snapshot'),
+        source_instant_snapshot_id=pulumi.get(__ret__, 'source_instant_snapshot_id'),
+        source_snapshot=pulumi.get(__ret__, 'source_snapshot'),
+        source_snapshot_encryption_key=pulumi.get(__ret__, 'source_snapshot_encryption_key'),
+        source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
+        source_storage_object=pulumi.get(__ret__, 'source_storage_object'),
+        status=pulumi.get(__ret__, 'status'),
+        storage_pool=pulumi.get(__ret__, 'storage_pool'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        type=pulumi.get(__ret__, 'type'),
+        user_licenses=pulumi.get(__ret__, 'user_licenses'),
+        users=pulumi.get(__ret__, 'users'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_region_disk)

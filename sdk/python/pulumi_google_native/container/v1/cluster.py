@@ -465,6 +465,9 @@ class ClusterArgs:
         """
         The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
         """
+        warnings.warn("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""", DeprecationWarning)
+        pulumi.log.warn("""initial_node_count is deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
+
         return pulumi.get(self, "initial_node_count")
 
     @initial_node_count.setter
@@ -477,6 +480,9 @@ class ClusterArgs:
         """
         Deprecated. Use node_pools.instance_group_urls.
         """
+        warnings.warn("""Deprecated. Use node_pools.instance_group_urls.""", DeprecationWarning)
+        pulumi.log.warn("""instance_group_urls is deprecated: Deprecated. Use node_pools.instance_group_urls.""")
+
         return pulumi.get(self, "instance_group_urls")
 
     @instance_group_urls.setter
@@ -678,6 +684,9 @@ class ClusterArgs:
         """
         Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         """
+        warnings.warn("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""", DeprecationWarning)
+        pulumi.log.warn("""node_config is deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
+
         return pulumi.get(self, "node_config")
 
     @node_config.setter
@@ -762,6 +771,9 @@ class ClusterArgs:
         """
         Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         """
+        warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
+
         return pulumi.get(self, "project")
 
     @project.setter
@@ -858,6 +870,9 @@ class ClusterArgs:
         """
         Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
+        warnings.warn("""Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
+
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -1329,6 +1344,9 @@ class Cluster(pulumi.CustomResource):
         """
         [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
         """
+        warnings.warn("""[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""", DeprecationWarning)
+        pulumi.log.warn("""current_node_count is deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""")
+
         return pulumi.get(self, "current_node_count")
 
     @property
@@ -1433,6 +1451,9 @@ class Cluster(pulumi.CustomResource):
         """
         The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
         """
+        warnings.warn("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""", DeprecationWarning)
+        pulumi.log.warn("""initial_node_count is deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
+
         return pulumi.get(self, "initial_node_count")
 
     @property
@@ -1441,6 +1462,9 @@ class Cluster(pulumi.CustomResource):
         """
         Deprecated. Use node_pools.instance_group_urls.
         """
+        warnings.warn("""Deprecated. Use node_pools.instance_group_urls.""", DeprecationWarning)
+        pulumi.log.warn("""instance_group_urls is deprecated: Deprecated. Use node_pools.instance_group_urls.""")
+
         return pulumi.get(self, "instance_group_urls")
 
     @property
@@ -1582,6 +1606,9 @@ class Cluster(pulumi.CustomResource):
         """
         Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
         """
+        warnings.warn("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""", DeprecationWarning)
+        pulumi.log.warn("""node_config is deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
+
         return pulumi.get(self, "node_config")
 
     @property
@@ -1699,6 +1726,9 @@ class Cluster(pulumi.CustomResource):
         """
         [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
         """
+        warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""", DeprecationWarning)
+        pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""")
+
         return pulumi.get(self, "status_message")
 
     @property
@@ -1739,6 +1769,9 @@ class Cluster(pulumi.CustomResource):
         """
         [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
+        warnings.warn("""[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""")
+
         return pulumi.get(self, "zone")
 
     @pulumi.output_type

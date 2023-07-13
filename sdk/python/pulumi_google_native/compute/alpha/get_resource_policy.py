@@ -207,20 +207,20 @@ def get_resource_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        disk_consistency_group_policy=__ret__.disk_consistency_group_policy,
-        group_placement_policy=__ret__.group_placement_policy,
-        instance_schedule_policy=__ret__.instance_schedule_policy,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        region=__ret__.region,
-        resource_status=__ret__.resource_status,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        snapshot_schedule_policy=__ret__.snapshot_schedule_policy,
-        status=__ret__.status,
-        vm_maintenance_policy=__ret__.vm_maintenance_policy)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_consistency_group_policy=pulumi.get(__ret__, 'disk_consistency_group_policy'),
+        group_placement_policy=pulumi.get(__ret__, 'group_placement_policy'),
+        instance_schedule_policy=pulumi.get(__ret__, 'instance_schedule_policy'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        snapshot_schedule_policy=pulumi.get(__ret__, 'snapshot_schedule_policy'),
+        status=pulumi.get(__ret__, 'status'),
+        vm_maintenance_policy=pulumi.get(__ret__, 'vm_maintenance_policy'))
 
 
 @_utilities.lift_output_func(get_resource_policy)

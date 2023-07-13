@@ -103,11 +103,11 @@ def get_attestor(attestor_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:binaryauthorization/v1:getAttestor', __args__, opts=opts, typ=GetAttestorResult).value
 
     return AwaitableGetAttestorResult(
-        description=__ret__.description,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        update_time=__ret__.update_time,
-        user_owned_grafeas_note=__ret__.user_owned_grafeas_note)
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user_owned_grafeas_note=pulumi.get(__ret__, 'user_owned_grafeas_note'))
 
 
 @_utilities.lift_output_func(get_attestor)

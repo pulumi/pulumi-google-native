@@ -107,11 +107,11 @@ def get_link(bucket_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getLink', __args__, opts=opts, typ=GetLinkResult).value
 
     return AwaitableGetLinkResult(
-        bigquery_dataset=__ret__.bigquery_dataset,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        lifecycle_state=__ret__.lifecycle_state,
-        name=__ret__.name)
+        bigquery_dataset=pulumi.get(__ret__, 'bigquery_dataset'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_link)

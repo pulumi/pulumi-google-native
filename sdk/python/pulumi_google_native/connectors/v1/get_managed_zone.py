@@ -138,14 +138,14 @@ def get_managed_zone(managed_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:connectors/v1:getManagedZone', __args__, opts=opts, typ=GetManagedZoneResult).value
 
     return AwaitableGetManagedZoneResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        dns=__ret__.dns,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        target_project=__ret__.target_project,
-        target_vpc=__ret__.target_vpc,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        dns=pulumi.get(__ret__, 'dns'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        target_project=pulumi.get(__ret__, 'target_project'),
+        target_vpc=pulumi.get(__ret__, 'target_vpc'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_managed_zone)

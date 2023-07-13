@@ -157,15 +157,15 @@ def get_github_enterprise_config(config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudbuild/v1:getGithubEnterpriseConfig', __args__, opts=opts, typ=GetGithubEnterpriseConfigResult).value
 
     return AwaitableGetGithubEnterpriseConfigResult(
-        app_id=__ret__.app_id,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        host_url=__ret__.host_url,
-        name=__ret__.name,
-        peered_network=__ret__.peered_network,
-        secrets=__ret__.secrets,
-        ssl_ca=__ret__.ssl_ca,
-        webhook_key=__ret__.webhook_key)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        host_url=pulumi.get(__ret__, 'host_url'),
+        name=pulumi.get(__ret__, 'name'),
+        peered_network=pulumi.get(__ret__, 'peered_network'),
+        secrets=pulumi.get(__ret__, 'secrets'),
+        ssl_ca=pulumi.get(__ret__, 'ssl_ca'),
+        webhook_key=pulumi.get(__ret__, 'webhook_key'))
 
 
 @_utilities.lift_output_func(get_github_enterprise_config)

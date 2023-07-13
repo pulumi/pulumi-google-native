@@ -199,19 +199,19 @@ def get_test_matrix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:testing/v1:getTestMatrix', __args__, opts=opts, typ=GetTestMatrixResult).value
 
     return AwaitableGetTestMatrixResult(
-        client_info=__ret__.client_info,
-        environment_matrix=__ret__.environment_matrix,
-        fail_fast=__ret__.fail_fast,
-        flaky_test_attempts=__ret__.flaky_test_attempts,
-        invalid_matrix_details=__ret__.invalid_matrix_details,
-        outcome_summary=__ret__.outcome_summary,
-        project=__ret__.project,
-        result_storage=__ret__.result_storage,
-        state=__ret__.state,
-        test_executions=__ret__.test_executions,
-        test_matrix_id=__ret__.test_matrix_id,
-        test_specification=__ret__.test_specification,
-        timestamp=__ret__.timestamp)
+        client_info=pulumi.get(__ret__, 'client_info'),
+        environment_matrix=pulumi.get(__ret__, 'environment_matrix'),
+        fail_fast=pulumi.get(__ret__, 'fail_fast'),
+        flaky_test_attempts=pulumi.get(__ret__, 'flaky_test_attempts'),
+        invalid_matrix_details=pulumi.get(__ret__, 'invalid_matrix_details'),
+        outcome_summary=pulumi.get(__ret__, 'outcome_summary'),
+        project=pulumi.get(__ret__, 'project'),
+        result_storage=pulumi.get(__ret__, 'result_storage'),
+        state=pulumi.get(__ret__, 'state'),
+        test_executions=pulumi.get(__ret__, 'test_executions'),
+        test_matrix_id=pulumi.get(__ret__, 'test_matrix_id'),
+        test_specification=pulumi.get(__ret__, 'test_specification'),
+        timestamp=pulumi.get(__ret__, 'timestamp'))
 
 
 @_utilities.lift_output_func(get_test_matrix)

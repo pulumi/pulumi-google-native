@@ -199,19 +199,19 @@ def get_global_public_delegated_prefix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getGlobalPublicDelegatedPrefix', __args__, opts=opts, typ=GetGlobalPublicDelegatedPrefixResult).value
 
     return AwaitableGetGlobalPublicDelegatedPrefixResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        is_live_migration=__ret__.is_live_migration,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        parent_prefix=__ret__.parent_prefix,
-        public_delegated_sub_prefixs=__ret__.public_delegated_sub_prefixs,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        status=__ret__.status)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        is_live_migration=pulumi.get(__ret__, 'is_live_migration'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_prefix=pulumi.get(__ret__, 'parent_prefix'),
+        public_delegated_sub_prefixs=pulumi.get(__ret__, 'public_delegated_sub_prefixs'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_global_public_delegated_prefix)

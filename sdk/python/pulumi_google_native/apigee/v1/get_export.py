@@ -152,15 +152,15 @@ def get_export(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getExport', __args__, opts=opts, typ=GetExportResult).value
 
     return AwaitableGetExportResult(
-        created=__ret__.created,
-        datastore_name=__ret__.datastore_name,
-        description=__ret__.description,
-        error=__ret__.error,
-        execution_time=__ret__.execution_time,
-        name=__ret__.name,
-        self=__ret__.self,
-        state=__ret__.state,
-        updated=__ret__.updated)
+        created=pulumi.get(__ret__, 'created'),
+        datastore_name=pulumi.get(__ret__, 'datastore_name'),
+        description=pulumi.get(__ret__, 'description'),
+        error=pulumi.get(__ret__, 'error'),
+        execution_time=pulumi.get(__ret__, 'execution_time'),
+        name=pulumi.get(__ret__, 'name'),
+        self=pulumi.get(__ret__, 'self'),
+        state=pulumi.get(__ret__, 'state'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_export)

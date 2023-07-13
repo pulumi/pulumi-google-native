@@ -219,21 +219,21 @@ def get_node_template(node_template: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getNodeTemplate', __args__, opts=opts, typ=GetNodeTemplateResult).value
 
     return AwaitableGetNodeTemplateResult(
-        accelerators=__ret__.accelerators,
-        cpu_overcommit_type=__ret__.cpu_overcommit_type,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        disks=__ret__.disks,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        node_affinity_labels=__ret__.node_affinity_labels,
-        node_type=__ret__.node_type,
-        node_type_flexibility=__ret__.node_type_flexibility,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        server_binding=__ret__.server_binding,
-        status=__ret__.status,
-        status_message=__ret__.status_message)
+        accelerators=pulumi.get(__ret__, 'accelerators'),
+        cpu_overcommit_type=pulumi.get(__ret__, 'cpu_overcommit_type'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        disks=pulumi.get(__ret__, 'disks'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        node_affinity_labels=pulumi.get(__ret__, 'node_affinity_labels'),
+        node_type=pulumi.get(__ret__, 'node_type'),
+        node_type_flexibility=pulumi.get(__ret__, 'node_type_flexibility'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        server_binding=pulumi.get(__ret__, 'server_binding'),
+        status=pulumi.get(__ret__, 'status'),
+        status_message=pulumi.get(__ret__, 'status_message'))
 
 
 @_utilities.lift_output_func(get_node_template)

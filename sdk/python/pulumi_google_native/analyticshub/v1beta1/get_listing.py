@@ -191,18 +191,18 @@ def get_listing(data_exchange_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:analyticshub/v1beta1:getListing', __args__, opts=opts, typ=GetListingResult).value
 
     return AwaitableGetListingResult(
-        bigquery_dataset=__ret__.bigquery_dataset,
-        categories=__ret__.categories,
-        data_provider=__ret__.data_provider,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        documentation=__ret__.documentation,
-        icon=__ret__.icon,
-        name=__ret__.name,
-        primary_contact=__ret__.primary_contact,
-        publisher=__ret__.publisher,
-        request_access=__ret__.request_access,
-        state=__ret__.state)
+        bigquery_dataset=pulumi.get(__ret__, 'bigquery_dataset'),
+        categories=pulumi.get(__ret__, 'categories'),
+        data_provider=pulumi.get(__ret__, 'data_provider'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        documentation=pulumi.get(__ret__, 'documentation'),
+        icon=pulumi.get(__ret__, 'icon'),
+        name=pulumi.get(__ret__, 'name'),
+        primary_contact=pulumi.get(__ret__, 'primary_contact'),
+        publisher=pulumi.get(__ret__, 'publisher'),
+        request_access=pulumi.get(__ret__, 'request_access'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_listing)

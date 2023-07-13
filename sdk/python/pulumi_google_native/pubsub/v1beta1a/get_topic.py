@@ -52,7 +52,7 @@ def get_topic(topic_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1beta1a:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
-        name=__ret__.name)
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_topic)

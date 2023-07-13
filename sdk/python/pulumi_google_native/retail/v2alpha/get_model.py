@@ -239,22 +239,22 @@ def get_model(catalog_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:retail/v2alpha:getModel', __args__, opts=opts, typ=GetModelResult).value
 
     return AwaitableGetModelResult(
-        create_time=__ret__.create_time,
-        data_state=__ret__.data_state,
-        display_name=__ret__.display_name,
-        filtering_option=__ret__.filtering_option,
-        last_tune_time=__ret__.last_tune_time,
-        model_features_config=__ret__.model_features_config,
-        name=__ret__.name,
-        optimization_objective=__ret__.optimization_objective,
-        page_optimization_config=__ret__.page_optimization_config,
-        periodic_tuning_state=__ret__.periodic_tuning_state,
-        serving_config_lists=__ret__.serving_config_lists,
-        serving_state=__ret__.serving_state,
-        training_state=__ret__.training_state,
-        tuning_operation=__ret__.tuning_operation,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data_state=pulumi.get(__ret__, 'data_state'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        filtering_option=pulumi.get(__ret__, 'filtering_option'),
+        last_tune_time=pulumi.get(__ret__, 'last_tune_time'),
+        model_features_config=pulumi.get(__ret__, 'model_features_config'),
+        name=pulumi.get(__ret__, 'name'),
+        optimization_objective=pulumi.get(__ret__, 'optimization_objective'),
+        page_optimization_config=pulumi.get(__ret__, 'page_optimization_config'),
+        periodic_tuning_state=pulumi.get(__ret__, 'periodic_tuning_state'),
+        serving_config_lists=pulumi.get(__ret__, 'serving_config_lists'),
+        serving_state=pulumi.get(__ret__, 'serving_state'),
+        training_state=pulumi.get(__ret__, 'training_state'),
+        tuning_operation=pulumi.get(__ret__, 'tuning_operation'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_model)

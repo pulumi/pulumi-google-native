@@ -165,16 +165,16 @@ def get_runtime(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:notebooks/v1:getRuntime', __args__, opts=opts, typ=GetRuntimeResult).value
 
     return AwaitableGetRuntimeResult(
-        access_config=__ret__.access_config,
-        create_time=__ret__.create_time,
-        health_state=__ret__.health_state,
-        labels=__ret__.labels,
-        metrics=__ret__.metrics,
-        name=__ret__.name,
-        software_config=__ret__.software_config,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        virtual_machine=__ret__.virtual_machine)
+        access_config=pulumi.get(__ret__, 'access_config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        health_state=pulumi.get(__ret__, 'health_state'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metrics=pulumi.get(__ret__, 'metrics'),
+        name=pulumi.get(__ret__, 'name'),
+        software_config=pulumi.get(__ret__, 'software_config'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        virtual_machine=pulumi.get(__ret__, 'virtual_machine'))
 
 
 @_utilities.lift_output_func(get_runtime)

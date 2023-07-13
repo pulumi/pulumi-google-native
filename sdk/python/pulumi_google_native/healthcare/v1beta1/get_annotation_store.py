@@ -70,8 +70,8 @@ def get_annotation_store(annotation_store_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getAnnotationStore', __args__, opts=opts, typ=GetAnnotationStoreResult).value
 
     return AwaitableGetAnnotationStoreResult(
-        labels=__ret__.labels,
-        name=__ret__.name)
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_annotation_store)

@@ -105,11 +105,11 @@ def get_access_level(access_level_format: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:accesscontextmanager/v1beta:getAccessLevel', __args__, opts=opts, typ=GetAccessLevelResult).value
 
     return AwaitableGetAccessLevelResult(
-        basic=__ret__.basic,
-        custom=__ret__.custom,
-        description=__ret__.description,
-        name=__ret__.name,
-        title=__ret__.title)
+        basic=pulumi.get(__ret__, 'basic'),
+        custom=pulumi.get(__ret__, 'custom'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_access_level)

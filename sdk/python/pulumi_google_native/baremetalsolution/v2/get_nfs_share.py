@@ -141,14 +141,14 @@ def get_nfs_share(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:baremetalsolution/v2:getNfsShare', __args__, opts=opts, typ=GetNfsShareResult).value
 
     return AwaitableGetNfsShareResult(
-        allowed_clients=__ret__.allowed_clients,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        nfs_share_id=__ret__.nfs_share_id,
-        requested_size_gib=__ret__.requested_size_gib,
-        state=__ret__.state,
-        storage_type=__ret__.storage_type,
-        volume=__ret__.volume)
+        allowed_clients=pulumi.get(__ret__, 'allowed_clients'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        nfs_share_id=pulumi.get(__ret__, 'nfs_share_id'),
+        requested_size_gib=pulumi.get(__ret__, 'requested_size_gib'),
+        state=pulumi.get(__ret__, 'state'),
+        storage_type=pulumi.get(__ret__, 'storage_type'),
+        volume=pulumi.get(__ret__, 'volume'))
 
 
 @_utilities.lift_output_func(get_nfs_share)

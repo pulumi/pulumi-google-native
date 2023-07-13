@@ -215,20 +215,20 @@ def get_certificate(ca_pool_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        certificate_description=__ret__.certificate_description,
-        certificate_template=__ret__.certificate_template,
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        issuer_certificate_authority=__ret__.issuer_certificate_authority,
-        labels=__ret__.labels,
-        lifetime=__ret__.lifetime,
-        name=__ret__.name,
-        pem_certificate=__ret__.pem_certificate,
-        pem_certificate_chain=__ret__.pem_certificate_chain,
-        pem_csr=__ret__.pem_csr,
-        revocation_details=__ret__.revocation_details,
-        subject_mode=__ret__.subject_mode,
-        update_time=__ret__.update_time)
+        certificate_description=pulumi.get(__ret__, 'certificate_description'),
+        certificate_template=pulumi.get(__ret__, 'certificate_template'),
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        issuer_certificate_authority=pulumi.get(__ret__, 'issuer_certificate_authority'),
+        labels=pulumi.get(__ret__, 'labels'),
+        lifetime=pulumi.get(__ret__, 'lifetime'),
+        name=pulumi.get(__ret__, 'name'),
+        pem_certificate=pulumi.get(__ret__, 'pem_certificate'),
+        pem_certificate_chain=pulumi.get(__ret__, 'pem_certificate_chain'),
+        pem_csr=pulumi.get(__ret__, 'pem_csr'),
+        revocation_details=pulumi.get(__ret__, 'revocation_details'),
+        subject_mode=pulumi.get(__ret__, 'subject_mode'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate)

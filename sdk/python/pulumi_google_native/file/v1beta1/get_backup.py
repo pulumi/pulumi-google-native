@@ -200,19 +200,19 @@ def get_backup(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1beta1:getBackup', __args__, opts=opts, typ=GetBackupResult).value
 
     return AwaitableGetBackupResult(
-        capacity_gb=__ret__.capacity_gb,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        download_bytes=__ret__.download_bytes,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        source_file_share=__ret__.source_file_share,
-        source_instance=__ret__.source_instance,
-        source_instance_tier=__ret__.source_instance_tier,
-        state=__ret__.state,
-        storage_bytes=__ret__.storage_bytes)
+        capacity_gb=pulumi.get(__ret__, 'capacity_gb'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        download_bytes=pulumi.get(__ret__, 'download_bytes'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        source_file_share=pulumi.get(__ret__, 'source_file_share'),
+        source_instance=pulumi.get(__ret__, 'source_instance'),
+        source_instance_tier=pulumi.get(__ret__, 'source_instance_tier'),
+        state=pulumi.get(__ret__, 'state'),
+        storage_bytes=pulumi.get(__ret__, 'storage_bytes'))
 
 
 @_utilities.lift_output_func(get_backup)

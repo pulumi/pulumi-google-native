@@ -104,11 +104,11 @@ def get_target_project(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getTargetProject', __args__, opts=opts, typ=GetTargetProjectResult).value
 
     return AwaitableGetTargetProjectResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        name=__ret__.name,
-        project=__ret__.project,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_target_project)

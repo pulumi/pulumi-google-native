@@ -224,21 +224,21 @@ def get_gateway(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
 
     return AwaitableGetGatewayResult(
-        addresses=__ret__.addresses,
-        certificate_urls=__ret__.certificate_urls,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        gateway_security_policy=__ret__.gateway_security_policy,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        ports=__ret__.ports,
-        scope=__ret__.scope,
-        self_link=__ret__.self_link,
-        server_tls_policy=__ret__.server_tls_policy,
-        subnetwork=__ret__.subnetwork,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        certificate_urls=pulumi.get(__ret__, 'certificate_urls'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        gateway_security_policy=pulumi.get(__ret__, 'gateway_security_policy'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        ports=pulumi.get(__ret__, 'ports'),
+        scope=pulumi.get(__ret__, 'scope'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        server_tls_policy=pulumi.get(__ret__, 'server_tls_policy'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_gateway)

@@ -177,17 +177,17 @@ def get_vpn_gateway(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getVpnGateway', __args__, opts=opts, typ=GetVpnGatewayResult).value
 
     return AwaitableGetVpnGatewayResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        stack_type=__ret__.stack_type,
-        vpn_interfaces=__ret__.vpn_interfaces)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
+        vpn_interfaces=pulumi.get(__ret__, 'vpn_interfaces'))
 
 
 @_utilities.lift_output_func(get_vpn_gateway)

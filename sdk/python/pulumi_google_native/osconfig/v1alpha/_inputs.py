@@ -205,6 +205,9 @@ class OSPolicyAssignmentInstanceFilterArgs:
         """
         Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
         """
+        warnings.warn("""Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.""", DeprecationWarning)
+        pulumi.log.warn("""os_short_names is deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.""")
+
         return pulumi.get(self, "os_short_names")
 
     @os_short_names.setter
@@ -781,6 +784,9 @@ class OSPolicyResourceGroupArgs:
         """
         Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
         """
+        warnings.warn("""Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group""", DeprecationWarning)
+        pulumi.log.warn("""os_filter is deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group""")
+
         return pulumi.get(self, "os_filter")
 
     @os_filter.setter

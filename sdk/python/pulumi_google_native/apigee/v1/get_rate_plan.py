@@ -61,10 +61,6 @@ class GetRatePlanResult:
         pulumi.set(__self__, "name", name)
         if payment_funding_model and not isinstance(payment_funding_model, str):
             raise TypeError("Expected argument 'payment_funding_model' to be a str")
-        if payment_funding_model is not None:
-            warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
-            pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
-
         pulumi.set(__self__, "payment_funding_model", payment_funding_model)
         if revenue_share_rates and not isinstance(revenue_share_rates, list):
             raise TypeError("Expected argument 'revenue_share_rates' to be a list")
@@ -192,6 +188,9 @@ class GetRatePlanResult:
         """
         DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
         """
+        warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
+        pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
+
         return pulumi.get(self, "payment_funding_model")
 
     @property
@@ -277,25 +276,25 @@ def get_rate_plan(apiproduct_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getRatePlan', __args__, opts=opts, typ=GetRatePlanResult).value
 
     return AwaitableGetRatePlanResult(
-        apiproduct=__ret__.apiproduct,
-        billing_period=__ret__.billing_period,
-        consumption_pricing_rates=__ret__.consumption_pricing_rates,
-        consumption_pricing_type=__ret__.consumption_pricing_type,
-        created_at=__ret__.created_at,
-        currency_code=__ret__.currency_code,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        end_time=__ret__.end_time,
-        fixed_fee_frequency=__ret__.fixed_fee_frequency,
-        fixed_recurring_fee=__ret__.fixed_recurring_fee,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        payment_funding_model=__ret__.payment_funding_model,
-        revenue_share_rates=__ret__.revenue_share_rates,
-        revenue_share_type=__ret__.revenue_share_type,
-        setup_fee=__ret__.setup_fee,
-        start_time=__ret__.start_time,
-        state=__ret__.state)
+        apiproduct=pulumi.get(__ret__, 'apiproduct'),
+        billing_period=pulumi.get(__ret__, 'billing_period'),
+        consumption_pricing_rates=pulumi.get(__ret__, 'consumption_pricing_rates'),
+        consumption_pricing_type=pulumi.get(__ret__, 'consumption_pricing_type'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        currency_code=pulumi.get(__ret__, 'currency_code'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        fixed_fee_frequency=pulumi.get(__ret__, 'fixed_fee_frequency'),
+        fixed_recurring_fee=pulumi.get(__ret__, 'fixed_recurring_fee'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        payment_funding_model=pulumi.get(__ret__, 'payment_funding_model'),
+        revenue_share_rates=pulumi.get(__ret__, 'revenue_share_rates'),
+        revenue_share_type=pulumi.get(__ret__, 'revenue_share_type'),
+        setup_fee=pulumi.get(__ret__, 'setup_fee'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_rate_plan)

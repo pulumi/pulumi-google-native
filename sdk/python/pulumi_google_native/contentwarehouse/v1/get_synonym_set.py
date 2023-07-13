@@ -81,9 +81,9 @@ def get_synonym_set(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contentwarehouse/v1:getSynonymSet', __args__, opts=opts, typ=GetSynonymSetResult).value
 
     return AwaitableGetSynonymSetResult(
-        context=__ret__.context,
-        name=__ret__.name,
-        synonyms=__ret__.synonyms)
+        context=pulumi.get(__ret__, 'context'),
+        name=pulumi.get(__ret__, 'name'),
+        synonyms=pulumi.get(__ret__, 'synonyms'))
 
 
 @_utilities.lift_output_func(get_synonym_set)

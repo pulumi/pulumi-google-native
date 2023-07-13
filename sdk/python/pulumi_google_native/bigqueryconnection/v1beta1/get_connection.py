@@ -129,13 +129,13 @@ def get_connection(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigqueryconnection/v1beta1:getConnection', __args__, opts=opts, typ=GetConnectionResult).value
 
     return AwaitableGetConnectionResult(
-        cloud_sql=__ret__.cloud_sql,
-        creation_time=__ret__.creation_time,
-        description=__ret__.description,
-        friendly_name=__ret__.friendly_name,
-        has_credential=__ret__.has_credential,
-        last_modified_time=__ret__.last_modified_time,
-        name=__ret__.name)
+        cloud_sql=pulumi.get(__ret__, 'cloud_sql'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        description=pulumi.get(__ret__, 'description'),
+        friendly_name=pulumi.get(__ret__, 'friendly_name'),
+        has_credential=pulumi.get(__ret__, 'has_credential'),
+        last_modified_time=pulumi.get(__ret__, 'last_modified_time'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_connection)

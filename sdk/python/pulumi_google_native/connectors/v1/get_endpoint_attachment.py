@@ -128,13 +128,13 @@ def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:connectors/v1:getEndpointAttachment', __args__, opts=opts, typ=GetEndpointAttachmentResult).value
 
     return AwaitableGetEndpointAttachmentResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        endpoint_ip=__ret__.endpoint_ip,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        service_attachment=__ret__.service_attachment,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint_ip=pulumi.get(__ret__, 'endpoint_ip'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        service_attachment=pulumi.get(__ret__, 'service_attachment'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_endpoint_attachment)

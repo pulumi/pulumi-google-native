@@ -153,15 +153,15 @@ def get_canary_evaluation(canaryevaluation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getCanaryEvaluation', __args__, opts=opts, typ=GetCanaryEvaluationResult).value
 
     return AwaitableGetCanaryEvaluationResult(
-        control=__ret__.control,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        metric_labels=__ret__.metric_labels,
-        name=__ret__.name,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        treatment=__ret__.treatment,
-        verdict=__ret__.verdict)
+        control=pulumi.get(__ret__, 'control'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        metric_labels=pulumi.get(__ret__, 'metric_labels'),
+        name=pulumi.get(__ret__, 'name'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        treatment=pulumi.get(__ret__, 'treatment'),
+        verdict=pulumi.get(__ret__, 'verdict'))
 
 
 @_utilities.lift_output_func(get_canary_evaluation)

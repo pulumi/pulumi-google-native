@@ -31,10 +31,6 @@ class GetInstanceResult:
         pulumi.set(__self__, "display_name", display_name)
         if endpoint_uris and not isinstance(endpoint_uris, list):
             raise TypeError("Expected argument 'endpoint_uris' to be a list")
-        if endpoint_uris is not None:
-            warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
-            pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
-
         pulumi.set(__self__, "endpoint_uris", endpoint_uris)
         if free_instance_metadata and not isinstance(free_instance_metadata, dict):
             raise TypeError("Expected argument 'free_instance_metadata' to be a dict")
@@ -91,6 +87,9 @@ class GetInstanceResult:
         """
         Deprecated. This field is not populated.
         """
+        warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+        pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+
         return pulumi.get(self, "endpoint_uris")
 
     @property
@@ -193,18 +192,18 @@ def get_instance(field_mask: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        endpoint_uris=__ret__.endpoint_uris,
-        free_instance_metadata=__ret__.free_instance_metadata,
-        instance_type=__ret__.instance_type,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        node_count=__ret__.node_count,
-        processing_units=__ret__.processing_units,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        endpoint_uris=pulumi.get(__ret__, 'endpoint_uris'),
+        free_instance_metadata=pulumi.get(__ret__, 'free_instance_metadata'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        node_count=pulumi.get(__ret__, 'node_count'),
+        processing_units=pulumi.get(__ret__, 'processing_units'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_instance)

@@ -95,10 +95,10 @@ def get_certificate_authority_iam_policy(certificate_authority_id: Optional[str]
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1beta1:getCertificateAuthorityIamPolicy', __args__, opts=opts, typ=GetCertificateAuthorityIamPolicyResult).value
 
     return AwaitableGetCertificateAuthorityIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_certificate_authority_iam_policy)

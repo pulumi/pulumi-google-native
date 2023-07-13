@@ -251,23 +251,23 @@ def get_certificate_authority(ca_pool_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:privateca/v1:getCertificateAuthority', __args__, opts=opts, typ=GetCertificateAuthorityResult).value
 
     return AwaitableGetCertificateAuthorityResult(
-        access_urls=__ret__.access_urls,
-        ca_certificate_descriptions=__ret__.ca_certificate_descriptions,
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        expire_time=__ret__.expire_time,
-        gcs_bucket=__ret__.gcs_bucket,
-        key_spec=__ret__.key_spec,
-        labels=__ret__.labels,
-        lifetime=__ret__.lifetime,
-        name=__ret__.name,
-        pem_ca_certificates=__ret__.pem_ca_certificates,
-        state=__ret__.state,
-        subordinate_config=__ret__.subordinate_config,
-        tier=__ret__.tier,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        access_urls=pulumi.get(__ret__, 'access_urls'),
+        ca_certificate_descriptions=pulumi.get(__ret__, 'ca_certificate_descriptions'),
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        gcs_bucket=pulumi.get(__ret__, 'gcs_bucket'),
+        key_spec=pulumi.get(__ret__, 'key_spec'),
+        labels=pulumi.get(__ret__, 'labels'),
+        lifetime=pulumi.get(__ret__, 'lifetime'),
+        name=pulumi.get(__ret__, 'name'),
+        pem_ca_certificates=pulumi.get(__ret__, 'pem_ca_certificates'),
+        state=pulumi.get(__ret__, 'state'),
+        subordinate_config=pulumi.get(__ret__, 'subordinate_config'),
+        tier=pulumi.get(__ret__, 'tier'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_certificate_authority)

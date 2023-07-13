@@ -213,20 +213,20 @@ def get_region_ssl_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionSslPolicy', __args__, opts=opts, typ=GetRegionSslPolicyResult).value
 
     return AwaitableGetRegionSslPolicyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        custom_features=__ret__.custom_features,
-        description=__ret__.description,
-        enabled_features=__ret__.enabled_features,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        min_tls_version=__ret__.min_tls_version,
-        name=__ret__.name,
-        profile=__ret__.profile,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        tls_settings=__ret__.tls_settings,
-        warnings=__ret__.warnings)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        custom_features=pulumi.get(__ret__, 'custom_features'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled_features=pulumi.get(__ret__, 'enabled_features'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        min_tls_version=pulumi.get(__ret__, 'min_tls_version'),
+        name=pulumi.get(__ret__, 'name'),
+        profile=pulumi.get(__ret__, 'profile'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        tls_settings=pulumi.get(__ret__, 'tls_settings'),
+        warnings=pulumi.get(__ret__, 'warnings'))
 
 
 @_utilities.lift_output_func(get_region_ssl_policy)

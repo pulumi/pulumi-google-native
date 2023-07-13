@@ -90,10 +90,10 @@ def get_release(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaserules/v1:getRelease', __args__, opts=opts, typ=GetReleaseResult).value
 
     return AwaitableGetReleaseResult(
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        ruleset_name=__ret__.ruleset_name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        ruleset_name=pulumi.get(__ret__, 'ruleset_name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_release)

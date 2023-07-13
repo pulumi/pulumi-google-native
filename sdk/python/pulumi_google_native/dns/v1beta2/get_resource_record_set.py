@@ -130,13 +130,13 @@ def get_resource_record_set(client_operation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1beta2:getResourceRecordSet', __args__, opts=opts, typ=GetResourceRecordSetResult).value
 
     return AwaitableGetResourceRecordSetResult(
-        kind=__ret__.kind,
-        name=__ret__.name,
-        routing_policy=__ret__.routing_policy,
-        rrdatas=__ret__.rrdatas,
-        signature_rrdatas=__ret__.signature_rrdatas,
-        ttl=__ret__.ttl,
-        type=__ret__.type)
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        routing_policy=pulumi.get(__ret__, 'routing_policy'),
+        rrdatas=pulumi.get(__ret__, 'rrdatas'),
+        signature_rrdatas=pulumi.get(__ret__, 'signature_rrdatas'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_resource_record_set)

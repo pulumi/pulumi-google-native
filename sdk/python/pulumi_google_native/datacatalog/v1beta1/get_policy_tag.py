@@ -106,11 +106,11 @@ def get_policy_tag(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datacatalog/v1beta1:getPolicyTag', __args__, opts=opts, typ=GetPolicyTagResult).value
 
     return AwaitableGetPolicyTagResult(
-        child_policy_tags=__ret__.child_policy_tags,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        parent_policy_tag=__ret__.parent_policy_tag)
+        child_policy_tags=pulumi.get(__ret__, 'child_policy_tags'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_policy_tag=pulumi.get(__ret__, 'parent_policy_tag'))
 
 
 @_utilities.lift_output_func(get_policy_tag)

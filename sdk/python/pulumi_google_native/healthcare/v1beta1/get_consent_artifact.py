@@ -145,14 +145,14 @@ def get_consent_artifact(consent_artifact_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getConsentArtifact', __args__, opts=opts, typ=GetConsentArtifactResult).value
 
     return AwaitableGetConsentArtifactResult(
-        consent_content_screenshots=__ret__.consent_content_screenshots,
-        consent_content_version=__ret__.consent_content_version,
-        guardian_signature=__ret__.guardian_signature,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        user_id=__ret__.user_id,
-        user_signature=__ret__.user_signature,
-        witness_signature=__ret__.witness_signature)
+        consent_content_screenshots=pulumi.get(__ret__, 'consent_content_screenshots'),
+        consent_content_version=pulumi.get(__ret__, 'consent_content_version'),
+        guardian_signature=pulumi.get(__ret__, 'guardian_signature'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_signature=pulumi.get(__ret__, 'user_signature'),
+        witness_signature=pulumi.get(__ret__, 'witness_signature'))
 
 
 @_utilities.lift_output_func(get_consent_artifact)

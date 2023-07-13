@@ -152,15 +152,15 @@ def get_ssl_cert(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:sqladmin/v1beta4:getSslCert', __args__, opts=opts, typ=GetSslCertResult).value
 
     return AwaitableGetSslCertResult(
-        cert=__ret__.cert,
-        cert_serial_number=__ret__.cert_serial_number,
-        common_name=__ret__.common_name,
-        create_time=__ret__.create_time,
-        expiration_time=__ret__.expiration_time,
-        instance=__ret__.instance,
-        kind=__ret__.kind,
-        self_link=__ret__.self_link,
-        sha1_fingerprint=__ret__.sha1_fingerprint)
+        cert=pulumi.get(__ret__, 'cert'),
+        cert_serial_number=pulumi.get(__ret__, 'cert_serial_number'),
+        common_name=pulumi.get(__ret__, 'common_name'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        expiration_time=pulumi.get(__ret__, 'expiration_time'),
+        instance=pulumi.get(__ret__, 'instance'),
+        kind=pulumi.get(__ret__, 'kind'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        sha1_fingerprint=pulumi.get(__ret__, 'sha1_fingerprint'))
 
 
 @_utilities.lift_output_func(get_ssl_cert)

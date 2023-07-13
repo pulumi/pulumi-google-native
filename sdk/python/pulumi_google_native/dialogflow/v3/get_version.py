@@ -121,12 +121,12 @@ def get_version(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        nlu_settings=__ret__.nlu_settings,
-        state=__ret__.state)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        nlu_settings=pulumi.get(__ret__, 'nlu_settings'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_version)

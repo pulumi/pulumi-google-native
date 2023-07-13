@@ -121,12 +121,12 @@ def get_annotation(annotation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getAnnotation', __args__, opts=opts, typ=GetAnnotationResult).value
 
     return AwaitableGetAnnotationResult(
-        annotation_source=__ret__.annotation_source,
-        custom_data=__ret__.custom_data,
-        image_annotation=__ret__.image_annotation,
-        name=__ret__.name,
-        resource_annotation=__ret__.resource_annotation,
-        text_annotation=__ret__.text_annotation)
+        annotation_source=pulumi.get(__ret__, 'annotation_source'),
+        custom_data=pulumi.get(__ret__, 'custom_data'),
+        image_annotation=pulumi.get(__ret__, 'image_annotation'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_annotation=pulumi.get(__ret__, 'resource_annotation'),
+        text_annotation=pulumi.get(__ret__, 'text_annotation'))
 
 
 @_utilities.lift_output_func(get_annotation)

@@ -199,19 +199,19 @@ def get_public_advertised_prefix(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getPublicAdvertisedPrefix', __args__, opts=opts, typ=GetPublicAdvertisedPrefixResult).value
 
     return AwaitableGetPublicAdvertisedPrefixResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        dns_verification_ip=__ret__.dns_verification_ip,
-        fingerprint=__ret__.fingerprint,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        pdp_scope=__ret__.pdp_scope,
-        public_delegated_prefixs=__ret__.public_delegated_prefixs,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        shared_secret=__ret__.shared_secret,
-        status=__ret__.status)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        dns_verification_ip=pulumi.get(__ret__, 'dns_verification_ip'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        pdp_scope=pulumi.get(__ret__, 'pdp_scope'),
+        public_delegated_prefixs=pulumi.get(__ret__, 'public_delegated_prefixs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        shared_secret=pulumi.get(__ret__, 'shared_secret'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_public_advertised_prefix)

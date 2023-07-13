@@ -87,9 +87,9 @@ def get_transition_route_group(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3beta1:getTransitionRouteGroup', __args__, opts=opts, typ=GetTransitionRouteGroupResult).value
 
     return AwaitableGetTransitionRouteGroupResult(
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        transition_routes=__ret__.transition_routes)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        transition_routes=pulumi.get(__ret__, 'transition_routes'))
 
 
 @_utilities.lift_output_func(get_transition_route_group)

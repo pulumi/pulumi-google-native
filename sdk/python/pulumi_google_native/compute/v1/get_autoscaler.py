@@ -201,19 +201,19 @@ def get_autoscaler(autoscaler: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getAutoscaler', __args__, opts=opts, typ=GetAutoscalerResult).value
 
     return AwaitableGetAutoscalerResult(
-        autoscaling_policy=__ret__.autoscaling_policy,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        recommended_size=__ret__.recommended_size,
-        region=__ret__.region,
-        scaling_schedule_status=__ret__.scaling_schedule_status,
-        self_link=__ret__.self_link,
-        status=__ret__.status,
-        status_details=__ret__.status_details,
-        target=__ret__.target,
-        zone=__ret__.zone)
+        autoscaling_policy=pulumi.get(__ret__, 'autoscaling_policy'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        recommended_size=pulumi.get(__ret__, 'recommended_size'),
+        region=pulumi.get(__ret__, 'region'),
+        scaling_schedule_status=pulumi.get(__ret__, 'scaling_schedule_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        status=pulumi.get(__ret__, 'status'),
+        status_details=pulumi.get(__ret__, 'status_details'),
+        target=pulumi.get(__ret__, 'target'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_autoscaler)

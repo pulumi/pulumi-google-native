@@ -210,20 +210,20 @@ def get_application(application_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getApplication', __args__, opts=opts, typ=GetApplicationResult).value
 
     return AwaitableGetApplicationResult(
-        auth_domain=__ret__.auth_domain,
-        code_bucket=__ret__.code_bucket,
-        database_type=__ret__.database_type,
-        default_bucket=__ret__.default_bucket,
-        default_cookie_expiration=__ret__.default_cookie_expiration,
-        default_hostname=__ret__.default_hostname,
-        dispatch_rules=__ret__.dispatch_rules,
-        feature_settings=__ret__.feature_settings,
-        gcr_domain=__ret__.gcr_domain,
-        iap=__ret__.iap,
-        location=__ret__.location,
-        name=__ret__.name,
-        service_account=__ret__.service_account,
-        serving_status=__ret__.serving_status)
+        auth_domain=pulumi.get(__ret__, 'auth_domain'),
+        code_bucket=pulumi.get(__ret__, 'code_bucket'),
+        database_type=pulumi.get(__ret__, 'database_type'),
+        default_bucket=pulumi.get(__ret__, 'default_bucket'),
+        default_cookie_expiration=pulumi.get(__ret__, 'default_cookie_expiration'),
+        default_hostname=pulumi.get(__ret__, 'default_hostname'),
+        dispatch_rules=pulumi.get(__ret__, 'dispatch_rules'),
+        feature_settings=pulumi.get(__ret__, 'feature_settings'),
+        gcr_domain=pulumi.get(__ret__, 'gcr_domain'),
+        iap=pulumi.get(__ret__, 'iap'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        serving_status=pulumi.get(__ret__, 'serving_status'))
 
 
 @_utilities.lift_output_func(get_application)

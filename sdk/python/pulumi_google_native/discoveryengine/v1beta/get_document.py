@@ -110,11 +110,11 @@ def get_document(branch_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:discoveryengine/v1beta:getDocument', __args__, opts=opts, typ=GetDocumentResult).value
 
     return AwaitableGetDocumentResult(
-        json_data=__ret__.json_data,
-        name=__ret__.name,
-        parent_document_id=__ret__.parent_document_id,
-        schema_id=__ret__.schema_id,
-        struct_data=__ret__.struct_data)
+        json_data=pulumi.get(__ret__, 'json_data'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_document_id=pulumi.get(__ret__, 'parent_document_id'),
+        schema_id=pulumi.get(__ret__, 'schema_id'),
+        struct_data=pulumi.get(__ret__, 'struct_data'))
 
 
 @_utilities.lift_output_func(get_document)

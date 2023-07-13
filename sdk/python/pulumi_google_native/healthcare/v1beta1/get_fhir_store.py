@@ -43,10 +43,6 @@ class GetFhirStoreResult:
         pulumi.set(__self__, "name", name)
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
-        if notification_config is not None:
-            warnings.warn("""Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""", DeprecationWarning)
-            pulumi.log.warn("""notification_config is deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""")
-
         pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs and not isinstance(notification_configs, list):
             raise TypeError("Expected argument 'notification_configs' to be a list")
@@ -126,6 +122,9 @@ class GetFhirStoreResult:
         """
         Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         """
+        warnings.warn("""Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\".""")
+
         return pulumi.get(self, "notification_config")
 
     @property
@@ -207,19 +206,19 @@ def get_fhir_store(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1beta1:getFhirStore', __args__, opts=opts, typ=GetFhirStoreResult).value
 
     return AwaitableGetFhirStoreResult(
-        complex_data_type_reference_parsing=__ret__.complex_data_type_reference_parsing,
-        default_search_handling_strict=__ret__.default_search_handling_strict,
-        disable_referential_integrity=__ret__.disable_referential_integrity,
-        disable_resource_versioning=__ret__.disable_resource_versioning,
-        enable_update_create=__ret__.enable_update_create,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        notification_config=__ret__.notification_config,
-        notification_configs=__ret__.notification_configs,
-        search_config=__ret__.search_config,
-        stream_configs=__ret__.stream_configs,
-        validation_config=__ret__.validation_config,
-        version=__ret__.version)
+        complex_data_type_reference_parsing=pulumi.get(__ret__, 'complex_data_type_reference_parsing'),
+        default_search_handling_strict=pulumi.get(__ret__, 'default_search_handling_strict'),
+        disable_referential_integrity=pulumi.get(__ret__, 'disable_referential_integrity'),
+        disable_resource_versioning=pulumi.get(__ret__, 'disable_resource_versioning'),
+        enable_update_create=pulumi.get(__ret__, 'enable_update_create'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_config=pulumi.get(__ret__, 'notification_config'),
+        notification_configs=pulumi.get(__ret__, 'notification_configs'),
+        search_config=pulumi.get(__ret__, 'search_config'),
+        stream_configs=pulumi.get(__ret__, 'stream_configs'),
+        validation_config=pulumi.get(__ret__, 'validation_config'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_fhir_store)

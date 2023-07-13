@@ -173,17 +173,17 @@ def get_group(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1beta1:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        additional_group_keys=__ret__.additional_group_keys,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        dynamic_group_metadata=__ret__.dynamic_group_metadata,
-        group_key=__ret__.group_key,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        posix_groups=__ret__.posix_groups,
-        update_time=__ret__.update_time)
+        additional_group_keys=pulumi.get(__ret__, 'additional_group_keys'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        dynamic_group_metadata=pulumi.get(__ret__, 'dynamic_group_metadata'),
+        group_key=pulumi.get(__ret__, 'group_key'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        posix_groups=pulumi.get(__ret__, 'posix_groups'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_group)

@@ -127,13 +127,13 @@ def get_service_perimeter(access_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:accesscontextmanager/v1:getServicePerimeter', __args__, opts=opts, typ=GetServicePerimeterResult).value
 
     return AwaitableGetServicePerimeterResult(
-        description=__ret__.description,
-        name=__ret__.name,
-        perimeter_type=__ret__.perimeter_type,
-        spec=__ret__.spec,
-        status=__ret__.status,
-        title=__ret__.title,
-        use_explicit_dry_run_spec=__ret__.use_explicit_dry_run_spec)
+        description=pulumi.get(__ret__, 'description'),
+        name=pulumi.get(__ret__, 'name'),
+        perimeter_type=pulumi.get(__ret__, 'perimeter_type'),
+        spec=pulumi.get(__ret__, 'spec'),
+        status=pulumi.get(__ret__, 'status'),
+        title=pulumi.get(__ret__, 'title'),
+        use_explicit_dry_run_spec=pulumi.get(__ret__, 'use_explicit_dry_run_spec'))
 
 
 @_utilities.lift_output_func(get_service_perimeter)

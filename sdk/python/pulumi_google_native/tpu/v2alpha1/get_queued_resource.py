@@ -129,13 +129,13 @@ def get_queued_resource(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:tpu/v2alpha1:getQueuedResource', __args__, opts=opts, typ=GetQueuedResourceResult).value
 
     return AwaitableGetQueuedResourceResult(
-        best_effort=__ret__.best_effort,
-        guaranteed=__ret__.guaranteed,
-        name=__ret__.name,
-        queueing_policy=__ret__.queueing_policy,
-        reservation_name=__ret__.reservation_name,
-        state=__ret__.state,
-        tpu=__ret__.tpu)
+        best_effort=pulumi.get(__ret__, 'best_effort'),
+        guaranteed=pulumi.get(__ret__, 'guaranteed'),
+        name=pulumi.get(__ret__, 'name'),
+        queueing_policy=pulumi.get(__ret__, 'queueing_policy'),
+        reservation_name=pulumi.get(__ret__, 'reservation_name'),
+        state=pulumi.get(__ret__, 'state'),
+        tpu=pulumi.get(__ret__, 'tpu'))
 
 
 @_utilities.lift_output_func(get_queued_resource)

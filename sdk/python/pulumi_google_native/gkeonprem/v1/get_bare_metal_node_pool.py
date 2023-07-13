@@ -191,18 +191,18 @@ def get_bare_metal_node_pool(bare_metal_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getBareMetalNodePool', __args__, opts=opts, typ=GetBareMetalNodePoolResult).value
 
     return AwaitableGetBareMetalNodePoolResult(
-        annotations=__ret__.annotations,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        node_pool_config=__ret__.node_pool_config,
-        reconciling=__ret__.reconciling,
-        state=__ret__.state,
-        status=__ret__.status,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        node_pool_config=pulumi.get(__ret__, 'node_pool_config'),
+        reconciling=pulumi.get(__ret__, 'reconciling'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_bare_metal_node_pool)

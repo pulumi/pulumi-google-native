@@ -165,16 +165,16 @@ def get_evaluation(evaluation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workloadmanager/v1:getEvaluation', __args__, opts=opts, typ=GetEvaluationResult).value
 
     return AwaitableGetEvaluationResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        resource_filter=__ret__.resource_filter,
-        resource_status=__ret__.resource_status,
-        rule_names=__ret__.rule_names,
-        rule_versions=__ret__.rule_versions,
-        schedule=__ret__.schedule,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        resource_filter=pulumi.get(__ret__, 'resource_filter'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        rule_names=pulumi.get(__ret__, 'rule_names'),
+        rule_versions=pulumi.get(__ret__, 'rule_versions'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_evaluation)

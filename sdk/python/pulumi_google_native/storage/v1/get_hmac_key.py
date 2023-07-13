@@ -152,15 +152,15 @@ def get_hmac_key(access_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getHmacKey', __args__, opts=opts, typ=GetHmacKeyResult).value
 
     return AwaitableGetHmacKeyResult(
-        access_id=__ret__.access_id,
-        etag=__ret__.etag,
-        kind=__ret__.kind,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        service_account_email=__ret__.service_account_email,
-        state=__ret__.state,
-        time_created=__ret__.time_created,
-        updated=__ret__.updated)
+        access_id=pulumi.get(__ret__, 'access_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        kind=pulumi.get(__ret__, 'kind'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service_account_email=pulumi.get(__ret__, 'service_account_email'),
+        state=pulumi.get(__ret__, 'state'),
+        time_created=pulumi.get(__ret__, 'time_created'),
+        updated=pulumi.get(__ret__, 'updated'))
 
 
 @_utilities.lift_output_func(get_hmac_key)
