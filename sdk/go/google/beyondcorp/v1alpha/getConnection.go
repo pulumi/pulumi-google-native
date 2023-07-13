@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Connection.
 func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionResult
 	err := ctx.Invoke("google-native:beyondcorp/v1alpha:getConnection", args, &rv, opts...)
 	if err != nil {

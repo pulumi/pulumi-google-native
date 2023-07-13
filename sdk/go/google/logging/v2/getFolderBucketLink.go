@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a link.
 func LookupFolderBucketLink(ctx *pulumi.Context, args *LookupFolderBucketLinkArgs, opts ...pulumi.InvokeOption) (*LookupFolderBucketLinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderBucketLinkResult
 	err := ctx.Invoke("google-native:logging/v2:getFolderBucketLink", args, &rv, opts...)
 	if err != nil {

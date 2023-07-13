@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
 func LookupOrganizationsDeidentifyTemplate(ctx *pulumi.Context, args *LookupOrganizationsDeidentifyTemplateArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationsDeidentifyTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationsDeidentifyTemplateResult
 	err := ctx.Invoke("google-native:dlp/v2:getOrganizationsDeidentifyTemplate", args, &rv, opts...)
 	if err != nil {

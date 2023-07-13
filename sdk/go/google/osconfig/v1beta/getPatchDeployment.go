@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an OS Config patch deployment.
 func LookupPatchDeployment(ctx *pulumi.Context, args *LookupPatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupPatchDeploymentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPatchDeploymentResult
 	err := ctx.Invoke("google-native:osconfig/v1beta:getPatchDeployment", args, &rv, opts...)
 	if err != nil {

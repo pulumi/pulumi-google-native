@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a specific Connectivity Test.
 func LookupConnectivityTest(ctx *pulumi.Context, args *LookupConnectivityTestArgs, opts ...pulumi.InvokeOption) (*LookupConnectivityTestResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectivityTestResult
 	err := ctx.Invoke("google-native:networkmanagement/v1:getConnectivityTest", args, &rv, opts...)
 	if err != nil {

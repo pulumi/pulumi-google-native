@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the details of a fleet namespace.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
 	err := ctx.Invoke("google-native:gkehub/v1beta:getNamespace", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a rate plan.
 func LookupRatePlan(ctx *pulumi.Context, args *LookupRatePlanArgs, opts ...pulumi.InvokeOption) (*LookupRatePlanResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRatePlanResult
 	err := ctx.Invoke("google-native:apigee/v1:getRatePlan", args, &rv, opts...)
 	if err != nil {

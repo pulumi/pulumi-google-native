@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single import.
 func LookupMetadataImport(ctx *pulumi.Context, args *LookupMetadataImportArgs, opts ...pulumi.InvokeOption) (*LookupMetadataImportResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataImportResult
 	err := ctx.Invoke("google-native:metastore/v1:getMetadataImport", args, &rv, opts...)
 	if err != nil {

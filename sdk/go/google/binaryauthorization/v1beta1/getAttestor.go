@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
 func LookupAttestor(ctx *pulumi.Context, args *LookupAttestorArgs, opts ...pulumi.InvokeOption) (*LookupAttestorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestorResult
 	err := ctx.Invoke("google-native:binaryauthorization/v1beta1:getAttestor", args, &rv, opts...)
 	if err != nil {

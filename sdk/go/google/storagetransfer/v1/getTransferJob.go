@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a transfer job.
 func LookupTransferJob(ctx *pulumi.Context, args *LookupTransferJobArgs, opts ...pulumi.InvokeOption) (*LookupTransferJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransferJobResult
 	err := ctx.Invoke("google-native:storagetransfer/v1:getTransferJob", args, &rv, opts...)
 	if err != nil {

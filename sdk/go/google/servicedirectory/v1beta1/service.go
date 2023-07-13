@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ func NewService(ctx *pulumi.Context,
 		"serviceId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Service
 	err := ctx.RegisterResource("google-native:servicedirectory/v1beta1:Service", name, args, &resource, opts...)
 	if err != nil {

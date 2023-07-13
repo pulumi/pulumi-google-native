@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a certificates in the specified project.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
 	err := ctx.Invoke("google-native:integrations/v1alpha:getCertificate", args, &rv, opts...)
 	if err != nil {

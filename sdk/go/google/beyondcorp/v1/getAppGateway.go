@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single AppGateway.
 func LookupAppGateway(ctx *pulumi.Context, args *LookupAppGatewayArgs, opts ...pulumi.InvokeOption) (*LookupAppGatewayResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppGatewayResult
 	err := ctx.Invoke("google-native:beyondcorp/v1:getAppGateway", args, &rv, opts...)
 	if err != nil {

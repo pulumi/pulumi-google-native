@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ func NewV1beta1IamPolicy(ctx *pulumi.Context,
 		"v1beta1Id",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource V1beta1IamPolicy
 	err := ctx.RegisterResource("google-native:iap/v1beta1:V1beta1IamPolicy", name, args, &resource, opts...)
 	if err != nil {

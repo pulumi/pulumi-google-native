@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified firewall rule.
 func LookupIngressRule(ctx *pulumi.Context, args *LookupIngressRuleArgs, opts ...pulumi.InvokeOption) (*LookupIngressRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIngressRuleResult
 	err := ctx.Invoke("google-native:appengine/v1beta:getIngressRule", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the specified future reservation.
 func LookupFutureReservation(ctx *pulumi.Context, args *LookupFutureReservationArgs, opts ...pulumi.InvokeOption) (*LookupFutureReservationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFutureReservationResult
 	err := ctx.Invoke("google-native:compute/alpha:getFutureReservation", args, &rv, opts...)
 	if err != nil {

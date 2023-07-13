@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the requested workstation cluster.
 func LookupWorkstationCluster(ctx *pulumi.Context, args *LookupWorkstationClusterArgs, opts ...pulumi.InvokeOption) (*LookupWorkstationClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkstationClusterResult
 	err := ctx.Invoke("google-native:workstations/v1beta:getWorkstationCluster", args, &rv, opts...)
 	if err != nil {

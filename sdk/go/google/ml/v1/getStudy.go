@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a study.
 func LookupStudy(ctx *pulumi.Context, args *LookupStudyArgs, opts ...pulumi.InvokeOption) (*LookupStudyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStudyResult
 	err := ctx.Invoke("google-native:ml/v1:getStudy", args, &rv, opts...)
 	if err != nil {

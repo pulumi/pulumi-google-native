@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
 func LookupNoteIamPolicy(ctx *pulumi.Context, args *LookupNoteIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupNoteIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNoteIamPolicyResult
 	err := ctx.Invoke("google-native:containeranalysis/v1:getNoteIamPolicy", args, &rv, opts...)
 	if err != nil {

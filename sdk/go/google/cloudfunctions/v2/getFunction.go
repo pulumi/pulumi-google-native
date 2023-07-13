@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a function with the given name from the requested project.
 func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulumi.InvokeOption) (*LookupFunctionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionResult
 	err := ctx.Invoke("google-native:cloudfunctions/v2:getFunction", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a tenant. Requires read permission on the Tenant resource.
 func LookupTenant(ctx *pulumi.Context, args *LookupTenantArgs, opts ...pulumi.InvokeOption) (*LookupTenantResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantResult
 	err := ctx.Invoke("google-native:identitytoolkit/v2:getTenant", args, &rv, opts...)
 	if err != nil {

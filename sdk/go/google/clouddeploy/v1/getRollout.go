@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Rollout.
 func LookupRollout(ctx *pulumi.Context, args *LookupRolloutArgs, opts ...pulumi.InvokeOption) (*LookupRolloutResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRolloutResult
 	err := ctx.Invoke("google-native:clouddeploy/v1:getRollout", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
 func LookupInterconnect(ctx *pulumi.Context, args *LookupInterconnectArgs, opts ...pulumi.InvokeOption) (*LookupInterconnectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInterconnectResult
 	err := ctx.Invoke("google-native:compute/alpha:getInterconnect", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ func NewDnsAuthorization(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DnsAuthorization
 	err := ctx.RegisterResource("google-native:certificatemanager/v1:DnsAuthorization", name, args, &resource, opts...)
 	if err != nil {

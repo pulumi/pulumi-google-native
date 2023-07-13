@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a notification config.
 func LookupFolderNotificationConfig(ctx *pulumi.Context, args *LookupFolderNotificationConfigArgs, opts ...pulumi.InvokeOption) (*LookupFolderNotificationConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderNotificationConfigResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getFolderNotificationConfig", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource.
 func LookupInstanceDatabaseIamPolicy(ctx *pulumi.Context, args *LookupInstanceDatabaseIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstanceDatabaseIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceDatabaseIamPolicyResult
 	err := ctx.Invoke("google-native:spanner/v1:getInstanceDatabaseIamPolicy", args, &rv, opts...)
 	if err != nil {

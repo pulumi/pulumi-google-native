@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified TargetTcpProxy resource.
 func LookupRegionTargetTcpProxy(ctx *pulumi.Context, args *LookupRegionTargetTcpProxyArgs, opts ...pulumi.InvokeOption) (*LookupRegionTargetTcpProxyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionTargetTcpProxyResult
 	err := ctx.Invoke("google-native:compute/beta:getRegionTargetTcpProxy", args, &rv, opts...)
 	if err != nil {

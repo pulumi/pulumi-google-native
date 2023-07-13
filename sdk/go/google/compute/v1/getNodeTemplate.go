@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified node template.
 func LookupNodeTemplate(ctx *pulumi.Context, args *LookupNodeTemplateArgs, opts ...pulumi.InvokeOption) (*LookupNodeTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeTemplateResult
 	err := ctx.Invoke("google-native:compute/v1:getNodeTemplate", args, &rv, opts...)
 	if err != nil {

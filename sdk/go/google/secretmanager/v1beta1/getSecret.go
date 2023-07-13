@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets metadata for a given Secret.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretResult
 	err := ctx.Invoke("google-native:secretmanager/v1beta1:getSecret", args, &rv, opts...)
 	if err != nil {

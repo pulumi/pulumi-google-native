@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified TargetHttpsProxy resource.
 func LookupTargetHttpsProxy(ctx *pulumi.Context, args *LookupTargetHttpsProxyArgs, opts ...pulumi.InvokeOption) (*LookupTargetHttpsProxyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetHttpsProxyResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetHttpsProxy", args, &rv, opts...)
 	if err != nil {

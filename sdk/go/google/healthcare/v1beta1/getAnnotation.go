@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Annotation.
 func LookupAnnotation(ctx *pulumi.Context, args *LookupAnnotationArgs, opts ...pulumi.InvokeOption) (*LookupAnnotationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnnotationResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getAnnotation", args, &rv, opts...)
 	if err != nil {

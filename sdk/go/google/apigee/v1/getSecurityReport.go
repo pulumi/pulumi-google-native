@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
 func LookupSecurityReport(ctx *pulumi.Context, args *LookupSecurityReportArgs, opts ...pulumi.InvokeOption) (*LookupSecurityReportResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityReportResult
 	err := ctx.Invoke("google-native:apigee/v1:getSecurityReport", args, &rv, opts...)
 	if err != nil {

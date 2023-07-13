@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a TagValue. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have the `cloudresourcemanager.googleapis.com/tagValues.getIamPolicy` permission on the identified TagValue to get the access control policy.
 func LookupTagValueIamPolicy(ctx *pulumi.Context, args *LookupTagValueIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagValueIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagValueIamPolicyResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getTagValueIamPolicy", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
 func LookupOrganizationIamPolicy(ctx *pulumi.Context, args *LookupOrganizationIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationIamPolicyResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v1beta1:getOrganizationIamPolicy", args, &rv, opts...)
 	if err != nil {

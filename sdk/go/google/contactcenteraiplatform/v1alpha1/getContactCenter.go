@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ContactCenter.
 func LookupContactCenter(ctx *pulumi.Context, args *LookupContactCenterArgs, opts ...pulumi.InvokeOption) (*LookupContactCenterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactCenterResult
 	err := ctx.Invoke("google-native:contactcenteraiplatform/v1alpha1:getContactCenter", args, &rv, opts...)
 	if err != nil {

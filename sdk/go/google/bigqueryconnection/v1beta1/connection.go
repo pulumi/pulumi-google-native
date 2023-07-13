@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ func NewConnection(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("google-native:bigqueryconnection/v1beta1:Connection", name, args, &resource, opts...)
 	if err != nil {

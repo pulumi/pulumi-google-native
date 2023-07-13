@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified device.
 func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.InvokeOption) (*LookupDeviceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceResult
 	err := ctx.Invoke("google-native:cloudidentity/v1beta1:getDevice", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a schema.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult
 	err := ctx.Invoke("google-native:pubsub/v1:getSchema", args, &rv, opts...)
 	if err != nil {

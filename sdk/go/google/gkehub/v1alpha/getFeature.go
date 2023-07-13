@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Feature.
 func LookupFeature(ctx *pulumi.Context, args *LookupFeatureArgs, opts ...pulumi.InvokeOption) (*LookupFeatureResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeatureResult
 	err := ctx.Invoke("google-native:gkehub/v1alpha:getFeature", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a specified regional persistent disk.
 func LookupRegionDisk(ctx *pulumi.Context, args *LookupRegionDiskArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionDiskResult
 	err := ctx.Invoke("google-native:compute/beta:getRegionDisk", args, &rv, opts...)
 	if err != nil {

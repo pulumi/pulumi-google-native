@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult
 	err := ctx.Invoke("google-native:vpcaccess/v1beta1:getConnector", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +35,7 @@ func NewInboundSamlSsoProfile(ctx *pulumi.Context,
 		args = &InboundSamlSsoProfileArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InboundSamlSsoProfile
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:InboundSamlSsoProfile", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets IAM policies on a WorkforcePool.
 func LookupWorkforcePoolIamPolicy(ctx *pulumi.Context, args *LookupWorkforcePoolIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkforcePoolIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkforcePoolIamPolicyResult
 	err := ctx.Invoke("google-native:iam/v1:getWorkforcePoolIamPolicy", args, &rv, opts...)
 	if err != nil {

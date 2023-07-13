@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches a single CompilationResult.
 func LookupCompilationResult(ctx *pulumi.Context, args *LookupCompilationResultArgs, opts ...pulumi.InvokeOption) (*LookupCompilationResultResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCompilationResultResult
 	err := ctx.Invoke("google-native:dataform/v1beta1:getCompilationResult", args, &rv, opts...)
 	if err != nil {

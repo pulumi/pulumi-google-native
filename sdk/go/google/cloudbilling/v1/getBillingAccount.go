@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
 func LookupBillingAccount(ctx *pulumi.Context, args *LookupBillingAccountArgs, opts ...pulumi.InvokeOption) (*LookupBillingAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingAccountResult
 	err := ctx.Invoke("google-native:cloudbilling/v1:getBillingAccount", args, &rv, opts...)
 	if err != nil {

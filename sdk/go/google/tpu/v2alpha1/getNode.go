@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a node.
 func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.InvokeOption) (*LookupNodeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeResult
 	err := ctx.Invoke("google-native:tpu/v2alpha1:getNode", args, &rv, opts...)
 	if err != nil {

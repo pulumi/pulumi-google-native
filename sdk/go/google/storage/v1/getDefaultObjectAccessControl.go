@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the default object ACL entry for the specified entity on the specified bucket.
 func LookupDefaultObjectAccessControl(ctx *pulumi.Context, args *LookupDefaultObjectAccessControlArgs, opts ...pulumi.InvokeOption) (*LookupDefaultObjectAccessControlResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefaultObjectAccessControlResult
 	err := ctx.Invoke("google-native:storage/v1:getDefaultObjectAccessControl", args, &rv, opts...)
 	if err != nil {

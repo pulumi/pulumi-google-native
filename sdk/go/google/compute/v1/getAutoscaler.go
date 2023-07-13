@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified autoscaler resource.
 func LookupAutoscaler(ctx *pulumi.Context, args *LookupAutoscalerArgs, opts ...pulumi.InvokeOption) (*LookupAutoscalerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoscalerResult
 	err := ctx.Invoke("google-native:compute/v1:getAutoscaler", args, &rv, opts...)
 	if err != nil {

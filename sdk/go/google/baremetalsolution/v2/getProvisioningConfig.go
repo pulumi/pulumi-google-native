@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get ProvisioningConfig by name.
 func LookupProvisioningConfig(ctx *pulumi.Context, args *LookupProvisioningConfigArgs, opts ...pulumi.InvokeOption) (*LookupProvisioningConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProvisioningConfigResult
 	err := ctx.Invoke("google-native:baremetalsolution/v2:getProvisioningConfig", args, &rv, opts...)
 	if err != nil {

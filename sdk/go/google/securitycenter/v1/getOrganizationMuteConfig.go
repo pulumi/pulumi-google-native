@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a mute config.
 func LookupOrganizationMuteConfig(ctx *pulumi.Context, args *LookupOrganizationMuteConfigArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationMuteConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationMuteConfigResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getOrganizationMuteConfig", args, &rv, opts...)
 	if err != nil {

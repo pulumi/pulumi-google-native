@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified entity type.
 func LookupEntityType(ctx *pulumi.Context, args *LookupEntityTypeArgs, opts ...pulumi.InvokeOption) (*LookupEntityTypeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityTypeResult
 	err := ctx.Invoke("google-native:dialogflow/v3:getEntityType", args, &rv, opts...)
 	if err != nil {

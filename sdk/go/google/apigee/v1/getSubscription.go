@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details for an API product subscription.
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionResult
 	err := ctx.Invoke("google-native:apigee/v1:getSubscription", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an HMAC key's metadata
 func LookupHmacKey(ctx *pulumi.Context, args *LookupHmacKeyArgs, opts ...pulumi.InvokeOption) (*LookupHmacKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHmacKeyResult
 	err := ctx.Invoke("google-native:storage/v1:getHmacKey", args, &rv, opts...)
 	if err != nil {

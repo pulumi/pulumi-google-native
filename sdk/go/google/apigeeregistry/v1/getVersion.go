@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a specified version.
 func LookupVersion(ctx *pulumi.Context, args *LookupVersionArgs, opts ...pulumi.InvokeOption) (*LookupVersionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVersionResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getVersion", args, &rv, opts...)
 	if err != nil {

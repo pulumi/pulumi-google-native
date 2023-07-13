@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about an application.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
 	err := ctx.Invoke("google-native:appengine/v1:getApplication", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified NetworkAttachment resource in the given scope.
 func LookupNetworkAttachment(ctx *pulumi.Context, args *LookupNetworkAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupNetworkAttachmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkAttachmentResult
 	err := ctx.Invoke("google-native:compute/beta:getNetworkAttachment", args, &rv, opts...)
 	if err != nil {

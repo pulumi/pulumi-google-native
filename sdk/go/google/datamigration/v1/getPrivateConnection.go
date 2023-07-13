@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single private connection.
 func LookupPrivateConnection(ctx *pulumi.Context, args *LookupPrivateConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateConnectionResult
 	err := ctx.Invoke("google-native:datamigration/v1:getPrivateConnection", args, &rv, opts...)
 	if err != nil {

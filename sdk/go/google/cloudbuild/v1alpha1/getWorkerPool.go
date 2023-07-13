@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns information about a `WorkerPool`.
 func LookupWorkerPool(ctx *pulumi.Context, args *LookupWorkerPoolArgs, opts ...pulumi.InvokeOption) (*LookupWorkerPoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkerPoolResult
 	err := ctx.Invoke("google-native:cloudbuild/v1alpha1:getWorkerPool", args, &rv, opts...)
 	if err != nil {

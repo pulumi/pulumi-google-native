@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,23 +31,36 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.AppendUserAgent == nil {
-		args.AppendUserAgent = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_APPEND_USER_AGENT").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_APPEND_USER_AGENT"); d != nil {
+			args.AppendUserAgent = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.DisablePartnerName == nil {
-		args.DisablePartnerName = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "GOOGLE_DISABLE_PARTNER_NAME").(bool))
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "GOOGLE_DISABLE_PARTNER_NAME"); d != nil {
+			args.DisablePartnerName = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.PartnerName == nil {
-		args.PartnerName = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PARTNER_NAME").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_PARTNER_NAME"); d != nil {
+			args.PartnerName = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Project == nil {
-		args.Project = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
+			args.Project = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Region == nil {
-		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
+			args.Region = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Zone == nil {
-		args.Zone = pulumi.StringPtr(getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
+			args.Zone = pulumi.StringPtr(d.(string))
+		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:google-native", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single DnsAuthorization.
 func LookupDnsAuthorization(ctx *pulumi.Context, args *LookupDnsAuthorizationArgs, opts ...pulumi.InvokeOption) (*LookupDnsAuthorizationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDnsAuthorizationResult
 	err := ctx.Invoke("google-native:certificatemanager/v1:getDnsAuthorization", args, &rv, opts...)
 	if err != nil {

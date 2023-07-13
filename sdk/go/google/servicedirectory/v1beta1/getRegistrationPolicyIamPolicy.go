@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM Policy for a resource
 func LookupRegistrationPolicyIamPolicy(ctx *pulumi.Context, args *LookupRegistrationPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationPolicyIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrationPolicyIamPolicyResult
 	err := ctx.Invoke("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", args, &rv, opts...)
 	if err != nil {

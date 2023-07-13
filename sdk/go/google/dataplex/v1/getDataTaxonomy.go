@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a DataTaxonomy resource.
 func LookupDataTaxonomy(ctx *pulumi.Context, args *LookupDataTaxonomyArgs, opts ...pulumi.InvokeOption) (*LookupDataTaxonomyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataTaxonomyResult
 	err := ctx.Invoke("google-native:dataplex/v1:getDataTaxonomy", args, &rv, opts...)
 	if err != nil {

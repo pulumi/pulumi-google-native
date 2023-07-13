@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a single contact.
 func LookupFolderContact(ctx *pulumi.Context, args *LookupFolderContactArgs, opts ...pulumi.InvokeOption) (*LookupFolderContactResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderContactResult
 	err := ctx.Invoke("google-native:essentialcontacts/v1:getFolderContact", args, &rv, opts...)
 	if err != nil {

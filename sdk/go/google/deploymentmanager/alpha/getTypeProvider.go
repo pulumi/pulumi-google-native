@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a specific type provider.
 func LookupTypeProvider(ctx *pulumi.Context, args *LookupTypeProviderArgs, opts ...pulumi.InvokeOption) (*LookupTypeProviderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTypeProviderResult
 	err := ctx.Invoke("google-native:deploymentmanager/alpha:getTypeProvider", args, &rv, opts...)
 	if err != nil {

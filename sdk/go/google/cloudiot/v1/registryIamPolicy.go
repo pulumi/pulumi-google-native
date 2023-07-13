@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewRegistryIamPolicy(ctx *pulumi.Context,
 		"registryId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegistryIamPolicy
 	err := ctx.RegisterResource("google-native:cloudiot/v1:RegistryIamPolicy", name, args, &resource, opts...)
 	if err != nil {

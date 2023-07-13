@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified machine image.
 func LookupMachineImage(ctx *pulumi.Context, args *LookupMachineImageArgs, opts ...pulumi.InvokeOption) (*LookupMachineImageResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineImageResult
 	err := ctx.Invoke("google-native:compute/alpha:getMachineImage", args, &rv, opts...)
 	if err != nil {

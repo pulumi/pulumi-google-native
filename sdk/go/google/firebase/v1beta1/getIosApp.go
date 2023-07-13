@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified IosApp.
 func LookupIosApp(ctx *pulumi.Context, args *LookupIosAppArgs, opts ...pulumi.InvokeOption) (*LookupIosAppResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIosAppResult
 	err := ctx.Invoke("google-native:firebase/v1beta1:getIosApp", args, &rv, opts...)
 	if err != nil {

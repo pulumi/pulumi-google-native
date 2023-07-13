@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of executions
 func LookupExecution(ctx *pulumi.Context, args *LookupExecutionArgs, opts ...pulumi.InvokeOption) (*LookupExecutionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExecutionResult
 	err := ctx.Invoke("google-native:notebooks/v1:getExecution", args, &rv, opts...)
 	if err != nil {

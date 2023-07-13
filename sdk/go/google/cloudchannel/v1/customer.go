@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ func NewCustomer(ctx *pulumi.Context,
 		"channelPartnerLinkId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Customer
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:Customer", name, args, &resource, opts...)
 	if err != nil {

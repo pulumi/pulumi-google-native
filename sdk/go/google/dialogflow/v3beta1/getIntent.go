@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified intent.
 func LookupIntent(ctx *pulumi.Context, args *LookupIntentArgs, opts ...pulumi.InvokeOption) (*LookupIntentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntentResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getIntent", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotResult
 	err := ctx.Invoke("google-native:baremetalsolution/v2:getSnapshot", args, &rv, opts...)
 	if err != nil {

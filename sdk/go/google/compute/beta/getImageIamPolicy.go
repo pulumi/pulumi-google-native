@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 func LookupImageIamPolicy(ctx *pulumi.Context, args *LookupImageIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupImageIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageIamPolicyResult
 	err := ctx.Invoke("google-native:compute/beta:getImageIamPolicy", args, &rv, opts...)
 	if err != nil {

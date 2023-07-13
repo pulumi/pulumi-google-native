@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified network.
 func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.InvokeOption) (*LookupNetworkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkResult
 	err := ctx.Invoke("google-native:compute/alpha:getNetwork", args, &rv, opts...)
 	if err != nil {

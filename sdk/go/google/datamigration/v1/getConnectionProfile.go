@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single connection profile.
 func LookupConnectionProfile(ctx *pulumi.Context, args *LookupConnectionProfileArgs, opts ...pulumi.InvokeOption) (*LookupConnectionProfileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionProfileResult
 	err := ctx.Invoke("google-native:datamigration/v1:getConnectionProfile", args, &rv, opts...)
 	if err != nil {

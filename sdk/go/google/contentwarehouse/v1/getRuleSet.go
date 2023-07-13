@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist.
 func LookupRuleSet(ctx *pulumi.Context, args *LookupRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupRuleSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleSetResult
 	err := ctx.Invoke("google-native:contentwarehouse/v1:getRuleSet", args, &rv, opts...)
 	if err != nil {

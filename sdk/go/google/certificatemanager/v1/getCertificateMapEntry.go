@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single CertificateMapEntry.
 func LookupCertificateMapEntry(ctx *pulumi.Context, args *LookupCertificateMapEntryArgs, opts ...pulumi.InvokeOption) (*LookupCertificateMapEntryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateMapEntryResult
 	err := ctx.Invoke("google-native:certificatemanager/v1:getCertificateMapEntry", args, &rv, opts...)
 	if err != nil {

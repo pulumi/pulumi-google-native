@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a lake resource.
 func LookupLake(ctx *pulumi.Context, args *LookupLakeArgs, opts ...pulumi.InvokeOption) (*LookupLakeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLakeResult
 	err := ctx.Invoke("google-native:dataplex/v1:getLake", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewTagValueIamPolicy(ctx *pulumi.Context,
 		"tagValueId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TagValueIamPolicy
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:TagValueIamPolicy", name, args, &resource, opts...)
 	if err != nil {

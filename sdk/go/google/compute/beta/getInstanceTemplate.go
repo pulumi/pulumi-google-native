@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified instance template.
 func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceTemplateResult
 	err := ctx.Invoke("google-native:compute/beta:getInstanceTemplate", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified AndroidApp.
 func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...pulumi.InvokeOption) (*LookupAndroidAppResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAndroidAppResult
 	err := ctx.Invoke("google-native:firebase/v1beta1:getAndroidApp", args, &rv, opts...)
 	if err != nil {

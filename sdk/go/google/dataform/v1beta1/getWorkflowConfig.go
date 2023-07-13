@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches a single WorkflowConfig.
 func LookupWorkflowConfig(ctx *pulumi.Context, args *LookupWorkflowConfigArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowConfigResult
 	err := ctx.Invoke("google-native:dataform/v1beta1:getWorkflowConfig", args, &rv, opts...)
 	if err != nil {

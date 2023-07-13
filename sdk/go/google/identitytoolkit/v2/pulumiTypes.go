@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Defines a policy of allowing every region by default and adding disallowed regions to a disallow list.
 type GoogleCloudIdentitytoolkitAdminV2AllowByDefault struct {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,7 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 		"region",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InterconnectAttachment
 	err := ctx.RegisterResource("google-native:compute/v1:InterconnectAttachment", name, args, &resource, opts...)
 	if err != nil {

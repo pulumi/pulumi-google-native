@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single VMware node pool.
 func LookupVmwareNodePool(ctx *pulumi.Context, args *LookupVmwareNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupVmwareNodePoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmwareNodePoolResult
 	err := ctx.Invoke("google-native:gkeonprem/v1:getVmwareNodePool", args, &rv, opts...)
 	if err != nil {

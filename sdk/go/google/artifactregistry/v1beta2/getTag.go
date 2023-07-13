@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a tag.
 func LookupTag(ctx *pulumi.Context, args *LookupTagArgs, opts ...pulumi.InvokeOption) (*LookupTagResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagResult
 	err := ctx.Invoke("google-native:artifactregistry/v1beta2:getTag", args, &rv, opts...)
 	if err != nil {

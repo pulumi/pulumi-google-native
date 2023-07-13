@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an access level based on the resource name.
 func LookupAccessLevel(ctx *pulumi.Context, args *LookupAccessLevelArgs, opts ...pulumi.InvokeOption) (*LookupAccessLevelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessLevelResult
 	err := ctx.Invoke("google-native:accesscontextmanager/v1:getAccessLevel", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a `Release` by name.
 func LookupRelease(ctx *pulumi.Context, args *LookupReleaseArgs, opts ...pulumi.InvokeOption) (*LookupReleaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReleaseResult
 	err := ctx.Invoke("google-native:firebaserules/v1:getRelease", args, &rv, opts...)
 	if err != nil {

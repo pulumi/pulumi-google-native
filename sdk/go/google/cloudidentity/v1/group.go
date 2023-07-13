@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:Group", name, args, &resource, opts...)
 	if err != nil {

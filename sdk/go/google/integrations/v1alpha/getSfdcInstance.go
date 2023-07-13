@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown.
 func LookupSfdcInstance(ctx *pulumi.Context, args *LookupSfdcInstanceArgs, opts ...pulumi.InvokeOption) (*LookupSfdcInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSfdcInstanceResult
 	err := ctx.Invoke("google-native:integrations/v1alpha:getSfdcInstance", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns all of the details about the specified resize request.
 func LookupInstanceGroupManagerResizeRequest(ctx *pulumi.Context, args *LookupInstanceGroupManagerResizeRequestArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResizeRequestResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceGroupManagerResizeRequestResult
 	err := ctx.Invoke("google-native:compute/alpha:getInstanceGroupManagerResizeRequest", args, &rv, opts...)
 	if err != nil {

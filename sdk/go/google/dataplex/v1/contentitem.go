@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ func NewContentitem(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Contentitem
 	err := ctx.RegisterResource("google-native:dataplex/v1:Contentitem", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get task resource.
 func LookupTask(ctx *pulumi.Context, args *LookupTaskArgs, opts ...pulumi.InvokeOption) (*LookupTaskResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaskResult
 	err := ctx.Invoke("google-native:dataplex/v1:getTask", args, &rv, opts...)
 	if err != nil {

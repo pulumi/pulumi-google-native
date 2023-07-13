@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches a single ReleaseConfig.
 func LookupReleaseConfig(ctx *pulumi.Context, args *LookupReleaseConfigArgs, opts ...pulumi.InvokeOption) (*LookupReleaseConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReleaseConfigResult
 	err := ctx.Invoke("google-native:dataform/v1beta1:getReleaseConfig", args, &rv, opts...)
 	if err != nil {

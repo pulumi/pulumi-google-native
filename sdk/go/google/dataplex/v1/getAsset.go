@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an asset resource.
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetResult
 	err := ctx.Invoke("google-native:dataplex/v1:getAsset", args, &rv, opts...)
 	if err != nil {

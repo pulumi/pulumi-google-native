@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps.
 func LookupDeveloper(ctx *pulumi.Context, args *LookupDeveloperArgs, opts ...pulumi.InvokeOption) (*LookupDeveloperResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeveloperResult
 	err := ctx.Invoke("google-native:apigee/v1:getDeveloper", args, &rv, opts...)
 	if err != nil {

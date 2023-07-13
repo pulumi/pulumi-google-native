@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ func NewProviderNoteIamPolicy(ctx *pulumi.Context,
 		"providerId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProviderNoteIamPolicy
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, args, &resource, opts...)
 	if err != nil {

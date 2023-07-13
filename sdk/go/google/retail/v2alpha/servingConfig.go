@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewServingConfig(ctx *pulumi.Context,
 		"servingConfigId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServingConfig
 	err := ctx.RegisterResource("google-native:retail/v2alpha:ServingConfig", name, args, &resource, opts...)
 	if err != nil {

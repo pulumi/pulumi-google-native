@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified knowledge base.
 func LookupKnowledgeBase(ctx *pulumi.Context, args *LookupKnowledgeBaseArgs, opts ...pulumi.InvokeOption) (*LookupKnowledgeBaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKnowledgeBaseResult
 	err := ctx.Invoke("google-native:dialogflow/v2:getKnowledgeBase", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +35,7 @@ func NewBillingAccount(ctx *pulumi.Context,
 		args = &BillingAccountArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BillingAccount
 	err := ctx.RegisterResource("google-native:cloudbilling/v1:BillingAccount", name, args, &resource, opts...)
 	if err != nil {

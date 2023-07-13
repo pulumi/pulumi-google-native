@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
 func LookupOrganizationEnvironmentIamPolicy(ctx *pulumi.Context, args *LookupOrganizationEnvironmentIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationEnvironmentIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationEnvironmentIamPolicyResult
 	err := ctx.Invoke("google-native:apigee/v1:getOrganizationEnvironmentIamPolicy", args, &rv, opts...)
 	if err != nil {

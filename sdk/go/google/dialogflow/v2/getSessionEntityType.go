@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
 func LookupSessionEntityType(ctx *pulumi.Context, args *LookupSessionEntityTypeArgs, opts ...pulumi.InvokeOption) (*LookupSessionEntityTypeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSessionEntityTypeResult
 	err := ctx.Invoke("google-native:dialogflow/v2:getSessionEntityType", args, &rv, opts...)
 	if err != nil {

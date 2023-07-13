@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a phrase matcher.
 func LookupPhraseMatcher(ctx *pulumi.Context, args *LookupPhraseMatcherArgs, opts ...pulumi.InvokeOption) (*LookupPhraseMatcherResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPhraseMatcherResult
 	err := ctx.Invoke("google-native:contactcenterinsights/v1:getPhraseMatcher", args, &rv, opts...)
 	if err != nil {

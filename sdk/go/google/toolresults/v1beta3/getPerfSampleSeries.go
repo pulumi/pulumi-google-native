@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
 func LookupPerfSampleSeries(ctx *pulumi.Context, args *LookupPerfSampleSeriesArgs, opts ...pulumi.InvokeOption) (*LookupPerfSampleSeriesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPerfSampleSeriesResult
 	err := ctx.Invoke("google-native:toolresults/v1beta3:getPerfSampleSeries", args, &rv, opts...)
 	if err != nil {

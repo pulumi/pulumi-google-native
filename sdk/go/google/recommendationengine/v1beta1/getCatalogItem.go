@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific catalog item.
 func LookupCatalogItem(ctx *pulumi.Context, args *LookupCatalogItemArgs, opts ...pulumi.InvokeOption) (*LookupCatalogItemResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogItemResult
 	err := ctx.Invoke("google-native:recommendationengine/v1beta1:getCatalogItem", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,6 +58,7 @@ func NewNodeGroup(ctx *pulumi.Context,
 		"regionId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodeGroup
 	err := ctx.RegisterResource("google-native:dataproc/v1:NodeGroup", name, args, &resource, opts...)
 	if err != nil {

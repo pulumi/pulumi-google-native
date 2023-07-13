@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewClientGateway(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientGateway
 	err := ctx.RegisterResource("google-native:beyondcorp/v1alpha:ClientGateway", name, args, &resource, opts...)
 	if err != nil {

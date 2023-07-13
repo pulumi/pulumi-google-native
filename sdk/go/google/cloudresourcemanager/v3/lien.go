@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ func NewLien(ctx *pulumi.Context,
 		args = &LienArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Lien
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Lien", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ func NewDeployment(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Deployment
 	err := ctx.RegisterResource("google-native:deploymentmanager/v2beta:Deployment", name, args, &resource, opts...)
 	if err != nil {

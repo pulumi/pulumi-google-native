@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 func LookupServiceIamPolicy(ctx *pulumi.Context, args *LookupServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceIamPolicyResult
 	err := ctx.Invoke("google-native:servicemanagement/v1:getServiceIamPolicy", args, &rv, opts...)
 	if err != nil {

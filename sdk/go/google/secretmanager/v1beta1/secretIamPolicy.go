@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewSecretIamPolicy(ctx *pulumi.Context,
 		"secretId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretIamPolicy
 	err := ctx.RegisterResource("google-native:secretmanager/v1beta1:SecretIamPolicy", name, args, &resource, opts...)
 	if err != nil {

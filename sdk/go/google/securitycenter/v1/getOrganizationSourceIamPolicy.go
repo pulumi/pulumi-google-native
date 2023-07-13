@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy on the specified Source.
 func LookupOrganizationSourceIamPolicy(ctx *pulumi.Context, args *LookupOrganizationSourceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationSourceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationSourceIamPolicyResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getOrganizationSourceIamPolicy", args, &rv, opts...)
 	if err != nil {

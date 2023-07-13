@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,6 +83,7 @@ func NewWorkstationConfig(ctx *pulumi.Context,
 		"workstationConfigId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkstationConfig
 	err := ctx.RegisterResource("google-native:workstations/v1beta:WorkstationConfig", name, args, &resource, opts...)
 	if err != nil {

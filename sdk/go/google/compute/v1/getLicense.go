@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.InvokeOption) (*LookupLicenseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseResult
 	err := ctx.Invoke("google-native:compute/v1:getLicense", args, &rv, opts...)
 	if err != nil {

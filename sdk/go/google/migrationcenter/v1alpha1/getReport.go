@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Report.
 func LookupReport(ctx *pulumi.Context, args *LookupReportArgs, opts ...pulumi.InvokeOption) (*LookupReportResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReportResult
 	err := ctx.Invoke("google-native:migrationcenter/v1alpha1:getReport", args, &rv, opts...)
 	if err != nil {

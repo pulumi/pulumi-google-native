@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2Action struct {

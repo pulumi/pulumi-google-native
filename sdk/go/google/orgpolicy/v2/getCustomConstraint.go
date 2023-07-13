@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
 func LookupCustomConstraint(ctx *pulumi.Context, args *LookupCustomConstraintArgs, opts ...pulumi.InvokeOption) (*LookupCustomConstraintResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomConstraintResult
 	err := ctx.Invoke("google-native:orgpolicy/v2:getCustomConstraint", args, &rv, opts...)
 	if err != nil {

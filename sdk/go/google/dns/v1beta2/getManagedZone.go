@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the representation of an existing ManagedZone.
 func LookupManagedZone(ctx *pulumi.Context, args *LookupManagedZoneArgs, opts ...pulumi.InvokeOption) (*LookupManagedZoneResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedZoneResult
 	err := ctx.Invoke("google-native:dns/v1beta2:getManagedZone", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a datasource. **Note:** This API requires an admin account to execute.
 func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...pulumi.InvokeOption) (*LookupDataSourceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataSourceResult
 	err := ctx.Invoke("google-native:cloudsearch/v1:getDataSource", args, &rv, opts...)
 	if err != nil {

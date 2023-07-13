@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an entry.
 func LookupEntry(ctx *pulumi.Context, args *LookupEntryArgs, opts ...pulumi.InvokeOption) (*LookupEntryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntryResult
 	err := ctx.Invoke("google-native:datacatalog/v1beta1:getEntry", args, &rv, opts...)
 	if err != nil {

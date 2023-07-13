@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single conversion workspace.
 func LookupConversionWorkspace(ctx *pulumi.Context, args *LookupConversionWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupConversionWorkspaceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConversionWorkspaceResult
 	err := ctx.Invoke("google-native:datamigration/v1:getConversionWorkspace", args, &rv, opts...)
 	if err != nil {

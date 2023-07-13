@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified routine resource by routine ID.
 func LookupRoutine(ctx *pulumi.Context, args *LookupRoutineArgs, opts ...pulumi.InvokeOption) (*LookupRoutineResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutineResult
 	err := ctx.Invoke("google-native:bigquery/v2:getRoutine", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a service perimeter based on the resource name.
 func LookupServicePerimeter(ctx *pulumi.Context, args *LookupServicePerimeterArgs, opts ...pulumi.InvokeOption) (*LookupServicePerimeterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServicePerimeterResult
 	err := ctx.Invoke("google-native:accesscontextmanager/v1:getServicePerimeter", args, &rv, opts...)
 	if err != nil {

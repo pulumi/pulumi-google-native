@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Consent artifact.
 func LookupConsentArtifact(ctx *pulumi.Context, args *LookupConsentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupConsentArtifactResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsentArtifactResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getConsentArtifact", args, &rv, opts...)
 	if err != nil {

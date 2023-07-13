@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the job template data.
 func LookupJobTemplate(ctx *pulumi.Context, args *LookupJobTemplateArgs, opts ...pulumi.InvokeOption) (*LookupJobTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobTemplateResult
 	err := ctx.Invoke("google-native:transcoder/v1:getJobTemplate", args, &rv, opts...)
 	if err != nil {

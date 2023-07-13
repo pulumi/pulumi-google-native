@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a pipeline based on ID. Caller must have READ permission to the project.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult
 	err := ctx.Invoke("google-native:genomics/v1alpha2:getPipeline", args, &rv, opts...)
 	if err != nil {

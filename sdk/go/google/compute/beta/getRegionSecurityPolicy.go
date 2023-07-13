@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all of the ordered rules present in a single specified policy.
 func LookupRegionSecurityPolicy(ctx *pulumi.Context, args *LookupRegionSecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionSecurityPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionSecurityPolicyResult
 	err := ctx.Invoke("google-native:compute/beta:getRegionSecurityPolicy", args, &rv, opts...)
 	if err != nil {

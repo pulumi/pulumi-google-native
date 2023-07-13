@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
 func LookupTagKey(ctx *pulumi.Context, args *LookupTagKeyArgs, opts ...pulumi.InvokeOption) (*LookupTagKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagKeyResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getTagKey", args, &rv, opts...)
 	if err != nil {

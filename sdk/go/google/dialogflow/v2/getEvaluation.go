@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an evaluation of conversation model.
 func LookupEvaluation(ctx *pulumi.Context, args *LookupEvaluationArgs, opts ...pulumi.InvokeOption) (*LookupEvaluationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEvaluationResult
 	err := ctx.Invoke("google-native:dialogflow/v2:getEvaluation", args, &rv, opts...)
 	if err != nil {

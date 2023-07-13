@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewTask(ctx *pulumi.Context,
 		"taskId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Task
 	err := ctx.RegisterResource("google-native:dataplex/v1:Task", name, args, &resource, opts...)
 	if err != nil {

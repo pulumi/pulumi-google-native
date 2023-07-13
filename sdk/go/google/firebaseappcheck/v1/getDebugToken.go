@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
 func LookupDebugToken(ctx *pulumi.Context, args *LookupDebugTokenArgs, opts ...pulumi.InvokeOption) (*LookupDebugTokenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDebugTokenResult
 	err := ctx.Invoke("google-native:firebaseappcheck/v1:getDebugToken", args, &rv, opts...)
 	if err != nil {

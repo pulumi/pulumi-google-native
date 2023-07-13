@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ func NewInboundSsoAssignment(ctx *pulumi.Context,
 		args = &InboundSsoAssignmentArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InboundSsoAssignment
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:InboundSsoAssignment", name, args, &resource, opts...)
 	if err != nil {

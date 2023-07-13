@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
 func LookupOsPolicyAssignment(ctx *pulumi.Context, args *LookupOsPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupOsPolicyAssignmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOsPolicyAssignmentResult
 	err := ctx.Invoke("google-native:osconfig/v1alpha:getOsPolicyAssignment", args, &rv, opts...)
 	if err != nil {

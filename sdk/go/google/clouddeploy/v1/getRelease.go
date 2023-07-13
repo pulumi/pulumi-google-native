@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Release.
 func LookupRelease(ctx *pulumi.Context, args *LookupReleaseArgs, opts ...pulumi.InvokeOption) (*LookupReleaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReleaseResult
 	err := ctx.Invoke("google-native:clouddeploy/v1:getRelease", args, &rv, opts...)
 	if err != nil {

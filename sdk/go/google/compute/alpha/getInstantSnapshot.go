@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified InstantSnapshot resource in the specified zone.
 func LookupInstantSnapshot(ctx *pulumi.Context, args *LookupInstantSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupInstantSnapshotResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstantSnapshotResult
 	err := ctx.Invoke("google-native:compute/alpha:getInstantSnapshot", args, &rv, opts...)
 	if err != nil {

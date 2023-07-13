@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
 func LookupSecretIamPolicy(ctx *pulumi.Context, args *LookupSecretIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecretIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretIamPolicyResult
 	err := ctx.Invoke("google-native:secretmanager/v1beta1:getSecretIamPolicy", args, &rv, opts...)
 	if err != nil {

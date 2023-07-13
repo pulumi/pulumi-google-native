@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a trace configuration override.
 func LookupOverride(ctx *pulumi.Context, args *LookupOverrideArgs, opts ...pulumi.InvokeOption) (*LookupOverrideResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOverrideResult
 	err := ctx.Invoke("google-native:apigee/v1:getOverride", args, &rv, opts...)
 	if err != nil {

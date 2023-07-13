@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
 func GetKey(ctx *pulumi.Context, args *GetKeyArgs, opts ...pulumi.InvokeOption) (*GetKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyResult
 	err := ctx.Invoke("google-native:apigee/v1:getKey", args, &rv, opts...)
 	if err != nil {

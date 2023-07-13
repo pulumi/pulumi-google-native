@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a ServiceAccountKey.
 func LookupKey(ctx *pulumi.Context, args *LookupKeyArgs, opts ...pulumi.InvokeOption) (*LookupKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyResult
 	err := ctx.Invoke("google-native:iam/v1:getKey", args, &rv, opts...)
 	if err != nil {

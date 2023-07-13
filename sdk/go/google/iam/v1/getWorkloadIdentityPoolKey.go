@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an individual WorkloadIdentityPoolProviderKey.
 func LookupWorkloadIdentityPoolKey(ctx *pulumi.Context, args *LookupWorkloadIdentityPoolKeyArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadIdentityPoolKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadIdentityPoolKeyResult
 	err := ctx.Invoke("google-native:iam/v1:getWorkloadIdentityPoolKey", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an execution of the given name.
 func LookupExecution(ctx *pulumi.Context, args *LookupExecutionArgs, opts ...pulumi.InvokeOption) (*LookupExecutionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExecutionResult
 	err := ctx.Invoke("google-native:workflowexecutions/v1beta:getExecution", args, &rv, opts...)
 	if err != nil {

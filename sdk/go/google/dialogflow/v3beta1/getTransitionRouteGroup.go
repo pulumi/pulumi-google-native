@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified TransitionRouteGroup.
 func LookupTransitionRouteGroup(ctx *pulumi.Context, args *LookupTransitionRouteGroupArgs, opts ...pulumi.InvokeOption) (*LookupTransitionRouteGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTransitionRouteGroupResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getTransitionRouteGroup", args, &rv, opts...)
 	if err != nil {

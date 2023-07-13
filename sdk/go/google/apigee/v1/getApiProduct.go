@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name.
 func LookupApiProduct(ctx *pulumi.Context, args *LookupApiProductArgs, opts ...pulumi.InvokeOption) (*LookupApiProductResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiProductResult
 	err := ctx.Invoke("google-native:apigee/v1:getApiProduct", args, &rv, opts...)
 	if err != nil {

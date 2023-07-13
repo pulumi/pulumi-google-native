@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an authorized orgs desc based on the resource name.
 func LookupAuthorizedOrgsDesc(ctx *pulumi.Context, args *LookupAuthorizedOrgsDescArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizedOrgsDescResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizedOrgsDescResult
 	err := ctx.Invoke("google-native:accesscontextmanager/v1:getAuthorizedOrgsDesc", args, &rv, opts...)
 	if err != nil {

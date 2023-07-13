@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ServerTlsPolicy.
 func LookupServerTlsPolicy(ctx *pulumi.Context, args *LookupServerTlsPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServerTlsPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerTlsPolicyResult
 	err := ctx.Invoke("google-native:networksecurity/v1:getServerTlsPolicy", args, &rv, opts...)
 	if err != nil {

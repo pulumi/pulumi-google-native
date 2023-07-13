@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy`
 func LookupQueueIamPolicy(ctx *pulumi.Context, args *LookupQueueIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQueueIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueIamPolicyResult
 	err := ctx.Invoke("google-native:cloudtasks/v2beta3:getQueueIamPolicy", args, &rv, opts...)
 	if err != nil {

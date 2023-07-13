@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a `Membership`.
 func LookupMembership(ctx *pulumi.Context, args *LookupMembershipArgs, opts ...pulumi.InvokeOption) (*LookupMembershipResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMembershipResult
 	err := ctx.Invoke("google-native:cloudidentity/v1:getMembership", args, &rv, opts...)
 	if err != nil {

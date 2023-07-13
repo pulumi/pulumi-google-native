@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single EndpointPolicy.
 func LookupEndpointPolicy(ctx *pulumi.Context, args *LookupEndpointPolicyArgs, opts ...pulumi.InvokeOption) (*LookupEndpointPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointPolicyResult
 	err := ctx.Invoke("google-native:networkservices/v1:getEndpointPolicy", args, &rv, opts...)
 	if err != nil {

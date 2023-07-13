@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the details of a RBACRoleBinding.
 func LookupRbacrolebinding(ctx *pulumi.Context, args *LookupRbacrolebindingArgs, opts ...pulumi.InvokeOption) (*LookupRbacrolebindingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRbacrolebindingResult
 	err := ctx.Invoke("google-native:gkehub/v1alpha:getRbacrolebinding", args, &rv, opts...)
 	if err != nil {

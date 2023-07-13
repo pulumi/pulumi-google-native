@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this method to get details about a route.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteResult
 	err := ctx.Invoke("google-native:datastream/v1alpha1:getRoute", args, &rv, opts...)
 	if err != nil {

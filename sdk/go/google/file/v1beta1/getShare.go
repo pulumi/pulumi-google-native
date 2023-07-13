@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a specific share.
 func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.InvokeOption) (*LookupShareResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareResult
 	err := ctx.Invoke("google-native:file/v1beta1:getShare", args, &rv, opts...)
 	if err != nil {

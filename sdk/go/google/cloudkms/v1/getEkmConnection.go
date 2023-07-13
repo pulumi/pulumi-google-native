@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns metadata for a given EkmConnection.
 func LookupEkmConnection(ctx *pulumi.Context, args *LookupEkmConnectionArgs, opts ...pulumi.InvokeOption) (*LookupEkmConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEkmConnectionResult
 	err := ctx.Invoke("google-native:cloudkms/v1:getEkmConnection", args, &rv, opts...)
 	if err != nil {

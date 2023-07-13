@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a `GitLabConfig`. This API is experimental
 func LookupGitLabConfig(ctx *pulumi.Context, args *LookupGitLabConfigArgs, opts ...pulumi.InvokeOption) (*LookupGitLabConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitLabConfigResult
 	err := ctx.Invoke("google-native:cloudbuild/v1:getGitLabConfig", args, &rv, opts...)
 	if err != nil {

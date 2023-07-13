@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a cluster.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
 	err := ctx.Invoke("google-native:bigtableadmin/v2:getCluster", args, &rv, opts...)
 	if err != nil {

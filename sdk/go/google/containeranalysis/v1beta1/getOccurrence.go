@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified occurrence.
 func LookupOccurrence(ctx *pulumi.Context, args *LookupOccurrenceArgs, opts ...pulumi.InvokeOption) (*LookupOccurrenceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOccurrenceResult
 	err := ctx.Invoke("google-native:containeranalysis/v1beta1:getOccurrence", args, &rv, opts...)
 	if err != nil {

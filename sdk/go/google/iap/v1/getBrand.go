@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the OAuth brand of the project.
 func LookupBrand(ctx *pulumi.Context, args *LookupBrandArgs, opts ...pulumi.InvokeOption) (*LookupBrandResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrandResult
 	err := ctx.Invoke("google-native:iap/v1:getBrand", args, &rv, opts...)
 	if err != nil {

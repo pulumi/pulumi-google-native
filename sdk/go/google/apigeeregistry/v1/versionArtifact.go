@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ func NewVersionArtifact(ctx *pulumi.Context,
 		"versionId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VersionArtifact
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:VersionArtifact", name, args, &resource, opts...)
 	if err != nil {

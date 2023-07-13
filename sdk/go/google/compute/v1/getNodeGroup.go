@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
 func LookupNodeGroup(ctx *pulumi.Context, args *LookupNodeGroupArgs, opts ...pulumi.InvokeOption) (*LookupNodeGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeGroupResult
 	err := ctx.Invoke("google-native:compute/v1:getNodeGroup", args, &rv, opts...)
 	if err != nil {

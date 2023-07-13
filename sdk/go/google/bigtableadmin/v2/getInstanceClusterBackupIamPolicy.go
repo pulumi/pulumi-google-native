@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
 func LookupInstanceClusterBackupIamPolicy(ctx *pulumi.Context, args *LookupInstanceClusterBackupIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstanceClusterBackupIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceClusterBackupIamPolicyResult
 	err := ctx.Invoke("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", args, &rv, opts...)
 	if err != nil {

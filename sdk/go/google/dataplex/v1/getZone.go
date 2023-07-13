@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a zone resource.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneResult
 	err := ctx.Invoke("google-native:dataplex/v1:getZone", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a model.
 func LookupModel(ctx *pulumi.Context, args *LookupModelArgs, opts ...pulumi.InvokeOption) (*LookupModelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupModelResult
 	err := ctx.Invoke("google-native:translate/v3:getModel", args, &rv, opts...)
 	if err != nil {

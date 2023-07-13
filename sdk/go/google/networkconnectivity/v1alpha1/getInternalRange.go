@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single internal range.
 func LookupInternalRange(ctx *pulumi.Context, args *LookupInternalRangeArgs, opts ...pulumi.InvokeOption) (*LookupInternalRangeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternalRangeResult
 	err := ctx.Invoke("google-native:networkconnectivity/v1alpha1:getInternalRange", args, &rv, opts...)
 	if err != nil {

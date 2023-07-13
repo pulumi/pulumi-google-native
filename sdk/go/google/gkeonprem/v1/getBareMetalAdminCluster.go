@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single bare metal admin cluster.
 func LookupBareMetalAdminCluster(ctx *pulumi.Context, args *LookupBareMetalAdminClusterArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalAdminClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalAdminClusterResult
 	err := ctx.Invoke("google-native:gkeonprem/v1:getBareMetalAdminCluster", args, &rv, opts...)
 	if err != nil {

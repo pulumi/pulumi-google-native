@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ func NewRepositoryWorkspaceIamPolicy(ctx *pulumi.Context,
 		"workspaceId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RepositoryWorkspaceIamPolicy
 	err := ctx.RegisterResource("google-native:dataform/v1beta1:RepositoryWorkspaceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

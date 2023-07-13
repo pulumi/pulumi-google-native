@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist.
 func LookupProductSet(ctx *pulumi.Context, args *LookupProductSetArgs, opts ...pulumi.InvokeOption) (*LookupProductSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProductSetResult
 	err := ctx.Invoke("google-native:vision/v1:getProductSet", args, &rv, opts...)
 	if err != nil {

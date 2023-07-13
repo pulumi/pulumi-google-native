@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified search application. **Note:** This API requires an admin account to execute.
 func LookupSearchApplication(ctx *pulumi.Context, args *LookupSearchApplicationArgs, opts ...pulumi.InvokeOption) (*LookupSearchApplicationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSearchApplicationResult
 	err := ctx.Invoke("google-native:cloudsearch/v1:getSearchApplication", args, &rv, opts...)
 	if err != nil {

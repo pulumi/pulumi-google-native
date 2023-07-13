@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,7 @@ func NewSubscription(ctx *pulumi.Context,
 		args = &SubscriptionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subscription
 	err := ctx.RegisterResource("google-native:pubsub/v1beta1a:Subscription", name, args, &resource, opts...)
 	if err != nil {

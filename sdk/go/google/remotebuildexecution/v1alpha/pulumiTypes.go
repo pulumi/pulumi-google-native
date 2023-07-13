@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // AcceleratorConfig defines the accelerator cards to attach to the VM.
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig struct {

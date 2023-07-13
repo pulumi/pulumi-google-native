@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a specified spec.
 func LookupSpec(ctx *pulumi.Context, args *LookupSpecArgs, opts ...pulumi.InvokeOption) (*LookupSpecResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpecResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getSpec", args, &rv, opts...)
 	if err != nil {

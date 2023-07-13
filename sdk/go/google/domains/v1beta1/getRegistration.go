@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a `Registration` resource.
 func LookupRegistration(ctx *pulumi.Context, args *LookupRegistrationArgs, opts ...pulumi.InvokeOption) (*LookupRegistrationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistrationResult
 	err := ctx.Invoke("google-native:domains/v1beta1:getRegistration", args, &rv, opts...)
 	if err != nil {

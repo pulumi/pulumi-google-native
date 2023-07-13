@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ func NewContactCenter(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContactCenter
 	err := ctx.RegisterResource("google-native:contactcenteraiplatform/v1alpha1:ContactCenter", name, args, &resource, opts...)
 	if err != nil {

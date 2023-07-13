@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewGatewaySecurityPolicy(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewaySecurityPolicy
 	err := ctx.RegisterResource("google-native:networksecurity/v1:GatewaySecurityPolicy", name, args, &resource, opts...)
 	if err != nil {

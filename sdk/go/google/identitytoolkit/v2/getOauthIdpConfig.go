@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve an Oidc Idp configuration for an Identity Toolkit project.
 func LookupOauthIdpConfig(ctx *pulumi.Context, args *LookupOauthIdpConfigArgs, opts ...pulumi.InvokeOption) (*LookupOauthIdpConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOauthIdpConfigResult
 	err := ctx.Invoke("google-native:identitytoolkit/v2:getOauthIdpConfig", args, &rv, opts...)
 	if err != nil {

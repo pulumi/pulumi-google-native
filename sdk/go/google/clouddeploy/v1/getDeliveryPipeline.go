@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single DeliveryPipeline.
 func LookupDeliveryPipeline(ctx *pulumi.Context, args *LookupDeliveryPipelineArgs, opts ...pulumi.InvokeOption) (*LookupDeliveryPipelineResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeliveryPipelineResult
 	err := ctx.Invoke("google-native:clouddeploy/v1:getDeliveryPipeline", args, &rv, opts...)
 	if err != nil {

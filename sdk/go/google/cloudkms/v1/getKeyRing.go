@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns metadata for a given KeyRing.
 func LookupKeyRing(ctx *pulumi.Context, args *LookupKeyRingArgs, opts ...pulumi.InvokeOption) (*LookupKeyRingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyRingResult
 	err := ctx.Invoke("google-native:cloudkms/v1:getKeyRing", args, &rv, opts...)
 	if err != nil {

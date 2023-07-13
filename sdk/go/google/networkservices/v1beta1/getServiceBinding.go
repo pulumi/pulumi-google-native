@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ServiceBinding.
 func LookupServiceBinding(ctx *pulumi.Context, args *LookupServiceBindingArgs, opts ...pulumi.InvokeOption) (*LookupServiceBindingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceBindingResult
 	err := ctx.Invoke("google-native:networkservices/v1beta1:getServiceBinding", args, &rv, opts...)
 	if err != nil {

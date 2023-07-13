@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a ScanConfig.
 func LookupScanConfig(ctx *pulumi.Context, args *LookupScanConfigArgs, opts ...pulumi.InvokeOption) (*LookupScanConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupScanConfigResult
 	err := ctx.Invoke("google-native:websecurityscanner/v1beta:getScanConfig", args, &rv, opts...)
 	if err != nil {

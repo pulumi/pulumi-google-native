@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single bare metal node pool.
 func LookupBareMetalNodePool(ctx *pulumi.Context, args *LookupBareMetalNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupBareMetalNodePoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBareMetalNodePoolResult
 	err := ctx.Invoke("google-native:gkeonprem/v1:getBareMetalNodePool", args, &rv, opts...)
 	if err != nil {

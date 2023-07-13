@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ func NewBudget(ctx *pulumi.Context,
 		"billingAccountId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Budget
 	err := ctx.RegisterResource("google-native:billingbudgets/v1beta1:Budget", name, args, &resource, opts...)
 	if err != nil {

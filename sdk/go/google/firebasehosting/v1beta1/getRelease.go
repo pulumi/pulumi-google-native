@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site.
 func LookupRelease(ctx *pulumi.Context, args *LookupReleaseArgs, opts ...pulumi.InvokeOption) (*LookupReleaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReleaseResult
 	err := ctx.Invoke("google-native:firebasehosting/v1beta1:getRelease", args, &rv, opts...)
 	if err != nil {

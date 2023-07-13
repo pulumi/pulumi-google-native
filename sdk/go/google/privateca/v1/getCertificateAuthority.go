@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a CertificateAuthority.
 func LookupCertificateAuthority(ctx *pulumi.Context, args *LookupCertificateAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupCertificateAuthorityResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateAuthorityResult
 	err := ctx.Invoke("google-native:privateca/v1:getCertificateAuthority", args, &rv, opts...)
 	if err != nil {

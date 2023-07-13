@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Document.
 func LookupDocument(ctx *pulumi.Context, args *LookupDocumentArgs, opts ...pulumi.InvokeOption) (*LookupDocumentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDocumentResult
 	err := ctx.Invoke("google-native:discoveryengine/v1alpha:getDocument", args, &rv, opts...)
 	if err != nil {

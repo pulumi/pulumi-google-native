@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewAutoscaler(ctx *pulumi.Context,
 		"zone",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Autoscaler
 	err := ctx.RegisterResource("google-native:compute/v1:Autoscaler", name, args, &resource, opts...)
 	if err != nil {

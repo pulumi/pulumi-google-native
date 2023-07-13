@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get details of a single NFS share.
 func LookupNfsShare(ctx *pulumi.Context, args *LookupNfsShareArgs, opts ...pulumi.InvokeOption) (*LookupNfsShareResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNfsShareResult
 	err := ctx.Invoke("google-native:baremetalsolution/v2:getNfsShare", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewMigratingVm(ctx *pulumi.Context,
 		"sourceId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MigratingVm
 	err := ctx.RegisterResource("google-native:vmmigration/v1:MigratingVm", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a queue.
 func LookupQueue(ctx *pulumi.Context, args *LookupQueueArgs, opts ...pulumi.InvokeOption) (*LookupQueueResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueResult
 	err := ctx.Invoke("google-native:cloudtasks/v2beta2:getQueue", args, &rv, opts...)
 	if err != nil {

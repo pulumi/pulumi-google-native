@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details about an asset feed.
 func LookupFeed(ctx *pulumi.Context, args *LookupFeedArgs, opts ...pulumi.InvokeOption) (*LookupFeedResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFeedResult
 	err := ctx.Invoke("google-native:cloudasset/v1:getFeed", args, &rv, opts...)
 	if err != nil {

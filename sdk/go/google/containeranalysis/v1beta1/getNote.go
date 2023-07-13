@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified note.
 func LookupNote(ctx *pulumi.Context, args *LookupNoteArgs, opts ...pulumi.InvokeOption) (*LookupNoteResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNoteResult
 	err := ctx.Invoke("google-native:containeranalysis/v1beta1:getNote", args, &rv, opts...)
 	if err != nil {

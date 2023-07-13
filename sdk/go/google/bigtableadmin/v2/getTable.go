@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets metadata information about the specified table.
 func LookupTable(ctx *pulumi.Context, args *LookupTableArgs, opts ...pulumi.InvokeOption) (*LookupTableResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableResult
 	err := ctx.Invoke("google-native:bigtableadmin/v2:getTable", args, &rv, opts...)
 	if err != nil {

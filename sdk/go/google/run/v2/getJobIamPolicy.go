@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
 func LookupJobIamPolicy(ctx *pulumi.Context, args *LookupJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJobIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobIamPolicyResult
 	err := ctx.Invoke("google-native:run/v2:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {

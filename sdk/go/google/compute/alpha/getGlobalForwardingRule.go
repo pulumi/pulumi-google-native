@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
 func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalForwardingRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalForwardingRuleResult
 	err := ctx.Invoke("google-native:compute/alpha:getGlobalForwardingRule", args, &rv, opts...)
 	if err != nil {

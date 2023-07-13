@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns information about a `BuildTrigger`. This API is experimental.
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult
 	err := ctx.Invoke("google-native:cloudbuild/v1:getTrigger", args, &rv, opts...)
 	if err != nil {

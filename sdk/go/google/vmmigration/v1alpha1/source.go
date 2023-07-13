@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewSource(ctx *pulumi.Context,
 		"sourceId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Source
 	err := ctx.RegisterResource("google-native:vmmigration/v1alpha1:Source", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an HL7v2 message.
 func LookupMessage(ctx *pulumi.Context, args *LookupMessageArgs, opts ...pulumi.InvokeOption) (*LookupMessageResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMessageResult
 	err := ctx.Invoke("google-native:healthcare/v1:getMessage", args, &rv, opts...)
 	if err != nil {

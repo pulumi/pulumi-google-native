@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a BigQuery export.
 func LookupOrganizationBigQueryExport(ctx *pulumi.Context, args *LookupOrganizationBigQueryExportArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationBigQueryExportResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationBigQueryExportResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getOrganizationBigQueryExport", args, &rv, opts...)
 	if err != nil {

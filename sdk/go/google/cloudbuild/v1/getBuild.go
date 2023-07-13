@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
 func LookupBuild(ctx *pulumi.Context, args *LookupBuildArgs, opts ...pulumi.InvokeOption) (*LookupBuildResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildResult
 	err := ctx.Invoke("google-native:cloudbuild/v1:getBuild", args, &rv, opts...)
 	if err != nil {

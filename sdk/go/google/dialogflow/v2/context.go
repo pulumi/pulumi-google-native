@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewContext(ctx *pulumi.Context,
 		"userId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Context
 	err := ctx.RegisterResource("google-native:dialogflow/v2:Context", name, args, &resource, opts...)
 	if err != nil {

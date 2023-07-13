@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified TargetInstance resource.
 func LookupTargetInstance(ctx *pulumi.Context, args *LookupTargetInstanceArgs, opts ...pulumi.InvokeOption) (*LookupTargetInstanceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetInstanceResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetInstance", args, &rv, opts...)
 	if err != nil {

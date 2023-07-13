@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a Data Attribute resource.
 func LookupAttribute(ctx *pulumi.Context, args *LookupAttributeArgs, opts ...pulumi.InvokeOption) (*LookupAttributeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttributeResult
 	err := ctx.Invoke("google-native:dataplex/v1:getAttribute", args, &rv, opts...)
 	if err != nil {

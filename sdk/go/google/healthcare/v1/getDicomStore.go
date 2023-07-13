@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified DICOM store.
 func LookupDicomStore(ctx *pulumi.Context, args *LookupDicomStoreArgs, opts ...pulumi.InvokeOption) (*LookupDicomStoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDicomStoreResult
 	err := ctx.Invoke("google-native:healthcare/v1:getDicomStore", args, &rv, opts...)
 	if err != nil {

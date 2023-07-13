@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a single variable.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
 	err := ctx.Invoke("google-native:runtimeconfig/v1beta1:getVariable", args, &rv, opts...)
 	if err != nil {

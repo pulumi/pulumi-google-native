@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified context.
 func LookupContext(ctx *pulumi.Context, args *LookupContextArgs, opts ...pulumi.InvokeOption) (*LookupContextResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContextResult
 	err := ctx.Invoke("google-native:dialogflow/v2beta1:getContext", args, &rv, opts...)
 	if err != nil {

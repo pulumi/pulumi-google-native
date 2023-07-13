@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
 func LookupAnnotationStore(ctx *pulumi.Context, args *LookupAnnotationStoreArgs, opts ...pulumi.InvokeOption) (*LookupAnnotationStoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnnotationStoreResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getAnnotationStore", args, &rv, opts...)
 	if err != nil {

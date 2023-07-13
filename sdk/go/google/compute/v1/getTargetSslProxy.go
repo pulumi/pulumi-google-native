@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified TargetSslProxy resource.
 func LookupTargetSslProxy(ctx *pulumi.Context, args *LookupTargetSslProxyArgs, opts ...pulumi.InvokeOption) (*LookupTargetSslProxyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetSslProxyResult
 	err := ctx.Invoke("google-native:compute/v1:getTargetSslProxy", args, &rv, opts...)
 	if err != nil {

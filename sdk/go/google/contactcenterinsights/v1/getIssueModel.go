@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an issue model.
 func LookupIssueModel(ctx *pulumi.Context, args *LookupIssueModelArgs, opts ...pulumi.InvokeOption) (*LookupIssueModelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIssueModelResult
 	err := ctx.Invoke("google-native:contactcenterinsights/v1:getIssueModel", args, &rv, opts...)
 	if err != nil {

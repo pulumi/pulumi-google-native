@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified PublicAdvertisedPrefix resource.
 func LookupPublicAdvertisedPrefix(ctx *pulumi.Context, args *LookupPublicAdvertisedPrefixArgs, opts ...pulumi.InvokeOption) (*LookupPublicAdvertisedPrefixResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPublicAdvertisedPrefixResult
 	err := ctx.Invoke("google-native:compute/beta:getPublicAdvertisedPrefix", args, &rv, opts...)
 	if err != nil {

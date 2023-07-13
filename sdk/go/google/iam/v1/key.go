@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ func NewKey(ctx *pulumi.Context,
 		"serviceAccountId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Key
 	err := ctx.RegisterResource("google-native:iam/v1:Key", name, args, &resource, opts...)
 	if err != nil {

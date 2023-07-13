@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the specified case.
 func LookupCase(ctx *pulumi.Context, args *LookupCaseArgs, opts ...pulumi.InvokeOption) (*LookupCaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaseResult
 	err := ctx.Invoke("google-native:cloudsupport/v2beta:getCase", args, &rv, opts...)
 	if err != nil {

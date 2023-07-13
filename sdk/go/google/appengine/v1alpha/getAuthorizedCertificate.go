@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified SSL certificate.
 func LookupAuthorizedCertificate(ctx *pulumi.Context, args *LookupAuthorizedCertificateArgs, opts ...pulumi.InvokeOption) (*LookupAuthorizedCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorizedCertificateResult
 	err := ctx.Invoke("google-native:appengine/v1alpha:getAuthorizedCertificate", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
 func LookupGlossary(ctx *pulumi.Context, args *LookupGlossaryArgs, opts ...pulumi.InvokeOption) (*LookupGlossaryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlossaryResult
 	err := ctx.Invoke("google-native:translate/v3beta1:getGlossary", args, &rv, opts...)
 	if err != nil {

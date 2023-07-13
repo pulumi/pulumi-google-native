@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
 func LookupOrganizationInspectTemplate(ctx *pulumi.Context, args *LookupOrganizationInspectTemplateArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationInspectTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationInspectTemplateResult
 	err := ctx.Invoke("google-native:dlp/v2:getOrganizationInspectTemplate", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a link.
 func LookupBillingAccountBucketLink(ctx *pulumi.Context, args *LookupBillingAccountBucketLinkArgs, opts ...pulumi.InvokeOption) (*LookupBillingAccountBucketLinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingAccountBucketLinkResult
 	err := ctx.Invoke("google-native:logging/v2:getBillingAccountBucketLink", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewWorkflowTemplateIamPolicy(ctx *pulumi.Context,
 		"workflowTemplateId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkflowTemplateIamPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1:WorkflowTemplateIamPolicy", name, args, &resource, opts...)
 	if err != nil {

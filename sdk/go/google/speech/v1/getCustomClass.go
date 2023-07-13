@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a custom class.
 func LookupCustomClass(ctx *pulumi.Context, args *LookupCustomClassArgs, opts ...pulumi.InvokeOption) (*LookupCustomClassResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomClassResult
 	err := ctx.Invoke("google-native:speech/v1:getCustomClass", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an index.
 func LookupIndex(ctx *pulumi.Context, args *LookupIndexArgs, opts ...pulumi.InvokeOption) (*LookupIndexResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIndexResult
 	err := ctx.Invoke("google-native:firestore/v1beta1:getIndex", args, &rv, opts...)
 	if err != nil {

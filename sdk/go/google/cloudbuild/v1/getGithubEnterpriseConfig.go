@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a GitHubEnterpriseConfig.
 func LookupGithubEnterpriseConfig(ctx *pulumi.Context, args *LookupGithubEnterpriseConfigArgs, opts ...pulumi.InvokeOption) (*LookupGithubEnterpriseConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGithubEnterpriseConfigResult
 	err := ctx.Invoke("google-native:cloudbuild/v1:getGithubEnterpriseConfig", args, &rv, opts...)
 	if err != nil {
