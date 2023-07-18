@@ -9,6 +9,8 @@ Bug fixes:
   [#865](https://github.com/pulumi/pulumi-google-native/issues/865)
 - Fix non-string property value conversion in URLs
   [#890](https://github.com/pulumi/pulumi-google-native/pull/890)
+- Fix issues when diffing config property keys with special characters
+  [#911](https://github.com/pulumi/pulumi-google-native/pull/911)
 
 ## v0.30.0 (2023-04-14)
 Upstream breaking changes:

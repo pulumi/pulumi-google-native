@@ -19,6 +19,7 @@ import (
 
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	rpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -80,4 +81,68 @@ func TestApplyDiff(t *testing.T) {
 		"p3": {V: "newkey"},
 	}
 	assert.Equal(t, expected, actual)
+}
+
+func TestCalculateObjectDiff(t *testing.T) {
+	diff := &resource.ObjectDiff{
+		Adds: resource.PropertyMap{
+			"p3":            {V: "newkey"},
+			"dots.addition": {V: "added"},
+		},
+		Deletes: resource.PropertyMap{
+			"p2":            {V: "iamdeleted"},
+			"dots.deletion": {V: "deleted"},
+		},
+		Updates: map[resource.PropertyKey]resource.ValueDiff{
+			"p1": {
+				Old: resource.PropertyValue{V: "oldvalue"},
+				New: resource.PropertyValue{V: "newvalue"},
+			},
+			"dots.update": {
+				Old: resource.PropertyValue{V: "oldvalue"},
+				New: resource.PropertyValue{V: "newvalue"},
+			},
+			"nested": {
+				Object: &resource.ObjectDiff{
+					Updates: map[resource.PropertyKey]resource.ValueDiff{
+						"deep": {
+							Object: &resource.ObjectDiff{
+								Updates: map[resource.PropertyKey]resource.ValueDiff{
+									"nested.update/field": {
+										Old: resource.PropertyValue{V: "oldvalue"},
+										New: resource.PropertyValue{V: "newvalue"},
+									},
+									"whitespaced field": {
+										Old: resource.PropertyValue{V: "oldvalue"},
+										New: resource.PropertyValue{V: "newvalue"},
+									},
+									`"quotedfield"`: {
+										Old: resource.PropertyValue{V: "oldvalue"},
+										New: resource.PropertyValue{V: "newvalue"},
+									},
+									"regular": {
+										Old: resource.PropertyValue{V: "oldvalue"},
+										New: resource.PropertyValue{V: "newvalue"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	d := differ{}
+	actual := d.calculateObjectDiff(diff, "", "")
+
+	assert.Equal(t, rpc.PropertyDiff_ADD, actual["p3"].Kind)
+	assert.Equal(t, rpc.PropertyDiff_ADD, actual[`["dots.addition"]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_DELETE, actual["p2"].Kind)
+	assert.Equal(t, rpc.PropertyDiff_DELETE, actual[`["dots.deletion"]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual["p1"].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual[`["dots.update"]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual[`nested.deep["nested.update/field"]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual[`nested.deep["whitespaced field"]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual[`nested.deep["\"quotedfield\""]`].Kind)
+	assert.Equal(t, rpc.PropertyDiff_UPDATE, actual[`nested.deep.regular`].Kind)
 }

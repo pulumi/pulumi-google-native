@@ -113,17 +113,40 @@ type differ struct {
 
 func (d *differ) calculateObjectDiff(diff *resource.ObjectDiff, diffBase, replaceBase string) map[string]*rpc.PropertyDiff {
 	detailedDiff := map[string]*rpc.PropertyDiff{}
+
+	// asResourcePath converts a given base and a property key to a wellformed resource path key.
+	asResourcePath := func(base string, p resource.PropertyKey) string {
+		s := string(p)
+
+		// If the field name contains characters that needs escaping then the property key should be presented
+		// in square brackets and quotes.
+		// Example:
+		// If base is `config.labels.` and the field name is `app.kubernetes.io/name` then the resource key will
+		// be `config.labels["app.kubernetes.io/name"]`
+		if strings.ContainsAny(s, `". `) {
+			// Remove the trailing dot for the base
+			base = strings.TrimSuffix(base, ".")
+
+			// Escape double quotes
+			s = strings.ReplaceAll(s, `"`, `\"`)
+
+			s = fmt.Sprintf(`["%s"]`, s)
+		}
+
+		return base + s
+	}
+
 	for k, v := range diff.Updates {
-		key := diffBase + string(k)
-		replaceKey := replaceBase + string(k)
+		key := asResourcePath(diffBase, k)
+		replaceKey := asResourcePath(replaceBase, k)
 		subDiff := d.calculateValueDiff(&v, key, replaceKey)
 		for sk, sv := range subDiff {
 			detailedDiff[sk] = sv
 		}
 	}
 	for k := range diff.Adds {
-		diffKey := diffBase + string(k)
-		replaceKey := replaceBase + string(k)
+		diffKey := asResourcePath(diffBase, k)
+		replaceKey := asResourcePath(replaceBase, k)
 		kind := rpc.PropertyDiff_ADD
 		if d.replaceKeys.Has(replaceKey) {
 			kind = rpc.PropertyDiff_ADD_REPLACE
@@ -131,8 +154,8 @@ func (d *differ) calculateObjectDiff(diff *resource.ObjectDiff, diffBase, replac
 		detailedDiff[diffKey] = &rpc.PropertyDiff{Kind: kind}
 	}
 	for k := range diff.Deletes {
-		diffKey := diffBase + string(k)
-		replaceKey := replaceBase + string(k)
+		diffKey := asResourcePath(diffBase, k)
+		replaceKey := asResourcePath(replaceBase, k)
 		kind := rpc.PropertyDiff_DELETE
 		if d.replaceKeys.Has(replaceKey) {
 			kind = rpc.PropertyDiff_DELETE_REPLACE
