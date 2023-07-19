@@ -87,8 +87,6 @@ jobs:
       uses: thollander/actions-comment-pull-request@v1
       with:
         message: |
-          ### Does the PR have any schema changes?
-
           ${{ env.SCHEMA_CHANGES }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - if: contains(env.SCHEMA_CHANGES, 'Looking good! No breaking changes found.') &&
