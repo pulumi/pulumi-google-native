@@ -58,6 +58,7 @@ var resourceNameByPathOverrides = map[string]string{
 	"apigee_v1.json:v1/organizations/{organizationsId}/envgroups/{envgroupsId}/attachments":                                 "EnvgroupAttachment",
 	"apigee_v1.json:v1/organizations/{organizationsId}/instances/{instancesId}/attachments":                                 "InstanceAttachment",
 	"apigee_v1.json:v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}/entries": "EnvironmentEntry",
+	"apigee_v1.json:v1/organizations/{organizationsId}/developers/{developersId}/apps":                                      "",
 
 	// App Engine Alpha v1. Get rid of locations and operations nested under locations.
 	"appengine_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}":                           "",
@@ -68,6 +69,10 @@ var resourceNameByPathOverrides = map[string]string{
 	// ApigeeRegistry
 	"apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/deployments/{deploymentsId}/artifacts": "DeploymentArtifact",
 	"apigeeregistry_v1.json:v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/artifacts":       "VersionArtifact",
+
+	// BeyondCorp
+	"beyondcorp_v1alpha.json:v1alpha/organizations/{organizationsId}/locations/global/partnerTenants/{partnerTenantsId}/proxyConfigs": "",
+	"beyondcorp_v1alpha.json:v1alpha/organizations/{organizationsId}/locations/global/tenants/{tenantsId}/proxyConfigs":               "",
 
 	// DLP.
 	"dlp_v2.json:v2/organizations/{organizationsId}/deidentifyTemplates":                         "",
@@ -81,6 +86,13 @@ var resourceNameByPathOverrides = map[string]string{
 	// Essential Contacts.
 	"essentialcontacts_v1.json:v1/folders/{foldersId}/contacts":             "FolderContact",
 	"essentialcontacts_v1.json:v1/organizations/{organizationsId}/contacts": "OrganizationContact",
+
+	// GKEHub
+	"gkehub_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings": "",
+	"gkehub_v1alpha.json:v1alpha/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/rbacrolebindings":   "",
+
+	"gkehub_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/rbacrolebindings": "",
+	"gkehub_v1beta.json:v1beta/projects/{projectsId}/locations/{locationsId}/namespaces/{namespacesId}/rbacrolebindings":   "",
 
 	// IAM.
 	"iam_v1.json:v1/organizations/{organizationsId}/roles": "OrganizationRole",
@@ -140,7 +152,9 @@ var resourceNameByPathOverrides = map[string]string{
 
 	// Network Security
 	"networksecurity_v1beta1.json:v1beta1/organizations/{organizationsId}/locations/{locationsId}/addressGroups": "OrganizationAddressGroup",
+	"networksecurity_v1.json:v1/organizations/{organizationsId}/locations/{locationsId}/addressGroups":           "",
 	"networksecurity_v1beta1.json:v1beta1/projects/{projectsId}/locations/{locationsId}/addressGroups":           "AddressGroup",
+	"networksecurity_v1.json:v1/projects/{projectsId}/locations/{locationsId}/addressGroups":                     "",
 }
 
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.
