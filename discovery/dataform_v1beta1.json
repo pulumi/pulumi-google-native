@@ -178,6 +178,31 @@
           "resources": {
             "repositories": {
               "methods": {
+                "computeAccessTokenStatus": {
+                  "description": "Computes a Repository's Git access token status.",
+                  "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/repositories/{repositoriesId}:computeAccessTokenStatus",
+                  "httpMethod": "GET",
+                  "id": "dataform.projects.locations.repositories.computeAccessTokenStatus",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The repository's name.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta1/{+name}:computeAccessTokenStatus",
+                  "response": {
+                    "$ref": "ComputeRepositoryAccessTokenStatusResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
                 "create": {
                   "description": "Creates a new Repository in a given project and location.",
                   "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/repositories",
@@ -1791,7 +1816,7 @@
       }
     }
   },
-  "revision": "20230413",
+  "revision": "20230707",
   "rootUrl": "https://dataform.googleapis.com/",
   "schemas": {
     "Assertion": {
@@ -2083,6 +2108,29 @@
       },
       "type": "object"
     },
+    "ComputeRepositoryAccessTokenStatusResponse": {
+      "description": "`ComputeRepositoryAccessTokenStatus` response message.",
+      "id": "ComputeRepositoryAccessTokenStatusResponse",
+      "properties": {
+        "tokenStatus": {
+          "description": "Indicates the status of the Git access token.",
+          "enum": [
+            "TOKEN_STATUS_UNSPECIFIED",
+            "NOT_FOUND",
+            "INVALID",
+            "VALID"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "The token could not be found in Secret Manager (or the Dataform Service Account did not have permission to access it).",
+            "The token could not be used to authenticate against the Git remote.",
+            "The token was used successfully to authenticate against the Git remote."
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Declaration": {
       "description": "Represents a relation which is not managed by Dataform but which may be referenced by Dataform actions.",
       "id": "Declaration",
@@ -2207,7 +2255,8 @@
           "type": "string"
         },
         "tokenStatus": {
-          "description": "Output only. Indicates the status of the Git access token.",
+          "deprecated": true,
+          "description": "Output only. Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus",
           "enum": [
             "TOKEN_STATUS_UNSPECIFIED",
             "NOT_FOUND",
@@ -2320,6 +2369,10 @@
             "$ref": "Target"
           },
           "type": "array"
+        },
+        "serviceAccount": {
+          "description": "Optional. The service account to run workflow invocations under.",
+          "type": "string"
         },
         "transitiveDependenciesIncluded": {
           "description": "Optional. When set to true, transitive dependencies of included actions will be executed.",
@@ -2501,7 +2554,7 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
+      "description": "A resource that represents a Google Cloud location.",
       "id": "Location",
       "properties": {
         "displayName": {
@@ -2993,6 +3046,10 @@
           "description": "Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.",
           "type": "string"
         },
+        "serviceAccount": {
+          "description": "Optional. The service account to run workflow invocations under.",
+          "type": "string"
+        },
         "workspaceCompilationOverrides": {
           "$ref": "WorkspaceCompilationOverrides",
           "description": "Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information."
@@ -3213,7 +3270,7 @@
       "id": "WorkflowInvocation",
       "properties": {
         "compilationResult": {
-          "description": "Immutable. The name of the compilation result to compile. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.",
+          "description": "Immutable. The name of the compilation result to use for this invocation. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.",
           "type": "string"
         },
         "invocationConfig": {

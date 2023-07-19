@@ -2645,6 +2645,7 @@
               ],
               "parameters": {
                 "filter": {
+                  "deprecated": true,
                   "description": "Optional. Filters to restrict results to specific answer records. For more information about filtering, see [API Filtering](https://aip.dev/160).",
                   "location": "query",
                   "type": "string"
@@ -6134,6 +6135,7 @@
                   ],
                   "parameters": {
                     "filter": {
+                      "deprecated": true,
                       "description": "Optional. Filters to restrict results to specific answer records. For more information about filtering, see [API Filtering](https://aip.dev/160).",
                       "location": "query",
                       "type": "string"
@@ -7577,7 +7579,7 @@
       }
     }
   },
-  "revision": "20230508",
+  "revision": "20230715",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {
@@ -7972,12 +7974,16 @@
       "id": "GoogleCloudDialogflowCxV3ExportAgentResponse",
       "properties": {
         "agentContent": {
-          "description": "Uncompressed raw byte content for agent.",
+          "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
           "format": "byte",
           "type": "string"
         },
         "agentUri": {
           "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+          "type": "string"
+        },
+        "commitSha": {
+          "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
           "type": "string"
         }
       },
@@ -9028,7 +9034,7 @@
       "id": "GoogleCloudDialogflowCxV3TestRunDifference",
       "properties": {
         "description": {
-          "description": "A description of the diff, showing the actual output vs expected output.",
+          "description": "A human readable description of the diff, showing the actual output vs expected output.",
           "type": "string"
         },
         "type": {
@@ -9249,6 +9255,7 @@
           "type": "object"
         },
         "password": {
+          "deprecated": true,
           "description": "The password for HTTP Basic authentication.",
           "type": "string"
         },
@@ -9268,6 +9275,7 @@
           "type": "string"
         },
         "username": {
+          "deprecated": true,
           "description": "The user name for HTTP Basic authentication.",
           "type": "string"
         },
@@ -9898,12 +9906,16 @@
       "id": "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
       "properties": {
         "agentContent": {
-          "description": "Uncompressed raw byte content for agent.",
+          "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
           "format": "byte",
           "type": "string"
         },
         "agentUri": {
           "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+          "type": "string"
+        },
+        "commitSha": {
+          "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
           "type": "string"
         }
       },
@@ -10954,7 +10966,7 @@
       "id": "GoogleCloudDialogflowCxV3beta1TestRunDifference",
       "properties": {
         "description": {
-          "description": "A description of the diff, showing the actual output vs expected output.",
+          "description": "A human readable description of the diff, showing the actual output vs expected output.",
           "type": "string"
         },
         "type": {
@@ -11175,6 +11187,7 @@
           "type": "object"
         },
         "password": {
+          "deprecated": true,
           "description": "The password for HTTP Basic authentication.",
           "type": "string"
         },
@@ -11194,6 +11207,7 @@
           "type": "string"
         },
         "username": {
+          "deprecated": true,
           "description": "The user name for HTTP Basic authentication.",
           "type": "string"
         },
@@ -12974,6 +12988,11 @@
             "EXAMPLE",
             "TEMPLATE"
           ],
+          "enumDeprecated": [
+            false,
+            false,
+            true
+          ],
           "enumDescriptions": [
             "Not specified. This value should never be used.",
             "Examples do not contain @-prefixed entity type names, but example parts can be annotated with entity types.",
@@ -13608,6 +13627,7 @@
           "type": "boolean"
         },
         "matchMode": {
+          "deprecated": true,
           "description": "Optional. Determines how intents are detected from user queries.",
           "enum": [
             "MATCH_MODE_UNSPECIFIED",
@@ -13639,6 +13659,12 @@
             "TIER_STANDARD",
             "TIER_ENTERPRISE",
             "TIER_ENTERPRISE_PLUS"
+          ],
+          "enumDeprecated": [
+            false,
+            false,
+            false,
+            true
           ],
           "enumDescriptions": [
             "Not specified. This value should never be used.",
@@ -13738,6 +13764,11 @@
           "description": "Output only. The article suggestion answer.",
           "readOnly": true
         },
+        "dialogflowAssistAnswer": {
+          "$ref": "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer",
+          "description": "Output only. The Dialogflow assist answer.",
+          "readOnly": true
+        },
         "faqAnswer": {
           "$ref": "GoogleCloudDialogflowV2beta1FaqAnswer",
           "description": "Output only. The FAQ answer.",
@@ -13790,6 +13821,10 @@
         "requestId": {
           "description": "A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is only idempotent if a `request_id` is provided.",
           "type": "string"
+        },
+        "suggestionInput": {
+          "$ref": "GoogleCloudDialogflowV2beta1SuggestionInput",
+          "description": "An input representing the selection of a suggestion."
         },
         "textInput": {
           "$ref": "GoogleCloudDialogflowV2beta1TextInput",
@@ -13992,6 +14027,11 @@
         "agent": {
           "description": "Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.",
           "type": "string"
+        },
+        "sessionTtl": {
+          "description": "Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.",
+          "format": "google-duration",
+          "type": "string"
         }
       },
       "type": "object"
@@ -14027,6 +14067,7 @@
             "description": "Properties of the object.",
             "type": "any"
           },
+          "deprecated": true,
           "description": "The collection of current Dialogflow CX agent session parameters at the time of this response. Deprecated: Use `parameters` instead.",
           "type": "object"
         },
@@ -14105,7 +14146,7 @@
       "id": "GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest",
       "properties": {
         "requests": {
-          "description": "Required. A maximum of 1000 Messages can be created in a batch. CreateMessageRequest.message.send_time is required. All created messages will have identical Message.create_time.",
+          "description": "Required. A maximum of 300 messages can be created in a batch. CreateMessageRequest.message.send_time is required. All created messages will have identical Message.create_time.",
           "items": {
             "$ref": "GoogleCloudDialogflowV2beta1CreateMessageRequest"
           },
@@ -14321,6 +14362,7 @@
             "ARTICLE_SUGGESTION",
             "FAQ",
             "SMART_REPLY",
+            "DIALOGFLOW_ASSIST",
             "CONVERSATION_SUMMARIZATION"
           ],
           "enumDescriptions": [
@@ -14328,6 +14370,7 @@
             "Run article suggestion model for chat.",
             "Run FAQ model.",
             "Run smart reply model for chat.",
+            "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
             "Run conversation summarization model for chat."
           ],
           "type": "string"
@@ -14362,6 +14405,7 @@
             "ARTICLE_SUGGESTION",
             "FAQ",
             "SMART_REPLY",
+            "DIALOGFLOW_ASSIST",
             "CONVERSATION_SUMMARIZATION"
           ],
           "enumDescriptions": [
@@ -14369,6 +14413,7 @@
             "Run article suggestion model for chat.",
             "Run FAQ model.",
             "Run smart reply model for chat.",
+            "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
             "Run conversation summarization model for chat."
           ],
           "type": "string"
@@ -14377,6 +14422,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1CompileSuggestionRequest": {
+      "deprecated": true,
       "description": "The request message for Participants.CompileSuggestion.",
       "id": "GoogleCloudDialogflowV2beta1CompileSuggestionRequest",
       "properties": {
@@ -14393,6 +14439,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1CompileSuggestionResponse": {
+      "deprecated": true,
       "description": "The response message for Participants.CompileSuggestion.",
       "id": "GoogleCloudDialogflowV2beta1CompileSuggestionResponse",
       "properties": {
@@ -14705,11 +14752,31 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer": {
+      "description": "Represents a Dialogflow assist answer.",
+      "id": "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer",
+      "properties": {
+        "answerRecord": {
+          "description": "The name of answer record, in the format of \"projects//locations//answerRecords/\"",
+          "type": "string"
+        },
+        "intentSuggestion": {
+          "$ref": "GoogleCloudDialogflowV2beta1IntentSuggestion",
+          "description": "An intent suggestion generated from conversation."
+        },
+        "queryResult": {
+          "$ref": "GoogleCloudDialogflowV2beta1QueryResult",
+          "description": "Result from v2 agent."
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowV2beta1Document": {
       "description": "A knowledge document to be used by a KnowledgeBase. For more information, see the [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases). Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.",
       "id": "GoogleCloudDialogflowV2beta1Document",
       "properties": {
         "content": {
+          "deprecated": true,
           "description": "The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.",
           "type": "string"
         },
@@ -15156,6 +15223,7 @@
       "id": "GoogleCloudDialogflowV2beta1FulfillmentGenericWebService",
       "properties": {
         "isCloudFunction": {
+          "deprecated": true,
           "description": "Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.",
           "type": "boolean"
         },
@@ -15389,7 +15457,7 @@
           "description": "Configs for processing conversation."
         },
         "enableEventBasedSuggestion": {
-          "description": "Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.",
+          "description": "Automatically iterates all participants and tries to compile suggestions. Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, ENTITY_EXTRACTION.",
           "type": "boolean"
         },
         "queryConfig": {
@@ -15412,7 +15480,7 @@
       "id": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig",
       "properties": {
         "confidenceThreshold": {
-          "description": "Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.",
+          "description": "Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.",
           "format": "float",
           "type": "number"
         },
@@ -15422,7 +15490,7 @@
         },
         "dialogflowQuerySource": {
           "$ref": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource",
-          "description": "Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST."
+          "description": "Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST, ENTITY_EXTRACTION."
         },
         "documentQuerySource": {
           "$ref": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource",
@@ -15460,11 +15528,26 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource": {
-      "description": "Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.",
+      "description": "Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST, ENTITY_EXTRACTION.",
       "id": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource",
       "properties": {
         "agent": {
           "description": "Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.",
+          "type": "string"
+        },
+        "humanAgentSideConfig": {
+          "$ref": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig",
+          "description": "The Dialogflow assist configuration for human agent."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig": {
+      "description": "The configuration used for human agent side Dialogflow assist suggestion.",
+      "id": "GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig",
+      "properties": {
+        "agent": {
+          "description": "Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human agent. Format: `projects//locations//agent`.",
           "type": "string"
         }
       },
@@ -15651,7 +15734,7 @@
         },
         "gcsSource": {
           "$ref": "GoogleCloudDialogflowV2beta1GcsSources",
-          "description": "The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs may have the forms `gs:///`. `gs:////*.`."
+          "description": "Optional. The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs may have the forms `gs:///`. `gs:////*.`."
         },
         "importGcsCustomMetadata": {
           "description": "Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.",
@@ -15743,6 +15826,7 @@
           "type": "string"
         },
         "phraseHints": {
+          "deprecated": true,
           "description": "A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details. This field is deprecated. Please use [speech_contexts]() instead. If you specify both [phrase_hints]() and [speech_contexts](), Dialogflow will treat the [phrase_hints]() as a single additional [SpeechContext]().",
           "items": {
             "type": "string"
@@ -15859,6 +15943,7 @@
           "type": "boolean"
         },
         "mlEnabled": {
+          "deprecated": true,
           "description": "Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.",
           "type": "boolean"
         },
@@ -15946,6 +16031,21 @@
         },
         "parentFollowupIntentName": {
           "description": "The unique identifier of the followup intent's parent. Format: `projects//agent/intents/`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowV2beta1IntentInput": {
+      "description": "Represents the intent to trigger programmatically rather than as a result of natural language processing. The intent input is only used for V3 agent.",
+      "id": "GoogleCloudDialogflowV2beta1IntentInput",
+      "properties": {
+        "intent": {
+          "description": "Required. The unique identifier of the intent in V3 agent. Format: `projects//locations//locations//agents//intents/`.",
+          "type": "string"
+        },
+        "languageCode": {
+          "description": "Required. The language of this conversational query. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.",
           "type": "string"
         }
       },
@@ -16928,6 +17028,25 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowV2beta1IntentSuggestion": {
+      "description": "Represents an intent suggestion.",
+      "id": "GoogleCloudDialogflowV2beta1IntentSuggestion",
+      "properties": {
+        "description": {
+          "description": "Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The display name of the intent.",
+          "type": "string"
+        },
+        "intentV2": {
+          "description": "The unique identifier of this intent. Format: `projects//locations//agent/intents/`.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowV2beta1IntentTrainingPhrase": {
       "description": "Represents an example that the agent is trained on.",
       "id": "GoogleCloudDialogflowV2beta1IntentTrainingPhrase",
@@ -16954,6 +17073,11 @@
             "TYPE_UNSPECIFIED",
             "EXAMPLE",
             "TEMPLATE"
+          ],
+          "enumDeprecated": [
+            false,
+            false,
+            true
           ],
           "enumDescriptions": [
             "Not specified. This value should never be used.",
@@ -17310,6 +17434,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1ListSuggestionsResponse": {
+      "deprecated": true,
       "description": "The response message for Participants.ListSuggestions.",
       "id": "GoogleCloudDialogflowV2beta1ListSuggestionsResponse",
       "properties": {
@@ -17552,7 +17677,7 @@
           "type": "string"
         },
         "obfuscatedExternalUserId": {
-          "description": "Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be \u003c= 256 characters.",
+          "description": "Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for billing and measurement. If a user with the same obfuscated_external_user_id is created in a later conversation, Dialogflow will know it's the same user. Dialogflow also uses this user id for Agent Assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be \u003c= 256 characters.",
           "type": "string"
         },
         "role": {
@@ -18033,6 +18158,7 @@
             "ARTICLE_SUGGESTION",
             "FAQ",
             "SMART_REPLY",
+            "DIALOGFLOW_ASSIST",
             "CONVERSATION_SUMMARIZATION"
           ],
           "enumDescriptions": [
@@ -18040,6 +18166,7 @@
             "Run article suggestion model for chat.",
             "Run FAQ model.",
             "Run smart reply model for chat.",
+            "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
             "Run conversation summarization model for chat."
           ],
           "type": "string"
@@ -18204,7 +18331,7 @@
       "properties": {
         "assistQueryParams": {
           "$ref": "GoogleCloudDialogflowV2beta1AssistQueryParameters",
-          "description": "Parameters for a human assist query."
+          "description": "Parameters for a human assist query. Only used for POC/demo purpose."
         },
         "contextSize": {
           "description": "Max number of messages prior to and including [latest_message] to use as context when compiling the suggestion. By default 500 and at most 1000.",
@@ -18256,6 +18383,29 @@
           },
           "description": "The summary content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.",
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse": {
+      "description": "The response message for Participants.SuggestDialogflowAssists.",
+      "id": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+      "properties": {
+        "contextSize": {
+          "description": "Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than the SuggestDialogflowAssistsRequest.context_size field in the request if there aren't that many messages in the conversation.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "dialogflowAssistAnswers": {
+          "description": "Output only. Multiple reply options provided by Dialogflow assist service. The order is based on the rank of the model prediction.",
+          "items": {
+            "$ref": "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer"
+          },
+          "type": "array"
+        },
+        "latestMessage": {
+          "description": "The name of the latest conversation message used to suggest answer. Format: `projects//locations//conversations//messages/`.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -18347,6 +18497,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowV2beta1Suggestion": {
+      "deprecated": true,
       "description": "Represents a suggestion for a human agent.",
       "id": "GoogleCloudDialogflowV2beta1Suggestion",
       "properties": {
@@ -18459,6 +18610,7 @@
             "ARTICLE_SUGGESTION",
             "FAQ",
             "SMART_REPLY",
+            "DIALOGFLOW_ASSIST",
             "CONVERSATION_SUMMARIZATION"
           ],
           "enumDescriptions": [
@@ -18466,9 +18618,37 @@
             "Run article suggestion model for chat.",
             "Run FAQ model.",
             "Run smart reply model for chat.",
+            "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
             "Run conversation summarization model for chat."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDialogflowV2beta1SuggestionInput": {
+      "description": "Represents the selection of a suggestion.",
+      "id": "GoogleCloudDialogflowV2beta1SuggestionInput",
+      "properties": {
+        "answerRecord": {
+          "description": "Required. The ID of a suggestion selected by the human agent. The suggestion(s) were generated in a previous call to request Dialogflow assist. The format is: `projects//locations//answerRecords/` where is an alphanumeric string.",
+          "type": "string"
+        },
+        "intentInput": {
+          "$ref": "GoogleCloudDialogflowV2beta1IntentInput",
+          "description": "The intent to be triggered on V3 agent."
+        },
+        "parameters": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "In Dialogflow assist for v3, the user can submit a form by sending a SuggestionInput. The form is uniquely determined by the answer_record field, which identifies a v3 QueryResult containing the current page. The form parameters are specified via the parameters field. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value",
+          "type": "object"
+        },
+        "textOverride": {
+          "$ref": "GoogleCloudDialogflowV2beta1TextInput",
+          "description": "Optional. If the customer edited the suggestion before using it, include the revised text here."
         }
       },
       "type": "object"
@@ -18484,6 +18664,14 @@
         "suggestArticlesResponse": {
           "$ref": "GoogleCloudDialogflowV2beta1SuggestArticlesResponse",
           "description": "SuggestArticlesResponse if request is for ARTICLE_SUGGESTION."
+        },
+        "suggestDialogflowAssistsResponse": {
+          "$ref": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+          "description": "SuggestDialogflowAssistsResponse if request is for DIALOGFLOW_ASSIST."
+        },
+        "suggestEntityExtractionResponse": {
+          "$ref": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+          "description": "SuggestDialogflowAssistsResponse if request is for ENTITY_EXTRACTION."
         },
         "suggestFaqAnswersResponse": {
           "$ref": "GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse",

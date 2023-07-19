@@ -595,11 +595,11 @@
       }
     }
   },
-  "revision": "20230512",
+  "revision": "20230714",
   "rootUrl": "https://assuredworkloads.googleapis.com/",
   "schemas": {
     "GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest": {
-      "description": "Request for acknowledging the violation Next Id: 4",
+      "description": "Request for acknowledging the violation Next Id: 5",
       "id": "GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest",
       "properties": {
         "comment": {
@@ -607,6 +607,7 @@
           "type": "string"
         },
         "nonCompliantOrgPolicy": {
+          "deprecated": true,
           "description": "Optional. This field is deprecated and will be removed in future version of the API. Name of the OrgPolicy which was modified with non-compliant change and resulted in this violation. Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}",
           "type": "string"
         }
@@ -655,7 +656,8 @@
             "ASSURED_WORKLOADS_FOR_PARTNERS",
             "ISR_REGIONS",
             "ISR_REGIONS_AND_SUPPORT",
-            "CA_PROTECTED_B"
+            "CA_PROTECTED_B",
+            "IL5"
           ],
           "enumDescriptions": [
             "Unknown compliance regime.",
@@ -673,7 +675,8 @@
             "Assured Workloads for Partners;",
             "Assured Workloads for Israel",
             "Assured Workloads for Israel Regions",
-            "Assured Workloads for Canada Protected B regime"
+            "Assured Workloads for Canada Protected B regime",
+            "Information protection as per DoD IL5 requirements."
           ],
           "type": "string"
         },
@@ -804,6 +807,14 @@
           "readOnly": true,
           "type": "string"
         },
+        "exceptionContexts": {
+          "description": "Output only. List of all the exception detail added for the violation.",
+          "items": {
+            "$ref": "GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
         "name": {
           "description": "Output only. Immutable. Name of the Violation. Format: organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}",
           "readOnly": true,
@@ -811,11 +822,6 @@
         },
         "nonCompliantOrgPolicy": {
           "description": "Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this violation. Format: projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}",
-          "readOnly": true,
-          "type": "string"
-        },
-        "orgPolicyConstraint": {
-          "description": "Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this violation.",
           "readOnly": true,
           "type": "string"
         },
@@ -856,6 +862,26 @@
       },
       "type": "object"
     },
+    "GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext": {
+      "description": "Violation exception detail. Next Id: 6",
+      "id": "GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext",
+      "properties": {
+        "acknowledgementTime": {
+          "description": "Timestamp when the violation was acknowledged.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "comment": {
+          "description": "Business justification provided towards the acknowledgement of the violation.",
+          "type": "string"
+        },
+        "userName": {
+          "description": "Name of the user (or service account) who acknowledged the violation.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudAssuredworkloadsV1beta1ViolationRemediation": {
       "description": "Represents remediation guidance to resolve compliance violation for AssuredWorkload",
       "id": "GoogleCloudAssuredworkloadsV1beta1ViolationRemediation",
@@ -878,14 +904,16 @@
             "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION",
             "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION",
             "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION",
-            "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
+            "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION",
+            "REMEDIATION_RESOURCE_VIOLATION"
           ],
           "enumDescriptions": [
             "Unspecified remediation type",
             "Remediation type for boolean org policy",
             "Remediation type for list org policy which have allowed values in the monitoring rule",
             "Remediation type for list org policy which have denied values in the monitoring rule",
-            "Remediation type for gcp.restrictCmekCryptoKeyProjects"
+            "Remediation type for gcp.restrictCmekCryptoKeyProjects",
+            "Remediation type for resource violation."
           ],
           "readOnly": true,
           "type": "string"
@@ -974,6 +1002,7 @@
         },
         "cjisSettings": {
           "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings",
+          "deprecated": true,
           "description": "Input only. Immutable. Settings specific to resources needed for CJIS."
         },
         "complianceRegime": {
@@ -994,7 +1023,8 @@
             "ASSURED_WORKLOADS_FOR_PARTNERS",
             "ISR_REGIONS",
             "ISR_REGIONS_AND_SUPPORT",
-            "CA_PROTECTED_B"
+            "CA_PROTECTED_B",
+            "IL5"
           ],
           "enumDescriptions": [
             "Unknown compliance regime.",
@@ -1012,7 +1042,8 @@
             "Assured Workloads for Partners;",
             "Assured Workloads for Israel",
             "Assured Workloads for Israel Regions",
-            "Assured Workloads for Canada Protected B regime"
+            "Assured Workloads for Canada Protected B regime",
+            "Information protection as per DoD IL5 requirements."
           ],
           "type": "string"
         },
@@ -1028,11 +1059,6 @@
           },
           "readOnly": true,
           "type": "array"
-        },
-        "controls": {
-          "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls",
-          "description": "Output only. Controls associated with the customer workload",
-          "readOnly": true
         },
         "createTime": {
           "description": "Output only. Immutable. The Workload creation timestamp.",
@@ -1058,14 +1084,17 @@
         },
         "fedrampHighSettings": {
           "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings",
+          "deprecated": true,
           "description": "Input only. Immutable. Settings specific to resources needed for FedRAMP High."
         },
         "fedrampModerateSettings": {
           "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings",
+          "deprecated": true,
           "description": "Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate."
         },
         "il4Settings": {
           "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings",
+          "deprecated": true,
           "description": "Input only. Immutable. Settings specific to resources needed for IL4."
         },
         "kajEnrollmentState": {
@@ -1085,6 +1114,7 @@
         },
         "kmsSettings": {
           "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
+          "deprecated": true,
           "description": "Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field."
         },
         "labels": {
@@ -1152,6 +1182,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings": {
+      "deprecated": true,
       "description": "Settings specific to resources needed for CJIS.",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings",
       "properties": {
@@ -1162,50 +1193,17 @@
       },
       "type": "object"
     },
-    "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls": {
-      "description": "Controls enabled to the user associated with this workload",
-      "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls",
-      "properties": {
-        "appliedOrgPolicies": {
-          "description": "Output only. Org policies currently applied by this Assured Workload",
-          "items": {
-            "$ref": "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl"
-          },
-          "readOnly": true,
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl": {
-      "description": "An org policy control applied by Assured Workloads",
-      "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl",
-      "properties": {
-        "constraint": {
-          "description": "Output only. Constraint name of the org policy control Example: constraints/gcp.resourcelocations",
-          "readOnly": true,
-          "type": "string"
-        },
-        "version": {
-          "description": "Output only. Org policy version",
-          "format": "int32",
-          "readOnly": true,
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus": {
       "description": "Represents the Compliance Status of this workload",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus",
       "properties": {
         "acknowledgedViolationCount": {
-          "description": "Count of active Violations which are acknowledged in the Workload.",
+          "description": "Number of current orgPolicy violations which are acknowledged.",
           "format": "int32",
           "type": "integer"
         },
         "activeViolationCount": {
-          "description": "Count of active Violations which haven't been acknowledged.",
+          "description": "Number of current orgPolicy violations which are not acknowledged.",
           "format": "int32",
           "type": "integer"
         }
@@ -1272,6 +1270,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings": {
+      "deprecated": true,
       "description": "Settings specific to resources needed for FedRAMP High.",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings",
       "properties": {
@@ -1283,6 +1282,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings": {
+      "deprecated": true,
       "description": "Settings specific to resources needed for FedRAMP Moderate.",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings",
       "properties": {
@@ -1294,6 +1294,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings": {
+      "deprecated": true,
       "description": "Settings specific to resources needed for IL4.",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings",
       "properties": {
@@ -1305,6 +1306,7 @@
       "type": "object"
     },
     "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings": {
+      "deprecated": true,
       "description": "Settings specific to the Key Management Service.",
       "id": "GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings",
       "properties": {
@@ -1330,6 +1332,7 @@
           "type": "boolean"
         },
         "remediateFolderViolations": {
+          "deprecated": true,
           "description": "Allow partner to monitor folder and remediate violations",
           "type": "boolean"
         }
@@ -1353,6 +1356,13 @@
             "CONSUMER_FOLDER",
             "ENCRYPTION_KEYS_PROJECT",
             "KEYRING"
+          ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false
           ],
           "enumDescriptions": [
             "Unknown resource type.",
@@ -1386,6 +1396,13 @@
             "CONSUMER_FOLDER",
             "ENCRYPTION_KEYS_PROJECT",
             "KEYRING"
+          ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false
           ],
           "enumDescriptions": [
             "Unknown resource type.",

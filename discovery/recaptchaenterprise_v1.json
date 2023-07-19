@@ -666,7 +666,7 @@
       }
     }
   },
-  "revision": "20230514",
+  "revision": "20230708",
   "rootUrl": "https://recaptchaenterprise.googleapis.com/",
   "schemas": {
     "GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment": {
@@ -742,6 +742,7 @@
           "type": "string"
         },
         "username": {
+          "deprecated": true,
           "description": "Username of the account that is being verified. Deprecated. Customers should now provide the hashed account ID field in Event.",
           "type": "string"
         }
@@ -782,6 +783,13 @@
             "FRAUDULENT",
             "PASSWORD_CORRECT",
             "PASSWORD_INCORRECT"
+          ],
+          "enumDeprecated": [
+            false,
+            false,
+            false,
+            true,
+            true
           ],
           "enumDescriptions": [
             "Default unspecified type.",
@@ -860,7 +868,7 @@
           "type": "string"
         },
         "privateKey": {
-          "description": "Required. Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account.",
+          "description": "Required. Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.",
           "type": "string"
         },
         "teamId": {
@@ -1226,7 +1234,7 @@
         },
         "appleDeveloperId": {
           "$ref": "GoogleCloudRecaptchaenterpriseV1AppleDeveloperId",
-          "description": "Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app."
+          "description": "Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app."
         }
       },
       "type": "object"

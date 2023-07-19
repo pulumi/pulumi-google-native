@@ -936,7 +936,7 @@
               ],
               "parameters": {
                 "changeOfferPurchase.billingAccount": {
-                  "description": "Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts.",
+                  "description": "Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts.",
                   "location": "query",
                   "type": "string"
                 },
@@ -951,7 +951,7 @@
                   "type": "string"
                 },
                 "createEntitlementPurchase.billingAccount": {
-                  "description": "Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billing_accounts/{billing_account_id}.",
+                  "description": "Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billingAccounts/{billing_account_id}.",
                   "location": "query",
                   "type": "string"
                 },
@@ -1876,6 +1876,88 @@
               ]
             }
           }
+        },
+        "skuGroups": {
+          "methods": {
+            "list": {
+              "description": "Lists the Rebilling supported SKU groups the account is authorized to sell. Reference: https://cloud.google.com/skus/sku-groups Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different, or the account doesn't exist. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the SkuGroup resources. The data for each resource is displayed in the alphabetical order of SKU group display name. The data for each resource is displayed in the ascending order of SkuGroup.display_name If unsuccessful, returns an error.",
+              "flatPath": "v1/accounts/{accountsId}/skuGroups",
+              "httpMethod": "GET",
+              "id": "cloudchannel.accounts.skuGroups.list",
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "pageSize": {
+                  "description": "Optional. The maximum number of SKU groups to return. The service may return fewer than this value. If unspecified, returns a maximum of 1000 SKU groups. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                  "format": "int32",
+                  "location": "query",
+                  "type": "integer"
+                },
+                "pageToken": {
+                  "description": "Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroups.next_page_token of the previous CloudChannelService.ListSkuGroups call.",
+                  "location": "query",
+                  "type": "string"
+                },
+                "parent": {
+                  "description": "Required. The resource name of the account from which to list SKU groups. Parent uses the format: accounts/{account}.",
+                  "location": "path",
+                  "pattern": "^accounts/[^/]+$",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "path": "v1/{+parent}/skuGroups",
+              "response": {
+                "$ref": "GoogleCloudChannelV1ListSkuGroupsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/apps.order"
+              ]
+            }
+          },
+          "resources": {
+            "billableSkus": {
+              "methods": {
+                "list": {
+                  "description": "Lists the Billable SKUs in a given SKU group. Possible error codes: PERMISSION_DENIED: If the account making the request and the account being queried for are different, or the account doesn't exist. INVALID_ARGUMENT: Missing or invalid required parameters in the request. INTERNAL: Any non-user error related to technical issue in the backend. In this case, contact cloud channel support. Return Value: If successful, the BillableSku resources. The data for each resource is displayed in the ascending order of: * BillableSku.service_display_name * BillableSku.sku_display_name If unsuccessful, returns an error.",
+                  "flatPath": "v1/accounts/{accountsId}/skuGroups/{skuGroupsId}/billableSkus",
+                  "httpMethod": "GET",
+                  "id": "cloudchannel.accounts.skuGroups.billableSkus.list",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "pageSize": {
+                      "description": "Optional. The maximum number of SKUs to return. The service may return fewer than this value. If unspecified, returns a maximum of 100000 SKUs. The maximum value is 100000; values above 100000 will be coerced to 100000.",
+                      "format": "int32",
+                      "location": "query",
+                      "type": "integer"
+                    },
+                    "pageToken": {
+                      "description": "Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupBillableSkus.next_page_token of the previous CloudChannelService.ListSkuGroupBillableSkus call.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "Required. Resource name of the SKU group. Format: accounts/{account}/skuGroups/{sku_group}.",
+                      "location": "path",
+                      "pattern": "^accounts/[^/]+/skuGroups/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1/{+parent}/billableSkus",
+                  "response": {
+                    "$ref": "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/apps.order"
+                  ]
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -2096,7 +2178,7 @@
       }
     }
   },
-  "revision": "20230517",
+  "revision": "20230717",
   "rootUrl": "https://cloudchannel.googleapis.com/",
   "schemas": {
     "GoogleCloudChannelV1ActivateEntitlementRequest": {
@@ -2135,6 +2217,29 @@
       "properties": {
         "baseEntitlement": {
           "description": "The name of the base entitlement, for which this entitlement is an add-on.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudChannelV1BillableSku": {
+      "description": "Represents the Billable SKU information.",
+      "id": "GoogleCloudChannelV1BillableSku",
+      "properties": {
+        "service": {
+          "description": "Resource name of Service which contains Repricing SKU. Format: services/{service}. Example: \"services/B7D9-FDCB-15D8\".",
+          "type": "string"
+        },
+        "serviceDisplayName": {
+          "description": "Unique human readable name for the Service.",
+          "type": "string"
+        },
+        "sku": {
+          "description": "Resource name of Billable SKU. Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F\".",
+          "type": "string"
+        },
+        "skuDisplayName": {
+          "description": "Unique human readable name for the SKU.",
           "type": "string"
         }
       },
@@ -3394,6 +3499,42 @@
       },
       "type": "object"
     },
+    "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse": {
+      "description": "Response message for ListSkuGroupBillableSkus.",
+      "id": "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse",
+      "properties": {
+        "billableSkus": {
+          "description": "The list of billable SKUs in the requested SKU group.",
+          "items": {
+            "$ref": "GoogleCloudChannelV1BillableSku"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkus.page_token to obtain that page.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudChannelV1ListSkuGroupsResponse": {
+      "description": "Response message for ListSkuGroups.",
+      "id": "GoogleCloudChannelV1ListSkuGroupsResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results. Pass to ListSkuGroups.page_token to obtain that page.",
+          "type": "string"
+        },
+        "skuGroups": {
+          "description": "The list of SKU groups requested.",
+          "items": {
+            "$ref": "GoogleCloudChannelV1SkuGroup"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudChannelV1ListSkusResponse": {
       "description": "Response message for ListSkus.",
       "id": "GoogleCloudChannelV1ListSkusResponse",
@@ -3439,7 +3580,7 @@
       "id": "GoogleCloudChannelV1ListTransferableOffersRequest",
       "properties": {
         "billingAccount": {
-          "description": "Optional. The Billing Account to look up Offers for. Format: accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts.",
+          "description": "Optional. The Billing Account to look up Offers for. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts.",
           "type": "string"
         },
         "cloudIdentityId": {
@@ -4014,7 +4155,7 @@
           "type": "string"
         },
         "provisioningId": {
-          "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.\"",
+          "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.",
           "readOnly": true,
           "type": "string"
         },
@@ -4405,6 +4546,21 @@
         "product": {
           "$ref": "GoogleCloudChannelV1Product",
           "description": "Product the SKU is associated with."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudChannelV1SkuGroup": {
+      "description": "Represents the SKU group information.",
+      "id": "GoogleCloudChannelV1SkuGroup",
+      "properties": {
+        "displayName": {
+          "description": "Unique human readable identifier for the SKU group.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: \"accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041\".",
+          "type": "string"
         }
       },
       "type": "object"
@@ -4829,6 +4985,7 @@
       "id": "GoogleCloudChannelV1alpha1Entitlement",
       "properties": {
         "assignedUnits": {
+          "deprecated": true,
           "description": "The current number of users that are assigned a license for the product defined in provisioned_service.skuId. Read-only. Deprecated: Use `parameters` instead.",
           "format": "int32",
           "type": "integer"
@@ -4842,6 +4999,7 @@
           "type": "string"
         },
         "channelPartnerId": {
+          "deprecated": true,
           "description": "Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field is generally used in 2-tier ordering, where the order is placed by a top-level distributor on behalf of their channel partner or reseller. Required for distributors. Deprecated: `channel_partner_id` has been moved to the Customer.",
           "type": "string"
         },
@@ -4856,6 +5014,7 @@
           "type": "string"
         },
         "maxUnits": {
+          "deprecated": true,
           "description": "Maximum number of units for a non commitment-based Offer, such as Flexible, Trial or Free entitlements. For commitment-based entitlements, this is a read-only field, which only the internal support team can update. Deprecated: Use `parameters` instead.",
           "format": "int32",
           "type": "integer"
@@ -4866,6 +5025,7 @@
           "type": "string"
         },
         "numUnits": {
+          "deprecated": true,
           "description": "Number of units for a commitment-based Offer. For example, for seat-based Offers, this would be the number of seats; for license-based Offers, this would be the number of licenses. Required for creating commitment-based Offers. Deprecated: Use `parameters` instead.",
           "format": "int32",
           "type": "integer"
@@ -4895,6 +5055,14 @@
             "COMPLETE",
             "PENDING",
             "SUSPENDED"
+          ],
+          "enumDeprecated": [
+            false,
+            false,
+            true,
+            true,
+            true,
+            false
           ],
           "enumDescriptions": [
             "Not used.",
@@ -5097,7 +5265,7 @@
           "type": "string"
         },
         "provisioningId": {
-          "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.\"",
+          "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.",
           "readOnly": true,
           "type": "string"
         },
@@ -5114,6 +5282,7 @@
       "id": "GoogleCloudChannelV1alpha1RenewalSettings",
       "properties": {
         "disableCommitment": {
+          "deprecated": true,
           "description": "If true, disables commitment-based offer on renewal and switches to flexible or pay as you go. Deprecated: Use `payment_plan` instead.",
           "type": "boolean"
         },
@@ -5126,6 +5295,7 @@
           "description": "Describes how frequently the reseller will be billed, such as once per month."
         },
         "paymentOption": {
+          "deprecated": true,
           "description": "Set if enable_renewal=true. Deprecated: Use `payment_cycle` instead.",
           "enum": [
             "PAYMENT_OPTION_UNSPECIFIED",

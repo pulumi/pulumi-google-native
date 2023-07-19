@@ -964,6 +964,7 @@
                       "type": "string"
                     },
                     "versionId": {
+                      "deprecated": true,
                       "description": "A unique id for the new version. This is was only specified for legacy version creations, and should be blank.",
                       "location": "query",
                       "type": "string"
@@ -1863,6 +1864,7 @@
                   "type": "string"
                 },
                 "versionId": {
+                  "deprecated": true,
                   "description": "A unique id for the new version. This is was only specified for legacy version creations, and should be blank.",
                   "location": "query",
                   "type": "string"
@@ -2107,7 +2109,7 @@
       }
     }
   },
-  "revision": "20230517",
+  "revision": "20230717",
   "rootUrl": "https://firebasehosting.googleapis.com/",
   "schemas": {
     "ActingUser": {
@@ -2279,6 +2281,13 @@
             "DOMAIN_ACTIVE",
             "DOMAIN_VERIFICATION_REQUIRED",
             "DOMAIN_VERIFICATION_LOST"
+          ],
+          "enumDeprecated": [
+            false,
+            true,
+            false,
+            false,
+            false
           ],
           "enumDescriptions": [
             "Unspecified domain association status.",

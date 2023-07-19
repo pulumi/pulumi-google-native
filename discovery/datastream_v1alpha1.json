@@ -215,6 +215,7 @@
           },
           "resources": {
             "connectionProfiles": {
+              "deprecated": true,
               "methods": {
                 "create": {
                   "deprecated": true,
@@ -711,6 +712,7 @@
               },
               "resources": {
                 "routes": {
+                  "deprecated": true,
                   "methods": {
                     "create": {
                       "deprecated": true,
@@ -1096,6 +1098,7 @@
               },
               "resources": {
                 "objects": {
+                  "deprecated": true,
                   "methods": {
                     "get": {
                       "deprecated": true,
@@ -1221,7 +1224,7 @@
       }
     }
   },
-  "revision": "20230425",
+  "revision": "20230626",
   "rootUrl": "https://datastream.googleapis.com/",
   "schemas": {
     "AvroFileFormat": {
@@ -1573,6 +1576,7 @@
           "type": "integer"
         },
         "gcsFileFormat": {
+          "deprecated": true,
           "description": "File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.",
           "enum": [
             "GCS_FILE_FORMAT_UNSPECIFIED",

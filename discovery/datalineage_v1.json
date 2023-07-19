@@ -761,7 +761,7 @@
       }
     }
   },
-  "revision": "20230407",
+  "revision": "20230710",
   "rootUrl": "https://datalineage.googleapis.com/",
   "schemas": {
     "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest": {
@@ -810,7 +810,7 @@
       "id": "GoogleCloudDatacatalogLineageV1EntityReference",
       "properties": {
         "fullyQualifiedName": {
-          "description": "Required. [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the entity.",
+          "description": "Required. [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.",
           "type": "string"
         }
       },
@@ -852,7 +852,7 @@
           "type": "string"
         },
         "startTime": {
-          "description": "Optional. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.",
+          "description": "Required. The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.",
           "format": "google-datetime",
           "type": "string"
         }
@@ -963,11 +963,13 @@
           "description": "Output only. The type of the operation being performed.",
           "enum": [
             "TYPE_UNSPECIFIED",
-            "DELETE"
+            "DELETE",
+            "CREATE"
           ],
           "enumDescriptions": [
             "Unused.",
-            "The resource deletion operation."
+            "The resource deletion operation.",
+            "The resource creation operation."
           ],
           "readOnly": true,
           "type": "string"

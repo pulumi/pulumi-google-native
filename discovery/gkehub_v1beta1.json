@@ -262,6 +262,7 @@
                   ],
                   "parameters": {
                     "connectAgent.name": {
+                      "deprecated": true,
                       "description": "Do not set.",
                       "location": "query",
                       "type": "string"
@@ -711,7 +712,7 @@
       }
     }
   },
-  "revision": "20230430",
+  "revision": "20230712",
   "rootUrl": "https://gkehub.googleapis.com/",
   "schemas": {
     "ApplianceCluster": {
@@ -1270,10 +1271,12 @@
           "type": "string"
         },
         "description": {
+          "deprecated": true,
           "description": "This field is never set by the Hub Service.",
           "type": "string"
         },
         "updateTime": {
+          "deprecated": true,
           "description": "This field is never set by the Hub Service.",
           "format": "google-datetime",
           "type": "string"

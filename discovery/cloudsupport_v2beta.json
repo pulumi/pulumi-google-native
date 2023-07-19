@@ -108,7 +108,7 @@
     "caseClassifications": {
       "methods": {
         "search": {
-          "description": "Retrieve valid classifications to be used when creating a support case. The classications are hierarchical, with each classification containing all levels of the hierarchy, separated by \" \u003e \". For example \"Technical Issue \u003e Compute \u003e Compute Engine\".",
+          "description": "Retrieve valid classifications to be used when creating a support case. The classications are hierarchical, with each classification containing all levels of the hierarchy, separated by `\" \u003e \"`. For example `\"Technical Issue \u003e Compute \u003e Compute Engine\"`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.",
           "flatPath": "v2beta/caseClassifications:search",
           "httpMethod": "GET",
           "id": "cloudsupport.caseClassifications.search",
@@ -345,6 +345,11 @@
               "location": "query",
               "type": "string"
             },
+            "parent": {
+              "description": "The fully qualified name of parent resource to search cases under.",
+              "location": "query",
+              "type": "string"
+            },
             "query": {
               "description": "An expression written in filter language. A query uses the following fields with the operators equals (`=`) and `AND`: - `organization`: An organization name in the form `organizations/`. - `project`: A project name in the form `projects/`. - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address of the case creator. - `billingAccount`: A billing account in the form `billingAccounts/` You must specify either `organization` or `project`. To search across `displayName`, `description`, and comments, use a global restriction with no keyword or operator. For example, `\"my search\"`. To search only cases updated after a certain date, use `update_time` restricted with that particular date, time, and timezone in ISO datetime format. For example, `update_time\u003e\"2020-01-01T00:00:00-05:00\"`. `update_time` only supports the greater than operator (`\u003e`). Examples: - `organization=\"organizations/123456789\"` - `project=\"projects/my-project-id\"` - `project=\"projects/123456789\"` - `billing_account=\"billingAccounts/123456-A0B0C0-CUZ789\"` - `organization=\"organizations/123456789\" AND state=CLOSED` - `project=\"projects/my-project-id\" AND creator.email=\"tester@example.com\"` - `project=\"projects/my-project-id\" AND (priority=P0 OR priority=P1)`",
               "location": "query",
@@ -543,7 +548,7 @@
       }
     }
   },
-  "revision": "20230515",
+  "revision": "20230717",
   "rootUrl": "https://cloudsupport.googleapis.com/",
   "schemas": {
     "Actor": {
@@ -766,11 +771,11 @@
       "id": "CaseClassification",
       "properties": {
         "displayName": {
-          "description": "The display name of the classification.",
+          "description": "A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.",
           "type": "string"
         },
         "id": {
-          "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.",
+          "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.",
           "type": "string"
         }
       },
@@ -819,6 +824,7 @@
       "id": "CompositeMedia",
       "properties": {
         "blobRef": {
+          "deprecated": true,
           "description": "# gdata.* are outside protos with mising documentation",
           "format": "byte",
           "type": "string"
@@ -1126,15 +1132,18 @@
       "id": "Media",
       "properties": {
         "algorithm": {
+          "deprecated": true,
           "description": "# gdata.* are outside protos with mising documentation",
           "type": "string"
         },
         "bigstoreObjectRef": {
+          "deprecated": true,
           "description": "# gdata.* are outside protos with mising documentation",
           "format": "byte",
           "type": "string"
         },
         "blobRef": {
+          "deprecated": true,
           "description": "# gdata.* are outside protos with mising documentation",
           "format": "byte",
           "type": "string"
@@ -1197,6 +1206,7 @@
           "type": "string"
         },
         "hash": {
+          "deprecated": true,
           "description": "# gdata.* are outside protos with mising documentation",
           "type": "string"
         },
