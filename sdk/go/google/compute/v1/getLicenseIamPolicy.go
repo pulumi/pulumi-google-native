@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 func LookupLicenseIamPolicy(ctx *pulumi.Context, args *LookupLicenseIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLicenseIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseIamPolicyResult
 	err := ctx.Invoke("google-native:compute/v1:getLicenseIamPolicy", args, &rv, opts...)
 	if err != nil {

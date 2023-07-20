@@ -164,16 +164,16 @@ def get_model(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:translate/v3:getModel', __args__, opts=opts, typ=GetModelResult).value
 
     return AwaitableGetModelResult(
-        create_time=__ret__.create_time,
-        dataset=__ret__.dataset,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        source_language_code=__ret__.source_language_code,
-        target_language_code=__ret__.target_language_code,
-        test_example_count=__ret__.test_example_count,
-        train_example_count=__ret__.train_example_count,
-        update_time=__ret__.update_time,
-        validate_example_count=__ret__.validate_example_count)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        dataset=pulumi.get(__ret__, 'dataset'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        source_language_code=pulumi.get(__ret__, 'source_language_code'),
+        target_language_code=pulumi.get(__ret__, 'target_language_code'),
+        test_example_count=pulumi.get(__ret__, 'test_example_count'),
+        train_example_count=pulumi.get(__ret__, 'train_example_count'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        validate_example_count=pulumi.get(__ret__, 'validate_example_count'))
 
 
 @_utilities.lift_output_func(get_model)

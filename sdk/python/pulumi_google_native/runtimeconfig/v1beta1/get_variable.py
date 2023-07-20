@@ -104,11 +104,11 @@ def get_variable(config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:runtimeconfig/v1beta1:getVariable', __args__, opts=opts, typ=GetVariableResult).value
 
     return AwaitableGetVariableResult(
-        name=__ret__.name,
-        state=__ret__.state,
-        text=__ret__.text,
-        update_time=__ret__.update_time,
-        value=__ret__.value)
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        text=pulumi.get(__ret__, 'text'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_variable)

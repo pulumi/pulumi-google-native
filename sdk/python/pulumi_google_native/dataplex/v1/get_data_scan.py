@@ -239,22 +239,22 @@ def get_data_scan(data_scan_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getDataScan', __args__, opts=opts, typ=GetDataScanResult).value
 
     return AwaitableGetDataScanResult(
-        create_time=__ret__.create_time,
-        data=__ret__.data,
-        data_profile_result=__ret__.data_profile_result,
-        data_profile_spec=__ret__.data_profile_spec,
-        data_quality_result=__ret__.data_quality_result,
-        data_quality_spec=__ret__.data_quality_spec,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        execution_spec=__ret__.execution_spec,
-        execution_status=__ret__.execution_status,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        data=pulumi.get(__ret__, 'data'),
+        data_profile_result=pulumi.get(__ret__, 'data_profile_result'),
+        data_profile_spec=pulumi.get(__ret__, 'data_profile_spec'),
+        data_quality_result=pulumi.get(__ret__, 'data_quality_result'),
+        data_quality_spec=pulumi.get(__ret__, 'data_quality_spec'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        execution_spec=pulumi.get(__ret__, 'execution_spec'),
+        execution_status=pulumi.get(__ret__, 'execution_status'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_data_scan)

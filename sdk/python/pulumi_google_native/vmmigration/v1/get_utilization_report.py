@@ -169,16 +169,16 @@ def get_utilization_report(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getUtilizationReport', __args__, opts=opts, typ=GetUtilizationReportResult).value
 
     return AwaitableGetUtilizationReportResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        error=__ret__.error,
-        frame_end_time=__ret__.frame_end_time,
-        name=__ret__.name,
-        state=__ret__.state,
-        state_time=__ret__.state_time,
-        time_frame=__ret__.time_frame,
-        vm_count=__ret__.vm_count,
-        vms=__ret__.vms)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        error=pulumi.get(__ret__, 'error'),
+        frame_end_time=pulumi.get(__ret__, 'frame_end_time'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        time_frame=pulumi.get(__ret__, 'time_frame'),
+        vm_count=pulumi.get(__ret__, 'vm_count'),
+        vms=pulumi.get(__ret__, 'vms'))
 
 
 @_utilities.lift_output_func(get_utilization_report)

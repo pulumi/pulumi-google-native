@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
 func LookupExternalVpnGateway(ctx *pulumi.Context, args *LookupExternalVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupExternalVpnGatewayResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExternalVpnGatewayResult
 	err := ctx.Invoke("google-native:compute/beta:getExternalVpnGateway", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewFolderBucketLink(ctx *pulumi.Context,
 		"location",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FolderBucketLink
 	err := ctx.RegisterResource("google-native:logging/v2:FolderBucketLink", name, args, &resource, opts...)
 	if err != nil {

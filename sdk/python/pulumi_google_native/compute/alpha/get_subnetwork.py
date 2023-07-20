@@ -40,10 +40,6 @@ class GetSubnetworkResult:
         pulumi.set(__self__, "enable_l2", enable_l2)
         if enable_private_v6_access and not isinstance(enable_private_v6_access, bool):
             raise TypeError("Expected argument 'enable_private_v6_access' to be a bool")
-        if enable_private_v6_access is not None:
-            warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
-            pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
-
         pulumi.set(__self__, "enable_private_v6_access", enable_private_v6_access)
         if external_ipv6_prefix and not isinstance(external_ipv6_prefix, str):
             raise TypeError("Expected argument 'external_ipv6_prefix' to be a str")
@@ -175,6 +171,9 @@ class GetSubnetworkResult:
         """
         Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
         """
+        warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
+        pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
+
         return pulumi.get(self, "enable_private_v6_access")
 
     @property
@@ -433,38 +432,38 @@ def get_subnetwork(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getSubnetwork', __args__, opts=opts, typ=GetSubnetworkResult).value
 
     return AwaitableGetSubnetworkResult(
-        aggregation_interval=__ret__.aggregation_interval,
-        allow_subnet_cidr_routes_overlap=__ret__.allow_subnet_cidr_routes_overlap,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        enable_flow_logs=__ret__.enable_flow_logs,
-        enable_l2=__ret__.enable_l2,
-        enable_private_v6_access=__ret__.enable_private_v6_access,
-        external_ipv6_prefix=__ret__.external_ipv6_prefix,
-        fingerprint=__ret__.fingerprint,
-        flow_sampling=__ret__.flow_sampling,
-        gateway_address=__ret__.gateway_address,
-        internal_ipv6_prefix=__ret__.internal_ipv6_prefix,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        ipv6_access_type=__ret__.ipv6_access_type,
-        ipv6_cidr_range=__ret__.ipv6_cidr_range,
-        kind=__ret__.kind,
-        log_config=__ret__.log_config,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        network=__ret__.network,
-        private_ip_google_access=__ret__.private_ip_google_access,
-        private_ipv6_google_access=__ret__.private_ipv6_google_access,
-        purpose=__ret__.purpose,
-        region=__ret__.region,
-        reserved_internal_range=__ret__.reserved_internal_range,
-        role=__ret__.role,
-        secondary_ip_ranges=__ret__.secondary_ip_ranges,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        stack_type=__ret__.stack_type,
-        state=__ret__.state,
-        vlans=__ret__.vlans)
+        aggregation_interval=pulumi.get(__ret__, 'aggregation_interval'),
+        allow_subnet_cidr_routes_overlap=pulumi.get(__ret__, 'allow_subnet_cidr_routes_overlap'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        enable_flow_logs=pulumi.get(__ret__, 'enable_flow_logs'),
+        enable_l2=pulumi.get(__ret__, 'enable_l2'),
+        enable_private_v6_access=pulumi.get(__ret__, 'enable_private_v6_access'),
+        external_ipv6_prefix=pulumi.get(__ret__, 'external_ipv6_prefix'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        flow_sampling=pulumi.get(__ret__, 'flow_sampling'),
+        gateway_address=pulumi.get(__ret__, 'gateway_address'),
+        internal_ipv6_prefix=pulumi.get(__ret__, 'internal_ipv6_prefix'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        ipv6_access_type=pulumi.get(__ret__, 'ipv6_access_type'),
+        ipv6_cidr_range=pulumi.get(__ret__, 'ipv6_cidr_range'),
+        kind=pulumi.get(__ret__, 'kind'),
+        log_config=pulumi.get(__ret__, 'log_config'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        private_ip_google_access=pulumi.get(__ret__, 'private_ip_google_access'),
+        private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        region=pulumi.get(__ret__, 'region'),
+        reserved_internal_range=pulumi.get(__ret__, 'reserved_internal_range'),
+        role=pulumi.get(__ret__, 'role'),
+        secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
+        state=pulumi.get(__ret__, 'state'),
+        vlans=pulumi.get(__ret__, 'vlans'))
 
 
 @_utilities.lift_output_func(get_subnetwork)

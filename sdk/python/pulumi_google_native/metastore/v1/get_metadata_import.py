@@ -131,13 +131,13 @@ def get_metadata_import(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:metastore/v1:getMetadataImport', __args__, opts=opts, typ=GetMetadataImportResult).value
 
     return AwaitableGetMetadataImportResult(
-        create_time=__ret__.create_time,
-        database_dump=__ret__.database_dump,
-        description=__ret__.description,
-        end_time=__ret__.end_time,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        database_dump=pulumi.get(__ret__, 'database_dump'),
+        description=pulumi.get(__ret__, 'description'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_metadata_import)

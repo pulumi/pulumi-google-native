@@ -127,13 +127,13 @@ def get_api(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getApi', __args__, opts=opts, typ=GetApiResult).value
 
     return AwaitableGetApiResult(
-        api_proxy_type=__ret__.api_proxy_type,
-        labels=__ret__.labels,
-        latest_revision_id=__ret__.latest_revision_id,
-        meta_data=__ret__.meta_data,
-        name=__ret__.name,
-        read_only=__ret__.read_only,
-        revision=__ret__.revision)
+        api_proxy_type=pulumi.get(__ret__, 'api_proxy_type'),
+        labels=pulumi.get(__ret__, 'labels'),
+        latest_revision_id=pulumi.get(__ret__, 'latest_revision_id'),
+        meta_data=pulumi.get(__ret__, 'meta_data'),
+        name=pulumi.get(__ret__, 'name'),
+        read_only=pulumi.get(__ret__, 'read_only'),
+        revision=pulumi.get(__ret__, 'revision'))
 
 
 @_utilities.lift_output_func(get_api)

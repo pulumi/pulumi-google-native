@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a category on the portal.
 func GetApicategory(ctx *pulumi.Context, args *GetApicategoryArgs, opts ...pulumi.InvokeOption) (*GetApicategoryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApicategoryResult
 	err := ctx.Invoke("google-native:apigee/v1:getApicategory", args, &rv, opts...)
 	if err != nil {

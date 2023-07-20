@@ -64,8 +64,8 @@ def get_service(service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicemanagement/v1:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        producer_project_id=__ret__.producer_project_id,
-        service_name=__ret__.service_name)
+        producer_project_id=pulumi.get(__ret__, 'producer_project_id'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_service)

@@ -225,21 +225,21 @@ def get_target(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:clouddeploy/v1:getTarget', __args__, opts=opts, typ=GetTargetResult).value
 
     return AwaitableGetTargetResult(
-        annotations=__ret__.annotations,
-        anthos_cluster=__ret__.anthos_cluster,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        execution_configs=__ret__.execution_configs,
-        gke=__ret__.gke,
-        labels=__ret__.labels,
-        multi_target=__ret__.multi_target,
-        name=__ret__.name,
-        require_approval=__ret__.require_approval,
-        run=__ret__.run,
-        target_id=__ret__.target_id,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        anthos_cluster=pulumi.get(__ret__, 'anthos_cluster'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        execution_configs=pulumi.get(__ret__, 'execution_configs'),
+        gke=pulumi.get(__ret__, 'gke'),
+        labels=pulumi.get(__ret__, 'labels'),
+        multi_target=pulumi.get(__ret__, 'multi_target'),
+        name=pulumi.get(__ret__, 'name'),
+        require_approval=pulumi.get(__ret__, 'require_approval'),
+        run=pulumi.get(__ret__, 'run'),
+        target_id=pulumi.get(__ret__, 'target_id'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_target)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a source.
 func LookupSource(ctx *pulumi.Context, args *LookupSourceArgs, opts ...pulumi.InvokeOption) (*LookupSourceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getSource", args, &rv, opts...)
 	if err != nil {

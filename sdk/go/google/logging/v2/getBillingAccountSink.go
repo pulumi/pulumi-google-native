@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a sink.
 func LookupBillingAccountSink(ctx *pulumi.Context, args *LookupBillingAccountSinkArgs, opts ...pulumi.InvokeOption) (*LookupBillingAccountSinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingAccountSinkResult
 	err := ctx.Invoke("google-native:logging/v2:getBillingAccountSink", args, &rv, opts...)
 	if err != nil {

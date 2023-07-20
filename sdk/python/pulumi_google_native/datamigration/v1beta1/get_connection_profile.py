@@ -165,16 +165,16 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1beta1:getConnectionProfile', __args__, opts=opts, typ=GetConnectionProfileResult).value
 
     return AwaitableGetConnectionProfileResult(
-        cloudsql=__ret__.cloudsql,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        error=__ret__.error,
-        labels=__ret__.labels,
-        mysql=__ret__.mysql,
-        name=__ret__.name,
-        provider=__ret__.provider,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        cloudsql=pulumi.get(__ret__, 'cloudsql'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        error=pulumi.get(__ret__, 'error'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mysql=pulumi.get(__ret__, 'mysql'),
+        name=pulumi.get(__ret__, 'name'),
+        provider=pulumi.get(__ret__, 'provider'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_connection_profile)

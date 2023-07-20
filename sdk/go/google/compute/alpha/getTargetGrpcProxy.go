@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified TargetGrpcProxy resource in the given scope.
 func LookupTargetGrpcProxy(ctx *pulumi.Context, args *LookupTargetGrpcProxyArgs, opts ...pulumi.InvokeOption) (*LookupTargetGrpcProxyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetGrpcProxyResult
 	err := ctx.Invoke("google-native:compute/alpha:getTargetGrpcProxy", args, &rv, opts...)
 	if err != nil {

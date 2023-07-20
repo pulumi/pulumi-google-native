@@ -822,6 +822,9 @@ class DeidentifyConfigArgs:
         """
         Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.
         """
+        warnings.warn("""Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""", DeprecationWarning)
+        pulumi.log.warn("""dicom is deprecated: Configures de-id of application/DICOM content. Deprecated. Use `dicom_tag_config` instead.""")
+
         return pulumi.get(self, "dicom")
 
     @dicom.setter
@@ -846,6 +849,9 @@ class DeidentifyConfigArgs:
         """
         Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.
         """
+        warnings.warn("""Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""", DeprecationWarning)
+        pulumi.log.warn("""fhir is deprecated: Configures de-id of application/FHIR content. Deprecated. Use `fhir_field_config` instead.""")
+
         return pulumi.get(self, "fhir")
 
     @fhir.setter
@@ -870,6 +876,9 @@ class DeidentifyConfigArgs:
         """
         Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.
         """
+        warnings.warn("""Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""", DeprecationWarning)
+        pulumi.log.warn("""image is deprecated: Configures the de-identification of image pixels in the source_dataset. Deprecated. Use `dicom_tag_config.options.clean_image` instead.""")
+
         return pulumi.get(self, "image")
 
     @image.setter
@@ -3060,6 +3069,9 @@ class TextConfigArgs:
         """
         The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
+        pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
+
         return pulumi.get(self, "transformations")
 
     @transformations.setter

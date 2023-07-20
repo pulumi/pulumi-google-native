@@ -129,13 +129,13 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        agent_version=__ret__.agent_version,
-        description=__ret__.description,
-        fulfillment=__ret__.fulfillment,
-        name=__ret__.name,
-        state=__ret__.state,
-        text_to_speech_settings=__ret__.text_to_speech_settings,
-        update_time=__ret__.update_time)
+        agent_version=pulumi.get(__ret__, 'agent_version'),
+        description=pulumi.get(__ret__, 'description'),
+        fulfillment=pulumi.get(__ret__, 'fulfillment'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        text_to_speech_settings=pulumi.get(__ret__, 'text_to_speech_settings'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_environment)

@@ -129,13 +129,13 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:composer/v1:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        uuid=__ret__.uuid)
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        uuid=pulumi.get(__ret__, 'uuid'))
 
 
 @_utilities.lift_output_func(get_environment)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ func NewRegionHealthCheckService(ctx *pulumi.Context,
 		"region",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionHealthCheckService
 	err := ctx.RegisterResource("google-native:compute/alpha:RegionHealthCheckService", name, args, &resource, opts...)
 	if err != nil {

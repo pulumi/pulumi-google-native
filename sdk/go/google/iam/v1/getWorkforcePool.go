@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an individual WorkforcePool.
 func LookupWorkforcePool(ctx *pulumi.Context, args *LookupWorkforcePoolArgs, opts ...pulumi.InvokeOption) (*LookupWorkforcePoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkforcePoolResult
 	err := ctx.Invoke("google-native:iam/v1:getWorkforcePool", args, &rv, opts...)
 	if err != nil {

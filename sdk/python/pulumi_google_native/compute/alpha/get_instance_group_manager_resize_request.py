@@ -179,17 +179,17 @@ def get_instance_group_manager_resize_request(instance_group_manager: Optional[s
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstanceGroupManagerResizeRequest', __args__, opts=opts, typ=GetInstanceGroupManagerResizeRequestResult).value
 
     return AwaitableGetInstanceGroupManagerResizeRequestResult(
-        count=__ret__.count,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        queuing_policy=__ret__.queuing_policy,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        state=__ret__.state,
-        status=__ret__.status,
-        zone=__ret__.zone)
+        count=pulumi.get(__ret__, 'count'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        queuing_policy=pulumi.get(__ret__, 'queuing_policy'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_group_manager_resize_request)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a DataAttributeBinding resource.
 func LookupDataAttributeBinding(ctx *pulumi.Context, args *LookupDataAttributeBindingArgs, opts ...pulumi.InvokeOption) (*LookupDataAttributeBindingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataAttributeBindingResult
 	err := ctx.Invoke("google-native:dataplex/v1:getDataAttributeBinding", args, &rv, opts...)
 	if err != nil {

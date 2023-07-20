@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single UrlList.
 func LookupUrlList(ctx *pulumi.Context, args *LookupUrlListArgs, opts ...pulumi.InvokeOption) (*LookupUrlListResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUrlListResult
 	err := ctx.Invoke("google-native:networksecurity/v1:getUrlList", args, &rv, opts...)
 	if err != nil {

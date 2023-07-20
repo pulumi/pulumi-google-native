@@ -211,21 +211,21 @@ def get_security_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getSecurityPolicy', __args__, opts=opts, typ=GetSecurityPolicyResult).value
 
     return AwaitableGetSecurityPolicyResult(
-        adaptive_protection_config=__ret__.adaptive_protection_config,
-        advanced_options_config=__ret__.advanced_options_config,
-        creation_timestamp=__ret__.creation_timestamp,
-        ddos_protection_config=__ret__.ddos_protection_config,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        recaptcha_options_config=__ret__.recaptcha_options_config,
-        region=__ret__.region,
-        rules=__ret__.rules,
-        self_link=__ret__.self_link,
-        type=__ret__.type)
+        adaptive_protection_config=pulumi.get(__ret__, 'adaptive_protection_config'),
+        advanced_options_config=pulumi.get(__ret__, 'advanced_options_config'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        ddos_protection_config=pulumi.get(__ret__, 'ddos_protection_config'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        recaptcha_options_config=pulumi.get(__ret__, 'recaptcha_options_config'),
+        region=pulumi.get(__ret__, 'region'),
+        rules=pulumi.get(__ret__, 'rules'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_security_policy)

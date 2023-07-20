@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single GatewaySecurityPolicy.
 func LookupGatewaySecurityPolicy(ctx *pulumi.Context, args *LookupGatewaySecurityPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGatewaySecurityPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewaySecurityPolicyResult
 	err := ctx.Invoke("google-native:networksecurity/v1:getGatewaySecurityPolicy", args, &rv, opts...)
 	if err != nil {

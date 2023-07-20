@@ -143,14 +143,14 @@ def get_compilation_result(compilation_result_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getCompilationResult', __args__, opts=opts, typ=GetCompilationResultResult).value
 
     return AwaitableGetCompilationResultResult(
-        code_compilation_config=__ret__.code_compilation_config,
-        compilation_errors=__ret__.compilation_errors,
-        dataform_core_version=__ret__.dataform_core_version,
-        git_commitish=__ret__.git_commitish,
-        name=__ret__.name,
-        release_config=__ret__.release_config,
-        resolved_git_commit_sha=__ret__.resolved_git_commit_sha,
-        workspace=__ret__.workspace)
+        code_compilation_config=pulumi.get(__ret__, 'code_compilation_config'),
+        compilation_errors=pulumi.get(__ret__, 'compilation_errors'),
+        dataform_core_version=pulumi.get(__ret__, 'dataform_core_version'),
+        git_commitish=pulumi.get(__ret__, 'git_commitish'),
+        name=pulumi.get(__ret__, 'name'),
+        release_config=pulumi.get(__ret__, 'release_config'),
+        resolved_git_commit_sha=pulumi.get(__ret__, 'resolved_git_commit_sha'),
+        workspace=pulumi.get(__ret__, 'workspace'))
 
 
 @_utilities.lift_output_func(get_compilation_result)

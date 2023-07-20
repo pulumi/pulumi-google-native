@@ -129,13 +129,13 @@ def get_dns_authorization(dns_authorization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:certificatemanager/v1:getDnsAuthorization', __args__, opts=opts, typ=GetDnsAuthorizationResult).value
 
     return AwaitableGetDnsAuthorizationResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        dns_resource_record=__ret__.dns_resource_record,
-        domain=__ret__.domain,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        dns_resource_record=pulumi.get(__ret__, 'dns_resource_record'),
+        domain=pulumi.get(__ret__, 'domain'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_dns_authorization)

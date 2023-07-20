@@ -167,16 +167,16 @@ def get_import_job(import_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudkms/v1:getImportJob', __args__, opts=opts, typ=GetImportJobResult).value
 
     return AwaitableGetImportJobResult(
-        attestation=__ret__.attestation,
-        create_time=__ret__.create_time,
-        expire_event_time=__ret__.expire_event_time,
-        expire_time=__ret__.expire_time,
-        generate_time=__ret__.generate_time,
-        import_method=__ret__.import_method,
-        name=__ret__.name,
-        protection_level=__ret__.protection_level,
-        public_key=__ret__.public_key,
-        state=__ret__.state)
+        attestation=pulumi.get(__ret__, 'attestation'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        expire_event_time=pulumi.get(__ret__, 'expire_event_time'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        generate_time=pulumi.get(__ret__, 'generate_time'),
+        import_method=pulumi.get(__ret__, 'import_method'),
+        name=pulumi.get(__ret__, 'name'),
+        protection_level=pulumi.get(__ret__, 'protection_level'),
+        public_key=pulumi.get(__ret__, 'public_key'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_import_job)

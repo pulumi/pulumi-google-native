@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified User data mapping.
 func LookupUserDataMapping(ctx *pulumi.Context, args *LookupUserDataMappingArgs, opts ...pulumi.InvokeOption) (*LookupUserDataMappingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserDataMappingResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getUserDataMapping", args, &rv, opts...)
 	if err != nil {

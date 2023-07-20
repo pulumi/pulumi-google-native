@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ func NewSearchApplication(ctx *pulumi.Context,
 		args = &SearchApplicationArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SearchApplication
 	err := ctx.RegisterResource("google-native:cloudsearch/v1:SearchApplication", name, args, &resource, opts...)
 	if err != nil {

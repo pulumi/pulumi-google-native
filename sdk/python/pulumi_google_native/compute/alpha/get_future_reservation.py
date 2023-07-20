@@ -201,19 +201,19 @@ def get_future_reservation(future_reservation: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getFutureReservation', __args__, opts=opts, typ=GetFutureReservationResult).value
 
     return AwaitableGetFutureReservationResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        name_prefix=__ret__.name_prefix,
-        planning_status=__ret__.planning_status,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        share_settings=__ret__.share_settings,
-        specific_sku_properties=__ret__.specific_sku_properties,
-        status=__ret__.status,
-        time_window=__ret__.time_window,
-        zone=__ret__.zone)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        planning_status=pulumi.get(__ret__, 'planning_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        share_settings=pulumi.get(__ret__, 'share_settings'),
+        specific_sku_properties=pulumi.get(__ret__, 'specific_sku_properties'),
+        status=pulumi.get(__ret__, 'status'),
+        time_window=pulumi.get(__ret__, 'time_window'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_future_reservation)

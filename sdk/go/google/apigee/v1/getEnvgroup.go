@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an environment group.
 func LookupEnvgroup(ctx *pulumi.Context, args *LookupEnvgroupArgs, opts ...pulumi.InvokeOption) (*LookupEnvgroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvgroupResult
 	err := ctx.Invoke("google-native:apigee/v1:getEnvgroup", args, &rv, opts...)
 	if err != nil {

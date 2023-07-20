@@ -102,11 +102,11 @@ def get_autoscaling_policy(autoscaling_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getAutoscalingPolicy', __args__, opts=opts, typ=GetAutoscalingPolicyResult).value
 
     return AwaitableGetAutoscalingPolicyResult(
-        basic_algorithm=__ret__.basic_algorithm,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        secondary_worker_config=__ret__.secondary_worker_config,
-        worker_config=__ret__.worker_config)
+        basic_algorithm=pulumi.get(__ret__, 'basic_algorithm'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        secondary_worker_config=pulumi.get(__ret__, 'secondary_worker_config'),
+        worker_config=pulumi.get(__ret__, 'worker_config'))
 
 
 @_utilities.lift_output_func(get_autoscaling_policy)

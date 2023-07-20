@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a metadata partition of an entity.
 func LookupPartition(ctx *pulumi.Context, args *LookupPartitionArgs, opts ...pulumi.InvokeOption) (*LookupPartitionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartitionResult
 	err := ctx.Invoke("google-native:dataplex/v1:getPartition", args, &rv, opts...)
 	if err != nil {

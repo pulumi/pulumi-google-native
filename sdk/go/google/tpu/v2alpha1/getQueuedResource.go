@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a queued resource.
 func LookupQueuedResource(ctx *pulumi.Context, args *LookupQueuedResourceArgs, opts ...pulumi.InvokeOption) (*LookupQueuedResourceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueuedResourceResult
 	err := ctx.Invoke("google-native:tpu/v2alpha1:getQueuedResource", args, &rv, opts...)
 	if err != nil {

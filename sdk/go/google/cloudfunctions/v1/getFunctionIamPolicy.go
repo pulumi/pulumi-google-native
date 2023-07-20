@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM access control policy for a function. Returns an empty policy if the function exists and does not have a policy set.
 func LookupFunctionIamPolicy(ctx *pulumi.Context, args *LookupFunctionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFunctionIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFunctionIamPolicyResult
 	err := ctx.Invoke("google-native:cloudfunctions/v1:getFunctionIamPolicy", args, &rv, opts...)
 	if err != nil {

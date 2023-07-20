@@ -43,10 +43,6 @@ class GetFirewallResult:
         pulumi.set(__self__, "disabled", disabled)
         if enable_logging and not isinstance(enable_logging, bool):
             raise TypeError("Expected argument 'enable_logging' to be a bool")
-        if enable_logging is not None:
-            warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
-            pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
-
         pulumi.set(__self__, "enable_logging", enable_logging)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
@@ -144,6 +140,9 @@ class GetFirewallResult:
         """
         Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         """
+        warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
+        pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
+
         return pulumi.get(self, "enable_logging")
 
     @property
@@ -275,25 +274,25 @@ def get_firewall(firewall: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getFirewall', __args__, opts=opts, typ=GetFirewallResult).value
 
     return AwaitableGetFirewallResult(
-        allowed=__ret__.allowed,
-        creation_timestamp=__ret__.creation_timestamp,
-        denied=__ret__.denied,
-        description=__ret__.description,
-        destination_ranges=__ret__.destination_ranges,
-        direction=__ret__.direction,
-        disabled=__ret__.disabled,
-        enable_logging=__ret__.enable_logging,
-        kind=__ret__.kind,
-        log_config=__ret__.log_config,
-        name=__ret__.name,
-        network=__ret__.network,
-        priority=__ret__.priority,
-        self_link=__ret__.self_link,
-        source_ranges=__ret__.source_ranges,
-        source_service_accounts=__ret__.source_service_accounts,
-        source_tags=__ret__.source_tags,
-        target_service_accounts=__ret__.target_service_accounts,
-        target_tags=__ret__.target_tags)
+        allowed=pulumi.get(__ret__, 'allowed'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        denied=pulumi.get(__ret__, 'denied'),
+        description=pulumi.get(__ret__, 'description'),
+        destination_ranges=pulumi.get(__ret__, 'destination_ranges'),
+        direction=pulumi.get(__ret__, 'direction'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        enable_logging=pulumi.get(__ret__, 'enable_logging'),
+        kind=pulumi.get(__ret__, 'kind'),
+        log_config=pulumi.get(__ret__, 'log_config'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        priority=pulumi.get(__ret__, 'priority'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        source_ranges=pulumi.get(__ret__, 'source_ranges'),
+        source_service_accounts=pulumi.get(__ret__, 'source_service_accounts'),
+        source_tags=pulumi.get(__ret__, 'source_tags'),
+        target_service_accounts=pulumi.get(__ret__, 'target_service_accounts'),
+        target_tags=pulumi.get(__ret__, 'target_tags'))
 
 
 @_utilities.lift_output_func(get_firewall)

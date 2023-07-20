@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a sink.
 func LookupOrganizationSink(ctx *pulumi.Context, args *LookupOrganizationSinkArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationSinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationSinkResult
 	err := ctx.Invoke("google-native:logging/v2:getOrganizationSink", args, &rv, opts...)
 	if err != nil {

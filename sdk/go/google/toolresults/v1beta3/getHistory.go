@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
 func LookupHistory(ctx *pulumi.Context, args *LookupHistoryArgs, opts ...pulumi.InvokeOption) (*LookupHistoryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHistoryResult
 	err := ctx.Invoke("google-native:toolresults/v1beta3:getHistory", args, &rv, opts...)
 	if err != nil {

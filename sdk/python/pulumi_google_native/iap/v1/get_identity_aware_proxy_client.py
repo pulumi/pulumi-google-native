@@ -80,9 +80,9 @@ def get_identity_aware_proxy_client(brand_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iap/v1:getIdentityAwareProxyClient', __args__, opts=opts, typ=GetIdentityAwareProxyClientResult).value
 
     return AwaitableGetIdentityAwareProxyClientResult(
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        secret=__ret__.secret)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        secret=pulumi.get(__ret__, 'secret'))
 
 
 @_utilities.lift_output_func(get_identity_aware_proxy_client)

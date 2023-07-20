@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the representation of an existing Change.
 func LookupChange(ctx *pulumi.Context, args *LookupChangeArgs, opts ...pulumi.InvokeOption) (*LookupChangeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupChangeResult
 	err := ctx.Invoke("google-native:dns/v1beta2:getChange", args, &rv, opts...)
 	if err != nil {

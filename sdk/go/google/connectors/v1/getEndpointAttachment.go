@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single EndpointAttachment.
 func LookupEndpointAttachment(ctx *pulumi.Context, args *LookupEndpointAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupEndpointAttachmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointAttachmentResult
 	err := ctx.Invoke("google-native:connectors/v1:getEndpointAttachment", args, &rv, opts...)
 	if err != nil {

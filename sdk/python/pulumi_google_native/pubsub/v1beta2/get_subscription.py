@@ -91,10 +91,10 @@ def get_subscription(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:pubsub/v1beta2:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        ack_deadline_seconds=__ret__.ack_deadline_seconds,
-        name=__ret__.name,
-        push_config=__ret__.push_config,
-        topic=__ret__.topic)
+        ack_deadline_seconds=pulumi.get(__ret__, 'ack_deadline_seconds'),
+        name=pulumi.get(__ret__, 'name'),
+        push_config=pulumi.get(__ret__, 'push_config'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_subscription)

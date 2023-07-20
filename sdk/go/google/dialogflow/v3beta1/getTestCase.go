@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a test case.
 func LookupTestCase(ctx *pulumi.Context, args *LookupTestCaseArgs, opts ...pulumi.InvokeOption) (*LookupTestCaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTestCaseResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getTestCase", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.
 type GoogleFirestoreAdminV1DailyRecurrence struct {

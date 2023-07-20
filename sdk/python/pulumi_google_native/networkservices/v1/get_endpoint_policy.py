@@ -177,17 +177,17 @@ def get_endpoint_policy(endpoint_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1:getEndpointPolicy', __args__, opts=opts, typ=GetEndpointPolicyResult).value
 
     return AwaitableGetEndpointPolicyResult(
-        authorization_policy=__ret__.authorization_policy,
-        client_tls_policy=__ret__.client_tls_policy,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        endpoint_matcher=__ret__.endpoint_matcher,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        server_tls_policy=__ret__.server_tls_policy,
-        traffic_port_selector=__ret__.traffic_port_selector,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        authorization_policy=pulumi.get(__ret__, 'authorization_policy'),
+        client_tls_policy=pulumi.get(__ret__, 'client_tls_policy'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint_matcher=pulumi.get(__ret__, 'endpoint_matcher'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        server_tls_policy=pulumi.get(__ret__, 'server_tls_policy'),
+        traffic_port_selector=pulumi.get(__ret__, 'traffic_port_selector'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_endpoint_policy)

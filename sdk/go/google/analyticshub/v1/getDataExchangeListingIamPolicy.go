@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM policy.
 func LookupDataExchangeListingIamPolicy(ctx *pulumi.Context, args *LookupDataExchangeListingIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataExchangeListingIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataExchangeListingIamPolicyResult
 	err := ctx.Invoke("google-native:analyticshub/v1:getDataExchangeListingIamPolicy", args, &rv, opts...)
 	if err != nil {

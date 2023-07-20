@@ -164,16 +164,16 @@ def get_workflow(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:workflows/v1beta:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult).value
 
     return AwaitableGetWorkflowResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        service_account=__ret__.service_account,
-        source_contents=__ret__.source_contents,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        source_contents=pulumi.get(__ret__, 'source_contents'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_workflow)

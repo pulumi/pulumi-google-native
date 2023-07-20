@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names).
 func LookupProjectIamPolicy(ctx *pulumi.Context, args *LookupProjectIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProjectIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectIamPolicyResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v1:getProjectIamPolicy", args, &rv, opts...)
 	if err != nil {

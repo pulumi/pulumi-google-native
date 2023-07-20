@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
 func LookupConsent(ctx *pulumi.Context, args *LookupConsentArgs, opts ...pulumi.InvokeOption) (*LookupConsentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsentResult
 	err := ctx.Invoke("google-native:healthcare/v1:getConsent", args, &rv, opts...)
 	if err != nil {

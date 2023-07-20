@@ -163,16 +163,16 @@ def get_instance_template(instance_template: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult).value
 
     return AwaitableGetInstanceTemplateResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        properties=__ret__.properties,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        source_instance=__ret__.source_instance,
-        source_instance_params=__ret__.source_instance_params)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        properties=pulumi.get(__ret__, 'properties'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        source_instance=pulumi.get(__ret__, 'source_instance'),
+        source_instance_params=pulumi.get(__ret__, 'source_instance_params'))
 
 
 @_utilities.lift_output_func(get_instance_template)

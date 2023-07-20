@@ -140,14 +140,14 @@ def get_gateway(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigateway/v1:getGateway', __args__, opts=opts, typ=GetGatewayResult).value
 
     return AwaitableGetGatewayResult(
-        api_config=__ret__.api_config,
-        create_time=__ret__.create_time,
-        default_hostname=__ret__.default_hostname,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        api_config=pulumi.get(__ret__, 'api_config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        default_hostname=pulumi.get(__ret__, 'default_hostname'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_gateway)

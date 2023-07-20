@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +59,7 @@ func NewSessionEntityType(ctx *pulumi.Context,
 		"sessionId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SessionEntityType
 	err := ctx.RegisterResource("google-native:dialogflow/v3:SessionEntityType", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
 func LookupStoredInfoType(ctx *pulumi.Context, args *LookupStoredInfoTypeArgs, opts ...pulumi.InvokeOption) (*LookupStoredInfoTypeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStoredInfoTypeResult
 	err := ctx.Invoke("google-native:dlp/v2:getStoredInfoType", args, &rv, opts...)
 	if err != nil {

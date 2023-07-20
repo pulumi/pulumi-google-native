@@ -79,9 +79,9 @@ def get_occurrence_iam_policy(occurrence_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:containeranalysis/v1beta1:getOccurrenceIamPolicy', __args__, opts=opts, typ=GetOccurrenceIamPolicyResult).value
 
     return AwaitableGetOccurrenceIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_occurrence_iam_policy)

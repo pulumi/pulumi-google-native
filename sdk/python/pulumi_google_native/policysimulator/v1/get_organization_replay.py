@@ -93,10 +93,10 @@ def get_organization_replay(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:policysimulator/v1:getOrganizationReplay', __args__, opts=opts, typ=GetOrganizationReplayResult).value
 
     return AwaitableGetOrganizationReplayResult(
-        config=__ret__.config,
-        name=__ret__.name,
-        results_summary=__ret__.results_summary,
-        state=__ret__.state)
+        config=pulumi.get(__ret__, 'config'),
+        name=pulumi.get(__ret__, 'name'),
+        results_summary=pulumi.get(__ret__, 'results_summary'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_organization_replay)

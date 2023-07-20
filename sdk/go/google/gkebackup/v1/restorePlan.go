@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,6 +68,7 @@ func NewRestorePlan(ctx *pulumi.Context,
 		"restorePlanId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RestorePlan
 	err := ctx.RegisterResource("google-native:gkebackup/v1:RestorePlan", name, args, &resource, opts...)
 	if err != nil {

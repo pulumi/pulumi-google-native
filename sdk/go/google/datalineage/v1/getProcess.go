@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the specified process.
 func LookupProcess(ctx *pulumi.Context, args *LookupProcessArgs, opts ...pulumi.InvokeOption) (*LookupProcessResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProcessResult
 	err := ctx.Invoke("google-native:datalineage/v1:getProcess", args, &rv, opts...)
 	if err != nil {

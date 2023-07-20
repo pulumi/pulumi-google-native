@@ -43,10 +43,6 @@ class GetNodeResult:
         pulumi.set(__self__, "health_description", health_description)
         if ip_address and not isinstance(ip_address, str):
             raise TypeError("Expected argument 'ip_address' to be a str")
-        if ip_address is not None:
-            warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
-            pulumi.log.warn("""ip_address is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""")
-
         pulumi.set(__self__, "ip_address", ip_address)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -62,10 +58,6 @@ class GetNodeResult:
         pulumi.set(__self__, "network_endpoints", network_endpoints)
         if port and not isinstance(port, str):
             raise TypeError("Expected argument 'port' to be a str")
-        if port is not None:
-            warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
-            pulumi.log.warn("""port is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""")
-
         pulumi.set(__self__, "port", port)
         if scheduling_config and not isinstance(scheduling_config, dict):
             raise TypeError("Expected argument 'scheduling_config' to be a dict")
@@ -148,6 +140,9 @@ class GetNodeResult:
         """
         DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
         """
+        warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
+        pulumi.log.warn("""ip_address is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""")
+
         return pulumi.get(self, "ip_address")
 
     @property
@@ -188,6 +183,9 @@ class GetNodeResult:
         """
         DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         """
+        warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
+        pulumi.log.warn("""port is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""")
+
         return pulumi.get(self, "port")
 
     @property
@@ -281,25 +279,25 @@ def get_node(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:tpu/v1:getNode', __args__, opts=opts, typ=GetNodeResult).value
 
     return AwaitableGetNodeResult(
-        accelerator_type=__ret__.accelerator_type,
-        api_version=__ret__.api_version,
-        cidr_block=__ret__.cidr_block,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        health=__ret__.health,
-        health_description=__ret__.health_description,
-        ip_address=__ret__.ip_address,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_endpoints=__ret__.network_endpoints,
-        port=__ret__.port,
-        scheduling_config=__ret__.scheduling_config,
-        service_account=__ret__.service_account,
-        state=__ret__.state,
-        symptoms=__ret__.symptoms,
-        tensorflow_version=__ret__.tensorflow_version,
-        use_service_networking=__ret__.use_service_networking)
+        accelerator_type=pulumi.get(__ret__, 'accelerator_type'),
+        api_version=pulumi.get(__ret__, 'api_version'),
+        cidr_block=pulumi.get(__ret__, 'cidr_block'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        health=pulumi.get(__ret__, 'health'),
+        health_description=pulumi.get(__ret__, 'health_description'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_endpoints=pulumi.get(__ret__, 'network_endpoints'),
+        port=pulumi.get(__ret__, 'port'),
+        scheduling_config=pulumi.get(__ret__, 'scheduling_config'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        state=pulumi.get(__ret__, 'state'),
+        symptoms=pulumi.get(__ret__, 'symptoms'),
+        tensorflow_version=pulumi.get(__ret__, 'tensorflow_version'),
+        use_service_networking=pulumi.get(__ret__, 'use_service_networking'))
 
 
 @_utilities.lift_output_func(get_node)

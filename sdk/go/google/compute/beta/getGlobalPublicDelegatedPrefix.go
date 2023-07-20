@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified global PublicDelegatedPrefix resource.
 func LookupGlobalPublicDelegatedPrefix(ctx *pulumi.Context, args *LookupGlobalPublicDelegatedPrefixArgs, opts ...pulumi.InvokeOption) (*LookupGlobalPublicDelegatedPrefixResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlobalPublicDelegatedPrefixResult
 	err := ctx.Invoke("google-native:compute/beta:getGlobalPublicDelegatedPrefix", args, &rv, opts...)
 	if err != nil {

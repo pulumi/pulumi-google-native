@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified HL7v2 store.
 func LookupHl7V2Store(ctx *pulumi.Context, args *LookupHl7V2StoreArgs, opts ...pulumi.InvokeOption) (*LookupHl7V2StoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHl7V2StoreResult
 	err := ctx.Invoke("google-native:healthcare/v1:getHl7V2Store", args, &rv, opts...)
 	if err != nil {

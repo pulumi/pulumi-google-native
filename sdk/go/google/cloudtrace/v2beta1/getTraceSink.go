@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a trace sink by name under the parent resource (GCP project).
 func LookupTraceSink(ctx *pulumi.Context, args *LookupTraceSinkArgs, opts ...pulumi.InvokeOption) (*LookupTraceSinkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTraceSinkResult
 	err := ctx.Invoke("google-native:cloudtrace/v2beta1:getTraceSink", args, &rv, opts...)
 	if err != nil {

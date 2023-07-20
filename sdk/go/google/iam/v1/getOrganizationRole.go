@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the definition of a Role.
 func LookupOrganizationRole(ctx *pulumi.Context, args *LookupOrganizationRoleArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationRoleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationRoleResult
 	err := ctx.Invoke("google-native:iam/v1:getOrganizationRole", args, &rv, opts...)
 	if err != nil {

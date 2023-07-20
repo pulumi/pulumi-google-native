@@ -201,19 +201,19 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:transcoder/v1:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        error=__ret__.error,
-        input_uri=__ret__.input_uri,
-        labels=__ret__.labels,
-        mode=__ret__.mode,
-        name=__ret__.name,
-        output_uri=__ret__.output_uri,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        template_id=__ret__.template_id,
-        ttl_after_completion_days=__ret__.ttl_after_completion_days)
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error=pulumi.get(__ret__, 'error'),
+        input_uri=pulumi.get(__ret__, 'input_uri'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mode=pulumi.get(__ret__, 'mode'),
+        name=pulumi.get(__ret__, 'name'),
+        output_uri=pulumi.get(__ret__, 'output_uri'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        template_id=pulumi.get(__ret__, 'template_id'),
+        ttl_after_completion_days=pulumi.get(__ret__, 'ttl_after_completion_days'))
 
 
 @_utilities.lift_output_func(get_job)

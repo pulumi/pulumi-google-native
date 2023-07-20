@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ServiceConnectionToken.
 func LookupServiceConnectionToken(ctx *pulumi.Context, args *LookupServiceConnectionTokenArgs, opts ...pulumi.InvokeOption) (*LookupServiceConnectionTokenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceConnectionTokenResult
 	err := ctx.Invoke("google-native:networkconnectivity/v1:getServiceConnectionToken", args, &rv, opts...)
 	if err != nil {

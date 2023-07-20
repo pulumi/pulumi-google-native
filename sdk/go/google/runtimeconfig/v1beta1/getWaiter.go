@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a single waiter.
 func LookupWaiter(ctx *pulumi.Context, args *LookupWaiterArgs, opts ...pulumi.InvokeOption) (*LookupWaiterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWaiterResult
 	err := ctx.Invoke("google-native:runtimeconfig/v1beta1:getWaiter", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
 func LookupTargetProject(ctx *pulumi.Context, args *LookupTargetProjectArgs, opts ...pulumi.InvokeOption) (*LookupTargetProjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetProjectResult
 	err := ctx.Invoke("google-native:vmmigration/v1alpha1:getTargetProject", args, &rv, opts...)
 	if err != nil {

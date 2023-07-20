@@ -52,10 +52,6 @@ class GetWorkloadResult:
         pulumi.set(__self__, "kaj_enrollment_state", kaj_enrollment_state)
         if kms_settings and not isinstance(kms_settings, dict):
             raise TypeError("Expected argument 'kms_settings' to be a dict")
-        if kms_settings is not None:
-            warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
-            pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
-
         pulumi.set(__self__, "kms_settings", kms_settings)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
@@ -171,6 +167,9 @@ class GetWorkloadResult:
         """
         Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         """
+        warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
+        pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
+
         return pulumi.get(self, "kms_settings")
 
     @property
@@ -289,26 +288,26 @@ def get_workload(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:assuredworkloads/v1:getWorkload', __args__, opts=opts, typ=GetWorkloadResult).value
 
     return AwaitableGetWorkloadResult(
-        billing_account=__ret__.billing_account,
-        compliance_regime=__ret__.compliance_regime,
-        compliance_status=__ret__.compliance_status,
-        compliant_but_disallowed_services=__ret__.compliant_but_disallowed_services,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        ekm_provisioning_response=__ret__.ekm_provisioning_response,
-        enable_sovereign_controls=__ret__.enable_sovereign_controls,
-        etag=__ret__.etag,
-        kaj_enrollment_state=__ret__.kaj_enrollment_state,
-        kms_settings=__ret__.kms_settings,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        partner=__ret__.partner,
-        partner_permissions=__ret__.partner_permissions,
-        provisioned_resources_parent=__ret__.provisioned_resources_parent,
-        resource_settings=__ret__.resource_settings,
-        resources=__ret__.resources,
-        saa_enrollment_response=__ret__.saa_enrollment_response,
-        violation_notifications_enabled=__ret__.violation_notifications_enabled)
+        billing_account=pulumi.get(__ret__, 'billing_account'),
+        compliance_regime=pulumi.get(__ret__, 'compliance_regime'),
+        compliance_status=pulumi.get(__ret__, 'compliance_status'),
+        compliant_but_disallowed_services=pulumi.get(__ret__, 'compliant_but_disallowed_services'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        ekm_provisioning_response=pulumi.get(__ret__, 'ekm_provisioning_response'),
+        enable_sovereign_controls=pulumi.get(__ret__, 'enable_sovereign_controls'),
+        etag=pulumi.get(__ret__, 'etag'),
+        kaj_enrollment_state=pulumi.get(__ret__, 'kaj_enrollment_state'),
+        kms_settings=pulumi.get(__ret__, 'kms_settings'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        partner=pulumi.get(__ret__, 'partner'),
+        partner_permissions=pulumi.get(__ret__, 'partner_permissions'),
+        provisioned_resources_parent=pulumi.get(__ret__, 'provisioned_resources_parent'),
+        resource_settings=pulumi.get(__ret__, 'resource_settings'),
+        resources=pulumi.get(__ret__, 'resources'),
+        saa_enrollment_response=pulumi.get(__ret__, 'saa_enrollment_response'),
+        violation_notifications_enabled=pulumi.get(__ret__, 'violation_notifications_enabled'))
 
 
 @_utilities.lift_output_func(get_workload)

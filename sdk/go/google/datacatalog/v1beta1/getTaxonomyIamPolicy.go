@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the IAM policy for a taxonomy or a policy tag.
 func LookupTaxonomyIamPolicy(ctx *pulumi.Context, args *LookupTaxonomyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTaxonomyIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTaxonomyIamPolicyResult
 	err := ctx.Invoke("google-native:datacatalog/v1beta1:getTaxonomyIamPolicy", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ func NewDomainMapping(ctx *pulumi.Context,
 		"appId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainMapping
 	err := ctx.RegisterResource("google-native:appengine/v1beta:DomainMapping", name, args, &resource, opts...)
 	if err != nil {

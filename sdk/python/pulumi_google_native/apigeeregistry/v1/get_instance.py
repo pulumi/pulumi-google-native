@@ -129,13 +129,13 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        build=__ret__.build,
-        config=__ret__.config,
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        state=__ret__.state,
-        state_message=__ret__.state_message,
-        update_time=__ret__.update_time)
+        build=pulumi.get(__ret__, 'build'),
+        config=pulumi.get(__ret__, 'config'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        state_message=pulumi.get(__ret__, 'state_message'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_instance)

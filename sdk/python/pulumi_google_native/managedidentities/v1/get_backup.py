@@ -128,13 +128,13 @@ def get_backup(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:managedidentities/v1:getBackup', __args__, opts=opts, typ=GetBackupResult).value
 
     return AwaitableGetBackupResult(
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        status_message=__ret__.status_message,
-        type=__ret__.type,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_backup)

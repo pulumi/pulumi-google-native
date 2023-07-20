@@ -97,10 +97,10 @@ def get_dataset_dicom_store_iam_policy(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getDatasetDicomStoreIamPolicy', __args__, opts=opts, typ=GetDatasetDicomStoreIamPolicyResult).value
 
     return AwaitableGetDatasetDicomStoreIamPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_dataset_dicom_store_iam_policy)

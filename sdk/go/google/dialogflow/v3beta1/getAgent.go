@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified agent.
 func LookupAgent(ctx *pulumi.Context, args *LookupAgentArgs, opts ...pulumi.InvokeOption) (*LookupAgentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getAgent", args, &rv, opts...)
 	if err != nil {

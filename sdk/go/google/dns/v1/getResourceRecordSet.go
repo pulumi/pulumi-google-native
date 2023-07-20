@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the representation of an existing ResourceRecordSet.
 func LookupResourceRecordSet(ctx *pulumi.Context, args *LookupResourceRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupResourceRecordSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceRecordSetResult
 	err := ctx.Invoke("google-native:dns/v1:getResourceRecordSet", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a view.
 func LookupView(ctx *pulumi.Context, args *LookupViewArgs, opts ...pulumi.InvokeOption) (*LookupViewResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupViewResult
 	err := ctx.Invoke("google-native:contactcenterinsights/v1:getView", args, &rv, opts...)
 	if err != nil {

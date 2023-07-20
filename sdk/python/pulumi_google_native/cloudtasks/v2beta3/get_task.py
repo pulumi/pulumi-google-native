@@ -193,18 +193,18 @@ def get_task(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2beta3:getTask', __args__, opts=opts, typ=GetTaskResult).value
 
     return AwaitableGetTaskResult(
-        app_engine_http_request=__ret__.app_engine_http_request,
-        create_time=__ret__.create_time,
-        dispatch_count=__ret__.dispatch_count,
-        dispatch_deadline=__ret__.dispatch_deadline,
-        first_attempt=__ret__.first_attempt,
-        http_request=__ret__.http_request,
-        last_attempt=__ret__.last_attempt,
-        name=__ret__.name,
-        pull_message=__ret__.pull_message,
-        response_count=__ret__.response_count,
-        schedule_time=__ret__.schedule_time,
-        view=__ret__.view)
+        app_engine_http_request=pulumi.get(__ret__, 'app_engine_http_request'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        dispatch_count=pulumi.get(__ret__, 'dispatch_count'),
+        dispatch_deadline=pulumi.get(__ret__, 'dispatch_deadline'),
+        first_attempt=pulumi.get(__ret__, 'first_attempt'),
+        http_request=pulumi.get(__ret__, 'http_request'),
+        last_attempt=pulumi.get(__ret__, 'last_attempt'),
+        name=pulumi.get(__ret__, 'name'),
+        pull_message=pulumi.get(__ret__, 'pull_message'),
+        response_count=pulumi.get(__ret__, 'response_count'),
+        schedule_time=pulumi.get(__ret__, 'schedule_time'),
+        view=pulumi.get(__ret__, 'view'))
 
 
 @_utilities.lift_output_func(get_task)

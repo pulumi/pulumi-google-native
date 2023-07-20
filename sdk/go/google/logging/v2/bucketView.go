@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ func NewBucketView(ctx *pulumi.Context,
 		"viewId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BucketView
 	err := ctx.RegisterResource("google-native:logging/v2:BucketView", name, args, &resource, opts...)
 	if err != nil {

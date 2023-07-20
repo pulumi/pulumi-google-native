@@ -100,11 +100,11 @@ def get_access_policy(access_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:accesscontextmanager/v1:getAccessPolicy', __args__, opts=opts, typ=GetAccessPolicyResult).value
 
     return AwaitableGetAccessPolicyResult(
-        etag=__ret__.etag,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        scopes=__ret__.scopes,
-        title=__ret__.title)
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        scopes=pulumi.get(__ret__, 'scopes'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_access_policy)

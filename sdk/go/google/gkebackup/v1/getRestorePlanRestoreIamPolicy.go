@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 func LookupRestorePlanRestoreIamPolicy(ctx *pulumi.Context, args *LookupRestorePlanRestoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRestorePlanRestoreIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRestorePlanRestoreIamPolicyResult
 	err := ctx.Invoke("google-native:gkebackup/v1:getRestorePlanRestoreIamPolicy", args, &rv, opts...)
 	if err != nil {

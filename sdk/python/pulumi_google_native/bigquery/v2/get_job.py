@@ -141,14 +141,14 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        configuration=__ret__.configuration,
-        etag=__ret__.etag,
-        job_reference=__ret__.job_reference,
-        kind=__ret__.kind,
-        self_link=__ret__.self_link,
-        statistics=__ret__.statistics,
-        status=__ret__.status,
-        user_email=__ret__.user_email)
+        configuration=pulumi.get(__ret__, 'configuration'),
+        etag=pulumi.get(__ret__, 'etag'),
+        job_reference=pulumi.get(__ret__, 'job_reference'),
+        kind=pulumi.get(__ret__, 'kind'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        statistics=pulumi.get(__ret__, 'statistics'),
+        status=pulumi.get(__ret__, 'status'),
+        user_email=pulumi.get(__ret__, 'user_email'))
 
 
 @_utilities.lift_output_func(get_job)

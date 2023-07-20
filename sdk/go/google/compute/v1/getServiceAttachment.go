@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified ServiceAttachment resource in the given scope.
 func LookupServiceAttachment(ctx *pulumi.Context, args *LookupServiceAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupServiceAttachmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceAttachmentResult
 	err := ctx.Invoke("google-native:compute/v1:getServiceAttachment", args, &rv, opts...)
 	if err != nil {

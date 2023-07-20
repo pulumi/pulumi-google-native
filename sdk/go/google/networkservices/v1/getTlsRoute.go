@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single TlsRoute.
 func LookupTlsRoute(ctx *pulumi.Context, args *LookupTlsRouteArgs, opts ...pulumi.InvokeOption) (*LookupTlsRouteResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTlsRouteResult
 	err := ctx.Invoke("google-native:networkservices/v1:getTlsRoute", args, &rv, opts...)
 	if err != nil {

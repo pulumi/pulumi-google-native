@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a phrase set.
 func LookupPhraseSet(ctx *pulumi.Context, args *LookupPhraseSetArgs, opts ...pulumi.InvokeOption) (*LookupPhraseSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPhraseSetResult
 	err := ctx.Invoke("google-native:speech/v1:getPhraseSet", args, &rv, opts...)
 	if err != nil {

@@ -126,13 +126,13 @@ def get_policy(client_operation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dns/v1beta2:getPolicy', __args__, opts=opts, typ=GetPolicyResult).value
 
     return AwaitableGetPolicyResult(
-        alternative_name_server_config=__ret__.alternative_name_server_config,
-        description=__ret__.description,
-        enable_inbound_forwarding=__ret__.enable_inbound_forwarding,
-        enable_logging=__ret__.enable_logging,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        networks=__ret__.networks)
+        alternative_name_server_config=pulumi.get(__ret__, 'alternative_name_server_config'),
+        description=pulumi.get(__ret__, 'description'),
+        enable_inbound_forwarding=pulumi.get(__ret__, 'enable_inbound_forwarding'),
+        enable_logging=pulumi.get(__ret__, 'enable_logging'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        networks=pulumi.get(__ret__, 'networks'))
 
 
 @_utilities.lift_output_func(get_policy)

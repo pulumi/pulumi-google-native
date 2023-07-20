@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Replay. Each `Replay` is available for at least 7 days.
 func LookupReplay(ctx *pulumi.Context, args *LookupReplayArgs, opts ...pulumi.InvokeOption) (*LookupReplayResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplayResult
 	err := ctx.Invoke("google-native:policysimulator/v1beta1:getReplay", args, &rv, opts...)
 	if err != nil {

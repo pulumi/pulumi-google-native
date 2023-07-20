@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified regional BackendService resource.
 func LookupRegionBackendService(ctx *pulumi.Context, args *LookupRegionBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupRegionBackendServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionBackendServiceResult
 	err := ctx.Invoke("google-native:compute/alpha:getRegionBackendService", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified conversation dataset.
 func LookupConversationDataset(ctx *pulumi.Context, args *LookupConversationDatasetArgs, opts ...pulumi.InvokeOption) (*LookupConversationDatasetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConversationDatasetResult
 	err := ctx.Invoke("google-native:dialogflow/v2:getConversationDataset", args, &rv, opts...)
 	if err != nil {

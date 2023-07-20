@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a specified storage pool. Gets a list of available storage pools by making a list() request.
 func LookupStoragePool(ctx *pulumi.Context, args *LookupStoragePoolArgs, opts ...pulumi.InvokeOption) (*LookupStoragePoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupStoragePoolResult
 	err := ctx.Invoke("google-native:compute/alpha:getStoragePool", args, &rv, opts...)
 	if err != nil {

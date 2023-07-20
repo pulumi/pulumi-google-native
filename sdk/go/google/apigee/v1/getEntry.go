@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
 func LookupEntry(ctx *pulumi.Context, args *LookupEntryArgs, opts ...pulumi.InvokeOption) (*LookupEntryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntryResult
 	err := ctx.Invoke("google-native:apigee/v1:getEntry", args, &rv, opts...)
 	if err != nil {

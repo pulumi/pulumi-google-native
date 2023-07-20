@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 func LookupFirewallPolicyIamPolicy(ctx *pulumi.Context, args *LookupFirewallPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyIamPolicyResult
 	err := ctx.Invoke("google-native:compute/v1:getFirewallPolicyIamPolicy", args, &rv, opts...)
 	if err != nil {

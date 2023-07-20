@@ -1692,6 +1692,9 @@ class TestIssueResponse(dict):
         """
         Deprecated in favor of stack trace fields inside specific warnings.
         """
+        warnings.warn("""Deprecated in favor of stack trace fields inside specific warnings.""", DeprecationWarning)
+        pulumi.log.warn("""stack_trace is deprecated: Deprecated in favor of stack trace fields inside specific warnings.""")
+
         return pulumi.get(self, "stack_trace")
 
     @property

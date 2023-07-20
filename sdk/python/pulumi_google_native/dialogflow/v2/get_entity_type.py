@@ -119,12 +119,12 @@ def get_entity_type(entity_type_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v2:getEntityType', __args__, opts=opts, typ=GetEntityTypeResult).value
 
     return AwaitableGetEntityTypeResult(
-        auto_expansion_mode=__ret__.auto_expansion_mode,
-        display_name=__ret__.display_name,
-        enable_fuzzy_extraction=__ret__.enable_fuzzy_extraction,
-        entities=__ret__.entities,
-        kind=__ret__.kind,
-        name=__ret__.name)
+        auto_expansion_mode=pulumi.get(__ret__, 'auto_expansion_mode'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_fuzzy_extraction=pulumi.get(__ret__, 'enable_fuzzy_extraction'),
+        entities=pulumi.get(__ret__, 'entities'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_entity_type)

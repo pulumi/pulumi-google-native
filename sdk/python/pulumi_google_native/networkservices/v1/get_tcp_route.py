@@ -153,15 +153,15 @@ def get_tcp_route(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkservices/v1:getTcpRoute', __args__, opts=opts, typ=GetTcpRouteResult).value
 
     return AwaitableGetTcpRouteResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        gateways=__ret__.gateways,
-        labels=__ret__.labels,
-        meshes=__ret__.meshes,
-        name=__ret__.name,
-        rules=__ret__.rules,
-        self_link=__ret__.self_link,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        gateways=pulumi.get(__ret__, 'gateways'),
+        labels=pulumi.get(__ret__, 'labels'),
+        meshes=pulumi.get(__ret__, 'meshes'),
+        name=pulumi.get(__ret__, 'name'),
+        rules=pulumi.get(__ret__, 'rules'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_tcp_route)

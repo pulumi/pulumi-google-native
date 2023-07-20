@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewTagKey(ctx *pulumi.Context,
 	if args.ShortName == nil {
 		return nil, errors.New("invalid value for required argument 'ShortName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TagKey
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:TagKey", name, args, &resource, opts...)
 	if err != nil {

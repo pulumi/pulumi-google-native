@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Additional user-agent string to append to the default one (<prod_name>/<ver>).
 func GetAppendUserAgent(ctx *pulumi.Context) string {

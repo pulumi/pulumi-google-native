@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns all of the details about the specified managed instance group.
 func LookupRegionInstanceGroupManager(ctx *pulumi.Context, args *LookupRegionInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupRegionInstanceGroupManagerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionInstanceGroupManagerResult
 	err := ctx.Invoke("google-native:compute/v1:getRegionInstanceGroupManager", args, &rv, opts...)
 	if err != nil {

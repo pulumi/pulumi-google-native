@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns configuration info about the Google Kubernetes Engine service.
 func GetServerConfig(ctx *pulumi.Context, args *GetServerConfigArgs, opts ...pulumi.InvokeOption) (*GetServerConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerConfigResult
 	err := ctx.Invoke("google-native:container/v1:getServerConfig", args, &rv, opts...)
 	if err != nil {

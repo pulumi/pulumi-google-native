@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an API proxy including a list of existing revisions.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiResult
 	err := ctx.Invoke("google-native:apigee/v1:getApi", args, &rv, opts...)
 	if err != nil {

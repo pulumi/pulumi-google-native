@@ -125,13 +125,13 @@ def get_project(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudresourcemanager/v1beta1:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        create_time=__ret__.create_time,
-        labels=__ret__.labels,
-        lifecycle_state=__ret__.lifecycle_state,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        project_id=__ret__.project_id,
-        project_number=__ret__.project_number)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        project_number=pulumi.get(__ret__, 'project_number'))
 
 
 @_utilities.lift_output_func(get_project)

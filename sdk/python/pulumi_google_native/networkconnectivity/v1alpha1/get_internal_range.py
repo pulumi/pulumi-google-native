@@ -200,19 +200,19 @@ def get_internal_range(internal_range_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1alpha1:getInternalRange', __args__, opts=opts, typ=GetInternalRangeResult).value
 
     return AwaitableGetInternalRangeResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        overlaps=__ret__.overlaps,
-        peering=__ret__.peering,
-        prefix_length=__ret__.prefix_length,
-        target_cidr_range=__ret__.target_cidr_range,
-        update_time=__ret__.update_time,
-        usage=__ret__.usage,
-        users=__ret__.users)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        overlaps=pulumi.get(__ret__, 'overlaps'),
+        peering=pulumi.get(__ret__, 'peering'),
+        prefix_length=pulumi.get(__ret__, 'prefix_length'),
+        target_cidr_range=pulumi.get(__ret__, 'target_cidr_range'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        usage=pulumi.get(__ret__, 'usage'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_internal_range)

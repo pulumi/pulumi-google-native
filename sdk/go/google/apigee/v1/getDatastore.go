@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Datastore
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreResult
 	err := ctx.Invoke("google-native:apigee/v1:getDatastore", args, &rv, opts...)
 	if err != nil {

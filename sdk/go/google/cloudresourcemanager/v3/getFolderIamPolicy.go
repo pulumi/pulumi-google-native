@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
 func LookupFolderIamPolicy(ctx *pulumi.Context, args *LookupFolderIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFolderIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderIamPolicyResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getFolderIamPolicy", args, &rv, opts...)
 	if err != nil {

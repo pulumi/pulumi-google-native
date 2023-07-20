@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a single federation.
 func LookupFederation(ctx *pulumi.Context, args *LookupFederationArgs, opts ...pulumi.InvokeOption) (*LookupFederationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFederationResult
 	err := ctx.Invoke("google-native:metastore/v1beta:getFederation", args, &rv, opts...)
 	if err != nil {

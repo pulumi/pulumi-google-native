@@ -22,10 +22,6 @@ class GetOrganizationPolicyResult:
     def __init__(__self__, alternate=None, dry_run_spec=None, name=None, spec=None):
         if alternate and not isinstance(alternate, dict):
             raise TypeError("Expected argument 'alternate' to be a dict")
-        if alternate is not None:
-            warnings.warn("""Deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""alternate is deprecated: Deprecated.""")
-
         pulumi.set(__self__, "alternate", alternate)
         if dry_run_spec and not isinstance(dry_run_spec, dict):
             raise TypeError("Expected argument 'dry_run_spec' to be a dict")
@@ -43,6 +39,9 @@ class GetOrganizationPolicyResult:
         """
         Deprecated.
         """
+        warnings.warn("""Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""alternate is deprecated: Deprecated.""")
+
         return pulumi.get(self, "alternate")
 
     @property
@@ -95,10 +94,10 @@ def get_organization_policy(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:orgpolicy/v2:getOrganizationPolicy', __args__, opts=opts, typ=GetOrganizationPolicyResult).value
 
     return AwaitableGetOrganizationPolicyResult(
-        alternate=__ret__.alternate,
-        dry_run_spec=__ret__.dry_run_spec,
-        name=__ret__.name,
-        spec=__ret__.spec)
+        alternate=pulumi.get(__ret__, 'alternate'),
+        dry_run_spec=pulumi.get(__ret__, 'dry_run_spec'),
+        name=pulumi.get(__ret__, 'name'),
+        spec=pulumi.get(__ret__, 'spec'))
 
 
 @_utilities.lift_output_func(get_organization_policy)

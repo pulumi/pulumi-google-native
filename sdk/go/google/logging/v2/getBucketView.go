@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a view on a log bucket..
 func LookupBucketView(ctx *pulumi.Context, args *LookupBucketViewArgs, opts ...pulumi.InvokeOption) (*LookupBucketViewResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketViewResult
 	err := ctx.Invoke("google-native:logging/v2:getBucketView", args, &rv, opts...)
 	if err != nil {

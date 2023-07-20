@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified HttpHealthCheck resource.
 func LookupHttpHealthCheck(ctx *pulumi.Context, args *LookupHttpHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHttpHealthCheckResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHttpHealthCheckResult
 	err := ctx.Invoke("google-native:compute/alpha:getHttpHealthCheck", args, &rv, opts...)
 	if err != nil {

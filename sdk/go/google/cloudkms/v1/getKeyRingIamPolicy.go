@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 func LookupKeyRingIamPolicy(ctx *pulumi.Context, args *LookupKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupKeyRingIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeyRingIamPolicyResult
 	err := ctx.Invoke("google-native:cloudkms/v1:getKeyRingIamPolicy", args, &rv, opts...)
 	if err != nil {

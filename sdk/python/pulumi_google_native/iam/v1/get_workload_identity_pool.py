@@ -104,11 +104,11 @@ def get_workload_identity_pool(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iam/v1:getWorkloadIdentityPool', __args__, opts=opts, typ=GetWorkloadIdentityPoolResult).value
 
     return AwaitableGetWorkloadIdentityPoolResult(
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        state=__ret__.state)
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_workload_identity_pool)

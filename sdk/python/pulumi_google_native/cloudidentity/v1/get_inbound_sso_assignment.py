@@ -137,14 +137,14 @@ def get_inbound_sso_assignment(inbound_sso_assignment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1:getInboundSsoAssignment', __args__, opts=opts, typ=GetInboundSsoAssignmentResult).value
 
     return AwaitableGetInboundSsoAssignmentResult(
-        customer=__ret__.customer,
-        name=__ret__.name,
-        rank=__ret__.rank,
-        saml_sso_info=__ret__.saml_sso_info,
-        sign_in_behavior=__ret__.sign_in_behavior,
-        sso_mode=__ret__.sso_mode,
-        target_group=__ret__.target_group,
-        target_org_unit=__ret__.target_org_unit)
+        customer=pulumi.get(__ret__, 'customer'),
+        name=pulumi.get(__ret__, 'name'),
+        rank=pulumi.get(__ret__, 'rank'),
+        saml_sso_info=pulumi.get(__ret__, 'saml_sso_info'),
+        sign_in_behavior=pulumi.get(__ret__, 'sign_in_behavior'),
+        sso_mode=pulumi.get(__ret__, 'sso_mode'),
+        target_group=pulumi.get(__ret__, 'target_group'),
+        target_org_unit=pulumi.get(__ret__, 'target_org_unit'))
 
 
 @_utilities.lift_output_func(get_inbound_sso_assignment)

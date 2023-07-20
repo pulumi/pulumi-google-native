@@ -187,18 +187,18 @@ def get_patch_deployment(patch_deployment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:osconfig/v1beta:getPatchDeployment', __args__, opts=opts, typ=GetPatchDeploymentResult).value
 
     return AwaitableGetPatchDeploymentResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        duration=__ret__.duration,
-        instance_filter=__ret__.instance_filter,
-        last_execute_time=__ret__.last_execute_time,
-        name=__ret__.name,
-        one_time_schedule=__ret__.one_time_schedule,
-        patch_config=__ret__.patch_config,
-        recurring_schedule=__ret__.recurring_schedule,
-        rollout=__ret__.rollout,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        duration=pulumi.get(__ret__, 'duration'),
+        instance_filter=pulumi.get(__ret__, 'instance_filter'),
+        last_execute_time=pulumi.get(__ret__, 'last_execute_time'),
+        name=pulumi.get(__ret__, 'name'),
+        one_time_schedule=pulumi.get(__ret__, 'one_time_schedule'),
+        patch_config=pulumi.get(__ret__, 'patch_config'),
+        recurring_schedule=pulumi.get(__ret__, 'recurring_schedule'),
+        rollout=pulumi.get(__ret__, 'rollout'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_patch_deployment)

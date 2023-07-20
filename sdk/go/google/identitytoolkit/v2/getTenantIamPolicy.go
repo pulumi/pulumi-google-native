@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
 func LookupTenantIamPolicy(ctx *pulumi.Context, args *LookupTenantIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTenantIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantIamPolicyResult
 	err := ctx.Invoke("google-native:identitytoolkit/v2:getTenantIamPolicy", args, &rv, opts...)
 	if err != nil {

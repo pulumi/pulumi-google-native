@@ -189,18 +189,18 @@ def get_backup(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:spanner/v1:getBackup', __args__, opts=opts, typ=GetBackupResult).value
 
     return AwaitableGetBackupResult(
-        create_time=__ret__.create_time,
-        database=__ret__.database,
-        database_dialect=__ret__.database_dialect,
-        encryption_info=__ret__.encryption_info,
-        expire_time=__ret__.expire_time,
-        max_expire_time=__ret__.max_expire_time,
-        name=__ret__.name,
-        referencing_backups=__ret__.referencing_backups,
-        referencing_databases=__ret__.referencing_databases,
-        size_bytes=__ret__.size_bytes,
-        state=__ret__.state,
-        version_time=__ret__.version_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        database=pulumi.get(__ret__, 'database'),
+        database_dialect=pulumi.get(__ret__, 'database_dialect'),
+        encryption_info=pulumi.get(__ret__, 'encryption_info'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        max_expire_time=pulumi.get(__ret__, 'max_expire_time'),
+        name=pulumi.get(__ret__, 'name'),
+        referencing_backups=pulumi.get(__ret__, 'referencing_backups'),
+        referencing_databases=pulumi.get(__ret__, 'referencing_databases'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        state=pulumi.get(__ret__, 'state'),
+        version_time=pulumi.get(__ret__, 'version_time'))
 
 
 @_utilities.lift_output_func(get_backup)

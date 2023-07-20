@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single address group.
 func LookupOrganizationAddressGroup(ctx *pulumi.Context, args *LookupOrganizationAddressGroupArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationAddressGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationAddressGroupResult
 	err := ctx.Invoke("google-native:networksecurity/v1beta1:getOrganizationAddressGroup", args, &rv, opts...)
 	if err != nil {

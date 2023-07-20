@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a SynonymSet for a particular context. Throws a NOT_FOUND exception if the Synonymset does not exist
 func LookupSynonymSet(ctx *pulumi.Context, args *LookupSynonymSetArgs, opts ...pulumi.InvokeOption) (*LookupSynonymSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSynonymSetResult
 	err := ctx.Invoke("google-native:contentwarehouse/v1:getSynonymSet", args, &rv, opts...)
 	if err != nil {

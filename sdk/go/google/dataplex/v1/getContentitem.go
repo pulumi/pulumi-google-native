@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a content resource.
 func LookupContentitem(ctx *pulumi.Context, args *LookupContentitemArgs, opts ...pulumi.InvokeOption) (*LookupContentitemResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentitemResult
 	err := ctx.Invoke("google-native:dataplex/v1:getContentitem", args, &rv, opts...)
 	if err != nil {

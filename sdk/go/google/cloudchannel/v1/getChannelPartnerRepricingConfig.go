@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account making the request and the account being queried are different. * NOT_FOUND: The ChannelPartnerRepricingConfig was not found. * INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
 func LookupChannelPartnerRepricingConfig(ctx *pulumi.Context, args *LookupChannelPartnerRepricingConfigArgs, opts ...pulumi.InvokeOption) (*LookupChannelPartnerRepricingConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelPartnerRepricingConfigResult
 	err := ctx.Invoke("google-native:cloudchannel/v1:getChannelPartnerRepricingConfig", args, &rv, opts...)
 	if err != nil {

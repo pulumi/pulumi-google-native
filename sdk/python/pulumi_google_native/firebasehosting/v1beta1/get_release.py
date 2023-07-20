@@ -119,12 +119,12 @@ def get_release(channel_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebasehosting/v1beta1:getRelease', __args__, opts=opts, typ=GetReleaseResult).value
 
     return AwaitableGetReleaseResult(
-        message=__ret__.message,
-        name=__ret__.name,
-        release_time=__ret__.release_time,
-        release_user=__ret__.release_user,
-        type=__ret__.type,
-        version=__ret__.version)
+        message=pulumi.get(__ret__, 'message'),
+        name=pulumi.get(__ret__, 'name'),
+        release_time=pulumi.get(__ret__, 'release_time'),
+        release_user=pulumi.get(__ret__, 'release_user'),
+        type=pulumi.get(__ret__, 'type'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_release)

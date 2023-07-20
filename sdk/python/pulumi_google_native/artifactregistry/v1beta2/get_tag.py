@@ -72,8 +72,8 @@ def get_tag(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:artifactregistry/v1beta2:getTag', __args__, opts=opts, typ=GetTagResult).value
 
     return AwaitableGetTagResult(
-        name=__ret__.name,
-        version=__ret__.version)
+        name=pulumi.get(__ret__, 'name'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_tag)

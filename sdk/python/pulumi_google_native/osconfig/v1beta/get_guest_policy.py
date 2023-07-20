@@ -151,15 +151,15 @@ def get_guest_policy(guest_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:osconfig/v1beta:getGuestPolicy', __args__, opts=opts, typ=GetGuestPolicyResult).value
 
     return AwaitableGetGuestPolicyResult(
-        assignment=__ret__.assignment,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        package_repositories=__ret__.package_repositories,
-        packages=__ret__.packages,
-        recipes=__ret__.recipes,
-        update_time=__ret__.update_time)
+        assignment=pulumi.get(__ret__, 'assignment'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        package_repositories=pulumi.get(__ret__, 'package_repositories'),
+        packages=pulumi.get(__ret__, 'packages'),
+        recipes=pulumi.get(__ret__, 'recipes'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_guest_policy)

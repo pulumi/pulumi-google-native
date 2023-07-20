@@ -97,10 +97,10 @@ def get_lineage_event(lineage_event_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalineage/v1:getLineageEvent', __args__, opts=opts, typ=GetLineageEventResult).value
 
     return AwaitableGetLineageEventResult(
-        end_time=__ret__.end_time,
-        links=__ret__.links,
-        name=__ret__.name,
-        start_time=__ret__.start_time)
+        end_time=pulumi.get(__ret__, 'end_time'),
+        links=pulumi.get(__ret__, 'links'),
+        name=pulumi.get(__ret__, 'name'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_lineage_event)

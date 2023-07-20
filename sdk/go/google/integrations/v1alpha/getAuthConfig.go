@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config.
 func LookupAuthConfig(ctx *pulumi.Context, args *LookupAuthConfigArgs, opts ...pulumi.InvokeOption) (*LookupAuthConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthConfigResult
 	err := ctx.Invoke("google-native:integrations/v1alpha:getAuthConfig", args, &rv, opts...)
 	if err != nil {

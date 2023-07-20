@@ -199,19 +199,19 @@ def get_job(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:ml/v1:getJob', __args__, opts=opts, typ=GetJobResult).value
 
     return AwaitableGetJobResult(
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        error_message=__ret__.error_message,
-        etag=__ret__.etag,
-        job_id=__ret__.job_id,
-        job_position=__ret__.job_position,
-        labels=__ret__.labels,
-        prediction_input=__ret__.prediction_input,
-        prediction_output=__ret__.prediction_output,
-        start_time=__ret__.start_time,
-        state=__ret__.state,
-        training_input=__ret__.training_input,
-        training_output=__ret__.training_output)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error_message=pulumi.get(__ret__, 'error_message'),
+        etag=pulumi.get(__ret__, 'etag'),
+        job_id=pulumi.get(__ret__, 'job_id'),
+        job_position=pulumi.get(__ret__, 'job_position'),
+        labels=pulumi.get(__ret__, 'labels'),
+        prediction_input=pulumi.get(__ret__, 'prediction_input'),
+        prediction_output=pulumi.get(__ret__, 'prediction_output'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'),
+        training_input=pulumi.get(__ret__, 'training_input'),
+        training_output=pulumi.get(__ret__, 'training_output'))
 
 
 @_utilities.lift_output_func(get_job)

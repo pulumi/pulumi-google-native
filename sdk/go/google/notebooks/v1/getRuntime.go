@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
 func LookupRuntime(ctx *pulumi.Context, args *LookupRuntimeArgs, opts ...pulumi.InvokeOption) (*LookupRuntimeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuntimeResult
 	err := ctx.Invoke("google-native:notebooks/v1:getRuntime", args, &rv, opts...)
 	if err != nil {

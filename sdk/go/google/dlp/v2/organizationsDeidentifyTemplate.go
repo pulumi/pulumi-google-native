@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ func NewOrganizationsDeidentifyTemplate(ctx *pulumi.Context,
 		"organizationId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationsDeidentifyTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:OrganizationsDeidentifyTemplate", name, args, &resource, opts...)
 	if err != nil {

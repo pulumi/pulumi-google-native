@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 		"region",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ForwardingRule
 	err := ctx.RegisterResource("google-native:compute/alpha:ForwardingRule", name, args, &resource, opts...)
 	if err != nil {

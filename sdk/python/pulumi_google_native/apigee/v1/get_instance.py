@@ -222,21 +222,21 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        consumer_accept_list=__ret__.consumer_accept_list,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        disk_encryption_key_name=__ret__.disk_encryption_key_name,
-        display_name=__ret__.display_name,
-        host=__ret__.host,
-        ip_range=__ret__.ip_range,
-        last_modified_at=__ret__.last_modified_at,
-        location=__ret__.location,
-        name=__ret__.name,
-        peering_cidr_range=__ret__.peering_cidr_range,
-        port=__ret__.port,
-        runtime_version=__ret__.runtime_version,
-        service_attachment=__ret__.service_attachment,
-        state=__ret__.state)
+        consumer_accept_list=pulumi.get(__ret__, 'consumer_accept_list'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_encryption_key_name=pulumi.get(__ret__, 'disk_encryption_key_name'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        host=pulumi.get(__ret__, 'host'),
+        ip_range=pulumi.get(__ret__, 'ip_range'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        peering_cidr_range=pulumi.get(__ret__, 'peering_cidr_range'),
+        port=pulumi.get(__ret__, 'port'),
+        runtime_version=pulumi.get(__ret__, 'runtime_version'),
+        service_attachment=pulumi.get(__ret__, 'service_attachment'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_instance)

@@ -3271,6 +3271,9 @@ class JobConfigurationLoadResponse(dict):
         """
         [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
         """
+        warnings.warn("""[Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""", DeprecationWarning)
+        pulumi.log.warn("""schema_inline is deprecated: [Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""")
+
         return pulumi.get(self, "schema_inline")
 
     @property
@@ -3279,6 +3282,9 @@ class JobConfigurationLoadResponse(dict):
         """
         [Deprecated] The format of the schemaInline property.
         """
+        warnings.warn("""[Deprecated] The format of the schemaInline property.""", DeprecationWarning)
+        pulumi.log.warn("""schema_inline_format is deprecated: [Deprecated] The format of the schemaInline property.""")
+
         return pulumi.get(self, "schema_inline_format")
 
     @property
@@ -3586,6 +3592,9 @@ class JobConfigurationQueryResponse(dict):
         """
         [Deprecated] This property is deprecated.
         """
+        warnings.warn("""[Deprecated] This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""preserve_nulls is deprecated: [Deprecated] This property is deprecated.""")
+
         return pulumi.get(self, "preserve_nulls")
 
     @property
@@ -4322,6 +4331,9 @@ class JobStatistics2Response(dict):
         """
         [Output only, Beta] Deprecated; do not use.
         """
+        warnings.warn("""[Output only, Beta] Deprecated; do not use.""", DeprecationWarning)
+        pulumi.log.warn("""model_training_current_iteration is deprecated: [Output only, Beta] Deprecated; do not use.""")
+
         return pulumi.get(self, "model_training_current_iteration")
 
     @property
@@ -4330,6 +4342,9 @@ class JobStatistics2Response(dict):
         """
         [Output only, Beta] Deprecated; do not use.
         """
+        warnings.warn("""[Output only, Beta] Deprecated; do not use.""", DeprecationWarning)
+        pulumi.log.warn("""model_training_expected_total_iteration is deprecated: [Output only, Beta] Deprecated; do not use.""")
+
         return pulumi.get(self, "model_training_expected_total_iteration")
 
     @property
@@ -4953,6 +4968,9 @@ class JobStatisticsResponse(dict):
         """
         [Deprecated] Use the bytes processed in the query statistics instead.
         """
+        warnings.warn("""[Output-only] [Deprecated] Use the bytes processed in the query statistics instead.""", DeprecationWarning)
+        pulumi.log.warn("""total_bytes_processed is deprecated: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.""")
+
         return pulumi.get(self, "total_bytes_processed")
 
     @property

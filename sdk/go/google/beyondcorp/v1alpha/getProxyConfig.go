@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Tenant.
 func LookupProxyConfig(ctx *pulumi.Context, args *LookupProxyConfigArgs, opts ...pulumi.InvokeOption) (*LookupProxyConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProxyConfigResult
 	err := ctx.Invoke("google-native:beyondcorp/v1alpha:getProxyConfig", args, &rv, opts...)
 	if err != nil {

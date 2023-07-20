@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an IAM policy for the specified bucket.
 func LookupBucketIamPolicy(ctx *pulumi.Context, args *LookupBucketIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBucketIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketIamPolicyResult
 	err := ctx.Invoke("google-native:storage/v1:getBucketIamPolicy", args, &rv, opts...)
 	if err != nil {

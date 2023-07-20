@@ -138,14 +138,14 @@ def get_peering(peering_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:managedidentities/v1alpha1:getPeering', __args__, opts=opts, typ=GetPeeringResult).value
 
     return AwaitableGetPeeringResult(
-        authorized_network=__ret__.authorized_network,
-        create_time=__ret__.create_time,
-        domain_resource=__ret__.domain_resource,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        status_message=__ret__.status_message,
-        update_time=__ret__.update_time)
+        authorized_network=pulumi.get(__ret__, 'authorized_network'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        domain_resource=pulumi.get(__ret__, 'domain_resource'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_peering)

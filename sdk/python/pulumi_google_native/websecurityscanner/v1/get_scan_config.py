@@ -199,19 +199,19 @@ def get_scan_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:websecurityscanner/v1:getScanConfig', __args__, opts=opts, typ=GetScanConfigResult).value
 
     return AwaitableGetScanConfigResult(
-        authentication=__ret__.authentication,
-        blacklist_patterns=__ret__.blacklist_patterns,
-        display_name=__ret__.display_name,
-        export_to_security_command_center=__ret__.export_to_security_command_center,
-        ignore_http_status_errors=__ret__.ignore_http_status_errors,
-        managed_scan=__ret__.managed_scan,
-        max_qps=__ret__.max_qps,
-        name=__ret__.name,
-        risk_level=__ret__.risk_level,
-        schedule=__ret__.schedule,
-        starting_urls=__ret__.starting_urls,
-        static_ip_scan=__ret__.static_ip_scan,
-        user_agent=__ret__.user_agent)
+        authentication=pulumi.get(__ret__, 'authentication'),
+        blacklist_patterns=pulumi.get(__ret__, 'blacklist_patterns'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        export_to_security_command_center=pulumi.get(__ret__, 'export_to_security_command_center'),
+        ignore_http_status_errors=pulumi.get(__ret__, 'ignore_http_status_errors'),
+        managed_scan=pulumi.get(__ret__, 'managed_scan'),
+        max_qps=pulumi.get(__ret__, 'max_qps'),
+        name=pulumi.get(__ret__, 'name'),
+        risk_level=pulumi.get(__ret__, 'risk_level'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        starting_urls=pulumi.get(__ret__, 'starting_urls'),
+        static_ip_scan=pulumi.get(__ret__, 'static_ip_scan'),
+        user_agent=pulumi.get(__ret__, 'user_agent'))
 
 
 @_utilities.lift_output_func(get_scan_config)

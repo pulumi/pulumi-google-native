@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ func NewSubscriptionIamPolicy(ctx *pulumi.Context,
 		"subscriptionId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SubscriptionIamPolicy
 	err := ctx.RegisterResource("google-native:pubsub/v1:SubscriptionIamPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single DatacenterConnector.
 func LookupDatacenterConnector(ctx *pulumi.Context, args *LookupDatacenterConnectorArgs, opts ...pulumi.InvokeOption) (*LookupDatacenterConnectorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatacenterConnectorResult
 	err := ctx.Invoke("google-native:vmmigration/v1:getDatacenterConnector", args, &rv, opts...)
 	if err != nil {

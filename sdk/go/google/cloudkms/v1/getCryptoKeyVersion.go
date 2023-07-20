@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns metadata for a given CryptoKeyVersion.
 func LookupCryptoKeyVersion(ctx *pulumi.Context, args *LookupCryptoKeyVersionArgs, opts ...pulumi.InvokeOption) (*LookupCryptoKeyVersionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCryptoKeyVersionResult
 	err := ctx.Invoke("google-native:cloudkms/v1:getCryptoKeyVersion", args, &rv, opts...)
 	if err != nil {

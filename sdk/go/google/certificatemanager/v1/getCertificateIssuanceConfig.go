@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single CertificateIssuanceConfig.
 func LookupCertificateIssuanceConfig(ctx *pulumi.Context, args *LookupCertificateIssuanceConfigArgs, opts ...pulumi.InvokeOption) (*LookupCertificateIssuanceConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateIssuanceConfigResult
 	err := ctx.Invoke("google-native:certificatemanager/v1:getCertificateIssuanceConfig", args, &rv, opts...)
 	if err != nil {

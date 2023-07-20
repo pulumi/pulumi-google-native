@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a single glossary entry by the given id.
 func LookupGlossaryEntry(ctx *pulumi.Context, args *LookupGlossaryEntryArgs, opts ...pulumi.InvokeOption) (*LookupGlossaryEntryResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGlossaryEntryResult
 	err := ctx.Invoke("google-native:translate/v3:getGlossaryEntry", args, &rv, opts...)
 	if err != nil {

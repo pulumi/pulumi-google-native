@@ -129,13 +129,13 @@ def get_queue(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudtasks/v2:getQueue', __args__, opts=opts, typ=GetQueueResult).value
 
     return AwaitableGetQueueResult(
-        app_engine_routing_override=__ret__.app_engine_routing_override,
-        name=__ret__.name,
-        purge_time=__ret__.purge_time,
-        rate_limits=__ret__.rate_limits,
-        retry_config=__ret__.retry_config,
-        stackdriver_logging_config=__ret__.stackdriver_logging_config,
-        state=__ret__.state)
+        app_engine_routing_override=pulumi.get(__ret__, 'app_engine_routing_override'),
+        name=pulumi.get(__ret__, 'name'),
+        purge_time=pulumi.get(__ret__, 'purge_time'),
+        rate_limits=pulumi.get(__ret__, 'rate_limits'),
+        retry_config=pulumi.get(__ret__, 'retry_config'),
+        stackdriver_logging_config=pulumi.get(__ret__, 'stackdriver_logging_config'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_queue)

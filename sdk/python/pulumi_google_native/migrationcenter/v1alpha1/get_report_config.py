@@ -117,12 +117,12 @@ def get_report_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:migrationcenter/v1alpha1:getReportConfig', __args__, opts=opts, typ=GetReportConfigResult).value
 
     return AwaitableGetReportConfigResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        group_preferenceset_assignments=__ret__.group_preferenceset_assignments,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        group_preferenceset_assignments=pulumi.get(__ret__, 'group_preferenceset_assignments'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_report_config)

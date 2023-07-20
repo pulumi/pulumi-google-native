@@ -117,12 +117,12 @@ def get_worker_pool(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:remotebuildexecution/v1alpha:getWorkerPool', __args__, opts=opts, typ=GetWorkerPoolResult).value
 
     return AwaitableGetWorkerPoolResult(
-        autoscale=__ret__.autoscale,
-        channel=__ret__.channel,
-        name=__ret__.name,
-        state=__ret__.state,
-        worker_config=__ret__.worker_config,
-        worker_count=__ret__.worker_count)
+        autoscale=pulumi.get(__ret__, 'autoscale'),
+        channel=pulumi.get(__ret__, 'channel'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        worker_config=pulumi.get(__ret__, 'worker_config'),
+        worker_count=pulumi.get(__ret__, 'worker_count'))
 
 
 @_utilities.lift_output_func(get_worker_pool)

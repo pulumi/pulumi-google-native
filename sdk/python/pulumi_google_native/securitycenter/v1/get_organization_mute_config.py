@@ -126,13 +126,13 @@ def get_organization_mute_config(mute_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getOrganizationMuteConfig', __args__, opts=opts, typ=GetOrganizationMuteConfigResult).value
 
     return AwaitableGetOrganizationMuteConfigResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        filter=__ret__.filter,
-        most_recent_editor=__ret__.most_recent_editor,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        filter=pulumi.get(__ret__, 'filter'),
+        most_recent_editor=pulumi.get(__ret__, 'most_recent_editor'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_organization_mute_config)

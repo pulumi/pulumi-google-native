@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ClientConnectorService.
 func LookupClientConnectorService(ctx *pulumi.Context, args *LookupClientConnectorServiceArgs, opts ...pulumi.InvokeOption) (*LookupClientConnectorServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientConnectorServiceResult
 	err := ctx.Invoke("google-native:beyondcorp/v1alpha:getClientConnectorService", args, &rv, opts...)
 	if err != nil {

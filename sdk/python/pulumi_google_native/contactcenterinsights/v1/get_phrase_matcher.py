@@ -177,17 +177,17 @@ def get_phrase_matcher(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contactcenterinsights/v1:getPhraseMatcher', __args__, opts=opts, typ=GetPhraseMatcherResult).value
 
     return AwaitableGetPhraseMatcherResult(
-        activation_update_time=__ret__.activation_update_time,
-        active=__ret__.active,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        phrase_match_rule_groups=__ret__.phrase_match_rule_groups,
-        revision_create_time=__ret__.revision_create_time,
-        revision_id=__ret__.revision_id,
-        role_match=__ret__.role_match,
-        type=__ret__.type,
-        update_time=__ret__.update_time,
-        version_tag=__ret__.version_tag)
+        activation_update_time=pulumi.get(__ret__, 'activation_update_time'),
+        active=pulumi.get(__ret__, 'active'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        phrase_match_rule_groups=pulumi.get(__ret__, 'phrase_match_rule_groups'),
+        revision_create_time=pulumi.get(__ret__, 'revision_create_time'),
+        revision_id=pulumi.get(__ret__, 'revision_id'),
+        role_match=pulumi.get(__ret__, 'role_match'),
+        type=pulumi.get(__ret__, 'type'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version_tag=pulumi.get(__ret__, 'version_tag'))
 
 
 @_utilities.lift_output_func(get_phrase_matcher)

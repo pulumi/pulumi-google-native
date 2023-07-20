@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single CutoverJob.
 func LookupCutoverJob(ctx *pulumi.Context, args *LookupCutoverJobArgs, opts ...pulumi.InvokeOption) (*LookupCutoverJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCutoverJobResult
 	err := ctx.Invoke("google-native:vmmigration/v1alpha1:getCutoverJob", args, &rv, opts...)
 	if err != nil {

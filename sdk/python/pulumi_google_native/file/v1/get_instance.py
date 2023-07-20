@@ -201,19 +201,19 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        etag=__ret__.etag,
-        file_shares=__ret__.file_shares,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        networks=__ret__.networks,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        state=__ret__.state,
-        status_message=__ret__.status_message,
-        suspension_reasons=__ret__.suspension_reasons,
-        tier=__ret__.tier)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        file_shares=pulumi.get(__ret__, 'file_shares'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        networks=pulumi.get(__ret__, 'networks'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        state=pulumi.get(__ret__, 'state'),
+        status_message=pulumi.get(__ret__, 'status_message'),
+        suspension_reasons=pulumi.get(__ret__, 'suspension_reasons'),
+        tier=pulumi.get(__ret__, 'tier'))
 
 
 @_utilities.lift_output_func(get_instance)

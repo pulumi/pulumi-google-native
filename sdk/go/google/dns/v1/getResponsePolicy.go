@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the representation of an existing Response Policy.
 func GetResponsePolicy(ctx *pulumi.Context, args *GetResponsePolicyArgs, opts ...pulumi.InvokeOption) (*GetResponsePolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResponsePolicyResult
 	err := ctx.Invoke("google-native:dns/v1:getResponsePolicy", args, &rv, opts...)
 	if err != nil {

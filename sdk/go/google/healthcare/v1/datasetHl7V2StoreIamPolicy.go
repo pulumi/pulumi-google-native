@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ func NewDatasetHl7V2StoreIamPolicy(ctx *pulumi.Context,
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatasetHl7V2StoreIamPolicy
 	err := ctx.RegisterResource("google-native:healthcare/v1:DatasetHl7V2StoreIamPolicy", name, args, &resource, opts...)
 	if err != nil {

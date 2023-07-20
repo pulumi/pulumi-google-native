@@ -155,15 +155,15 @@ def get_rbacrolebinding(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1alpha:getRbacrolebinding', __args__, opts=opts, typ=GetRbacrolebindingResult).value
 
     return AwaitableGetRbacrolebindingResult(
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        group=__ret__.group,
-        name=__ret__.name,
-        role=__ret__.role,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time,
-        user=__ret__.user)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        group=pulumi.get(__ret__, 'group'),
+        name=pulumi.get(__ret__, 'name'),
+        role=pulumi.get(__ret__, 'role'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user=pulumi.get(__ret__, 'user'))
 
 
 @_utilities.lift_output_func(get_rbacrolebinding)

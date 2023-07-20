@@ -105,11 +105,11 @@ def get_inbound_saml_config(inbound_saml_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:identitytoolkit/v2:getInboundSamlConfig', __args__, opts=opts, typ=GetInboundSamlConfigResult).value
 
     return AwaitableGetInboundSamlConfigResult(
-        display_name=__ret__.display_name,
-        enabled=__ret__.enabled,
-        idp_config=__ret__.idp_config,
-        name=__ret__.name,
-        sp_config=__ret__.sp_config)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        idp_config=pulumi.get(__ret__, 'idp_config'),
+        name=pulumi.get(__ret__, 'name'),
+        sp_config=pulumi.get(__ret__, 'sp_config'))
 
 
 @_utilities.lift_output_func(get_inbound_saml_config)

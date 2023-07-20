@@ -31,10 +31,6 @@ class GetRegionNetworkFirewallPolicyResult:
         pulumi.set(__self__, "description", description)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
-        if display_name is not None:
-            warnings.warn("""Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.""", DeprecationWarning)
-            pulumi.log.warn("""display_name is deprecated: Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.""")
-
         pulumi.set(__self__, "display_name", display_name)
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
@@ -100,6 +96,9 @@ class GetRegionNetworkFirewallPolicyResult:
         """
         Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
+        warnings.warn("""Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.""", DeprecationWarning)
+        pulumi.log.warn("""display_name is deprecated: Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.""")
+
         return pulumi.get(self, "display_name")
 
     @property
@@ -229,21 +228,21 @@ def get_region_network_firewall_policy(firewall_policy: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionNetworkFirewallPolicy', __args__, opts=opts, typ=GetRegionNetworkFirewallPolicyResult).value
 
     return AwaitableGetRegionNetworkFirewallPolicyResult(
-        associations=__ret__.associations,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        region=__ret__.region,
-        rule_tuple_count=__ret__.rule_tuple_count,
-        rules=__ret__.rules,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        short_name=__ret__.short_name,
-        vpc_network_scope=__ret__.vpc_network_scope)
+        associations=pulumi.get(__ret__, 'associations'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        region=pulumi.get(__ret__, 'region'),
+        rule_tuple_count=pulumi.get(__ret__, 'rule_tuple_count'),
+        rules=pulumi.get(__ret__, 'rules'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        short_name=pulumi.get(__ret__, 'short_name'),
+        vpc_network_scope=pulumi.get(__ret__, 'vpc_network_scope'))
 
 
 @_utilities.lift_output_func(get_region_network_firewall_policy)

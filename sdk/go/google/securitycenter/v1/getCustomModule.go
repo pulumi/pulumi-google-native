@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a SecurityHealthAnalyticsCustomModule.
 func LookupCustomModule(ctx *pulumi.Context, args *LookupCustomModuleArgs, opts ...pulumi.InvokeOption) (*LookupCustomModuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomModuleResult
 	err := ctx.Invoke("google-native:securitycenter/v1:getCustomModule", args, &rv, opts...)
 	if err != nil {

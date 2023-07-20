@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists all of the ordered rules present in a single specified policy.
 func LookupSslPolicy(ctx *pulumi.Context, args *LookupSslPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSslPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSslPolicyResult
 	err := ctx.Invoke("google-native:compute/alpha:getSslPolicy", args, &rv, opts...)
 	if err != nil {

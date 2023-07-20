@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a DataScan resource.
 func LookupDataScan(ctx *pulumi.Context, args *LookupDataScanArgs, opts ...pulumi.InvokeOption) (*LookupDataScanResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataScanResult
 	err := ctx.Invoke("google-native:dataplex/v1:getDataScan", args, &rv, opts...)
 	if err != nil {

@@ -66,8 +66,8 @@ def get_tenant(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:jobs/v4:getTenant', __args__, opts=opts, typ=GetTenantResult).value
 
     return AwaitableGetTenantResult(
-        external_id=__ret__.external_id,
-        name=__ret__.name)
+        external_id=pulumi.get(__ret__, 'external_id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_tenant)

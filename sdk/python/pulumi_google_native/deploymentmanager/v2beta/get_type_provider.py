@@ -175,17 +175,17 @@ def get_type_provider(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:deploymentmanager/v2beta:getTypeProvider', __args__, opts=opts, typ=GetTypeProviderResult).value
 
     return AwaitableGetTypeProviderResult(
-        collection_overrides=__ret__.collection_overrides,
-        credential=__ret__.credential,
-        custom_certificate_authority_roots=__ret__.custom_certificate_authority_roots,
-        description=__ret__.description,
-        descriptor_url=__ret__.descriptor_url,
-        insert_time=__ret__.insert_time,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        operation=__ret__.operation,
-        options=__ret__.options,
-        self_link=__ret__.self_link)
+        collection_overrides=pulumi.get(__ret__, 'collection_overrides'),
+        credential=pulumi.get(__ret__, 'credential'),
+        custom_certificate_authority_roots=pulumi.get(__ret__, 'custom_certificate_authority_roots'),
+        description=pulumi.get(__ret__, 'description'),
+        descriptor_url=pulumi.get(__ret__, 'descriptor_url'),
+        insert_time=pulumi.get(__ret__, 'insert_time'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        operation=pulumi.get(__ret__, 'operation'),
+        options=pulumi.get(__ret__, 'options'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_type_provider)

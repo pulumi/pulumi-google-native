@@ -87,9 +87,9 @@ def get_session_entity_type(agent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getSessionEntityType', __args__, opts=opts, typ=GetSessionEntityTypeResult).value
 
     return AwaitableGetSessionEntityTypeResult(
-        entities=__ret__.entities,
-        entity_override_mode=__ret__.entity_override_mode,
-        name=__ret__.name)
+        entities=pulumi.get(__ret__, 'entities'),
+        entity_override_mode=pulumi.get(__ret__, 'entity_override_mode'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_session_entity_type)

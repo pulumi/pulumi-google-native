@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified target pool.
 func LookupTargetPool(ctx *pulumi.Context, args *LookupTargetPoolArgs, opts ...pulumi.InvokeOption) (*LookupTargetPoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTargetPoolResult
 	err := ctx.Invoke("google-native:compute/v1:getTargetPool", args, &rv, opts...)
 	if err != nil {

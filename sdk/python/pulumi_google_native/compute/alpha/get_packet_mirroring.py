@@ -201,19 +201,19 @@ def get_packet_mirroring(packet_mirroring: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getPacketMirroring', __args__, opts=opts, typ=GetPacketMirroringResult).value
 
     return AwaitableGetPacketMirroringResult(
-        collector_ilb=__ret__.collector_ilb,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        enable=__ret__.enable,
-        filter=__ret__.filter,
-        kind=__ret__.kind,
-        mirrored_resources=__ret__.mirrored_resources,
-        name=__ret__.name,
-        network=__ret__.network,
-        priority=__ret__.priority,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id)
+        collector_ilb=pulumi.get(__ret__, 'collector_ilb'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        enable=pulumi.get(__ret__, 'enable'),
+        filter=pulumi.get(__ret__, 'filter'),
+        kind=pulumi.get(__ret__, 'kind'),
+        mirrored_resources=pulumi.get(__ret__, 'mirrored_resources'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        priority=pulumi.get(__ret__, 'priority'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'))
 
 
 @_utilities.lift_output_func(get_packet_mirroring)

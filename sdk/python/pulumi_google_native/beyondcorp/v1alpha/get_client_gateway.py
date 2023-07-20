@@ -104,11 +104,11 @@ def get_client_gateway(client_gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:beyondcorp/v1alpha:getClientGateway', __args__, opts=opts, typ=GetClientGatewayResult).value
 
     return AwaitableGetClientGatewayResult(
-        client_connector_service=__ret__.client_connector_service,
-        create_time=__ret__.create_time,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time)
+        client_connector_service=pulumi.get(__ret__, 'client_connector_service'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_client_gateway)

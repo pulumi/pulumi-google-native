@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an OS Config guest policy.
 func LookupGuestPolicy(ctx *pulumi.Context, args *LookupGuestPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGuestPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestPolicyResult
 	err := ctx.Invoke("google-native:osconfig/v1beta:getGuestPolicy", args, &rv, opts...)
 	if err != nil {

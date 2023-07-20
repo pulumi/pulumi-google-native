@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ func NewRollout(ctx *pulumi.Context,
 		"rolloutId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Rollout
 	err := ctx.RegisterResource("google-native:clouddeploy/v1:Rollout", name, args, &resource, opts...)
 	if err != nil {

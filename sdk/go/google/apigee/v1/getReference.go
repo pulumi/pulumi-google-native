@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Reference resource.
 func LookupReference(ctx *pulumi.Context, args *LookupReferenceArgs, opts ...pulumi.InvokeOption) (*LookupReferenceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReferenceResult
 	err := ctx.Invoke("google-native:apigee/v1:getReference", args, &rv, opts...)
 	if err != nil {

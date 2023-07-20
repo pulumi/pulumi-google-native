@@ -116,12 +116,12 @@ def get_subscription(developer_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        apiproduct=__ret__.apiproduct,
-        created_at=__ret__.created_at,
-        end_time=__ret__.end_time,
-        last_modified_at=__ret__.last_modified_at,
-        name=__ret__.name,
-        start_time=__ret__.start_time)
+        apiproduct=pulumi.get(__ret__, 'apiproduct'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        last_modified_at=pulumi.get(__ret__, 'last_modified_at'),
+        name=pulumi.get(__ret__, 'name'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_subscription)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a `Ruleset` by name including the full `Source` contents.
 func LookupRuleset(ctx *pulumi.Context, args *LookupRulesetArgs, opts ...pulumi.InvokeOption) (*LookupRulesetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRulesetResult
 	err := ctx.Invoke("google-native:firebaserules/v1:getRuleset", args, &rv, opts...)
 	if err != nil {

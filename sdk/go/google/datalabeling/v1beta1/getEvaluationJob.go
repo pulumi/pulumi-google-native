@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an evaluation job by resource name.
 func LookupEvaluationJob(ctx *pulumi.Context, args *LookupEvaluationJobArgs, opts ...pulumi.InvokeOption) (*LookupEvaluationJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEvaluationJobResult
 	err := ctx.Invoke("google-native:datalabeling/v1beta1:getEvaluationJob", args, &rv, opts...)
 	if err != nil {

@@ -72,8 +72,8 @@ def get_entity(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:connectors/v2:getEntity', __args__, opts=opts, typ=GetEntityResult).value
 
     return AwaitableGetEntityResult(
-        fields=__ret__.fields,
-        name=__ret__.name)
+        fields=pulumi.get(__ret__, 'fields'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_entity)

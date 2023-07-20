@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified network firewall policy.
 func LookupRegionNetworkFirewallPolicy(ctx *pulumi.Context, args *LookupRegionNetworkFirewallPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionNetworkFirewallPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionNetworkFirewallPolicyResult
 	err := ctx.Invoke("google-native:compute/alpha:getRegionNetworkFirewallPolicy", args, &rv, opts...)
 	if err != nil {

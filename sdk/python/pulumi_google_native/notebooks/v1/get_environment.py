@@ -129,13 +129,13 @@ def get_environment(environment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:notebooks/v1:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        container_image=__ret__.container_image,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        post_startup_script=__ret__.post_startup_script,
-        vm_image=__ret__.vm_image)
+        container_image=pulumi.get(__ret__, 'container_image'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        post_startup_script=pulumi.get(__ret__, 'post_startup_script'),
+        vm_image=pulumi.get(__ret__, 'vm_image'))
 
 
 @_utilities.lift_output_func(get_environment)

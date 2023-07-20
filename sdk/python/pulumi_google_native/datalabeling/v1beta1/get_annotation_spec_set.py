@@ -103,11 +103,11 @@ def get_annotation_spec_set(annotation_spec_set_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalabeling/v1beta1:getAnnotationSpecSet', __args__, opts=opts, typ=GetAnnotationSpecSetResult).value
 
     return AwaitableGetAnnotationSpecSetResult(
-        annotation_specs=__ret__.annotation_specs,
-        blocking_resources=__ret__.blocking_resources,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name)
+        annotation_specs=pulumi.get(__ret__, 'annotation_specs'),
+        blocking_resources=pulumi.get(__ret__, 'blocking_resources'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_annotation_spec_set)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a log bucket.
 func LookupOrganizationBucket(ctx *pulumi.Context, args *LookupOrganizationBucketArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationBucketResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationBucketResult
 	err := ctx.Invoke("google-native:logging/v2:getOrganizationBucket", args, &rv, opts...)
 	if err != nil {

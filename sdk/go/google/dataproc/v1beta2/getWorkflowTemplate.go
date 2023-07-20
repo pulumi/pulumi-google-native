@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter.
 func LookupWorkflowTemplate(ctx *pulumi.Context, args *LookupWorkflowTemplateArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowTemplateResult
 	err := ctx.Invoke("google-native:dataproc/v1beta2:getWorkflowTemplate", args, &rv, opts...)
 	if err != nil {

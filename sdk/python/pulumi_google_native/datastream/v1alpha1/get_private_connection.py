@@ -141,14 +141,14 @@ def get_private_connection(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastream/v1alpha1:getPrivateConnection', __args__, opts=opts, typ=GetPrivateConnectionResult).value
 
     return AwaitableGetPrivateConnectionResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        error=__ret__.error,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        vpc_peering_config=__ret__.vpc_peering_config)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        error=pulumi.get(__ret__, 'error'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        vpc_peering_config=pulumi.get(__ret__, 'vpc_peering_config'))
 
 
 @_utilities.lift_output_func(get_private_connection)

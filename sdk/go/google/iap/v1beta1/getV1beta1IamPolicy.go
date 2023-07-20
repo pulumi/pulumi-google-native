@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
 func LookupV1beta1IamPolicy(ctx *pulumi.Context, args *LookupV1beta1IamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupV1beta1IamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupV1beta1IamPolicyResult
 	err := ctx.Invoke("google-native:iap/v1beta1:getV1beta1IamPolicy", args, &rv, opts...)
 	if err != nil {

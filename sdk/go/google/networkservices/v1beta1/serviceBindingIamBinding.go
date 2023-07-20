@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ func NewServiceBindingIamBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceBindingIamBinding
 	err := ctx.RegisterResource("google-native:networkservices/v1beta1:ServiceBindingIamBinding", name, args, &resource, opts...)
 	if err != nil {

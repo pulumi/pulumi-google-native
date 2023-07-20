@@ -127,13 +127,13 @@ def get_rollout(rollout_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicemanagement/v1:getRollout', __args__, opts=opts, typ=GetRolloutResult).value
 
     return AwaitableGetRolloutResult(
-        create_time=__ret__.create_time,
-        created_by=__ret__.created_by,
-        delete_service_strategy=__ret__.delete_service_strategy,
-        rollout_id=__ret__.rollout_id,
-        service_name=__ret__.service_name,
-        status=__ret__.status,
-        traffic_percent_strategy=__ret__.traffic_percent_strategy)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        delete_service_strategy=pulumi.get(__ret__, 'delete_service_strategy'),
+        rollout_id=pulumi.get(__ret__, 'rollout_id'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        status=pulumi.get(__ret__, 'status'),
+        traffic_percent_strategy=pulumi.get(__ret__, 'traffic_percent_strategy'))
 
 
 @_utilities.lift_output_func(get_rollout)

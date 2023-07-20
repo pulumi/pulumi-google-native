@@ -163,16 +163,16 @@ def get_notification_channel(notification_channel_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult).value
 
     return AwaitableGetNotificationChannelResult(
-        creation_record=__ret__.creation_record,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        enabled=__ret__.enabled,
-        labels=__ret__.labels,
-        mutation_records=__ret__.mutation_records,
-        name=__ret__.name,
-        type=__ret__.type,
-        user_labels=__ret__.user_labels,
-        verification_status=__ret__.verification_status)
+        creation_record=pulumi.get(__ret__, 'creation_record'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mutation_records=pulumi.get(__ret__, 'mutation_records'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
+        user_labels=pulumi.get(__ret__, 'user_labels'),
+        verification_status=pulumi.get(__ret__, 'verification_status'))
 
 
 @_utilities.lift_output_func(get_notification_channel)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a document schema. Returns NOT_FOUND if the document schema does not exist.
 func LookupDocumentSchema(ctx *pulumi.Context, args *LookupDocumentSchemaArgs, opts ...pulumi.InvokeOption) (*LookupDocumentSchemaResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDocumentSchemaResult
 	err := ctx.Invoke("google-native:contentwarehouse/v1:getDocumentSchema", args, &rv, opts...)
 	if err != nil {

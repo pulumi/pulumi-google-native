@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified consent store.
 func LookupConsentStore(ctx *pulumi.Context, args *LookupConsentStoreArgs, opts ...pulumi.InvokeOption) (*LookupConsentStoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsentStoreResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getConsentStore", args, &rv, opts...)
 	if err != nil {

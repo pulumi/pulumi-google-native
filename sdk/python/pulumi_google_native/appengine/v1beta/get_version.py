@@ -139,10 +139,6 @@ class GetVersionResult:
         pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
-        if zones is not None:
-            warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
-
         pulumi.set(__self__, "zones", zones)
 
     @property
@@ -463,6 +459,9 @@ class GetVersionResult:
         """
         The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
+        warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+
         return pulumi.get(self, "zones")
 
 
@@ -531,46 +530,46 @@ def get_version(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1beta:getVersion', __args__, opts=opts, typ=GetVersionResult).value
 
     return AwaitableGetVersionResult(
-        api_config=__ret__.api_config,
-        app_engine_apis=__ret__.app_engine_apis,
-        automatic_scaling=__ret__.automatic_scaling,
-        basic_scaling=__ret__.basic_scaling,
-        beta_settings=__ret__.beta_settings,
-        build_env_variables=__ret__.build_env_variables,
-        create_time=__ret__.create_time,
-        created_by=__ret__.created_by,
-        default_expiration=__ret__.default_expiration,
-        deployment=__ret__.deployment,
-        disk_usage_bytes=__ret__.disk_usage_bytes,
-        endpoints_api_service=__ret__.endpoints_api_service,
-        entrypoint=__ret__.entrypoint,
-        env=__ret__.env,
-        env_variables=__ret__.env_variables,
-        error_handlers=__ret__.error_handlers,
-        flexible_runtime_settings=__ret__.flexible_runtime_settings,
-        handlers=__ret__.handlers,
-        health_check=__ret__.health_check,
-        inbound_services=__ret__.inbound_services,
-        instance_class=__ret__.instance_class,
-        libraries=__ret__.libraries,
-        liveness_check=__ret__.liveness_check,
-        manual_scaling=__ret__.manual_scaling,
-        name=__ret__.name,
-        network=__ret__.network,
-        nobuild_files_regex=__ret__.nobuild_files_regex,
-        readiness_check=__ret__.readiness_check,
-        resources=__ret__.resources,
-        runtime=__ret__.runtime,
-        runtime_api_version=__ret__.runtime_api_version,
-        runtime_channel=__ret__.runtime_channel,
-        runtime_main_executable_path=__ret__.runtime_main_executable_path,
-        service_account=__ret__.service_account,
-        serving_status=__ret__.serving_status,
-        threadsafe=__ret__.threadsafe,
-        version_url=__ret__.version_url,
-        vm=__ret__.vm,
-        vpc_access_connector=__ret__.vpc_access_connector,
-        zones=__ret__.zones)
+        api_config=pulumi.get(__ret__, 'api_config'),
+        app_engine_apis=pulumi.get(__ret__, 'app_engine_apis'),
+        automatic_scaling=pulumi.get(__ret__, 'automatic_scaling'),
+        basic_scaling=pulumi.get(__ret__, 'basic_scaling'),
+        beta_settings=pulumi.get(__ret__, 'beta_settings'),
+        build_env_variables=pulumi.get(__ret__, 'build_env_variables'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        default_expiration=pulumi.get(__ret__, 'default_expiration'),
+        deployment=pulumi.get(__ret__, 'deployment'),
+        disk_usage_bytes=pulumi.get(__ret__, 'disk_usage_bytes'),
+        endpoints_api_service=pulumi.get(__ret__, 'endpoints_api_service'),
+        entrypoint=pulumi.get(__ret__, 'entrypoint'),
+        env=pulumi.get(__ret__, 'env'),
+        env_variables=pulumi.get(__ret__, 'env_variables'),
+        error_handlers=pulumi.get(__ret__, 'error_handlers'),
+        flexible_runtime_settings=pulumi.get(__ret__, 'flexible_runtime_settings'),
+        handlers=pulumi.get(__ret__, 'handlers'),
+        health_check=pulumi.get(__ret__, 'health_check'),
+        inbound_services=pulumi.get(__ret__, 'inbound_services'),
+        instance_class=pulumi.get(__ret__, 'instance_class'),
+        libraries=pulumi.get(__ret__, 'libraries'),
+        liveness_check=pulumi.get(__ret__, 'liveness_check'),
+        manual_scaling=pulumi.get(__ret__, 'manual_scaling'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        nobuild_files_regex=pulumi.get(__ret__, 'nobuild_files_regex'),
+        readiness_check=pulumi.get(__ret__, 'readiness_check'),
+        resources=pulumi.get(__ret__, 'resources'),
+        runtime=pulumi.get(__ret__, 'runtime'),
+        runtime_api_version=pulumi.get(__ret__, 'runtime_api_version'),
+        runtime_channel=pulumi.get(__ret__, 'runtime_channel'),
+        runtime_main_executable_path=pulumi.get(__ret__, 'runtime_main_executable_path'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        serving_status=pulumi.get(__ret__, 'serving_status'),
+        threadsafe=pulumi.get(__ret__, 'threadsafe'),
+        version_url=pulumi.get(__ret__, 'version_url'),
+        vm=pulumi.get(__ret__, 'vm'),
+        vpc_access_connector=pulumi.get(__ret__, 'vpc_access_connector'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_version)

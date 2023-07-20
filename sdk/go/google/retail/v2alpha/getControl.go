@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Control.
 func LookupControl(ctx *pulumi.Context, args *LookupControlArgs, opts ...pulumi.InvokeOption) (*LookupControlResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupControlResult
 	err := ctx.Invoke("google-native:retail/v2alpha:getControl", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag` value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
 func LookupFolderPolicy(ctx *pulumi.Context, args *LookupFolderPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFolderPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderPolicyResult
 	err := ctx.Invoke("google-native:orgpolicy/v2:getFolderPolicy", args, &rv, opts...)
 	if err != nil {

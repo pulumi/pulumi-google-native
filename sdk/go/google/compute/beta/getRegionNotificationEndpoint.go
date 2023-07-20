@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified NotificationEndpoint resource in the given region.
 func LookupRegionNotificationEndpoint(ctx *pulumi.Context, args *LookupRegionNotificationEndpointArgs, opts ...pulumi.InvokeOption) (*LookupRegionNotificationEndpointResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionNotificationEndpointResult
 	err := ctx.Invoke("google-native:compute/beta:getRegionNotificationEndpoint", args, &rv, opts...)
 	if err != nil {

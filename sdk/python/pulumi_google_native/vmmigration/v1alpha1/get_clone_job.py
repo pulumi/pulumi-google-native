@@ -25,10 +25,6 @@ class GetCloneJobResult:
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         if compute_engine_vm_details and not isinstance(compute_engine_vm_details, dict):
             raise TypeError("Expected argument 'compute_engine_vm_details' to be a dict")
-        if compute_engine_vm_details is not None:
-            warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
-            pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
-
         pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
@@ -53,10 +49,6 @@ class GetCloneJobResult:
         pulumi.set(__self__, "steps", steps)
         if target_details and not isinstance(target_details, dict):
             raise TypeError("Expected argument 'target_details' to be a dict")
-        if target_details is not None:
-            warnings.warn("""Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
-            pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""")
-
         pulumi.set(__self__, "target_details", target_details)
 
     @property
@@ -73,6 +65,9 @@ class GetCloneJobResult:
         """
         Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "compute_engine_vm_details")
 
     @property
@@ -137,6 +132,9 @@ class GetCloneJobResult:
         """
         Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         """
+        warnings.warn("""Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+        pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""")
+
         return pulumi.get(self, "target_details")
 
 
@@ -177,16 +175,16 @@ def get_clone_job(clone_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getCloneJob', __args__, opts=opts, typ=GetCloneJobResult).value
 
     return AwaitableGetCloneJobResult(
-        compute_engine_target_details=__ret__.compute_engine_target_details,
-        compute_engine_vm_details=__ret__.compute_engine_vm_details,
-        create_time=__ret__.create_time,
-        end_time=__ret__.end_time,
-        error=__ret__.error,
-        name=__ret__.name,
-        state=__ret__.state,
-        state_time=__ret__.state_time,
-        steps=__ret__.steps,
-        target_details=__ret__.target_details)
+        compute_engine_target_details=pulumi.get(__ret__, 'compute_engine_target_details'),
+        compute_engine_vm_details=pulumi.get(__ret__, 'compute_engine_vm_details'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        error=pulumi.get(__ret__, 'error'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        state_time=pulumi.get(__ret__, 'state_time'),
+        steps=pulumi.get(__ret__, 'steps'),
+        target_details=pulumi.get(__ret__, 'target_details'))
 
 
 @_utilities.lift_output_func(get_clone_job)

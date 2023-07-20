@@ -165,16 +165,16 @@ def get_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apikeys/v2:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
-        annotations=__ret__.annotations,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        key_string=__ret__.key_string,
-        name=__ret__.name,
-        restrictions=__ret__.restrictions,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        annotations=pulumi.get(__ret__, 'annotations'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        key_string=pulumi.get(__ret__, 'key_string'),
+        name=pulumi.get(__ret__, 'name'),
+        restrictions=pulumi.get(__ret__, 'restrictions'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_key)

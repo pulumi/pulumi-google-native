@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a single contact.
 func LookupContact(ctx *pulumi.Context, args *LookupContactArgs, opts ...pulumi.InvokeOption) (*LookupContactResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactResult
 	err := ctx.Invoke("google-native:essentialcontacts/v1:getContact", args, &rv, opts...)
 	if err != nil {

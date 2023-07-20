@@ -174,17 +174,17 @@ def get_database(database_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firestore/v1:getDatabase', __args__, opts=opts, typ=GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        app_engine_integration_mode=__ret__.app_engine_integration_mode,
-        concurrency_mode=__ret__.concurrency_mode,
-        create_time=__ret__.create_time,
-        delete_protection_state=__ret__.delete_protection_state,
-        etag=__ret__.etag,
-        key_prefix=__ret__.key_prefix,
-        location=__ret__.location,
-        name=__ret__.name,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        app_engine_integration_mode=pulumi.get(__ret__, 'app_engine_integration_mode'),
+        concurrency_mode=pulumi.get(__ret__, 'concurrency_mode'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_protection_state=pulumi.get(__ret__, 'delete_protection_state'),
+        etag=pulumi.get(__ret__, 'etag'),
+        key_prefix=pulumi.get(__ret__, 'key_prefix'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_database)

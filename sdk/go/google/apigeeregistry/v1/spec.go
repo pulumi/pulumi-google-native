@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewSpec(ctx *pulumi.Context,
 		"versionId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Spec
 	err := ctx.RegisterResource("google-native:apigeeregistry/v1:Spec", name, args, &resource, opts...)
 	if err != nil {

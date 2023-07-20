@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
 func LookupNatAddress(ctx *pulumi.Context, args *LookupNatAddressArgs, opts ...pulumi.InvokeOption) (*LookupNatAddressResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNatAddressResult
 	err := ctx.Invoke("google-native:apigee/v1:getNatAddress", args, &rv, opts...)
 	if err != nil {

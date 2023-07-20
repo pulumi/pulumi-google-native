@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets conversation model.
 func LookupConversationModel(ctx *pulumi.Context, args *LookupConversationModelArgs, opts ...pulumi.InvokeOption) (*LookupConversationModelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConversationModelResult
 	err := ctx.Invoke("google-native:dialogflow/v2:getConversationModel", args, &rv, opts...)
 	if err != nil {

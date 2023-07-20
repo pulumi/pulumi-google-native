@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
 func LookupSslCert(ctx *pulumi.Context, args *LookupSslCertArgs, opts ...pulumi.InvokeOption) (*LookupSslCertResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSslCertResult
 	err := ctx.Invoke("google-native:sqladmin/v1:getSslCert", args, &rv, opts...)
 	if err != nil {

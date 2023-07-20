@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
 func LookupLien(ctx *pulumi.Context, args *LookupLienArgs, opts ...pulumi.InvokeOption) (*LookupLienResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLienResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getLien", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single ChannelConnection.
 func LookupChannelConnection(ctx *pulumi.Context, args *LookupChannelConnectionArgs, opts ...pulumi.InvokeOption) (*LookupChannelConnectionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupChannelConnectionResult
 	err := ctx.Invoke("google-native:eventarc/v1:getChannelConnection", args, &rv, opts...)
 	if err != nil {

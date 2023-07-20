@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ func NewResponsePolicyRule(ctx *pulumi.Context,
 		"responsePolicy",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResponsePolicyRule
 	err := ctx.RegisterResource("google-native:dns/v1beta2:ResponsePolicyRule", name, args, &resource, opts...)
 	if err != nil {

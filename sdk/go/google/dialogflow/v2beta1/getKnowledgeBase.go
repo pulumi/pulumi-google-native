@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
 func LookupKnowledgeBase(ctx *pulumi.Context, args *LookupKnowledgeBaseArgs, opts ...pulumi.InvokeOption) (*LookupKnowledgeBaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKnowledgeBaseResult
 	err := ctx.Invoke("google-native:dialogflow/v2beta1:getKnowledgeBase", args, &rv, opts...)
 	if err != nil {

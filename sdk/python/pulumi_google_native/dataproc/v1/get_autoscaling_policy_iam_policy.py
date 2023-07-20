@@ -81,9 +81,9 @@ def get_autoscaling_policy_iam_policy(autoscaling_policy_id: Optional[str] = Non
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getAutoscalingPolicyIamPolicy', __args__, opts=opts, typ=GetAutoscalingPolicyIamPolicyResult).value
 
     return AwaitableGetAutoscalingPolicyIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_autoscaling_policy_iam_policy)

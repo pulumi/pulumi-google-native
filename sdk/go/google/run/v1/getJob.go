@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a job.
 func GetJob(ctx *pulumi.Context, args *GetJobArgs, opts ...pulumi.InvokeOption) (*GetJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobResult
 	err := ctx.Invoke("google-native:run/v1:getJob", args, &rv, opts...)
 	if err != nil {

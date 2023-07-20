@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the GcpUserAccessBinding with the given name.
 func LookupGcpUserAccessBinding(ctx *pulumi.Context, args *LookupGcpUserAccessBindingArgs, opts ...pulumi.InvokeOption) (*LookupGcpUserAccessBindingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGcpUserAccessBindingResult
 	err := ctx.Invoke("google-native:accesscontextmanager/v1:getGcpUserAccessBinding", args, &rv, opts...)
 	if err != nil {

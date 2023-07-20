@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewCustomConstraint(ctx *pulumi.Context,
 		"organizationId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomConstraint
 	err := ctx.RegisterResource("google-native:orgpolicy/v2:CustomConstraint", name, args, &resource, opts...)
 	if err != nil {

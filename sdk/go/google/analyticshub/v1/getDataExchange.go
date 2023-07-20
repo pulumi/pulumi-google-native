@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a data exchange.
 func LookupDataExchange(ctx *pulumi.Context, args *LookupDataExchangeArgs, opts ...pulumi.InvokeOption) (*LookupDataExchangeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataExchangeResult
 	err := ctx.Invoke("google-native:analyticshub/v1:getDataExchange", args, &rv, opts...)
 	if err != nil {

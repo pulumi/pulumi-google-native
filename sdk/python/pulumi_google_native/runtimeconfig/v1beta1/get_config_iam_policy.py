@@ -81,9 +81,9 @@ def get_config_iam_policy(config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:runtimeconfig/v1beta1:getConfigIamPolicy', __args__, opts=opts, typ=GetConfigIamPolicyResult).value
 
     return AwaitableGetConfigIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_config_iam_policy)

@@ -130,13 +130,13 @@ def get_route(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastream/v1alpha1:getRoute', __args__, opts=opts, typ=GetRouteResult).value
 
     return AwaitableGetRouteResult(
-        create_time=__ret__.create_time,
-        destination_address=__ret__.destination_address,
-        destination_port=__ret__.destination_port,
-        display_name=__ret__.display_name,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        destination_address=pulumi.get(__ret__, 'destination_address'),
+        destination_port=pulumi.get(__ret__, 'destination_port'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_route)

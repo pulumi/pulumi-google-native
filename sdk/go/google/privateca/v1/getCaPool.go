@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a CaPool.
 func LookupCaPool(ctx *pulumi.Context, args *LookupCaPoolArgs, opts ...pulumi.InvokeOption) (*LookupCaPoolResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaPoolResult
 	err := ctx.Invoke("google-native:privateca/v1:getCaPool", args, &rv, opts...)
 	if err != nil {

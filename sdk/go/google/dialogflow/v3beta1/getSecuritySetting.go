@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified SecuritySettings. The returned settings may be stale by up to 1 minute.
 func LookupSecuritySetting(ctx *pulumi.Context, args *LookupSecuritySettingArgs, opts ...pulumi.InvokeOption) (*LookupSecuritySettingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecuritySettingResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getSecuritySetting", args, &rv, opts...)
 	if err != nil {

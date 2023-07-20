@@ -117,12 +117,12 @@ def get_preference_set(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:migrationcenter/v1alpha1:getPreferenceSet', __args__, opts=opts, typ=GetPreferenceSetResult).value
 
     return AwaitableGetPreferenceSetResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        update_time=__ret__.update_time,
-        virtual_machine_preferences=__ret__.virtual_machine_preferences)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        virtual_machine_preferences=pulumi.get(__ret__, 'virtual_machine_preferences'))
 
 
 @_utilities.lift_output_func(get_preference_set)

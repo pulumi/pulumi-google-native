@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	iam "github.com/pulumi/pulumi-google-native/sdk/go/google/iam/v1"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ func NewDatasetHl7V2StoreIamBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatasetHl7V2StoreIamBinding
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetHl7V2StoreIamBinding", name, args, &resource, opts...)
 	if err != nil {

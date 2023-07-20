@@ -105,11 +105,11 @@ def get_app_profile(app_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getAppProfile', __args__, opts=opts, typ=GetAppProfileResult).value
 
     return AwaitableGetAppProfileResult(
-        description=__ret__.description,
-        etag=__ret__.etag,
-        multi_cluster_routing_use_any=__ret__.multi_cluster_routing_use_any,
-        name=__ret__.name,
-        single_cluster_routing=__ret__.single_cluster_routing)
+        description=pulumi.get(__ret__, 'description'),
+        etag=pulumi.get(__ret__, 'etag'),
+        multi_cluster_routing_use_any=pulumi.get(__ret__, 'multi_cluster_routing_use_any'),
+        name=pulumi.get(__ret__, 'name'),
+        single_cluster_routing=pulumi.get(__ret__, 'single_cluster_routing'))
 
 
 @_utilities.lift_output_func(get_app_profile)

@@ -93,10 +93,10 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataform/v1beta1:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        git_remote_settings=__ret__.git_remote_settings,
-        name=__ret__.name,
-        npmrc_environment_variables_secret_version=__ret__.npmrc_environment_variables_secret_version,
-        workspace_compilation_overrides=__ret__.workspace_compilation_overrides)
+        git_remote_settings=pulumi.get(__ret__, 'git_remote_settings'),
+        name=pulumi.get(__ret__, 'name'),
+        npmrc_environment_variables_secret_version=pulumi.get(__ret__, 'npmrc_environment_variables_secret_version'),
+        workspace_compilation_overrides=pulumi.get(__ret__, 'workspace_compilation_overrides'))
 
 
 @_utilities.lift_output_func(get_repository)

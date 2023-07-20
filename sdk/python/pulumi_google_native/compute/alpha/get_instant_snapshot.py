@@ -261,24 +261,24 @@ def get_instant_snapshot(instant_snapshot: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getInstantSnapshot', __args__, opts=opts, typ=GetInstantSnapshotResult).value
 
     return AwaitableGetInstantSnapshotResult(
-        architecture=__ret__.architecture,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        disk_size_gb=__ret__.disk_size_gb,
-        guest_flush=__ret__.guest_flush,
-        kind=__ret__.kind,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        region=__ret__.region,
-        resource_status=__ret__.resource_status,
-        satisfies_pzs=__ret__.satisfies_pzs,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        source_disk=__ret__.source_disk,
-        source_disk_id=__ret__.source_disk_id,
-        status=__ret__.status,
-        zone=__ret__.zone)
+        architecture=pulumi.get(__ret__, 'architecture'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
+        guest_flush=pulumi.get(__ret__, 'guest_flush'),
+        kind=pulumi.get(__ret__, 'kind'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        resource_status=pulumi.get(__ret__, 'resource_status'),
+        satisfies_pzs=pulumi.get(__ret__, 'satisfies_pzs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        source_disk=pulumi.get(__ret__, 'source_disk'),
+        source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
+        status=pulumi.get(__ret__, 'status'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instant_snapshot)

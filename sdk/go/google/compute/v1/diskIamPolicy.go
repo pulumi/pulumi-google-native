@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewDiskIamPolicy(ctx *pulumi.Context,
 		"zone",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DiskIamPolicy
 	err := ctx.RegisterResource("google-native:compute/v1:DiskIamPolicy", name, args, &resource, opts...)
 	if err != nil {

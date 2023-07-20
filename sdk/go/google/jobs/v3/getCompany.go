@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves specified company.
 func LookupCompany(ctx *pulumi.Context, args *LookupCompanyArgs, opts ...pulumi.InvokeOption) (*LookupCompanyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCompanyResult
 	err := ctx.Invoke("google-native:jobs/v3:getCompany", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified session entity type.
 func LookupSessionEntityType(ctx *pulumi.Context, args *LookupSessionEntityTypeArgs, opts ...pulumi.InvokeOption) (*LookupSessionEntityTypeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSessionEntityTypeResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getSessionEntityType", args, &rv, opts...)
 	if err != nil {

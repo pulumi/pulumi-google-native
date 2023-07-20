@@ -81,9 +81,9 @@ def get_region_workflow_template_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getRegionWorkflowTemplateIamPolicy', __args__, opts=opts, typ=GetRegionWorkflowTemplateIamPolicyResult).value
 
     return AwaitableGetRegionWorkflowTemplateIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_region_workflow_template_iam_policy)

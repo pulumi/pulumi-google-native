@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
 func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupRegionSslCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionSslCertificateResult
 	err := ctx.Invoke("google-native:compute/alpha:getRegionSslCertificate", args, &rv, opts...)
 	if err != nil {

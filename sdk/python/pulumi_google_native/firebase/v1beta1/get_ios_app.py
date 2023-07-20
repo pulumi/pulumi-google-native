@@ -174,17 +174,17 @@ def get_ios_app(ios_app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebase/v1beta1:getIosApp', __args__, opts=opts, typ=GetIosAppResult).value
 
     return AwaitableGetIosAppResult(
-        api_key_id=__ret__.api_key_id,
-        app_id=__ret__.app_id,
-        app_store_id=__ret__.app_store_id,
-        bundle_id=__ret__.bundle_id,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        expire_time=__ret__.expire_time,
-        name=__ret__.name,
-        project=__ret__.project,
-        state=__ret__.state,
-        team_id=__ret__.team_id)
+        api_key_id=pulumi.get(__ret__, 'api_key_id'),
+        app_id=pulumi.get(__ret__, 'app_id'),
+        app_store_id=pulumi.get(__ret__, 'app_store_id'),
+        bundle_id=pulumi.get(__ret__, 'bundle_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        team_id=pulumi.get(__ret__, 'team_id'))
 
 
 @_utilities.lift_output_func(get_ios_app)

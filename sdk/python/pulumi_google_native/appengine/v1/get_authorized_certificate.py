@@ -141,14 +141,14 @@ def get_authorized_certificate(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:appengine/v1:getAuthorizedCertificate', __args__, opts=opts, typ=GetAuthorizedCertificateResult).value
 
     return AwaitableGetAuthorizedCertificateResult(
-        certificate_raw_data=__ret__.certificate_raw_data,
-        display_name=__ret__.display_name,
-        domain_mappings_count=__ret__.domain_mappings_count,
-        domain_names=__ret__.domain_names,
-        expire_time=__ret__.expire_time,
-        managed_certificate=__ret__.managed_certificate,
-        name=__ret__.name,
-        visible_domain_mappings=__ret__.visible_domain_mappings)
+        certificate_raw_data=pulumi.get(__ret__, 'certificate_raw_data'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        domain_mappings_count=pulumi.get(__ret__, 'domain_mappings_count'),
+        domain_names=pulumi.get(__ret__, 'domain_names'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        managed_certificate=pulumi.get(__ret__, 'managed_certificate'),
+        name=pulumi.get(__ret__, 'name'),
+        visible_domain_mappings=pulumi.get(__ret__, 'visible_domain_mappings'))
 
 
 @_utilities.lift_output_func(get_authorized_certificate)

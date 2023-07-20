@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the specified webhook.
 func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.InvokeOption) (*LookupWebhookResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebhookResult
 	err := ctx.Invoke("google-native:dialogflow/v3beta1:getWebhook", args, &rv, opts...)
 	if err != nil {

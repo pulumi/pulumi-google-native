@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an InboundSamlSsoProfile.
 func LookupInboundSamlSsoProfile(ctx *pulumi.Context, args *LookupInboundSamlSsoProfileArgs, opts ...pulumi.InvokeOption) (*LookupInboundSamlSsoProfileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInboundSamlSsoProfileResult
 	err := ctx.Invoke("google-native:cloudidentity/v1:getInboundSamlSsoProfile", args, &rv, opts...)
 	if err != nil {

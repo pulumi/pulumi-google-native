@@ -91,10 +91,10 @@ def get_agent_pool(agent_pool_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:storagetransfer/v1:getAgentPool', __args__, opts=opts, typ=GetAgentPoolResult).value
 
     return AwaitableGetAgentPoolResult(
-        bandwidth_limit=__ret__.bandwidth_limit,
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        state=__ret__.state)
+        bandwidth_limit=pulumi.get(__ret__, 'bandwidth_limit'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_agent_pool)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the specified Router resource.
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouterResult
 	err := ctx.Invoke("google-native:compute/beta:getRouter", args, &rv, opts...)
 	if err != nil {

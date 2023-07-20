@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an IntegrationTemplateVersion in the specified project.
 func LookupTemplatesVersion(ctx *pulumi.Context, args *LookupTemplatesVersionArgs, opts ...pulumi.InvokeOption) (*LookupTemplatesVersionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplatesVersionResult
 	err := ctx.Invoke("google-native:integrations/v1alpha:getTemplatesVersion", args, &rv, opts...)
 	if err != nil {

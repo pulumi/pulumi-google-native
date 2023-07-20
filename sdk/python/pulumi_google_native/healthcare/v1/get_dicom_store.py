@@ -83,9 +83,9 @@ def get_dicom_store(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:healthcare/v1:getDicomStore', __args__, opts=opts, typ=GetDicomStoreResult).value
 
     return AwaitableGetDicomStoreResult(
-        labels=__ret__.labels,
-        name=__ret__.name,
-        notification_config=__ret__.notification_config)
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        notification_config=pulumi.get(__ret__, 'notification_config'))
 
 
 @_utilities.lift_output_func(get_dicom_store)

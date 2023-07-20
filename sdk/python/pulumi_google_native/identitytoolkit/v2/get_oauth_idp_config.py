@@ -129,13 +129,13 @@ def get_oauth_idp_config(oauth_idp_config_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:identitytoolkit/v2:getOauthIdpConfig', __args__, opts=opts, typ=GetOauthIdpConfigResult).value
 
     return AwaitableGetOauthIdpConfigResult(
-        client_id=__ret__.client_id,
-        client_secret=__ret__.client_secret,
-        display_name=__ret__.display_name,
-        enabled=__ret__.enabled,
-        issuer=__ret__.issuer,
-        name=__ret__.name,
-        response_type=__ret__.response_type)
+        client_id=pulumi.get(__ret__, 'client_id'),
+        client_secret=pulumi.get(__ret__, 'client_secret'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        issuer=pulumi.get(__ret__, 'issuer'),
+        name=pulumi.get(__ret__, 'name'),
+        response_type=pulumi.get(__ret__, 'response_type'))
 
 
 @_utilities.lift_output_func(get_oauth_idp_config)

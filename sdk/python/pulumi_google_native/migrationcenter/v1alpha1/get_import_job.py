@@ -191,18 +191,18 @@ def get_import_job(import_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:migrationcenter/v1alpha1:getImportJob', __args__, opts=opts, typ=GetImportJobResult).value
 
     return AwaitableGetImportJobResult(
-        asset_source=__ret__.asset_source,
-        complete_time=__ret__.complete_time,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        execution_report=__ret__.execution_report,
-        gcs_payload=__ret__.gcs_payload,
-        inline_payload=__ret__.inline_payload,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        validation_report=__ret__.validation_report)
+        asset_source=pulumi.get(__ret__, 'asset_source'),
+        complete_time=pulumi.get(__ret__, 'complete_time'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        execution_report=pulumi.get(__ret__, 'execution_report'),
+        gcs_payload=pulumi.get(__ret__, 'gcs_payload'),
+        inline_payload=pulumi.get(__ret__, 'inline_payload'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        validation_report=pulumi.get(__ret__, 'validation_report'))
 
 
 @_utilities.lift_output_func(get_import_job)

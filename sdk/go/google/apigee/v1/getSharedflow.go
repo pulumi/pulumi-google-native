@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a shared flow by name, including a list of its revisions.
 func LookupSharedflow(ctx *pulumi.Context, args *LookupSharedflowArgs, opts ...pulumi.InvokeOption) (*LookupSharedflowResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSharedflowResult
 	err := ctx.Invoke("google-native:apigee/v1:getSharedflow", args, &rv, opts...)
 	if err != nil {

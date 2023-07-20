@@ -83,9 +83,9 @@ def get_bare_metal_cluster_iam_policy(bare_metal_cluster_id: Optional[str] = Non
     __ret__ = pulumi.runtime.invoke('google-native:gkeonprem/v1:getBareMetalClusterIamPolicy', __args__, opts=opts, typ=GetBareMetalClusterIamPolicyResult).value
 
     return AwaitableGetBareMetalClusterIamPolicyResult(
-        bindings=__ret__.bindings,
-        etag=__ret__.etag,
-        version=__ret__.version)
+        bindings=pulumi.get(__ret__, 'bindings'),
+        etag=pulumi.get(__ret__, 'etag'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_bare_metal_cluster_iam_policy)

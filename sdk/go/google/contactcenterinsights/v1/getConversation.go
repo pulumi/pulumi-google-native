@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a conversation.
 func LookupConversation(ctx *pulumi.Context, args *LookupConversationArgs, opts ...pulumi.InvokeOption) (*LookupConversationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConversationResult
 	err := ctx.Invoke("google-native:contactcenterinsights/v1:getConversation", args, &rv, opts...)
 	if err != nil {

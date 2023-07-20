@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,6 +52,7 @@ func NewServiceDatabaseIamPolicy(ctx *pulumi.Context,
 		"serviceId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServiceDatabaseIamPolicy
 	err := ctx.RegisterResource("google-native:metastore/v1alpha:ServiceDatabaseIamPolicy", name, args, &resource, opts...)
 	if err != nil {

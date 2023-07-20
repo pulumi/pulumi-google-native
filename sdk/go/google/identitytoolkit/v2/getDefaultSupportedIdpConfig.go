@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a default supported Idp configuration for an Identity Toolkit project.
 func LookupDefaultSupportedIdpConfig(ctx *pulumi.Context, args *LookupDefaultSupportedIdpConfigArgs, opts ...pulumi.InvokeOption) (*LookupDefaultSupportedIdpConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDefaultSupportedIdpConfigResult
 	err := ctx.Invoke("google-native:identitytoolkit/v2:getDefaultSupportedIdpConfig", args, &rv, opts...)
 	if err != nil {

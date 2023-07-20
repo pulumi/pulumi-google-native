@@ -127,13 +127,13 @@ def get_budget(billing_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:billingbudgets/v1beta1:getBudget', __args__, opts=opts, typ=GetBudgetResult).value
 
     return AwaitableGetBudgetResult(
-        all_updates_rule=__ret__.all_updates_rule,
-        amount=__ret__.amount,
-        budget_filter=__ret__.budget_filter,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        name=__ret__.name,
-        threshold_rules=__ret__.threshold_rules)
+        all_updates_rule=pulumi.get(__ret__, 'all_updates_rule'),
+        amount=pulumi.get(__ret__, 'amount'),
+        budget_filter=pulumi.get(__ret__, 'budget_filter'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        name=pulumi.get(__ret__, 'name'),
+        threshold_rules=pulumi.get(__ret__, 'threshold_rules'))
 
 
 @_utilities.lift_output_func(get_budget)

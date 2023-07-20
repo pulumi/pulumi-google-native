@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a single metric descriptor.
 func LookupMetricDescriptor(ctx *pulumi.Context, args *LookupMetricDescriptorArgs, opts ...pulumi.InvokeOption) (*LookupMetricDescriptorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetricDescriptorResult
 	err := ctx.Invoke("google-native:monitoring/v3:getMetricDescriptor", args, &rv, opts...)
 	if err != nil {

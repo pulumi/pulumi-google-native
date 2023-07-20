@@ -155,15 +155,15 @@ def get_key(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
-        api_products=__ret__.api_products,
-        attributes=__ret__.attributes,
-        consumer_key=__ret__.consumer_key,
-        consumer_secret=__ret__.consumer_secret,
-        expires_at=__ret__.expires_at,
-        expires_in_seconds=__ret__.expires_in_seconds,
-        issued_at=__ret__.issued_at,
-        scopes=__ret__.scopes,
-        status=__ret__.status)
+        api_products=pulumi.get(__ret__, 'api_products'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        consumer_key=pulumi.get(__ret__, 'consumer_key'),
+        consumer_secret=pulumi.get(__ret__, 'consumer_secret'),
+        expires_at=pulumi.get(__ret__, 'expires_at'),
+        expires_in_seconds=pulumi.get(__ret__, 'expires_in_seconds'),
+        issued_at=pulumi.get(__ret__, 'issued_at'),
+        scopes=pulumi.get(__ret__, 'scopes'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_key)

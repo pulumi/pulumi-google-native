@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of a listing.
 func LookupListing(ctx *pulumi.Context, args *LookupListingArgs, opts ...pulumi.InvokeOption) (*LookupListingResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupListingResult
 	err := ctx.Invoke("google-native:analyticshub/v1:getListing", args, &rv, opts...)
 	if err != nil {

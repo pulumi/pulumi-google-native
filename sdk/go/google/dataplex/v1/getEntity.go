@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a metadata entity.
 func LookupEntity(ctx *pulumi.Context, args *LookupEntityArgs, opts ...pulumi.InvokeOption) (*LookupEntityResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityResult
 	err := ctx.Invoke("google-native:dataplex/v1:getEntity", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specified NetworkEdgeSecurityService.
 func LookupNetworkEdgeSecurityService(ctx *pulumi.Context, args *LookupNetworkEdgeSecurityServiceArgs, opts ...pulumi.InvokeOption) (*LookupNetworkEdgeSecurityServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkEdgeSecurityServiceResult
 	err := ctx.Invoke("google-native:compute/beta:getNetworkEdgeSecurityService", args, &rv, opts...)
 	if err != nil {

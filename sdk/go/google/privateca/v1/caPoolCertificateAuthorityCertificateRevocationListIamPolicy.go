@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,6 +57,7 @@ func NewCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(ctx *pulumi
 		"project",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CaPoolCertificateAuthorityCertificateRevocationListIamPolicy
 	err := ctx.RegisterResource("google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy", name, args, &resource, opts...)
 	if err != nil {

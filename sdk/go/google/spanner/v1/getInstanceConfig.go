@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a particular instance configuration.
 func LookupInstanceConfig(ctx *pulumi.Context, args *LookupInstanceConfigArgs, opts ...pulumi.InvokeOption) (*LookupInstanceConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceConfigResult
 	err := ctx.Invoke("google-native:spanner/v1:getInstanceConfig", args, &rv, opts...)
 	if err != nil {

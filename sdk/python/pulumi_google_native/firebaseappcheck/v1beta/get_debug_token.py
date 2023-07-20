@@ -80,9 +80,9 @@ def get_debug_token(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaseappcheck/v1beta:getDebugToken', __args__, opts=opts, typ=GetDebugTokenResult).value
 
     return AwaitableGetDebugTokenResult(
-        display_name=__ret__.display_name,
-        name=__ret__.name,
-        token=__ret__.token)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        name=pulumi.get(__ret__, 'name'),
+        token=pulumi.get(__ret__, 'token'))
 
 
 @_utilities.lift_output_func(get_debug_token)

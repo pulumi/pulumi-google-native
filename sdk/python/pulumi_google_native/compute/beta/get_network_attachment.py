@@ -210,20 +210,20 @@ def get_network_attachment(network_attachment: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getNetworkAttachment', __args__, opts=opts, typ=GetNetworkAttachmentResult).value
 
     return AwaitableGetNetworkAttachmentResult(
-        connection_endpoints=__ret__.connection_endpoints,
-        connection_preference=__ret__.connection_preference,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        fingerprint=__ret__.fingerprint,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        network=__ret__.network,
-        producer_accept_lists=__ret__.producer_accept_lists,
-        producer_reject_lists=__ret__.producer_reject_lists,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        self_link_with_id=__ret__.self_link_with_id,
-        subnetworks=__ret__.subnetworks)
+        connection_endpoints=pulumi.get(__ret__, 'connection_endpoints'),
+        connection_preference=pulumi.get(__ret__, 'connection_preference'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        producer_accept_lists=pulumi.get(__ret__, 'producer_accept_lists'),
+        producer_reject_lists=pulumi.get(__ret__, 'producer_reject_lists'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
+        subnetworks=pulumi.get(__ret__, 'subnetworks'))
 
 
 @_utilities.lift_output_func(get_network_attachment)

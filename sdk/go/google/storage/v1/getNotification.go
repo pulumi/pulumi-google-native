@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // View a notification configuration.
 func LookupNotification(ctx *pulumi.Context, args *LookupNotificationArgs, opts ...pulumi.InvokeOption) (*LookupNotificationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationResult
 	err := ctx.Invoke("google-native:storage/v1:getNotification", args, &rv, opts...)
 	if err != nil {

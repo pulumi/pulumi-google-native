@@ -155,15 +155,15 @@ def get_workflow_template(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getWorkflowTemplate', __args__, opts=opts, typ=GetWorkflowTemplateResult).value
 
     return AwaitableGetWorkflowTemplateResult(
-        create_time=__ret__.create_time,
-        dag_timeout=__ret__.dag_timeout,
-        jobs=__ret__.jobs,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        parameters=__ret__.parameters,
-        placement=__ret__.placement,
-        update_time=__ret__.update_time,
-        version=__ret__.version)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        dag_timeout=pulumi.get(__ret__, 'dag_timeout'),
+        jobs=pulumi.get(__ret__, 'jobs'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        placement=pulumi.get(__ret__, 'placement'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_workflow_template)

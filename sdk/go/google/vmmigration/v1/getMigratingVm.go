@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single MigratingVm.
 func LookupMigratingVm(ctx *pulumi.Context, args *LookupMigratingVmArgs, opts ...pulumi.InvokeOption) (*LookupMigratingVmResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigratingVmResult
 	err := ctx.Invoke("google-native:vmmigration/v1:getMigratingVm", args, &rv, opts...)
 	if err != nil {

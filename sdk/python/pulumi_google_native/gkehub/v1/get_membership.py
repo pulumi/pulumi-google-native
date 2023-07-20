@@ -201,19 +201,19 @@ def get_membership(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:gkehub/v1:getMembership', __args__, opts=opts, typ=GetMembershipResult).value
 
     return AwaitableGetMembershipResult(
-        authority=__ret__.authority,
-        create_time=__ret__.create_time,
-        delete_time=__ret__.delete_time,
-        description=__ret__.description,
-        endpoint=__ret__.endpoint,
-        external_id=__ret__.external_id,
-        labels=__ret__.labels,
-        last_connection_time=__ret__.last_connection_time,
-        monitoring_config=__ret__.monitoring_config,
-        name=__ret__.name,
-        state=__ret__.state,
-        unique_id=__ret__.unique_id,
-        update_time=__ret__.update_time)
+        authority=pulumi.get(__ret__, 'authority'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        delete_time=pulumi.get(__ret__, 'delete_time'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        last_connection_time=pulumi.get(__ret__, 'last_connection_time'),
+        monitoring_config=pulumi.get(__ret__, 'monitoring_config'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'),
+        unique_id=pulumi.get(__ret__, 'unique_id'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_membership)

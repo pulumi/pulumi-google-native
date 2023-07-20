@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Mesh.
 func LookupMesh(ctx *pulumi.Context, args *LookupMeshArgs, opts ...pulumi.InvokeOption) (*LookupMeshResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMeshResult
 	err := ctx.Invoke("google-native:networkservices/v1:getMesh", args, &rv, opts...)
 	if err != nil {

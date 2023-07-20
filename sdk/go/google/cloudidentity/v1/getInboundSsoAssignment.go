@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an InboundSsoAssignment.
 func LookupInboundSsoAssignment(ctx *pulumi.Context, args *LookupInboundSsoAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupInboundSsoAssignmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInboundSsoAssignmentResult
 	err := ctx.Invoke("google-native:cloudidentity/v1:getInboundSsoAssignment", args, &rv, opts...)
 	if err != nil {

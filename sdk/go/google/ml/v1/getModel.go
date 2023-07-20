@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
 func LookupModel(ctx *pulumi.Context, args *LookupModelArgs, opts ...pulumi.InvokeOption) (*LookupModelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupModelResult
 	err := ctx.Invoke("google-native:ml/v1:getModel", args, &rv, opts...)
 	if err != nil {

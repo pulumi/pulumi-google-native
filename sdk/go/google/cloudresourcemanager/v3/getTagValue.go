@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
 func LookupTagValue(ctx *pulumi.Context, args *LookupTagValueArgs, opts ...pulumi.InvokeOption) (*LookupTagValueResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagValueResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getTagValue", args, &rv, opts...)
 	if err != nil {

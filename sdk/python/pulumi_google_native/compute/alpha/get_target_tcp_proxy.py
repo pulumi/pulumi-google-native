@@ -150,15 +150,15 @@ def get_target_tcp_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getTargetTcpProxy', __args__, opts=opts, typ=GetTargetTcpProxyResult).value
 
     return AwaitableGetTargetTcpProxyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        kind=__ret__.kind,
-        name=__ret__.name,
-        proxy_bind=__ret__.proxy_bind,
-        proxy_header=__ret__.proxy_header,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        service=__ret__.service)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        kind=pulumi.get(__ret__, 'kind'),
+        name=pulumi.get(__ret__, 'name'),
+        proxy_bind=pulumi.get(__ret__, 'proxy_bind'),
+        proxy_header=pulumi.get(__ret__, 'proxy_header'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service=pulumi.get(__ret__, 'service'))
 
 
 @_utilities.lift_output_func(get_target_tcp_proxy)

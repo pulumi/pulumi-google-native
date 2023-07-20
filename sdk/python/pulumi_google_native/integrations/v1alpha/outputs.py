@@ -195,6 +195,9 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
         """
         Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
         """
+        warnings.warn("""Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.""", DeprecationWarning)
+        pulumi.log.warn("""is_searchable is deprecated: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.""")
+
         return pulumi.get(self, "is_searchable")
 
     @property
@@ -830,6 +833,9 @@ class EnterpriseCrmEventbusProtoNextTaskResponse(dict):
         """
         Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
         """
+        warnings.warn("""Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`""", DeprecationWarning)
+        pulumi.log.warn("""combined_conditions is deprecated: Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`""")
+
         return pulumi.get(self, "combined_conditions")
 
     @property
@@ -2042,6 +2048,9 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
         """
         DEPRECATED: Use external_doc_html.
         """
+        warnings.warn("""DEPRECATED: Use external_doc_html.""", DeprecationWarning)
+        pulumi.log.warn("""external_doc_markdown is deprecated: DEPRECATED: Use external_doc_html.""")
+
         return pulumi.get(self, "external_doc_markdown")
 
     @property
@@ -3945,6 +3954,9 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntityResponse(dict):
         """
         Deprecated - statistics from the Monarch query.
         """
+        warnings.warn("""Deprecated - statistics from the Monarch query.""", DeprecationWarning)
+        pulumi.log.warn("""stats is deprecated: Deprecated - statistics from the Monarch query.""")
+
         return pulumi.get(self, "stats")
 
     @property

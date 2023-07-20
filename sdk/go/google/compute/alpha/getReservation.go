@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the specified reservation.
 func LookupReservation(ctx *pulumi.Context, args *LookupReservationArgs, opts ...pulumi.InvokeOption) (*LookupReservationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservationResult
 	err := ctx.Invoke("google-native:compute/alpha:getReservation", args, &rv, opts...)
 	if err != nil {

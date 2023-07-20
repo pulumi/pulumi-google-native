@@ -175,17 +175,17 @@ def get_search_application(debug_options_enable_debugging: Optional[bool] = None
     __ret__ = pulumi.runtime.invoke('google-native:cloudsearch/v1:getSearchApplication', __args__, opts=opts, typ=GetSearchApplicationResult).value
 
     return AwaitableGetSearchApplicationResult(
-        data_source_restrictions=__ret__.data_source_restrictions,
-        default_facet_options=__ret__.default_facet_options,
-        default_sort_options=__ret__.default_sort_options,
-        display_name=__ret__.display_name,
-        enable_audit_log=__ret__.enable_audit_log,
-        name=__ret__.name,
-        operation_ids=__ret__.operation_ids,
-        query_interpretation_config=__ret__.query_interpretation_config,
-        return_result_thumbnail_urls=__ret__.return_result_thumbnail_urls,
-        scoring_config=__ret__.scoring_config,
-        source_config=__ret__.source_config)
+        data_source_restrictions=pulumi.get(__ret__, 'data_source_restrictions'),
+        default_facet_options=pulumi.get(__ret__, 'default_facet_options'),
+        default_sort_options=pulumi.get(__ret__, 'default_sort_options'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_audit_log=pulumi.get(__ret__, 'enable_audit_log'),
+        name=pulumi.get(__ret__, 'name'),
+        operation_ids=pulumi.get(__ret__, 'operation_ids'),
+        query_interpretation_config=pulumi.get(__ret__, 'query_interpretation_config'),
+        return_result_thumbnail_urls=pulumi.get(__ret__, 'return_result_thumbnail_urls'),
+        scoring_config=pulumi.get(__ret__, 'scoring_config'),
+        source_config=pulumi.get(__ret__, 'source_config'))
 
 
 @_utilities.lift_output_func(get_search_application)

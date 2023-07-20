@@ -4,11 +4,13 @@
 package authorization
 
 import (
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this function to get an Google authentication token for the current login context.
 func GetClientToken(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientTokenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientTokenResult
 	err := ctx.Invoke("google-native:authorization:getClientToken", nil, &rv, opts...)
 	if err != nil {

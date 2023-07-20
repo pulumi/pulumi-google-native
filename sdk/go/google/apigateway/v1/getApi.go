@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single Api.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiResult
 	err := ctx.Invoke("google-native:apigateway/v1:getApi", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the batch workload resource representation.
 func LookupBatch(ctx *pulumi.Context, args *LookupBatchArgs, opts ...pulumi.InvokeOption) (*LookupBatchResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchResult
 	err := ctx.Invoke("google-native:dataproc/v1:getBatch", args, &rv, opts...)
 	if err != nil {

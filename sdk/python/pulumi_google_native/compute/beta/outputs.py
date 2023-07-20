@@ -7226,6 +7226,9 @@ class ImageRawDiskResponse(dict):
         """
         [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         """
+        warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
+        pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
+
         return pulumi.get(self, "sha1_checksum")
 
     @property
@@ -7774,6 +7777,9 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         """
         A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         """
+        warnings.warn("""[Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.""", DeprecationWarning)
+        pulumi.log.warn("""is_stateful is deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.""")
+
         return pulumi.get(self, "is_stateful")
 
     @property
@@ -9742,6 +9748,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
         """
         The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "default_port")
 
     @property
@@ -9750,6 +9759,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
         """
         The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "network")
 
     @property
@@ -9758,6 +9770,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
         """
         Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "subnetwork")
 
     @property
@@ -9766,6 +9781,9 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
         """
         The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
         """
+        warnings.warn("""[Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.""")
+
         return pulumi.get(self, "zone")
 
 
@@ -16409,6 +16427,9 @@ class SecuritySettingsResponse(dict):
         """
         [Deprecated] Use clientTlsPolicy instead.
         """
+        warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
+        pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
+
         return pulumi.get(self, "authentication")
 
     @property

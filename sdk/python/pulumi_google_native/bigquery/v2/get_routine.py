@@ -239,22 +239,22 @@ def get_routine(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getRoutine', __args__, opts=opts, typ=GetRoutineResult).value
 
     return AwaitableGetRoutineResult(
-        arguments=__ret__.arguments,
-        creation_time=__ret__.creation_time,
-        definition_body=__ret__.definition_body,
-        description=__ret__.description,
-        determinism_level=__ret__.determinism_level,
-        etag=__ret__.etag,
-        imported_libraries=__ret__.imported_libraries,
-        language=__ret__.language,
-        last_modified_time=__ret__.last_modified_time,
-        remote_function_options=__ret__.remote_function_options,
-        return_table_type=__ret__.return_table_type,
-        return_type=__ret__.return_type,
-        routine_reference=__ret__.routine_reference,
-        routine_type=__ret__.routine_type,
-        spark_options=__ret__.spark_options,
-        strict_mode=__ret__.strict_mode)
+        arguments=pulumi.get(__ret__, 'arguments'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        definition_body=pulumi.get(__ret__, 'definition_body'),
+        description=pulumi.get(__ret__, 'description'),
+        determinism_level=pulumi.get(__ret__, 'determinism_level'),
+        etag=pulumi.get(__ret__, 'etag'),
+        imported_libraries=pulumi.get(__ret__, 'imported_libraries'),
+        language=pulumi.get(__ret__, 'language'),
+        last_modified_time=pulumi.get(__ret__, 'last_modified_time'),
+        remote_function_options=pulumi.get(__ret__, 'remote_function_options'),
+        return_table_type=pulumi.get(__ret__, 'return_table_type'),
+        return_type=pulumi.get(__ret__, 'return_type'),
+        routine_reference=pulumi.get(__ret__, 'routine_reference'),
+        routine_type=pulumi.get(__ret__, 'routine_type'),
+        spark_options=pulumi.get(__ret__, 'spark_options'),
+        strict_mode=pulumi.get(__ret__, 'strict_mode'))
 
 
 @_utilities.lift_output_func(get_routine)

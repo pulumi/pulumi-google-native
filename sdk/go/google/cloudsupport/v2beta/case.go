@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,7 @@ func NewCase(ctx *pulumi.Context,
 		"v2betumId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Case
 	err := ctx.RegisterResource("google-native:cloudsupport/v2beta:Case", name, args, &resource, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a CanaryEvaluation for an organization.
 func LookupCanaryEvaluation(ctx *pulumi.Context, args *LookupCanaryEvaluationArgs, opts ...pulumi.InvokeOption) (*LookupCanaryEvaluationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCanaryEvaluationResult
 	err := ctx.Invoke("google-native:apigee/v1:getCanaryEvaluation", args, &rv, opts...)
 	if err != nil {

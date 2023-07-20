@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
 func LookupOrganizationJobTrigger(ctx *pulumi.Context, args *LookupOrganizationJobTriggerArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationJobTriggerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationJobTriggerResult
 	err := ctx.Invoke("google-native:dlp/v2:getOrganizationJobTrigger", args, &rv, opts...)
 	if err != nil {

@@ -155,15 +155,15 @@ def get_backup(backup_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getBackup', __args__, opts=opts, typ=GetBackupResult).value
 
     return AwaitableGetBackupResult(
-        encryption_info=__ret__.encryption_info,
-        end_time=__ret__.end_time,
-        expire_time=__ret__.expire_time,
-        name=__ret__.name,
-        size_bytes=__ret__.size_bytes,
-        source_backup=__ret__.source_backup,
-        source_table=__ret__.source_table,
-        start_time=__ret__.start_time,
-        state=__ret__.state)
+        encryption_info=pulumi.get(__ret__, 'encryption_info'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        name=pulumi.get(__ret__, 'name'),
+        size_bytes=pulumi.get(__ret__, 'size_bytes'),
+        source_backup=pulumi.get(__ret__, 'source_backup'),
+        source_table=pulumi.get(__ret__, 'source_table'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_backup)

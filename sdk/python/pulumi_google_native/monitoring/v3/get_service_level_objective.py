@@ -133,13 +133,13 @@ def get_service_level_objective(service_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getServiceLevelObjective', __args__, opts=opts, typ=GetServiceLevelObjectiveResult).value
 
     return AwaitableGetServiceLevelObjectiveResult(
-        calendar_period=__ret__.calendar_period,
-        display_name=__ret__.display_name,
-        goal=__ret__.goal,
-        name=__ret__.name,
-        rolling_period=__ret__.rolling_period,
-        service_level_indicator=__ret__.service_level_indicator,
-        user_labels=__ret__.user_labels)
+        calendar_period=pulumi.get(__ret__, 'calendar_period'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        goal=pulumi.get(__ret__, 'goal'),
+        name=pulumi.get(__ret__, 'name'),
+        rolling_period=pulumi.get(__ret__, 'rolling_period'),
+        service_level_indicator=pulumi.get(__ret__, 'service_level_indicator'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_service_level_objective)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the configuration of the specified FHIR store.
 func LookupFhirStore(ctx *pulumi.Context, args *LookupFhirStoreArgs, opts ...pulumi.InvokeOption) (*LookupFhirStoreResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFhirStoreResult
 	err := ctx.Invoke("google-native:healthcare/v1beta1:getFhirStore", args, &rv, opts...)
 	if err != nil {

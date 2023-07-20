@@ -80,9 +80,9 @@ def get_instance_attachment(attachment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getInstanceAttachment', __args__, opts=opts, typ=GetInstanceAttachmentResult).value
 
     return AwaitableGetInstanceAttachmentResult(
-        created_at=__ret__.created_at,
-        environment=__ret__.environment,
-        name=__ret__.name)
+        created_at=pulumi.get(__ret__, 'created_at'),
+        environment=pulumi.get(__ret__, 'environment'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_instance_attachment)

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
 func LookupIdentityAwareProxyClient(ctx *pulumi.Context, args *LookupIdentityAwareProxyClientArgs, opts ...pulumi.InvokeOption) (*LookupIdentityAwareProxyClientResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIdentityAwareProxyClientResult
 	err := ctx.Invoke("google-native:iap/v1:getIdentityAwareProxyClient", args, &rv, opts...)
 	if err != nil {

@@ -153,15 +153,15 @@ def get_cluster(cluster_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataproc/v1:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        cluster_name=__ret__.cluster_name,
-        cluster_uuid=__ret__.cluster_uuid,
-        config=__ret__.config,
-        labels=__ret__.labels,
-        metrics=__ret__.metrics,
-        project=__ret__.project,
-        status=__ret__.status,
-        status_history=__ret__.status_history,
-        virtual_cluster_config=__ret__.virtual_cluster_config)
+        cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        cluster_uuid=pulumi.get(__ret__, 'cluster_uuid'),
+        config=pulumi.get(__ret__, 'config'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metrics=pulumi.get(__ret__, 'metrics'),
+        project=pulumi.get(__ret__, 'project'),
+        status=pulumi.get(__ret__, 'status'),
+        status_history=pulumi.get(__ret__, 'status_history'),
+        virtual_cluster_config=pulumi.get(__ret__, 'virtual_cluster_config'))
 
 
 @_utilities.lift_output_func(get_cluster)

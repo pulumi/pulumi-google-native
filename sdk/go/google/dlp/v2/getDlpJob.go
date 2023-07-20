@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
 func LookupDlpJob(ctx *pulumi.Context, args *LookupDlpJobArgs, opts ...pulumi.InvokeOption) (*LookupDlpJobResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDlpJobResult
 	err := ctx.Invoke("google-native:dlp/v2:getDlpJob", args, &rv, opts...)
 	if err != nil {

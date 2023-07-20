@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the details of a single RestorePlan.
 func LookupRestorePlan(ctx *pulumi.Context, args *LookupRestorePlanArgs, opts ...pulumi.InvokeOption) (*LookupRestorePlanResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRestorePlanResult
 	err := ctx.Invoke("google-native:gkebackup/v1:getRestorePlan", args, &rv, opts...)
 	if err != nil {

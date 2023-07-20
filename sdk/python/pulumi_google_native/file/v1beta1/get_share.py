@@ -155,15 +155,15 @@ def get_share(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:file/v1beta1:getShare', __args__, opts=opts, typ=GetShareResult).value
 
     return AwaitableGetShareResult(
-        backup=__ret__.backup,
-        capacity_gb=__ret__.capacity_gb,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        labels=__ret__.labels,
-        mount_name=__ret__.mount_name,
-        name=__ret__.name,
-        nfs_export_options=__ret__.nfs_export_options,
-        state=__ret__.state)
+        backup=pulumi.get(__ret__, 'backup'),
+        capacity_gb=pulumi.get(__ret__, 'capacity_gb'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        labels=pulumi.get(__ret__, 'labels'),
+        mount_name=pulumi.get(__ret__, 'mount_name'),
+        name=pulumi.get(__ret__, 'name'),
+        nfs_export_options=pulumi.get(__ret__, 'nfs_export_options'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_share)

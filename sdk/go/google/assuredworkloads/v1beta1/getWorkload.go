@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets Assured Workload associated with a CRM Node
 func LookupWorkload(ctx *pulumi.Context, args *LookupWorkloadArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadResult
 	err := ctx.Invoke("google-native:assuredworkloads/v1beta1:getWorkload", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ func NewLakeZoneIamPolicy(ctx *pulumi.Context,
 		"zone",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LakeZoneIamPolicy
 	err := ctx.RegisterResource("google-native:dataplex/v1:LakeZoneIamPolicy", name, args, &resource, opts...)
 	if err != nil {

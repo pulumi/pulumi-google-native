@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the requested workstation configuration.
 func LookupWorkstationConfig(ctx *pulumi.Context, args *LookupWorkstationConfigArgs, opts ...pulumi.InvokeOption) (*LookupWorkstationConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkstationConfigResult
 	err := ctx.Invoke("google-native:workstations/v1beta:getWorkstationConfig", args, &rv, opts...)
 	if err != nil {

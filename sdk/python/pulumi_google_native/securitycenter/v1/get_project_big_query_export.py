@@ -138,14 +138,14 @@ def get_project_big_query_export(big_query_export_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:securitycenter/v1:getProjectBigQueryExport', __args__, opts=opts, typ=GetProjectBigQueryExportResult).value
 
     return AwaitableGetProjectBigQueryExportResult(
-        create_time=__ret__.create_time,
-        dataset=__ret__.dataset,
-        description=__ret__.description,
-        filter=__ret__.filter,
-        most_recent_editor=__ret__.most_recent_editor,
-        name=__ret__.name,
-        principal=__ret__.principal,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        dataset=pulumi.get(__ret__, 'dataset'),
+        description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
+        most_recent_editor=pulumi.get(__ret__, 'most_recent_editor'),
+        name=pulumi.get(__ret__, 'name'),
+        principal=pulumi.get(__ret__, 'principal'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_project_big_query_export)

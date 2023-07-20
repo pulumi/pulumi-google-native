@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the dataset specified by datasetID.
 func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.InvokeOption) (*LookupDatasetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatasetResult
 	err := ctx.Invoke("google-native:bigquery/v2:getDataset", args, &rv, opts...)
 	if err != nil {

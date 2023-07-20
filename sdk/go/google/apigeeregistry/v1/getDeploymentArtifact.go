@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a specified artifact.
 func LookupDeploymentArtifact(ctx *pulumi.Context, args *LookupDeploymentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentArtifactResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentArtifactResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getDeploymentArtifact", args, &rv, opts...)
 	if err != nil {

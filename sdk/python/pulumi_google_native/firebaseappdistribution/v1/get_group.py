@@ -102,11 +102,11 @@ def get_group(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebaseappdistribution/v1:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        display_name=__ret__.display_name,
-        invite_link_count=__ret__.invite_link_count,
-        name=__ret__.name,
-        release_count=__ret__.release_count,
-        tester_count=__ret__.tester_count)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        invite_link_count=pulumi.get(__ret__, 'invite_link_count'),
+        name=pulumi.get(__ret__, 'name'),
+        release_count=pulumi.get(__ret__, 'release_count'),
+        tester_count=pulumi.get(__ret__, 'tester_count'))
 
 
 @_utilities.lift_output_func(get_group)

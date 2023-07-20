@@ -141,14 +141,14 @@ def get_execution(execution_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:toolresults/v1beta3:getExecution', __args__, opts=opts, typ=GetExecutionResult).value
 
     return AwaitableGetExecutionResult(
-        completion_time=__ret__.completion_time,
-        creation_time=__ret__.creation_time,
-        dimension_definitions=__ret__.dimension_definitions,
-        execution_id=__ret__.execution_id,
-        outcome=__ret__.outcome,
-        specification=__ret__.specification,
-        state=__ret__.state,
-        test_execution_matrix_id=__ret__.test_execution_matrix_id)
+        completion_time=pulumi.get(__ret__, 'completion_time'),
+        creation_time=pulumi.get(__ret__, 'creation_time'),
+        dimension_definitions=pulumi.get(__ret__, 'dimension_definitions'),
+        execution_id=pulumi.get(__ret__, 'execution_id'),
+        outcome=pulumi.get(__ret__, 'outcome'),
+        specification=pulumi.get(__ret__, 'specification'),
+        state=pulumi.get(__ret__, 'state'),
+        test_execution_matrix_id=pulumi.get(__ret__, 'test_execution_matrix_id'))
 
 
 @_utilities.lift_output_func(get_execution)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ func NewTenantIamPolicy(ctx *pulumi.Context,
 		"tenantId",
 	})
 	opts = append(opts, replaceOnChanges)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TenantIamPolicy
 	err := ctx.RegisterResource("google-native:identitytoolkit/v2:TenantIamPolicy", name, args, &resource, opts...)
 	if err != nil {

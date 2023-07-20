@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an analysis.
 func LookupAnalysis(ctx *pulumi.Context, args *LookupAnalysisArgs, opts ...pulumi.InvokeOption) (*LookupAnalysisResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnalysisResult
 	err := ctx.Invoke("google-native:contactcenterinsights/v1:getAnalysis", args, &rv, opts...)
 	if err != nil {

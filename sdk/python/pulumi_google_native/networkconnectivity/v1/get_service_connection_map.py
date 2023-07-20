@@ -189,18 +189,18 @@ def get_service_connection_map(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:networkconnectivity/v1:getServiceConnectionMap', __args__, opts=opts, typ=GetServiceConnectionMapResult).value
 
     return AwaitableGetServiceConnectionMapResult(
-        consumer_psc_configs=__ret__.consumer_psc_configs,
-        consumer_psc_connections=__ret__.consumer_psc_connections,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        infrastructure=__ret__.infrastructure,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        producer_psc_configs=__ret__.producer_psc_configs,
-        service_class=__ret__.service_class,
-        service_class_uri=__ret__.service_class_uri,
-        token=__ret__.token,
-        update_time=__ret__.update_time)
+        consumer_psc_configs=pulumi.get(__ret__, 'consumer_psc_configs'),
+        consumer_psc_connections=pulumi.get(__ret__, 'consumer_psc_connections'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        infrastructure=pulumi.get(__ret__, 'infrastructure'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        producer_psc_configs=pulumi.get(__ret__, 'producer_psc_configs'),
+        service_class=pulumi.get(__ret__, 'service_class'),
+        service_class_uri=pulumi.get(__ret__, 'service_class_uri'),
+        token=pulumi.get(__ret__, 'token'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_service_connection_map)

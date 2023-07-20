@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a debug session.
 func LookupDebugSession(ctx *pulumi.Context, args *LookupDebugSessionArgs, opts ...pulumi.InvokeOption) (*LookupDebugSessionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDebugSessionResult
 	err := ctx.Invoke("google-native:apigee/v1:getDebugSession", args, &rv, opts...)
 	if err != nil {

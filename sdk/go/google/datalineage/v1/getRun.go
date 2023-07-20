@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the specified run.
 func LookupRun(ctx *pulumi.Context, args *LookupRunArgs, opts ...pulumi.InvokeOption) (*LookupRunResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRunResult
 	err := ctx.Invoke("google-native:datalineage/v1:getRun", args, &rv, opts...)
 	if err != nil {

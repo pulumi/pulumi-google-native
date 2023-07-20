@@ -80,9 +80,9 @@ def get_dest_group(dest_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:iap/v1:getDestGroup', __args__, opts=opts, typ=GetDestGroupResult).value
 
     return AwaitableGetDestGroupResult(
-        cidrs=__ret__.cidrs,
-        fqdns=__ret__.fqdns,
-        name=__ret__.name)
+        cidrs=pulumi.get(__ret__, 'cidrs'),
+        fqdns=pulumi.get(__ret__, 'fqdns'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_dest_group)

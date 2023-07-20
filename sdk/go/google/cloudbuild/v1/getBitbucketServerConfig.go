@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve a `BitbucketServerConfig`. This API is experimental.
 func LookupBitbucketServerConfig(ctx *pulumi.Context, args *LookupBitbucketServerConfigArgs, opts ...pulumi.InvokeOption) (*LookupBitbucketServerConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBitbucketServerConfigResult
 	err := ctx.Invoke("google-native:cloudbuild/v1:getBitbucketServerConfig", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of a single ServiceConnectionPolicy.
 func LookupServiceConnectionPolicy(ctx *pulumi.Context, args *LookupServiceConnectionPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceConnectionPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceConnectionPolicyResult
 	err := ctx.Invoke("google-native:networkconnectivity/v1:getServiceConnectionPolicy", args, &rv, opts...)
 	if err != nil {

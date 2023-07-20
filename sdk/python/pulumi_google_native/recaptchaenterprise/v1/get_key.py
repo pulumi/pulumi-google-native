@@ -151,15 +151,15 @@ def get_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:recaptchaenterprise/v1:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
-        android_settings=__ret__.android_settings,
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        ios_settings=__ret__.ios_settings,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        testing_options=__ret__.testing_options,
-        waf_settings=__ret__.waf_settings,
-        web_settings=__ret__.web_settings)
+        android_settings=pulumi.get(__ret__, 'android_settings'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        ios_settings=pulumi.get(__ret__, 'ios_settings'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        testing_options=pulumi.get(__ret__, 'testing_options'),
+        waf_settings=pulumi.get(__ret__, 'waf_settings'),
+        web_settings=pulumi.get(__ret__, 'web_settings'))
 
 
 @_utilities.lift_output_func(get_key)

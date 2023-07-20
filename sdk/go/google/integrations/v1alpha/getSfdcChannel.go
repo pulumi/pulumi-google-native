@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown.
 func LookupSfdcChannel(ctx *pulumi.Context, args *LookupSfdcChannelArgs, opts ...pulumi.InvokeOption) (*LookupSfdcChannelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSfdcChannelResult
 	err := ctx.Invoke("google-native:integrations/v1alpha:getSfdcChannel", args, &rv, opts...)
 	if err != nil {

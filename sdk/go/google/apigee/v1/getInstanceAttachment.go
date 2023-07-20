@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an attachment. **Note:** Not supported for Apigee hybrid.
 func LookupInstanceAttachment(ctx *pulumi.Context, args *LookupInstanceAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupInstanceAttachmentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceAttachmentResult
 	err := ctx.Invoke("google-native:apigee/v1:getInstanceAttachment", args, &rv, opts...)
 	if err != nil {

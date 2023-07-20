@@ -80,9 +80,9 @@ def get_nat_address(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getNatAddress', __args__, opts=opts, typ=GetNatAddressResult).value
 
     return AwaitableGetNatAddressResult(
-        ip_address=__ret__.ip_address,
-        name=__ret__.name,
-        state=__ret__.state)
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        name=pulumi.get(__ret__, 'name'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_nat_address)

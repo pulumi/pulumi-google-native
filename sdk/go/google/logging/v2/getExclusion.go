@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the description of an exclusion in the _Default sink.
 func LookupExclusion(ctx *pulumi.Context, args *LookupExclusionArgs, opts ...pulumi.InvokeOption) (*LookupExclusionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExclusionResult
 	err := ctx.Invoke("google-native:logging/v2:getExclusion", args, &rv, opts...)
 	if err != nil {

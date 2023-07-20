@@ -131,13 +131,13 @@ def get_table(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigtableadmin/v2:getTable', __args__, opts=opts, typ=GetTableResult).value
 
     return AwaitableGetTableResult(
-        cluster_states=__ret__.cluster_states,
-        column_families=__ret__.column_families,
-        deletion_protection=__ret__.deletion_protection,
-        granularity=__ret__.granularity,
-        name=__ret__.name,
-        restore_info=__ret__.restore_info,
-        stats=__ret__.stats)
+        cluster_states=pulumi.get(__ret__, 'cluster_states'),
+        column_families=pulumi.get(__ret__, 'column_families'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
+        granularity=pulumi.get(__ret__, 'granularity'),
+        name=pulumi.get(__ret__, 'name'),
+        restore_info=pulumi.get(__ret__, 'restore_info'),
+        stats=pulumi.get(__ret__, 'stats'))
 
 
 @_utilities.lift_output_func(get_table)

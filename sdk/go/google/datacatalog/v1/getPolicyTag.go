@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a policy tag.
 func LookupPolicyTag(ctx *pulumi.Context, args *LookupPolicyTagArgs, opts ...pulumi.InvokeOption) (*LookupPolicyTagResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyTagResult
 	err := ctx.Invoke("google-native:datacatalog/v1:getPolicyTag", args, &rv, opts...)
 	if err != nil {

@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a resource containing information about a backup run.
 func LookupBackupRun(ctx *pulumi.Context, args *LookupBackupRunArgs, opts ...pulumi.InvokeOption) (*LookupBackupRunResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupRunResult
 	err := ctx.Invoke("google-native:sqladmin/v1:getBackupRun", args, &rv, opts...)
 	if err != nil {

@@ -203,19 +203,19 @@ def get_task(lake_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getTask', __args__, opts=opts, typ=GetTaskResult).value
 
     return AwaitableGetTaskResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        execution_spec=__ret__.execution_spec,
-        execution_status=__ret__.execution_status,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        notebook=__ret__.notebook,
-        spark=__ret__.spark,
-        state=__ret__.state,
-        trigger_spec=__ret__.trigger_spec,
-        uid=__ret__.uid,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        execution_spec=pulumi.get(__ret__, 'execution_spec'),
+        execution_status=pulumi.get(__ret__, 'execution_status'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        notebook=pulumi.get(__ret__, 'notebook'),
+        spark=pulumi.get(__ret__, 'spark'),
+        state=pulumi.get(__ret__, 'state'),
+        trigger_spec=pulumi.get(__ret__, 'trigger_spec'),
+        uid=pulumi.get(__ret__, 'uid'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_task)

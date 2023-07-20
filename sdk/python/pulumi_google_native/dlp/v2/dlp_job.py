@@ -73,6 +73,9 @@ class DlpJobArgs:
         """
         Deprecated. This field has no effect.
         """
+        warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+        pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
+
         return pulumi.get(self, "location")
 
     @location.setter

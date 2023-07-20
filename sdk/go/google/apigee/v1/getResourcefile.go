@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
 func LookupResourcefile(ctx *pulumi.Context, args *LookupResourcefileArgs, opts ...pulumi.InvokeOption) (*LookupResourcefileResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcefileResult
 	err := ctx.Invoke("google-native:apigee/v1:getResourcefile", args, &rv, opts...)
 	if err != nil {

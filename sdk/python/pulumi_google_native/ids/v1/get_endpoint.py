@@ -188,18 +188,18 @@ def get_endpoint(endpoint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:ids/v1:getEndpoint', __args__, opts=opts, typ=GetEndpointResult).value
 
     return AwaitableGetEndpointResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        endpoint_forwarding_rule=__ret__.endpoint_forwarding_rule,
-        endpoint_ip=__ret__.endpoint_ip,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        network=__ret__.network,
-        severity=__ret__.severity,
-        state=__ret__.state,
-        threat_exceptions=__ret__.threat_exceptions,
-        traffic_logs=__ret__.traffic_logs,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        endpoint_forwarding_rule=pulumi.get(__ret__, 'endpoint_forwarding_rule'),
+        endpoint_ip=pulumi.get(__ret__, 'endpoint_ip'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        severity=pulumi.get(__ret__, 'severity'),
+        state=pulumi.get(__ret__, 'state'),
+        threat_exceptions=pulumi.get(__ret__, 'threat_exceptions'),
+        traffic_logs=pulumi.get(__ret__, 'traffic_logs'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_endpoint)

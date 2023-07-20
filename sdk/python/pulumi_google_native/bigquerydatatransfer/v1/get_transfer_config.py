@@ -70,10 +70,6 @@ class GetTransferConfigResult:
         pulumi.set(__self__, "update_time", update_time)
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
-        if user_id is not None:
-            warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
-            pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
-
         pulumi.set(__self__, "user_id", user_id)
 
     @property
@@ -210,6 +206,9 @@ class GetTransferConfigResult:
         """
         Deprecated. Unique ID of the user on whose behalf transfer is done.
         """
+        warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
+        pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
+
         return pulumi.get(self, "user_id")
 
 
@@ -253,23 +252,23 @@ def get_transfer_config(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigquerydatatransfer/v1:getTransferConfig', __args__, opts=opts, typ=GetTransferConfigResult).value
 
     return AwaitableGetTransferConfigResult(
-        data_refresh_window_days=__ret__.data_refresh_window_days,
-        data_source_id=__ret__.data_source_id,
-        dataset_region=__ret__.dataset_region,
-        destination_dataset_id=__ret__.destination_dataset_id,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        email_preferences=__ret__.email_preferences,
-        name=__ret__.name,
-        next_run_time=__ret__.next_run_time,
-        notification_pubsub_topic=__ret__.notification_pubsub_topic,
-        owner_info=__ret__.owner_info,
-        params=__ret__.params,
-        schedule=__ret__.schedule,
-        schedule_options=__ret__.schedule_options,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        user_id=__ret__.user_id)
+        data_refresh_window_days=pulumi.get(__ret__, 'data_refresh_window_days'),
+        data_source_id=pulumi.get(__ret__, 'data_source_id'),
+        dataset_region=pulumi.get(__ret__, 'dataset_region'),
+        destination_dataset_id=pulumi.get(__ret__, 'destination_dataset_id'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        email_preferences=pulumi.get(__ret__, 'email_preferences'),
+        name=pulumi.get(__ret__, 'name'),
+        next_run_time=pulumi.get(__ret__, 'next_run_time'),
+        notification_pubsub_topic=pulumi.get(__ret__, 'notification_pubsub_topic'),
+        owner_info=pulumi.get(__ret__, 'owner_info'),
+        params=pulumi.get(__ret__, 'params'),
+        schedule=pulumi.get(__ret__, 'schedule'),
+        schedule_options=pulumi.get(__ret__, 'schedule_options'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_transfer_config)

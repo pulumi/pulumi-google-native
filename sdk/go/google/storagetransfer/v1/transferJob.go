@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ func NewTransferJob(ctx *pulumi.Context,
 		args = &TransferJobArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransferJob
 	err := ctx.RegisterResource("google-native:storagetransfer/v1:TransferJob", name, args, &resource, opts...)
 	if err != nil {

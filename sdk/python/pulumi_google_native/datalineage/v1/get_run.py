@@ -118,12 +118,12 @@ def get_run(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datalineage/v1:getRun', __args__, opts=opts, typ=GetRunResult).value
 
     return AwaitableGetRunResult(
-        attributes=__ret__.attributes,
-        display_name=__ret__.display_name,
-        end_time=__ret__.end_time,
-        name=__ret__.name,
-        start_time=__ret__.start_time,
-        state=__ret__.state)
+        attributes=pulumi.get(__ret__, 'attributes'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        name=pulumi.get(__ret__, 'name'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_run)

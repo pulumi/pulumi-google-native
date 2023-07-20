@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-google-native/sdk/go/google/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
 func LookupExecution(ctx *pulumi.Context, args *LookupExecutionArgs, opts ...pulumi.InvokeOption) (*LookupExecutionResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupExecutionResult
 	err := ctx.Invoke("google-native:toolresults/v1beta3:getExecution", args, &rv, opts...)
 	if err != nil {
