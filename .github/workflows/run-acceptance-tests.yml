@@ -83,7 +83,7 @@ jobs:
       name: Install Schema Tools
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
-        repo: mikhailshilkov/schema-tools
+        repo: pulumi/schema-tools
     - name: Initialize submodules
       run: make init_submodules
     - name: Build codegen binaries
@@ -95,7 +95,7 @@ jobs:
       run: >-
         echo 'SCHEMA_CHANGES<<EOF' >> $GITHUB_ENV
 
-        schema-tools compare ${{ env.PROVIDER }} master --local-path=provider/cmd/pulumi-resource-${{ env.PROVIDER }}/schema.json >> $GITHUB_ENV
+        schema-tools compare -p ${{ env.PROVIDER }} -o master -n --local-path=provider/cmd/pulumi-resource-${{ env.PROVIDER }}/schema.json >> $GITHUB_ENV
 
         echo 'EOF' >> $GITHUB_ENV
     - if: github.event_name == 'pull_request'
@@ -103,8 +103,6 @@ jobs:
       uses: thollander/actions-comment-pull-request@v1
       with:
         message: |
-          ### Does the PR have any schema changes?
-
           ${{ env.SCHEMA_CHANGES }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - if: contains(env.SCHEMA_CHANGES, 'Looking good! No breaking changes found.') &&
