@@ -31,3 +31,9 @@ export interface GetClientConfigResult {
      */
     readonly zone?: string;
 }
+/**
+ * Use this function to access the current configuration of the native Google provider.
+ */
+export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
+    return pulumi.output(getClientConfig(opts))
+}

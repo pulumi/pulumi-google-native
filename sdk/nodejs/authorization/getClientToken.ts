@@ -35,3 +35,9 @@ export interface GetClientTokenResult {
      */
     readonly tokenType: string;
 }
+/**
+ * Use this function to get an Google authentication token for the current login context.
+ */
+export function getClientTokenOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientTokenResult> {
+    return pulumi.output(getClientToken(opts))
+}
