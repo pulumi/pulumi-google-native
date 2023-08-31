@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-google-native/provider
 
-go 1.19
+go 1.21
 
 require (
 	github.com/evanphx/json-patch v5.6.0+incompatible
