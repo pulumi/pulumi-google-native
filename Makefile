@@ -10,7 +10,7 @@ VERSION         := $(shell pulumictl get version)
 PROVIDER_PKGS   := $(shell cd ./provider && go list ./...)
 WORKING_DIR     := $(shell pwd)
 
-JAVA_GEN 		 := pulumi-java-gen
+JAVA_GEN		 := pulumi-java-gen
 JAVA_GEN_VERSION := v0.5.4
 
 VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}"
@@ -39,7 +39,7 @@ debug_provider::
 	(cd provider && go install -gcflags="all=-N -l" $(VERSION_FLAGS) $(PROJECT)/provider/cmd/$(PROVIDER))
 
 test_provider::
-	(cd provider && go test -v $(PROVIDER_PKGS))
+	(cd provider && go test -v -coverprofile="coverage.txt" $(PROVIDER_PKGS))
 
 lint_provider:: provider # lint the provider code
 	cd provider && GOGC=20 golangci-lint run -c ../.golangci.yml
