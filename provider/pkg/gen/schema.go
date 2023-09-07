@@ -309,6 +309,9 @@ programs. This provider uses the Google Cloud REST API directly and therefore pr
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
 		"liftSingleValueMethodReturns": true,
+		"pyproject": map[string]bool{
+			"enabled": true,
+		},
 	})
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
